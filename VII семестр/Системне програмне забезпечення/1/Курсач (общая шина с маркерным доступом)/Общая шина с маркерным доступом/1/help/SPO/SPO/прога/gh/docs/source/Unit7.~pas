@@ -1,0 +1,47 @@
+unit Unit7;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  StdCtrls, Spin, Buttons,unit3;
+
+type
+  TForm7 = class(TForm)
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    SpinEdit1: TSpinEdit;
+    SpinEdit2: TSpinEdit;
+    SpinEdit3: TSpinEdit;
+    SpinEdit4: TSpinEdit;
+    SpinEdit5: TSpinEdit;
+    SpinEdit6: TSpinEdit;
+    SpeedButton1: TSpeedButton;
+    procedure SpeedButton1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form7: TForm7;
+
+implementation
+
+{$R *.DFM}
+
+procedure TForm7.SpeedButton1Click(Sender: TObject);
+begin
+unit3.graph.generate(
+SpinEdit2.Value,SpinEdit3.Value,SpinEdit1.Value,
+SpinEdit6.Value,SpinEdit5.Value,SpinEdit4.Value/100);
+unit3.graph.Show;
+Form3.Show;
+end;
+
+end.

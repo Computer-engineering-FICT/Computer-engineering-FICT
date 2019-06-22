@@ -1,0 +1,23 @@
+package kursach;
+
+import javax.swing.JComponent;
+
+public class Line extends JComponent implements Parametrized {
+    private LineModel model;
+
+    public Line() {
+    }
+
+    public LineModel getModel() {
+        return model;
+    }
+
+    public void setParameter(int param) {
+        model.setTransfer(param);
+        repaint();
+    }
+
+    public int getTransfer() {
+        return model.getTransfer();
+    }
+}

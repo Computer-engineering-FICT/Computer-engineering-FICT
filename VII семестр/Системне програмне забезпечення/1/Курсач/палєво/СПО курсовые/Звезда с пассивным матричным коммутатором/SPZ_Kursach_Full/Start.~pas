@@ -1,0 +1,506 @@
+unit Start;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, StdCtrls, Buttons, Menus;
+
+const
+  MAX_VER_COUNT=20;
+
+type
+  TForm1Main = class(TForm)
+    BitBtn1: TBitBtn;
+    MainMenu1: TMainMenu;
+    N1: TMenuItem;
+    N2: TMenuItem;
+    N3: TMenuItem;
+    N4: TMenuItem;
+    BitBtn2: TBitBtn;
+    BitBtn3: TBitBtn;
+    BitBtn4: TBitBtn;
+    OpenDialog1: TOpenDialog;
+    SaveDialog1: TSaveDialog;
+    BitBtn5: TBitBtn;
+    procedure FormCreate(Sender: TObject);
+
+    procedure BitBtn1Click(Sender: TObject);
+    procedure BitBtn3Click(Sender: TObject);
+    procedure BitBtn2Click(Sender: TObject);
+
+    procedure FormClick(Sender: TObject);
+    procedure FormMouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+    procedure BitBtn4Click(Sender: TObject);
+    procedure N2Click(Sender: TObject);
+    procedure N3Click(Sender: TObject);
+    procedure N4Click(Sender: TObject);
+    procedure BitBtn5Click(Sender: TObject);
+    procedure FormResize(Sender: TObject);
+
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+//******************************************************************************
+  TVershina = class(TPanel)
+  private
+    FDrag:boolean;
+    FPrevX,FPrevY:Integer;
+  public
+    ID:Integer;
+    Edit:TEdit;
+    procedure Paint;override;
+    constructor Create(AOwner: TComponent); override;
+
+    procedure MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure MouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+    procedure MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+      
+    procedure Click(Sender: TObject);
+  end;
+//******************************************************************************
+  TArraySviazi=array[1..MAX_VER_COUNT] of Integer;
+//******************************************************************************
+  TSaveVershina=record
+    Left,Top:Integer;
+    Ves:string[10];
+    Sviazi:TArraySviazi;
+  end;
+//******************************************************************************
+var
+  Form1Main: TForm1Main;
+  Vershina:array [1..MAX_VER_COUNT] of TVershina;
+  Ver_Count:Integer;
+  ButtonSelected:Integer;
+  SelectedVershina:Integer;
+  CursorX,CursorY:Integer;
+  MatrSviazej:array [1..MAX_VER_COUNT] of TArraySviazi;
+  VesSviazi:Integer;
+implementation
+
+uses DobavlenieSviazi, RGR_SPZ1;
+
+{$R *.dfm}
+
+//******************************************************************************
+procedure ClearCanvas;
+var
+  FormRect:TRect;
+begin
+  FormRect.Left:=0;
+  FormRect.Top:=0;
+  FormRect.Right:=Form1Main.Width;
+  FormRect.Bottom:=Form1Main.Height;
+  Form1Main.Canvas.FillRect(FormRect);
+end;
+//******************************************************************************
+procedure TVershina.Paint;
+var
+  i,j:Integer;
+
+
+procedure DrawSviaz(i,j:integer);
+var
+  LinePoints,Strelka:array [1..2] of TPoint;
+  X,Y:Integer;
+  ugol:Extended;
+begin
+  LinePoints[1].X:=Vershina[i].Left+(Vershina[i].Width div 2);
+  LinePoints[1].Y:=Vershina[i].Top+Vershina[i].Height;
+  LinePoints[2].X:=Vershina[j].Left+(Vershina[j].Width div 2);
+  LinePoints[2].Y:=Vershina[j].Top;
+  Form1Main.Canvas.Polyline(LinePoints);
+  X:=((LinePoints[1].X+LinePoints[2].X) div 2) + 10;
+  Y:=(LinePoints[1].Y+LinePoints[2].Y) div 2;
+  Form1Main.Canvas.TextOut(X,Y,IntToStr(MatrSviazej[i,j]));
+
+  if LinePoints[2].X<LinePoints[1].X then
+    ugol:=ArcTan((LinePoints[2].Y-LinePoints[1].Y)/(LinePoints[2].X-LinePoints[1].X))
+  else if LinePoints[2].X>LinePoints[1].X then
+    ugol:=Pi+ArcTan((LinePoints[2].Y-LinePoints[1].Y)/(LinePoints[2].X-LinePoints[1].X))
+  else
+    ugol:=Pi/2;  
+  Strelka[1].X:=LinePoints[2].X;
+  Strelka[1].Y:=LinePoints[2].Y;
+  Strelka[2].X:=Round(20*Cos(Ugol+Pi/12)+Strelka[1].X);
+  Strelka[2].Y:=Round(20*Sin(Ugol+Pi/12)+Strelka[1].Y);
+  Form1Main.Canvas.Polyline(Strelka);
+
+  Strelka[1].X:=LinePoints[2].X;
+  Strelka[1].Y:=LinePoints[2].Y;
+  Strelka[2].X:=Round(20*Cos(Ugol-Pi/12)+Strelka[1].X);
+  Strelka[2].Y:=Round(20*Sin(Ugol-Pi/12)+Strelka[1].Y);
+  Form1Main.Canvas.Polyline(Strelka);
+
+end;
+
+begin
+  inherited Paint;
+  
+  if SelectedVershina=ID then
+    Self.Canvas.Pen.Color:=clRed
+  else
+    Self.Canvas.Pen.Color:=clBlue;
+
+  Self.Canvas.Ellipse(0,0,Self.Width,Self.Height);
+  Self.Canvas.TextOut(0,0,IntToStr(ID));
+
+  ClearCanvas;
+
+  for i:=1 to Ver_Count do
+    for j:=1 to Ver_Count do
+      if MatrSviazej[i,j]>-1 then
+        DrawSviaz(i,j);
+end;
+
+//******************************************************************************
+constructor TVershina.Create(AOwner: TComponent);
+begin
+  inherited Create(AOwner);
+  Self.Parent:=AOwner as TWinControl;
+  Self.Width:=70;
+  Self.Height:=70;
+  Self.Color:=clBtnFace;
+  Self.BevelOuter:=bvNone;
+  Self.Font.Color:=clRed;
+  Self.Font.Size:=10;
+
+  Self.OnMouseDown:=MouseDown;
+  Self.OnMouseMove:=MouseMove;
+  Self.OnMouseUp:=MouseUp;
+
+  Self.OnClick:=Click;
+
+  Self.Edit:=TEdit.Create(Self);
+  Self.Edit.Parent:=Self;
+  Self.Edit.Width:=30;
+  Self.Edit.Left:=(Self.Width div 2) - (Self.Edit.Width div 2);
+  Self.Edit.Height:=30;
+  Self.Edit.Top:=(Self.Height div 2) - (Self.Edit.Height div 2);
+  Self.Edit.Font.Size:=13;
+
+  Self.Edit.Color:=clAqua;
+  Self.Edit.BorderStyle:=bsNone;
+end;
+//******************************************************************************
+procedure TVershina.MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+begin
+  FDrag:=true;
+end;
+//******************************************************************************
+procedure TVershina.MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+begin
+    if FDrag then
+      begin
+        (Sender as TPanel).Left:=(Sender as TPanel).Left+(X-FPrevX);
+        (Sender as TPanel).Top:=(Sender as TPanel).Top+(Y-FPrevY);
+      end
+    else
+      begin
+        FPrevX:=X;
+        FPrevY:=Y;
+      end;
+end;
+//******************************************************************************
+procedure TVershina.MouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+begin
+  FDrag:=false;
+end;
+//******************************************************************************
+procedure TVershina.Click(Sender: TObject);
+var
+  i,j:Integer;
+  Ver:^TVershina;
+begin
+  if ((ButtonSelected=2) or (ButtonSelected=4)) and (SelectedVershina<>0) then
+    begin
+    if SelectedVershina<>Self.ID then
+      begin
+        if ButtonSelected=2 then      // Если добавляем связь
+        begin
+          Form2Main.ShowModal;
+          MatrSviazej[SelectedVershina,Self.ID]:=VesSviazi;
+        end
+        else                          // Если удаляем связь
+          MatrSviazej[SelectedVershina,Self.ID]:=-1;
+      end;    
+      SelectedVershina:=0;
+    end
+  else
+    SelectedVershina:=Self.ID;
+
+
+  for i:=1 to Ver_Count do
+    Vershina[i].Repaint;
+end;
+//******************************************************************************
+
+//******************************************************************************
+procedure TForm1Main.FormCreate(Sender: TObject);
+var
+  i,j:Integer;
+begin
+  Ver_Count:=0;
+  ButtonSelected:=0;
+
+  for i:=1 to MAX_VER_COUNT do
+    for j:=1 to MAX_VER_COUNT do
+      MatrSviazej[i,j]:=-1;
+
+  Canvas.Brush.Color:=clBtnFace;
+  Form1Main.Canvas.Brush.Style:=bsSolid;
+  Canvas.Font.Color:=clBlue;
+  Canvas.Pen.Color:=clBlue;
+end;
+//******************************************************************************
+
+//******************************************************************************
+
+//******************************************************************************
+procedure TForm1Main.BitBtn1Click(Sender: TObject);     // Кнопка "Добавить вершину"
+var
+  i:Integer;
+begin
+  ButtonSelected:=1;
+  
+  BitBtn2.Font.Color:=clBlack;
+  BitBtn3.Font.Color:=clBlack;
+  BitBtn4.Font.Color:=clBlack;
+  BitBtn1.Font.Color:=clRed;
+end;
+//******************************************************************************
+procedure TForm1Main.BitBtn3Click(Sender: TObject);     // Кнопка "Удалить вершину"
+var
+  i,j,k:Integer;
+begin
+  if ButtonSelected<>3 then
+    begin
+      ButtonSelected:=3;
+      
+      BitBtn1.Font.Color:=clBlack;
+      BitBtn2.Font.Color:=clBlack;
+      BitBtn4.Font.Color:=clBlack;
+      BitBtn3.Font.Color:=clRed;
+
+      SelectedVershina:=0;
+      for i:=1 to Ver_Count do
+        Vershina[i].Repaint;
+    end
+  else
+    begin
+      j:=Vershina[SelectedVershina].ID;
+      Vershina[SelectedVershina].Free;
+      for i:=j to Ver_Count-1 do
+        begin
+          Vershina[i]:=Vershina[i+1];
+          Vershina[i].ID:=i;
+        end;
+      for i:=j to Ver_Count-1 do    // Подтягиваем строки
+        for k:=1 to Ver_Count do
+          MatrSviazej[i,k]:=MatrSviazej[i+1,k];
+      for i:=j to Ver_Count-1 do    // Подтягиваем столбцы
+        for k:=1 to Ver_Count do
+          MatrSviazej[k,i]:=MatrSviazej[k,i+1];
+      Dec(Ver_Count);
+      
+      SelectedVershina:=0;
+      for i:=1 to Ver_Count do
+        Vershina[i].Repaint;
+    end;  
+end;
+//******************************************************************************
+procedure TForm1Main.BitBtn2Click(Sender: TObject);          // Кнопка "Добавить связь"
+var
+  i:Integer;
+begin
+      ButtonSelected:=2;
+      
+      BitBtn1.Font.Color:=clBlack;
+      BitBtn3.Font.Color:=clBlack;
+      BitBtn4.Font.Color:=clBlack;
+      BitBtn2.Font.Color:=clRed;
+
+      SelectedVershina:=0;
+      for i:=1 to Ver_Count do
+        Vershina[i].Repaint;
+end;
+//******************************************************************************
+procedure TForm1Main.BitBtn4Click(Sender: TObject);          // Кнопка "Удалить связь"
+var
+  i:Integer;
+begin
+      ButtonSelected:=4;
+      
+      BitBtn1.Font.Color:=clBlack;
+      BitBtn2.Font.Color:=clBlack;
+      BitBtn3.Font.Color:=clBlack;
+      BitBtn4.Font.Color:=clRed;
+
+      SelectedVershina:=0;
+      for i:=1 to Ver_Count do
+        Vershina[i].Repaint;
+end;
+//******************************************************************************
+procedure TForm1Main.FormClick(Sender: TObject);
+var
+  i:Integer;
+  CurrentVershina:TVershina;
+begin
+  if ButtonSelected=1 then
+    begin
+        Inc(Ver_Count);
+        Vershina[Ver_Count]:=TVershina.Create(Self);
+        Vershina[Ver_Count].ID:=Ver_Count;
+        Vershina[Ver_Count].Left:= CursorX-(Vershina[Ver_Count].Width div 2);
+        Vershina[Ver_Count].Top:=CursorY-(Vershina[Ver_Count].Height div 2);
+    end
+  else
+    begin
+      SelectedVershina:=0;
+      for i:=1 to Ver_Count do
+        Vershina[i].Repaint;
+    end;
+end;
+//******************************************************************************
+procedure TForm1Main.FormMouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+begin
+  CursorX:=X;
+  CursorY:=Y;
+end;
+//******************************************************************************
+procedure ClearGraf;
+var
+  i:Integer;
+begin
+  for i:=1 to Ver_Count do
+    Vershina[i].Free;
+  Ver_Count:=0;  
+end;
+//******************************************************************************
+procedure TForm1Main.N2Click(Sender: TObject);      // Открыть файл
+var
+  f:file of TSaveVershina;
+  TempVershina:TSaveVershina;
+  i:Integer;
+begin
+  OpenDialog1.Filter:='Graf files *.grf|*.grf';
+  if OpenDialog1.Execute and FileExists(OpenDialog1.FileName) then
+   begin
+    ClearGraf;
+
+    AssignFile(f,OpenDialog1.FileName);
+    Reset(f);
+
+
+    Read(f,TempVershina);
+    Ver_Count:=TempVershina.Left;
+
+    for i:=1 to Ver_Count do
+      begin
+        Read(f,TempVershina);
+        Vershina[i]:=TVershina.Create(Self);
+        Vershina[i].ID:=i;
+        Vershina[i].Left:=TempVershina.Left;
+        Vershina[i].Top:=TempVershina.Top;
+        Vershina[i].Edit.Text:=TempVershina.Ves;
+        MatrSviazej[i]:=TempVershina.Sviazi;
+      end;
+    SelectedVershina:=0;
+    CloseFile(f);  
+   end;
+end;
+//******************************************************************************
+procedure TForm1Main.N3Click(Sender: TObject);      // Сохранить файл
+var
+  f:file of TSaveVershina;
+  TempVershina:TSaveVershina;
+  i:Integer;
+begin
+  SaveDialog1.Filter:='Graf files *.grf|*.grf';
+  if SaveDialog1.Execute then
+   begin
+    if Pos('.',SaveDialog1.FileName)=0 then
+     SaveDialog1.FileName:=SaveDialog1.FileName+'.grf';
+
+
+     AssignFile(f,SaveDialog1.FileName);
+     ReWrite(f);
+
+    TempVershina.Left:=Ver_Count;
+    write(f,TempVershina);
+    for i:=1 to Ver_Count do
+      begin
+        TempVershina.Left:=Vershina[i].Left;
+        TempVershina.Top:=Vershina[i].Top;
+        TempVershina.Ves:=Vershina[i].Edit.Text;
+        TempVershina.Sviazi:=MatrSviazej[i];
+        write(f,TempVershina);
+      end;
+
+    CloseFile(f);  
+   end; 
+end;
+//******************************************************************************
+procedure TForm1Main.N4Click(Sender: TObject);      // Новый граф
+var
+  i,j:Integer;
+begin
+  for i:=1 to MAX_VER_COUNT do
+    for j:=1 to MAX_VER_COUNT do
+      MatrSviazej[i,j]:=-1;
+  ClearGraf;
+  ClearCanvas;
+end;
+//******************************************************************************
+procedure TForm1Main.BitBtn5Click(Sender: TObject);
+var
+  i,j:Integer;
+begin
+  N:=Ver_Count;
+
+  Form1.StringGrid1.RowCount:=Ver_Count+1;
+  Form1.StringGrid1.ColCount:=Ver_Count+1;
+  Form1.StringGrid2.ColCount:=Ver_Count+1;
+  Pererisovka;
+  for i:=1 to Ver_Count do
+    for j:=1 to Ver_Count do
+      if MatrSviazej[i,j]>-1 then
+        Form1.StringGrid1.Cells[j,i]:=IntToStr(MatrSviazej[i,j])
+      else
+        Form1.StringGrid1.Cells[j,i]:='';
+
+  for i:=1 to Ver_Count do
+    Form1.StringGrid2.Cells[i,1]:=Vershina[i].Edit.Text;
+    
+  Form1Main.Hide;
+  Form1.Show;
+end;
+//******************************************************************************
+procedure TForm1Main.FormResize(Sender: TObject);
+begin
+  BitBtn1.Width:=Form1Main.Width div 5;
+  BitBtn1.Left:=0;
+
+  BitBtn2.Width:=Form1Main.Width div 5;
+  BitBtn2.Left:=BitBtn1.Left+BitBtn1.Width;
+  
+  BitBtn3.Width:=Form1Main.Width div 5;
+  BitBtn3.Left:=BitBtn2.Left+BitBtn2.Width;
+
+  BitBtn4.Width:=Form1Main.Width div 5;
+  BitBtn4.Left:=BitBtn3.Left+BitBtn3.Width;
+
+  BitBtn5.Width:=Form1Main.Width div 5;
+  BitBtn5.Left:=BitBtn4.Left+BitBtn4.Width;
+end;
+//******************************************************************************
+end.

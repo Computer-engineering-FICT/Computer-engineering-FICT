@@ -1,0 +1,437 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0087)http://www.webdoc.ru/text.phtml?level=3&id=108&script_id=220&url=texts/201-300/220.html -->
+<!--http://cgi.ru | All scripts | info@cgi.ru--><!--Header--><HTML><HEAD><TITLE> Безопасность : Операционные системы : Unix/Linux : Безопасность файловой системы EXT2(часть 2)</TITLE>
+<META content="text/html; charset=windows-1251" http-equiv=content-type>
+<META 
+content="Самая большая библиотека текстов книг, статей и других материалов по компьютерным технологиям. Все тексты доступны в режиме он-лайн и для скачивания." 
+name=description>
+<META 
+content="литература текст базы данных webdoc документы доки perl php cgi mysql msql" 
+name=keywords><LINK 
+href="&nbsp;Безопасность &nbsp;Операционные системы &nbsp;Unix-Linux  Безопасность файловой системы EXT2(часть 2).files/webdoc.css" 
+rel=stylesheet type=text/css>
+<SCRIPT language=JavaScript>
+
+
+
+function openrate(width, height)
+
+{
+
+var i;
+
+another=open('../scripts/rating.phtml?flag=text&rating='+document.forms.rating.elements[1].options.selectedIndex+'&script_id='+document.forms.rating.elements[0].value, 'OpenFile',  'height=200,width=468', 'scrollbars=no', 'status=no', 'titlebar=no','toolbar=no','location=no','menubar=no','resizable=no');
+
+for(i=1;i<=1500000;i++){};
+
+//another.close();
+
+//document.forms.rating.submit();
+
+//window.location.replace('../programm.phtml?rating='+document.forms.rating.elements[1].options.selectedIndex+'&script_id='+document.forms.rating.elements[0].value);
+
+//window.location.reload();
+
+}
+
+</SCRIPT>
+
+<META content="MSHTML 5.00.2920.0" name=GENERATOR></HEAD>
+<BODY><IMG alt="Rambler's Top100" border=0 height=1 
+src="&nbsp;Безопасность &nbsp;Операционные системы &nbsp;Unix-Linux  Безопасность файловой системы EXT2(часть 2).files/top100.gif" 
+width=1><BR><!--End Header--><!--Search-->
+<TABLE border=0 cellPadding=0 cellSpacing=0 class=t4 width="100%">
+  <TBODY>
+  <TR>
+    <TD align=middle>
+      <TABLE border=0 cellPadding=0 cellSpacing=0 class=t4 width="100%">
+        <TBODY>
+        <TR>
+          <FORM action=go_search.phtml>
+          <TD align=middle rowSpan=3 vAlign=center width="25%"><A 
+            href="http://www.webdoc.ru/index.phtml"><IMG 
+            alt="Все тексты : webdoc.ru" border=0 height=58 
+            src="&nbsp;Безопасность &nbsp;Операционные системы &nbsp;Unix-Linux  Безопасность файловой системы EXT2(часть 2).files/logo.gif" 
+            width=160></A><BR></TD>
+          <TD align=right colSpan=2 width="75%"><FONT color=#ffffff 
+            face=Verdana size=1><A 
+            href="http://www.webdoc.ru/friend.phtml?email=www.webdoc.ru%2Ftext.phtml%3Flevel%3D3%26id%3D108%26script_id%3D220%26url%3Dtexts%2F201-300%2F220.html"><FONT 
+            color=#ffffff>Рассказать друзьям</FONT></A> · <A 
+            href="http://www.webdoc.ru/text.phtml?level=3&amp;id=108&amp;script_id=220&amp;url=texts/201-300/220.html#" 
+            onclick="window.external.AddFavorite(location.href, document.title);return false"><FONT 
+            color=#ffffff>Добавить в Избранное</FONT></A> · <A href="" 
+            onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.webdoc.ru');" 
+            style="CURSOR: hand"><FONT color=#ffffff>Сделать 
+            главной</FONT></A>&nbsp;&nbsp; </FONT></TD>
+        <TR>
+          <TD align=middle width=340><B><FONT 
+            color=#ffffff>&nbsp;&nbsp;Что&nbsp;искать&nbsp;</FONT></B><INPUT 
+            class=form name=search_string size=15>&nbsp;<INPUT class=form name=go type=submit value=Поискать>&nbsp;&nbsp;</TD>
+          <TD rowSpan=2 vAlign=center width=140><A 
+            href="http://www.webdoc.ru/advsearch.phtml"><FONT color=#ffffff 
+            size=-1>» Расширенный поиск</FONT></A> <BR></TD></TR>
+        <TR>
+          <TD align=middle><FONT color=#ffffff size=-1>&nbsp; <INPUT 
+            name=search_flag 
+            style="BACKGROUND-COLOR: #339999; COLOR: white; MARGIN: 0px" 
+            type=radio value=""> скрипты&nbsp;&nbsp;&nbsp; <INPUT CHECKED 
+            name=search_flag 
+            style="BACKGROUND-COLOR: #339999; COLOR: white; MARGIN: 0px" 
+            type=radio value=text_> тексты&nbsp;&nbsp;&nbsp; <INPUT 
+            name=search_flag 
+            style="BACKGROUND-COLOR: #339999; COLOR: white; MARGIN: 0px" 
+            type=radio value=net_> сетевые </FONT></TD></TR></FORM></TBODY></TABLE><!--End Search--></TD></TR></TBODY></TABLE><!--Special Portal Charaster-->
+<TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+  <TBODY>
+  <TR>
+    <TD align=middle class=t2 vAlign=center width="80%">
+      <TABLE border=0 cellPadding=4 cellSpacing=4 width="80%">
+        <TBODY>
+        <TR>
+          <TD align=middle width=55>
+            <SCRIPT language=javascript>
+
+/*
+www.cgi.ru
+scriptsnetwork
+mailbox@cgi.ru
+*/
+
+shown=''
+function OpenFile(url) {
+if( shown=='' || shown.closed) {
+	shown=window.open(url,'OpenFile','scrollbars=no,status=no, high,width=300,height=430');
+}
+else{ 
+	shown.close();
+	shown=window.open(url,'OpenFile','scrollbars=no,status=no, high,width=300,height=430');
+}
+}
+</SCRIPT>
+            <A href="javascript:OpenFile('pravila.phtml')"><!-- <img src="i/prav.gif" width="55" height="40" border="0" alt="Обязательно прочитайте правила использования!"> --></A></TD>
+          <TD vAlign=top width=150><FONT size=-1><B>·</B> <A 
+            href="http://www.mydriver.ru/">Все Драйверы</A><BR><B>·</B> <A 
+            href="http://www.cgi.ru/index.phtml">Все скрипты</A><BR><B>·</B> <A 
+            href="http://forum.mysoft.ru/">Мир форумов</A><BR></FONT></TD>
+          <TD vAlign=top width=150><FONT size=-1><B>·</B> <A 
+            href="http://www.articul.ru/">Дизайн-Студия</A><BR><B>·</B> <A 
+            href="http://www.buybook.ru/">Купи Книгу!</A><BR><B>·</B> <A 
+            href="http://lib.buybook.ru/">Магазин на Lib.ru</A><BR></FONT></TD>
+          <TD class=small vAlign=top width=150><FONT size=-1><B>·</B> <A 
+            href="http://www.webdoc.ru/text_new.phtml">Новинки</A><BR><B>·</B> 
+            <A href="http://www.webdoc.ru/text_popular.phtml">Самые 
+            популярные</A><BR><B>·</B> <A 
+            href="http://www.webdoc.ru/text_updated.phtml">Обновленные</A><BR></FONT></TD>
+          <TD vAlign=top width=145><FONT size=-1><B>·</B> <A 
+            href="http://www.webdoc.ru/text_favorites.phtml">Рейтинг</A><BR><B>·</B> 
+            <A 
+        href="http://home.myweb.ru/">Регистрация</A><BR></FONT></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD align=middle>
+      <TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+        <TBODY>
+        <TR>
+          <TD align=middle width="25%"><A 
+            href="http://www.webdoc.ru/cgi-bin/ushki/uhi_click.cgi?uho=http://www.mysoft.ru//ushki/uh-divx.gif"><IMG 
+            alt=MyDriver border=0 height=67 
+            src="&nbsp;Безопасность &nbsp;Операционные системы &nbsp;Unix-Linux  Безопасность файловой системы EXT2(часть 2).files/uh-divx.gif" 
+            width=145></A> </TD>
+          <TD align=middle width="25%"><A 
+            href="http://www.webdoc.ru/cgi-bin/ushki/uhi_click.cgi?uho=http://www.mysoft.ru//ushki/uh-asus-bios.gif"><IMG 
+            alt=MyDriver border=0 height=67 
+            src="&nbsp;Безопасность &nbsp;Операционные системы &nbsp;Unix-Linux  Безопасность файловой системы EXT2(часть 2).files/uh-asus-bios.gif" 
+            width=145></A> </TD>
+          <TD align=middle width="25%"><A 
+            href="http://www.webdoc.ru/cgi-bin/ushki/uhi_click.cgi?uho=http://www.mysoft.ru//ushki/uh-mydriver-iwill.gif"><IMG 
+            alt="" border=0 height=67 
+            src="&nbsp;Безопасность &nbsp;Операционные системы &nbsp;Unix-Linux  Безопасность файловой системы EXT2(часть 2).files/uh-mydriver-iwill.gif" 
+            width=145></A> </TD>
+          <TD align=middle width="25%"><A 
+            href="http://www.webdoc.ru/cgi-bin/ushki/uhi_click.cgi?uho=http://www.mysoft.ru//ushki/uh-myweb.gif"><IMG 
+            alt="" border=0 height=67 
+            src="&nbsp;Безопасность &nbsp;Операционные системы &nbsp;Unix-Linux  Безопасность файловой системы EXT2(часть 2).files/uh-myweb.gif" 
+            width=145></A> </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><!--End Special Portal Charaster-->
+<TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+  <TBODY>
+  <TR>
+    <TD class=t5><IMG alt="" border=0 height=1 
+      src="&nbsp;Безопасность &nbsp;Операционные системы &nbsp;Unix-Linux  Безопасность файловой системы EXT2(часть 2).files/cgi" 
+      width=1></TD></TR></TBODY></TABLE>
+<TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+  <TBODY>
+  <TR>
+    <TD align=middle class=t5 width=120><B><FONT color=#ffffff>Вы здесь 
+      »</FONT></B></TD>
+    <TD>&nbsp; &nbsp;<A href="http://www.webdoc.ru/index.phtml">Все тексты</A> 
+      :&nbsp;<A 
+      href="http://www.webdoc.ru/text_catalog.phtml?id=9&amp;level=1">Безопасность</A> 
+      :&nbsp;<A 
+      href="http://www.webdoc.ru/text_catalog.phtml?id=99&amp;level=2">Операционные 
+      системы</A> :&nbsp;<A 
+      href="http://www.webdoc.ru/text_catalog.phtml?id=108&amp;level=3">Unix/Linux</A> 
+    </TD></TR></TBODY></TABLE><!--Main-->
+<TABLE border=0 cellPadding=10 cellSpacing=2 class=t1 width="100%">
+  <TBODY>
+  <TR>
+    <TD><B>Безопасность файловой системы EXT2(часть 2)</B> 
+      <I></I>&nbsp;&nbsp;&nbsp;<SPAN class=idown></SPAN> <!--скачивание --><A 
+      href="http://www.webdoc.ru/text_download.phtml?level=3&amp;id=108&amp;script_id=220">Скачать</A> 
+<!--скачивание --><BR><SPAN>Автор: <A 
+      href="mailto:ya_mun@void.ru">ya_mun</A></SPAN> <BR><SPAN>Источник: <A 
+      href="http://www.void.ru/">http://www.void.ru/</A></SPAN> 
+</TD></TR></TBODY></TABLE>
+<HR color=#dcdcdc SIZE=0>
+</TD></TR></TABLE>
+<TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+  <TBODY>
+  <TR>
+    <TD align=middle>Рейтинг текста: 0.00 </TD></TR></TBODY></TABLE><!-- Текст скачан с сервера Все скрипты : cgi.ru
+Публикация данного текста без согласия автора в любых СМИ запрещена -->
+<H2>Безопасность файловой системы EXT2(часть 2)</H2><PRE>Концепция поведения, при которой root или процесс запущенный от имени root в обычных 
+условиях могут игнорировать расширенные атрибуты, была реализована во 
+многих unix системах и является одной из основных причин успешной работы 
+многих локальных и удаленных exploit'ов. С другой стороны 
+атрибуты ext2 учитываются различными системными вызовами, такими как 
+sys_open() и sys_truncate(), причем вне зависимости от uid процесса их 
+вызывающего или каких-либо других условий. Присутствие флага immutable в 
+inode приводит к тому, что все системные вызовы, касающиеся модификации 
+файлов перестают работать в не зависимости от других условий. Наличие данных атрибутов
+и специальных режимов работы ядра в Linux позволяет администратору просто и эффективно
+укрощать традиционно абсолютные возможности, которые дает uid 0. Цель комплексной настройки 
+заключается в том, чтобы флаги a и i должны накладывать ограничения для 
+всех процессов безотносительно их правам доступа и уровню привилегий. 
+Они могут служить в качестве 
+эффективной низкоуровневой защиты против атак на любой привилегированный 
+процесс, в котором могут присутствовать какие-либо неизвестные 
+уязвимости(или он не пропатчен от уже известных). Необходимо также 
+добавить, что эти атрибуты дают защиту только на уровне поддерки 
+целостности файловой системы, то есть от атак строго определенного типа. 
+Поэтому в случае denial-of-service это не поможет. 
+Наконец, использование для защиты критичных файлов атрибутов 
+файловой системы само по себе является полумерой. Хотя атрибуты a и i 
+предотвратят изменение защищенных ими файлов даже со стороны процессов, 
+владельцем которых является root, в обычных обстоятельствах super user все 
+равно может убрать эти флаги и продолжить работу уже без этой помехи. То 
+есть вся проблема в обычных обстоятельствах свелась бы к тому, что в 
+большинстве exploits перед основной работой добавилась бы проверка на то, 
+что эти атрибуты сняты. В ядрах серий до 2.1, 
+свойство ядра 'secure level' (уровень безопасности) использовалось 'узким 
+кругом' администраторов, поскольку его значение большее нуля означало 
+запрет на любые изменения в файлах с атрибутами a и i. Для этих ранних версиях ядер,
+уровень безопасности пределялось через переменную sysct "kernel.securelevel". Если ее
+значение выставлялось во время загрузки единицей или более высоким уровнем безопасности, то 
+тогда система не позволяла изменять файлы с атрибутами immutable и 
+append-only до момента перегрузки в режим single-user . В 
+ядрах версий выше 2.0, новая более гибкая система настройки параметров 
+ядра позволяет конфигурировать систему в похожем режиме полной защиты 
+файлов с атрибутами immutable и append-only. Утилита 
+lcap(8) позволяет конфигурировать множество параметров ядра, в том числе 
+те, которые определяют работу ext2 с расширенными атрибутами. Вот наиболее 
+важные вызовы lcap, которые нас будут интересовать: <XMP>lcap CAP_LINUX_IMMUTABLE
+lcap CAP_SYS_RAWIO
+</XMP>Первый параметр убирает привилегию у процесов root изменять флаги a 
+и i, второй - запрещает низкоуровневый доступ к блочным устройствам, таким 
+как диски, чтобы предотвратить изменение флагов, используя прямой доступ к 
+файлам. Свойство CAP_SYS_RAWIO всегда необходимо убирать в начале процесса 
+загрузки, если вы собираетесь испльзовать специальные возможности ядра, 
+поскольку в противном случае процесс, владельцем которого является root, 
+может изменить установки параметров ядра ('kernel capability bounding 
+set') обращаясь напрямую к памяти через /dev/kmem. Если запустить lcap без параметров,
+то она выдаст полный список 'kernel capability bounding set' и выделит в нем те , которые в 
+данный момент доступны. Ссылка на статью, где обсуждаются kernel 
+capabilities приводится ниже. После того, как помощью lcap 
+был изменен какой-либо параметр из 'kernel capability bounding set', его 
+повторное изменение возможно только после перезагрузки системы. Эта 
+особенность дает уверенность (для правильно сконфигурированных систем), 
+что в система не могут незаметно производиться изменения без получения 
+физического доступа и перезагрузки в режиме single user.<BR>Дополнительная 
+информация по lcap также как ее исходный код доступны здесь:
+LCAP - Linux Kernel Capabilities Bounding Set Editor: 
+http://pw1.netcom.com/~spoon/lcap/ <B>Вещи, для 
+которых обычно используют 'chattr'</B> Когда я 
+конфигурирую системы, которые будут затем напрямую подключены к Internet и 
+на которых предполагается хостить shell аккаунты или службы типа http и 
+ftp, то обычно после настройки всего необходимого ПО и пользовательских 
+аккаунтов выполняю следующие команды: <XMP>chattr -R +i /bin /boot /etc /lib /sbin
+chattr -R +i /usr/bin /usr/include /usr/lib /usr/sbin
+chattr +a /var/log/messages /var/log/secure (...)
+</XMP>Если новые аккаунты добавляются, изменяются, удаляются относительно 
+редко, тогда установка на /home(но не на содержащиеся в нем личные 
+каталоги пользователей) атрибута immutable не вызывет особых проблем. Во 
+многих случаях на все поддерево /usr можно поставить атрибут immutable. 
+Дополнительно, помимо 'chattr -R +i /usr', я обычно располагаю /usr на 
+отдельной разделе и монтирую его как read-only c опцией 'ro' в /etc/fstab. 
+Установка флага append-only на системные лог файлы будет значительным 
+препятствием для потенциального взломщика, пытающегося скрыть свое  
+присутствия и действия в системе. Конечно, система, в 
+которой обеспечивается безопасность подобным образом, требует 
+соответствующего изменения стандартных процедур администрирования. 
+Расмотрим некоторые аспекты этого. <B>Инсталляция и 
+апгрейд ПО</B> <BR><IMG alt="" border=0 height=5 hspace=0 src="" width=2><BR>Для инсталляции и апгрейда 
+необходимо удалить флаги a и i у тех каталогов и файлов, которые будут 
+подвергаться изменению. В системах , где используется rpm, команда: 
+rpm -qpl newpackage.rpm 
+выдаст список файлов в 
+устанавливаемом package. Для большинства инсталляций с использованием rpm 
+необходимо иметь права на запись в следующие каталоги: <XMP>/bin
+/sbin
+/usr/bin
+/usr/sbin
+/usr/man 
+/lib
+/etc
+</XMP>Обратите внимание, чтобы надлещащим образом организовать замену 
+файла /usr/sbin/someprogram обычно потребуется убрать флаги immutable как 
+с самого файла, так и c содержащей его директории /usr/sbin.
+<B>Управление пользовательскими и групповыми аккаунтами</B> 
+Все из нижеперечисленного<XMP>/etc
+/etc/.pwd.lock
+/etc/passwd
+/etc/passwd-
+/etc/shadow
+/etc/shadow-
+/etc/group
+/etc/group-
+/etc/gshadow
+/etc/gshadow-
+</XMP>должно остаться доступным на запись и удаление, поскольку команды 
+passwd, chsh, chfn, vipw, vigr и useradd используют эти файлы. Они создают 
+их временную копию в /tmp, модифицируют ее, затем удаляют исходный файл и 
+записывают на его место копию. Вещи, для которых никогда не 
+следует применять chattr: / Это 
+создаст множество проблем(в особенности для syslog). В первую чередь 
+проблемы коснутся syslogd. У него не будет возможности записывать в логи 
+ошибки, появляющиеся в результате работы других приложений. В результате 
+мы получим головоломную проблему. Когда я впервые стал эспериментировать с 
+атрибутами ext2, то потратил целый день на разгребание проблем после того, 
+как дал команду 'chattr +i /'. /dev Syslog удаляет и создает заново сокет /dev/log во
+время своего старта и установка флага immutable или append only на /dev не позволит 
+выполнить это. Кроме этого, когда скрипт запуска выполняет syslogd с 
+опцией '-p', которая задает альтернативный сокет, такой как 
+/var/run/syslog.sock. Более того даже, когда 
+syslog запускается с опцией '-p', приложения использующие syslog будут все 
+равно предполагать , что сокет расположен в /dev/log, поэтому необходимо 
+создать символьную ссылку , указывающую на место реального сокета. 
+Наконец, даже этого не будет достаточно для систем, которые используют 
+lpd, поскольку package lpr содержит /dev/printer в качестве жесткой ссылки 
+на lpd service socket. И lpd пытается удалить и создать заново свой сокет 
+перед запуском. Изменение этого пути требует перекомпиляции всего пакета 
+lpr. /tmp
+Установка атрибутов на данный каталог будет препятствием для 
+всех приложений, которые хранят какие-либо временные файлы в нем. /var Атрибуты append only
+и immutable в /var относительно редко следует применять к файлам, для 
+которых их установка не вызывает побочных эффектов. Например, применение 
+chattr +a для большинства файлов /var/log не создаст проблем, за некоторым 
+исключением(logrotate). Контрпример: файл /var/log/sendmail.st должен 
+остаться доступным для записи и удаления, поскольку sendmail не просто 
+добавляет в него статистику, но и периодически урезает и перезаписывает. 
+<B>&nbsp; <A href="mailto:operator@void.ru">ya_mun</A></B>
+</PRE>
+<HR color=#dcdcdc SIZE=0>
+
+<TABLE align=center border=0 cellPadding=2 cellSpacing=2>
+  <TBODY>
+  <TR>
+    <FORM name=rating>
+    <TD><B>Проголосовать за текст:</B></TD>
+    <TD><INPUT name=script_id type=hidden value=220> <SELECT class=form 
+      name=ratingr> <OPTION selected value=1>1</OPTION> <OPTION 
+        value=2>2</OPTION> <OPTION value=3>3</OPTION> <OPTION value=4>4</OPTION> 
+        <OPTION value=5>5</OPTION> <OPTION value=6>6</OPTION> <OPTION 
+        value=7>7</OPTION> <OPTION value=8>8</OPTION> <OPTION value=9>9</OPTION> 
+        <OPTION value=10>10</OPTION></SELECT> <INPUT name=level type=hidden 
+      value=3> <INPUT name=id type=hidden value=108> </TD>
+    <TD><A 
+      href="http://www.webdoc.ru/text.phtml?level=3&amp;id=108&amp;script_id=220&amp;url=texts/201-300/220.html#" 
+      onclick=openrate()><IMG border=0 height=21 
+      src="&nbsp;Безопасность &nbsp;Операционные системы &nbsp;Unix-Linux  Безопасность файловой системы EXT2(часть 2).files/vottak.gif" 
+      width=60></A></TD></TR></FORM></TBODY></TABLE></TD></TR></TABLE>
+<HR color=#dcdcdc SIZE=0>
+
+<TABLE border=0 cellPadding=10 cellSpacing=2 class=t1 width="100%">
+  <TBODY>
+  <TR>
+    <TD align=middle>Прокомментировать программу. 
+      <P>
+      <TABLE align=center border=0 cellPadding=2 cellSpacing=0>
+        <FORM action=/text.phtml method=get>
+        <TBODY>
+        <TR>
+          <TD align=right>Имя &nbsp;:</TD>
+          <TD class=text><INPUT class=text name=name></TD></TR>
+        <TR>
+          <TD align=right>E-mail&nbsp;:</TD>
+          <TD><INPUT class=text name=email></TD></TR>
+        <TR>
+          <TD align=right>Комментарий&nbsp;:</TD>
+          <TD><TEXTAREA cols=30 name=body rows=5></TEXTAREA></TD></TR>
+        <TR>
+          <TD align=middle class=form colSpan=2><INPUT class=form name=com_action type=submit value=Отправить></TD></TR><INPUT 
+        name=script_id type=hidden value=220> <INPUT name=id type=hidden 
+        value=108> <INPUT name=level type=hidden value=3> <INPUT name=com_action 
+        type=hidden value=1> </FORM></TBODY></TABLE></P></TD></TR></TBODY></TABLE>
+<TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+  <TBODY>
+  <TR>
+    <TD class=t5><IMG alt="" border=0 height=1 
+      src="&nbsp;Безопасность &nbsp;Операционные системы &nbsp;Unix-Linux  Безопасность файловой системы EXT2(часть 2).files/cgi" 
+      width=1></TD></TR></TBODY></TABLE>
+<TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+  <TBODY>
+  <TR>
+    <TD align=middle class=t5 width=120><B><FONT color=#ffffff>Вы здесь 
+      »</FONT></B></TD>
+    <TD width=375>&nbsp; &nbsp;<A href="http://www.webdoc.ru/index.phtml">Все 
+      тексты</A> :&nbsp;<A 
+      href="http://www.webdoc.ru/text_catalog.phtml?id=9&amp;level=1">Безопасность</A> 
+      :&nbsp;<A 
+      href="http://www.webdoc.ru/text_catalog.phtml?id=99&amp;level=2">Операционные 
+      системы</A> :&nbsp;<A 
+      href="http://www.webdoc.ru/text_catalog.phtml?id=108&amp;level=3">Unix/Linux</A> 
+    </TD></TR></TBODY></TABLE><!--/Main--><!--Navigation links-->
+<P align=center><FONT size=-1><A href="http://www.mysoft.ru/cjob.phtml">Работа у 
+нас</A> | <A href="http://www.mysoft.ru/cmediakit.phtml">Реклама с нами</A> | <A 
+href="http://www.mysoft.ru/clinkto.phtml">Поставь ссылку</A> </FONT><!--/Navigation links-->
+<P align=center><A 
+href="http://get.adsmart.ru/cgi-bin/clk/click?picnum=0&amp;user=362"><IMG 
+alt="Supplied by adsmart.ru" border=0 height=60 
+src="&nbsp;Безопасность &nbsp;Операционные системы &nbsp;Unix-Linux  Безопасность файловой системы EXT2(часть 2).files/providerz-468x60-2.gif" 
+width=468></A> </TD></TR></TABLE><!--/Main--><!--Footer-->
+<TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+  <TBODY>
+  <TR>
+    <TD>
+      <HR SIZE=0>
+    </TD></TR></TBODY></TABLE>
+<TABLE border=0 cellPadding=2 cellSpacing=2 width="100%">
+  <TBODY>
+  <TR>
+    <TD width="50%"><FONT size=-1><A 
+      href="http://www.mysoft.ru/ccopyright.phtml">Copyright</A> © 2001 <A 
+      href="http://www.freeweb.ru/">Freeweb Network</A>. <BR><A 
+      href="http://www.mysoft.ru/feedback.phtml">Связаться с нами по электронной 
+      почте.</A> </FONT></TD>
+    <TD align=right width="50%"><!--begin of Top100 logo--><A 
+      href="http://top100.rambler.ru/top100/"><IMG alt="Rambler's Top100" 
+      border=0 height=31 
+      src="&nbsp;Безопасность &nbsp;Операционные системы &nbsp;Unix-Linux  Безопасность файловой системы EXT2(часть 2).files/banner-88x31-rambler-gray2.gif" 
+      width=88></A> <!--end of Top100 logo --><!--TopList COUNTER--><A 
+      href="http://top.list.ru/jump?from=135046" target=_top><IMG alt=TopList 
+      border=0 height=31 
+      src="&nbsp;Безопасность &nbsp;Операционные системы &nbsp;Unix-Linux  Безопасность файловой системы EXT2(часть 2).files/counter.gif" 
+      width=88></A><!--TopList COUNTER--> <!-- SpyLOG f:0111 -->
+      <SCRIPT language=javascript><!--
+Mu="u958.95.spylog.com";Md=document;Mnv=navigator;Mp=1;
+Mn=(Mnv.appName.substring(0,2)=="Mi")?0:1;Mrn=Math.random();
+Mt=(new Date()).getTimezoneOffset();
+Mz="p="+Mp+"&rn="+Mrn+"&t="+Mt;
+My="";
+My+="<a href='http://"+Mu+"/cnt?cid=95895&f=3&p="+Mp+"&rn="+Mrn+"' target=_blank>";
+My+="<img src='http://"+Mu+"/cnt?cid=95895&"+Mz+"&r="+escape(Md.referrer)+"&pg="+escape(window.location.href)+"' border=0 width=88 height=31 alt='SpyLOG'>";
+My+="</a>";Md.write(My);//--></SCRIPT>
+      <NOSCRIPT><A 
+      href="http://u958.95.spylog.com/cnt?cid=95895&amp;f=3&amp;p=1" 
+      target=_blank><IMG alt=SpyLOG border=0 height=31 
+      src="&nbsp;Безопасность &nbsp;Операционные системы &nbsp;Unix-Linux  Безопасность файловой системы EXT2(часть 2).files/cnt.gif" 
+      width=88> </A></NOSCRIPT><!-- SpyLOG --></TD></TR></TBODY></TABLE>
+<DIV></DIV><!--/Footer--></BODY></HTML>

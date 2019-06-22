@@ -1,0 +1,493 @@
+//Текст основного модуля:
+
+unit spo_rgr_main_unit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  ExtCtrls, StdCtrls, Buttons, MPlayer, ComCtrls;
+
+type
+  TForm1 = class(TForm)
+    Image1: TImage;
+    Image2: TImage;
+    Image3: TImage;
+    Image4: TImage;
+    Image5: TImage;
+    BitBtn1: TBitBtn;
+    BitBtn2: TBitBtn;
+    ContEmpty: TImage;
+    ContFull: TImage;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Memo1: TMemo;
+    Memo2: TMemo;
+    Memo3: TMemo;
+    Memo4: TMemo;
+    Memo5: TMemo;
+    Memo7: TMemo;
+    ProgressBar1: TProgressBar;
+    ProgressBar2: TProgressBar;
+    ProgressBar3: TProgressBar;
+    ProgressBar4: TProgressBar;
+    ProgressBar5: TProgressBar;
+    Label6: TLabel;
+    Label7: TLabel;
+    procedure BitBtn1Click(Sender: TObject);
+    procedure FormPaint(Sender: TObject);
+    procedure ContStep(StepNm, State: Byte);
+    procedure BitBtn2Click(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+
+    procedure PlaceTasksOnProcessors;
+    function GimmeTask(imProcNo: Integer;remove:boolean): Integer;
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+  i: byte;
+  n: integer;
+
+const
+ TaskNmr= 15;
+ ProcNmr= 5;
+
+type
+ tasks= array[1..TaskNmr,1..TaskNmr] of 0..1;
+ ttrs= array[1..TaskNmr] of Integer;
+ processor= 1..ProcNmr;
+
+const
+ myTasks: tasks = ( (0,0,0,1,1,0,0,0,0,0,0,0,0,0,0),
+                    (0,0,0,0,0,1,0,0,0,0,0,0,0,0,0),
+                    (0,0,0,0,1,0,0,0,0,0,0,0,0,0,0),
+                    (0,0,0,0,0,0,0,1,0,0,0,0,0,0,0),
+                    (0,0,0,0,0,0,1,0,1,0,0,0,0,0,0),
+                    (0,0,0,0,0,0,0,0,1,1,0,0,0,0,0),
+                    (0,0,0,0,0,0,0,0,0,0,0,1,0,0,0),
+                    (0,0,0,0,0,0,0,0,0,0,1,0,0,0,0),
+                    (0,0,0,0,0,0,0,0,0,0,0,1,1,0,0),
+                    (0,0,0,0,0,0,0,0,0,0,0,0,1,0,0),
+                    (0,0,0,0,0,0,0,0,0,0,0,0,0,0,1),
+                    (0,0,0,0,0,0,0,0,0,0,0,0,0,1,0),
+                    (0,0,0,0,0,0,0,0,0,0,0,0,0,0,1),
+                    (0,0,0,0,0,0,0,0,0,0,0,0,0,0,1),
+                    (0,0,0,0,0,0,0,0,0,0,0,0,0,0,0) );
+ myTTRs: ttrs = (6,9,4,3,2,7,5,3,4,5,2,3,4,3,5);
+
+var
+ taskPlaced: array[1..TaskNmr] of 0..procNmr;
+ currentTime: Integer;
+ procDo: array[processor] of Integer;
+ procTS: array[processor] of 0..1; //есть что послать=1
+
+ ContData: 0..taskNmr; //0 - пустой.
+ ContainerState: 0..1;
+ DTS: array[processor] of integer;
+ DataSendBy: 0..procNmr;
+ myTasksR: tasks;
+
+implementation
+
+{$R *.DFM}
+
+
+function TForm1.GimmeTask(imProcNo: integer;remove: boolean): integer;
+var
+ j: integer;
+begin
+// выдает -1, если для процессора нет больше задач. ////
+ GimmeTask:= -1;
+ for j:= 1 to TaskNmr do
+ begin
+
+  if taskPlaced[j] = imProcNo then
+  begin
+   GimmeTask:= j;
+   if remove then taskPlaced[j]:= 0; //задачу отправили на выполнение.
+   break;
+  end; //if
+
+ end; //for
+end;
+
+procedure TForm1.PlaceTasksOnProcessors;
+// Процедура распределения задач на про-ры
+label ret;
+var
+ j,k,n,l: integer;
+ notplaced:boolean;
+ procused:array [processor] of boolean;
+begin
+  for j:=1 to tasknmr do taskplaced[j]:=0;
+  for j:=1 to procnmr do procused[j]:=false;
+
+ for j:=1 to procnmr do
+ begin
+ret:for n:=1 to tasknmr do
+    begin
+      notplaced:=true;
+      if (Taskplaced[n]=j) then
+      begin
+        for k:=4 to tasknmr do
+        begin
+          if (taskplaced[k]=0) and (MyTasksR[n,k]=0) and (notplaced) then
+          begin
+            Taskplaced[k]:=j;
+            notplaced:=false;
+            procused[j]:=true;
+          end;//if
+        end;//for
+      end;//if
+    end;//for
+    if procused[j]=false then
+    begin
+      for l:= 1 to tasknmr do
+      begin
+        if taskplaced[l]=0 then
+        begin
+          taskplaced[l]:=j;
+          procused[j]:=true;
+          goto ret;
+        end;//if
+      end;//for
+    end;//if
+ end;//for
+end;
+
+
+procedure TForm1.ContStep(StepNm, State: Byte);
+const
+ coordX: array[1..5] of integer = (40,96,152,208,264);
+ coordY= 88;
+begin
+ case State of
+  1: begin //для полного контейнера
+      ContEmpty.Visible:= false;
+      ContFull.Visible:= true;
+      ContFull.Left:= coordX[StepNm];
+      ContFull.Top:= coordY;
+     end;
+  0: begin //для пустого контейнера
+      ContFull.Visible:= false;
+      ContEmpty.Visible:= true;
+      ContEmpty.Left:= coordX[StepNm];
+      ContEmpty.Top:= coordY;
+     end;
+ end; //case
+end;
+
+procedure TForm1.BitBtn1Click(Sender: TObject);
+begin
+ Close;
+end;
+
+
+procedure TForm1.FormPaint(Sender: TObject);
+var
+ myRect: TRect;
+begin
+////////////////////////////////////////////////////
+ myRect.Top:= 45;
+ myRect.Left:= 20;
+ myRect.Bottom:= 150;
+ myRect.Right:= 320;
+ Form1.Canvas.Brush.Color:= clBlack;
+ Form1.Canvas.FrameRect(myRect);
+////////////////////////////////////////////////////
+
+end;
+
+procedure TForm1.BitBtn2Click(Sender: TObject);
+// вызов этой процедуры -- выделение системе
+// одного тика времени.
+var
+ prdata,proba,t,g,j: integer;
+ mat,tmpStr: String;
+ TaskNeedData: boolean;
+ DataWanted,SameData,TaskNeedSend: boolean;
+ currentProcessor: processor;
+begin
+ label6.Caption:= IntToStr(ContData);
+ inc(currentTime);
+
+ if i = 5 then i:= 0;
+ inc(i);
+ ContStep(i,ContainerState);
+
+// процессор1: ////////////////////////////////////////
+
+ for currentProcessor:= 1 to ProcNmr do
+ begin
+
+
+// обработка пришедшего маркера:
+  if i = currentProcessor then
+  begin
+    if ContData <> 0 then
+      begin
+      if myTasksR[ContData,Procdo[i]]= 0 then
+        begin
+        myTasksR[ContData,Procdo[i]]:= 1;
+        end;//if
+      end; //if
+  end; //if
+
+
+  if (i = currentProcessor) and (DataSendBy = currentProcessor) then
+  begin
+   for j:=1 to TaskNmr do
+     begin
+     if MytasksR[ContData,j]=0 then
+       begin
+       MytasksR[contdata,j]:=1;
+       end; //if
+     end; //for
+   ContainerState:= 0;
+   DataSendBy:= 0;
+   ContData:= 0;
+  end; //if
+
+  TaskNeedSend:= false;
+
+  if procTS[currentProcessor] = 1 then
+  begin
+   TaskNeedSend:= true;
+  end;
+
+  tmpStr:= 'need to send';
+
+  if (i = currentProcessor) and (TaskNeedSend)
+     and (ContData=0) then
+  begin
+   procTS[currentProcessor]:= 0;
+   tmpStr:= 'SENDING';
+   ContainerState:= 1;
+   ContData:= DTS[currentProcessor];
+   DataSendBy:= currentProcessor;
+  end; //if
+
+  if (TaskNeedSend) then
+  begin
+   PrData:=Dts[currentProcessor];
+   Samedata:=false;
+   DataWanted:=false;
+   proba:=GimmeTask(currentProcessor,false);
+
+   if proba<>-1 then
+   begin
+   for j:= 1 to TaskNmr do
+   begin
+    if (myTasksR[j,proba] <> 1) and (j = PrData) then
+    begin
+     SameData:= true;
+     ProcTS[currentProcessor]:=0;
+     myTasksR[j,proba]:=1;
+    end; //if
+   end; //for
+   if SameData then
+   begin
+     TaskNeedSend:=false;
+   end; //if
+   end; //if
+
+   for j:=1 to TaskNmr do
+   begin
+     if (MyTasksR[PrData,j] <> 1)  then
+     begin
+       DataWanted:=True;
+       if dataSendBy <> currentProcessor then ProcTS[currentProcessor]:=1;
+     end;
+   end; //for
+   if DataWanted Then TaskNeedSend:=True Else
+   if PrData=0 then TaskNeedSend:=false;
+
+   end; //if
+
+  if not TaskNeedSend then
+  begin
+
+  if procDo[currentProcessor] < 1 then
+  begin // процессор не занят
+// берет себе задачу:
+   procDo[currentProcessor]:= GimmeTask(currentProcessor,true);
+   if procDo[currentProcessor] = -1 then
+   begin
+    tmpStr:= 'finished';
+   end                              else
+   begin
+    case currentProcessor of
+     1 : begin
+          ProgressBar1.Max:= myTTRs[procDo[1]];
+          ProgressBar1.Position:= myTTRs[procDo[1]];
+         end;
+     2 : begin
+          ProgressBar2.Max:= myTTRs[procDo[2]];
+          ProgressBar2.Position:= myTTRs[procDo[2]];
+         end;
+     3 : begin
+          ProgressBar3.Max:= myTTRs[procDo[3]];
+          ProgressBar3.Position:= myTTRs[procDo[3]];
+         end;
+     4 : begin
+          ProgressBar4.Max:= myTTRs[procDo[4]];
+          ProgressBar4.Position:= myTTRs[procDo[4]];
+         end;
+     5 : begin
+          ProgressBar5.Max:= myTTRs[procDo[5]];
+          ProgressBar5.Position:= myTTRs[procDo[5]];
+         end;
+    end; //case
+   end; //if
+  end; //if
+
+// выполняет свою задачу:
+  if procDo[currentProcessor] <> -1 then
+  begin
+
+// проверка наличия нужных для выполнения данных:
+                   //данные
+   tmpStr:= 'Ожид. от:';
+   TaskNeedData:= false;
+   for j:= 1 to TaskNmr do
+   begin
+    if myTasksR[j,procDo[currentProcessor]] <> 1 then
+    begin
+     TaskNeedData:= true;
+     tmpStr:=tmpStr+' '+IntToStr(j)+',';
+    end; //if
+   end; //for
+
+   SetLength(tmpStr,Length(tmpStr) - 1);
+   if not TaskNeedData then
+   begin         //задача
+    tmpStr:= 'Вып. ' + IntToStr(procDo[currentProcessor]);
+
+    case currentProcessor of
+     1 : begin
+          ProgressBar1.Position:= ProgressBar1.Position - 1;
+          if ProgressBar1.Position = 0 then
+          begin
+           DTS[1]:= procDo[1];
+           procDo[1]:= 0;
+           procTS[1]:= 1;
+          end; //if
+         end;
+     2 : begin
+          ProgressBar2.Position:= ProgressBar2.Position - 1;
+          if ProgressBar2.Position = 0 then
+          begin
+           DTS[2]:= procDo[2];
+           procDo[2]:= 0;
+           procTS[2]:= 1;
+          end; //if
+         end;
+     3 : begin
+          ProgressBar3.Position:= ProgressBar3.Position - 1;
+          if ProgressBar3.Position = 0 then
+          begin
+           DTS[3]:= procDo[3];
+           procDo[3]:= 0;
+           procTS[3]:= 1;
+          end; //if
+         end;
+     4 : begin
+          ProgressBar4.Position:= ProgressBar4.Position - 1;
+          if ProgressBar4.Position = 0 then
+          begin
+           DTS[4]:= procDo[4];
+           procDo[4]:= 0;
+           procTS[4]:= 1;
+          end; //if
+         end;
+     5 : begin
+          ProgressBar5.Position:= ProgressBar5.Position - 1;
+          if ProgressBar5.Position = 0 then
+          begin
+           DTS[5]:= procDo[5];
+           procDo[5]:= 0;
+           procTS[5]:= 1;
+          end; //if
+         end;
+    end; //case
+
+   end; //if
+
+  end; //if
+
+////////////==========
+  end; //if
+
+  case currentProcessor of
+   1 : begin
+        Memo1.Lines.Add(IntToStr(currentTime)+': '+tmpStr);
+       end;
+   2 : begin
+        Memo2.Lines.Add(IntToStr(currentTime)+': '+tmpStr);
+       end;
+   3 : begin
+        Memo3.Lines.Add(IntToStr(currentTime)+': '+tmpStr);
+       end;
+   4 : begin
+        Memo4.Lines.Add(IntToStr(currentTime)+': '+tmpStr);
+       end;
+   5 : begin
+        Memo5.Lines.Add(IntToStr(currentTime)+': '+tmpStr);
+       end;
+  end; //case
+
+
+ end; //for
+ for t:=1 to 15 do
+ begin
+    mat:='';
+    for g:= 1 to 15 do
+    begin
+       mat:= mat+inttostr(MytasksR[t,g])+' ';
+    end;
+    Memo7.Lines.Add(mat);
+ end;
+ Memo7.Lines.Add('');
+ label6.Caption:= IntToStr(ContData);
+ ContStep(i,ContainerState);
+
+end;
+
+procedure TForm1.FormActivate(Sender: TObject);
+var
+ j,k: integer;
+begin
+// начальная инициализация системы: ////////////////
+
+ currentTime:=0;
+////////////////////////////////////////////////////
+ i:= 1;
+ ContStep(i,0);
+////////////////////////////////////////////////////
+ ContainerState:= 0;
+ DataSendBy:= 0;
+ for j:= 1 to procNmr do
+  DTS[j]:= 0;
+////////////////////////////////////////////////////
+// Создание инверсной матрицы связности
+for j:= 1 to taskNmr do
+ begin
+  for k:= 1 to taskNmr do
+  begin
+   if myTasks[j,k] = 1 then myTasksR[j,k]:= 1
+                       else myTasksR[j,k]:= 0;
+  end; //for
+ end; //for
+PlaceTasksOnProcessors;
+end;
+
+end.

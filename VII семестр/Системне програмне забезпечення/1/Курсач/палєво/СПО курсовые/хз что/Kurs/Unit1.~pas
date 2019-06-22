@@ -1,0 +1,273 @@
+unit Unit1;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Grids, StdCtrls;
+
+type
+  TForm1 = class(TForm)
+    StringGrid1: TStringGrid;
+    StringGrid2: TStringGrid;
+    StringGrid3: TStringGrid;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Button1: TButton;
+    Edit1: TEdit;
+    Label4: TLabel;
+    Button2: TButton;
+    StringGrid4: TStringGrid;
+    procedure FormCreate(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+  n:integer=15;
+
+implementation
+
+{$R *.dfm}
+procedure TForm1.FormCreate(Sender: TObject);
+var
+  i:integer;
+begin
+  for i:=1 to 100 do
+    StringGrid1.Cells[i,0]:=IntToStr(i);
+  for i:=1 to 100 do
+    StringGrid1.Cells[0,i]:=IntToStr(i);
+  for i:=1 to 100 do
+    StringGrid2.Cells[i,0]:=IntToStr(i);
+  for i:=1 to 100 do
+    StringGrid3.Cells[i,0]:=IntToStr(i);
+  for i:=1 to 100 do
+    StringGrid3.Cells[0,i]:=IntToStr(i);
+  for i:=1 to 100 do
+    StringGrid4.Cells[0,i]:=IntToStr(i);
+  for i:=1 to 100 do
+    StringGrid4.Cells[i,0]:='1->'+IntToStr(i+1);
+////////////////////////////////////////////
+  StringGrid1.Cells[2,1]:='1';
+  StringGrid1.Cells[3,1]:='1';
+  StringGrid1.Cells[4,1]:='1';
+  StringGrid1.Cells[5,1]:='2';
+  StringGrid1.Cells[6,2]:='2';
+  StringGrid1.Cells[7,3]:='1';
+  StringGrid1.Cells[8,3]:='1';
+  StringGrid1.Cells[8,4]:='3';
+  StringGrid1.Cells[9,4]:='3';
+  StringGrid1.Cells[9,5]:='1';
+  StringGrid1.Cells[10,6]:='2';
+  StringGrid1.Cells[11,7]:='2';
+  StringGrid1.Cells[11,8]:='1';
+  StringGrid1.Cells[12,9]:='2';
+  StringGrid1.Cells[13,10]:='1';
+  StringGrid1.Cells[13,11]:='2';
+  StringGrid1.Cells[14,11]:='1';
+  StringGrid1.Cells[14,12]:='1';
+  StringGrid1.Cells[15,13]:='3';
+  StringGrid1.Cells[15,14]:='1';
+  StringGrid1.Cells[16,2]:='1';
+  StringGrid1.Cells[17,16]:='2';
+  StringGrid1.Cells[13,17]:='1';
+/////////////////////////////////////
+  StringGrid2.Cells[1,1]:='1';
+  StringGrid2.Cells[2,1]:='2';
+  StringGrid2.Cells[3,1]:='2';
+  StringGrid2.Cells[4,1]:='1';
+  StringGrid2.Cells[5,1]:='3';
+  StringGrid2.Cells[6,1]:='1';
+  StringGrid2.Cells[7,1]:='3';
+  StringGrid2.Cells[8,1]:='1';
+  StringGrid2.Cells[9,1]:='2';
+  StringGrid2.Cells[10,1]:='1';
+  StringGrid2.Cells[11,1]:='3';
+  StringGrid2.Cells[12,1]:='1';
+  StringGrid2.Cells[13,1]:='3';
+  StringGrid2.Cells[14,1]:='1';
+  StringGrid2.Cells[15,1]:='2';
+  StringGrid2.Cells[16,1]:='2';
+  StringGrid2.Cells[17,1]:='1';
+
+end;
+
+procedure TForm1.Button2Click(Sender: TObject);
+begin
+  n:=StrToInt(Edit1.Text);
+  StringGrid1.ColCount:=n+1;
+  StringGrid1.RowCount:=n+1;
+  StringGrid2.ColCount:=n+1;
+end;
+
+procedure TForm1.Button1Click(Sender: TObject);
+var
+  i,j,sum,k,y,index,Npr,a,N0:integer;
+  mas,system,masiv:array [1..100,1..100] of integer;
+  m,flag,wave,path,way,crit,len,flag2:array [1..100] of integer;
+begin
+  for i:=1 to 10 do
+    for j:=1 to 20 do
+      StringGrid3.Cells[i,j]:='';
+
+  for i:=1 to n do
+    for j:=1 to n do
+    begin
+      if StringGrid1.Cells[i,j]='' then mas[i,j]:=0
+      else
+        mas[i,j]:=StrToInt(StringGrid1.Cells[i,j]);
+    end;
+  for i:=1 to n do
+    m[i]:=StrToInt(StringGrid2.Cells[i,1]);
+//////////////////////////////////////////////////////////
+for i:=1 to n do
+  for j:=1 to n do
+    masiv[i,j]:=mas[i,j];
+    
+Npr:=1;
+repeat
+  for i:=1 to n do
+  begin
+    flag[i]:=0;
+    wave[i]:=0;
+  end;
+
+  for i:=1 to n do
+  begin
+    sum:=0;
+    for j:=1 to n do
+      sum:=sum+mas[i,j];
+    if sum=0 then flag[i]:=1;
+  end;
+
+  for i:=1 to n do
+  begin
+    sum:=0;
+    for j:=1 to n do
+      sum:=sum+mas[j,i];
+    if sum=0 then flag[i]:=2;
+  end;
+
+  for i:=1 to n do
+    if flag[i]=1 then
+    begin
+      wave[i]:=m[i];
+      way[i]:=1;
+    end;
+
+  k:=1;
+  repeat
+    k:=0;
+    for i:=1 to n do
+    begin
+      if wave[i]>0 then
+        for j:=1 to n do
+          if mas[j,i]>0 then
+            if (wave[j]-wave[i])<(mas[j,i]+m[j]) then
+            begin
+              wave[j]:=mas[j,i]+m[j]+wave[i];
+              path[j]:=i;
+              way[j]:=way[i]+1;
+              k:=1;
+            end;
+    end;
+  until k=0;
+
+  k:=0;
+  for i:=1 to n do
+    if flag[i]=2 then
+      if wave[i]>k then
+      begin
+        k:=wave[i];
+        index:=i;
+      end;
+
+  len[Npr]:=way[index];    
+
+  for i:=way[index] downto 1 do
+  begin
+    crit[i]:=index;
+    index:=path[index];
+  end;
+
+  for i:=1 to len[Npr] do
+    System[Npr,i]:= crit[i];
+
+  for j:=1 to len[Npr] do
+  begin
+    for i:=1 to n do
+      mas[i,crit[j]]:=0;
+    for i:=1 to n do
+      mas[crit[j],i]:=0;
+  end;
+
+  k:=0;
+  for i:=1 to n do
+    for j:=1 to n do
+      k:=k+mas[i,j];
+
+  if k>0 then Npr:=Npr+1;
+
+until k=0;
+
+/////////////////////////////////////////////
+
+  for i:=1 to n do
+    flag2[i]:=0;
+
+  for i:=1 to Npr do
+    for j:=1 to len[i] do
+      flag2[System[i,j]]:=1;
+
+  for i:=1 to n do
+    if flag2[i]=0 then
+    begin
+      Npr:=Npr+1;
+      len[Npr]:=1;
+      System[Npr,1]:=i;
+    end;
+
+///////////////////////////////////////////////////////
+N0:=4;
+
+if Npr>N0 then
+begin
+  a:=Npr-N0;
+
+  for y:=1 to a do
+  begin
+    for i:=len[N0+1-y]+1 to len[N0-y+1]+len[N0+y] do
+      System[N0+1-y,i]:=System[N0+y,i-len[N0+1-y]];
+    len[N0-y+1]:=len[N0-y+1]+len[N0+y];
+  end;
+  Npr:=N0;
+end;
+
+
+  StringGrid3.ColCount:=Npr+1;
+  for i:=1 to Npr do
+    for j:=1 to len[i] do
+      StringGrid3.Cells[i,j]:=IntToStr(System[i,j]);
+
+////////////////////////////////////////////////////////
+{
+takt:=1;
+repeat
+
+
+
+
+
+
+until ;
+}
+
+end;
+
+end.

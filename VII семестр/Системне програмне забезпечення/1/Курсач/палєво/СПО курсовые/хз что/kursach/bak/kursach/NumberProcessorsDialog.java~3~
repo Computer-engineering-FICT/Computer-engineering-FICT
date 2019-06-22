@@ -1,0 +1,54 @@
+package kursach;
+
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
+import kursach.Parametrized;
+
+public class NumberProcessorsDialog extends EmptyDialog {
+        private JTextField weightField;
+        public NumberProcessorsDialog(JFrame owner) {
+                super(owner);
+                setTitle("¬ведите количество процессоров");
+                pack();
+                setLocation(owner.getX()+owner.getWidth()/2-getWidth()/2,
+                                owner.getY()+owner.getHeight()/2-getHeight()/2);
+                setVisible(true);
+        }
+
+        protected JPanel initControlsPanel() {
+                weightField = new JTextField(8);
+                JPanel panel = new JPanel();
+                panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
+                panel.setBorder(new EmptyBorder(5,5,5,5));
+                panel.add(weightField);
+                return panel;
+        }
+
+
+        protected void approve() {
+                if (!weightField.getText().equals("")) {
+                        int weight = 0;
+                        try {
+                                weight = Integer.parseInt(weightField.getText());
+                        }
+                        catch (NumberFormatException e) {
+                                JOptionPane.showMessageDialog(this, "¬ведите целое значение",
+                                                "ќшибка", JOptionPane.ERROR_MESSAGE);
+                                return;
+                        }
+                        dispose();
+                }
+        }
+
+        protected void cancel() {
+                dispose();
+        }
+}

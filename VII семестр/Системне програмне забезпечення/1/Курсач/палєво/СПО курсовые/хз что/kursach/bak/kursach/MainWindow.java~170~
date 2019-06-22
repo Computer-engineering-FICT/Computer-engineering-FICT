@@ -1,0 +1,294 @@
+package kursach;
+
+import java.awt.Toolkit;
+import javax.swing.BoxLayout;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JScrollPane;
+import java.awt.BorderLayout;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.Dimension;
+import kursach.TableLayout;
+import java.awt.Color;
+import javax.swing.Icon;
+import java.awt.Component;
+import java.awt.Graphics;
+import java.util.ArrayList;
+
+public class MainWindow extends JFrame {
+        private GraphView graphPanel;
+        private JScrollPane scroll = new JScrollPane();
+        private JButton bNode = new JButton( new Icon_Node() );
+        private JButton bLine = new JButton( new Icon_Line() );
+        private JButton selectNode = new JButton( new Icon_NodeSel() );
+        private JButton startImmersion = new JButton( "Start" );
+        public static final int SELECTION = 0;
+        public static final int CREATE_NODE = 1;
+        public static final int CREATE_LINE = 2;
+        public static MainWindow instance;
+        private int state;
+        private int[][]  matrixOfTransfers;
+        private ArrayList<Way> allWays = new ArrayList<Way>();
+
+
+        public MainWindow()
+        {
+            super("Погружение задач");
+            setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+            // Get size of the screen
+            Toolkit kit = Toolkit.getDefaultToolkit();
+            Dimension screenSize = kit.getScreenSize();
+            int screenWidth = screenSize.width;
+            int screenHeight = screenSize.height;
+            // Locate the frame in the centre of the screen
+            setSize(screenWidth/2,screenHeight/2);
+            setLocation(screenWidth/4,screenHeight/4);
+            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            init();
+            instance = this;
+            setVisible(true);
+        }
+
+        private void init()
+        {
+            graphPanel = new GraphView();
+            graphPanel.setPreferredSize(new Dimension(1024, 1024));
+            graphPanel.setBackground( new Color(254, 243, 171));
+            scroll = new JScrollPane( graphPanel );
+            getContentPane().add(scroll, BorderLayout.CENTER);
+
+            JPanel buttonPanel = new JPanel();
+            TableLayout layout = new TableLayout( new double[]{5, 70, 5},
+                                                  new double[]{40, 15, 40, 15, 40, 15, 40} );
+            buttonPanel.setLayout( layout );
+
+            bNode.setToolTipText("Добавить вершину");
+            selectNode.setToolTipText("Выделить");
+            bLine.setToolTipText("Добавить связь");
+            bNode.setFocusPainted(false);
+            selectNode.setFocusPainted(false);
+            bLine.setFocusPainted(false);
+            startImmersion.setFocusPainted(false);
+            buttonPanel.add(bNode, new TableConstraint( 0, 1 ));
+            buttonPanel.add(selectNode, new TableConstraint( 2, 1 ));
+            buttonPanel.add(bLine, new TableConstraint( 4, 1 ));
+            buttonPanel.add(startImmersion, new TableConstraint( 6, 1 ));
+            getContentPane().add( buttonPanel, BorderLayout.EAST );
+
+            bNode.addActionListener(new ActionListener(){
+                public void actionPerformed(ActionEvent e){
+                    state = CREATE_NODE;
+                }
+            });
+
+            selectNode.addActionListener(new ActionListener(){
+                public void actionPerformed(ActionEvent e){
+                    state = SELECTION;
+                }
+            });
+            bLine.addActionListener(new ActionListener(){
+                public void actionPerformed(ActionEvent e){
+                    state = CREATE_LINE;
+                }
+            });
+            startImmersion.addActionListener(new ActionListener(){
+                public void actionPerformed(ActionEvent e){
+                    Immersion();
+                }
+            });
+        }
+
+        public void Immersion()
+        {
+            // таблица переходов
+            int N = graphPanel.getModel().getNodeCount();
+            matrixOfTransfers = new int[N][N];
+            //   for ( int i = 0; i < N; i++ )
+            //       matrixOfTransfers[i][i] = graphPanel.getModel().getNode(i).getWeight();
+            int P = graphPanel.getModel().getLineCount();
+            int i, j, transfer;
+            for (int k = 0; k < P; k++) {
+                i = graphPanel.getModel().getLine(k).getStartNode().getNumber();
+                j = graphPanel.getModel().getLine(k).getEndNode().getNumber();
+                transfer = graphPanel.getModel().getLine(k).getTransfer();
+                matrixOfTransfers[i][j] = transfer;
+            }
+            for ( i = 0; i < N; i++ )
+            {
+                for ( j = 0; j < N; j++ )
+                    System.out.print(matrixOfTransfers[i][j]+" ");
+                System.out.println();
+            }
+
+            int count = graphPanel.getModel().getNodeCount();
+            while (count >= 1)
+            {
+            // нахождение всех путей
+            boolean first_tier, EndOfTree, AddBranch;
+            for (j = 0; j < N; j++)
+            {
+                first_tier = true;
+                for (i = 0; i < N; i++)
+                {
+                    if (matrixOfTransfers[i][j] > 0)
+                        first_tier = false;
+                }
+                int count1 = 0;
+                for (i = 0; i < N; i++)
+                {
+                    if (matrixOfTransfers[i][j] == -1)
+                        count1++;
+                }
+                if (count1 == N) first_tier = false;
+                if (first_tier)
+                {
+                    Way way = new Way();
+                    way.addNode(j);
+                    allWays.add(way);
+                }
+                EndOfTree = false;
+                while (!EndOfTree)
+                {
+                    EndOfTree = true;
+                    for (i = 0; i < allWays.size(); i++)
+                    {
+                        AddBranch = false;
+                        Way way = allWays.get(i);
+                        int index = way.getNode(way.getNodes().size() - 1);
+                        for (int p = 0; p < N; p++)
+                        {
+                            if (matrixOfTransfers[index][p] > 0) {
+                                EndOfTree = false;
+                                if (!AddBranch)
+                                {
+                                    way.addNode(p);
+                                } else
+                                {
+                                    Way newWay = new Way();
+                                    for (int g = 0; g < way.getNodes().size() - 1; g++)
+                                        newWay.addNode(way.getNode(g));
+                                    newWay.addNode(p);
+                                    allWays.add(newWay);
+                                }
+                                AddBranch = true;
+                            }
+                        }
+                    }
+                }
+            }
+            System.out.println("All Ways");
+            for ( i = 0; i < allWays.size(); i++ )
+            {
+                Way w = allWays.get( i );
+                System.out.print("Way "+i+" : ");
+                for ( j = 0; j < w.getNodes().size(); j++ )
+                    System.out.print(w.getNode(j)+" ");
+                System.out.println();
+            }
+
+            // нахождение критического пути
+            int maxSum = 0, index = -1;
+            for ( i = 0; i < allWays.size(); i++ )
+            {
+                int Sum = 0;
+                Way way = allWays.get( i );
+                int start, end;
+                ArrayList<Integer> nodes = way.getNodes();
+                for ( j = 0; j < nodes.size() - 1; j++ )
+                {
+                    start = nodes.get(j);
+                    end = nodes.get(j+1);
+                    Sum += matrixOfTransfers[start][end];
+                }
+                if (Sum > maxSum)
+                {
+                    maxSum = Sum;
+                    index = i;
+                }
+            }
+            System.out.println("Критический путь: "+maxSum);
+            System.out.print("Way "+index+" : ");
+            for ( j = 0; j < allWays.get(index).getNodes().size(); j++ )
+                System.out.print(allWays.get(index).getNode(j)+" ");
+            // редуцируем граф
+            int node;
+            for ( i = 0; i < allWays.get(index).getNodes().size(); i++ )
+            {
+                node = allWays.get(index).getNode(i);
+                count --;
+                for ( j = 0; j < N; j++ )
+                {
+                    matrixOfTransfers[node][j] = -1;
+                }
+                for ( j = 0; j < N; j++ )
+                {
+                    matrixOfTransfers[j][node] = -1;
+                }
+            }
+            allWays.clear();
+            System.out.println("After: ");
+            for ( i = 0; i < N; i++ )
+            {
+                for ( j = 0; j < N; j++ )
+                    System.out.print(matrixOfTransfers[i][j]+" ");
+                System.out.println();
+            }
+            }
+        }
+
+        public int getState() {
+                return state;
+        }
+
+        class Icon_Node implements Icon{
+                public int getIconWidth(){
+                        return 20;
+                }
+                public int getIconHeight(){
+                        return 20;
+                }
+                public void paintIcon(Component c,Graphics g,int w,int h){
+                        g.setColor(Color.BLACK);
+                        g.drawOval(w-5,h-5,30,30);
+                }
+        }
+
+        class Icon_NodeSel implements Icon{
+                public int getIconWidth(){
+                        return 20;
+                }
+                public int getIconHeight(){
+                        return 20;
+                }
+                public void paintIcon(Component c,Graphics g,int w,int h){
+                        g.setColor(Color.BLACK);
+                        g.drawOval(w-5,h-5,30,30);
+                        g.setColor(new Color(254, 243, 171));
+                        g.fillOval(w-4,h-4,28,28);
+                }
+        }
+
+        class Icon_Line implements Icon{
+                public int getIconWidth(){
+                        return 20;
+                }
+                public int getIconHeight(){
+                        return 20;
+                }
+                public void paintIcon(Component c,Graphics g,int w,int h){
+                        g.setColor(Color.BLACK);
+                        g.drawLine(w-10,h+20,w+30,h);
+                }
+        }
+
+        public static void main(String args[]) {
+                new MainWindow();
+        }
+}
+

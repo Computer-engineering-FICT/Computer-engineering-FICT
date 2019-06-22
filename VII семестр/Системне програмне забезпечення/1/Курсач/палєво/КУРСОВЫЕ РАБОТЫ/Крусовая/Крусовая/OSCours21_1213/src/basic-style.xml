@@ -1,0 +1,58 @@
+<mxStylesheet>
+    <add as="defaultVertex">
+        <add as="shape" value="label"/>
+        <add as="perimeter" value="rectanglePerimeter"/>
+        <add as="fontSize" value="11"/>
+        <add as="align" value="center"/>
+        <add as="verticalAlign" value="middle"/>
+        <add as="strokeColor" value="black"/>
+        <add as="fillColor" value="#E8EEF7"/>
+    </add>
+    <add as="defaultEdge">
+        <add as="shape" value="connector"/>
+        <add as="labelBackgroundColor" value="white"/>
+        <add as="endArrow" value="classic"/>
+        <add as="fontSize" value="10"/>
+        <add as="align" value="center"/>
+        <add as="verticalAlign" value="center"/>
+        <add as="strokeColor" value="black"/>
+        <add as="edgeStyle" value="elbowEdgeStyle"/>
+    </add>
+	<add as="entity" extend="defaultEdge">
+		<add as="edgeStyle" value="entityRelationEdgeStyle"/>
+	</add>
+	<add as="vertical" extend="defaultEdge">
+		<add as="elbow" value="vertical"/>
+	</add>
+	<add as="straight" extend="defaultVertex">
+		<add as="shape" value="connector"/>
+		<add as="endArrow" value="classic"/>
+		<add as="edgeStyle" value="none"/>
+	</add>
+	<add as="arrow" extend="defaultVertex">
+		<add as="shape" value="arrow"/>
+		<add as="fillColor" value="red"/>
+	</add>
+	<add as="swimlane" extend="defaultVertex">
+		<add as="shape" value="swimlane"/>
+		<add as="fontSize" value="12"/>
+		<add as="fontStyle" value="1"/>
+		<add as="startSize" value="23"/>
+	</add>
+	<add as="group" extend="defaultVertex">
+		<add as="verticalAlign" value="top"/>
+		<add as="dashed" value="1"/>
+		<add as="opacity" value="50"/>
+	</add>
+	<add as="ellipse" extend="defaultVertex">
+		<add as="shape" value="ellipse"/>
+		<add as="perimeter" value="rectanglePerimeter"/>
+	</add>
+	<add as="line" extend="defaultVertex">
+		<add as="shape" value="line"/>
+		<add as="strokeWidth" value="4"/>
+		<add as="labelBackgroundColor" value="white"/>
+		<add as="verticalAlign" value="top"/>
+		<add as="spacingTop" value="8"/>
+	</add>
+</mxStylesheet>

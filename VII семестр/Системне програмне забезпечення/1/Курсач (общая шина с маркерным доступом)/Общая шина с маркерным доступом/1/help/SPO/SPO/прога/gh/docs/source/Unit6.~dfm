@@ -1,0 +1,126 @@
+object Form6: TForm6
+  Left = 270
+  Top = 150
+  Width = 432
+  Height = 309
+  BorderIcons = [biMaximize]
+  Caption = 'Диаграмма Ганта'
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  FormStyle = fsMDIChild
+  OldCreateOrder = False
+  Position = poDefault
+  Visible = True
+  WindowState = wsMaximized
+  OnActivate = OnActivate
+  OnResize = OnResize
+  PixelsPerInch = 96
+  TextHeight = 13
+  object SpeedButton1: TSpeedButton
+    Left = 0
+    Top = 256
+    Width = 73
+    Height = 22
+    Caption = 'Вычисление'
+    Flat = True
+    OnClick = SpeedButton1Click
+  end
+  object Label1: TLabel
+    Left = 168
+    Top = 264
+    Width = 78
+    Height = 13
+    Caption = '                          '
+  end
+  object SpeedButton3: TSpeedButton
+    Left = 80
+    Top = 256
+    Width = 41
+    Height = 22
+    Caption = 'Вывод'
+    Flat = True
+    OnClick = SpeedButton3Click
+  end
+  object Chart1: TChart
+    Left = 0
+    Top = 0
+    Width = 400
+    Height = 250
+    AnimatedZoom = True
+    BackWall.Brush.Color = clWhite
+    BackWall.Brush.Style = bsClear
+    Gradient.EndColor = clLime
+    Gradient.StartColor = 16744576
+    Gradient.Visible = True
+    MarginBottom = 0
+    MarginLeft = 0
+    MarginRight = 0
+    MarginTop = 0
+    Title.AdjustFrame = False
+    Title.Text.Strings = (
+      'TChart')
+    Title.Visible = False
+    ClipPoints = False
+    LeftAxis.Visible = False
+    Legend.Visible = False
+    ScaleLastPage = False
+    View3D = False
+    View3DWalls = False
+    TabOrder = 0
+    object Series1: TGanttSeries
+      ColorEachPoint = True
+      Marks.ArrowLength = 0
+      Marks.BackColor = clWhite
+      Marks.Clip = True
+      Marks.Font.Charset = DEFAULT_CHARSET
+      Marks.Font.Color = clRed
+      Marks.Font.Height = -11
+      Marks.Font.Name = 'Arial'
+      Marks.Font.Style = []
+      Marks.Frame.Visible = False
+      Marks.Visible = True
+      SeriesColor = clRed
+      ShowInLegend = False
+      Pointer.InflateMargins = True
+      Pointer.Pen.Width = 2
+      Pointer.Style = psRectangle
+      Pointer.VertSize = 10
+      Pointer.Visible = True
+      XValues.DateTime = False
+      XValues.Name = 'Start'
+      XValues.Multiplier = 1
+      XValues.Order = loAscending
+      YValues.DateTime = False
+      YValues.Name = 'Y'
+      YValues.Multiplier = 1
+      YValues.Order = loNone
+      ConnectingPen.Visible = False
+      StartValues.DateTime = False
+      StartValues.Name = 'Start'
+      StartValues.Multiplier = 1
+      StartValues.Order = loAscending
+      EndValues.DateTime = True
+      EndValues.Name = 'End'
+      EndValues.Multiplier = 1
+      EndValues.Order = loNone
+      NextTask.DateTime = False
+      NextTask.Name = 'NextTask'
+      NextTask.Multiplier = 1
+      NextTask.Order = loNone
+    end
+  end
+  object SpinEdit1: TSpinEdit
+    Left = 128
+    Top = 256
+    Width = 33
+    Height = 22
+    MaxValue = 5
+    MinValue = 1
+    TabOrder = 1
+    Value = 1
+  end
+end
