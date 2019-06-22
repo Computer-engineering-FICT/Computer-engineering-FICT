@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>МОПЕ лабораторна №1</title>
+    <link rel = "icon" href = "logo.jpg">
+    <style>
+        input { width: 40px;}
+    </style>
+    <script>
+
+        function initData() {
+            return {
+                min_limit: Number.parseInt(document.getElementById("min_gen_val").value),
+                max_limit: Number.parseInt(document.getElementById("max_gen_val").value),
+                k : Number.parseInt(document.getElementById("k").value),
+                a0: Number.parseInt(document.getElementById("a0").value),
+                a1: Number.parseInt(document.getElementById("a1").value),
+                a2: Number.parseInt(document.getElementById("a2").value),
+                a3: Number.parseInt(document.getElementById("a3").value)
+            };
+        }
+
+        function onClick() {
+            const data = initData();
+
+            //set normalization function for an array with min and max value
+            function normalization (min_val, max_val) {
+                const x0 = (min_val + max_val) / 2;
+                const dx = x0 - min_val;
+                const lambda = (x) => (x - x0) / dx;
+                lambda.x0 = x0;
+                lambda.dx = dx;
+                return lambda;
+            }
+
+            //generate random array with defined normalization function
+            function generate_Xi_arr () {
+                // fill Xi array by random numbers between [data.min_limit and data.max_limit]
+                const arr = Array.from({length: data.k}, (v, k) =>
+                    Number.parseInt(Math.random() * (data.max_limit - data.min_limit) + data.min_limit));
+                let min = Math.min.apply(null,arr);
+                let max = Math.max.apply(null,arr);
+                const func = normalization(min,max);
+                // arr.x0 = func.x0;
+                // arr.dx = func.dx;
+                arr.f = func;
+                return arr;
+            }
+
+            function normalize(arr) {
+                return arr.map((v,i) => arr.f(v));
+            }
+
+            function get_y (x1,x2,x3) {
+                return data.a0 + data.a1*x1+data.a2*x2+data.a3*x3;
+            }
+
+
+            const x1_arr = generate_Xi_arr();
+            const x2_arr = generate_Xi_arr();
+            const x3_arr = generate_Xi_arr();
+            const y_arr = Array.from({length: data.k}, (v, i) => get_y(x1_arr[i], x2_arr[i], x3_arr[i]));
+
+            const x1_arr_normalized = normalize(x1_arr);
+            const x2_arr_normalized = normalize(x2_arr);
+            const x3_arr_normalized = normalize(x3_arr);
+
+            const y_standard = get_y(x1_arr.f.x0, x2_arr.f.x0, x3_arr.f.x0);
+
+            const variant_task = () => {
+                const avg = y_arr.reduce((final, v) => final + v) / y_arr.length;
+                return Math.min.apply(null, y_arr.filter((v, i) => v >= avg));
+            };
+            //alert(variant_task());
+            document.getElementById("optimal_y").innerHTML = "Оптимальне Y: ".concat(variant_task());
+            document.getElementById("req_y").innerHTML = "Y<sub>ЕТ</sub>: ".concat(y_standard);
+            const table = document.getElementById("final_table");
+            table.innerHTML = "";
+            table.borderColor = "#e22443";
+            const table_label = table.insertRow(0);
+            table_label.insertCell(0).innerHTML = "№";
+            table_label.insertCell(1).innerHTML = "x<sub>1</sub>";
+            table_label.insertCell(2).innerHTML = "x<sub>2</sub>";
+            table_label.insertCell(3).innerHTML = "x<sub>3</sub>";
+            table_label.insertCell(4).innerHTML = "Y";
+            table_label.insertCell(5).innerHTML = "";
+
+            table_label.insertCell(6).innerHTML = "x<sub>Н1</sub>";
+            table_label.insertCell(7).innerHTML = "x<sub>Н2</sub>";
+            table_label.insertCell(8).innerHTML = "x<sub>Н3</sub>";
+
+            //const table_vals = [];
+            for (let i = 1; i <= data.k; i++) {
+                let row_new = table.insertRow(i);
+
+                row_new.insertCell(0).innerHTML = i;
+                row_new.insertCell(1).innerHTML = x1_arr[i-1];
+                row_new.insertCell(2).innerHTML = x2_arr[i-1];
+                row_new.insertCell(3).innerHTML = x3_arr[i-1];
+                row_new.insertCell(4).innerHTML = y_arr[i-1];
+                row_new.insertCell(5).innerHTML = "";
+
+                row_new.insertCell(6).innerHTML = x1_arr_normalized[i-1].toFixed(3);
+                row_new.insertCell(7).innerHTML = x2_arr_normalized[i-1].toFixed(3);
+                row_new.insertCell(8).innerHTML = x3_arr_normalized[i-1].toFixed(3);
+                //table_vals.push(row_new);
+            }
+            const table_x0 = table.insertRow(data.k+1);
+            table_x0.insertCell(0).innerHTML = "x<sub>0</sub>";
+            table_x0.insertCell(1).innerHTML = x1_arr.f.x0;
+            table_x0.insertCell(2).innerHTML = x2_arr.f.x0;
+            table_x0.insertCell(3).innerHTML = x3_arr.f.x0;
+            const table_dx = table.insertRow(data.k+2);
+            table_dx.insertCell(0).innerHTML = "dx";
+            table_dx.insertCell(1).innerHTML = x1_arr.f.dx;
+            table_dx.insertCell(2).innerHTML = x2_arr.f.dx;
+            table_dx.insertCell(3).innerHTML = x3_arr.f.dx;
+        }
+
+    </script>
+</head>
+<body>
+    <table style="width:20%">
+        <tr>
+            <th colspan = "8">Ввід даних<p><i>Виконав Мазан Ян, ІВ-71</i></p></th>
+        </tr>
+        <tr>
+            <td colspan= "4"><label for="k">Кількість експериментів:</label></td>
+            <td>&nbsp</td>
+            <td>&nbsp</td>
+            <td>&nbsp</td>
+            <td><input id="k" max="100" min="1" name="k" type="number" value="8" /></td>
+        </tr>
+        <tr>
+            <td colspan= "4"><label for="min_gen_val">Мін. значення фактора: </label></td>
+            <td>&nbsp</td>
+            <td>&nbsp</td>
+            <td>&nbsp</td>
+            <td><input id="min_gen_val" name="min_gen_val" type="number" value="0" /></td>
+        </tr>
+        <tr>
+            <td colspan= "4"><label for="max_gen_val">Макс. значення фактора: </label></td>
+            <td>&nbsp</td>
+            <td>&nbsp</td>
+            <td>&nbsp</td>
+            <td><input id="max_gen_val" name="max_gen_val" type="number" value="20" /></td>
+        </tr>
+        <tr>
+            <td><label for="a0">a<sub>0</sub>: </label></td>
+            <td><input id="a0" name="a0" type="number" value="1"/></td>
+            <td><label for="a1">a<sub>1</sub>: </label></td>
+            <td><input id="a1" name="a1" type="number" value="1"/></td>
+            <td><label for="a2">a<sub>2</sub>: </label></td>
+            <td><input id="a2" name="a2" type="number" value="1"/></td>
+            <td><label for="a3">a<sub>3</sub>: </label></td>
+            <td><input id="a3" name="a3" type="number" value="1"/></td>
+        </tr>
+    </table>
+<p>
+
+    </p>
+    <button id = "input_complete" onclick = "onClick()">Ввести дані</button>
+    <p id = "optimal_y"></p>
+    <p id = "req_y"></p>
+    <table id = "final_table" style="height: 63px; border-color: #FFFFFF;" border="solid">
+        <tbody></tbody>
+    </table>
+</body>
+</html>
