@@ -1,0 +1,298 @@
+-- MAX+plus II Compiler Fit File      
+-- Version 10.1 06/12/2001            
+-- Compiled: 10/02/2012 08:49:33      
+
+-- Copyright (C) 1988-2001 Altera Corporation
+-- Any megafunction design, and related net list (encrypted or decrypted),
+-- support information, device programming or simulation file, and any other
+-- associated documentation or information provided by Altera or a partner
+-- under Altera's Megafunction Partnership Program may be used only to
+-- program PLD devices (but not masked PLD devices) from Altera.  Any other
+-- use of such megafunction design, net list, support information, device
+-- programming or simulation file, or any other related documentation or
+-- information is prohibited for any other purpose, including, but not
+-- limited to modification, reverse engineering, de-compiling, or use with
+-- any other silicon devices, unless such use is explicitly licensed under
+-- a separate agreement with Altera or a megafunction partner.  Title to
+-- the intellectual property, including patents, copyrights, trademarks,
+-- trade secrets, or maskworks, embodied in any such megafunction design,
+-- net list, support information, device programming or simulation file, or
+-- any other related documentation or information provided by Altera or a
+-- megafunction partner, remains with Altera, the megafunction partner, or
+-- their respective licensors.  No other licenses, including any licenses
+-- needed under any third party's intellectual property, are provided herein.
+
+CHIP "ictr"
+BEGIN
+
+    DEVICE = "EPM7096QC100-7";
+    UNROUTED;
+
+    "CLK"                          : INPUT_PIN  = ANY    ;
+    "CLK"                          : UNROUTED ;
+    "D00"                          : INPUT_PIN  = ANY    ;
+    "D00"                          : UNROUTED ;
+    "D01"                          : INPUT_PIN  = ANY    ;
+    "D01"                          : UNROUTED ;
+    "D02"                          : INPUT_PIN  = ANY    ;
+    "D02"                          : UNROUTED ;
+    "D03"                          : INPUT_PIN  = ANY    ;
+    "D03"                          : UNROUTED ;
+    "D04"                          : INPUT_PIN  = ANY    ;
+    "D04"                          : UNROUTED ;
+    "D05"                          : INPUT_PIN  = ANY    ;
+    "D05"                          : UNROUTED ;
+    "D06"                          : INPUT_PIN  = ANY    ;
+    "D06"                          : UNROUTED ;
+    "D07"                          : INPUT_PIN  = ANY    ;
+    "D07"                          : UNROUTED ;
+    "D08"                          : INPUT_PIN  = ANY    ;
+    "D08"                          : UNROUTED ;
+    "D09"                          : INPUT_PIN  = ANY    ;
+    "D09"                          : UNROUTED ;
+    "D10"                          : INPUT_PIN  = ANY    ;
+    "D10"                          : UNROUTED ;
+    "D11"                          : INPUT_PIN  = ANY    ;
+    "D11"                          : UNROUTED ;
+    "D12"                          : INPUT_PIN  = ANY    ;
+    "D12"                          : UNROUTED ;
+    "D13"                          : INPUT_PIN  = ANY    ;
+    "D13"                          : UNROUTED ;
+    "D14"                          : INPUT_PIN  = ANY    ;
+    "D14"                          : UNROUTED ;
+    "F0"                           : INPUT_PIN  = ANY    ;
+    "F0"                           : UNROUTED ;
+    "F1"                           : INPUT_PIN  = ANY    ;
+    "F1"                           : UNROUTED ;
+    "F2"                           : INPUT_PIN  = ANY    ;
+    "F2"                           : UNROUTED ;
+    "F3"                           : INPUT_PIN  = ANY    ;
+    "F3"                           : UNROUTED ;
+    "overflow"                     : OUTPUT_PIN = ANY    ;
+    "overflow"                     : UNROUTED ;
+    "Q00"                          : OUTPUT_PIN = ANY    ;
+    "Q00"                          : UNROUTED ;
+    "Q01"                          : OUTPUT_PIN = ANY    ;
+    "Q01"                          : UNROUTED ;
+    "Q02"                          : OUTPUT_PIN = ANY    ;
+    "Q02"                          : UNROUTED ;
+    "Q03"                          : OUTPUT_PIN = ANY    ;
+    "Q03"                          : UNROUTED ;
+    "Q04"                          : OUTPUT_PIN = ANY    ;
+    "Q04"                          : UNROUTED ;
+    "Q05"                          : OUTPUT_PIN = ANY    ;
+    "Q05"                          : UNROUTED ;
+    "Q06"                          : OUTPUT_PIN = ANY    ;
+    "Q06"                          : UNROUTED ;
+    "Q07"                          : OUTPUT_PIN = ANY    ;
+    "Q07"                          : UNROUTED ;
+    "Q08"                          : OUTPUT_PIN = ANY    ;
+    "Q08"                          : UNROUTED ;
+    "Q09"                          : OUTPUT_PIN = ANY    ;
+    "Q09"                          : UNROUTED ;
+    "Q10"                          : OUTPUT_PIN = ANY    ;
+    "Q10"                          : UNROUTED ;
+    "Q11"                          : OUTPUT_PIN = ANY    ;
+    "Q11"                          : UNROUTED ;
+    "Q12"                          : OUTPUT_PIN = ANY    ;
+    "Q12"                          : UNROUTED ;
+    "Q13"                          : OUTPUT_PIN = ANY    ;
+    "Q13"                          : UNROUTED ;
+    "Q14"                          : OUTPUT_PIN = ANY    ;
+    "Q14"                          : UNROUTED ;
+    "|ctr11:12|ctr1:1|~30~1"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:1|~30~1"       : UNROUTED ;
+    "|ctr11:12|ctr1:1|~30~2"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:1|~30~2"       : UNROUTED ;
+    "|ctr11:12|ctr1:1|~30~3"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:1|~30~3"       : UNROUTED ;
+    "|ctr11:12|ctr1:1|~30~4"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:1|~30~4"       : UNROUTED ;
+    "|ctr11:12|ctr1:1|~30~5"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:1|~30~5"       : UNROUTED ;
+    "|ctr11:12|ctr1:1|~30~6"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:1|~30~6"       : UNROUTED ;
+    "|ctr11:12|ctr1:2|~30~1"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:2|~30~1"       : UNROUTED ;
+    "|ctr11:12|ctr1:2|~30~2"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:2|~30~2"       : UNROUTED ;
+    "|ctr11:12|ctr1:2|~30~3"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:2|~30~3"       : UNROUTED ;
+    "|ctr11:12|ctr1:2|~30~4"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:2|~30~4"       : UNROUTED ;
+    "|ctr11:12|ctr1:2|~30~5"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:2|~30~5"       : UNROUTED ;
+    "|ctr11:12|ctr1:2|~30~6"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:2|~30~6"       : UNROUTED ;
+    "|ctr11:12|ctr1:3|~30~1"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:3|~30~1"       : UNROUTED ;
+    "|ctr11:12|ctr1:3|~30~2"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:3|~30~2"       : UNROUTED ;
+    "|ctr11:12|ctr1:3|~30~3"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:3|~30~3"       : UNROUTED ;
+    "|ctr11:12|ctr1:3|~30~4"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:3|~30~4"       : UNROUTED ;
+    "|ctr11:12|ctr1:3|~30~5"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:3|~30~5"       : UNROUTED ;
+    "|ctr11:12|ctr1:3|~30~6"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:3|~30~6"       : UNROUTED ;
+    "|ctr11:12|ctr1:3|~30~7"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:3|~30~7"       : UNROUTED ;
+    "|ctr11:12|ctr1:4|~30~1"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:4|~30~1"       : UNROUTED ;
+    "|ctr11:12|ctr1:4|~30~2"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:4|~30~2"       : UNROUTED ;
+    "|ctr11:12|ctr1:4|~30~3"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:4|~30~3"       : UNROUTED ;
+    "|ctr11:12|ctr1:4|~30~4"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:4|~30~4"       : UNROUTED ;
+    "|ctr11:12|ctr1:4|~30~5"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:4|~30~5"       : UNROUTED ;
+    "|ctr11:12|ctr1:4|~30~6"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:4|~30~6"       : UNROUTED ;
+    "|ctr11:12|ctr1:4|~30~7"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:4|~30~7"       : UNROUTED ;
+    "|ctr11:12|ctr1:4|~30~8"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:4|~30~8"       : UNROUTED ;
+    "|ctr11:12|ctr1:5|~30~1"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:5|~30~1"       : UNROUTED ;
+    "|ctr11:12|ctr1:5|~30~2"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:5|~30~2"       : UNROUTED ;
+    "|ctr11:12|ctr1:5|~30~3"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:5|~30~3"       : UNROUTED ;
+    "|ctr11:12|ctr1:5|~30~4"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:5|~30~4"       : UNROUTED ;
+    "|ctr11:12|ctr1:5|~30~5"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:5|~30~5"       : UNROUTED ;
+    "|ctr11:12|ctr1:5|~30~6"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:5|~30~6"       : UNROUTED ;
+    "|ctr11:12|ctr1:5|~30~7"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:5|~30~7"       : UNROUTED ;
+    "|ctr11:12|ctr1:5|~30~8"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:5|~30~8"       : UNROUTED ;
+    "|ctr11:12|ctr1:6|~30~1"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:6|~30~1"       : UNROUTED ;
+    "|ctr11:12|ctr1:6|~30~2"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:6|~30~2"       : UNROUTED ;
+    "|ctr11:12|ctr1:6|~30~3"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:6|~30~3"       : UNROUTED ;
+    "|ctr11:12|ctr1:6|~30~4"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:6|~30~4"       : UNROUTED ;
+    "|ctr11:12|ctr1:6|~30~5"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:6|~30~5"       : UNROUTED ;
+    "|ctr11:12|ctr1:6|~30~6"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:6|~30~6"       : UNROUTED ;
+    "|ctr11:12|ctr1:6|~30~7"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:6|~30~7"       : UNROUTED ;
+    "|ctr11:12|ctr1:6|~30~8"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:6|~30~8"       : UNROUTED ;
+    "|ctr11:12|ctr1:6|~30~9"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:6|~30~9"       : UNROUTED ;
+    "|ctr11:12|ctr1:7|~30~1"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:7|~30~1"       : UNROUTED ;
+    "|ctr11:12|ctr1:7|~30~2"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:7|~30~2"       : UNROUTED ;
+    "|ctr11:12|ctr1:7|~30~3"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:7|~30~3"       : UNROUTED ;
+    "|ctr11:12|ctr1:7|~30~4"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:7|~30~4"       : UNROUTED ;
+    "|ctr11:12|ctr1:7|~30~5"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:7|~30~5"       : UNROUTED ;
+    "|ctr11:12|ctr1:7|~30~6"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:7|~30~6"       : UNROUTED ;
+    "|ctr11:12|ctr1:7|~30~7"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:7|~30~7"       : UNROUTED ;
+    "|ctr11:12|ctr1:7|~30~8"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:7|~30~8"       : UNROUTED ;
+    "|ctr11:12|ctr1:7|~30~9"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:7|~30~9"       : UNROUTED ;
+    "|ctr11:12|ctr1:8|~30~1"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:8|~30~1"       : UNROUTED ;
+    "|ctr11:12|ctr1:8|~30~2"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:8|~30~2"       : UNROUTED ;
+    "|ctr11:12|ctr1:8|~30~3"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:8|~30~3"       : UNROUTED ;
+    "|ctr11:12|ctr1:8|~30~4"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:8|~30~4"       : UNROUTED ;
+    "|ctr11:12|ctr1:8|~30~5"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:8|~30~5"       : UNROUTED ;
+    "|ctr11:12|ctr1:8|~30~6"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:8|~30~6"       : UNROUTED ;
+    "|ctr11:12|ctr1:8|~30~7"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:8|~30~7"       : UNROUTED ;
+    "|ctr11:12|ctr1:8|~30~8"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:8|~30~8"       : UNROUTED ;
+    "|ctr11:12|ctr1:8|~30~9"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:8|~30~9"       : UNROUTED ;
+    "|ctr11:12|ctr1:9|~30~1"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:9|~30~1"       : UNROUTED ;
+    "|ctr11:12|ctr1:9|~30~2"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:9|~30~2"       : UNROUTED ;
+    "|ctr11:12|ctr1:9|~30~3"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:9|~30~3"       : UNROUTED ;
+    "|ctr11:12|ctr1:9|~30~4"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:9|~30~4"       : UNROUTED ;
+    "|ctr11:12|ctr1:9|~30~5"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:9|~30~5"       : UNROUTED ;
+    "|ctr11:12|ctr1:9|~30~6"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:9|~30~6"       : UNROUTED ;
+    "|ctr11:12|ctr1:9|~30~7"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:9|~30~7"       : UNROUTED ;
+    "|ctr11:12|ctr1:9|~30~8"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:9|~30~8"       : UNROUTED ;
+    "|ctr11:12|ctr1:9|~30~9"       : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:9|~30~9"       : UNROUTED ;
+    "|ctr11:12|ctr1:9|~30~10"      : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:9|~30~10"      : UNROUTED ;
+    "|ctr11:12|ctr1:10|~30~1"      : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:10|~30~1"      : UNROUTED ;
+    "|ctr11:12|ctr1:10|~30~2"      : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:10|~30~2"      : UNROUTED ;
+    "|ctr11:12|ctr1:10|~30~3"      : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:10|~30~3"      : UNROUTED ;
+    "|ctr11:12|ctr1:10|~30~4"      : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:10|~30~4"      : UNROUTED ;
+    "|ctr11:12|ctr1:10|~30~5"      : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:10|~30~5"      : UNROUTED ;
+    "|ctr11:12|ctr1:10|~30~6"      : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:10|~30~6"      : UNROUTED ;
+    "|ctr11:12|ctr1:10|~30~7"      : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:10|~30~7"      : UNROUTED ;
+    "|ctr11:12|ctr1:10|~30~8"      : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:10|~30~8"      : UNROUTED ;
+    "|ctr11:12|ctr1:10|~30~9"      : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:10|~30~9"      : UNROUTED ;
+    "|ctr11:12|ctr1:10|~30~10"     : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:10|~30~10"     : UNROUTED ;
+    "|ctr11:12|ctr1:11|~30~1"      : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:11|~30~1"      : UNROUTED ;
+    "|ctr11:12|ctr1:11|~30~2"      : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:11|~30~2"      : UNROUTED ;
+    "|ctr11:12|ctr1:11|~30~3"      : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:11|~30~3"      : UNROUTED ;
+    "|ctr11:12|ctr1:11|~30~4"      : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:11|~30~4"      : UNROUTED ;
+    "|ctr11:12|ctr1:11|~30~5"      : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:11|~30~5"      : UNROUTED ;
+    "|ctr11:12|ctr1:11|~30~6"      : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:11|~30~6"      : UNROUTED ;
+    "|ctr11:12|ctr1:11|~30~7"      : LOCATION   = ANY    ;
+    "|ctr11:12|ctr1:11|~30~7"      : UNROUTED ;
+    "|rg4:5|rg1:20|~16~1"          : LOCATION   = ANY    ;
+    "|rg4:5|rg1:20|~16~1"          : UNROUTED ;
+    "|rg4:5|rg1:21|~16~1"          : LOCATION   = ANY    ;
+    "|rg4:5|rg1:21|~16~1"          : UNROUTED ;
+    "|rg4:5|rg1:21|~16~2"          : LOCATION   = ANY    ;
+    "|rg4:5|rg1:21|~16~2"          : UNROUTED ;
+    "|rg4:5|rg1:22|~16~1"          : LOCATION   = ANY    ;
+    "|rg4:5|rg1:22|~16~1"          : UNROUTED ;
+    "|rg4:5|rg1:22|~16~2"          : LOCATION   = ANY    ;
+    "|rg4:5|rg1:22|~16~2"          : UNROUTED ;
+    "|rg4:5|rg1:22|~16~3"          : LOCATION   = ANY    ;
+    "|rg4:5|rg1:22|~16~3"          : UNROUTED ;
+    "|rg4:5|rg1:22|~16~4"          : LOCATION   = ANY    ;
+    "|rg4:5|rg1:22|~16~4"          : UNROUTED ;
+    "|rg4:5|rg1:22|~16~5"          : LOCATION   = ANY    ;
+    "|rg4:5|rg1:22|~16~5"          : UNROUTED ;
+
+END;

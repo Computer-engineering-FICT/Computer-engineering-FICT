@@ -1,0 +1,254 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>Бесплатный почтовый ящик - bigmir)net</title>
+<meta name="description" content="Bigmir)net - почта. Размер почтового ящика не ограничен.">
+<meta name="keywords" content="почта, e-mail, емейл, bigmir)net">
+<meta http-equiv="content-type" content="text/html; charset=windows-1251">
+<link rel="shortcut icon" href="http://i.bigmir.net/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="http://i.bigmir.net/css/content.css" type="text/css">
+<link rel="stylesheet" href="http://i.bigmir.net/css/skin.css" type="text/css">
+<script language="javascript" type="text/javascript" src="http://i.bigmir.net/js/common.js?ver=1.2"></script>
+<script language="JavaScript" type="text/javascript">
+<!--
+var isInit;
+function init()
+{
+        if (isInit)
+                return;
+        if (_fp)
+                _fp();
+        var oTmp = new makeObj("tdGlobalNav");
+        if (oTmp.elem) {
+                oTmp.elem.innerHTML = '<a href="javascript:globalNav();" id="globalnav" onfocus="this.blur();">все разделы&nbsp;<b id="globalnavPointer">+</b></a>';
+        }
+        var ts = new makeObj('Teaser');
+        if (ts.css) {
+                if (screen.width > 1000)
+                        ts.css.display = 'block';
+        }
+        if (echoLoginForm) {
+                isInit = true;
+                echoLoginForm('.bigmir.net', 'http://i.bigmir.net/', 0);
+        }
+}
+setTimeout(init, 100);
+setTimeout(init, 500);
+onload = init;
+
+var currNav, oldNav, newNav;
+function globalNav()
+{
+        var oPointer = new makeObj("globalnavPointer");
+        var oTmp1 = new makeObj("tdGlobal1");
+        var pH1 = '', pH, padTop;
+        if (currNav) {
+                pH = '+'; pH1 = oldNav; currNav = 0;
+        } else {
+                if (!oldNav) {
+                        oldNav = oTmp1.elem.innerHTML;
+                        newNav = {'icq':'icq','job':'работа','mail':'e-mail','top':'рейтинг','sms':'sms','map':'карты','news':'новости','tv':'телепрограмма','gameinfo':'описание игр','board':'объявления','goroskop':'гороскопы','weather':'погода','chat':'чат','photo':'фотоальбомы','dnevnik':'дневники','love':'знакомства','travel':'путешествия','prikol':'приколы','games':'игры','papers':'обои','cards':'открытки','video':'видео','radio':'радио','shop':'магазины','auto':'авто','mobile':'мобилки','tour':'туризм','realty':'недвижимость'};
+                }
+                for (var i in newNav)
+                        pH1 += '<a href="http://' + i + '.bigmir.net"><img src="http://i.bigmir.net/img/ico/' + (i == 'goroskop' ? 'horoscope/cancer' : i) + '.gif" alt="" class="icons" align="middle">' + newNav[i] + '</a> ';
+                pH = '&ndash;'; currNav = 1;
+        }
+        oPointer.elem.innerHTML = pH;
+        oTmp1.elem.innerHTML = pH1;
+}
+//-->
+</script>
+</head>
+<body marginwidth="0" marginheight="0">
+<form method="POST" name="login" action="http://passport.bigmir.net/login/">
+<div id="mainFloatForm"></div>
+</form>
+<table cellspacing="0" cellpadding="0" class="wide">
+<tr><td><div class="wide"><spacer></div></td><td valign="top" id="max">
+<table cellspacing="0" cellpadding="0" class="tbFrame">
+<tr>
+<td>&nbsp;<script language="javascript"><!--
+bmN=navigator,bmD=document,bmD.cookie="b=b",i=0,bs=[],bm={v:23,s:23,t:6,c:bmD.cookie?1:0,n:Math.round((Math.random()*1000000)),w:0};
+for(f=self;f!=f.parent;f=f.parent)bm.w++;
+try{if(bmN.plugins&&bmN.mimeTypes.length&&(x=bmN.plugins["Shockwave Flash"]))bm.m=parseInt(x.description.replace(/([a-zA-Z]|\s)+/,""));
+else for(f=3;f<20;f++)if(eval('new ActiveXObject("ShockwaveFlash.ShockwaveFlash.'+f+'")'))bm.m=f}catch(e){}
+try{bm.y=bmN.javaEnabled()?1:0}catch(e){}
+try{bmS=screen;bm.v^=bm.d=bmS.colorDepth||bmS.pixelDepth;bm.v^=bm.r=bmS.width}catch(e){}
+r=bmD.referrer.slice(7);if(r&&r.split('/')[0]!=window.location.host){bm.f=escape(r);bm.v^=r.length}
+bm.v^=window.location.href.length;for(x in bm)bs[i++]=x+bm[x];
+bmD.write('<img src=http://c.bigmir.net/?'+bs.join('&')+' style="width:0;height:0;border:none;">');
+//--></script></td>
+<td class="tdMenuService">
+<div class="small">
+<span class="floatLeft" id="tdGlobalNav"></span>
+<a href="http://info.bigmir.net/list/mail" class="floatRight aService" title="Первая помощь"><img src="http://i.bigmir.net/img/ico/help_.gif" alt="Первая помощь"></a>
+    <a href="http://passport.bigmir.net/registration/" class="floatRight aService" title="Регистрация на bigmir)net">Регистрация</a>
+    <a href="http://passport.bigmir.net/login/" onclick="return showFloatForm(0);" class="floatRight aService" title="Войти под своим логином"><b>Вход</b> на bigmir)net</a>
+<br clear="all"></div><br clear="all">
+</td></tr>
+<tr><td class="tdRight logo">
+<a href="http://www.bigmir.net/" title="на главную"><img src="http://i.bigmir.net/img/logo-small.gif" width="150" height="48" alt="на главную" border="0"></a><br>
+</td>	
+<td class="tdMenuMain" id="tdGlobal1">
+<a href="http://job.bigmir.net"><img src="http://i.bigmir.net/img/ico/job.gif" alt="" class="icons" align="middle">работа</a> <a href="http://mail.bigmir.net"><img src="http://i.bigmir.net/img/ico/mail.gif" alt="" class="icons" align="middle">e-mail</a> <a href="http://top.bigmir.net"><img src="http://i.bigmir.net/img/ico/top.gif" alt="" class="icons" align="middle">рейтинг</a> <a href="http://sms.bigmir.net"><img src="http://i.bigmir.net/img/ico/sms.gif" alt="" class="icons" align="middle">sms</a> <a href="http://map.bigmir.net"><img src="http://i.bigmir.net/img/ico/map.gif" alt="" class="icons" align="middle">карты</a> <a href="http://news.bigmir.net"><img src="http://i.bigmir.net/img/ico/news.gif" alt="" class="icons" align="middle">новости</a> <a href="http://board.bigmir.net"><img src="http://i.bigmir.net/img/ico/board.gif" alt="" class="icons" align="middle">объявления</a> <a href="http://tv.bigmir.net"><img src="http://i.bigmir.net/img/ico/tv.gif" alt="" class="icons" align="middle">телепрограмма</a> <a href="http://goroskop.bigmir.net"><img src="http://i.bigmir.net/img/ico/horoscope/cancer.gif" alt="" class="icons" align="middle">гороскопы</a> <a href="http://weather.bigmir.net"><img src="http://i.bigmir.net/img/ico/weather.gif" alt="" class="icons" align="middle">погода</a> <a href="http://tour.bigmir.net"><img src="http://i.bigmir.net/img/ico/tour.gif" alt="" class="icons" align="middle">туризм</a> <a href="http://shop.bigmir.net"><img src="http://i.bigmir.net/img/ico/shop.gif" alt="" class="icons" align="middle">магазины</a> <a href="http://auto.bigmir.net"><img src="http://i.bigmir.net/img/ico/auto.gif" alt="" class="icons" align="middle">авто</a> <a href="http://mobile.bigmir.net"><img src="http://i.bigmir.net/img/ico/mobile.gif" alt="" class="icons" align="middle">мобилки</a> <a href="http://chat.bigmir.net"><img src="http://i.bigmir.net/img/ico/chat.gif" alt="" class="icons" align="middle">чат</a> <a href="http://photo.bigmir.net"><img src="http://i.bigmir.net/img/ico/photo.gif" alt="" class="icons" align="middle">фотоальбомы</a> <a href="http://love.bigmir.net"><img src="http://i.bigmir.net/img/ico/love.gif" alt="" class="icons" align="middle">знакомства</a> <a href="http://realty.bigmir.net"><img src="http://i.bigmir.net/img/ico/realty.gif" alt="" class="icons" align="middle">недвижимость</a> <a href="http://icq.bigmir.net"><img src="http://i.bigmir.net/img/ico/icq.gif" alt="" class="icons" align="middle">icq</a> </td></tr></table><table cellspacing="0" cellpadding="0" class="TopBaner">
+<tr><td class="width1pc">
+<div class="dTopBaner" style="width:730px;">
+		<!-- Bigmir)net advertising -->
+		<iFrame src="http://ad5.bigmir.net/t.bbn?19371&5&f&1248451&hhttp%3A%2F%2Fmail.bigmir.net%2F%3Ferror%3D%25CE%25F8%25E8%25E1%25EA%25E0%2B%25F3%25F1%25F2%25E0%25ED%25EE%25E2%25EA%25E8%2BCookies%2B%25E8%25EB%25E8%2B%25E2%25F0%25E5%25EC%25FF%2B%25F1%25E5%25F1%25F1%25E8%25E8%2B%25E8%25F1%25F2%25E5%25EA%25EB%25EE." width="730" height="90" frameborder="0" vspace="0" hspace="0" marginwidth="0" marginheight="0" scrolling="no">
+			<a href="http://ad5.bigmir.net/c.bbn?19371&5&1248451&hhttp%3A%2F%2Fmail.bigmir.net%2F%3Ferror%3D%25CE%25F8%25E8%25E1%25EA%25E0%2B%25F3%25F1%25F2%25E0%25ED%25EE%25E2%25EA%25E8%2BCookies%2B%25E8%25EB%25E8%2B%25E2%25F0%25E5%25EC%25FF%2B%25F1%25E5%25F1%25F1%25E8%25E8%2B%25E8%25F1%25F2%25E5%25EA%25EB%25EE." target="_blank">
+				<img src="http://ad5.bigmir.net/t.bbn?19371&5&i&1248451&hhttp%3A%2F%2Fmail.bigmir.net%2F%3Ferror%3D%25CE%25F8%25E8%25E1%25EA%25E0%2B%25F3%25F1%25F2%25E0%25ED%25EE%25E2%25EA%25E8%2BCookies%2B%25E8%25EB%25E8%2B%25E2%25F0%25E5%25EC%25FF%2B%25F1%25E5%25F1%25F1%25E8%25E8%2B%25E8%25F1%25F2%25E5%25EA%25EB%25EE." width="730" height="90" border="0" alt="Bigmir)net advertising" />
+			</a>
+		</iFrame>
+		<!-- eof Bigmir)net advertising --></div></td><script language='JavaScript'>
+if (screen.width > 1000) {
+        document.write('<scr' + 'ipt language="JavaScript" src="http://ad7.bigmir.net/t.bbn?19534&7&j&"></scr' + 'ipt>');
+}</script>
+</tr></table>
+<!-- header. навигация по разделу и скин -->
+<div id="Skin">
+<table cellspacing="0" cellpadding="0" class="tbFrame" id="Skin">
+<tr><td class="tdRight" id="title"><h1>Почта</h1></td>
+<td class="tdMenuCommon">
+<a class="current" href="/">Начало раздела</a><a href="http://antivirus.bigmir.net">Интернет-безопасность</a><a href="http://passport.bigmir.net/registration/">Регистрация</a><a href="http://passport.bigmir.net">Изменить</a><a href="http://passport.bigmir.net/remove/">Удалить</a><a href="http://passport.bigmir.net/remind/">Забыли пароль?</a></td></tr></table>
+</div>
+<script language="JavaScript">
+if(b.moz)document.write('<style type="text/css">input,select,textarea{visibility:hidden;}</style>');
+</script>
+<!-- конец шапке --><!-- собссно контент -->
+<table cellspacing="0" cellpadding="0" class="tbFrame"><tr><td>
+<!-- центральная колонка -->
+<h1 class="header" id="borderRed">Ошибка установки Cookies или время сессии истекло.</h1><h2 class="header">Для входа в почту укажите</h2>
+<div class="ContentBorder">
+	<table cellspacing="6" cellpadding="0" class="tbInside">
+	<form method="POST" name="_login" action="http://passport.bigmir.net/login/" onsubmit1="_subm(this);">
+	<input type="hidden" name="url" value="http://mbox.bigmir.net/?auth=1"/>
+	<input type="hidden" name="rnd" value="28141617"/>
+	<tr>
+		<td class="tdRight" width="15%" nowrap>Ваш логин</td>
+		<td><input type="text" name="login" size="30" onchange="this.form.rnd.value=Math.random();" tabindex="1"> <a href="http://passport.bigmir.net/registration/">хотите зарегистрироваться?</a></td>
+	</tr>
+	<tr>
+		<td class="tdRight" nowrap>Пароль</td>
+		<td><input type="password" name="pass" size="30" onchange="this.form.rnd.value=Math.random();" tabindex="1"> <a href="http://passport.bigmir.net/remind/">забыли пароль?</a></td>
+	</tr>
+	<tr>
+		<td class="tdRight">&nbsp;</td>
+		<td><input type="checkbox" id="l_auth_type" name="auth_type" value="1"/> <label for="l_auth_type">Запомнить меня на две недели.</label></td>
+	</tr>
+	<tr>
+		<td class="tdRight">&nbsp;</td>
+		<td><input name="subm" value=" Войти " type="submit" tabindex="1"></td>
+	</tr>
+	</form>
+	</table>
+</div>
+<script language="JavaScript" type="text/javascript">
+document.forms._login.login.focus();
+</script>
+<h2 class="header">Информация</h2>
+<div class="ContentBorder">
+	<a href="http://passport.bigmir.net/registration/"><b>Зарегистрировав</b></a> свой бесплатный почтовый ящик на bigmir)net, Вы получаете следующие <b>преимущества</b>:
+	<p class="pointer">легкозапоминаемый электронный адрес;</p>
+	<p class="pointer">быстрый доступ к своей почте со всех уголков Земли - 24 часа в сутки, 7 дней в неделю;</p>
+	<p class="pointer"><b>неограниченный размер</b> почтового ящика;</p>
+	<p class="pointer">обучаемую <b>АнтиСпам</b> систему <a href="http://antivirus.bigmir.net/" target="_blank" class="outside">Лаборатории Касперского</a> для защиты почтового ящика от спама;</p>
+	<p class="pointer">удобный и интуитивный <b>интерфейс на трех языках</b> (русский, украинский и английский);</p>
+	<p class="pointer">возможность создания собственных папок и настройку правил сортировки почты;</p>
+	<p class="pointer">уведомление по SMS о приходе новой почты, для клиентов оператора <a href="http://gsm.goldentele.com/" target="_blank" class="outside">"Голден&nbsp;Телеком"</a>;</p>
+	<p class="pointer">сервер входящих сообщений POP3 (указывайте сервер <b>pop.bigmir.net</b>);</p>
+	<p class="pointer">бесплатную проверку всей Вашей электронной корреспонденции на вирусы с помощью программы <a href="http://antivirus.bigmir.net/" target="_blank" class="outside">Лаборатории Касперского</a>.</p>
+</div>
+
+<h2 class="header">Примечание</h2>
+<div class="ContentBorder">
+	Cервер исходящих сообщений (SMTP) <b>не&nbsp;предоставляется</b>, указывайте SMTP сервер своего провайдера.</div></td><td class="tdPremium"><!-- правая колонка --><div class="dPremium">
+		<!-- Bigmir)net advertising -->
+		<iFrame src="http://ad1.bigmir.net/t.bbn?12870&1&f&4336907&hhttp%3A%2F%2Fmail.bigmir.net%2F%3Ferror%3D%25CE%25F8%25E8%25E1%25EA%25E0%2B%25F3%25F1%25F2%25E0%25ED%25EE%25E2%25EA%25E8%2BCookies%2B%25E8%25EB%25E8%2B%25E2%25F0%25E5%25EC%25FF%2B%25F1%25E5%25F1%25F1%25E8%25E8%2B%25E8%25F1%25F2%25E5%25EA%25EB%25EE." width="240" height="350" frameborder="0" vspace="0" hspace="0" marginwidth="0" marginheight="0" scrolling="no">
+			<a href="http://ad1.bigmir.net/c.bbn?12870&1&4336907&hhttp%3A%2F%2Fmail.bigmir.net%2F%3Ferror%3D%25CE%25F8%25E8%25E1%25EA%25E0%2B%25F3%25F1%25F2%25E0%25ED%25EE%25E2%25EA%25E8%2BCookies%2B%25E8%25EB%25E8%2B%25E2%25F0%25E5%25EC%25FF%2B%25F1%25E5%25F1%25F1%25E8%25E8%2B%25E8%25F1%25F2%25E5%25EA%25EB%25EE." target="_blank">
+				<img src="http://ad1.bigmir.net/t.bbn?12870&1&i&4336907&hhttp%3A%2F%2Fmail.bigmir.net%2F%3Ferror%3D%25CE%25F8%25E8%25E1%25EA%25E0%2B%25F3%25F1%25F2%25E0%25ED%25EE%25E2%25EA%25E8%2BCookies%2B%25E8%25EB%25E8%2B%25E2%25F0%25E5%25EC%25FF%2B%25F1%25E5%25F1%25F1%25E8%25E8%2B%25E8%25F1%25F2%25E5%25EA%25EB%25EE." width="240" height="350" border="0" alt="Bigmir)net advertising" />
+			</a>
+		</iFrame>
+		<!-- eof Bigmir)net advertising --></div></td></tr></table>
+<!-- конец собссно контента -->
+<script language="JavaScript">
+	if(b.moz)document.write('<style type="text/css">input,select,textarea{visibility:visible;}</style>');
+</script>
+
+<table cellspacing="0" cellpadding="0" class="tbFrame">
+	<tr>
+		<td class="width50pc">	
+			<form method=get action=http://search.bigmir.net/index.php class="dSearch">	
+				<h2 class="header" id="borderYellow">Поиск в Украине</h2>		
+				<table cellspacing="0" cellpadding="0" border="0">
+					<tr>		
+						<td colspan="2">
+							<input type=text name=q size=20 class="width100pc">
+						</td>
+					</tr>		
+					<tr>
+						<td class="width99pc">
+							например: <a href="http://search.bigmir.net/index.php?q=%E3%EE%F0%EE%F1%EA%EE%EF%FB">гороскопы</a>&nbsp; |&nbsp; <a href="http://search.bigmir.net/advanced.php">расширенный поиск</a>
+						</td>
+						<td>
+							<input type=submit value="Найти!">
+						</td>		
+					</tr>
+				</table>	
+			</form>
+		</td>
+		<td>
+			<!-- bigbn.com.ua 468x60-->
+			<ScRipT lanGuagE='jAvAscrIpt'>
+			//<!--
+			d=document;
+			rnd_num = Math.round((Math.random()*10000000));
+			bbn_l='&'+escape((self!=top)?'f'+d.referrer:'h'+window.location.href);
+			d.write('<iFrame src=http://ad0.bigmir.net/t.bbn?24459&0&f&'+rnd_num+bbn_l+
+			' width=468 height=60 frameborder=0 vspace=0 hspace=0 marginwidth=0 marginheight=0 scrolling=no>');
+			d.write('<a target=_blank href=http://ad0.bigmir.net/c.bbn?24459&0&'+rnd_num+bbn_l+
+			'><img src=http://ad0.bigmir.net/t.bbn?24459&0&i&'+rnd_num+bbn_l+' width=468 height=60 border=0 alt="BigBN Common"></a></iFrame>');
+			//--></ScriPt>
+			<!-- bigbn.com.ua 468x60-->
+		</td>
+	</tr>
+</table>
+
+<!-- копирайты -->
+<table cellspacing="0" cellpadding="0" class="tbFrame">
+	<tr>
+		<td class="width50pc">	
+			<div class="ContentBorder small" id="grey">		
+			<p>bigmir)net не несет ответственности за содержание информации, которую размещают пользователи ресурса.</p>		
+			<p>Copyright &copy;&nbsp;2000-2007 
+				 <a target="_blank" class="outside" href="http://www.bigmir-internet.com.ua">BIGMIR-Internet</a>. Все права защищены.				<br> 
+				<a href="http://info.bigmir.net/list/mail">Cвязаться с нами</a>
+			</p>		
+			<p>
+				<!-- bigmir)net TOP 100 -->		
+				<a href=http://www.bigmir.net><img src=http://i.bigmir.net/cnt/b00_88x31.gif width=88 height=31 border=0></a>
+					
+			</p>
+			</div>
+		</td>		
+		<td class="width50pc">	
+			<div class="ContentBorder small" id="grey">						
+				<a target="_blank" class="outside" href="http://www.korrespondent.net">КорреспонденТ&nbsp;&mdash; новости</a><br>
+				<a target="_blank" class="outside" href="http://www.afisha.ua">Афиша&nbsp;&mdash; все развлечения Киева</a><br>
+				<a target="_blank" class="outside" href="http://www.kyivpost.com">KyivPost&nbsp;&mdash; новости на английском</a><br>
+				<a target="_blank" class="outside" href="http://www.15minut.com.ua">15minut.com.ua&nbsp;&mdash; твоя утренняя газета</a><br>
+				<a target="_blank" class="outside" href="http://www.pink.com.ua">Pink&nbsp;&mdash; мода, секс, звезды</a><br>
+				<a target="_blank" class="outside" href="http://www.uasport.net">UaSport&nbsp;&mdash; спортивные новости</a><br>
+				<a target="_blank" class="outside" href="http://www.ukrjob.net">UkrJob&nbsp;&mdash; работа, поиск вакансий</a><br>			
+				<a target="_blank" class="outside" href="http://www.ukrbiz.net">UkrBiz&nbsp;&mdash; бизнес в Украине</a><br>
+				<a target="_blank" class="outside" href="http://www.ricardo.com.ua">Ricardo&nbsp;&mdash; доступно о финансах</a>	
+			</div>
+		</td>
+	</tr>
+</table>
+<!-- конец всему -->
+</td>
+<td style="border-left:1px solid #cccccc;">
+	<div class="wide"><spacer></div>
+</td>
+</tr>
+</table>
+</body>
+</html>
