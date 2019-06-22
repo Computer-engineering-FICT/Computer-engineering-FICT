@@ -1,0 +1,55 @@
+-- MAX+plus II Compiler Fit File      
+-- Version 10.1 06/12/2001            
+-- Compiled: 09/28/2010 23:14:19      
+
+-- Copyright (C) 1988-2001 Altera Corporation
+-- Any megafunction design, and related net list (encrypted or decrypted),
+-- support information, device programming or simulation file, and any other
+-- associated documentation or information provided by Altera or a partner
+-- under Altera's Megafunction Partnership Program may be used only to
+-- program PLD devices (but not masked PLD devices) from Altera.  Any other
+-- use of such megafunction design, net list, support information, device
+-- programming or simulation file, or any other related documentation or
+-- information is prohibited for any other purpose, including, but not
+-- limited to modification, reverse engineering, de-compiling, or use with
+-- any other silicon devices, unless such use is explicitly licensed under
+-- a separate agreement with Altera or a megafunction partner.  Title to
+-- the intellectual property, including patents, copyrights, trademarks,
+-- trade secrets, or maskworks, embodied in any such megafunction design,
+-- net list, support information, device programming or simulation file, or
+-- any other related documentation or information provided by Altera or a
+-- megafunction partner, remains with Altera, the megafunction partner, or
+-- their respective licensors.  No other licenses, including any licenses
+-- needed under any third party's intellectual property, are provided herein.
+
+CHIP "plmt_sm"
+BEGIN
+
+    DEVICE = "EP910ILC-12";
+
+    "Ci0"                          : INPUT_PIN  = 43     ;
+    "F1"                           : INPUT_PIN  = 42     ;
+    "F2"                           : INPUT_PIN  = 41     ;
+    "F3"                           : INPUT_PIN  = 27     ;
+    "F4"                           : INPUT_PIN  = 26     ;
+    "Pi0"                          : INPUT_PIN  = 25     ;
+    "Pi1"                          : INPUT_PIN  = 21     ;
+    "Qi0"                          : INPUT_PIN  = 20     ;
+    "Qi1"                          : INPUT_PIN  = 19     ;
+    "Ci2"                          : OUTPUT_PIN = 18     ; -- LC24
+    "Di0"                          : OUTPUT_PIN = 16     ; -- LC23
+    "Di1"                          : OUTPUT_PIN = 15     ; -- LC22
+    "|plmt_c2i_2:18|~37~1"         : LOCATION   = LC13   ; -- PIN 6  -- |plmt_c2i_2:18|Ci_2~1
+    "|plmt_c2i_2:18|~37~2"         : LOCATION   = LC14   ; -- PIN 7  -- |plmt_c2i_2:18|Ci_2~2
+    "|plmt_c2i_2:18|~37~3"         : LOCATION   = LC15   ; -- PIN 8  -- |plmt_c2i_2:18|Ci_2~3
+    "|plmt_c2i_2:18|~37~4"         : LOCATION   = LC16   ; -- PIN 9  -- |plmt_c2i_2:18|Ci_2~4
+    "|plmt_c2i_2:18|~37~5"         : LOCATION   = LC17   ; -- PIN 10  -- |plmt_c2i_2:18|Ci_2~5
+    "|plmt_di:4|~39~1"             : LOCATION   = LC18   ; -- PIN 11  -- |plmt_di:4|Di~1
+    "|plmt_di:4|~39~2"             : LOCATION   = LC19   ; -- PIN 12  -- |plmt_di:4|Di~2
+    "|plmt_di:4|~39~3"             : LOCATION   = LC20   ; -- PIN 13  -- |plmt_di:4|Di~3
+    "|plmt_di:4|~39~4"             : LOCATION   = LC21   ; -- PIN 14  -- |plmt_di:4|Di~4
+    "|plmt_di:17|~39~1"            : LOCATION   = LC12   ; -- PIN 28  -- |plmt_di:17|Di~1
+    "|plmt_di:17|~39~2"            : LOCATION   = LC11   ; -- PIN 29  -- |plmt_di:17|Di~2
+    "|plmt_di:17|~39~3"            : LOCATION   = LC10   ; -- PIN 30  -- |plmt_di:17|Di~3
+
+END;

@@ -1,0 +1,8 @@
+entityCTRG is port(CLK:in bit; --синхросигнал
+R:inbit;-- асинхронный сброс
+С3:inbit;-- перенос из сумматора
+F:inbit_vector(2 downto0);-- управление
+D:inbit_vector(19 downto3);-- входное данное
+CTR:outbit_vector(19 downto3)-- выходcчетчика
+); 
+end entity;

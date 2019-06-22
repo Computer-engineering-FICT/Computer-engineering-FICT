@@ -1,0 +1,240 @@
+-- Copyright (C) 1988-2001 Altera Corporation
+-- Any megafunction design, and related net list (encrypted or decrypted),
+-- support information, device programming or simulation file, and any other
+-- associated documentation or information provided by Altera or a partner
+-- under Altera's Megafunction Partnership Program may be used only to
+-- program PLD devices (but not masked PLD devices) from Altera.  Any other
+-- use of such megafunction design, net list, support information, device
+-- programming or simulation file, or any other related documentation or
+-- information is prohibited for any other purpose, including, but not
+-- limited to modification, reverse engineering, de-compiling, or use with
+-- any other silicon devices, unless such use is explicitly licensed under
+-- a separate agreement with Altera or a megafunction partner.  Title to
+-- the intellectual property, including patents, copyrights, trademarks,
+-- trade secrets, or maskworks, embodied in any such megafunction design,
+-- net list, support information, device programming or simulation file, or
+-- any other related documentation or information provided by Altera or a
+-- megafunction partner, remains with Altera, the megafunction partner, or
+-- their respective licensors.  No other licenses, including any licenses
+-- needed under any third party's intellectual property, are provided herein.
+
+
+
+N.C. = No Connect. This pin has no internal connection to the device.
+VCCINT = Dedicated power pin, which MUST be connected to VCC (5.0 volts).
+VCCIO = Dedicated power pin, which MUST be connected to VCC (5.0 volts).
+GNDINT = Dedicated ground pin or unused dedicated input, which MUST be connected to GND.
+GNDIO = Dedicated ground pin, which MUST be connected to GND.
+RESERVED = Unused I/O pin, which MUST be left unconnected.
+
+----------------------------------------------------------------------------
+
+CHIP "lab6" ASSIGNED TO AN EPF10K30RC208-3
+TCK                              : 1
+CONF_DONE                        : 2
+nCEO                             : 3
+TDO                              : 4
+VCCIO                            : 5
+VCCINT                           : 6
+AFM25                            : 7
+AFM23                            : 8
+RESERVED                         : 9
+AFM22                            : 10
+RESERVED                         : 11
+DI5                              : 12
+RESERVED                         : 13
+DI6                              : 14
+DI3                              : 15
+D1                               : 16
+AFM13                            : 17
+RESERVED                         : 18
+AFM15                            : 19
+GNDIO                            : 20
+GNDINT                           : 21
+VCCIO                            : 22
+VCCINT                           : 23
+RESERVED                         : 24
+D0                               : 25
+F13                              : 26
+F4                               : 27
+CCRG0                            : 28
+F5                               : 29
+CCRG1                            : 30
+F18                              : 31
+GNDIO                            : 32
+GNDINT                           : 33
+VCCIO                            : 34
+VCCINT                           : 35
+RESERVED                         : 36
+RESERVED                         : 37
+RESERVED                         : 38
+CCRG7                            : 39
+RESERVED                         : 40
+CCRG6                            : 41
+VCCIO                            : 42
+VCCINT                           : 43
+RESERVED                         : 44
+RESERVED                         : 45
+RESERVED                         : 46
+RESERVED                         : 47
+GNDIO                            : 48
+GNDINT                           : 49
+TMS                              : 50
+TRST                             : 51
+nSTATUS                          : 52
+RESERVED                         : 53
+RESERVED                         : 54
+RESERVED                         : 55
+RESERVED                         : 56
+RESERVED                         : 57
+RESERVED                         : 58
+GNDIO                            : 59
+RESERVED                         : 60
+D7                               : 61
+RESERVED                         : 62
+RESERVED                         : 63
+F19                              : 64
+RESERVED                         : 65
+VCCIO                            : 66
+RESERVED                         : 67
+RESERVED                         : 68
+RESERVED                         : 69
+RESERVED                         : 70
+RESERVED                         : 71
+GNDIO                            : 72
+RESERVED                         : 73
+RESERVED                         : 74
+RESERVED                         : 75
+VCCINT                           : 76
+VCCINT                           : 77
+F20                              : 78
+F15                              : 79
+F17                              : 80
+GNDINT                           : 81
+GNDINT                           : 82
+DI4                              : 83
+VCCIO                            : 84
+RESERVED                         : 85
+RESERVED                         : 86
+RESERVED                         : 87
+RESERVED                         : 88
+D2                               : 89
+RESERVED                         : 90
+GNDIO                            : 91
+RESERVED                         : 92
+RESERVED                         : 93
+RESERVED                         : 94
+DI7                              : 95
+RESERVED                         : 96
+RESERVED                         : 97
+VCCIO                            : 98
+RESERVED                         : 99
+RESERVED                         : 100
+RESERVED                         : 101
+RESERVED                         : 102
+RESERVED                         : 103
+F2                               : 104
+nCONFIG                          : 105
+VCCINT                           : 106
+MSEL1                            : 107
+MSEL0                            : 108
+VCCINT                           : 109
+VCCIO                            : 110
+RESERVED                         : 111
+RESERVED                         : 112
+RESERVED                         : 113
+RESERVED                         : 114
+RESERVED                         : 115
+RESERVED                         : 116
+VCCINT                           : 117
+VCCIO                            : 118
+RESERVED                         : 119
+RESERVED                         : 120
+RESERVED                         : 121
+RESERVED                         : 122
+GNDINT                           : 123
+GNDIO                            : 124
+CCRG2                            : 125
+D6                               : 126
+D3                               : 127
+D5                               : 128
+GNDINT                           : 129
+GNDIO                            : 130
+AFM12                            : 131
+AFM14                            : 132
+RESERVED                         : 133
+RESERVED                         : 134
+RESERVED                         : 135
+RESERVED                         : 136
+VCCINT                           : 137
+VCCIO                            : 138
+RESERVED                         : 139
+F3                               : 140
+DI2                              : 141
+DI0                              : 142
+F0                               : 143
+DI1                              : 144
+VCCINT                           : 145
+VCCIO                            : 146
+CCRG5                            : 147
+CCRG3                            : 148
+CCRG4                            : 149
+AFM24                            : 150
+GNDINT                           : 151
+GNDIO                            : 152
+TDI                              : 153
+nCE                              : 154
+DCLK                             : 155
+DATA0                            : 156
+RESERVED                         : 157
+RESERVED                         : 158
+RESERVED                         : 159
+F6                               : 160
+RESERVED                         : 161
+D4                               : 162
+RESERVED                         : 163
+F7                               : 164
+VCCIO                            : 165
+RESERVED                         : 166
+F1                               : 167
+RESERVED                         : 168
+RESERVED                         : 169
+RESERVED                         : 170
+GNDIO                            : 171
+RESERVED                         : 172
+RESERVED                         : 173
+RESERVED                         : 174
+RESERVED                         : 175
+RESERVED                         : 176
+F22                              : 177
+VCCIO                            : 178
+F25                              : 179
+F21                              : 180
+VCCINT                           : 181
+AFM21                            : 182
+AFM11                            : 183
+F16                              : 184
+GNDINT                           : 185
+RESERVED                         : 186
+RESERVED                         : 187
+GNDIO                            : 188
+RESERVED                         : 189
+RESERVED                         : 190
+RESERVED                         : 191
+AFM20                            : 192
+RESERVED                         : 193
+VCCIO                            : 194
+RESERVED                         : 195
+RESERVED                         : 196
+F8                               : 197
+RESERVED                         : 198
+RESERVED                         : 199
+AFM10                            : 200
+GNDIO                            : 201
+RESERVED                         : 202
+F14                              : 203
+RESERVED                         : 204
+RESERVED                         : 205
+RESERVED                         : 206
+RESERVED                         : 207
+RESERVED                         : 208

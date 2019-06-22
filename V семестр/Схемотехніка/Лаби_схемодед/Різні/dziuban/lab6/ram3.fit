@@ -1,0 +1,100 @@
+-- MAX+plus II Compiler Fit File      
+-- Version 10.0 RC2 9/14/2000         
+-- Compiled: 10/16/2009 00:51:55      
+
+-- Copyright (C) 1988-2000 Altera Corporation
+-- Any megafunction design, and related net list (encrypted or decrypted),
+-- support information, device programming or simulation file, and any other
+-- associated documentation or information provided by Altera or a partner
+-- under Altera's Megafunction Partnership Program may be used only to
+-- program PLD devices (but not masked PLD devices) from Altera.  Any other
+-- use of such megafunction design, net list, support information, device
+-- programming or simulation file, or any other related documentation or
+-- information is prohibited for any other purpose, including, but not
+-- limited to modification, reverse engineering, de-compiling, or use with
+-- any other silicon devices, unless such use is explicitly licensed under
+-- a separate agreement with Altera or a megafunction partner.  Title to
+-- the intellectual property, including patents, copyrights, trademarks,
+-- trade secrets, or maskworks, embodied in any such megafunction design,
+-- net list, support information, device programming or simulation file, or
+-- any other related documentation or information provided by Altera or a
+-- megafunction partner, remains with Altera, the megafunction partner, or
+-- their respective licensors.  No other licenses, including any licenses
+-- needed under any third party's intellectual property, are provided herein.
+
+CHIP "ram3"
+BEGIN
+
+    DEVICE = "EPM9320LC84-15";
+
+    "Clock"                        : INPUT_PIN  = 1      ;
+    "DC1"                          : INPUT_PIN  = 84     ;
+    "DC2"                          : INPUT_PIN  = 72     ;
+    "DC3"                          : INPUT_PIN  = 13     ;
+    "DC40"                         : INPUT_PIN  = 11     ;
+    "DC41"                         : INPUT_PIN  = 32     ;
+    "DC42"                         : INPUT_PIN  = 65     ;
+    "DC43"                         : INPUT_PIN  = 19     ;
+    "DC50"                         : INPUT_PIN  = 33     ;
+    "DC51"                         : INPUT_PIN  = 34     ;
+    "DC52"                         : INPUT_PIN  = 9      ;
+    "DC53"                         : INPUT_PIN  = 10     ;
+    "DI"                           : INPUT_PIN  = 31     ;
+    "RD"                           : INPUT_PIN  = 12     ;
+    "WR"                           : INPUT_PIN  = 66     ;
+    "BI"                           : OUTPUT_PIN = 22     ;
+    "BI~1"                         : LOCATION   = LC16_C4;
+    "|ram2:57|et:17|:34"           : LOCATION   = LC1_B2 ;  -- |ram2:57|et:17|q
+    "|ram2:57|et:17|~55~1~2~3"     : LOCATION   = LC11_B1;
+    "|ram2:57|et:17|~55~1~2~3~3"   : LOCATION   = LC12_C4;
+    "|ram2:57|et:17|~55~1~2~3~4"   : LOCATION   = LC11_C4;
+    "|ram2:57|et:17|~55~1~2~3~5"   : LOCATION   = LC10_C4;
+    "|ram2:57|et:17|~55~1~2~3~6"   : LOCATION   = LC1_C4 ;
+    "|ram2:57|et:18|:34"           : LOCATION   = LC6_B1 ;  -- |ram2:57|et:18|q
+    "|ram2:57|et:19|:34"           : LOCATION   = LC5_B1 ;  -- |ram2:57|et:19|q
+    "|ram2:57|et:20|:34"           : LOCATION   = LC4_B1 ;  -- |ram2:57|et:20|q
+    "|ram2:72|et:17|:34"           : LOCATION   = LC3_B1 ;  -- |ram2:72|et:17|q
+    "|ram2:72|et:18|:34"           : LOCATION   = LC2_B1 ;  -- |ram2:72|et:18|q
+    "|ram2:72|et:19|:34"           : LOCATION   = LC1_B1 ;  -- |ram2:72|et:19|q
+    "|ram2:72|et:20|:34"           : LOCATION   = LC1_B3 ;  -- |ram2:72|et:20|q
+    "|ram2:87|et:17|:34"           : LOCATION   = LC9_C4 ;  -- |ram2:87|et:17|q
+    "|ram2:87|et:18|:34"           : LOCATION   = LC8_C4 ;  -- |ram2:87|et:18|q
+    "|ram2:87|et:19|:34"           : LOCATION   = LC7_C4 ;  -- |ram2:87|et:19|q
+    "|ram2:87|et:20|:34"           : LOCATION   = LC6_C4 ;  -- |ram2:87|et:20|q
+    "|ram2:102|et:17|:34"          : LOCATION   = LC5_C4 ;  -- |ram2:102|et:17|q
+    "|ram2:102|et:18|:34"          : LOCATION   = LC4_C4 ;  -- |ram2:102|et:18|q
+    "|ram2:102|et:19|:34"          : LOCATION   = LC2_C4 ;  -- |ram2:102|et:19|q
+    "|ram2:102|et:20|:34"          : LOCATION   = LC3_C4 ;  -- |ram2:102|et:20|q
+
+END;
+
+INTERNAL_INFO "ram3"
+BEGIN
+	DEVICE = EPM9320LC84-15;
+    LC16_C4 : LORAX = "1:G92R2,OE6->OH12R1P22|";
+    OD1P1   : LORAX = "1:->LC7_C4,->LC6_C4,->LC8_C4,->LC9_C4,->LC2_C4,->LC3_C4,->LC4_C4,->LC5_C4,->LC1_B1,->LC1_B3,->LC2_B1,->LC3_B1,->LC5_B1,->LC4_B1,->LC6_B1,->LC1_B2|";
+    OD2P84  : LORAX = "1:->LC1_B2,->LC12_C4,->LC11_C4,->LC10_C4,->LC1_C4,->LC11_B1,->LC6_B1,->LC5_B1,->LC4_B1,->LC3_B1,->LC2_B1,->LC1_B1,->LC1_B3,->LC9_C4,->LC8_C4,->LC7_C4,->LC6_C4,->LC5_C4,->LC4_C4,->LC2_C4,->LC3_C4|2:G70R1|3:PA21R1C1->LC1_B2|,3:PA21R1C2->LC1_B3|,3:PA21R1C0->LC11_B1,->LC6_B1,->LC5_B1,->LC4_B1,->LC3_B1,->LC2_B1,->LC1_B1||,2:G70R2,PA21R2C3->LC12_C4,->LC11_C4,->LC10_C4,->LC1_C4,->LC9_C4,->LC8_C4,->LC7_C4,->LC6_C4,->LC5_C4,->LC4_C4,->LC2_C4,->LC3_C4||";
+    OD3P72  : LORAX = "1:->LC1_B2,->LC10_C4,->LC6_B1,->LC5_B1,->LC4_B1,->LC3_B1,->LC2_B1,->LC1_B1,->LC1_B3,->LC9_C4,->LC8_C4,->LC7_C4,->LC6_C4,->LC5_C4,->LC4_C4,->LC2_C4,->LC3_C4|2:G71R1|3:PA24R1C1->LC1_B2|,3:PA24R1C2->LC1_B3|,3:PA24R1C0->LC6_B1,->LC5_B1,->LC4_B1,->LC3_B1,->LC2_B1,->LC1_B1||,2:G71R2,PA24R2C3->LC10_C4,->LC9_C4,->LC8_C4,->LC7_C4,->LC6_C4,->LC5_C4,->LC4_C4,->LC2_C4,->LC3_C4||";
+    OD0P13  : LORAX = "1:->LC1_B2,->LC11_C4,->LC6_B1,->LC5_B1,->LC4_B1,->LC3_B1,->LC2_B1,->LC1_B1,->LC1_B3,->LC9_C4,->LC8_C4,->LC7_C4,->LC6_C4,->LC5_C4,->LC4_C4,->LC2_C4,->LC3_C4|2:G58R1|3:PA31R1C1->LC1_B2|,3:PA31R1C2->LC1_B3|,3:PA31R1C0->LC6_B1,->LC5_B1,->LC4_B1,->LC3_B1,->LC2_B1,->LC1_B1||,2:G58R2,PA31R2C3->LC11_C4,->LC9_C4,->LC8_C4,->LC7_C4,->LC6_C4,->LC5_C4,->LC4_C4,->LC2_C4,->LC3_C4||";
+    OV7C0P11 : LORAX = "1:V10C0|2:G19R1|3:PA17R1C1->LC1_B2|,3:PA17R1C0->LC6_B1,->LC5_B1,->LC4_B1||,2:G19R2,PA17R2C3->LC12_C4||";
+    OV6C0P32 : LORAX = "1:V8C0|2:G14R1|3:PA30R1C2->LC1_B3|,3:PA30R1C0->LC3_B1,->LC2_B1,->LC1_B1||,2:G14R2,PA30R2C3->LC12_C4||";
+    OH9R2P65 : LORAX = "1:G59R2,PA32R2C3->LC1_C4,->LC9_C4,->LC8_C4,->LC7_C4,->LC6_C4|";
+    OH12R2P19 : LORAX = "1:G82R2,PA2R2C3->LC11_C4,->LC5_C4,->LC4_C4,->LC2_C4,->LC3_C4|";
+    OV14C0P33 : LORAX = "1:V25C0|2:G49R1|3:PA6R1C1->LC1_B2|,3:PA6R1C0->LC3_B1||,2:G49R2,PA6R2C3->LC10_C4,->LC9_C4,->LC5_C4||";
+    OV18C0P34 : LORAX = "1:V20C0|2:G40R1,PA4R1C0->LC6_B1,->LC2_B1|,2:G40R2,PA4R2C3->LC11_C4,->LC8_C4,->LC4_C4||";
+    OV19C0P9 : LORAX = "1:V23C0|2:G42R1,PA27R1C0->LC5_B1,->LC1_B1|,2:G42R2,PA27R2C3->LC1_C4,->LC7_C4,->LC2_C4||";
+    OV15C0P10 : LORAX = "1:V28C0|2:G57R1|3:PA18R1C2->LC1_B3|,3:PA18R1C0->LC4_B1||,2:G57R2,PA18R2C3->LC10_C4,->LC6_C4,->LC3_C4||";
+    OV2C0P31 : LORAX = "1:V2C0|2:G0R1|3:PA1R1C1->LC1_B2|,3:PA1R1C2->LC1_B3|,3:PA1R1C0->LC6_B1,->LC5_B1,->LC4_B1,->LC3_B1,->LC2_B1,->LC1_B1||,2:G0R2,PA1R2C3->LC9_C4,->LC8_C4,->LC7_C4,->LC6_C4,->LC5_C4,->LC4_C4,->LC2_C4,->LC3_C4||";
+    LC1_B2  : LORAX = "1:V0C1,G3R2,PA3R2C3->LC16_C4,->LC12_C4,->LC11_C4,->LC10_C4,->LC1_C4|";
+    LC1_C4  : LORAX = "1:V0C3,G1R1,PA12R1C0->LC11_B1|";
+    LC11_B1 : LORAX = "1:G61R1->OH12R1P22|";
+    LC6_B1  : LORAX = "1:V15C0,G35R2,PA9R2C3->LC16_C4,->LC12_C4,->LC11_C4,->LC10_C4,->LC1_C4|";
+    LC5_B1  : LORAX = "1:V12C0,G28R2,PA12R2C3->LC16_C4,->LC12_C4,->LC11_C4,->LC10_C4,->LC1_C4|";
+    LC4_B1  : LORAX = "1:V9C0,G23R2,PA23R2C3->LC16_C4,->LC12_C4,->LC11_C4,->LC10_C4,->LC1_C4|";
+    LC3_B1  : LORAX = "1:V6C0,G22R2,PA22R2C3->LC16_C4,->LC12_C4,->LC11_C4,->LC10_C4,->LC1_C4|";
+    LC2_B1  : LORAX = "1:V3C0,G11R2,PA5R2C3->LC16_C4,->LC12_C4,->LC11_C4,->LC10_C4,->LC1_C4|";
+    LC1_B1  : LORAX = "1:V0C0,G10R2,PA26R2C3->LC16_C4,->LC12_C4,->LC11_C4,->LC10_C4,->LC1_C4|";
+    LC1_B3  : LORAX = "1:V0C2,G4R2,PA14R2C3->LC16_C4,->LC12_C4,->LC11_C4,->LC10_C4,->LC1_C4|";
+    OV3C0P12 : LORAX = "1:V4C0|2:G5R1|3:PA8R1C1->LC1_B2|,3:PA8R1C2->LC1_B3|,3:PA8R1C0->LC6_B1,->LC5_B1,->LC4_B1,->LC3_B1,->LC2_B1,->LC1_B1||,2:G5R2,PA8R2C3->LC9_C4,->LC8_C4,->LC7_C4,->LC6_C4,->LC5_C4,->LC4_C4,->LC2_C4,->LC3_C4||";
+    OH13R2P66 : LORAX = "1:G93R2,PA29R2C3->LC12_C4|";
+END;

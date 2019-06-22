@@ -1,0 +1,298 @@
+Project Information                           d:\maxplus2\max2lib\lab1\qi2.rpt
+
+MAX+plus II Compiler Report File
+Version 10.1 06/12/2001
+Compiled: 09/21/2010 17:27:52
+
+Copyright (C) 1988-2001 Altera Corporation
+Any megafunction design, and related net list (encrypted or decrypted),
+support information, device programming or simulation file, and any other
+associated documentation or information provided by Altera or a partner
+under Altera's Megafunction Partnership Program may be used only to
+program PLD devices (but not masked PLD devices) from Altera.  Any other
+use of such megafunction design, net list, support information, device
+programming or simulation file, or any other related documentation or
+information is prohibited for any other purpose, including, but not
+limited to modification, reverse engineering, de-compiling, or use with
+any other silicon devices, unless such use is explicitly licensed under
+a separate agreement with Altera or a megafunction partner.  Title to
+the intellectual property, including patents, copyrights, trademarks,
+trade secrets, or maskworks, embodied in any such megafunction design,
+net list, support information, device programming or simulation file, or
+any other related documentation or information provided by Altera or a
+megafunction partner, remains with Altera, the megafunction partner, or
+their respective licensors.  No other licenses, including any licenses
+needed under any third party's intellectual property, are provided herein.
+
+
+
+***** Project compilation was successful
+
+
+
+
+** DEVICE SUMMARY **
+
+Chip/                     Input   Output   Bidir 			    LCs
+POF       Device          Pins    Pins     Pins      LCs    % Utilized
+
+qi2       EP610ILC-10      5        1        0       1           6  %
+
+User Pins:                 5        1        0  
+
+
+
+Project Information                           d:\maxplus2\max2lib\lab1\qi2.rpt
+
+** AUTO GLOBAL SIGNALS **
+
+
+
+INFO: Signal 'C' chosen for auto global Clock
+
+
+Device-Specific Information:                  d:\maxplus2\max2lib\lab1\qi2.rpt
+qi2
+
+***** Logic for device 'qi2' compiled without errors.
+
+
+
+
+Device: EP610ILC-10
+
+Device Options:
+    Turbo Bit                                    = ON
+    Security Bit                                 = OFF
+
+              R                 R  
+              E                 E  
+              S                 S  
+              E                 E  
+              R                 R  
+              V        V  V     V  
+              E  X     C  C  C  E  
+              D  1  C  C  C  i  D  
+            -----------------------_ 
+          /   4  3  2  1 28 27 26   | 
+         |                          |
+RESERVED |  5                    25 | RESERVED 
+         |                          |
+RESERVED |  6                    24 | RESERVED 
+         |                          |
+RESERVED |  7                    23 | RESERVED 
+         |                          |
+RESERVED |  8    EP610ILC-10     22 | RESERVED 
+         |                          |
+RESERVED |  9                    21 | RESERVED 
+         |                          |
+RESERVED | 10                    20 | RESERVED 
+         |                          |
+    N.C. | 11                    19 | N.C. 
+         |_  12 13 14 15 16 17 18  _| 
+           ------------------------ 
+              Q  Q  G  G  G  D  R  
+              i  i  N  N  N  i  E  
+              1     D  D  D     S  
+                                E  
+                                R  
+                                V  
+                                E  
+                                D  
+
+
+N.C. = No Connect. This pin has no internal connection to the device.
+VCC = Dedicated power pin, which MUST be connected to VCC.
+GND = Dedicated ground pin or unused dedicated input, which MUST be connected to GND.
+RESERVED = Unused I/O pin, which MUST be left unconnected.
+
+
+
+Device-Specific Information:                  d:\maxplus2\max2lib\lab1\qi2.rpt
+qi2
+
+** RESOURCE USAGE **
+
+Logic Array Block     Logic Cells   I/O Pins       
+
+A:      LC1 - LC8     0/ 8(  0%)   0/ 8(  0%) 
+B:     LC9 - LC16     1/ 8( 12%)   1/ 8( 12%) 
+
+
+Total dedicated input pins used:                 4/4      (100%)
+Total I/O pins used:                             1/16     (  6%)
+Total logic cells used:                          1/16     (  6%)
+Average fan-in:                                  5.00
+Total fan-in:                                     5
+
+Total input pins required:                       5
+Total output pins required:                      1
+Total bidirectional pins required:               0
+Total logic cells required:                      1
+Total flipflops required:                        1
+
+Synthesized logic cells:                         0/  16   (  0%)
+
+
+
+Device-Specific Information:                  d:\maxplus2\max2lib\lab1\qi2.rpt
+qi2
+
+** INPUTS **
+
+                                        Fan-In    Fan-Out
+ Pin     LC  LAB  Primitive    Code   INP  FBK  OUT  FBK  Name
+  27      -   -       INPUT              0    0    1    0  Ci
+  17      -   -       INPUT              0    0    1    0  Di
+  13      -   -       INPUT              0    0    1    0  Qi
+   3      -   -       INPUT              0    0    1    0  X1
+
+
+Code:
+
+s = Synthesized pin or logic cell
++ = Synchronous flipflop
+! = NOT gate push-back
+r = Fitter-inserted logic cell
+
+
+Device-Specific Information:                  d:\maxplus2\max2lib\lab1\qi2.rpt
+qi2
+
+** OUTPUTS **
+
+                                        Fan-In    Fan-Out
+ Pin     LC  LAB  Primitive    Code   INP  FBK  OUT  FBK  Name
+  12     16    B         FF   +          4    0    0    0  Qi1
+
+
+Code:
+
+s = Synthesized pin or logic cell
++ = Synchronous flipflop
+! = NOT gate push-back
+r = Fitter-inserted logic cell
+
+
+Device-Specific Information:                  d:\maxplus2\max2lib\lab1\qi2.rpt
+qi2
+
+** LOGIC CELL INTERCONNECTIONS **
+
+           Logic cells placed in LAB 'B'
+        +- LC16 Qi1
+        | 
+        |   Other LABs fed by signals
+        |   that feed LAB 'B'
+LC      | 
+LC16 -> - | <-- Qi1
+
+Pin
+27   -> @ | <-- Ci
+17   -> @ | <-- Di
+13   -> @ | <-- Qi
+3    -> @ | <-- X1
+
+
+* = The logic cell or pin is an input to the logic cell (or LAB) through the PIA.
+@ = The input pin or logic cell feeds the logic cell (or LAB) using direct interconnect.
+- = The logic cell or pin is not an input to the logic cell (or LAB).
+
+
+Device-Specific Information:                  d:\maxplus2\max2lib\lab1\qi2.rpt
+qi2
+
+** EQUATIONS **
+
+C        : INPUT;
+Ci       : INPUT;
+Di       : INPUT;
+Qi       : INPUT;
+X1       : INPUT;
+
+-- Node name is 'Qi1' = ':1' 
+-- Equation name is 'Qi1', type is output 
+ Qi1     = DFF( _EQ001, GLOBAL( C),  VCC,  VCC);
+  _EQ001 =  Ci & !Qi & !X1
+         # !Ci &  Qi & !X1
+         #  Di &  X1;
+
+
+
+Project Information                           d:\maxplus2\max2lib\lab1\qi2.rpt
+
+** COMPILATION SETTINGS & TIMES **
+
+Processing Menu Commands
+------------------------
+
+Design Doctor                             = off
+
+Logic Synthesis:
+
+   Synthesis Type Used                    = Standard
+
+   Default Synthesis Style                = NORMAL
+
+      Logic option settings in 'NORMAL' style for 'CLASSIC' family
+
+      MINIMIZATION                        = full
+      SOFT_BUFFER_INSERTION               = on
+      TURBO_BIT                           = on
+      USE_LPM_FOR_AHDL_OPERATORS          = off
+
+   Other logic synthesis settings:
+
+      Automatic Global Clock              = on
+      Automatic Global Clear              = on
+      Automatic Global Preset             = on
+      Automatic Global Output Enable      = on
+      Automatic Fast I/O                  = off
+      Automatic Register Packing          = off
+      Automatic Open-Drain Pins           = on
+      Automatic Implement in EAB          = off
+      One-Hot State Machine Encoding      = off
+      Optimize                            = 5
+
+Default Timing Specifications: None
+
+Cut All Bidir Feedback Timing Paths       = on
+Cut All Clear & Preset Timing Paths       = on
+
+Ignore Timing Assignments                 = off
+
+Functional SNF Extractor                  = off
+
+Linked SNF Extractor                      = off
+Timing SNF Extractor                      = on
+Optimize Timing SNF                       = off
+Generate AHDL TDO File                    = off
+Fitter Settings                           = NORMAL
+Smart Recompile                           = off
+Total Recompile                           = off
+
+Interfaces Menu Commands
+------------------------
+
+EDIF Netlist Writer                       = off
+Verilog Netlist Writer                    = off
+VHDL Netlist Writer                       = off
+
+Compilation Times
+-----------------
+
+   Compiler Netlist Extractor             00:00:00
+   Database Builder                       00:00:00
+   Logic Synthesizer                      00:00:00
+   Partitioner                            00:00:00
+   Fitter                                 00:00:00
+   Timing SNF Extractor                   00:00:00
+   Assembler                              00:00:00
+   --------------------------             --------
+   Total Time                             00:00:00
+
+
+Memory Allocated
+-----------------
+
+Peak memory allocated during compilation  = 2,088K

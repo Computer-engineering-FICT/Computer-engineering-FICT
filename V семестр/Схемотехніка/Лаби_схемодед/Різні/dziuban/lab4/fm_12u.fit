@@ -1,0 +1,150 @@
+-- MAX+plus II Compiler Fit File      
+-- Version 10.0 RC2 9/14/2000         
+-- Compiled: 10/28/2009 01:21:20      
+
+-- Copyright (C) 1988-2000 Altera Corporation
+-- Any megafunction design, and related net list (encrypted or decrypted),
+-- support information, device programming or simulation file, and any other
+-- associated documentation or information provided by Altera or a partner
+-- under Altera's Megafunction Partnership Program may be used only to
+-- program PLD devices (but not masked PLD devices) from Altera.  Any other
+-- use of such megafunction design, net list, support information, device
+-- programming or simulation file, or any other related documentation or
+-- information is prohibited for any other purpose, including, but not
+-- limited to modification, reverse engineering, de-compiling, or use with
+-- any other silicon devices, unless such use is explicitly licensed under
+-- a separate agreement with Altera or a megafunction partner.  Title to
+-- the intellectual property, including patents, copyrights, trademarks,
+-- trade secrets, or maskworks, embodied in any such megafunction design,
+-- net list, support information, device programming or simulation file, or
+-- any other related documentation or information provided by Altera or a
+-- megafunction partner, remains with Altera, the megafunction partner, or
+-- their respective licensors.  No other licenses, including any licenses
+-- needed under any third party's intellectual property, are provided herein.
+
+CHIP "fm_12u"
+BEGIN
+
+    DEVICE = "EPM7064LC44-7";
+
+    "AD0"                          : INPUT_PIN  = 12     ; -- LC1
+    "AD1"                          : INPUT_PIN  = 4      ; -- LC16
+    "AD2"                          : INPUT_PIN  = 6      ; -- LC11
+    "AD3"                          : INPUT_PIN  = 18     ; -- LC21
+    "AQ0"                          : INPUT_PIN  = 5      ; -- LC14
+    "AQ1"                          : INPUT_PIN  = 7      ; -- LC8
+    "AQ2"                          : INPUT_PIN  = 8      ; -- LC5
+    "AQ3"                          : INPUT_PIN  = 19     ; -- LC20
+    "DI0"                          : INPUT_PIN  = 21     ; -- LC17
+    "DI1"                          : INPUT_PIN  = 20     ; -- LC19
+    "|fm_permissionq00:90|~6~1~2~3" : INPUT_PIN  = 44     ;  -- ~PIN001
+    "|fm_permissionq00:101|~6~1~2~3" : INPUT_PIN  = 2      ;  -- ~PIN003
+    "WR0"                          : INPUT_PIN  = 11     ; -- LC3
+    "WR1"                          : INPUT_PIN  = 9      ; -- LC4
+    "DD"                           : OUTPUT_PIN = 16     ; -- LC25
+    "|fm_permissionq00:90|~6~1~2~2" : OUTPUT_PIN = 25     ; -- LC35  -- ~PIN002
+    "|fm_permissionq00:101|~6~1~2~2" : OUTPUT_PIN = 24     ; -- LC33  -- ~PIN004
+    "QQ"                           : OUTPUT_PIN = 17     ; -- LC24
+    "|fm_permissionq00:90|~6~1~3~2" : LOCATION   = LC20   ; -- PIN 19
+    "|fm_permissionq00:90|~6~1~3~3" : LOCATION   = LC23   ;
+    "|fm_permissionq00:101|~6~1~3~2" : LOCATION   = LC26   ;
+    "|fm_permissionq00:101|~6~1~3~3" : LOCATION   = LC27   ;
+    "|fm_trigger:10|~6~1"          : LOCATION   = LC41   ; -- PIN 29
+    "|fm_trigger:10|:9"            : LOCATION   = LC59   ;  -- |fm_trigger:10|Q
+    "|fm_trigger:28|:9"            : LOCATION   = LC60   ;  -- |fm_trigger:28|Q
+    "|fm_trigger:35|:9"            : LOCATION   = LC61   ;  -- |fm_trigger:35|Q
+    "|fm_trigger:38|:9"            : LOCATION   = LC64   ; -- PIN 41  -- |fm_trigger:38|Q
+    "|fm_trigger:41|~6~1"          : LOCATION   = LC31   ;
+    "|fm_trigger:41|~6~2"          : LOCATION   = LC46   ; -- PIN 31
+    "|fm_trigger:41|~6~3"          : LOCATION   = LC45   ;
+    "|fm_trigger:41|~6~4"          : LOCATION   = LC42   ;
+    "|fm_trigger:41|:9"            : LOCATION   = LC63   ;  -- |fm_trigger:41|Q
+    "|fm_trigger:44|~6~1"          : LOCATION   = LC40   ; -- PIN 28
+    "|fm_trigger:44|:9"            : LOCATION   = LC62   ; -- PIN 40  -- |fm_trigger:44|Q
+    "|fm_trigger:47|~6~1"          : LOCATION   = LC47   ;
+    "|fm_trigger:47|:9"            : LOCATION   = LC54   ;  -- |fm_trigger:47|Q
+    "|fm_trigger:50|:9"            : LOCATION   = LC58   ;  -- |fm_trigger:50|Q
+    "|fm_trigger:53|~6~1"          : LOCATION   = LC57   ; -- PIN 39
+    "|fm_trigger:53|~6~2"          : LOCATION   = LC56   ; -- PIN 38
+    "|fm_trigger:53|~6~3"          : LOCATION   = LC49   ; -- PIN 33
+    "|fm_trigger:53|~6~4"          : LOCATION   = LC48   ; -- PIN 32
+    "|fm_trigger:53|~6~5"          : LOCATION   = LC53   ; -- PIN 37
+    "|fm_trigger:53|~6~6"          : LOCATION   = LC52   ; -- PIN 36
+    "|fm_trigger:53|:9"            : LOCATION   = LC37   ; -- PIN 27  -- |fm_trigger:53|Q
+    "|fm_trigger:56|~6~1"          : LOCATION   = LC51   ; -- PIN 34
+    "|fm_trigger:56|~6~2"          : LOCATION   = LC50   ;
+    "|fm_trigger:56|~6~3"          : LOCATION   = LC55   ;
+    "|fm_trigger:56|:9"            : LOCATION   = LC39   ;  -- |fm_trigger:56|Q
+    "|fm_trigger:59|~6~1"          : LOCATION   = LC36   ; -- PIN 26
+    "|fm_trigger:59|~6~2"          : LOCATION   = LC43   ;
+    "|fm_trigger:59|:9"            : LOCATION   = LC38   ;  -- |fm_trigger:59|Q
+    "|fm_trigger:62|:9"            : LOCATION   = LC34   ;  -- |fm_trigger:62|Q
+
+END;
+
+INTERNAL_INFO "fm_12u"
+BEGIN
+	DEVICE = EPM7064LC44-7;
+	LC24    : LORAX = "G24R0";
+	LC25    : LORAX = "G103R0";
+	OH19R0P19 : LORAX = "G123R0,PA33R0C2,PA33R0C1";
+	OH4R0P8 : LORAX = "G116R0,PA27R0C2,PA27R0C1,PA28R0C3";
+	OH7R0P7 : LORAX = "G119R0,PA31R0C2,PA31R0C1,PA31R0C3";
+	OH13R0P5 : LORAX = "G34R0,PA13R0C2,PA13R0C1,PA13R0C3";
+	LC64    : LORAX = "G114R0,PA32R0C1";
+	OH16R0P21 : LORAX = "G120R0,PA29R0C2,PA27R0C3";
+	OH18R0P20 : LORAX = "G122R0,PA32R0C2,PA32R0C3";
+	OH10R0P6 : LORAX = "G2R0,PA0R0C2,PA0R0C1,PA3R0C3";
+	OH2R0P11 : LORAX = "G85R0,PA21R0C2,PA21R0C1,PA21R0C3";
+	OH3R0P9 : LORAX = "G86R0,PA22R0C2,PA22R0C1,PA22R0C3";
+	OH15R0P4 : LORAX = "G36R0,PA14R0C2,PA17R0C1,PA14R0C3";
+	OH0R0P12 : LORAX = "G83R0,PA18R0C2,PA18R0C1,PA18R0C3";
+	OH20R0P18 : LORAX = "G87R0,PA20R0C2,PA20R0C1";
+	LC61    : LORAX = "G111R0,PA29R0C1";
+	LC60    : LORAX = "G81R0,PA23R0C1";
+	LC59    : LORAX = "G80R0,PA25R0C1";
+	LC58    : LORAX = "G79R0,PA26R0C1";
+	LC34    : LORAX = "G59R0,PA10R0C1";
+	LC54    : LORAX = "G63R0,PA14R0C1";
+	LC62    : LORAX = "G112R0,PA35R0C1";
+	LC38    : LORAX = "G26R0,PA1R0C1";
+	LC39    : LORAX = "G27R0,PA7R0C1";
+	LC63    : LORAX = "G113R0,PA34R0C1";
+	LC37    : LORAX = "G25R0,PA2R0C1";
+	LC57    : LORAX = "G78R0,PA24R0C2,PA20R0C3";
+	LC36    : LORAX = "G61R0,PA9R0C2,PA9R0C3";
+	LC51    : LORAX = "G31R0,PA4R0C2,PA4R0C3";
+	LC56    : LORAX = "G65R0,PA10R0C2,PA10R0C3";
+	LC49    : LORAX = "G29R0,PA7R0C2,PA7R0C3";
+	LC31    : LORAX = "G72R0,PA24R0C3";
+	LC26    : LORAX = "G104R0,PA30R0C1";
+	LC20    : LORAX = "G57R0,PA9R0C1";
+	LC27    : LORAX = "G105R0,PA28R0C1";
+	LC23    : LORAX = "G23R0,PA5R0C1";
+	LC48    : LORAX = "G77R0,PA25R0C2";
+	LC46    : LORAX = "G75R0,PA23R0C3";
+	LC41    : LORAX = "G107R0,PA35R0C3";
+	LC47    : LORAX = "G76R0,PA19R0C3";
+	LC53    : LORAX = "G62R0,PA16R0C2,PA16R0C3";
+	LC45    : LORAX = "G74R0,PA26R0C3";
+	LC40    : LORAX = "G28R0,PA0R0C3";
+	LC52    : LORAX = "G32R0,PA1R0C2,PA1R0C3";
+	LC42    : LORAX = "G108R0,PA29R0C3";
+	LC50    : LORAX = "G30R0,PA5R0C2,PA5R0C3";
+	LC43    : LORAX = "G109R0,PA30R0C3,PA30R0C2";
+	LC55    : LORAX = "G64R0,PA12R0C2,PA12R0C3";
+	LC35    : LORAX = "G60R0";
+	LC33    : LORAX = "G58R0";
+END;
+
+CONNECTED_PINS "~AUTO_GROUP001"
+    BEGIN
+        "|fm_permissionq00:90|~6~1~2~3" : INPUT_PIN;
+        "|fm_permissionq00:90|~6~1~2~2" : OUTPUT_PIN;
+    END;
+
+CONNECTED_PINS "~AUTO_GROUP002"
+    BEGIN
+        "|fm_permissionq00:101|~6~1~2~3" : INPUT_PIN;
+        "|fm_permissionq00:101|~6~1~2~2" : OUTPUT_PIN;
+    END;

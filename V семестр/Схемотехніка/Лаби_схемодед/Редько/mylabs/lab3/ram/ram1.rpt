@@ -1,0 +1,660 @@
+Project Informatione:\documents\science\computer_circuity\labs\mylabs\lab3\ram\ram1.rpt
+
+MAX+plus II Compiler Report File
+Version 10.1 06/12/2001
+Compiled: 10/15/2012 22:10:39
+
+Copyright (C) 1988-2001 Altera Corporation
+Any megafunction design, and related net list (encrypted or decrypted),
+support information, device programming or simulation file, and any other
+associated documentation or information provided by Altera or a partner
+under Altera's Megafunction Partnership Program may be used only to
+program PLD devices (but not masked PLD devices) from Altera.  Any other
+use of such megafunction design, net list, support information, device
+programming or simulation file, or any other related documentation or
+information is prohibited for any other purpose, including, but not
+limited to modification, reverse engineering, de-compiling, or use with
+any other silicon devices, unless such use is explicitly licensed under
+a separate agreement with Altera or a megafunction partner.  Title to
+the intellectual property, including patents, copyrights, trademarks,
+trade secrets, or maskworks, embodied in any such megafunction design,
+net list, support information, device programming or simulation file, or
+any other related documentation or information provided by Altera or a
+megafunction partner, remains with Altera, the megafunction partner, or
+their respective licensors.  No other licenses, including any licenses
+needed under any third party's intellectual property, are provided herein.
+
+
+
+***** Project compilation was successful
+
+
+
+
+** DEVICE SUMMARY **
+
+Chip/                     Input   Output   Bidir 			    LCs
+POF       Device          Pins    Pins     Pins      LCs    % Utilized
+
+ram1      EPF8282ALC84-2   14       1        0       33          15 %
+
+User Pins:                 14       1        0  
+
+
+
+Project Informatione:\documents\science\computer_circuity\labs\mylabs\lab3\ram\ram1.rpt
+
+** FILE HIERARCHY **
+
+
+
+|ram01:22|
+|ram01:22|eti:28|
+|ram01:22|eti:29|
+|ram01:22|inverter:30|
+|ram01:25|
+|ram01:25|eti:28|
+|ram01:25|eti:29|
+|ram01:25|inverter:30|
+|ram01:24|
+|ram01:24|eti:28|
+|ram01:24|eti:29|
+|ram01:24|inverter:30|
+|ram01:23|
+|ram01:23|eti:28|
+|ram01:23|eti:29|
+|ram01:23|inverter:30|
+
+
+Device-Specific Information:e:\documents\science\computer_circuity\labs\mylabs\lab3\ram\ram1.rpt
+ram1
+
+***** Logic for device 'ram1' compiled without errors.
+
+
+
+
+Device: EPF8282ALC84-2
+
+FLEX 8000 Configuration Scheme: Active Serial
+
+Device Options:
+    User-Supplied Start-Up Clock               = OFF
+    Auto-Restart Configuration on Frame Error  = OFF
+    Release Clears Before Tri-States           = OFF
+    Enable DCLK Output in User Mode            = OFF
+    Disable Start-Up Time-Out                  = OFF
+    Enable JTAG Support                        = OFF
+
+                ^                                                              
+                C                                                              
+                O     R  R  R  R     R  R  R  R  R  R  R  R        R  R  R     
+                N     E  E  E  E     E  E  E  E  E  E  E  E        E  E  E     
+                F     S  S  S  S     S  S  S  S  S  S  S  S  V  *  S  S  S     
+                _  ^  E  E  E  E     E  E  E  E  E  E  E  E  C  S  E  E  E     
+                D  D  R  R  R  R     R  R  R  R  R  R  R  R  C  D  R  R  R  ^  
+                O  C  V  V  V  V  G  V  V  V  V  V  V  V  V  I  O  V  V  V  n  
+                N  L  E  E  E  E  N  E  E  E  E  E  E  E  E  N  U  E  E  E  S  
+                E  K  D  D  D  D  D  D  D  D  D  D  D  D  D  T  T  D  D  D  P  
+              -----------------------------------------------------------------_ 
+            /  11 10  9  8  7  6  5  4  3  2  1 84 83 82 81 80 79 78 77 76 75   | 
+     Clock | 12                                                              74 | ^MSEL0 
+      DC60 | 13                                                              73 | RD 
+    +DATA0 | 14                                                              72 | &DC63 
+       A12 | 15                                                              71 | WR 
+       DC5 | 16                                                              70 | DC62 
+    VCCINT | 17                                                              69 | DC1 
+       DC2 | 18                                                              68 | GND 
+       DC3 | 19                                                              67 | RESERVED 
+  RESERVED | 20                                                              66 | DC4 
+  RESERVED | 21                                                              65 | RESERVED 
+        BI | 22                        EPF8282ALC84-2                        64 | RESERVED 
+  RESERVED | 23                                                              63 | RESERVED 
+  RESERVED | 24                                                              62 | RESERVED 
+  RESERVED | 25                                                              61 | RESERVED 
+       GND | 26                                                              60 | RESERVED 
+  RESERVED | 27                                                              59 | VCCINT 
+  RESERVED | 28                                                              58 | RESERVED 
+  RESERVED | 29                                                              57 | RESERVED 
+  RESERVED | 30                                                              56 | RESERVED 
+        DI | 31                                                              55 | RESERVED 
+  ^nSTATUS | 32                                                              54 | DC61 
+           |_  33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53  _| 
+             ------------------------------------------------------------------ 
+                ^  R  R  R  R  V  R  R  R  R  R  R  R  R  G  R  R  R  R  G  ^  
+                n  E  E  E  E  C  E  E  E  E  E  E  E  E  N  E  E  E  E  N  M  
+                C  S  S  S  S  C  S  S  S  S  S  S  S  S  D  S  S  S  S  D  S  
+                O  E  E  E  E  I  E  E  E  E  E  E  E  E     E  E  E  E     E  
+                N  R  R  R  R  N  R  R  R  R  R  R  R  R     R  R  R  R     L  
+                F  V  V  V  V  T  V  V  V  V  V  V  V  V     V  V  V  V     1  
+                I  E  E  E  E     E  E  E  E  E  E  E  E     E  E  E  E        
+                G  D  D  D  D     D  D  D  D  D  D  D  D     D  D  D  D        
+                                                                               
+                                                                               
+
+
+N.C. = No Connect. This pin has no internal connection to the device.
+VCCINT = Dedicated power pin, which MUST be connected to VCC (5.0 volts).
+VCCIO = Dedicated power pin, which MUST be connected to VCC (5.0 volts).
+GND = Dedicated ground pin or unused dedicated input, which MUST be connected to GND.
+RESERVED = Unused I/O pin, which MUST be left unconnected.
+
+^ = Dedicated configuration pin.
++ = Reserved configuration pin, which is tri-stated during user mode.
+* = Reserved configuration pin, which drives out in user mode.
+PDn = Power Down pin. 
+@ = Special-purpose pin. 
+# = JTAG Boundary-Scan Testing/In-System Programming or Configuration Pin. The JTAG inputs TMS and TDI should be tied to VCC and TCK should be tied to GND when not in use.
+& = JTAG pin used for I/O. When used as user I/O, JTAG pins must be kept stable before and during configuration.  JTAG pin stability prevents accidental loading of JTAG instructions.
+
+
+Device-Specific Information:e:\documents\science\computer_circuity\labs\mylabs\lab3\ram\ram1.rpt
+ram1
+
+** RESOURCE USAGE **
+
+Logic                Column       Row                                   
+Array                Interconnect Interconnect         Clears/     External  
+Block   Logic Cells  Driven       Driven       Clocks  Presets   Interconnect
+A1       3/ 8( 37%)   2/ 8( 25%)   2/ 8( 25%)    0/2    0/2       6/24( 25%)   
+A2       7/ 8( 87%)   1/ 8( 12%)   0/ 8(  0%)    2/2    1/2      11/24( 45%)   
+A3       1/ 8( 12%)   1/ 8( 12%)   0/ 8(  0%)    0/2    0/2       4/24( 16%)   
+A4       1/ 8( 12%)   1/ 8( 12%)   1/ 8( 12%)    0/2    0/2       2/24(  8%)   
+A5       1/ 8( 12%)   1/ 8( 12%)   1/ 8( 12%)    0/2    0/2       2/24(  8%)   
+A7       5/ 8( 62%)   0/ 8(  0%)   2/ 8( 25%)    2/2    1/2       8/24( 33%)   
+B6       7/ 8( 87%)   0/ 8(  0%)   1/ 8( 12%)    2/2    1/2      10/24( 41%)   
+B8       8/ 8(100%)   0/ 8(  0%)   2/ 8( 25%)    2/2    1/2      10/24( 41%)   
+
+
+Total dedicated input pins used:                 4/4      (100%)
+Total I/O pins used:                            13/64     ( 20%)
+Total logic cells used:                         33/208    ( 15%)
+Average fan-in:                                 2.93/4    ( 73%)
+Total fan-in:                                  97/832     ( 11%)
+
+Total input pins required:                      14
+Total input I/O cell registers required:         0
+Total output pins required:                      1
+Total output I/O cell registers required:        0
+Total buried I/O cell registers required:        0
+Total bidirectional pins required:               0
+Total reserved pins required                     2
+Total logic cells required:                     33
+Total flipflops required:                        8
+Total logic cells in carry chains:               0
+Total number of carry chains:                    0
+Total logic cells in cascade chains:             0
+Total number of cascade chains:                  0
+
+Synthesized logic cells:                        12/ 208   (  5%)
+
+Logic Cell Counts
+
+Column:  01  02  03  04  05  06  07  08  09  10  11  12  13  Total
+ A:      3   7   1   1   1   0   5   0   0   0   0   0   0     18
+ B:      0   0   0   0   0   7   0   8   0   0   0   0   0     15
+
+Total:   3   7   1   1   1   7   5   8   0   0   0   0   0     33
+
+
+
+Device-Specific Information:e:\documents\science\computer_circuity\labs\mylabs\lab3\ram\ram1.rpt
+ram1
+
+** INPUTS **
+
+                                               Fan-In    Fan-Out
+ Pin     LC   Row  Col  Primitive    Code      INP  FBK  OUT  FBK  Name
+  15      -    A    --      INPUT              0    0    0    2  A12
+  12      -    -    --      INPUT              0    0    0    8  Clock
+  69      -    A    --      INPUT              0    0    0    1  DC1
+  18      -    A    --      INPUT              0    0    0    1  DC2
+  19      -    A    --      INPUT              0    0    0    1  DC3
+  66      -    A    --      INPUT              0    0    0    2  DC4
+  16      -    A    --      INPUT              0    0    0    2  DC5
+  13      -    A    --      INPUT              0    0    0    5  DC60
+  54      -    -    --      INPUT              0    0    0    5  DC61
+  70      -    A    --      INPUT              0    0    0    5  DC62
+  72      -    A    --      INPUT              0    0    0    5  DC63
+  31      -    -    --      INPUT              0    0    0    8  DI
+  73      -    -    --      INPUT              0    0    0    8  RD
+  71      -    A    --      INPUT              0    0    0    2  WR
+
+
+Code:
+
+s = Synthesized pin or logic cell
++ = Synchronous flipflop
+/ = Slow slew-rate output
+! = NOT gate push-back
+r = Fitter-inserted logic cell
+
+
+Device-Specific Information:e:\documents\science\computer_circuity\labs\mylabs\lab3\ram\ram1.rpt
+ram1
+
+** OUTPUTS **
+
+       Fed By                                  Fan-In    Fan-Out
+ Pin     LC   Row  Col  Primitive    Code      INP  FBK  OUT  FBK  Name
+  22      -    B    --        TRI              0    1    0    0  BI
+
+
+Code:
+
+s = Synthesized pin or logic cell
++ = Synchronous flipflop
+/ = Slow slew-rate output
+! = NOT gate push-back
+r = Fitter-inserted logic cell
+
+
+Device-Specific Information:e:\documents\science\computer_circuity\labs\mylabs\lab3\ram\ram1.rpt
+ram1
+
+** BURIED LOGIC **
+
+                                               Fan-In    Fan-Out
+ IOC     LC   Row  Col  Primitive    Code      INP  FBK  OUT  FBK  Name
+   -      1    A    07        DFF              1    1    0    1  |ram01:22|eti:28|q (|ram01:22|eti:28|:34)
+   -      1    A    03        OR2    s         2    2    0    1  |ram01:22|eti:28|~56~1~2~2~2
+   -      3    B    08        OR2    s         2    2    0    1  |ram01:22|eti:28|~56~1~2~2~3
+   -      1    B    08        OR2              0    2    0    0  |ram01:22|eti:28|~56~1~2~2
+   -      5    A    02        OR2    s         1    3    0    1  |ram01:22|eti:28|~56~1~2~3~3
+   -      4    A    02        OR2    s         1    3    0    1  |ram01:22|eti:28|~56~1~2~3~4
+   -      2    A    02        OR2    s         1    3    0    1  |ram01:22|eti:28|~56~1~2~3~5
+   -      2    B    08        OR2    s         1    3    0    1  |ram01:22|eti:28|~56~1~2~3~6
+   -      7    B    06        OR2    s         1    3    0    1  |ram01:22|eti:28|~56~1~2~3~7
+   -      1    B    06        OR2              0    4    1    0  |ram01:22|eti:28|~56~1~2~3
+   -      6    A    07        OR2              1    2    0    1  |ram01:22|eti:28|~56~2
+   -      8    A    01       AND2    s         3    1    0    5  |ram01:22|eti:28|~90~1
+   -      3    A    07       AND2              3    1    0    1  |ram01:22|eti:28|:90
+   -      1    A    02        DFF              1    1    0    1  |ram01:22|eti:29|q (|ram01:22|eti:29|:34)
+   -      1    A    04       AND2    s   !     1    1    0    6  |ram01:22|eti:29|~88~1
+   -      1    A    01       AND2    s         3    0    0    2  |ram01:22|eti:29|~90~1
+   -      7    A    01       AND2    s         3    1    0    5  |ram01:22|eti:29|~90~2
+   -      7    A    02       AND2              3    1    0    1  |ram01:22|eti:29|:90
+   -      4    B    08        DFF              1    1    0    1  |ram01:23|eti:28|q (|ram01:23|eti:28|:34)
+   -      5    B    08        OR2              1    2    0    1  |ram01:23|eti:28|~56~2
+   -      6    B    08       AND2              3    1    0    1  |ram01:23|eti:28|:90
+   -      7    B    08        DFF              1    1    0    1  |ram01:23|eti:29|q (|ram01:23|eti:29|:34)
+   -      8    B    08       AND2              3    1    0    1  |ram01:23|eti:29|:90
+   -      6    A    02        DFF              1    1    0    1  |ram01:24|eti:28|q (|ram01:24|eti:28|:34)
+   -      3    A    02       AND2              3    1    0    1  |ram01:24|eti:28|:90
+   -      7    A    07        DFF              1    1    0    1  |ram01:24|eti:29|q (|ram01:24|eti:29|:34)
+   -      2    A    07       AND2              3    1    0    1  |ram01:24|eti:29|:90
+   -      2    B    06        DFF              1    1    0    1  |ram01:25|eti:28|q (|ram01:25|eti:28|:34)
+   -      5    A    05       AND2    s   !     1    1    0    6  |ram01:25|eti:28|~88~1
+   -      3    B    06       AND2              3    1    0    1  |ram01:25|eti:28|:90
+   -      4    B    06        DFF              1    1    0    1  |ram01:25|eti:29|q (|ram01:25|eti:29|:34)
+   -      5    B    06        OR2        !     1    1    0    1  |ram01:25|eti:29|:88
+   -      6    B    06       AND2              3    1    0    1  |ram01:25|eti:29|:90
+
+
+Code:
+
+s = Synthesized pin or logic cell
++ = Synchronous flipflop
+/ = Slow slew-rate output
+! = NOT gate push-back
+r = Fitter-inserted logic cell
+
+
+Device-Specific Information:e:\documents\science\computer_circuity\labs\mylabs\lab3\ram\ram1.rpt
+ram1
+
+** FASTTRACK INTERCONNECT UTILIZATION **
+
+Row FastTrack Interconnect:
+
+         FastTrack                                 
+Row     Interconnect    Input Pins     Output Pins     Bidir Pins
+A:      14/168(  8%)   10/16( 62%)      1/16(  6%)     0/16(  0%)
+B:      11/168(  6%)    0/16(  0%)      1/16(  6%)     0/16(  0%)
+
+
+Column FastTrack Interconnect:
+
+         FastTrack                                 
+Column  Interconnect    Input Pins     Output Pins     Bidir Pins
+01:      2/16( 12%)     0/4(  0%)      0/4(  0%)       0/4(  0%)
+02:      1/16(  6%)     0/4(  0%)      0/4(  0%)       0/4(  0%)
+03:      1/16(  6%)     0/4(  0%)      0/4(  0%)       0/4(  0%)
+04:      1/16(  6%)     0/4(  0%)      0/4(  0%)       0/4(  0%)
+05:      1/16(  6%)     0/4(  0%)      0/4(  0%)       0/4(  0%)
+06:      0/16(  0%)     0/4(  0%)      0/4(  0%)       0/4(  0%)
+07:      0/16(  0%)     0/4(  0%)      0/4(  0%)       0/4(  0%)
+08:      0/16(  0%)     0/4(  0%)      0/4(  0%)       0/4(  0%)
+09:      0/16(  0%)     0/4(  0%)      0/4(  0%)       0/4(  0%)
+10:      0/16(  0%)     0/4(  0%)      0/4(  0%)       0/4(  0%)
+11:      0/16(  0%)     0/4(  0%)      1/4( 25%)       0/4(  0%)
+12:      0/16(  0%)     0/4(  0%)      0/4(  0%)       0/4(  0%)
+13:      0/16(  0%)     0/4(  0%)      0/4(  0%)       0/4(  0%)
+
+
+Device-Specific Information:e:\documents\science\computer_circuity\labs\mylabs\lab3\ram\ram1.rpt
+ram1
+
+** CLOCK SIGNALS **
+
+Type     Fan-out       Name
+LCELL        1         |ram01:22|eti:28|:90
+LCELL        1         |ram01:22|eti:29|:90
+LCELL        1         |ram01:23|eti:28|:90
+LCELL        1         |ram01:23|eti:29|:90
+LCELL        1         |ram01:24|eti:28|:90
+LCELL        1         |ram01:24|eti:29|:90
+LCELL        1         |ram01:25|eti:28|:90
+LCELL        1         |ram01:25|eti:29|:90
+
+
+Device-Specific Information:e:\documents\science\computer_circuity\labs\mylabs\lab3\ram\ram1.rpt
+ram1
+
+** EQUATIONS **
+
+A12      : INPUT;
+Clock    : INPUT;
+DC1      : INPUT;
+DC2      : INPUT;
+DC3      : INPUT;
+DC4      : INPUT;
+DC5      : INPUT;
+DC60     : INPUT;
+DC61     : INPUT;
+DC62     : INPUT;
+DC63     : INPUT;
+DI       : INPUT;
+RD       : INPUT;
+WR       : INPUT;
+
+-- Node name is 'BI' 
+-- Equation name is 'BI', type is output 
+BI       = TRI(_LC1_B6,  _LC1_B8);
+
+-- Node name is '|ram01:22|eti:28|:34' = '|ram01:22|eti:28|q' 
+-- Equation name is '_LC1_A7', type is buried 
+_LC1_A7  = DFF( DI,  _LC3_A7,  VCC,  VCC);
+
+-- Node name is '|ram01:22|eti:28|~56~1~2~2~2' 
+-- Equation name is '_LC1_A3', type is buried 
+-- synthesized logic cell 
+_LC1_A3  = LCELL( _EQ001);
+  _EQ001 =  DC61 & !_LC5_A5
+         #  DC61 & !_LC1_A4
+         #  DC60 & !_LC5_A5
+         #  DC60 & !_LC1_A4;
+
+-- Node name is '|ram01:22|eti:28|~56~1~2~2~3' 
+-- Equation name is '_LC3_B8', type is buried 
+-- synthesized logic cell 
+_LC3_B8  = LCELL( _EQ002);
+  _EQ002 =  DC63 & !_LC5_A5
+         #  DC63 & !_LC1_A4
+         #  DC62 & !_LC5_A5
+         #  DC62 & !_LC1_A4;
+
+-- Node name is '|ram01:22|eti:28|~56~1~2~2' 
+-- Equation name is '_LC1_B8', type is buried 
+_LC1_B8  = LCELL( _EQ003);
+  _EQ003 =  _LC1_A3
+         #  _LC3_B8;
+
+-- Node name is '|ram01:22|eti:28|~56~1~2~3~3' 
+-- Equation name is '_LC5_A2', type is buried 
+-- synthesized logic cell 
+_LC5_A2  = LCELL( _EQ004);
+  _EQ004 = !DC60 &  _LC6_A7
+         #  _LC1_A4 &  _LC6_A7
+         #  _LC1_A2 &  _LC6_A7;
+
+-- Node name is '|ram01:22|eti:28|~56~1~2~3~4' 
+-- Equation name is '_LC4_A2', type is buried 
+-- synthesized logic cell 
+_LC4_A2  = LCELL( _EQ005);
+  _EQ005 = !DC61 &  _LC5_A2
+         #  _LC5_A2 &  _LC5_A5
+         #  _LC5_A2 &  _LC6_A2;
+
+-- Node name is '|ram01:22|eti:28|~56~1~2~3~5' 
+-- Equation name is '_LC2_A2', type is buried 
+-- synthesized logic cell 
+_LC2_A2  = LCELL( _EQ006);
+  _EQ006 = !DC61 &  _LC4_A2
+         #  _LC1_A4 &  _LC4_A2
+         #  _LC4_A2 &  _LC7_A7;
+
+-- Node name is '|ram01:22|eti:28|~56~1~2~3~6' 
+-- Equation name is '_LC2_B8', type is buried 
+-- synthesized logic cell 
+_LC2_B8  = LCELL( _EQ007);
+  _EQ007 =  _LC1_A4 &  _LC5_B8
+         # !DC62 &  _LC5_B8
+         #  _LC5_B8 &  _LC7_B8;
+
+-- Node name is '|ram01:22|eti:28|~56~1~2~3~7' 
+-- Equation name is '_LC7_B6', type is buried 
+-- synthesized logic cell 
+_LC7_B6  = LCELL( _EQ008);
+  _EQ008 = !DC63 &  _LC2_B8
+         #  _LC2_B8 &  _LC5_A5
+         #  _LC2_B6 &  _LC2_B8;
+
+-- Node name is '|ram01:22|eti:28|~56~1~2~3' 
+-- Equation name is '_LC1_B6', type is buried 
+_LC1_B6  = LCELL( _EQ009);
+  _EQ009 =  _LC2_A2 & !_LC5_B6 &  _LC7_B6
+         #  _LC2_A2 &  _LC4_B6 &  _LC7_B6;
+
+-- Node name is '|ram01:22|eti:28|~56~2' 
+-- Equation name is '_LC6_A7', type is buried 
+_LC6_A7  = LCELL( _EQ010);
+  _EQ010 = !DC60
+         #  _LC5_A5
+         #  _LC1_A7;
+
+-- Node name is '|ram01:22|eti:28|~90~1' 
+-- Equation name is '_LC8_A1', type is buried 
+-- synthesized logic cell 
+_LC8_A1  = LCELL( _EQ011);
+  _EQ011 =  A12 &  DC4 &  DC5 &  _LC1_A1;
+
+-- Node name is '|ram01:22|eti:28|:90' 
+-- Equation name is '_LC3_A7', type is buried 
+_LC3_A7  = LCELL( _EQ012);
+  _EQ012 =  Clock &  DC60 &  _LC8_A1 &  RD;
+
+-- Node name is '|ram01:22|eti:29|:34' = '|ram01:22|eti:29|q' 
+-- Equation name is '_LC1_A2', type is buried 
+_LC1_A2  = DFF( DI,  _LC7_A2,  VCC,  VCC);
+
+-- Node name is '|ram01:22|eti:29|~88~1' 
+-- Equation name is '_LC1_A4', type is buried 
+-- synthesized logic cell 
+!_LC1_A4 = _LC1_A4~NOT;
+_LC1_A4~NOT = LCELL( _EQ013);
+  _EQ013 =  _LC7_A1 &  WR;
+
+-- Node name is '|ram01:22|eti:29|~90~1' 
+-- Equation name is '_LC1_A1', type is buried 
+-- synthesized logic cell 
+_LC1_A1  = LCELL( _EQ014);
+  _EQ014 =  DC1 &  DC2 &  DC3;
+
+-- Node name is '|ram01:22|eti:29|~90~2' 
+-- Equation name is '_LC7_A1', type is buried 
+-- synthesized logic cell 
+_LC7_A1  = LCELL( _EQ015);
+  _EQ015 = !A12 &  DC4 &  DC5 &  _LC1_A1;
+
+-- Node name is '|ram01:22|eti:29|:90' 
+-- Equation name is '_LC7_A2', type is buried 
+_LC7_A2  = LCELL( _EQ016);
+  _EQ016 =  Clock &  DC60 &  _LC7_A1 &  RD;
+
+-- Node name is '|ram01:23|eti:28|:34' = '|ram01:23|eti:28|q' 
+-- Equation name is '_LC4_B8', type is buried 
+_LC4_B8  = DFF( DI,  _LC6_B8,  VCC,  VCC);
+
+-- Node name is '|ram01:23|eti:28|~56~2' 
+-- Equation name is '_LC5_B8', type is buried 
+_LC5_B8  = LCELL( _EQ017);
+  _EQ017 =  _LC5_A5
+         # !DC62
+         #  _LC4_B8;
+
+-- Node name is '|ram01:23|eti:28|:90' 
+-- Equation name is '_LC6_B8', type is buried 
+_LC6_B8  = LCELL( _EQ018);
+  _EQ018 =  Clock &  DC62 &  _LC8_A1 &  RD;
+
+-- Node name is '|ram01:23|eti:29|:34' = '|ram01:23|eti:29|q' 
+-- Equation name is '_LC7_B8', type is buried 
+_LC7_B8  = DFF( DI,  _LC8_B8,  VCC,  VCC);
+
+-- Node name is '|ram01:23|eti:29|:90' 
+-- Equation name is '_LC8_B8', type is buried 
+_LC8_B8  = LCELL( _EQ019);
+  _EQ019 =  Clock &  DC62 &  _LC7_A1 &  RD;
+
+-- Node name is '|ram01:24|eti:28|:34' = '|ram01:24|eti:28|q' 
+-- Equation name is '_LC6_A2', type is buried 
+_LC6_A2  = DFF( DI,  _LC3_A2,  VCC,  VCC);
+
+-- Node name is '|ram01:24|eti:28|:90' 
+-- Equation name is '_LC3_A2', type is buried 
+_LC3_A2  = LCELL( _EQ020);
+  _EQ020 =  Clock &  DC61 &  _LC8_A1 &  RD;
+
+-- Node name is '|ram01:24|eti:29|:34' = '|ram01:24|eti:29|q' 
+-- Equation name is '_LC7_A7', type is buried 
+_LC7_A7  = DFF( DI,  _LC2_A7,  VCC,  VCC);
+
+-- Node name is '|ram01:24|eti:29|:90' 
+-- Equation name is '_LC2_A7', type is buried 
+_LC2_A7  = LCELL( _EQ021);
+  _EQ021 =  Clock &  DC61 &  _LC7_A1 &  RD;
+
+-- Node name is '|ram01:25|eti:28|:34' = '|ram01:25|eti:28|q' 
+-- Equation name is '_LC2_B6', type is buried 
+_LC2_B6  = DFF( DI,  _LC3_B6,  VCC,  VCC);
+
+-- Node name is '|ram01:25|eti:28|~88~1' 
+-- Equation name is '_LC5_A5', type is buried 
+-- synthesized logic cell 
+!_LC5_A5 = _LC5_A5~NOT;
+_LC5_A5~NOT = LCELL( _EQ022);
+  _EQ022 =  _LC8_A1 &  WR;
+
+-- Node name is '|ram01:25|eti:28|:90' 
+-- Equation name is '_LC3_B6', type is buried 
+_LC3_B6  = LCELL( _EQ023);
+  _EQ023 =  Clock &  DC63 &  _LC8_A1 &  RD;
+
+-- Node name is '|ram01:25|eti:29|:34' = '|ram01:25|eti:29|q' 
+-- Equation name is '_LC4_B6', type is buried 
+_LC4_B6  = DFF( DI,  _LC6_B6,  VCC,  VCC);
+
+-- Node name is '|ram01:25|eti:29|:88' 
+-- Equation name is '_LC5_B6', type is buried 
+!_LC5_B6 = _LC5_B6~NOT;
+_LC5_B6~NOT = LCELL( _EQ024);
+  _EQ024 = !DC63
+         #  _LC1_A4;
+
+-- Node name is '|ram01:25|eti:29|:90' 
+-- Equation name is '_LC6_B6', type is buried 
+_LC6_B6  = LCELL( _EQ025);
+  _EQ025 =  Clock &  DC63 &  _LC7_A1 &  RD;
+
+
+
+Project Informatione:\documents\science\computer_circuity\labs\mylabs\lab3\ram\ram1.rpt
+
+** COMPILATION SETTINGS & TIMES **
+
+Processing Menu Commands
+------------------------
+
+Design Doctor                             = off
+
+Logic Synthesis:
+
+   Synthesis Type Used                    = Multi-Level
+
+   Default Synthesis Style                = NORMAL
+
+      Logic option settings in 'NORMAL' style for 'FLEX8000' family
+
+      CARRY_CHAIN                         = ignore
+      CARRY_CHAIN_LENGTH                  = 32
+      CASCADE_CHAIN                       = ignore
+      CASCADE_CHAIN_LENGTH                = 2
+      DECOMPOSE_GATES                     = on
+      DUPLICATE_LOGIC_EXTRACTION          = on
+      MINIMIZATION                        = full
+      MULTI_LEVEL_FACTORING               = on
+      NOT_GATE_PUSH_BACK                  = on
+      REDUCE_LOGIC                        = on
+      REFACTORIZATION                     = on
+      REGISTER_OPTIMIZATION               = on
+      RESYNTHESIZE_NETWORK                = on
+      SLOW_SLEW_RATE                      = off
+      SUBFACTOR_EXTRACTION                = on
+      IGNORE_SOFT_BUFFERS                 = on
+      USE_LPM_FOR_AHDL_OPERATORS          = off
+
+   Other logic synthesis settings:
+
+      Automatic Global Clock              = on
+      Automatic Global Clear              = on
+      Automatic Global Preset             = on
+      Automatic Global Output Enable      = on
+      Automatic Fast I/O                  = off
+      Automatic Register Packing          = off
+      Automatic Open-Drain Pins           = on
+      Automatic Implement in EAB          = off
+      Optimize                            = 5
+
+Default Timing Specifications: None
+
+Cut All Bidir Feedback Timing Paths       = on
+Cut All Clear & Preset Timing Paths       = on
+
+Ignore Timing Assignments                 = off
+
+Functional SNF Extractor                  = off
+
+Linked SNF Extractor                      = off
+Timing SNF Extractor                      = on
+Optimize Timing SNF                       = off
+Generate AHDL TDO File                    = off
+Fitter Settings                           = NORMAL
+Smart Recompile                           = off
+Total Recompile                           = off
+
+Interfaces Menu Commands
+------------------------
+
+EDIF Netlist Writer                       = off
+Verilog Netlist Writer                    = off
+VHDL Netlist Writer                       = off
+
+Compilation Times
+-----------------
+
+   Compiler Netlist Extractor             00:00:00
+   Database Builder                       00:00:00
+   Logic Synthesizer                      00:00:00
+   Partitioner                            00:00:00
+   Fitter                                 00:00:00
+   Timing SNF Extractor                   00:00:00
+   Assembler                              00:00:00
+   --------------------------             --------
+   Total Time                             00:00:00
+
+
+Memory Allocated
+-----------------
+
+Peak memory allocated during compilation  = 7,192K

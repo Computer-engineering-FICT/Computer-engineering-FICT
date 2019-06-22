@@ -1,0 +1,16 @@
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;
+
+entity FM is
+	port (
+		CLK: in STD_LOGIC; 						-- синхровход 
+		WR: in STD_LOGIC;  						-- сигнал записи
+		AP: in STD_LOGIC_VECTOR(2 downto 0);	-- адрес канала B для чтения
+		AQ: in STD_LOGIC_VECTOR(2 downto 0);	-- адрес канала Q для записи
+		AD: in STD_LOGIC_VECTOR(2 downto 0);	-- адрес канала D для чтения
+		P:  out STD_LOGIC_VECTOR(14 downto 0);	-- данное канала B
+		Q:  in STD_LOGIC_VECTOR (14 downto 0);	-- данное канала Q
+		D:  out STD_LOGIC_VECTOR(14 downto 0)	-- данное канала D
+		);
+end FM;

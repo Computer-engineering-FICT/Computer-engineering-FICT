@@ -1,0 +1,3764 @@
+Project Informatione:\documents\science\computer_circuity\labs\mylabs\lab2\lsm\lsm32.rpt
+
+MAX+plus II Compiler Report File
+Version 10.1 06/12/2001
+Compiled: 10/14/2012 14:54:23
+
+Copyright (C) 1988-2001 Altera Corporation
+Any megafunction design, and related net list (encrypted or decrypted),
+support information, device programming or simulation file, and any other
+associated documentation or information provided by Altera or a partner
+under Altera's Megafunction Partnership Program may be used only to
+program PLD devices (but not masked PLD devices) from Altera.  Any other
+use of such megafunction design, net list, support information, device
+programming or simulation file, or any other related documentation or
+information is prohibited for any other purpose, including, but not
+limited to modification, reverse engineering, de-compiling, or use with
+any other silicon devices, unless such use is explicitly licensed under
+a separate agreement with Altera or a megafunction partner.  Title to
+the intellectual property, including patents, copyrights, trademarks,
+trade secrets, or maskworks, embodied in any such megafunction design,
+net list, support information, device programming or simulation file, or
+any other related documentation or information provided by Altera or a
+megafunction partner, remains with Altera, the megafunction partner, or
+their respective licensors.  No other licenses, including any licenses
+needed under any third party's intellectual property, are provided herein.
+
+
+
+***** Project compilation was successful
+
+
+Title: LSM32
+Company: KPI
+Designer: RED
+Rev: A
+Date:  2:54p 10-14-2012
+
+
+** DEVICE SUMMARY **
+
+Chip/                     Input   Output   Bidir 			    LCs
+POF       Device          Pins    Pins     Pins      LCs    % Utilized
+
+lsm32     EPF8452AQC160-2  69       33       0       262         77 %
+
+User Pins:                 69       33       0  
+
+
+
+Project Informatione:\documents\science\computer_circuity\labs\mylabs\lab2\lsm\lsm32.rpt
+
+** FILE HIERARCHY **
+
+
+
+|lsm8:14|
+|lsm8:14|lsmi:20|
+|lsm8:14|lsmi:20|sum_xor2:26|
+|lsm8:14|lsmi:20|sum_xor2:26|inverter:15|
+|lsm8:14|lsmi:20|sum_xor2:26|inverter:14|
+|lsm8:14|lsmi:20|sum_xor2:26|inverter:13|
+|lsm8:14|lsmi:20|c_i_plus_1:27|
+|lsm8:14|lsmi:20|xi:38|
+|lsm8:14|lsmi:20|xi:38|inverter:17|
+|lsm8:14|lsmi:20|xi:38|inverter:18|
+|lsm8:14|lsmi:20|xi:38|inverter:15|
+|lsm8:14|lsmi:20|xi:38|inverter:16|
+|lsm8:14|lsmi:20|xi:38|inverter:14|
+|lsm8:14|lsmi:20|xi:38|inverter:13|
+|lsm8:14|lsmi:20|xi:38|and5:31|
+|lsm8:14|lsmi:20|xi:38|and5:29|
+|lsm8:14|lsmi:20|yi:39|
+|lsm8:14|lsmi:20|yi:39|inverter:7|
+|lsm8:14|lsmi:20|yi:39|inverter:9|
+|lsm8:14|lsmi:20|yi:39|inverter:8|
+|lsm8:14|lsmi:28|
+|lsm8:14|lsmi:28|sum_xor2:26|
+|lsm8:14|lsmi:28|sum_xor2:26|inverter:15|
+|lsm8:14|lsmi:28|sum_xor2:26|inverter:14|
+|lsm8:14|lsmi:28|sum_xor2:26|inverter:13|
+|lsm8:14|lsmi:28|c_i_plus_1:27|
+|lsm8:14|lsmi:28|xi:38|
+|lsm8:14|lsmi:28|xi:38|inverter:17|
+|lsm8:14|lsmi:28|xi:38|inverter:18|
+|lsm8:14|lsmi:28|xi:38|inverter:15|
+|lsm8:14|lsmi:28|xi:38|inverter:16|
+|lsm8:14|lsmi:28|xi:38|inverter:14|
+|lsm8:14|lsmi:28|xi:38|inverter:13|
+|lsm8:14|lsmi:28|xi:38|and5:31|
+|lsm8:14|lsmi:28|xi:38|and5:29|
+|lsm8:14|lsmi:28|yi:39|
+|lsm8:14|lsmi:28|yi:39|inverter:7|
+|lsm8:14|lsmi:28|yi:39|inverter:9|
+|lsm8:14|lsmi:28|yi:39|inverter:8|
+|lsm8:14|lsmi:29|
+|lsm8:14|lsmi:29|sum_xor2:26|
+|lsm8:14|lsmi:29|sum_xor2:26|inverter:15|
+|lsm8:14|lsmi:29|sum_xor2:26|inverter:14|
+|lsm8:14|lsmi:29|sum_xor2:26|inverter:13|
+|lsm8:14|lsmi:29|c_i_plus_1:27|
+|lsm8:14|lsmi:29|xi:38|
+|lsm8:14|lsmi:29|xi:38|inverter:17|
+|lsm8:14|lsmi:29|xi:38|inverter:18|
+|lsm8:14|lsmi:29|xi:38|inverter:15|
+|lsm8:14|lsmi:29|xi:38|inverter:16|
+|lsm8:14|lsmi:29|xi:38|inverter:14|
+|lsm8:14|lsmi:29|xi:38|inverter:13|
+|lsm8:14|lsmi:29|xi:38|and5:31|
+|lsm8:14|lsmi:29|xi:38|and5:29|
+|lsm8:14|lsmi:29|yi:39|
+|lsm8:14|lsmi:29|yi:39|inverter:7|
+|lsm8:14|lsmi:29|yi:39|inverter:9|
+|lsm8:14|lsmi:29|yi:39|inverter:8|
+|lsm8:14|lsmi:25|
+|lsm8:14|lsmi:25|sum_xor2:26|
+|lsm8:14|lsmi:25|sum_xor2:26|inverter:15|
+|lsm8:14|lsmi:25|sum_xor2:26|inverter:14|
+|lsm8:14|lsmi:25|sum_xor2:26|inverter:13|
+|lsm8:14|lsmi:25|c_i_plus_1:27|
+|lsm8:14|lsmi:25|xi:38|
+|lsm8:14|lsmi:25|xi:38|inverter:17|
+|lsm8:14|lsmi:25|xi:38|inverter:18|
+|lsm8:14|lsmi:25|xi:38|inverter:15|
+|lsm8:14|lsmi:25|xi:38|inverter:16|
+|lsm8:14|lsmi:25|xi:38|inverter:14|
+|lsm8:14|lsmi:25|xi:38|inverter:13|
+|lsm8:14|lsmi:25|xi:38|and5:31|
+|lsm8:14|lsmi:25|xi:38|and5:29|
+|lsm8:14|lsmi:25|yi:39|
+|lsm8:14|lsmi:25|yi:39|inverter:7|
+|lsm8:14|lsmi:25|yi:39|inverter:9|
+|lsm8:14|lsmi:25|yi:39|inverter:8|
+|lsm8:14|lsmi:23|
+|lsm8:14|lsmi:23|sum_xor2:26|
+|lsm8:14|lsmi:23|sum_xor2:26|inverter:15|
+|lsm8:14|lsmi:23|sum_xor2:26|inverter:14|
+|lsm8:14|lsmi:23|sum_xor2:26|inverter:13|
+|lsm8:14|lsmi:23|c_i_plus_1:27|
+|lsm8:14|lsmi:23|xi:38|
+|lsm8:14|lsmi:23|xi:38|inverter:17|
+|lsm8:14|lsmi:23|xi:38|inverter:18|
+|lsm8:14|lsmi:23|xi:38|inverter:15|
+|lsm8:14|lsmi:23|xi:38|inverter:16|
+|lsm8:14|lsmi:23|xi:38|inverter:14|
+|lsm8:14|lsmi:23|xi:38|inverter:13|
+|lsm8:14|lsmi:23|xi:38|and5:31|
+|lsm8:14|lsmi:23|xi:38|and5:29|
+|lsm8:14|lsmi:23|yi:39|
+|lsm8:14|lsmi:23|yi:39|inverter:7|
+|lsm8:14|lsmi:23|yi:39|inverter:9|
+|lsm8:14|lsmi:23|yi:39|inverter:8|
+|lsm8:14|lsmi:21|
+|lsm8:14|lsmi:21|sum_xor2:26|
+|lsm8:14|lsmi:21|sum_xor2:26|inverter:15|
+|lsm8:14|lsmi:21|sum_xor2:26|inverter:14|
+|lsm8:14|lsmi:21|sum_xor2:26|inverter:13|
+|lsm8:14|lsmi:21|c_i_plus_1:27|
+|lsm8:14|lsmi:21|xi:38|
+|lsm8:14|lsmi:21|xi:38|inverter:17|
+|lsm8:14|lsmi:21|xi:38|inverter:18|
+|lsm8:14|lsmi:21|xi:38|inverter:15|
+|lsm8:14|lsmi:21|xi:38|inverter:16|
+|lsm8:14|lsmi:21|xi:38|inverter:14|
+|lsm8:14|lsmi:21|xi:38|inverter:13|
+|lsm8:14|lsmi:21|xi:38|and5:31|
+|lsm8:14|lsmi:21|xi:38|and5:29|
+|lsm8:14|lsmi:21|yi:39|
+|lsm8:14|lsmi:21|yi:39|inverter:7|
+|lsm8:14|lsmi:21|yi:39|inverter:9|
+|lsm8:14|lsmi:21|yi:39|inverter:8|
+|lsm8:14|lsmi:26|
+|lsm8:14|lsmi:26|sum_xor2:26|
+|lsm8:14|lsmi:26|sum_xor2:26|inverter:15|
+|lsm8:14|lsmi:26|sum_xor2:26|inverter:14|
+|lsm8:14|lsmi:26|sum_xor2:26|inverter:13|
+|lsm8:14|lsmi:26|c_i_plus_1:27|
+|lsm8:14|lsmi:26|xi:38|
+|lsm8:14|lsmi:26|xi:38|inverter:17|
+|lsm8:14|lsmi:26|xi:38|inverter:18|
+|lsm8:14|lsmi:26|xi:38|inverter:15|
+|lsm8:14|lsmi:26|xi:38|inverter:16|
+|lsm8:14|lsmi:26|xi:38|inverter:14|
+|lsm8:14|lsmi:26|xi:38|inverter:13|
+|lsm8:14|lsmi:26|xi:38|and5:31|
+|lsm8:14|lsmi:26|xi:38|and5:29|
+|lsm8:14|lsmi:26|yi:39|
+|lsm8:14|lsmi:26|yi:39|inverter:7|
+|lsm8:14|lsmi:26|yi:39|inverter:9|
+|lsm8:14|lsmi:26|yi:39|inverter:8|
+|lsm8:14|lsmi:27|
+|lsm8:14|lsmi:27|sum_xor2:26|
+|lsm8:14|lsmi:27|sum_xor2:26|inverter:15|
+|lsm8:14|lsmi:27|sum_xor2:26|inverter:14|
+|lsm8:14|lsmi:27|sum_xor2:26|inverter:13|
+|lsm8:14|lsmi:27|c_i_plus_1:27|
+|lsm8:14|lsmi:27|xi:38|
+|lsm8:14|lsmi:27|xi:38|inverter:17|
+|lsm8:14|lsmi:27|xi:38|inverter:18|
+|lsm8:14|lsmi:27|xi:38|inverter:15|
+|lsm8:14|lsmi:27|xi:38|inverter:16|
+|lsm8:14|lsmi:27|xi:38|inverter:14|
+|lsm8:14|lsmi:27|xi:38|inverter:13|
+|lsm8:14|lsmi:27|xi:38|and5:31|
+|lsm8:14|lsmi:27|xi:38|and5:29|
+|lsm8:14|lsmi:27|yi:39|
+|lsm8:14|lsmi:27|yi:39|inverter:7|
+|lsm8:14|lsmi:27|yi:39|inverter:9|
+|lsm8:14|lsmi:27|yi:39|inverter:8|
+|lsm8:16|
+|lsm8:16|lsmi:20|
+|lsm8:16|lsmi:20|sum_xor2:26|
+|lsm8:16|lsmi:20|sum_xor2:26|inverter:15|
+|lsm8:16|lsmi:20|sum_xor2:26|inverter:14|
+|lsm8:16|lsmi:20|sum_xor2:26|inverter:13|
+|lsm8:16|lsmi:20|c_i_plus_1:27|
+|lsm8:16|lsmi:20|xi:38|
+|lsm8:16|lsmi:20|xi:38|inverter:17|
+|lsm8:16|lsmi:20|xi:38|inverter:18|
+|lsm8:16|lsmi:20|xi:38|inverter:15|
+|lsm8:16|lsmi:20|xi:38|inverter:16|
+|lsm8:16|lsmi:20|xi:38|inverter:14|
+|lsm8:16|lsmi:20|xi:38|inverter:13|
+|lsm8:16|lsmi:20|xi:38|and5:31|
+|lsm8:16|lsmi:20|xi:38|and5:29|
+|lsm8:16|lsmi:20|yi:39|
+|lsm8:16|lsmi:20|yi:39|inverter:7|
+|lsm8:16|lsmi:20|yi:39|inverter:9|
+|lsm8:16|lsmi:20|yi:39|inverter:8|
+|lsm8:16|lsmi:28|
+|lsm8:16|lsmi:28|sum_xor2:26|
+|lsm8:16|lsmi:28|sum_xor2:26|inverter:15|
+|lsm8:16|lsmi:28|sum_xor2:26|inverter:14|
+|lsm8:16|lsmi:28|sum_xor2:26|inverter:13|
+|lsm8:16|lsmi:28|c_i_plus_1:27|
+|lsm8:16|lsmi:28|xi:38|
+|lsm8:16|lsmi:28|xi:38|inverter:17|
+|lsm8:16|lsmi:28|xi:38|inverter:18|
+|lsm8:16|lsmi:28|xi:38|inverter:15|
+|lsm8:16|lsmi:28|xi:38|inverter:16|
+|lsm8:16|lsmi:28|xi:38|inverter:14|
+|lsm8:16|lsmi:28|xi:38|inverter:13|
+|lsm8:16|lsmi:28|xi:38|and5:31|
+|lsm8:16|lsmi:28|xi:38|and5:29|
+|lsm8:16|lsmi:28|yi:39|
+|lsm8:16|lsmi:28|yi:39|inverter:7|
+|lsm8:16|lsmi:28|yi:39|inverter:9|
+|lsm8:16|lsmi:28|yi:39|inverter:8|
+|lsm8:16|lsmi:29|
+|lsm8:16|lsmi:29|sum_xor2:26|
+|lsm8:16|lsmi:29|sum_xor2:26|inverter:15|
+|lsm8:16|lsmi:29|sum_xor2:26|inverter:14|
+|lsm8:16|lsmi:29|sum_xor2:26|inverter:13|
+|lsm8:16|lsmi:29|c_i_plus_1:27|
+|lsm8:16|lsmi:29|xi:38|
+|lsm8:16|lsmi:29|xi:38|inverter:17|
+|lsm8:16|lsmi:29|xi:38|inverter:18|
+|lsm8:16|lsmi:29|xi:38|inverter:15|
+|lsm8:16|lsmi:29|xi:38|inverter:16|
+|lsm8:16|lsmi:29|xi:38|inverter:14|
+|lsm8:16|lsmi:29|xi:38|inverter:13|
+|lsm8:16|lsmi:29|xi:38|and5:31|
+|lsm8:16|lsmi:29|xi:38|and5:29|
+|lsm8:16|lsmi:29|yi:39|
+|lsm8:16|lsmi:29|yi:39|inverter:7|
+|lsm8:16|lsmi:29|yi:39|inverter:9|
+|lsm8:16|lsmi:29|yi:39|inverter:8|
+|lsm8:16|lsmi:25|
+|lsm8:16|lsmi:25|sum_xor2:26|
+|lsm8:16|lsmi:25|sum_xor2:26|inverter:15|
+|lsm8:16|lsmi:25|sum_xor2:26|inverter:14|
+|lsm8:16|lsmi:25|sum_xor2:26|inverter:13|
+|lsm8:16|lsmi:25|c_i_plus_1:27|
+|lsm8:16|lsmi:25|xi:38|
+|lsm8:16|lsmi:25|xi:38|inverter:17|
+|lsm8:16|lsmi:25|xi:38|inverter:18|
+|lsm8:16|lsmi:25|xi:38|inverter:15|
+|lsm8:16|lsmi:25|xi:38|inverter:16|
+|lsm8:16|lsmi:25|xi:38|inverter:14|
+|lsm8:16|lsmi:25|xi:38|inverter:13|
+|lsm8:16|lsmi:25|xi:38|and5:31|
+|lsm8:16|lsmi:25|xi:38|and5:29|
+|lsm8:16|lsmi:25|yi:39|
+|lsm8:16|lsmi:25|yi:39|inverter:7|
+|lsm8:16|lsmi:25|yi:39|inverter:9|
+|lsm8:16|lsmi:25|yi:39|inverter:8|
+|lsm8:16|lsmi:23|
+|lsm8:16|lsmi:23|sum_xor2:26|
+|lsm8:16|lsmi:23|sum_xor2:26|inverter:15|
+|lsm8:16|lsmi:23|sum_xor2:26|inverter:14|
+|lsm8:16|lsmi:23|sum_xor2:26|inverter:13|
+|lsm8:16|lsmi:23|c_i_plus_1:27|
+|lsm8:16|lsmi:23|xi:38|
+|lsm8:16|lsmi:23|xi:38|inverter:17|
+|lsm8:16|lsmi:23|xi:38|inverter:18|
+|lsm8:16|lsmi:23|xi:38|inverter:15|
+|lsm8:16|lsmi:23|xi:38|inverter:16|
+|lsm8:16|lsmi:23|xi:38|inverter:14|
+|lsm8:16|lsmi:23|xi:38|inverter:13|
+|lsm8:16|lsmi:23|xi:38|and5:31|
+|lsm8:16|lsmi:23|xi:38|and5:29|
+|lsm8:16|lsmi:23|yi:39|
+|lsm8:16|lsmi:23|yi:39|inverter:7|
+|lsm8:16|lsmi:23|yi:39|inverter:9|
+|lsm8:16|lsmi:23|yi:39|inverter:8|
+|lsm8:16|lsmi:21|
+|lsm8:16|lsmi:21|sum_xor2:26|
+|lsm8:16|lsmi:21|sum_xor2:26|inverter:15|
+|lsm8:16|lsmi:21|sum_xor2:26|inverter:14|
+|lsm8:16|lsmi:21|sum_xor2:26|inverter:13|
+|lsm8:16|lsmi:21|c_i_plus_1:27|
+|lsm8:16|lsmi:21|xi:38|
+|lsm8:16|lsmi:21|xi:38|inverter:17|
+|lsm8:16|lsmi:21|xi:38|inverter:18|
+|lsm8:16|lsmi:21|xi:38|inverter:15|
+|lsm8:16|lsmi:21|xi:38|inverter:16|
+|lsm8:16|lsmi:21|xi:38|inverter:14|
+|lsm8:16|lsmi:21|xi:38|inverter:13|
+|lsm8:16|lsmi:21|xi:38|and5:31|
+|lsm8:16|lsmi:21|xi:38|and5:29|
+|lsm8:16|lsmi:21|yi:39|
+|lsm8:16|lsmi:21|yi:39|inverter:7|
+|lsm8:16|lsmi:21|yi:39|inverter:9|
+|lsm8:16|lsmi:21|yi:39|inverter:8|
+|lsm8:16|lsmi:26|
+|lsm8:16|lsmi:26|sum_xor2:26|
+|lsm8:16|lsmi:26|sum_xor2:26|inverter:15|
+|lsm8:16|lsmi:26|sum_xor2:26|inverter:14|
+|lsm8:16|lsmi:26|sum_xor2:26|inverter:13|
+|lsm8:16|lsmi:26|c_i_plus_1:27|
+|lsm8:16|lsmi:26|xi:38|
+|lsm8:16|lsmi:26|xi:38|inverter:17|
+|lsm8:16|lsmi:26|xi:38|inverter:18|
+|lsm8:16|lsmi:26|xi:38|inverter:15|
+|lsm8:16|lsmi:26|xi:38|inverter:16|
+|lsm8:16|lsmi:26|xi:38|inverter:14|
+|lsm8:16|lsmi:26|xi:38|inverter:13|
+|lsm8:16|lsmi:26|xi:38|and5:31|
+|lsm8:16|lsmi:26|xi:38|and5:29|
+|lsm8:16|lsmi:26|yi:39|
+|lsm8:16|lsmi:26|yi:39|inverter:7|
+|lsm8:16|lsmi:26|yi:39|inverter:9|
+|lsm8:16|lsmi:26|yi:39|inverter:8|
+|lsm8:16|lsmi:27|
+|lsm8:16|lsmi:27|sum_xor2:26|
+|lsm8:16|lsmi:27|sum_xor2:26|inverter:15|
+|lsm8:16|lsmi:27|sum_xor2:26|inverter:14|
+|lsm8:16|lsmi:27|sum_xor2:26|inverter:13|
+|lsm8:16|lsmi:27|c_i_plus_1:27|
+|lsm8:16|lsmi:27|xi:38|
+|lsm8:16|lsmi:27|xi:38|inverter:17|
+|lsm8:16|lsmi:27|xi:38|inverter:18|
+|lsm8:16|lsmi:27|xi:38|inverter:15|
+|lsm8:16|lsmi:27|xi:38|inverter:16|
+|lsm8:16|lsmi:27|xi:38|inverter:14|
+|lsm8:16|lsmi:27|xi:38|inverter:13|
+|lsm8:16|lsmi:27|xi:38|and5:31|
+|lsm8:16|lsmi:27|xi:38|and5:29|
+|lsm8:16|lsmi:27|yi:39|
+|lsm8:16|lsmi:27|yi:39|inverter:7|
+|lsm8:16|lsmi:27|yi:39|inverter:9|
+|lsm8:16|lsmi:27|yi:39|inverter:8|
+|lsm8:15|
+|lsm8:15|lsmi:20|
+|lsm8:15|lsmi:20|sum_xor2:26|
+|lsm8:15|lsmi:20|sum_xor2:26|inverter:15|
+|lsm8:15|lsmi:20|sum_xor2:26|inverter:14|
+|lsm8:15|lsmi:20|sum_xor2:26|inverter:13|
+|lsm8:15|lsmi:20|c_i_plus_1:27|
+|lsm8:15|lsmi:20|xi:38|
+|lsm8:15|lsmi:20|xi:38|inverter:17|
+|lsm8:15|lsmi:20|xi:38|inverter:18|
+|lsm8:15|lsmi:20|xi:38|inverter:15|
+|lsm8:15|lsmi:20|xi:38|inverter:16|
+|lsm8:15|lsmi:20|xi:38|inverter:14|
+|lsm8:15|lsmi:20|xi:38|inverter:13|
+|lsm8:15|lsmi:20|xi:38|and5:31|
+|lsm8:15|lsmi:20|xi:38|and5:29|
+|lsm8:15|lsmi:20|yi:39|
+|lsm8:15|lsmi:20|yi:39|inverter:7|
+|lsm8:15|lsmi:20|yi:39|inverter:9|
+|lsm8:15|lsmi:20|yi:39|inverter:8|
+|lsm8:15|lsmi:28|
+|lsm8:15|lsmi:28|sum_xor2:26|
+|lsm8:15|lsmi:28|sum_xor2:26|inverter:15|
+|lsm8:15|lsmi:28|sum_xor2:26|inverter:14|
+|lsm8:15|lsmi:28|sum_xor2:26|inverter:13|
+|lsm8:15|lsmi:28|c_i_plus_1:27|
+|lsm8:15|lsmi:28|xi:38|
+|lsm8:15|lsmi:28|xi:38|inverter:17|
+|lsm8:15|lsmi:28|xi:38|inverter:18|
+|lsm8:15|lsmi:28|xi:38|inverter:15|
+|lsm8:15|lsmi:28|xi:38|inverter:16|
+|lsm8:15|lsmi:28|xi:38|inverter:14|
+|lsm8:15|lsmi:28|xi:38|inverter:13|
+|lsm8:15|lsmi:28|xi:38|and5:31|
+|lsm8:15|lsmi:28|xi:38|and5:29|
+|lsm8:15|lsmi:28|yi:39|
+|lsm8:15|lsmi:28|yi:39|inverter:7|
+|lsm8:15|lsmi:28|yi:39|inverter:9|
+|lsm8:15|lsmi:28|yi:39|inverter:8|
+|lsm8:15|lsmi:29|
+|lsm8:15|lsmi:29|sum_xor2:26|
+|lsm8:15|lsmi:29|sum_xor2:26|inverter:15|
+|lsm8:15|lsmi:29|sum_xor2:26|inverter:14|
+|lsm8:15|lsmi:29|sum_xor2:26|inverter:13|
+|lsm8:15|lsmi:29|c_i_plus_1:27|
+|lsm8:15|lsmi:29|xi:38|
+|lsm8:15|lsmi:29|xi:38|inverter:17|
+|lsm8:15|lsmi:29|xi:38|inverter:18|
+|lsm8:15|lsmi:29|xi:38|inverter:15|
+|lsm8:15|lsmi:29|xi:38|inverter:16|
+|lsm8:15|lsmi:29|xi:38|inverter:14|
+|lsm8:15|lsmi:29|xi:38|inverter:13|
+|lsm8:15|lsmi:29|xi:38|and5:31|
+|lsm8:15|lsmi:29|xi:38|and5:29|
+|lsm8:15|lsmi:29|yi:39|
+|lsm8:15|lsmi:29|yi:39|inverter:7|
+|lsm8:15|lsmi:29|yi:39|inverter:9|
+|lsm8:15|lsmi:29|yi:39|inverter:8|
+|lsm8:15|lsmi:25|
+|lsm8:15|lsmi:25|sum_xor2:26|
+|lsm8:15|lsmi:25|sum_xor2:26|inverter:15|
+|lsm8:15|lsmi:25|sum_xor2:26|inverter:14|
+|lsm8:15|lsmi:25|sum_xor2:26|inverter:13|
+|lsm8:15|lsmi:25|c_i_plus_1:27|
+|lsm8:15|lsmi:25|xi:38|
+|lsm8:15|lsmi:25|xi:38|inverter:17|
+|lsm8:15|lsmi:25|xi:38|inverter:18|
+|lsm8:15|lsmi:25|xi:38|inverter:15|
+|lsm8:15|lsmi:25|xi:38|inverter:16|
+|lsm8:15|lsmi:25|xi:38|inverter:14|
+|lsm8:15|lsmi:25|xi:38|inverter:13|
+|lsm8:15|lsmi:25|xi:38|and5:31|
+|lsm8:15|lsmi:25|xi:38|and5:29|
+|lsm8:15|lsmi:25|yi:39|
+|lsm8:15|lsmi:25|yi:39|inverter:7|
+|lsm8:15|lsmi:25|yi:39|inverter:9|
+|lsm8:15|lsmi:25|yi:39|inverter:8|
+|lsm8:15|lsmi:23|
+|lsm8:15|lsmi:23|sum_xor2:26|
+|lsm8:15|lsmi:23|sum_xor2:26|inverter:15|
+|lsm8:15|lsmi:23|sum_xor2:26|inverter:14|
+|lsm8:15|lsmi:23|sum_xor2:26|inverter:13|
+|lsm8:15|lsmi:23|c_i_plus_1:27|
+|lsm8:15|lsmi:23|xi:38|
+|lsm8:15|lsmi:23|xi:38|inverter:17|
+|lsm8:15|lsmi:23|xi:38|inverter:18|
+|lsm8:15|lsmi:23|xi:38|inverter:15|
+|lsm8:15|lsmi:23|xi:38|inverter:16|
+|lsm8:15|lsmi:23|xi:38|inverter:14|
+|lsm8:15|lsmi:23|xi:38|inverter:13|
+|lsm8:15|lsmi:23|xi:38|and5:31|
+|lsm8:15|lsmi:23|xi:38|and5:29|
+|lsm8:15|lsmi:23|yi:39|
+|lsm8:15|lsmi:23|yi:39|inverter:7|
+|lsm8:15|lsmi:23|yi:39|inverter:9|
+|lsm8:15|lsmi:23|yi:39|inverter:8|
+|lsm8:15|lsmi:21|
+|lsm8:15|lsmi:21|sum_xor2:26|
+|lsm8:15|lsmi:21|sum_xor2:26|inverter:15|
+|lsm8:15|lsmi:21|sum_xor2:26|inverter:14|
+|lsm8:15|lsmi:21|sum_xor2:26|inverter:13|
+|lsm8:15|lsmi:21|c_i_plus_1:27|
+|lsm8:15|lsmi:21|xi:38|
+|lsm8:15|lsmi:21|xi:38|inverter:17|
+|lsm8:15|lsmi:21|xi:38|inverter:18|
+|lsm8:15|lsmi:21|xi:38|inverter:15|
+|lsm8:15|lsmi:21|xi:38|inverter:16|
+|lsm8:15|lsmi:21|xi:38|inverter:14|
+|lsm8:15|lsmi:21|xi:38|inverter:13|
+|lsm8:15|lsmi:21|xi:38|and5:31|
+|lsm8:15|lsmi:21|xi:38|and5:29|
+|lsm8:15|lsmi:21|yi:39|
+|lsm8:15|lsmi:21|yi:39|inverter:7|
+|lsm8:15|lsmi:21|yi:39|inverter:9|
+|lsm8:15|lsmi:21|yi:39|inverter:8|
+|lsm8:15|lsmi:26|
+|lsm8:15|lsmi:26|sum_xor2:26|
+|lsm8:15|lsmi:26|sum_xor2:26|inverter:15|
+|lsm8:15|lsmi:26|sum_xor2:26|inverter:14|
+|lsm8:15|lsmi:26|sum_xor2:26|inverter:13|
+|lsm8:15|lsmi:26|c_i_plus_1:27|
+|lsm8:15|lsmi:26|xi:38|
+|lsm8:15|lsmi:26|xi:38|inverter:17|
+|lsm8:15|lsmi:26|xi:38|inverter:18|
+|lsm8:15|lsmi:26|xi:38|inverter:15|
+|lsm8:15|lsmi:26|xi:38|inverter:16|
+|lsm8:15|lsmi:26|xi:38|inverter:14|
+|lsm8:15|lsmi:26|xi:38|inverter:13|
+|lsm8:15|lsmi:26|xi:38|and5:31|
+|lsm8:15|lsmi:26|xi:38|and5:29|
+|lsm8:15|lsmi:26|yi:39|
+|lsm8:15|lsmi:26|yi:39|inverter:7|
+|lsm8:15|lsmi:26|yi:39|inverter:9|
+|lsm8:15|lsmi:26|yi:39|inverter:8|
+|lsm8:15|lsmi:27|
+|lsm8:15|lsmi:27|sum_xor2:26|
+|lsm8:15|lsmi:27|sum_xor2:26|inverter:15|
+|lsm8:15|lsmi:27|sum_xor2:26|inverter:14|
+|lsm8:15|lsmi:27|sum_xor2:26|inverter:13|
+|lsm8:15|lsmi:27|c_i_plus_1:27|
+|lsm8:15|lsmi:27|xi:38|
+|lsm8:15|lsmi:27|xi:38|inverter:17|
+|lsm8:15|lsmi:27|xi:38|inverter:18|
+|lsm8:15|lsmi:27|xi:38|inverter:15|
+|lsm8:15|lsmi:27|xi:38|inverter:16|
+|lsm8:15|lsmi:27|xi:38|inverter:14|
+|lsm8:15|lsmi:27|xi:38|inverter:13|
+|lsm8:15|lsmi:27|xi:38|and5:31|
+|lsm8:15|lsmi:27|xi:38|and5:29|
+|lsm8:15|lsmi:27|yi:39|
+|lsm8:15|lsmi:27|yi:39|inverter:7|
+|lsm8:15|lsmi:27|yi:39|inverter:9|
+|lsm8:15|lsmi:27|yi:39|inverter:8|
+|lsm8:17|
+|lsm8:17|lsmi:20|
+|lsm8:17|lsmi:20|sum_xor2:26|
+|lsm8:17|lsmi:20|sum_xor2:26|inverter:15|
+|lsm8:17|lsmi:20|sum_xor2:26|inverter:14|
+|lsm8:17|lsmi:20|sum_xor2:26|inverter:13|
+|lsm8:17|lsmi:20|c_i_plus_1:27|
+|lsm8:17|lsmi:20|xi:38|
+|lsm8:17|lsmi:20|xi:38|inverter:17|
+|lsm8:17|lsmi:20|xi:38|inverter:18|
+|lsm8:17|lsmi:20|xi:38|inverter:15|
+|lsm8:17|lsmi:20|xi:38|inverter:16|
+|lsm8:17|lsmi:20|xi:38|inverter:14|
+|lsm8:17|lsmi:20|xi:38|inverter:13|
+|lsm8:17|lsmi:20|xi:38|and5:31|
+|lsm8:17|lsmi:20|xi:38|and5:29|
+|lsm8:17|lsmi:20|yi:39|
+|lsm8:17|lsmi:20|yi:39|inverter:7|
+|lsm8:17|lsmi:20|yi:39|inverter:9|
+|lsm8:17|lsmi:20|yi:39|inverter:8|
+|lsm8:17|lsmi:28|
+|lsm8:17|lsmi:28|sum_xor2:26|
+|lsm8:17|lsmi:28|sum_xor2:26|inverter:15|
+|lsm8:17|lsmi:28|sum_xor2:26|inverter:14|
+|lsm8:17|lsmi:28|sum_xor2:26|inverter:13|
+|lsm8:17|lsmi:28|c_i_plus_1:27|
+|lsm8:17|lsmi:28|xi:38|
+|lsm8:17|lsmi:28|xi:38|inverter:17|
+|lsm8:17|lsmi:28|xi:38|inverter:18|
+|lsm8:17|lsmi:28|xi:38|inverter:15|
+|lsm8:17|lsmi:28|xi:38|inverter:16|
+|lsm8:17|lsmi:28|xi:38|inverter:14|
+|lsm8:17|lsmi:28|xi:38|inverter:13|
+|lsm8:17|lsmi:28|xi:38|and5:31|
+|lsm8:17|lsmi:28|xi:38|and5:29|
+|lsm8:17|lsmi:28|yi:39|
+|lsm8:17|lsmi:28|yi:39|inverter:7|
+|lsm8:17|lsmi:28|yi:39|inverter:9|
+|lsm8:17|lsmi:28|yi:39|inverter:8|
+|lsm8:17|lsmi:29|
+|lsm8:17|lsmi:29|sum_xor2:26|
+|lsm8:17|lsmi:29|sum_xor2:26|inverter:15|
+|lsm8:17|lsmi:29|sum_xor2:26|inverter:14|
+|lsm8:17|lsmi:29|sum_xor2:26|inverter:13|
+|lsm8:17|lsmi:29|c_i_plus_1:27|
+|lsm8:17|lsmi:29|xi:38|
+|lsm8:17|lsmi:29|xi:38|inverter:17|
+|lsm8:17|lsmi:29|xi:38|inverter:18|
+|lsm8:17|lsmi:29|xi:38|inverter:15|
+|lsm8:17|lsmi:29|xi:38|inverter:16|
+|lsm8:17|lsmi:29|xi:38|inverter:14|
+|lsm8:17|lsmi:29|xi:38|inverter:13|
+|lsm8:17|lsmi:29|xi:38|and5:31|
+|lsm8:17|lsmi:29|xi:38|and5:29|
+|lsm8:17|lsmi:29|yi:39|
+|lsm8:17|lsmi:29|yi:39|inverter:7|
+|lsm8:17|lsmi:29|yi:39|inverter:9|
+|lsm8:17|lsmi:29|yi:39|inverter:8|
+|lsm8:17|lsmi:25|
+|lsm8:17|lsmi:25|sum_xor2:26|
+|lsm8:17|lsmi:25|sum_xor2:26|inverter:15|
+|lsm8:17|lsmi:25|sum_xor2:26|inverter:14|
+|lsm8:17|lsmi:25|sum_xor2:26|inverter:13|
+|lsm8:17|lsmi:25|c_i_plus_1:27|
+|lsm8:17|lsmi:25|xi:38|
+|lsm8:17|lsmi:25|xi:38|inverter:17|
+|lsm8:17|lsmi:25|xi:38|inverter:18|
+|lsm8:17|lsmi:25|xi:38|inverter:15|
+|lsm8:17|lsmi:25|xi:38|inverter:16|
+|lsm8:17|lsmi:25|xi:38|inverter:14|
+|lsm8:17|lsmi:25|xi:38|inverter:13|
+|lsm8:17|lsmi:25|xi:38|and5:31|
+|lsm8:17|lsmi:25|xi:38|and5:29|
+|lsm8:17|lsmi:25|yi:39|
+|lsm8:17|lsmi:25|yi:39|inverter:7|
+|lsm8:17|lsmi:25|yi:39|inverter:9|
+|lsm8:17|lsmi:25|yi:39|inverter:8|
+|lsm8:17|lsmi:23|
+|lsm8:17|lsmi:23|sum_xor2:26|
+|lsm8:17|lsmi:23|sum_xor2:26|inverter:15|
+|lsm8:17|lsmi:23|sum_xor2:26|inverter:14|
+|lsm8:17|lsmi:23|sum_xor2:26|inverter:13|
+|lsm8:17|lsmi:23|c_i_plus_1:27|
+|lsm8:17|lsmi:23|xi:38|
+|lsm8:17|lsmi:23|xi:38|inverter:17|
+|lsm8:17|lsmi:23|xi:38|inverter:18|
+|lsm8:17|lsmi:23|xi:38|inverter:15|
+|lsm8:17|lsmi:23|xi:38|inverter:16|
+|lsm8:17|lsmi:23|xi:38|inverter:14|
+|lsm8:17|lsmi:23|xi:38|inverter:13|
+|lsm8:17|lsmi:23|xi:38|and5:31|
+|lsm8:17|lsmi:23|xi:38|and5:29|
+|lsm8:17|lsmi:23|yi:39|
+|lsm8:17|lsmi:23|yi:39|inverter:7|
+|lsm8:17|lsmi:23|yi:39|inverter:9|
+|lsm8:17|lsmi:23|yi:39|inverter:8|
+|lsm8:17|lsmi:21|
+|lsm8:17|lsmi:21|sum_xor2:26|
+|lsm8:17|lsmi:21|sum_xor2:26|inverter:15|
+|lsm8:17|lsmi:21|sum_xor2:26|inverter:14|
+|lsm8:17|lsmi:21|sum_xor2:26|inverter:13|
+|lsm8:17|lsmi:21|c_i_plus_1:27|
+|lsm8:17|lsmi:21|xi:38|
+|lsm8:17|lsmi:21|xi:38|inverter:17|
+|lsm8:17|lsmi:21|xi:38|inverter:18|
+|lsm8:17|lsmi:21|xi:38|inverter:15|
+|lsm8:17|lsmi:21|xi:38|inverter:16|
+|lsm8:17|lsmi:21|xi:38|inverter:14|
+|lsm8:17|lsmi:21|xi:38|inverter:13|
+|lsm8:17|lsmi:21|xi:38|and5:31|
+|lsm8:17|lsmi:21|xi:38|and5:29|
+|lsm8:17|lsmi:21|yi:39|
+|lsm8:17|lsmi:21|yi:39|inverter:7|
+|lsm8:17|lsmi:21|yi:39|inverter:9|
+|lsm8:17|lsmi:21|yi:39|inverter:8|
+|lsm8:17|lsmi:26|
+|lsm8:17|lsmi:26|sum_xor2:26|
+|lsm8:17|lsmi:26|sum_xor2:26|inverter:15|
+|lsm8:17|lsmi:26|sum_xor2:26|inverter:14|
+|lsm8:17|lsmi:26|sum_xor2:26|inverter:13|
+|lsm8:17|lsmi:26|c_i_plus_1:27|
+|lsm8:17|lsmi:26|xi:38|
+|lsm8:17|lsmi:26|xi:38|inverter:17|
+|lsm8:17|lsmi:26|xi:38|inverter:18|
+|lsm8:17|lsmi:26|xi:38|inverter:15|
+|lsm8:17|lsmi:26|xi:38|inverter:16|
+|lsm8:17|lsmi:26|xi:38|inverter:14|
+|lsm8:17|lsmi:26|xi:38|inverter:13|
+|lsm8:17|lsmi:26|xi:38|and5:31|
+|lsm8:17|lsmi:26|xi:38|and5:29|
+|lsm8:17|lsmi:26|yi:39|
+|lsm8:17|lsmi:26|yi:39|inverter:7|
+|lsm8:17|lsmi:26|yi:39|inverter:9|
+|lsm8:17|lsmi:26|yi:39|inverter:8|
+|lsm8:17|lsmi:27|
+|lsm8:17|lsmi:27|sum_xor2:26|
+|lsm8:17|lsmi:27|sum_xor2:26|inverter:15|
+|lsm8:17|lsmi:27|sum_xor2:26|inverter:14|
+|lsm8:17|lsmi:27|sum_xor2:26|inverter:13|
+|lsm8:17|lsmi:27|c_i_plus_1:27|
+|lsm8:17|lsmi:27|xi:38|
+|lsm8:17|lsmi:27|xi:38|inverter:17|
+|lsm8:17|lsmi:27|xi:38|inverter:18|
+|lsm8:17|lsmi:27|xi:38|inverter:15|
+|lsm8:17|lsmi:27|xi:38|inverter:16|
+|lsm8:17|lsmi:27|xi:38|inverter:14|
+|lsm8:17|lsmi:27|xi:38|inverter:13|
+|lsm8:17|lsmi:27|xi:38|and5:31|
+|lsm8:17|lsmi:27|xi:38|and5:29|
+|lsm8:17|lsmi:27|yi:39|
+|lsm8:17|lsmi:27|yi:39|inverter:7|
+|lsm8:17|lsmi:27|yi:39|inverter:9|
+|lsm8:17|lsmi:27|yi:39|inverter:8|
+
+
+Device-Specific Information:e:\documents\science\computer_circuity\labs\mylabs\lab2\lsm\lsm32.rpt
+lsm32
+
+***** Logic for device 'lsm32' compiled without errors.
+
+
+
+
+Device: EPF8452AQC160-2
+
+FLEX 8000 Configuration Scheme: Active Serial
+
+Device Options:
+    User-Supplied Start-Up Clock               = OFF
+    Auto-Restart Configuration on Frame Error  = OFF
+    Release Clears Before Tri-States           = OFF
+    Enable DCLK Output in User Mode            = OFF
+    Disable Start-Up Time-Out                  = OFF
+
+
+
+Device-Specific Information:e:\documents\science\computer_circuity\labs\mylabs\lab2\lsm\lsm32.rpt
+lsm32
+
+** ERROR SUMMARY **
+
+Info: Chip 'lsm32' in device 'EPF8452AQC160-2' has less than 20% of pins available for future logic changes -- if your project is likely to change, Altera recommends using a larger device
+                                                                                                 
+                                                                                                 
+                                                                            R         R   R      
+                                                                            E         E   E      
+                V                         V                           V     S   *     S   S   V  
+                C                         C                           C     E   S     E   E   C  
+                C                       N C                           C     R   D     R   R   C  
+                I P P P P G P Q Q Q Q P . I Q Q Q P P Q G P P Q D Q D I Q D V D O D G V D V P I  
+                N 0 1 1 0 N 0 3 1 0 2 0 C N 0 1 1 0 3 2 N 2 1 0 2 0 1 N 0 0 E 1 U 0 N E 1 E 2 N  
+                T 6 0 1 9 D 2 1 1 7 7 8 . T 8 8 0 4 0 8 D 0 7 6 6 1 9 T 3 1 D 1 T 9 D D 5 D 5 T  
+              ----------------------------------------------------------------------------------_ 
+             / 160 158 156 154 152 150 148 146 144 142 140 138 136 134 132 130 128 126 124 122   |_ 
+            /    159 157 155 153 151 149 147 145 143 141 139 137 135 133 131 129 127 125 123 121    | 
+     ^DCLK |  1                                                                                 120 | ^nSP 
+      N.C. |  2                                                                                 119 | N.C. 
+      N.C. |  3                                                                                 118 | N.C. 
+^CONF_DONE |  4                                                                                 117 | ^MSEL0 
+        F0 |  5                                                                                 116 | F2 
+       Q04 |  6                                                                                 115 | D27 
+       D25 |  7                                                                                 114 | RESERVED 
+       D17 |  8                                                                                 113 | D16 
+       Q26 |  9                                                                                 112 | RESERVED 
+       D00 | 10                                                                                 111 | RESERVED 
+       D18 | 11                                                                                 110 | D04 
+    +DATA0 | 12                                                                                 109 | D13 
+       GND | 13                                                                                 108 | GND 
+       GND | 14                                                                                 107 | GND 
+       D14 | 15                                                                                 106 | Q13 
+       D12 | 16                                                                                 105 | D03 
+       D21 | 17                                                                                 104 | D30 
+       P18 | 18                                                                                 103 | P19 
+C_I_PLUS_1 | 19                                                                                 102 | P16 
+       P03 | 20                                                                                 101 | P21 
+    VCCINT | 21                                 EPF8452AQC160-2                                 100 | VCCINT 
+       D24 | 22                                                                                  99 | D29 
+       D31 | 23                                                                                  98 | D07 
+       D06 | 24                                                                                  97 | D02 
+       Q00 | 25                                                                                  96 | Q29 
+       Q25 | 26                                                                                  95 | Q30 
+       D28 | 27                                                                                  94 | Q24 
+       GND | 28                                                                                  93 | GND 
+       P07 | 29                                                                                  92 | C0 
+       P00 | 30                                                                                  91 | P22 
+       Q23 | 31                                                                                  90 | RESERVED 
+       P31 | 32                                                                                  89 | RESERVED 
+       Q14 | 33                                                                                  88 | D05 
+       Q20 | 34                                                                                  87 | P13 
+       Q02 | 35                                                                                  86 | Q05 
+        F3 | 36                                                                                  85 | F1 
+  ^nSTATUS | 37                                                                                  84 | ^MSEL1 
+      N.C. | 38                                                                                  83 | N.C. 
+      N.C. | 39                                                                                  82 | N.C. 
+  ^nCONFIG | 40                                                                                  81 | VCCINT 
+           |      42  44  46  48  50  52  54  56  58  60  62  64  66  68  70  72  74  76  78  80  _| 
+            \   41  43  45  47  49  51  53  55  57  59  61  63  65  67  69  71  73  75  77  79   | 
+             \----------------------------------------------------------------------------------- 
+                V P P P Q G Q Q P Q Q P V P P Q Q P P G P D P D R D V R D N R R R R G R D R Q V  
+                C 0 1 0 2 N 0 1 1 1 2 2 C 2 2 1 1 2 2 N 2 2 1 0 E 1 C E 2 . E E E E N E 2 E 1 C  
+                C 5 2 1 1 D 9 5 4 9 2 7 C 8 9 7 6 3 4 D 6 0 5 8 S 0 C S 2 C S S S S D S 3 S 2 C  
+                I                       I                       E   I E   . E E E E   E   E   I  
+                N                       N                       R   N R     R R R R   R   R   N  
+                T                       T                       V   T V     V V V V   V   V   T  
+                                                                E     E     E E E E   E   E      
+                                                                D     D     D D D D   D   D      
+                                                                                                 
+                                                                                                 
+
+
+N.C. = No Connect. This pin has no internal connection to the device.
+VCCINT = Dedicated power pin, which MUST be connected to VCC (5.0 volts).
+VCCIO = Dedicated power pin, which MUST be connected to VCC (5.0 volts).
+GND = Dedicated ground pin or unused dedicated input, which MUST be connected to GND.
+RESERVED = Unused I/O pin, which MUST be left unconnected.
+
+^ = Dedicated configuration pin.
++ = Reserved configuration pin, which is tri-stated during user mode.
+* = Reserved configuration pin, which drives out in user mode.
+PDn = Power Down pin. 
+@ = Special-purpose pin. 
+
+
+Device-Specific Information:e:\documents\science\computer_circuity\labs\mylabs\lab2\lsm\lsm32.rpt
+lsm32
+
+** RESOURCE USAGE **
+
+Logic                Column       Row                                   
+Array                Interconnect Interconnect         Clears/     External  
+Block   Logic Cells  Driven       Driven       Clocks  Presets   Interconnect
+A3       7/ 8( 87%)   0/ 8(  0%)   2/ 8( 25%)    0/2    0/2      10/24( 41%)   
+A4       6/ 8( 75%)   0/ 8(  0%)   4/ 8( 50%)    0/2    0/2      10/24( 41%)   
+A5       6/ 8( 75%)   1/ 8( 12%)   2/ 8( 25%)    0/2    0/2       9/24( 37%)   
+A6       6/ 8( 75%)   0/ 8(  0%)   3/ 8( 37%)    0/2    0/2       9/24( 37%)   
+A7       5/ 8( 62%)   0/ 8(  0%)   1/ 8( 12%)    0/2    0/2       8/24( 33%)   
+A8       5/ 8( 62%)   0/ 8(  0%)   1/ 8( 12%)    0/2    0/2       8/24( 33%)   
+A9       8/ 8(100%)   1/ 8( 12%)   1/ 8( 12%)    0/2    0/2      10/24( 41%)   
+A10      8/ 8(100%)   2/ 8( 25%)   0/ 8(  0%)    0/2    0/2      10/24( 41%)   
+A11      5/ 8( 62%)   0/ 8(  0%)   1/ 8( 12%)    0/2    0/2       8/24( 33%)   
+A13      8/ 8(100%)   1/ 8( 12%)   1/ 8( 12%)    0/2    0/2      10/24( 41%)   
+A14      8/ 8(100%)   1/ 8( 12%)   1/ 8( 12%)    0/2    0/2      10/24( 41%)   
+A15      8/ 8(100%)   1/ 8( 12%)   1/ 8( 12%)    0/2    0/2      10/24( 41%)   
+A16      8/ 8(100%)   1/ 8( 12%)   1/ 8( 12%)    0/2    0/2      10/24( 41%)   
+A17      8/ 8(100%)   1/ 8( 12%)   1/ 8( 12%)    0/2    0/2      10/24( 41%)   
+A18      8/ 8(100%)   1/ 8( 12%)   1/ 8( 12%)    0/2    0/2      10/24( 41%)   
+A19      8/ 8(100%)   1/ 8( 12%)   1/ 8( 12%)    0/2    0/2      10/24( 41%)   
+A20      8/ 8(100%)   1/ 8( 12%)   1/ 8( 12%)    0/2    0/2      10/24( 41%)   
+A21      8/ 8(100%)   0/ 8(  0%)   2/ 8( 25%)    0/2    0/2      11/24( 45%)   
+B1       5/ 8( 62%)   3/ 8( 37%)   4/ 8( 50%)    0/2    0/2       9/24( 37%)   
+B2       6/ 8( 75%)   1/ 8( 12%)   2/ 8( 25%)    0/2    0/2       9/24( 37%)   
+B3       6/ 8( 75%)   0/ 8(  0%)   3/ 8( 37%)    0/2    0/2       9/24( 37%)   
+B4       7/ 8( 87%)   0/ 8(  0%)   1/ 8( 12%)    0/2    0/2       6/24( 25%)   
+B5       5/ 8( 62%)   0/ 8(  0%)   1/ 8( 12%)    0/2    0/2       8/24( 33%)   
+B6       5/ 8( 62%)   0/ 8(  0%)   1/ 8( 12%)    0/2    0/2       8/24( 33%)   
+B7       6/ 8( 75%)   0/ 8(  0%)   3/ 8( 37%)    0/2    0/2       9/24( 37%)   
+B8       8/ 8(100%)   1/ 8( 12%)   2/ 8( 25%)    0/2    0/2      12/24( 50%)   
+B9       5/ 8( 62%)   0/ 8(  0%)   1/ 8( 12%)    0/2    0/2       8/24( 33%)   
+B10      5/ 8( 62%)   0/ 8(  0%)   1/ 8( 12%)    0/2    0/2       8/24( 33%)   
+B11      8/ 8(100%)   1/ 8( 12%)   1/ 8( 12%)    0/2    0/2      10/24( 41%)   
+B12      4/ 8( 50%)   1/ 8( 12%)   4/ 8( 50%)    0/2    0/2       8/24( 33%)   
+B13      8/ 8(100%)   1/ 8( 12%)   1/ 8( 12%)    0/2    0/2      10/24( 41%)   
+B14      8/ 8(100%)   1/ 8( 12%)   1/ 8( 12%)    0/2    0/2      10/24( 41%)   
+B15      8/ 8(100%)   1/ 8( 12%)   1/ 8( 12%)    0/2    0/2      10/24( 41%)   
+B16      8/ 8(100%)   1/ 8( 12%)   1/ 8( 12%)    0/2    0/2      13/24( 54%)   
+B17      8/ 8(100%)   1/ 8( 12%)   1/ 8( 12%)    0/2    0/2      10/24( 41%)   
+B18      5/ 8( 62%)   0/ 8(  0%)   1/ 8( 12%)    0/2    0/2       8/24( 33%)   
+B19      6/ 8( 75%)   0/ 8(  0%)   1/ 8( 12%)    0/2    0/2       7/24( 29%)   
+B20      5/ 8( 62%)   0/ 8(  0%)   1/ 8( 12%)    0/2    0/2       8/24( 33%)   
+B21      8/ 8(100%)   1/ 8( 12%)   1/ 8( 12%)    0/2    0/2      10/24( 41%)   
+
+
+Total dedicated input pins used:                 4/4      (100%)
+Total I/O pins used:                           100/116    ( 86%)
+Total logic cells used:                        262/336    ( 77%)
+Average fan-in:                                 3.84/4    ( 96%)
+Total fan-in:                                1007/1344    ( 74%)
+
+Total input pins required:                      69
+Total input I/O cell registers required:         0
+Total output pins required:                     33
+Total output I/O cell registers required:        0
+Total buried I/O cell registers required:        0
+Total bidirectional pins required:               0
+Total reserved pins required                     2
+Total logic cells required:                    262
+Total flipflops required:                        0
+Total logic cells in carry chains:               0
+Total number of carry chains:                    0
+Total logic cells in cascade chains:             0
+Total number of cascade chains:                  0
+
+Synthesized logic cells:                       134/ 336   ( 39%)
+
+Logic Cell Counts
+
+Column:  01  02  03  04  05  06  07  08  09  10  11  12  13  14  15  16  17  18  19  20  21  Total
+ A:      0   0   7   6   6   6   5   5   8   8   5   0   8   8   8   8   8   8   8   8   8    128
+ B:      5   6   6   7   5   5   6   8   5   5   8   4   8   8   8   8   8   5   6   5   8    134
+
+Total:   5   6  13  13  11  11  11  13  13  13  13   4  16  16  16  16  16  13  14  13  16    262
+
+
+
+Device-Specific Information:e:\documents\science\computer_circuity\labs\mylabs\lab2\lsm\lsm32.rpt
+lsm32
+
+** INPUTS **
+
+                                               Fan-In    Fan-Out
+ Pin     LC   Row  Col  Primitive    Code      INP  FBK  OUT  FBK  Name
+  92      -    B    --      INPUT              0    0    0    2  C0
+   5      -    -    --      INPUT              0    0    0  132  F0
+  85      -    -    --      INPUT              0    0    0   38  F1
+ 116      -    -    --      INPUT              0    0    0   67  F2
+  36      -    -    --      INPUT              0    0    0   97  F3
+  30      -    B    --      INPUT              0    0    0    5  P00
+  44      -    -    03      INPUT              0    0    0    3  P01
+ 154      -    -    03      INPUT              0    0    0    3  P02
+  20      -    A    --      INPUT              0    0    0    3  P03
+ 143      -    -    10      INPUT              0    0    0    3  P04
+  42      -    -    01      INPUT              0    0    0    3  P05
+ 159      -    -    01      INPUT              0    0    0    3  P06
+  29      -    B    --      INPUT              0    0    0    3  P07
+ 149      -    -    07      INPUT              0    0    0    3  P08
+ 156      -    -    03      INPUT              0    0    0    3  P09
+ 158      -    -    02      INPUT              0    0    0    3  P10
+ 157      -    -    02      INPUT              0    0    0    3  P11
+  43      -    -    02      INPUT              0    0    0    3  P12
+  87      -    -    14      INPUT              0    0    0    3  P13
+  49      -    -    05      INPUT              0    0    0    3  P14
+  63      -    -    13      INPUT              0    0    0    3  P15
+ 102      -    A    --      INPUT              0    0    0    3  P16
+ 138      -    -    12      INPUT              0    0    0    3  P17
+  18      -    A    --      INPUT              0    0    0    3  P18
+ 103      -    A    --      INPUT              0    0    0    3  P19
+ 139      -    -    11      INPUT              0    0    0    3  P20
+ 101      -    A    --      INPUT              0    0    0    3  P21
+  91      -    B    --      INPUT              0    0    0    3  P22
+  58      -    -    11      INPUT              0    0    0    3  P23
+  59      -    -    12      INPUT              0    0    0    3  P24
+ 122      -    -    12      INPUT              0    0    0    3  P25
+  61      -    -    12      INPUT              0    0    0    3  P26
+  52      -    -    08      INPUT              0    0    0    3  P27
+  54      -    -    08      INPUT              0    0    0    3  P28
+  55      -    -    09      INPUT              0    0    0    3  P29
+ 142      -    -    10      INPUT              0    0    0    3  P30
+  32      -    -    02      INPUT              0    0    0    3  P31
+  25      -    B    --      INPUT              0    0    0    4  Q00
+ 135      -    -    14      INPUT              0    0    0    5  Q01
+  35      -    -    07      INPUT              0    0    0    5  Q02
+ 132      -    -    15      INPUT              0    0    0    5  Q03
+   6      -    -    09      INPUT              0    0    0    5  Q04
+  86      -    -    11      INPUT              0    0    0    5  Q05
+ 137      -    -    13      INPUT              0    0    0    5  Q06
+ 151      -    -    06      INPUT              0    0    0    5  Q07
+ 146      -    -    07      INPUT              0    0    0    5  Q08
+  47      -    -    04      INPUT              0    0    0    5  Q09
+ 144      -    -    09      INPUT              0    0    0    5  Q10
+ 152      -    -    05      INPUT              0    0    0    5  Q11
+  79      -    -    10      INPUT              0    0    0    5  Q12
+ 106      -    A    --      INPUT              0    0    0    5  Q13
+  33      -    -    03      INPUT              0    0    0    5  Q14
+  48      -    -    05      INPUT              0    0    0    5  Q15
+  57      -    -    10      INPUT              0    0    0    5  Q16
+  56      -    -    09      INPUT              0    0    0    5  Q17
+ 145      -    -    08      INPUT              0    0    0    5  Q18
+  50      -    -    06      INPUT              0    0    0    5  Q19
+  34      -    -    06      INPUT              0    0    0    5  Q20
+  45      -    -    04      INPUT              0    0    0    5  Q21
+  51      -    -    07      INPUT              0    0    0    5  Q22
+  31      -    -    01      INPUT              0    0    0    5  Q23
+  94      -    B    --      INPUT              0    0    0    5  Q24
+  26      -    B    --      INPUT              0    0    0    5  Q25
+   9      -    -    04      INPUT              0    0    0    5  Q26
+ 150      -    -    06      INPUT              0    0    0    5  Q27
+ 141      -    -    11      INPUT              0    0    0    5  Q28
+  96      -    B    --      INPUT              0    0    0    5  Q29
+  95      -    B    --      INPUT              0    0    0    5  Q30
+ 153      -    -    04      INPUT              0    0    0    5  Q31
+
+
+Code:
+
+s = Synthesized pin or logic cell
++ = Synchronous flipflop
+/ = Slow slew-rate output
+! = NOT gate push-back
+r = Fitter-inserted logic cell
+
+
+Device-Specific Information:e:\documents\science\computer_circuity\labs\mylabs\lab2\lsm\lsm32.rpt
+lsm32
+
+** OUTPUTS **
+
+       Fed By                                  Fan-In    Fan-Out
+ Pin     LC   Row  Col  Primitive    Code      INP  FBK  OUT  FBK  Name
+  19      -    A    --     OUTPUT              0    1    0    0  C_I_PLUS_1
+  10      -    -    01     OUTPUT              0    1    0    0  D00
+ 131      -    -    16     OUTPUT              0    1    0    0  D01
+  97      -    B    --     OUTPUT              0    1    0    0  D02
+ 105      -    A    --     OUTPUT              0    1    0    0  D03
+ 110      -    A    --     OUTPUT              0    1    0    0  D04
+  88      -    -    15     OUTPUT              0    1    0    0  D05
+  24      -    B    --     OUTPUT              0    1    0    0  D06
+  98      -    B    --     OUTPUT              0    1    0    0  D07
+  64      -    -    14     OUTPUT              0    1    0    0  D08
+ 127      -    -    19     OUTPUT              0    1    0    0  D09
+  66      -    -    16     OUTPUT              0    1    0    0  D10
+ 129      -    -    18     OUTPUT              0    1    0    0  D11
+  16      -    A    --     OUTPUT              0    1    0    0  D12
+ 109      -    A    --     OUTPUT              0    1    0    0  D13
+  15      -    A    --     OUTPUT              0    1    0    0  D14
+ 124      -    -    20     OUTPUT              0    1    0    0  D15
+ 113      -    -    17     OUTPUT              0    1    0    0  D16
+   8      -    -    05     OUTPUT              0    1    0    0  D17
+  11      -    A    --     OUTPUT              0    1    0    0  D18
+ 134      -    -    15     OUTPUT              0    1    0    0  D19
+  62      -    -    13     OUTPUT              0    1    0    0  D20
+  17      -    A    --     OUTPUT              0    1    0    0  D21
+  69      -    -    17     OUTPUT              0    1    0    0  D22
+  77      -    -    21     OUTPUT              0    1    0    0  D23
+  22      -    B    --     OUTPUT              0    1    0    0  D24
+   7      -    -    08     OUTPUT              0    1    0    0  D25
+ 136      -    -    14     OUTPUT              0    1    0    0  D26
+ 115      -    -    13     OUTPUT              0    1    0    0  D27
+  27      -    B    --     OUTPUT              0    1    0    0  D28
+  99      -    B    --     OUTPUT              0    1    0    0  D29
+ 104      -    A    --     OUTPUT              0    1    0    0  D30
+  23      -    B    --     OUTPUT              0    1    0    0  D31
+
+
+Code:
+
+s = Synthesized pin or logic cell
++ = Synchronous flipflop
+/ = Slow slew-rate output
+! = NOT gate push-back
+r = Fitter-inserted logic cell
+
+
+Device-Specific Information:e:\documents\science\computer_circuity\labs\mylabs\lab2\lsm\lsm32.rpt
+lsm32
+
+** BURIED LOGIC **
+
+                                               Fan-In    Fan-Out
+ IOC     LC   Row  Col  Primitive    Code      INP  FBK  OUT  FBK  Name
+   -      8    B    16        OR2        !     2    2    0    2  |lsm8:14|lsmi:20|c_i_plus_1:27|C_i_plus_1 (|lsm8:14|lsmi:20|c_i_plus_1:27|:23)
+   -      1    B    01        OR2              1    2    1    0  |lsm8:14|lsmi:20|sum_xor2:26|Di (|lsm8:14|lsmi:20|sum_xor2:26|:12)
+   -      5    B    04        OR2    s   !     3    0    0    1  |lsm8:14|lsmi:20|xi:38|Xi~1 (|lsm8:14|lsmi:20|xi:38|~36~1)
+   -      6    B    04        OR2    s         4    0    0    1  |lsm8:14|lsmi:20|xi:38|Xi~2 (|lsm8:14|lsmi:20|xi:38|~36~2)
+   -      7    B    04        OR2    s   !     2    2    0    1  |lsm8:14|lsmi:20|xi:38|Xi~3 (|lsm8:14|lsmi:20|xi:38|~36~3)
+   -      4    B    04        OR2    s   !     3    0    0    1  |lsm8:14|lsmi:20|xi:38|Xi~4 (|lsm8:14|lsmi:20|xi:38|~36~4)
+   -      3    B    04        OR2    s   !     4    0    0    1  |lsm8:14|lsmi:20|xi:38|Xi~5 (|lsm8:14|lsmi:20|xi:38|~36~5)
+   -      1    B    04       AND2    s   !     4    0    0    1  |lsm8:14|lsmi:20|xi:38|Xi~6 (|lsm8:14|lsmi:20|xi:38|~36~6)
+   -      2    B    04        OR2              0    4    0    2  |lsm8:14|lsmi:20|xi:38|Xi (|lsm8:14|lsmi:20|xi:38|:36)
+   -      2    B    12        OR2        !     3    1    0    2  |lsm8:14|lsmi:20|yi:39|Yi (|lsm8:14|lsmi:20|yi:39|:15)
+   -      3    B    16        OR2        !     1    3    0    2  |lsm8:14|lsmi:21|c_i_plus_1:27|C_i_plus_1 (|lsm8:14|lsmi:21|c_i_plus_1:27|:23)
+   -      1    B    16        OR2              0    3    1    0  |lsm8:14|lsmi:21|sum_xor2:26|Di (|lsm8:14|lsmi:21|sum_xor2:26|:12)
+   -      2    B    16        OR2    s   !     4    0    0    1  |lsm8:14|lsmi:21|xi:38|Xi~1 (|lsm8:14|lsmi:21|xi:38|~36~1)
+   -      4    B    16        OR2    s   !     3    1    0    1  |lsm8:14|lsmi:21|xi:38|Xi~2 (|lsm8:14|lsmi:21|xi:38|~36~2)
+   -      4    B    12        OR2    s   !     4    0    0    1  |lsm8:14|lsmi:21|xi:38|Xi~3 (|lsm8:14|lsmi:21|xi:38|~36~3)
+   -      5    B    16        OR2    s         2    2    0    1  |lsm8:14|lsmi:21|xi:38|Xi~4 (|lsm8:14|lsmi:21|xi:38|~36~4)
+   -      6    B    16        OR2              1    3    0    2  |lsm8:14|lsmi:21|xi:38|Xi (|lsm8:14|lsmi:21|xi:38|:36)
+   -      7    B    16        OR2        !     3    1    0    2  |lsm8:14|lsmi:21|yi:39|Yi (|lsm8:14|lsmi:21|yi:39|:15)
+   -      4    B    11        OR2        !     1    3    0    2  |lsm8:14|lsmi:23|c_i_plus_1:27|C_i_plus_1 (|lsm8:14|lsmi:23|c_i_plus_1:27|:23)
+   -      1    B    11        OR2              0    3    1    0  |lsm8:14|lsmi:23|sum_xor2:26|Di (|lsm8:14|lsmi:23|sum_xor2:26|:12)
+   -      3    B    11        OR2    s   !     4    0    0    1  |lsm8:14|lsmi:23|xi:38|Xi~1 (|lsm8:14|lsmi:23|xi:38|~36~1)
+   -      5    B    11        OR2    s   !     3    1    0    1  |lsm8:14|lsmi:23|xi:38|Xi~2 (|lsm8:14|lsmi:23|xi:38|~36~2)
+   -      6    B    11        OR2    s   !     4    0    0    1  |lsm8:14|lsmi:23|xi:38|Xi~3 (|lsm8:14|lsmi:23|xi:38|~36~3)
+   -      7    B    11        OR2    s         2    2    0    1  |lsm8:14|lsmi:23|xi:38|Xi~4 (|lsm8:14|lsmi:23|xi:38|~36~4)
+   -      8    B    11        OR2              1    3    0    2  |lsm8:14|lsmi:23|xi:38|Xi (|lsm8:14|lsmi:23|xi:38|:36)
+   -      2    B    11        OR2        !     3    1    0    2  |lsm8:14|lsmi:23|yi:39|Yi (|lsm8:14|lsmi:23|yi:39|:15)
+   -      5    A    04        OR2        !     1    3    0    2  |lsm8:14|lsmi:25|c_i_plus_1:27|C_i_plus_1 (|lsm8:14|lsmi:25|c_i_plus_1:27|:23)
+   -      2    A    04        OR2              0    3    1    0  |lsm8:14|lsmi:25|sum_xor2:26|Di (|lsm8:14|lsmi:25|sum_xor2:26|:12)
+   -      5    A    21        OR2    s   !     4    0    0    1  |lsm8:14|lsmi:25|xi:38|Xi~1 (|lsm8:14|lsmi:25|xi:38|~36~1)
+   -      6    A    21        OR2    s   !     3    1    0    1  |lsm8:14|lsmi:25|xi:38|Xi~2 (|lsm8:14|lsmi:25|xi:38|~36~2)
+   -      7    A    21        OR2    s   !     4    0    0    1  |lsm8:14|lsmi:25|xi:38|Xi~3 (|lsm8:14|lsmi:25|xi:38|~36~3)
+   -      8    A    21        OR2    s         2    2    0    1  |lsm8:14|lsmi:25|xi:38|Xi~4 (|lsm8:14|lsmi:25|xi:38|~36~4)
+   -      2    A    21        OR2              1    3    0    2  |lsm8:14|lsmi:25|xi:38|Xi (|lsm8:14|lsmi:25|xi:38|:36)
+   -      3    A    04        OR2        !     3    1    0    2  |lsm8:14|lsmi:25|yi:39|Yi (|lsm8:14|lsmi:25|yi:39|:15)
+   -      1    B    02        OR2        !     1    3    0    2  |lsm8:14|lsmi:26|c_i_plus_1:27|C_i_plus_1 (|lsm8:14|lsmi:26|c_i_plus_1:27|:23)
+   -      2    B    02        OR2              0    3    1    0  |lsm8:14|lsmi:26|sum_xor2:26|Di (|lsm8:14|lsmi:26|sum_xor2:26|:12)
+   -      1    B    06        OR2    s   !     4    0    0    1  |lsm8:14|lsmi:26|xi:38|Xi~1 (|lsm8:14|lsmi:26|xi:38|~36~1)
+   -      2    B    06        OR2    s   !     3    1    0    1  |lsm8:14|lsmi:26|xi:38|Xi~2 (|lsm8:14|lsmi:26|xi:38|~36~2)
+   -      3    B    06        OR2    s   !     4    0    0    1  |lsm8:14|lsmi:26|xi:38|Xi~3 (|lsm8:14|lsmi:26|xi:38|~36~3)
+   -      4    B    06        OR2    s         2    2    0    1  |lsm8:14|lsmi:26|xi:38|Xi~4 (|lsm8:14|lsmi:26|xi:38|~36~4)
+   -      5    B    06        OR2              1    3    0    2  |lsm8:14|lsmi:26|xi:38|Xi (|lsm8:14|lsmi:26|xi:38|:36)
+   -      5    B    02        OR2        !     3    1    0    2  |lsm8:14|lsmi:26|yi:39|Yi (|lsm8:14|lsmi:26|yi:39|:15)
+   -      4    B    02        OR2        !     1    3    0    2  |lsm8:14|lsmi:27|c_i_plus_1:27|C_i_plus_1 (|lsm8:14|lsmi:27|c_i_plus_1:27|:23)
+   -      3    B    02        OR2              0    3    1    0  |lsm8:14|lsmi:27|sum_xor2:26|Di (|lsm8:14|lsmi:27|sum_xor2:26|:12)
+   -      1    B    10        OR2    s   !     4    0    0    1  |lsm8:14|lsmi:27|xi:38|Xi~1 (|lsm8:14|lsmi:27|xi:38|~36~1)
+   -      3    B    10        OR2    s   !     3    1    0    1  |lsm8:14|lsmi:27|xi:38|Xi~2 (|lsm8:14|lsmi:27|xi:38|~36~2)
+   -      4    B    10        OR2    s   !     4    0    0    1  |lsm8:14|lsmi:27|xi:38|Xi~3 (|lsm8:14|lsmi:27|xi:38|~36~3)
+   -      5    B    10        OR2    s         2    2    0    1  |lsm8:14|lsmi:27|xi:38|Xi~4 (|lsm8:14|lsmi:27|xi:38|~36~4)
+   -      2    B    10        OR2              1    3    0    2  |lsm8:14|lsmi:27|xi:38|Xi (|lsm8:14|lsmi:27|xi:38|:36)
+   -      6    B    02        OR2        !     3    1    0    2  |lsm8:14|lsmi:27|yi:39|Yi (|lsm8:14|lsmi:27|yi:39|:15)
+   -      3    B    15        OR2        !     1    3    0    2  |lsm8:14|lsmi:28|c_i_plus_1:27|C_i_plus_1 (|lsm8:14|lsmi:28|c_i_plus_1:27|:23)
+   -      1    B    15        OR2              0    3    1    0  |lsm8:14|lsmi:28|sum_xor2:26|Di (|lsm8:14|lsmi:28|sum_xor2:26|:12)
+   -      8    B    15        OR2    s   !     4    0    0    1  |lsm8:14|lsmi:28|xi:38|Xi~1 (|lsm8:14|lsmi:28|xi:38|~36~1)
+   -      7    B    15        OR2    s   !     3    1    0    1  |lsm8:14|lsmi:28|xi:38|Xi~2 (|lsm8:14|lsmi:28|xi:38|~36~2)
+   -      2    B    15        OR2    s   !     4    0    0    1  |lsm8:14|lsmi:28|xi:38|Xi~3 (|lsm8:14|lsmi:28|xi:38|~36~3)
+   -      4    B    15        OR2    s         2    2    0    1  |lsm8:14|lsmi:28|xi:38|Xi~4 (|lsm8:14|lsmi:28|xi:38|~36~4)
+   -      5    B    15        OR2              1    3    0    2  |lsm8:14|lsmi:28|xi:38|Xi (|lsm8:14|lsmi:28|xi:38|:36)
+   -      6    B    15        OR2        !     3    1    0    2  |lsm8:14|lsmi:28|yi:39|Yi (|lsm8:14|lsmi:28|yi:39|:15)
+   -      2    A    09        OR2        !     1    3    0    2  |lsm8:14|lsmi:29|c_i_plus_1:27|C_i_plus_1 (|lsm8:14|lsmi:29|c_i_plus_1:27|:23)
+   -      1    A    09        OR2              0    3    1    0  |lsm8:14|lsmi:29|sum_xor2:26|Di (|lsm8:14|lsmi:29|sum_xor2:26|:12)
+   -      8    A    09        OR2    s   !     4    0    0    1  |lsm8:14|lsmi:29|xi:38|Xi~1 (|lsm8:14|lsmi:29|xi:38|~36~1)
+   -      7    A    09        OR2    s   !     3    1    0    1  |lsm8:14|lsmi:29|xi:38|Xi~2 (|lsm8:14|lsmi:29|xi:38|~36~2)
+   -      4    A    09        OR2    s   !     4    0    0    1  |lsm8:14|lsmi:29|xi:38|Xi~3 (|lsm8:14|lsmi:29|xi:38|~36~3)
+   -      5    A    09        OR2    s         2    2    0    1  |lsm8:14|lsmi:29|xi:38|Xi~4 (|lsm8:14|lsmi:29|xi:38|~36~4)
+   -      6    A    09        OR2              1    3    0    2  |lsm8:14|lsmi:29|xi:38|Xi (|lsm8:14|lsmi:29|xi:38|:36)
+   -      3    A    09        OR2        !     3    1    0    2  |lsm8:14|lsmi:29|yi:39|Yi (|lsm8:14|lsmi:29|yi:39|:15)
+   -      3    A    14        OR2        !     1    3    0    2  |lsm8:15|lsmi:20|c_i_plus_1:27|C_i_plus_1 (|lsm8:15|lsmi:20|c_i_plus_1:27|:23)
+   -      1    A    14        OR2              0    3    1    0  |lsm8:15|lsmi:20|sum_xor2:26|Di (|lsm8:15|lsmi:20|sum_xor2:26|:12)
+   -      8    A    14        OR2    s   !     4    0    0    1  |lsm8:15|lsmi:20|xi:38|Xi~1 (|lsm8:15|lsmi:20|xi:38|~36~1)
+   -      7    A    14        OR2    s   !     3    1    0    1  |lsm8:15|lsmi:20|xi:38|Xi~2 (|lsm8:15|lsmi:20|xi:38|~36~2)
+   -      2    A    14        OR2    s   !     4    0    0    1  |lsm8:15|lsmi:20|xi:38|Xi~3 (|lsm8:15|lsmi:20|xi:38|~36~3)
+   -      4    A    14        OR2    s         2    2    0    1  |lsm8:15|lsmi:20|xi:38|Xi~4 (|lsm8:15|lsmi:20|xi:38|~36~4)
+   -      5    A    14        OR2              1    3    0    2  |lsm8:15|lsmi:20|xi:38|Xi (|lsm8:15|lsmi:20|xi:38|:36)
+   -      6    A    14        OR2        !     3    1    0    2  |lsm8:15|lsmi:20|yi:39|Yi (|lsm8:15|lsmi:20|yi:39|:15)
+   -      2    A    19        OR2        !     1    3    0    2  |lsm8:15|lsmi:21|c_i_plus_1:27|C_i_plus_1 (|lsm8:15|lsmi:21|c_i_plus_1:27|:23)
+   -      1    A    19        OR2              0    3    1    0  |lsm8:15|lsmi:21|sum_xor2:26|Di (|lsm8:15|lsmi:21|sum_xor2:26|:12)
+   -      3    A    19        OR2    s   !     4    0    0    1  |lsm8:15|lsmi:21|xi:38|Xi~1 (|lsm8:15|lsmi:21|xi:38|~36~1)
+   -      4    A    19        OR2    s   !     3    1    0    1  |lsm8:15|lsmi:21|xi:38|Xi~2 (|lsm8:15|lsmi:21|xi:38|~36~2)
+   -      5    A    19        OR2    s   !     4    0    0    1  |lsm8:15|lsmi:21|xi:38|Xi~3 (|lsm8:15|lsmi:21|xi:38|~36~3)
+   -      6    A    19        OR2    s         2    2    0    1  |lsm8:15|lsmi:21|xi:38|Xi~4 (|lsm8:15|lsmi:21|xi:38|~36~4)
+   -      7    A    19        OR2              1    3    0    2  |lsm8:15|lsmi:21|xi:38|Xi (|lsm8:15|lsmi:21|xi:38|:36)
+   -      8    A    19        OR2        !     3    1    0    2  |lsm8:15|lsmi:21|yi:39|Yi (|lsm8:15|lsmi:21|yi:39|:15)
+   -      1    A    16        OR2        !     1    3    0    2  |lsm8:15|lsmi:23|c_i_plus_1:27|C_i_plus_1 (|lsm8:15|lsmi:23|c_i_plus_1:27|:23)
+   -      2    A    16        OR2              0    3    1    0  |lsm8:15|lsmi:23|sum_xor2:26|Di (|lsm8:15|lsmi:23|sum_xor2:26|:12)
+   -      3    A    16        OR2    s   !     4    0    0    1  |lsm8:15|lsmi:23|xi:38|Xi~1 (|lsm8:15|lsmi:23|xi:38|~36~1)
+   -      4    A    16        OR2    s   !     3    1    0    1  |lsm8:15|lsmi:23|xi:38|Xi~2 (|lsm8:15|lsmi:23|xi:38|~36~2)
+   -      5    A    16        OR2    s   !     4    0    0    1  |lsm8:15|lsmi:23|xi:38|Xi~3 (|lsm8:15|lsmi:23|xi:38|~36~3)
+   -      6    A    16        OR2    s         2    2    0    1  |lsm8:15|lsmi:23|xi:38|Xi~4 (|lsm8:15|lsmi:23|xi:38|~36~4)
+   -      7    A    16        OR2              1    3    0    2  |lsm8:15|lsmi:23|xi:38|Xi (|lsm8:15|lsmi:23|xi:38|:36)
+   -      8    A    16        OR2        !     3    1    0    2  |lsm8:15|lsmi:23|yi:39|Yi (|lsm8:15|lsmi:23|yi:39|:15)
+   -      2    A    18        OR2        !     1    3    0    2  |lsm8:15|lsmi:25|c_i_plus_1:27|C_i_plus_1 (|lsm8:15|lsmi:25|c_i_plus_1:27|:23)
+   -      1    A    18        OR2              0    3    1    0  |lsm8:15|lsmi:25|sum_xor2:26|Di (|lsm8:15|lsmi:25|sum_xor2:26|:12)
+   -      6    A    18        OR2    s   !     4    0    0    1  |lsm8:15|lsmi:25|xi:38|Xi~1 (|lsm8:15|lsmi:25|xi:38|~36~1)
+   -      7    A    18        OR2    s   !     3    1    0    1  |lsm8:15|lsmi:25|xi:38|Xi~2 (|lsm8:15|lsmi:25|xi:38|~36~2)
+   -      8    A    18        OR2    s   !     4    0    0    1  |lsm8:15|lsmi:25|xi:38|Xi~3 (|lsm8:15|lsmi:25|xi:38|~36~3)
+   -      5    A    18        OR2    s         2    2    0    1  |lsm8:15|lsmi:25|xi:38|Xi~4 (|lsm8:15|lsmi:25|xi:38|~36~4)
+   -      4    A    18        OR2              1    3    0    2  |lsm8:15|lsmi:25|xi:38|Xi (|lsm8:15|lsmi:25|xi:38|:36)
+   -      3    A    18        OR2        !     3    1    0    2  |lsm8:15|lsmi:25|yi:39|Yi (|lsm8:15|lsmi:25|yi:39|:15)
+   -      5    A    20        OR2        !     1    3    0    2  |lsm8:15|lsmi:26|c_i_plus_1:27|C_i_plus_1 (|lsm8:15|lsmi:26|c_i_plus_1:27|:23)
+   -      1    A    20        OR2              0    3    1    0  |lsm8:15|lsmi:26|sum_xor2:26|Di (|lsm8:15|lsmi:26|sum_xor2:26|:12)
+   -      2    A    20        OR2    s   !     4    0    0    1  |lsm8:15|lsmi:26|xi:38|Xi~1 (|lsm8:15|lsmi:26|xi:38|~36~1)
+   -      3    A    20        OR2    s   !     3    1    0    1  |lsm8:15|lsmi:26|xi:38|Xi~2 (|lsm8:15|lsmi:26|xi:38|~36~2)
+   -      4    A    20        OR2    s   !     4    0    0    1  |lsm8:15|lsmi:26|xi:38|Xi~3 (|lsm8:15|lsmi:26|xi:38|~36~3)
+   -      6    A    20        OR2    s         2    2    0    1  |lsm8:15|lsmi:26|xi:38|Xi~4 (|lsm8:15|lsmi:26|xi:38|~36~4)
+   -      7    A    20        OR2              1    3    0    2  |lsm8:15|lsmi:26|xi:38|Xi (|lsm8:15|lsmi:26|xi:38|:36)
+   -      8    A    20        OR2        !     3    1    0    2  |lsm8:15|lsmi:26|yi:39|Yi (|lsm8:15|lsmi:26|yi:39|:15)
+   -      7    A    04        OR2        !     1    3    0    2  |lsm8:15|lsmi:27|c_i_plus_1:27|C_i_plus_1 (|lsm8:15|lsmi:27|c_i_plus_1:27|:23)
+   -      1    A    04        OR2              0    3    1    0  |lsm8:15|lsmi:27|sum_xor2:26|Di (|lsm8:15|lsmi:27|sum_xor2:26|:12)
+   -      4    A    03        OR2    s   !     4    0    0    1  |lsm8:15|lsmi:27|xi:38|Xi~1 (|lsm8:15|lsmi:27|xi:38|~36~1)
+   -      5    A    03        OR2    s   !     3    1    0    1  |lsm8:15|lsmi:27|xi:38|Xi~2 (|lsm8:15|lsmi:27|xi:38|~36~2)
+   -      6    A    03        OR2    s   !     4    0    0    1  |lsm8:15|lsmi:27|xi:38|Xi~3 (|lsm8:15|lsmi:27|xi:38|~36~3)
+   -      7    A    03        OR2    s         2    2    0    1  |lsm8:15|lsmi:27|xi:38|Xi~4 (|lsm8:15|lsmi:27|xi:38|~36~4)
+   -      3    A    03        OR2              1    3    0    2  |lsm8:15|lsmi:27|xi:38|Xi (|lsm8:15|lsmi:27|xi:38|:36)
+   -      4    A    04        OR2        !     3    1    0    2  |lsm8:15|lsmi:27|yi:39|Yi (|lsm8:15|lsmi:27|yi:39|:15)
+   -      6    A    06        OR2        !     1    3    0    2  |lsm8:15|lsmi:28|c_i_plus_1:27|C_i_plus_1 (|lsm8:15|lsmi:28|c_i_plus_1:27|:23)
+   -      1    A    06        OR2              0    3    1    0  |lsm8:15|lsmi:28|sum_xor2:26|Di (|lsm8:15|lsmi:28|sum_xor2:26|:12)
+   -      1    A    11        OR2    s   !     4    0    0    1  |lsm8:15|lsmi:28|xi:38|Xi~1 (|lsm8:15|lsmi:28|xi:38|~36~1)
+   -      3    A    11        OR2    s   !     3    1    0    1  |lsm8:15|lsmi:28|xi:38|Xi~2 (|lsm8:15|lsmi:28|xi:38|~36~2)
+   -      4    A    11        OR2    s   !     4    0    0    1  |lsm8:15|lsmi:28|xi:38|Xi~3 (|lsm8:15|lsmi:28|xi:38|~36~3)
+   -      5    A    11        OR2    s         2    2    0    1  |lsm8:15|lsmi:28|xi:38|Xi~4 (|lsm8:15|lsmi:28|xi:38|~36~4)
+   -      2    A    11        OR2              1    3    0    2  |lsm8:15|lsmi:28|xi:38|Xi (|lsm8:15|lsmi:28|xi:38|:36)
+   -      3    A    06        OR2        !     3    1    0    2  |lsm8:15|lsmi:28|yi:39|Yi (|lsm8:15|lsmi:28|yi:39|:15)
+   -      4    A    06        OR2        !     1    3    0    2  |lsm8:15|lsmi:29|c_i_plus_1:27|C_i_plus_1 (|lsm8:15|lsmi:29|c_i_plus_1:27|:23)
+   -      2    A    06        OR2              0    3    1    0  |lsm8:15|lsmi:29|sum_xor2:26|Di (|lsm8:15|lsmi:29|sum_xor2:26|:12)
+   -      3    A    08        OR2    s   !     4    0    0    1  |lsm8:15|lsmi:29|xi:38|Xi~1 (|lsm8:15|lsmi:29|xi:38|~36~1)
+   -      1    A    08        OR2    s   !     3    1    0    1  |lsm8:15|lsmi:29|xi:38|Xi~2 (|lsm8:15|lsmi:29|xi:38|~36~2)
+   -      2    A    08        OR2    s   !     4    0    0    1  |lsm8:15|lsmi:29|xi:38|Xi~3 (|lsm8:15|lsmi:29|xi:38|~36~3)
+   -      5    A    08        OR2    s         2    2    0    1  |lsm8:15|lsmi:29|xi:38|Xi~4 (|lsm8:15|lsmi:29|xi:38|~36~4)
+   -      4    A    08        OR2              1    3    0    2  |lsm8:15|lsmi:29|xi:38|Xi (|lsm8:15|lsmi:29|xi:38|:36)
+   -      5    A    06        OR2        !     3    1    0    2  |lsm8:15|lsmi:29|yi:39|Yi (|lsm8:15|lsmi:29|yi:39|:15)
+   -      7    A    17        OR2        !     1    3    0    2  |lsm8:16|lsmi:20|c_i_plus_1:27|C_i_plus_1 (|lsm8:16|lsmi:20|c_i_plus_1:27|:23)
+   -      1    A    17        OR2              0    3    1    0  |lsm8:16|lsmi:20|sum_xor2:26|Di (|lsm8:16|lsmi:20|sum_xor2:26|:12)
+   -      2    A    17        OR2    s   !     4    0    0    1  |lsm8:16|lsmi:20|xi:38|Xi~1 (|lsm8:16|lsmi:20|xi:38|~36~1)
+   -      3    A    17        OR2    s   !     3    1    0    1  |lsm8:16|lsmi:20|xi:38|Xi~2 (|lsm8:16|lsmi:20|xi:38|~36~2)
+   -      4    A    17        OR2    s   !     4    0    0    1  |lsm8:16|lsmi:20|xi:38|Xi~3 (|lsm8:16|lsmi:20|xi:38|~36~3)
+   -      5    A    17        OR2    s         2    2    0    1  |lsm8:16|lsmi:20|xi:38|Xi~4 (|lsm8:16|lsmi:20|xi:38|~36~4)
+   -      8    A    17        OR2              1    3    0    2  |lsm8:16|lsmi:20|xi:38|Xi (|lsm8:16|lsmi:20|xi:38|:36)
+   -      6    A    17        OR2        !     3    1    0    2  |lsm8:16|lsmi:20|yi:39|Yi (|lsm8:16|lsmi:20|yi:39|:15)
+   -      3    A    05        OR2        !     1    3    0    2  |lsm8:16|lsmi:21|c_i_plus_1:27|C_i_plus_1 (|lsm8:16|lsmi:21|c_i_plus_1:27|:23)
+   -      1    A    05        OR2              0    3    1    0  |lsm8:16|lsmi:21|sum_xor2:26|Di (|lsm8:16|lsmi:21|sum_xor2:26|:12)
+   -      3    A    21        OR2    s   !     4    0    0    1  |lsm8:16|lsmi:21|xi:38|Xi~1 (|lsm8:16|lsmi:21|xi:38|~36~1)
+   -      4    A    21        OR2    s   !     3    1    0    1  |lsm8:16|lsmi:21|xi:38|Xi~2 (|lsm8:16|lsmi:21|xi:38|~36~2)
+   -      2    A    03        OR2    s   !     4    0    0    1  |lsm8:16|lsmi:21|xi:38|Xi~3 (|lsm8:16|lsmi:21|xi:38|~36~3)
+   -      1    A    03        OR2    s         2    2    0    1  |lsm8:16|lsmi:21|xi:38|Xi~4 (|lsm8:16|lsmi:21|xi:38|~36~4)
+   -      1    A    21        OR2              1    3    0    2  |lsm8:16|lsmi:21|xi:38|Xi (|lsm8:16|lsmi:21|xi:38|:36)
+   -      4    A    05        OR2        !     3    1    0    2  |lsm8:16|lsmi:21|yi:39|Yi (|lsm8:16|lsmi:21|yi:39|:15)
+   -      8    A    05        OR2        !     1    3    0    2  |lsm8:16|lsmi:23|c_i_plus_1:27|C_i_plus_1 (|lsm8:16|lsmi:23|c_i_plus_1:27|:23)
+   -      2    A    05        OR2              0    3    1    0  |lsm8:16|lsmi:23|sum_xor2:26|Di (|lsm8:16|lsmi:23|sum_xor2:26|:12)
+   -      3    A    07        OR2    s   !     4    0    0    1  |lsm8:16|lsmi:23|xi:38|Xi~1 (|lsm8:16|lsmi:23|xi:38|~36~1)
+   -      2    A    07        OR2    s   !     3    1    0    1  |lsm8:16|lsmi:23|xi:38|Xi~2 (|lsm8:16|lsmi:23|xi:38|~36~2)
+   -      1    A    07        OR2    s   !     4    0    0    1  |lsm8:16|lsmi:23|xi:38|Xi~3 (|lsm8:16|lsmi:23|xi:38|~36~3)
+   -      5    A    07        OR2    s         2    2    0    1  |lsm8:16|lsmi:23|xi:38|Xi~4 (|lsm8:16|lsmi:23|xi:38|~36~4)
+   -      4    A    07        OR2              1    3    0    2  |lsm8:16|lsmi:23|xi:38|Xi (|lsm8:16|lsmi:23|xi:38|:36)
+   -      5    A    05        OR2        !     3    1    0    2  |lsm8:16|lsmi:23|yi:39|Yi (|lsm8:16|lsmi:23|yi:39|:15)
+   -      7    A    15        OR2        !     1    3    0    2  |lsm8:16|lsmi:25|c_i_plus_1:27|C_i_plus_1 (|lsm8:16|lsmi:25|c_i_plus_1:27|:23)
+   -      1    A    15        OR2              0    3    1    0  |lsm8:16|lsmi:25|sum_xor2:26|Di (|lsm8:16|lsmi:25|sum_xor2:26|:12)
+   -      8    A    15        OR2    s   !     4    0    0    1  |lsm8:16|lsmi:25|xi:38|Xi~1 (|lsm8:16|lsmi:25|xi:38|~36~1)
+   -      6    A    15        OR2    s   !     3    1    0    1  |lsm8:16|lsmi:25|xi:38|Xi~2 (|lsm8:16|lsmi:25|xi:38|~36~2)
+   -      5    A    15        OR2    s   !     4    0    0    1  |lsm8:16|lsmi:25|xi:38|Xi~3 (|lsm8:16|lsmi:25|xi:38|~36~3)
+   -      4    A    15        OR2    s         2    2    0    1  |lsm8:16|lsmi:25|xi:38|Xi~4 (|lsm8:16|lsmi:25|xi:38|~36~4)
+   -      3    A    15        OR2              1    3    0    2  |lsm8:16|lsmi:25|xi:38|Xi (|lsm8:16|lsmi:25|xi:38|:36)
+   -      2    A    15        OR2        !     3    1    0    2  |lsm8:16|lsmi:25|yi:39|Yi (|lsm8:16|lsmi:25|yi:39|:15)
+   -      1    B    21        OR2        !     1    3    0    2  |lsm8:16|lsmi:26|c_i_plus_1:27|C_i_plus_1 (|lsm8:16|lsmi:26|c_i_plus_1:27|:23)
+   -      2    B    21        OR2              0    3    1    0  |lsm8:16|lsmi:26|sum_xor2:26|Di (|lsm8:16|lsmi:26|sum_xor2:26|:12)
+   -      4    B    21        OR2    s   !     4    0    0    1  |lsm8:16|lsmi:26|xi:38|Xi~1 (|lsm8:16|lsmi:26|xi:38|~36~1)
+   -      3    B    21        OR2    s   !     3    1    0    1  |lsm8:16|lsmi:26|xi:38|Xi~2 (|lsm8:16|lsmi:26|xi:38|~36~2)
+   -      5    B    21        OR2    s   !     4    0    0    1  |lsm8:16|lsmi:26|xi:38|Xi~3 (|lsm8:16|lsmi:26|xi:38|~36~3)
+   -      6    B    21        OR2    s         2    2    0    1  |lsm8:16|lsmi:26|xi:38|Xi~4 (|lsm8:16|lsmi:26|xi:38|~36~4)
+   -      7    B    21        OR2              1    3    0    2  |lsm8:16|lsmi:26|xi:38|Xi (|lsm8:16|lsmi:26|xi:38|:36)
+   -      8    B    21        OR2        !     3    1    0    2  |lsm8:16|lsmi:26|yi:39|Yi (|lsm8:16|lsmi:26|yi:39|:15)
+   -      4    B    17        OR2        !     1    3    0    2  |lsm8:16|lsmi:27|c_i_plus_1:27|C_i_plus_1 (|lsm8:16|lsmi:27|c_i_plus_1:27|:23)
+   -      1    B    17        OR2              0    3    1    0  |lsm8:16|lsmi:27|sum_xor2:26|Di (|lsm8:16|lsmi:27|sum_xor2:26|:12)
+   -      8    B    17        OR2    s   !     4    0    0    1  |lsm8:16|lsmi:27|xi:38|Xi~1 (|lsm8:16|lsmi:27|xi:38|~36~1)
+   -      7    B    17        OR2    s   !     3    1    0    1  |lsm8:16|lsmi:27|xi:38|Xi~2 (|lsm8:16|lsmi:27|xi:38|~36~2)
+   -      6    B    17        OR2    s   !     4    0    0    1  |lsm8:16|lsmi:27|xi:38|Xi~3 (|lsm8:16|lsmi:27|xi:38|~36~3)
+   -      5    B    17        OR2    s         2    2    0    1  |lsm8:16|lsmi:27|xi:38|Xi~4 (|lsm8:16|lsmi:27|xi:38|~36~4)
+   -      3    B    17        OR2              1    3    0    2  |lsm8:16|lsmi:27|xi:38|Xi (|lsm8:16|lsmi:27|xi:38|:36)
+   -      2    B    17        OR2        !     3    1    0    2  |lsm8:16|lsmi:27|yi:39|Yi (|lsm8:16|lsmi:27|yi:39|:15)
+   -      6    A    10        OR2        !     1    3    0    2  |lsm8:16|lsmi:28|c_i_plus_1:27|C_i_plus_1 (|lsm8:16|lsmi:28|c_i_plus_1:27|:23)
+   -      1    A    10        OR2              0    3    1    0  |lsm8:16|lsmi:28|sum_xor2:26|Di (|lsm8:16|lsmi:28|sum_xor2:26|:12)
+   -      2    A    10        OR2    s   !     4    0    0    1  |lsm8:16|lsmi:28|xi:38|Xi~1 (|lsm8:16|lsmi:28|xi:38|~36~1)
+   -      3    A    10        OR2    s   !     3    1    0    1  |lsm8:16|lsmi:28|xi:38|Xi~2 (|lsm8:16|lsmi:28|xi:38|~36~2)
+   -      8    A    10        OR2    s   !     4    0    0    1  |lsm8:16|lsmi:28|xi:38|Xi~3 (|lsm8:16|lsmi:28|xi:38|~36~3)
+   -      7    A    10        OR2    s         2    2    0    1  |lsm8:16|lsmi:28|xi:38|Xi~4 (|lsm8:16|lsmi:28|xi:38|~36~4)
+   -      5    A    10        OR2              1    3    0    2  |lsm8:16|lsmi:28|xi:38|Xi (|lsm8:16|lsmi:28|xi:38|:36)
+   -      4    A    10        OR2        !     3    1    0    2  |lsm8:16|lsmi:28|yi:39|Yi (|lsm8:16|lsmi:28|yi:39|:15)
+   -      5    A    13        OR2        !     1    3    0    2  |lsm8:16|lsmi:29|c_i_plus_1:27|C_i_plus_1 (|lsm8:16|lsmi:29|c_i_plus_1:27|:23)
+   -      1    A    13        OR2              0    3    1    0  |lsm8:16|lsmi:29|sum_xor2:26|Di (|lsm8:16|lsmi:29|sum_xor2:26|:12)
+   -      8    A    13        OR2    s   !     4    0    0    1  |lsm8:16|lsmi:29|xi:38|Xi~1 (|lsm8:16|lsmi:29|xi:38|~36~1)
+   -      7    A    13        OR2    s   !     3    1    0    1  |lsm8:16|lsmi:29|xi:38|Xi~2 (|lsm8:16|lsmi:29|xi:38|~36~2)
+   -      6    A    13        OR2    s   !     4    0    0    1  |lsm8:16|lsmi:29|xi:38|Xi~3 (|lsm8:16|lsmi:29|xi:38|~36~3)
+   -      4    A    13        OR2    s         2    2    0    1  |lsm8:16|lsmi:29|xi:38|Xi~4 (|lsm8:16|lsmi:29|xi:38|~36~4)
+   -      3    A    13        OR2              1    3    0    2  |lsm8:16|lsmi:29|xi:38|Xi (|lsm8:16|lsmi:29|xi:38|:36)
+   -      2    A    13        OR2        !     3    1    0    2  |lsm8:16|lsmi:29|yi:39|Yi (|lsm8:16|lsmi:29|yi:39|:15)
+   -      8    B    08        OR2        !     1    3    0    2  |lsm8:17|lsmi:20|c_i_plus_1:27|C_i_plus_1 (|lsm8:17|lsmi:20|c_i_plus_1:27|:23)
+   -      1    B    08        OR2              0    3    1    0  |lsm8:17|lsmi:20|sum_xor2:26|Di (|lsm8:17|lsmi:20|sum_xor2:26|:12)
+   -      7    B    08        OR2    s   !     4    0    0    1  |lsm8:17|lsmi:20|xi:38|Xi~1 (|lsm8:17|lsmi:20|xi:38|~36~1)
+   -      8    B    01        OR2    s   !     3    1    0    1  |lsm8:17|lsmi:20|xi:38|Xi~2 (|lsm8:17|lsmi:20|xi:38|~36~2)
+   -      6    B    08        OR2    s   !     4    0    0    1  |lsm8:17|lsmi:20|xi:38|Xi~3 (|lsm8:17|lsmi:20|xi:38|~36~3)
+   -      5    B    08        OR2    s         2    2    0    1  |lsm8:17|lsmi:20|xi:38|Xi~4 (|lsm8:17|lsmi:20|xi:38|~36~4)
+   -      4    B    08        OR2              1    3    0    2  |lsm8:17|lsmi:20|xi:38|Xi (|lsm8:17|lsmi:20|xi:38|:36)
+   -      2    B    01        OR2        !     3    1    0    2  |lsm8:17|lsmi:20|yi:39|Yi (|lsm8:17|lsmi:20|yi:39|:15)
+   -      2    B    08        OR2        !     1    3    0    2  |lsm8:17|lsmi:21|c_i_plus_1:27|C_i_plus_1 (|lsm8:17|lsmi:21|c_i_plus_1:27|:23)
+   -      3    B    08        OR2              0    3    1    0  |lsm8:17|lsmi:21|sum_xor2:26|Di (|lsm8:17|lsmi:21|sum_xor2:26|:12)
+   -      4    B    20        OR2    s   !     4    0    0    1  |lsm8:17|lsmi:21|xi:38|Xi~1 (|lsm8:17|lsmi:21|xi:38|~36~1)
+   -      3    B    20        OR2    s   !     3    1    0    1  |lsm8:17|lsmi:21|xi:38|Xi~2 (|lsm8:17|lsmi:21|xi:38|~36~2)
+   -      2    B    20        OR2    s   !     4    0    0    1  |lsm8:17|lsmi:21|xi:38|Xi~3 (|lsm8:17|lsmi:21|xi:38|~36~3)
+   -      5    B    20        OR2    s         2    2    0    1  |lsm8:17|lsmi:21|xi:38|Xi~4 (|lsm8:17|lsmi:21|xi:38|~36~4)
+   -      1    B    20        OR2              1    3    0    2  |lsm8:17|lsmi:21|xi:38|Xi (|lsm8:17|lsmi:21|xi:38|:36)
+   -      5    B    12        OR2        !     3    1    0    2  |lsm8:17|lsmi:21|yi:39|Yi (|lsm8:17|lsmi:21|yi:39|:15)
+   -      5    B    14        OR2        !     1    3    0    2  |lsm8:17|lsmi:23|c_i_plus_1:27|C_i_plus_1 (|lsm8:17|lsmi:23|c_i_plus_1:27|:23)
+   -      1    B    14        OR2              0    3    1    0  |lsm8:17|lsmi:23|sum_xor2:26|Di (|lsm8:17|lsmi:23|sum_xor2:26|:12)
+   -      8    B    14        OR2    s   !     4    0    0    1  |lsm8:17|lsmi:23|xi:38|Xi~1 (|lsm8:17|lsmi:23|xi:38|~36~1)
+   -      7    B    14        OR2    s   !     3    1    0    1  |lsm8:17|lsmi:23|xi:38|Xi~2 (|lsm8:17|lsmi:23|xi:38|~36~2)
+   -      6    B    14        OR2    s   !     4    0    0    1  |lsm8:17|lsmi:23|xi:38|Xi~3 (|lsm8:17|lsmi:23|xi:38|~36~3)
+   -      4    B    14        OR2    s         2    2    0    1  |lsm8:17|lsmi:23|xi:38|Xi~4 (|lsm8:17|lsmi:23|xi:38|~36~4)
+   -      3    B    14        OR2              1    3    0    2  |lsm8:17|lsmi:23|xi:38|Xi (|lsm8:17|lsmi:23|xi:38|:36)
+   -      2    B    14        OR2        !     3    1    0    2  |lsm8:17|lsmi:23|yi:39|Yi (|lsm8:17|lsmi:23|yi:39|:15)
+   -      5    B    13        OR2        !     1    3    0    2  |lsm8:17|lsmi:25|c_i_plus_1:27|C_i_plus_1 (|lsm8:17|lsmi:25|c_i_plus_1:27|:23)
+   -      1    B    13        OR2              0    3    1    0  |lsm8:17|lsmi:25|sum_xor2:26|Di (|lsm8:17|lsmi:25|sum_xor2:26|:12)
+   -      8    B    13        OR2    s   !     4    0    0    1  |lsm8:17|lsmi:25|xi:38|Xi~1 (|lsm8:17|lsmi:25|xi:38|~36~1)
+   -      7    B    13        OR2    s   !     3    1    0    1  |lsm8:17|lsmi:25|xi:38|Xi~2 (|lsm8:17|lsmi:25|xi:38|~36~2)
+   -      6    B    13        OR2    s   !     4    0    0    1  |lsm8:17|lsmi:25|xi:38|Xi~3 (|lsm8:17|lsmi:25|xi:38|~36~3)
+   -      4    B    13        OR2    s         2    2    0    1  |lsm8:17|lsmi:25|xi:38|Xi~4 (|lsm8:17|lsmi:25|xi:38|~36~4)
+   -      3    B    13        OR2              1    3    0    2  |lsm8:17|lsmi:25|xi:38|Xi (|lsm8:17|lsmi:25|xi:38|:36)
+   -      2    B    13        OR2        !     3    1    0    2  |lsm8:17|lsmi:25|yi:39|Yi (|lsm8:17|lsmi:25|yi:39|:15)
+   -      1    B    03        OR2              1    3    1    0  |lsm8:17|lsmi:26|c_i_plus_1:27|C_i_plus_1 (|lsm8:17|lsmi:26|c_i_plus_1:27|:23)
+   -      4    B    03        OR2              0    3    1    0  |lsm8:17|lsmi:26|sum_xor2:26|Di (|lsm8:17|lsmi:26|sum_xor2:26|:12)
+   -      3    B    01       AND2    s   !     2    0    0   31  |lsm8:17|lsmi:26|xi:38|Xi~1 (|lsm8:17|lsmi:26|xi:38|~36~1)
+   -      6    B    19        OR2    s   !     4    0    0    1  |lsm8:17|lsmi:26|xi:38|Xi~2 (|lsm8:17|lsmi:26|xi:38|~36~2)
+   -      5    B    19        OR2    s   !     3    1    0    1  |lsm8:17|lsmi:26|xi:38|Xi~3 (|lsm8:17|lsmi:26|xi:38|~36~3)
+   -      4    B    19       AND2    s         3    0    0    1  |lsm8:17|lsmi:26|xi:38|Xi~4 (|lsm8:17|lsmi:26|xi:38|~36~4)
+   -      3    B    19        OR2    s   !     3    0    0    1  |lsm8:17|lsmi:26|xi:38|Xi~5 (|lsm8:17|lsmi:26|xi:38|~36~5)
+   -      1    B    19        OR2    s         2    2    0    1  |lsm8:17|lsmi:26|xi:38|Xi~6 (|lsm8:17|lsmi:26|xi:38|~36~6)
+   -      2    B    19        OR2              1    3    0    2  |lsm8:17|lsmi:26|xi:38|Xi (|lsm8:17|lsmi:26|xi:38|:36)
+   -      5    B    03        OR2        !     3    1    0    2  |lsm8:17|lsmi:26|yi:39|Yi (|lsm8:17|lsmi:26|yi:39|:15)
+   -      6    B    01        OR2    s         2    0    0   32  |lsm8:17|lsmi:26|yi:39|~19~1
+   -      3    B    03        OR2        !     1    3    0    2  |lsm8:17|lsmi:27|c_i_plus_1:27|C_i_plus_1 (|lsm8:17|lsmi:27|c_i_plus_1:27|:23)
+   -      2    B    03        OR2              0    3    1    0  |lsm8:17|lsmi:27|sum_xor2:26|Di (|lsm8:17|lsmi:27|sum_xor2:26|:12)
+   -      1    B    12       AND2    s         3    0    0   30  |lsm8:17|lsmi:27|xi:38|Xi~1 (|lsm8:17|lsmi:27|xi:38|~36~1)
+   -      5    B    09        OR2    s   !     4    0    0    1  |lsm8:17|lsmi:27|xi:38|Xi~2 (|lsm8:17|lsmi:27|xi:38|~36~2)
+   -      4    B    09        OR2    s   !     3    1    0    1  |lsm8:17|lsmi:27|xi:38|Xi~3 (|lsm8:17|lsmi:27|xi:38|~36~3)
+   -      2    B    09        OR2    s   !     4    0    0    1  |lsm8:17|lsmi:27|xi:38|Xi~4 (|lsm8:17|lsmi:27|xi:38|~36~4)
+   -      1    B    09        OR2    s         2    2    0    1  |lsm8:17|lsmi:27|xi:38|Xi~5 (|lsm8:17|lsmi:27|xi:38|~36~5)
+   -      3    B    09        OR2              1    3    0    2  |lsm8:17|lsmi:27|xi:38|Xi (|lsm8:17|lsmi:27|xi:38|:36)
+   -      6    B    03        OR2        !     3    1    0    2  |lsm8:17|lsmi:27|yi:39|Yi (|lsm8:17|lsmi:27|yi:39|:15)
+   -      5    B    07        OR2        !     1    3    0    2  |lsm8:17|lsmi:28|c_i_plus_1:27|C_i_plus_1 (|lsm8:17|lsmi:28|c_i_plus_1:27|:23)
+   -      2    B    07        OR2              0    3    1    0  |lsm8:17|lsmi:28|sum_xor2:26|Di (|lsm8:17|lsmi:28|sum_xor2:26|:12)
+   -      5    B    05        OR2    s   !     4    0    0    1  |lsm8:17|lsmi:28|xi:38|Xi~1 (|lsm8:17|lsmi:28|xi:38|~36~1)
+   -      4    B    05        OR2    s   !     3    1    0    1  |lsm8:17|lsmi:28|xi:38|Xi~2 (|lsm8:17|lsmi:28|xi:38|~36~2)
+   -      3    B    05        OR2    s   !     4    0    0    1  |lsm8:17|lsmi:28|xi:38|Xi~3 (|lsm8:17|lsmi:28|xi:38|~36~3)
+   -      1    B    05        OR2    s         2    2    0    1  |lsm8:17|lsmi:28|xi:38|Xi~4 (|lsm8:17|lsmi:28|xi:38|~36~4)
+   -      2    B    05        OR2              1    3    0    2  |lsm8:17|lsmi:28|xi:38|Xi (|lsm8:17|lsmi:28|xi:38|:36)
+   -      4    B    07        OR2        !     3    1    0    2  |lsm8:17|lsmi:28|yi:39|Yi (|lsm8:17|lsmi:28|yi:39|:15)
+   -      3    B    07        OR2        !     1    3    0    2  |lsm8:17|lsmi:29|c_i_plus_1:27|C_i_plus_1 (|lsm8:17|lsmi:29|c_i_plus_1:27|:23)
+   -      8    B    07        OR2              0    3    1    0  |lsm8:17|lsmi:29|sum_xor2:26|Di (|lsm8:17|lsmi:29|sum_xor2:26|:12)
+   -      2    B    18        OR2    s   !     4    0    0    1  |lsm8:17|lsmi:29|xi:38|Xi~1 (|lsm8:17|lsmi:29|xi:38|~36~1)
+   -      3    B    18        OR2    s   !     3    1    0    1  |lsm8:17|lsmi:29|xi:38|Xi~2 (|lsm8:17|lsmi:29|xi:38|~36~2)
+   -      4    B    18        OR2    s   !     4    0    0    1  |lsm8:17|lsmi:29|xi:38|Xi~3 (|lsm8:17|lsmi:29|xi:38|~36~3)
+   -      5    B    18        OR2    s         2    2    0    1  |lsm8:17|lsmi:29|xi:38|Xi~4 (|lsm8:17|lsmi:29|xi:38|~36~4)
+   -      1    B    18        OR2              1    3    0    2  |lsm8:17|lsmi:29|xi:38|Xi (|lsm8:17|lsmi:29|xi:38|:36)
+   -      1    B    07        OR2        !     3    1    0    2  |lsm8:17|lsmi:29|yi:39|Yi (|lsm8:17|lsmi:29|yi:39|:15)
+
+
+Code:
+
+s = Synthesized pin or logic cell
++ = Synchronous flipflop
+/ = Slow slew-rate output
+! = NOT gate push-back
+r = Fitter-inserted logic cell
+
+
+Device-Specific Information:e:\documents\science\computer_circuity\labs\mylabs\lab2\lsm\lsm32.rpt
+lsm32
+
+** FASTTRACK INTERCONNECT UTILIZATION **
+
+Row FastTrack Interconnect:
+
+         FastTrack                                 
+Row     Interconnect    Input Pins     Output Pins     Bidir Pins
+A:      62/168( 36%)    6/16( 37%)     10/16( 62%)     0/16(  0%)
+B:      69/168( 41%)    9/16( 56%)      7/16( 43%)     0/16(  0%)
+
+
+Column FastTrack Interconnect:
+
+         FastTrack                                 
+Column  Interconnect    Input Pins     Output Pins     Bidir Pins
+01:      6/16( 37%)     3/4( 75%)      1/4( 25%)       0/4(  0%)
+02:      5/16( 31%)     4/4(100%)      0/4(  0%)       0/4(  0%)
+03:      4/16( 25%)     4/4(100%)      0/4(  0%)       0/4(  0%)
+04:      4/16( 25%)     4/4(100%)      0/4(  0%)       0/4(  0%)
+05:      4/16( 25%)     3/4( 75%)      1/4( 25%)       0/4(  0%)
+06:      4/16( 25%)     4/4(100%)      0/4(  0%)       0/4(  0%)
+07:      4/16( 25%)     4/4(100%)      0/4(  0%)       0/4(  0%)
+08:      4/16( 25%)     3/4( 75%)      1/4( 25%)       0/4(  0%)
+09:      5/16( 31%)     4/4(100%)      0/4(  0%)       0/4(  0%)
+10:      6/16( 37%)     4/4(100%)      0/4(  0%)       0/4(  0%)
+11:      5/16( 31%)     4/4(100%)      0/4(  0%)       0/4(  0%)
+12:      5/16( 31%)     4/4(100%)      0/4(  0%)       0/4(  0%)
+13:      4/16( 25%)     2/4( 50%)      2/4( 50%)       0/4(  0%)
+14:      4/16( 25%)     2/4( 50%)      2/4( 50%)       0/4(  0%)
+15:      3/16( 18%)     1/4( 25%)      2/4( 50%)       0/4(  0%)
+16:      2/16( 12%)     0/4(  0%)      2/4( 50%)       0/4(  0%)
+17:      2/16( 12%)     0/4(  0%)      2/4( 50%)       0/4(  0%)
+18:      1/16(  6%)     0/4(  0%)      2/4( 50%)       0/4(  0%)
+19:      1/16(  6%)     0/4(  0%)      1/4( 25%)       0/4(  0%)
+20:      1/16(  6%)     0/4(  0%)      1/4( 25%)       0/4(  0%)
+21:      1/16(  6%)     0/4(  0%)      1/4( 25%)       0/4(  0%)
+
+
+Device-Specific Information:e:\documents\science\computer_circuity\labs\mylabs\lab2\lsm\lsm32.rpt
+lsm32
+
+** EQUATIONS **
+
+C0       : INPUT;
+F0       : INPUT;
+F1       : INPUT;
+F2       : INPUT;
+F3       : INPUT;
+P00      : INPUT;
+P01      : INPUT;
+P02      : INPUT;
+P03      : INPUT;
+P04      : INPUT;
+P05      : INPUT;
+P06      : INPUT;
+P07      : INPUT;
+P08      : INPUT;
+P09      : INPUT;
+P10      : INPUT;
+P11      : INPUT;
+P12      : INPUT;
+P13      : INPUT;
+P14      : INPUT;
+P15      : INPUT;
+P16      : INPUT;
+P17      : INPUT;
+P18      : INPUT;
+P19      : INPUT;
+P20      : INPUT;
+P21      : INPUT;
+P22      : INPUT;
+P23      : INPUT;
+P24      : INPUT;
+P25      : INPUT;
+P26      : INPUT;
+P27      : INPUT;
+P28      : INPUT;
+P29      : INPUT;
+P30      : INPUT;
+P31      : INPUT;
+Q00      : INPUT;
+Q01      : INPUT;
+Q02      : INPUT;
+Q03      : INPUT;
+Q04      : INPUT;
+Q05      : INPUT;
+Q06      : INPUT;
+Q07      : INPUT;
+Q08      : INPUT;
+Q09      : INPUT;
+Q10      : INPUT;
+Q11      : INPUT;
+Q12      : INPUT;
+Q13      : INPUT;
+Q14      : INPUT;
+Q15      : INPUT;
+Q16      : INPUT;
+Q17      : INPUT;
+Q18      : INPUT;
+Q19      : INPUT;
+Q20      : INPUT;
+Q21      : INPUT;
+Q22      : INPUT;
+Q23      : INPUT;
+Q24      : INPUT;
+Q25      : INPUT;
+Q26      : INPUT;
+Q27      : INPUT;
+Q28      : INPUT;
+Q29      : INPUT;
+Q30      : INPUT;
+Q31      : INPUT;
+
+-- Node name is 'C_I_PLUS_1' 
+-- Equation name is 'C_I_PLUS_1', type is output 
+C_I_PLUS_1 =  _LC1_B3;
+
+-- Node name is 'D00' 
+-- Equation name is 'D00', type is output 
+D00      =  _LC1_B1;
+
+-- Node name is 'D01' 
+-- Equation name is 'D01', type is output 
+D01      =  _LC1_B16;
+
+-- Node name is 'D02' 
+-- Equation name is 'D02', type is output 
+D02      =  _LC1_B11;
+
+-- Node name is 'D03' 
+-- Equation name is 'D03', type is output 
+D03      =  _LC2_A4;
+
+-- Node name is 'D04' 
+-- Equation name is 'D04', type is output 
+D04      =  _LC1_A9;
+
+-- Node name is 'D05' 
+-- Equation name is 'D05', type is output 
+D05      =  _LC1_B15;
+
+-- Node name is 'D06' 
+-- Equation name is 'D06', type is output 
+D06      =  _LC3_B2;
+
+-- Node name is 'D07' 
+-- Equation name is 'D07', type is output 
+D07      =  _LC2_B2;
+
+-- Node name is 'D08' 
+-- Equation name is 'D08', type is output 
+D08      =  _LC1_A14;
+
+-- Node name is 'D09' 
+-- Equation name is 'D09', type is output 
+D09      =  _LC1_A19;
+
+-- Node name is 'D10' 
+-- Equation name is 'D10', type is output 
+D10      =  _LC2_A16;
+
+-- Node name is 'D11' 
+-- Equation name is 'D11', type is output 
+D11      =  _LC1_A18;
+
+-- Node name is 'D12' 
+-- Equation name is 'D12', type is output 
+D12      =  _LC2_A6;
+
+-- Node name is 'D13' 
+-- Equation name is 'D13', type is output 
+D13      =  _LC1_A6;
+
+-- Node name is 'D14' 
+-- Equation name is 'D14', type is output 
+D14      =  _LC1_A4;
+
+-- Node name is 'D15' 
+-- Equation name is 'D15', type is output 
+D15      =  _LC1_A20;
+
+-- Node name is 'D16' 
+-- Equation name is 'D16', type is output 
+D16      =  _LC1_A17;
+
+-- Node name is 'D17' 
+-- Equation name is 'D17', type is output 
+D17      =  _LC1_A5;
+
+-- Node name is 'D18' 
+-- Equation name is 'D18', type is output 
+D18      =  _LC2_A5;
+
+-- Node name is 'D19' 
+-- Equation name is 'D19', type is output 
+D19      =  _LC1_A15;
+
+-- Node name is 'D20' 
+-- Equation name is 'D20', type is output 
+D20      =  _LC1_A13;
+
+-- Node name is 'D21' 
+-- Equation name is 'D21', type is output 
+D21      =  _LC1_A10;
+
+-- Node name is 'D22' 
+-- Equation name is 'D22', type is output 
+D22      =  _LC1_B17;
+
+-- Node name is 'D23' 
+-- Equation name is 'D23', type is output 
+D23      =  _LC2_B21;
+
+-- Node name is 'D24' 
+-- Equation name is 'D24', type is output 
+D24      =  _LC1_B8;
+
+-- Node name is 'D25' 
+-- Equation name is 'D25', type is output 
+D25      =  _LC3_B8;
+
+-- Node name is 'D26' 
+-- Equation name is 'D26', type is output 
+D26      =  _LC1_B14;
+
+-- Node name is 'D27' 
+-- Equation name is 'D27', type is output 
+D27      =  _LC1_B13;
+
+-- Node name is 'D28' 
+-- Equation name is 'D28', type is output 
+D28      =  _LC8_B7;
+
+-- Node name is 'D29' 
+-- Equation name is 'D29', type is output 
+D29      =  _LC2_B7;
+
+-- Node name is 'D30' 
+-- Equation name is 'D30', type is output 
+D30      =  _LC2_B3;
+
+-- Node name is 'D31' 
+-- Equation name is 'D31', type is output 
+D31      =  _LC4_B3;
+
+-- Node name is '|lsm8:14|lsmi:20|c_i_plus_1:27|:23' = '|lsm8:14|lsmi:20|c_i_plus_1:27|C_i_plus_1' 
+-- Equation name is '_LC8_B16', type is buried 
+!_LC8_B16 = _LC8_B16~NOT;
+_LC8_B16~NOT = LCELL( _EQ001);
+  _EQ001 = !_LC2_B4 & !_LC2_B12
+         # !C0 & !_LC2_B4
+         # !C0 & !_LC2_B12
+         # !F2;
+
+-- Node name is '|lsm8:14|lsmi:20|sum_xor2:26|:12' = '|lsm8:14|lsmi:20|sum_xor2:26|Di' 
+-- Equation name is '_LC1_B1', type is buried 
+_LC1_B1  = LCELL( _EQ002);
+  _EQ002 = !C0 &  _LC2_B4 & !_LC2_B12
+         #  C0 &  _LC2_B4 &  _LC2_B12
+         #  C0 & !_LC2_B4 & !_LC2_B12
+         # !C0 & !_LC2_B4 &  _LC2_B12;
+
+-- Node name is '|lsm8:14|lsmi:20|xi:38|:36' = '|lsm8:14|lsmi:20|xi:38|Xi' 
+-- Equation name is '_LC2_B4', type is buried 
+_LC2_B4  = LCELL( _EQ003);
+  _EQ003 = !_LC7_B4
+         # !_LC3_B4 & !_LC4_B4
+         # !_LC1_B4;
+
+-- Node name is '|lsm8:14|lsmi:20|xi:38|~36~1' = '|lsm8:14|lsmi:20|xi:38|Xi~1' 
+-- Equation name is '_LC5_B4', type is buried 
+-- synthesized logic cell 
+!_LC5_B4 = _LC5_B4~NOT;
+_LC5_B4~NOT = LCELL( _EQ004);
+  _EQ004 =  F0 & !F1
+         # !Q00;
+
+-- Node name is '|lsm8:14|lsmi:20|xi:38|~36~2' = '|lsm8:14|lsmi:20|xi:38|Xi~2' 
+-- Equation name is '_LC6_B4', type is buried 
+-- synthesized logic cell 
+_LC6_B4  = LCELL( _EQ005);
+  _EQ005 =  F0 &  F1
+         # !F1 & !F3 & !P00;
+
+-- Node name is '|lsm8:14|lsmi:20|xi:38|~36~3' = '|lsm8:14|lsmi:20|xi:38|Xi~3' 
+-- Equation name is '_LC7_B4', type is buried 
+-- synthesized logic cell 
+!_LC7_B4 = _LC7_B4~NOT;
+_LC7_B4~NOT = LCELL( _EQ006);
+  _EQ006 = !F2 & !_LC5_B4 &  _LC6_B4
+         #  _LC6_B4 &  P00
+         #  F2 &  P00;
+
+-- Node name is '|lsm8:14|lsmi:20|xi:38|~36~4' = '|lsm8:14|lsmi:20|xi:38|Xi~4' 
+-- Equation name is '_LC4_B4', type is buried 
+-- synthesized logic cell 
+!_LC4_B4 = _LC4_B4~NOT;
+_LC4_B4~NOT = LCELL( _EQ007);
+  _EQ007 = !F0 &  P00
+         #  Q00;
+
+-- Node name is '|lsm8:14|lsmi:20|xi:38|~36~5' = '|lsm8:14|lsmi:20|xi:38|Xi~5' 
+-- Equation name is '_LC3_B4', type is buried 
+-- synthesized logic cell 
+!_LC3_B4 = _LC3_B4~NOT;
+_LC3_B4~NOT = LCELL( _EQ008);
+  _EQ008 =  F3 &  P00
+         # !F0 &  F1 & !P00;
+
+-- Node name is '|lsm8:14|lsmi:20|xi:38|~36~6' = '|lsm8:14|lsmi:20|xi:38|Xi~6' 
+-- Equation name is '_LC1_B4', type is buried 
+-- synthesized logic cell 
+!_LC1_B4 = _LC1_B4~NOT;
+_LC1_B4~NOT = LCELL( _EQ009);
+  _EQ009 =  F0 & !F3 &  P00 & !Q00;
+
+-- Node name is '|lsm8:14|lsmi:20|yi:39|:15' = '|lsm8:14|lsmi:20|yi:39|Yi' 
+-- Equation name is '_LC2_B12', type is buried 
+!_LC2_B12 = _LC2_B12~NOT;
+_LC2_B12~NOT = LCELL( _EQ010);
+  _EQ010 = !F3 &  _LC6_B1
+         #  _LC6_B1 & !Q00
+         # !F0 & !Q00
+         #  F0 &  Q00;
+
+-- Node name is '|lsm8:14|lsmi:21|c_i_plus_1:27|:23' = '|lsm8:14|lsmi:21|c_i_plus_1:27|C_i_plus_1' 
+-- Equation name is '_LC3_B16', type is buried 
+!_LC3_B16 = _LC3_B16~NOT;
+_LC3_B16~NOT = LCELL( _EQ011);
+  _EQ011 = !_LC6_B16 & !_LC7_B16
+         # !_LC6_B16 & !_LC8_B16
+         # !_LC7_B16 & !_LC8_B16
+         # !F2;
+
+-- Node name is '|lsm8:14|lsmi:21|sum_xor2:26|:12' = '|lsm8:14|lsmi:21|sum_xor2:26|Di' 
+-- Equation name is '_LC1_B16', type is buried 
+_LC1_B16 = LCELL( _EQ012);
+  _EQ012 =  _LC6_B16 & !_LC7_B16 & !_LC8_B16
+         # !_LC6_B16 &  _LC7_B16 & !_LC8_B16
+         #  _LC6_B16 &  _LC7_B16 &  _LC8_B16
+         # !_LC6_B16 & !_LC7_B16 &  _LC8_B16;
+
+-- Node name is '|lsm8:14|lsmi:21|xi:38|:36' = '|lsm8:14|lsmi:21|xi:38|Xi' 
+-- Equation name is '_LC6_B16', type is buried 
+_LC6_B16 = LCELL( _EQ013);
+  _EQ013 = !_LC2_B16 & !_LC4_B16
+         #  F1 & !_LC4_B16
+         #  _LC5_B16;
+
+-- Node name is '|lsm8:14|lsmi:21|xi:38|~36~1' = '|lsm8:14|lsmi:21|xi:38|Xi~1' 
+-- Equation name is '_LC2_B16', type is buried 
+-- synthesized logic cell 
+!_LC2_B16 = _LC2_B16~NOT;
+_LC2_B16~NOT = LCELL( _EQ014);
+  _EQ014 =  F0 & !F3 & !P01
+         # !F3 & !Q01;
+
+-- Node name is '|lsm8:14|lsmi:21|xi:38|~36~2' = '|lsm8:14|lsmi:21|xi:38|Xi~2' 
+-- Equation name is '_LC4_B16', type is buried 
+-- synthesized logic cell 
+!_LC4_B16 = _LC4_B16~NOT;
+_LC4_B16~NOT = LCELL( _EQ015);
+  _EQ015 = !_LC3_B1 & !P01
+         # !F0 & !P01 &  Q01
+         #  F0 &  P01;
+
+-- Node name is '|lsm8:14|lsmi:21|xi:38|~36~3' = '|lsm8:14|lsmi:21|xi:38|Xi~3' 
+-- Equation name is '_LC4_B12', type is buried 
+-- synthesized logic cell 
+!_LC4_B12 = _LC4_B12~NOT;
+_LC4_B12~NOT = LCELL( _EQ016);
+  _EQ016 =  F3 &  Q01
+         # !F0 &  F3
+         #  F2;
+
+-- Node name is '|lsm8:14|lsmi:21|xi:38|~36~4' = '|lsm8:14|lsmi:21|xi:38|Xi~4' 
+-- Equation name is '_LC5_B16', type is buried 
+-- synthesized logic cell 
+_LC5_B16 = LCELL( _EQ017);
+  _EQ017 =  _LC1_B12 & !Q01
+         # !_LC4_B12 &  P01;
+
+-- Node name is '|lsm8:14|lsmi:21|yi:39|:15' = '|lsm8:14|lsmi:21|yi:39|Yi' 
+-- Equation name is '_LC7_B16', type is buried 
+!_LC7_B16 = _LC7_B16~NOT;
+_LC7_B16~NOT = LCELL( _EQ018);
+  _EQ018 = !F3 &  _LC6_B1
+         #  F0 &  _LC6_B1
+         # !F0 & !Q01
+         #  F0 &  Q01;
+
+-- Node name is '|lsm8:14|lsmi:23|c_i_plus_1:27|:23' = '|lsm8:14|lsmi:23|c_i_plus_1:27|C_i_plus_1' 
+-- Equation name is '_LC4_B11', type is buried 
+!_LC4_B11 = _LC4_B11~NOT;
+_LC4_B11~NOT = LCELL( _EQ019);
+  _EQ019 = !_LC2_B11 & !_LC8_B11
+         # !_LC3_B16 & !_LC8_B11
+         # !_LC2_B11 & !_LC3_B16
+         # !F2;
+
+-- Node name is '|lsm8:14|lsmi:23|sum_xor2:26|:12' = '|lsm8:14|lsmi:23|sum_xor2:26|Di' 
+-- Equation name is '_LC1_B11', type is buried 
+_LC1_B11 = LCELL( _EQ020);
+  _EQ020 = !_LC2_B11 & !_LC3_B16 &  _LC8_B11
+         #  _LC2_B11 & !_LC3_B16 & !_LC8_B11
+         #  _LC2_B11 &  _LC3_B16 &  _LC8_B11
+         # !_LC2_B11 &  _LC3_B16 & !_LC8_B11;
+
+-- Node name is '|lsm8:14|lsmi:23|xi:38|:36' = '|lsm8:14|lsmi:23|xi:38|Xi' 
+-- Equation name is '_LC8_B11', type is buried 
+_LC8_B11 = LCELL( _EQ021);
+  _EQ021 = !_LC3_B11 & !_LC5_B11
+         #  F1 & !_LC5_B11
+         #  _LC7_B11;
+
+-- Node name is '|lsm8:14|lsmi:23|xi:38|~36~1' = '|lsm8:14|lsmi:23|xi:38|Xi~1' 
+-- Equation name is '_LC3_B11', type is buried 
+-- synthesized logic cell 
+!_LC3_B11 = _LC3_B11~NOT;
+_LC3_B11~NOT = LCELL( _EQ022);
+  _EQ022 =  F0 & !F3 & !P02
+         # !F3 & !Q02;
+
+-- Node name is '|lsm8:14|lsmi:23|xi:38|~36~2' = '|lsm8:14|lsmi:23|xi:38|Xi~2' 
+-- Equation name is '_LC5_B11', type is buried 
+-- synthesized logic cell 
+!_LC5_B11 = _LC5_B11~NOT;
+_LC5_B11~NOT = LCELL( _EQ023);
+  _EQ023 = !F0 & !P02 &  Q02
+         # !_LC3_B1 & !P02
+         #  F0 &  P02;
+
+-- Node name is '|lsm8:14|lsmi:23|xi:38|~36~3' = '|lsm8:14|lsmi:23|xi:38|Xi~3' 
+-- Equation name is '_LC6_B11', type is buried 
+-- synthesized logic cell 
+!_LC6_B11 = _LC6_B11~NOT;
+_LC6_B11~NOT = LCELL( _EQ024);
+  _EQ024 =  F3 &  Q02
+         # !F0 &  F3
+         #  F2;
+
+-- Node name is '|lsm8:14|lsmi:23|xi:38|~36~4' = '|lsm8:14|lsmi:23|xi:38|Xi~4' 
+-- Equation name is '_LC7_B11', type is buried 
+-- synthesized logic cell 
+_LC7_B11 = LCELL( _EQ025);
+  _EQ025 =  _LC1_B12 & !Q02
+         # !_LC6_B11 &  P02;
+
+-- Node name is '|lsm8:14|lsmi:23|yi:39|:15' = '|lsm8:14|lsmi:23|yi:39|Yi' 
+-- Equation name is '_LC2_B11', type is buried 
+!_LC2_B11 = _LC2_B11~NOT;
+_LC2_B11~NOT = LCELL( _EQ026);
+  _EQ026 = !F3 &  _LC6_B1
+         #  F0 &  _LC6_B1
+         # !F0 & !Q02
+         #  F0 &  Q02;
+
+-- Node name is '|lsm8:14|lsmi:25|c_i_plus_1:27|:23' = '|lsm8:14|lsmi:25|c_i_plus_1:27|C_i_plus_1' 
+-- Equation name is '_LC5_A4', type is buried 
+!_LC5_A4 = _LC5_A4~NOT;
+_LC5_A4~NOT = LCELL( _EQ027);
+  _EQ027 = !_LC2_A21 & !_LC3_A4
+         # !_LC2_A21 & !_LC4_B11
+         # !_LC3_A4 & !_LC4_B11
+         # !F2;
+
+-- Node name is '|lsm8:14|lsmi:25|sum_xor2:26|:12' = '|lsm8:14|lsmi:25|sum_xor2:26|Di' 
+-- Equation name is '_LC2_A4', type is buried 
+_LC2_A4  = LCELL( _EQ028);
+  _EQ028 =  _LC2_A21 & !_LC3_A4 & !_LC4_B11
+         # !_LC2_A21 &  _LC3_A4 & !_LC4_B11
+         #  _LC2_A21 &  _LC3_A4 &  _LC4_B11
+         # !_LC2_A21 & !_LC3_A4 &  _LC4_B11;
+
+-- Node name is '|lsm8:14|lsmi:25|xi:38|:36' = '|lsm8:14|lsmi:25|xi:38|Xi' 
+-- Equation name is '_LC2_A21', type is buried 
+_LC2_A21 = LCELL( _EQ029);
+  _EQ029 = !_LC5_A21 & !_LC6_A21
+         #  F1 & !_LC6_A21
+         #  _LC8_A21;
+
+-- Node name is '|lsm8:14|lsmi:25|xi:38|~36~1' = '|lsm8:14|lsmi:25|xi:38|Xi~1' 
+-- Equation name is '_LC5_A21', type is buried 
+-- synthesized logic cell 
+!_LC5_A21 = _LC5_A21~NOT;
+_LC5_A21~NOT = LCELL( _EQ030);
+  _EQ030 =  F0 & !F3 & !P03
+         # !F3 & !Q03;
+
+-- Node name is '|lsm8:14|lsmi:25|xi:38|~36~2' = '|lsm8:14|lsmi:25|xi:38|Xi~2' 
+-- Equation name is '_LC6_A21', type is buried 
+-- synthesized logic cell 
+!_LC6_A21 = _LC6_A21~NOT;
+_LC6_A21~NOT = LCELL( _EQ031);
+  _EQ031 = !F0 & !P03 &  Q03
+         # !_LC3_B1 & !P03
+         #  F0 &  P03;
+
+-- Node name is '|lsm8:14|lsmi:25|xi:38|~36~3' = '|lsm8:14|lsmi:25|xi:38|Xi~3' 
+-- Equation name is '_LC7_A21', type is buried 
+-- synthesized logic cell 
+!_LC7_A21 = _LC7_A21~NOT;
+_LC7_A21~NOT = LCELL( _EQ032);
+  _EQ032 =  F3 &  Q03
+         # !F0 &  F3
+         #  F2;
+
+-- Node name is '|lsm8:14|lsmi:25|xi:38|~36~4' = '|lsm8:14|lsmi:25|xi:38|Xi~4' 
+-- Equation name is '_LC8_A21', type is buried 
+-- synthesized logic cell 
+_LC8_A21 = LCELL( _EQ033);
+  _EQ033 =  _LC1_B12 & !Q03
+         # !_LC7_A21 &  P03;
+
+-- Node name is '|lsm8:14|lsmi:25|yi:39|:15' = '|lsm8:14|lsmi:25|yi:39|Yi' 
+-- Equation name is '_LC3_A4', type is buried 
+!_LC3_A4 = _LC3_A4~NOT;
+_LC3_A4~NOT = LCELL( _EQ034);
+  _EQ034 = !F3 &  _LC6_B1
+         #  F0 &  _LC6_B1
+         # !F0 & !Q03
+         #  F0 &  Q03;
+
+-- Node name is '|lsm8:14|lsmi:26|c_i_plus_1:27|:23' = '|lsm8:14|lsmi:26|c_i_plus_1:27|C_i_plus_1' 
+-- Equation name is '_LC1_B2', type is buried 
+!_LC1_B2 = _LC1_B2~NOT;
+_LC1_B2~NOT = LCELL( _EQ035);
+  _EQ035 = !_LC5_B2 & !_LC5_B6
+         # !_LC4_B2 & !_LC5_B6
+         # !_LC4_B2 & !_LC5_B2
+         # !F2;
+
+-- Node name is '|lsm8:14|lsmi:26|sum_xor2:26|:12' = '|lsm8:14|lsmi:26|sum_xor2:26|Di' 
+-- Equation name is '_LC2_B2', type is buried 
+_LC2_B2  = LCELL( _EQ036);
+  _EQ036 = !_LC4_B2 & !_LC5_B2 &  _LC5_B6
+         # !_LC4_B2 &  _LC5_B2 & !_LC5_B6
+         #  _LC4_B2 &  _LC5_B2 &  _LC5_B6
+         #  _LC4_B2 & !_LC5_B2 & !_LC5_B6;
+
+-- Node name is '|lsm8:14|lsmi:26|xi:38|:36' = '|lsm8:14|lsmi:26|xi:38|Xi' 
+-- Equation name is '_LC5_B6', type is buried 
+_LC5_B6  = LCELL( _EQ037);
+  _EQ037 = !_LC1_B6 & !_LC2_B6
+         #  F1 & !_LC2_B6
+         #  _LC4_B6;
+
+-- Node name is '|lsm8:14|lsmi:26|xi:38|~36~1' = '|lsm8:14|lsmi:26|xi:38|Xi~1' 
+-- Equation name is '_LC1_B6', type is buried 
+-- synthesized logic cell 
+!_LC1_B6 = _LC1_B6~NOT;
+_LC1_B6~NOT = LCELL( _EQ038);
+  _EQ038 =  F0 & !F3 & !P07
+         # !F3 & !Q07;
+
+-- Node name is '|lsm8:14|lsmi:26|xi:38|~36~2' = '|lsm8:14|lsmi:26|xi:38|Xi~2' 
+-- Equation name is '_LC2_B6', type is buried 
+-- synthesized logic cell 
+!_LC2_B6 = _LC2_B6~NOT;
+_LC2_B6~NOT = LCELL( _EQ039);
+  _EQ039 = !F0 & !P07 &  Q07
+         # !_LC3_B1 & !P07
+         #  F0 &  P07;
+
+-- Node name is '|lsm8:14|lsmi:26|xi:38|~36~3' = '|lsm8:14|lsmi:26|xi:38|Xi~3' 
+-- Equation name is '_LC3_B6', type is buried 
+-- synthesized logic cell 
+!_LC3_B6 = _LC3_B6~NOT;
+_LC3_B6~NOT = LCELL( _EQ040);
+  _EQ040 =  F3 &  Q07
+         # !F0 &  F3
+         #  F2;
+
+-- Node name is '|lsm8:14|lsmi:26|xi:38|~36~4' = '|lsm8:14|lsmi:26|xi:38|Xi~4' 
+-- Equation name is '_LC4_B6', type is buried 
+-- synthesized logic cell 
+_LC4_B6  = LCELL( _EQ041);
+  _EQ041 =  _LC1_B12 & !Q07
+         # !_LC3_B6 &  P07;
+
+-- Node name is '|lsm8:14|lsmi:26|yi:39|:15' = '|lsm8:14|lsmi:26|yi:39|Yi' 
+-- Equation name is '_LC5_B2', type is buried 
+!_LC5_B2 = _LC5_B2~NOT;
+_LC5_B2~NOT = LCELL( _EQ042);
+  _EQ042 = !F3 &  _LC6_B1
+         #  F0 &  _LC6_B1
+         # !F0 & !Q07
+         #  F0 &  Q07;
+
+-- Node name is '|lsm8:14|lsmi:27|c_i_plus_1:27|:23' = '|lsm8:14|lsmi:27|c_i_plus_1:27|C_i_plus_1' 
+-- Equation name is '_LC4_B2', type is buried 
+!_LC4_B2 = _LC4_B2~NOT;
+_LC4_B2~NOT = LCELL( _EQ043);
+  _EQ043 = !_LC2_B10 & !_LC6_B2
+         # !_LC2_B10 & !_LC3_B15
+         # !_LC3_B15 & !_LC6_B2
+         # !F2;
+
+-- Node name is '|lsm8:14|lsmi:27|sum_xor2:26|:12' = '|lsm8:14|lsmi:27|sum_xor2:26|Di' 
+-- Equation name is '_LC3_B2', type is buried 
+_LC3_B2  = LCELL( _EQ044);
+  _EQ044 =  _LC2_B10 & !_LC3_B15 & !_LC6_B2
+         # !_LC2_B10 & !_LC3_B15 &  _LC6_B2
+         #  _LC2_B10 &  _LC3_B15 &  _LC6_B2
+         # !_LC2_B10 &  _LC3_B15 & !_LC6_B2;
+
+-- Node name is '|lsm8:14|lsmi:27|xi:38|:36' = '|lsm8:14|lsmi:27|xi:38|Xi' 
+-- Equation name is '_LC2_B10', type is buried 
+_LC2_B10 = LCELL( _EQ045);
+  _EQ045 = !_LC1_B10 & !_LC3_B10
+         #  F1 & !_LC3_B10
+         #  _LC5_B10;
+
+-- Node name is '|lsm8:14|lsmi:27|xi:38|~36~1' = '|lsm8:14|lsmi:27|xi:38|Xi~1' 
+-- Equation name is '_LC1_B10', type is buried 
+-- synthesized logic cell 
+!_LC1_B10 = _LC1_B10~NOT;
+_LC1_B10~NOT = LCELL( _EQ046);
+  _EQ046 =  F0 & !F3 & !P06
+         # !F3 & !Q06;
+
+-- Node name is '|lsm8:14|lsmi:27|xi:38|~36~2' = '|lsm8:14|lsmi:27|xi:38|Xi~2' 
+-- Equation name is '_LC3_B10', type is buried 
+-- synthesized logic cell 
+!_LC3_B10 = _LC3_B10~NOT;
+_LC3_B10~NOT = LCELL( _EQ047);
+  _EQ047 = !F0 & !P06 &  Q06
+         # !_LC3_B1 & !P06
+         #  F0 &  P06;
+
+-- Node name is '|lsm8:14|lsmi:27|xi:38|~36~3' = '|lsm8:14|lsmi:27|xi:38|Xi~3' 
+-- Equation name is '_LC4_B10', type is buried 
+-- synthesized logic cell 
+!_LC4_B10 = _LC4_B10~NOT;
+_LC4_B10~NOT = LCELL( _EQ048);
+  _EQ048 =  F3 &  Q06
+         # !F0 &  F3
+         #  F2;
+
+-- Node name is '|lsm8:14|lsmi:27|xi:38|~36~4' = '|lsm8:14|lsmi:27|xi:38|Xi~4' 
+-- Equation name is '_LC5_B10', type is buried 
+-- synthesized logic cell 
+_LC5_B10 = LCELL( _EQ049);
+  _EQ049 =  _LC1_B12 & !Q06
+         # !_LC4_B10 &  P06;
+
+-- Node name is '|lsm8:14|lsmi:27|yi:39|:15' = '|lsm8:14|lsmi:27|yi:39|Yi' 
+-- Equation name is '_LC6_B2', type is buried 
+!_LC6_B2 = _LC6_B2~NOT;
+_LC6_B2~NOT = LCELL( _EQ050);
+  _EQ050 = !F3 &  _LC6_B1
+         #  F0 &  _LC6_B1
+         # !F0 & !Q06
+         #  F0 &  Q06;
+
+-- Node name is '|lsm8:14|lsmi:28|c_i_plus_1:27|:23' = '|lsm8:14|lsmi:28|c_i_plus_1:27|C_i_plus_1' 
+-- Equation name is '_LC3_B15', type is buried 
+!_LC3_B15 = _LC3_B15~NOT;
+_LC3_B15~NOT = LCELL( _EQ051);
+  _EQ051 = !_LC5_B15 & !_LC6_B15
+         # !_LC2_A9 & !_LC5_B15
+         # !_LC2_A9 & !_LC6_B15
+         # !F2;
+
+-- Node name is '|lsm8:14|lsmi:28|sum_xor2:26|:12' = '|lsm8:14|lsmi:28|sum_xor2:26|Di' 
+-- Equation name is '_LC1_B15', type is buried 
+_LC1_B15 = LCELL( _EQ052);
+  _EQ052 = !_LC2_A9 &  _LC5_B15 & !_LC6_B15
+         # !_LC2_A9 & !_LC5_B15 &  _LC6_B15
+         #  _LC2_A9 &  _LC5_B15 &  _LC6_B15
+         #  _LC2_A9 & !_LC5_B15 & !_LC6_B15;
+
+-- Node name is '|lsm8:14|lsmi:28|xi:38|:36' = '|lsm8:14|lsmi:28|xi:38|Xi' 
+-- Equation name is '_LC5_B15', type is buried 
+_LC5_B15 = LCELL( _EQ053);
+  _EQ053 = !_LC7_B15 & !_LC8_B15
+         #  F1 & !_LC7_B15
+         #  _LC4_B15;
+
+-- Node name is '|lsm8:14|lsmi:28|xi:38|~36~1' = '|lsm8:14|lsmi:28|xi:38|Xi~1' 
+-- Equation name is '_LC8_B15', type is buried 
+-- synthesized logic cell 
+!_LC8_B15 = _LC8_B15~NOT;
+_LC8_B15~NOT = LCELL( _EQ054);
+  _EQ054 =  F0 & !F3 & !P05
+         # !F3 & !Q05;
+
+-- Node name is '|lsm8:14|lsmi:28|xi:38|~36~2' = '|lsm8:14|lsmi:28|xi:38|Xi~2' 
+-- Equation name is '_LC7_B15', type is buried 
+-- synthesized logic cell 
+!_LC7_B15 = _LC7_B15~NOT;
+_LC7_B15~NOT = LCELL( _EQ055);
+  _EQ055 = !F0 & !P05 &  Q05
+         # !_LC3_B1 & !P05
+         #  F0 &  P05;
+
+-- Node name is '|lsm8:14|lsmi:28|xi:38|~36~3' = '|lsm8:14|lsmi:28|xi:38|Xi~3' 
+-- Equation name is '_LC2_B15', type is buried 
+-- synthesized logic cell 
+!_LC2_B15 = _LC2_B15~NOT;
+_LC2_B15~NOT = LCELL( _EQ056);
+  _EQ056 =  F3 &  Q05
+         # !F0 &  F3
+         #  F2;
+
+-- Node name is '|lsm8:14|lsmi:28|xi:38|~36~4' = '|lsm8:14|lsmi:28|xi:38|Xi~4' 
+-- Equation name is '_LC4_B15', type is buried 
+-- synthesized logic cell 
+_LC4_B15 = LCELL( _EQ057);
+  _EQ057 =  _LC1_B12 & !Q05
+         # !_LC2_B15 &  P05;
+
+-- Node name is '|lsm8:14|lsmi:28|yi:39|:15' = '|lsm8:14|lsmi:28|yi:39|Yi' 
+-- Equation name is '_LC6_B15', type is buried 
+!_LC6_B15 = _LC6_B15~NOT;
+_LC6_B15~NOT = LCELL( _EQ058);
+  _EQ058 = !F3 &  _LC6_B1
+         #  F0 &  _LC6_B1
+         # !F0 & !Q05
+         #  F0 &  Q05;
+
+-- Node name is '|lsm8:14|lsmi:29|c_i_plus_1:27|:23' = '|lsm8:14|lsmi:29|c_i_plus_1:27|C_i_plus_1' 
+-- Equation name is '_LC2_A9', type is buried 
+!_LC2_A9 = _LC2_A9~NOT;
+_LC2_A9~NOT = LCELL( _EQ059);
+  _EQ059 = !_LC3_A9 & !_LC6_A9
+         # !_LC5_A4 & !_LC6_A9
+         # !_LC3_A9 & !_LC5_A4
+         # !F2;
+
+-- Node name is '|lsm8:14|lsmi:29|sum_xor2:26|:12' = '|lsm8:14|lsmi:29|sum_xor2:26|Di' 
+-- Equation name is '_LC1_A9', type is buried 
+_LC1_A9  = LCELL( _EQ060);
+  _EQ060 = !_LC3_A9 & !_LC5_A4 &  _LC6_A9
+         #  _LC3_A9 & !_LC5_A4 & !_LC6_A9
+         #  _LC3_A9 &  _LC5_A4 &  _LC6_A9
+         # !_LC3_A9 &  _LC5_A4 & !_LC6_A9;
+
+-- Node name is '|lsm8:14|lsmi:29|xi:38|:36' = '|lsm8:14|lsmi:29|xi:38|Xi' 
+-- Equation name is '_LC6_A9', type is buried 
+_LC6_A9  = LCELL( _EQ061);
+  _EQ061 = !_LC7_A9 & !_LC8_A9
+         #  F1 & !_LC7_A9
+         #  _LC5_A9;
+
+-- Node name is '|lsm8:14|lsmi:29|xi:38|~36~1' = '|lsm8:14|lsmi:29|xi:38|Xi~1' 
+-- Equation name is '_LC8_A9', type is buried 
+-- synthesized logic cell 
+!_LC8_A9 = _LC8_A9~NOT;
+_LC8_A9~NOT = LCELL( _EQ062);
+  _EQ062 =  F0 & !F3 & !P04
+         # !F3 & !Q04;
+
+-- Node name is '|lsm8:14|lsmi:29|xi:38|~36~2' = '|lsm8:14|lsmi:29|xi:38|Xi~2' 
+-- Equation name is '_LC7_A9', type is buried 
+-- synthesized logic cell 
+!_LC7_A9 = _LC7_A9~NOT;
+_LC7_A9~NOT = LCELL( _EQ063);
+  _EQ063 = !F0 & !P04 &  Q04
+         # !_LC3_B1 & !P04
+         #  F0 &  P04;
+
+-- Node name is '|lsm8:14|lsmi:29|xi:38|~36~3' = '|lsm8:14|lsmi:29|xi:38|Xi~3' 
+-- Equation name is '_LC4_A9', type is buried 
+-- synthesized logic cell 
+!_LC4_A9 = _LC4_A9~NOT;
+_LC4_A9~NOT = LCELL( _EQ064);
+  _EQ064 =  F3 &  Q04
+         # !F0 &  F3
+         #  F2;
+
+-- Node name is '|lsm8:14|lsmi:29|xi:38|~36~4' = '|lsm8:14|lsmi:29|xi:38|Xi~4' 
+-- Equation name is '_LC5_A9', type is buried 
+-- synthesized logic cell 
+_LC5_A9  = LCELL( _EQ065);
+  _EQ065 =  _LC1_B12 & !Q04
+         # !_LC4_A9 &  P04;
+
+-- Node name is '|lsm8:14|lsmi:29|yi:39|:15' = '|lsm8:14|lsmi:29|yi:39|Yi' 
+-- Equation name is '_LC3_A9', type is buried 
+!_LC3_A9 = _LC3_A9~NOT;
+_LC3_A9~NOT = LCELL( _EQ066);
+  _EQ066 = !F3 &  _LC6_B1
+         #  F0 &  _LC6_B1
+         # !F0 & !Q04
+         #  F0 &  Q04;
+
+-- Node name is '|lsm8:15|lsmi:20|c_i_plus_1:27|:23' = '|lsm8:15|lsmi:20|c_i_plus_1:27|C_i_plus_1' 
+-- Equation name is '_LC3_A14', type is buried 
+!_LC3_A14 = _LC3_A14~NOT;
+_LC3_A14~NOT = LCELL( _EQ067);
+  _EQ067 = !_LC5_A14 & !_LC6_A14
+         # !_LC1_B2 & !_LC5_A14
+         # !_LC1_B2 & !_LC6_A14
+         # !F2;
+
+-- Node name is '|lsm8:15|lsmi:20|sum_xor2:26|:12' = '|lsm8:15|lsmi:20|sum_xor2:26|Di' 
+-- Equation name is '_LC1_A14', type is buried 
+_LC1_A14 = LCELL( _EQ068);
+  _EQ068 = !_LC1_B2 &  _LC5_A14 & !_LC6_A14
+         # !_LC1_B2 & !_LC5_A14 &  _LC6_A14
+         #  _LC1_B2 &  _LC5_A14 &  _LC6_A14
+         #  _LC1_B2 & !_LC5_A14 & !_LC6_A14;
+
+-- Node name is '|lsm8:15|lsmi:20|xi:38|:36' = '|lsm8:15|lsmi:20|xi:38|Xi' 
+-- Equation name is '_LC5_A14', type is buried 
+_LC5_A14 = LCELL( _EQ069);
+  _EQ069 = !_LC7_A14 & !_LC8_A14
+         #  F1 & !_LC7_A14
+         #  _LC4_A14;
+
+-- Node name is '|lsm8:15|lsmi:20|xi:38|~36~1' = '|lsm8:15|lsmi:20|xi:38|Xi~1' 
+-- Equation name is '_LC8_A14', type is buried 
+-- synthesized logic cell 
+!_LC8_A14 = _LC8_A14~NOT;
+_LC8_A14~NOT = LCELL( _EQ070);
+  _EQ070 =  F0 & !F3 & !P08
+         # !F3 & !Q08;
+
+-- Node name is '|lsm8:15|lsmi:20|xi:38|~36~2' = '|lsm8:15|lsmi:20|xi:38|Xi~2' 
+-- Equation name is '_LC7_A14', type is buried 
+-- synthesized logic cell 
+!_LC7_A14 = _LC7_A14~NOT;
+_LC7_A14~NOT = LCELL( _EQ071);
+  _EQ071 = !F0 & !P08 &  Q08
+         # !_LC3_B1 & !P08
+         #  F0 &  P08;
+
+-- Node name is '|lsm8:15|lsmi:20|xi:38|~36~3' = '|lsm8:15|lsmi:20|xi:38|Xi~3' 
+-- Equation name is '_LC2_A14', type is buried 
+-- synthesized logic cell 
+!_LC2_A14 = _LC2_A14~NOT;
+_LC2_A14~NOT = LCELL( _EQ072);
+  _EQ072 =  F3 &  Q08
+         # !F0 &  F3
+         #  F2;
+
+-- Node name is '|lsm8:15|lsmi:20|xi:38|~36~4' = '|lsm8:15|lsmi:20|xi:38|Xi~4' 
+-- Equation name is '_LC4_A14', type is buried 
+-- synthesized logic cell 
+_LC4_A14 = LCELL( _EQ073);
+  _EQ073 =  _LC1_B12 & !Q08
+         # !_LC2_A14 &  P08;
+
+-- Node name is '|lsm8:15|lsmi:20|yi:39|:15' = '|lsm8:15|lsmi:20|yi:39|Yi' 
+-- Equation name is '_LC6_A14', type is buried 
+!_LC6_A14 = _LC6_A14~NOT;
+_LC6_A14~NOT = LCELL( _EQ074);
+  _EQ074 = !F3 &  _LC6_B1
+         #  F0 &  _LC6_B1
+         # !F0 & !Q08
+         #  F0 &  Q08;
+
+-- Node name is '|lsm8:15|lsmi:21|c_i_plus_1:27|:23' = '|lsm8:15|lsmi:21|c_i_plus_1:27|C_i_plus_1' 
+-- Equation name is '_LC2_A19', type is buried 
+!_LC2_A19 = _LC2_A19~NOT;
+_LC2_A19~NOT = LCELL( _EQ075);
+  _EQ075 = !_LC7_A19 & !_LC8_A19
+         # !_LC3_A14 & !_LC7_A19
+         # !_LC3_A14 & !_LC8_A19
+         # !F2;
+
+-- Node name is '|lsm8:15|lsmi:21|sum_xor2:26|:12' = '|lsm8:15|lsmi:21|sum_xor2:26|Di' 
+-- Equation name is '_LC1_A19', type is buried 
+_LC1_A19 = LCELL( _EQ076);
+  _EQ076 = !_LC3_A14 &  _LC7_A19 & !_LC8_A19
+         # !_LC3_A14 & !_LC7_A19 &  _LC8_A19
+         #  _LC3_A14 &  _LC7_A19 &  _LC8_A19
+         #  _LC3_A14 & !_LC7_A19 & !_LC8_A19;
+
+-- Node name is '|lsm8:15|lsmi:21|xi:38|:36' = '|lsm8:15|lsmi:21|xi:38|Xi' 
+-- Equation name is '_LC7_A19', type is buried 
+_LC7_A19 = LCELL( _EQ077);
+  _EQ077 = !_LC3_A19 & !_LC4_A19
+         #  F1 & !_LC4_A19
+         #  _LC6_A19;
+
+-- Node name is '|lsm8:15|lsmi:21|xi:38|~36~1' = '|lsm8:15|lsmi:21|xi:38|Xi~1' 
+-- Equation name is '_LC3_A19', type is buried 
+-- synthesized logic cell 
+!_LC3_A19 = _LC3_A19~NOT;
+_LC3_A19~NOT = LCELL( _EQ078);
+  _EQ078 =  F0 & !F3 & !P09
+         # !F3 & !Q09;
+
+-- Node name is '|lsm8:15|lsmi:21|xi:38|~36~2' = '|lsm8:15|lsmi:21|xi:38|Xi~2' 
+-- Equation name is '_LC4_A19', type is buried 
+-- synthesized logic cell 
+!_LC4_A19 = _LC4_A19~NOT;
+_LC4_A19~NOT = LCELL( _EQ079);
+  _EQ079 = !F0 & !P09 &  Q09
+         # !_LC3_B1 & !P09
+         #  F0 &  P09;
+
+-- Node name is '|lsm8:15|lsmi:21|xi:38|~36~3' = '|lsm8:15|lsmi:21|xi:38|Xi~3' 
+-- Equation name is '_LC5_A19', type is buried 
+-- synthesized logic cell 
+!_LC5_A19 = _LC5_A19~NOT;
+_LC5_A19~NOT = LCELL( _EQ080);
+  _EQ080 =  F3 &  Q09
+         # !F0 &  F3
+         #  F2;
+
+-- Node name is '|lsm8:15|lsmi:21|xi:38|~36~4' = '|lsm8:15|lsmi:21|xi:38|Xi~4' 
+-- Equation name is '_LC6_A19', type is buried 
+-- synthesized logic cell 
+_LC6_A19 = LCELL( _EQ081);
+  _EQ081 =  _LC1_B12 & !Q09
+         # !_LC5_A19 &  P09;
+
+-- Node name is '|lsm8:15|lsmi:21|yi:39|:15' = '|lsm8:15|lsmi:21|yi:39|Yi' 
+-- Equation name is '_LC8_A19', type is buried 
+!_LC8_A19 = _LC8_A19~NOT;
+_LC8_A19~NOT = LCELL( _EQ082);
+  _EQ082 = !F3 &  _LC6_B1
+         #  F0 &  _LC6_B1
+         # !F0 & !Q09
+         #  F0 &  Q09;
+
+-- Node name is '|lsm8:15|lsmi:23|c_i_plus_1:27|:23' = '|lsm8:15|lsmi:23|c_i_plus_1:27|C_i_plus_1' 
+-- Equation name is '_LC1_A16', type is buried 
+!_LC1_A16 = _LC1_A16~NOT;
+_LC1_A16~NOT = LCELL( _EQ083);
+  _EQ083 = !_LC7_A16 & !_LC8_A16
+         # !_LC2_A19 & !_LC7_A16
+         # !_LC2_A19 & !_LC8_A16
+         # !F2;
+
+-- Node name is '|lsm8:15|lsmi:23|sum_xor2:26|:12' = '|lsm8:15|lsmi:23|sum_xor2:26|Di' 
+-- Equation name is '_LC2_A16', type is buried 
+_LC2_A16 = LCELL( _EQ084);
+  _EQ084 = !_LC2_A19 &  _LC7_A16 & !_LC8_A16
+         # !_LC2_A19 & !_LC7_A16 &  _LC8_A16
+         #  _LC2_A19 &  _LC7_A16 &  _LC8_A16
+         #  _LC2_A19 & !_LC7_A16 & !_LC8_A16;
+
+-- Node name is '|lsm8:15|lsmi:23|xi:38|:36' = '|lsm8:15|lsmi:23|xi:38|Xi' 
+-- Equation name is '_LC7_A16', type is buried 
+_LC7_A16 = LCELL( _EQ085);
+  _EQ085 = !_LC3_A16 & !_LC4_A16
+         #  F1 & !_LC4_A16
+         #  _LC6_A16;
+
+-- Node name is '|lsm8:15|lsmi:23|xi:38|~36~1' = '|lsm8:15|lsmi:23|xi:38|Xi~1' 
+-- Equation name is '_LC3_A16', type is buried 
+-- synthesized logic cell 
+!_LC3_A16 = _LC3_A16~NOT;
+_LC3_A16~NOT = LCELL( _EQ086);
+  _EQ086 =  F0 & !F3 & !P10
+         # !F3 & !Q10;
+
+-- Node name is '|lsm8:15|lsmi:23|xi:38|~36~2' = '|lsm8:15|lsmi:23|xi:38|Xi~2' 
+-- Equation name is '_LC4_A16', type is buried 
+-- synthesized logic cell 
+!_LC4_A16 = _LC4_A16~NOT;
+_LC4_A16~NOT = LCELL( _EQ087);
+  _EQ087 = !F0 & !P10 &  Q10
+         # !_LC3_B1 & !P10
+         #  F0 &  P10;
+
+-- Node name is '|lsm8:15|lsmi:23|xi:38|~36~3' = '|lsm8:15|lsmi:23|xi:38|Xi~3' 
+-- Equation name is '_LC5_A16', type is buried 
+-- synthesized logic cell 
+!_LC5_A16 = _LC5_A16~NOT;
+_LC5_A16~NOT = LCELL( _EQ088);
+  _EQ088 =  F3 &  Q10
+         # !F0 &  F3
+         #  F2;
+
+-- Node name is '|lsm8:15|lsmi:23|xi:38|~36~4' = '|lsm8:15|lsmi:23|xi:38|Xi~4' 
+-- Equation name is '_LC6_A16', type is buried 
+-- synthesized logic cell 
+_LC6_A16 = LCELL( _EQ089);
+  _EQ089 =  _LC1_B12 & !Q10
+         # !_LC5_A16 &  P10;
+
+-- Node name is '|lsm8:15|lsmi:23|yi:39|:15' = '|lsm8:15|lsmi:23|yi:39|Yi' 
+-- Equation name is '_LC8_A16', type is buried 
+!_LC8_A16 = _LC8_A16~NOT;
+_LC8_A16~NOT = LCELL( _EQ090);
+  _EQ090 = !F3 &  _LC6_B1
+         #  F0 &  _LC6_B1
+         # !F0 & !Q10
+         #  F0 &  Q10;
+
+-- Node name is '|lsm8:15|lsmi:25|c_i_plus_1:27|:23' = '|lsm8:15|lsmi:25|c_i_plus_1:27|C_i_plus_1' 
+-- Equation name is '_LC2_A18', type is buried 
+!_LC2_A18 = _LC2_A18~NOT;
+_LC2_A18~NOT = LCELL( _EQ091);
+  _EQ091 = !_LC3_A18 & !_LC4_A18
+         # !_LC1_A16 & !_LC4_A18
+         # !_LC1_A16 & !_LC3_A18
+         # !F2;
+
+-- Node name is '|lsm8:15|lsmi:25|sum_xor2:26|:12' = '|lsm8:15|lsmi:25|sum_xor2:26|Di' 
+-- Equation name is '_LC1_A18', type is buried 
+_LC1_A18 = LCELL( _EQ092);
+  _EQ092 = !_LC1_A16 & !_LC3_A18 &  _LC4_A18
+         # !_LC1_A16 &  _LC3_A18 & !_LC4_A18
+         #  _LC1_A16 &  _LC3_A18 &  _LC4_A18
+         #  _LC1_A16 & !_LC3_A18 & !_LC4_A18;
+
+-- Node name is '|lsm8:15|lsmi:25|xi:38|:36' = '|lsm8:15|lsmi:25|xi:38|Xi' 
+-- Equation name is '_LC4_A18', type is buried 
+_LC4_A18 = LCELL( _EQ093);
+  _EQ093 = !_LC6_A18 & !_LC7_A18
+         #  F1 & !_LC7_A18
+         #  _LC5_A18;
+
+-- Node name is '|lsm8:15|lsmi:25|xi:38|~36~1' = '|lsm8:15|lsmi:25|xi:38|Xi~1' 
+-- Equation name is '_LC6_A18', type is buried 
+-- synthesized logic cell 
+!_LC6_A18 = _LC6_A18~NOT;
+_LC6_A18~NOT = LCELL( _EQ094);
+  _EQ094 =  F0 & !F3 & !P11
+         # !F3 & !Q11;
+
+-- Node name is '|lsm8:15|lsmi:25|xi:38|~36~2' = '|lsm8:15|lsmi:25|xi:38|Xi~2' 
+-- Equation name is '_LC7_A18', type is buried 
+-- synthesized logic cell 
+!_LC7_A18 = _LC7_A18~NOT;
+_LC7_A18~NOT = LCELL( _EQ095);
+  _EQ095 = !F0 & !P11 &  Q11
+         # !_LC3_B1 & !P11
+         #  F0 &  P11;
+
+-- Node name is '|lsm8:15|lsmi:25|xi:38|~36~3' = '|lsm8:15|lsmi:25|xi:38|Xi~3' 
+-- Equation name is '_LC8_A18', type is buried 
+-- synthesized logic cell 
+!_LC8_A18 = _LC8_A18~NOT;
+_LC8_A18~NOT = LCELL( _EQ096);
+  _EQ096 =  F3 &  Q11
+         # !F0 &  F3
+         #  F2;
+
+-- Node name is '|lsm8:15|lsmi:25|xi:38|~36~4' = '|lsm8:15|lsmi:25|xi:38|Xi~4' 
+-- Equation name is '_LC5_A18', type is buried 
+-- synthesized logic cell 
+_LC5_A18 = LCELL( _EQ097);
+  _EQ097 =  _LC1_B12 & !Q11
+         # !_LC8_A18 &  P11;
+
+-- Node name is '|lsm8:15|lsmi:25|yi:39|:15' = '|lsm8:15|lsmi:25|yi:39|Yi' 
+-- Equation name is '_LC3_A18', type is buried 
+!_LC3_A18 = _LC3_A18~NOT;
+_LC3_A18~NOT = LCELL( _EQ098);
+  _EQ098 = !F3 &  _LC6_B1
+         #  F0 &  _LC6_B1
+         # !F0 & !Q11
+         #  F0 &  Q11;
+
+-- Node name is '|lsm8:15|lsmi:26|c_i_plus_1:27|:23' = '|lsm8:15|lsmi:26|c_i_plus_1:27|C_i_plus_1' 
+-- Equation name is '_LC5_A20', type is buried 
+!_LC5_A20 = _LC5_A20~NOT;
+_LC5_A20~NOT = LCELL( _EQ099);
+  _EQ099 = !_LC7_A20 & !_LC8_A20
+         # !_LC7_A4 & !_LC7_A20
+         # !_LC7_A4 & !_LC8_A20
+         # !F2;
+
+-- Node name is '|lsm8:15|lsmi:26|sum_xor2:26|:12' = '|lsm8:15|lsmi:26|sum_xor2:26|Di' 
+-- Equation name is '_LC1_A20', type is buried 
+_LC1_A20 = LCELL( _EQ100);
+  _EQ100 = !_LC7_A4 &  _LC7_A20 & !_LC8_A20
+         # !_LC7_A4 & !_LC7_A20 &  _LC8_A20
+         #  _LC7_A4 &  _LC7_A20 &  _LC8_A20
+         #  _LC7_A4 & !_LC7_A20 & !_LC8_A20;
+
+-- Node name is '|lsm8:15|lsmi:26|xi:38|:36' = '|lsm8:15|lsmi:26|xi:38|Xi' 
+-- Equation name is '_LC7_A20', type is buried 
+_LC7_A20 = LCELL( _EQ101);
+  _EQ101 = !_LC2_A20 & !_LC3_A20
+         #  F1 & !_LC3_A20
+         #  _LC6_A20;
+
+-- Node name is '|lsm8:15|lsmi:26|xi:38|~36~1' = '|lsm8:15|lsmi:26|xi:38|Xi~1' 
+-- Equation name is '_LC2_A20', type is buried 
+-- synthesized logic cell 
+!_LC2_A20 = _LC2_A20~NOT;
+_LC2_A20~NOT = LCELL( _EQ102);
+  _EQ102 =  F0 & !F3 & !P15
+         # !F3 & !Q15;
+
+-- Node name is '|lsm8:15|lsmi:26|xi:38|~36~2' = '|lsm8:15|lsmi:26|xi:38|Xi~2' 
+-- Equation name is '_LC3_A20', type is buried 
+-- synthesized logic cell 
+!_LC3_A20 = _LC3_A20~NOT;
+_LC3_A20~NOT = LCELL( _EQ103);
+  _EQ103 = !F0 & !P15 &  Q15
+         # !_LC3_B1 & !P15
+         #  F0 &  P15;
+
+-- Node name is '|lsm8:15|lsmi:26|xi:38|~36~3' = '|lsm8:15|lsmi:26|xi:38|Xi~3' 
+-- Equation name is '_LC4_A20', type is buried 
+-- synthesized logic cell 
+!_LC4_A20 = _LC4_A20~NOT;
+_LC4_A20~NOT = LCELL( _EQ104);
+  _EQ104 =  F3 &  Q15
+         # !F0 &  F3
+         #  F2;
+
+-- Node name is '|lsm8:15|lsmi:26|xi:38|~36~4' = '|lsm8:15|lsmi:26|xi:38|Xi~4' 
+-- Equation name is '_LC6_A20', type is buried 
+-- synthesized logic cell 
+_LC6_A20 = LCELL( _EQ105);
+  _EQ105 =  _LC1_B12 & !Q15
+         # !_LC4_A20 &  P15;
+
+-- Node name is '|lsm8:15|lsmi:26|yi:39|:15' = '|lsm8:15|lsmi:26|yi:39|Yi' 
+-- Equation name is '_LC8_A20', type is buried 
+!_LC8_A20 = _LC8_A20~NOT;
+_LC8_A20~NOT = LCELL( _EQ106);
+  _EQ106 = !F3 &  _LC6_B1
+         #  F0 &  _LC6_B1
+         # !F0 & !Q15
+         #  F0 &  Q15;
+
+-- Node name is '|lsm8:15|lsmi:27|c_i_plus_1:27|:23' = '|lsm8:15|lsmi:27|c_i_plus_1:27|C_i_plus_1' 
+-- Equation name is '_LC7_A4', type is buried 
+!_LC7_A4 = _LC7_A4~NOT;
+_LC7_A4~NOT = LCELL( _EQ107);
+  _EQ107 = !_LC3_A3 & !_LC4_A4
+         # !_LC3_A3 & !_LC6_A6
+         # !_LC4_A4 & !_LC6_A6
+         # !F2;
+
+-- Node name is '|lsm8:15|lsmi:27|sum_xor2:26|:12' = '|lsm8:15|lsmi:27|sum_xor2:26|Di' 
+-- Equation name is '_LC1_A4', type is buried 
+_LC1_A4  = LCELL( _EQ108);
+  _EQ108 =  _LC3_A3 & !_LC4_A4 & !_LC6_A6
+         # !_LC3_A3 &  _LC4_A4 & !_LC6_A6
+         #  _LC3_A3 &  _LC4_A4 &  _LC6_A6
+         # !_LC3_A3 & !_LC4_A4 &  _LC6_A6;
+
+-- Node name is '|lsm8:15|lsmi:27|xi:38|:36' = '|lsm8:15|lsmi:27|xi:38|Xi' 
+-- Equation name is '_LC3_A3', type is buried 
+_LC3_A3  = LCELL( _EQ109);
+  _EQ109 = !_LC4_A3 & !_LC5_A3
+         #  F1 & !_LC5_A3
+         #  _LC7_A3;
+
+-- Node name is '|lsm8:15|lsmi:27|xi:38|~36~1' = '|lsm8:15|lsmi:27|xi:38|Xi~1' 
+-- Equation name is '_LC4_A3', type is buried 
+-- synthesized logic cell 
+!_LC4_A3 = _LC4_A3~NOT;
+_LC4_A3~NOT = LCELL( _EQ110);
+  _EQ110 =  F0 & !F3 & !P14
+         # !F3 & !Q14;
+
+-- Node name is '|lsm8:15|lsmi:27|xi:38|~36~2' = '|lsm8:15|lsmi:27|xi:38|Xi~2' 
+-- Equation name is '_LC5_A3', type is buried 
+-- synthesized logic cell 
+!_LC5_A3 = _LC5_A3~NOT;
+_LC5_A3~NOT = LCELL( _EQ111);
+  _EQ111 = !F0 & !P14 &  Q14
+         # !_LC3_B1 & !P14
+         #  F0 &  P14;
+
+-- Node name is '|lsm8:15|lsmi:27|xi:38|~36~3' = '|lsm8:15|lsmi:27|xi:38|Xi~3' 
+-- Equation name is '_LC6_A3', type is buried 
+-- synthesized logic cell 
+!_LC6_A3 = _LC6_A3~NOT;
+_LC6_A3~NOT = LCELL( _EQ112);
+  _EQ112 =  F3 &  Q14
+         # !F0 &  F3
+         #  F2;
+
+-- Node name is '|lsm8:15|lsmi:27|xi:38|~36~4' = '|lsm8:15|lsmi:27|xi:38|Xi~4' 
+-- Equation name is '_LC7_A3', type is buried 
+-- synthesized logic cell 
+_LC7_A3  = LCELL( _EQ113);
+  _EQ113 =  _LC1_B12 & !Q14
+         # !_LC6_A3 &  P14;
+
+-- Node name is '|lsm8:15|lsmi:27|yi:39|:15' = '|lsm8:15|lsmi:27|yi:39|Yi' 
+-- Equation name is '_LC4_A4', type is buried 
+!_LC4_A4 = _LC4_A4~NOT;
+_LC4_A4~NOT = LCELL( _EQ114);
+  _EQ114 = !F3 &  _LC6_B1
+         #  F0 &  _LC6_B1
+         # !F0 & !Q14
+         #  F0 &  Q14;
+
+-- Node name is '|lsm8:15|lsmi:28|c_i_plus_1:27|:23' = '|lsm8:15|lsmi:28|c_i_plus_1:27|C_i_plus_1' 
+-- Equation name is '_LC6_A6', type is buried 
+!_LC6_A6 = _LC6_A6~NOT;
+_LC6_A6~NOT = LCELL( _EQ115);
+  _EQ115 = !_LC2_A11 & !_LC3_A6
+         # !_LC2_A11 & !_LC4_A6
+         # !_LC3_A6 & !_LC4_A6
+         # !F2;
+
+-- Node name is '|lsm8:15|lsmi:28|sum_xor2:26|:12' = '|lsm8:15|lsmi:28|sum_xor2:26|Di' 
+-- Equation name is '_LC1_A6', type is buried 
+_LC1_A6  = LCELL( _EQ116);
+  _EQ116 =  _LC2_A11 & !_LC3_A6 & !_LC4_A6
+         # !_LC2_A11 &  _LC3_A6 & !_LC4_A6
+         #  _LC2_A11 &  _LC3_A6 &  _LC4_A6
+         # !_LC2_A11 & !_LC3_A6 &  _LC4_A6;
+
+-- Node name is '|lsm8:15|lsmi:28|xi:38|:36' = '|lsm8:15|lsmi:28|xi:38|Xi' 
+-- Equation name is '_LC2_A11', type is buried 
+_LC2_A11 = LCELL( _EQ117);
+  _EQ117 = !_LC1_A11 & !_LC3_A11
+         #  F1 & !_LC3_A11
+         #  _LC5_A11;
+
+-- Node name is '|lsm8:15|lsmi:28|xi:38|~36~1' = '|lsm8:15|lsmi:28|xi:38|Xi~1' 
+-- Equation name is '_LC1_A11', type is buried 
+-- synthesized logic cell 
+!_LC1_A11 = _LC1_A11~NOT;
+_LC1_A11~NOT = LCELL( _EQ118);
+  _EQ118 =  F0 & !F3 & !P13
+         # !F3 & !Q13;
+
+-- Node name is '|lsm8:15|lsmi:28|xi:38|~36~2' = '|lsm8:15|lsmi:28|xi:38|Xi~2' 
+-- Equation name is '_LC3_A11', type is buried 
+-- synthesized logic cell 
+!_LC3_A11 = _LC3_A11~NOT;
+_LC3_A11~NOT = LCELL( _EQ119);
+  _EQ119 = !F0 & !P13 &  Q13
+         # !_LC3_B1 & !P13
+         #  F0 &  P13;
+
+-- Node name is '|lsm8:15|lsmi:28|xi:38|~36~3' = '|lsm8:15|lsmi:28|xi:38|Xi~3' 
+-- Equation name is '_LC4_A11', type is buried 
+-- synthesized logic cell 
+!_LC4_A11 = _LC4_A11~NOT;
+_LC4_A11~NOT = LCELL( _EQ120);
+  _EQ120 =  F3 &  Q13
+         # !F0 &  F3
+         #  F2;
+
+-- Node name is '|lsm8:15|lsmi:28|xi:38|~36~4' = '|lsm8:15|lsmi:28|xi:38|Xi~4' 
+-- Equation name is '_LC5_A11', type is buried 
+-- synthesized logic cell 
+_LC5_A11 = LCELL( _EQ121);
+  _EQ121 =  _LC1_B12 & !Q13
+         # !_LC4_A11 &  P13;
+
+-- Node name is '|lsm8:15|lsmi:28|yi:39|:15' = '|lsm8:15|lsmi:28|yi:39|Yi' 
+-- Equation name is '_LC3_A6', type is buried 
+!_LC3_A6 = _LC3_A6~NOT;
+_LC3_A6~NOT = LCELL( _EQ122);
+  _EQ122 = !F3 &  _LC6_B1
+         #  F0 &  _LC6_B1
+         # !F0 & !Q13
+         #  F0 &  Q13;
+
+-- Node name is '|lsm8:15|lsmi:29|c_i_plus_1:27|:23' = '|lsm8:15|lsmi:29|c_i_plus_1:27|C_i_plus_1' 
+-- Equation name is '_LC4_A6', type is buried 
+!_LC4_A6 = _LC4_A6~NOT;
+_LC4_A6~NOT = LCELL( _EQ123);
+  _EQ123 = !_LC4_A8 & !_LC5_A6
+         # !_LC2_A18 & !_LC4_A8
+         # !_LC2_A18 & !_LC5_A6
+         # !F2;
+
+-- Node name is '|lsm8:15|lsmi:29|sum_xor2:26|:12' = '|lsm8:15|lsmi:29|sum_xor2:26|Di' 
+-- Equation name is '_LC2_A6', type is buried 
+_LC2_A6  = LCELL( _EQ124);
+  _EQ124 = !_LC2_A18 &  _LC4_A8 & !_LC5_A6
+         # !_LC2_A18 & !_LC4_A8 &  _LC5_A6
+         #  _LC2_A18 &  _LC4_A8 &  _LC5_A6
+         #  _LC2_A18 & !_LC4_A8 & !_LC5_A6;
+
+-- Node name is '|lsm8:15|lsmi:29|xi:38|:36' = '|lsm8:15|lsmi:29|xi:38|Xi' 
+-- Equation name is '_LC4_A8', type is buried 
+_LC4_A8  = LCELL( _EQ125);
+  _EQ125 = !_LC1_A8 & !_LC3_A8
+         #  F1 & !_LC1_A8
+         #  _LC5_A8;
+
+-- Node name is '|lsm8:15|lsmi:29|xi:38|~36~1' = '|lsm8:15|lsmi:29|xi:38|Xi~1' 
+-- Equation name is '_LC3_A8', type is buried 
+-- synthesized logic cell 
+!_LC3_A8 = _LC3_A8~NOT;
+_LC3_A8~NOT = LCELL( _EQ126);
+  _EQ126 =  F0 & !F3 & !P12
+         # !F3 & !Q12;
+
+-- Node name is '|lsm8:15|lsmi:29|xi:38|~36~2' = '|lsm8:15|lsmi:29|xi:38|Xi~2' 
+-- Equation name is '_LC1_A8', type is buried 
+-- synthesized logic cell 
+!_LC1_A8 = _LC1_A8~NOT;
+_LC1_A8~NOT = LCELL( _EQ127);
+  _EQ127 = !F0 & !P12 &  Q12
+         # !_LC3_B1 & !P12
+         #  F0 &  P12;
+
+-- Node name is '|lsm8:15|lsmi:29|xi:38|~36~3' = '|lsm8:15|lsmi:29|xi:38|Xi~3' 
+-- Equation name is '_LC2_A8', type is buried 
+-- synthesized logic cell 
+!_LC2_A8 = _LC2_A8~NOT;
+_LC2_A8~NOT = LCELL( _EQ128);
+  _EQ128 =  F3 &  Q12
+         # !F0 &  F3
+         #  F2;
+
+-- Node name is '|lsm8:15|lsmi:29|xi:38|~36~4' = '|lsm8:15|lsmi:29|xi:38|Xi~4' 
+-- Equation name is '_LC5_A8', type is buried 
+-- synthesized logic cell 
+_LC5_A8  = LCELL( _EQ129);
+  _EQ129 =  _LC1_B12 & !Q12
+         # !_LC2_A8 &  P12;
+
+-- Node name is '|lsm8:15|lsmi:29|yi:39|:15' = '|lsm8:15|lsmi:29|yi:39|Yi' 
+-- Equation name is '_LC5_A6', type is buried 
+!_LC5_A6 = _LC5_A6~NOT;
+_LC5_A6~NOT = LCELL( _EQ130);
+  _EQ130 = !F3 &  _LC6_B1
+         #  F0 &  _LC6_B1
+         # !F0 & !Q12
+         #  F0 &  Q12;
+
+-- Node name is '|lsm8:16|lsmi:20|c_i_plus_1:27|:23' = '|lsm8:16|lsmi:20|c_i_plus_1:27|C_i_plus_1' 
+-- Equation name is '_LC7_A17', type is buried 
+!_LC7_A17 = _LC7_A17~NOT;
+_LC7_A17~NOT = LCELL( _EQ131);
+  _EQ131 = !_LC6_A17 & !_LC8_A17
+         # !_LC5_A20 & !_LC8_A17
+         # !_LC5_A20 & !_LC6_A17
+         # !F2;
+
+-- Node name is '|lsm8:16|lsmi:20|sum_xor2:26|:12' = '|lsm8:16|lsmi:20|sum_xor2:26|Di' 
+-- Equation name is '_LC1_A17', type is buried 
+_LC1_A17 = LCELL( _EQ132);
+  _EQ132 = !_LC5_A20 & !_LC6_A17 &  _LC8_A17
+         # !_LC5_A20 &  _LC6_A17 & !_LC8_A17
+         #  _LC5_A20 &  _LC6_A17 &  _LC8_A17
+         #  _LC5_A20 & !_LC6_A17 & !_LC8_A17;
+
+-- Node name is '|lsm8:16|lsmi:20|xi:38|:36' = '|lsm8:16|lsmi:20|xi:38|Xi' 
+-- Equation name is '_LC8_A17', type is buried 
+_LC8_A17 = LCELL( _EQ133);
+  _EQ133 = !_LC2_A17 & !_LC3_A17
+         #  F1 & !_LC3_A17
+         #  _LC5_A17;
+
+-- Node name is '|lsm8:16|lsmi:20|xi:38|~36~1' = '|lsm8:16|lsmi:20|xi:38|Xi~1' 
+-- Equation name is '_LC2_A17', type is buried 
+-- synthesized logic cell 
+!_LC2_A17 = _LC2_A17~NOT;
+_LC2_A17~NOT = LCELL( _EQ134);
+  _EQ134 =  F0 & !F3 & !P16
+         # !F3 & !Q16;
+
+-- Node name is '|lsm8:16|lsmi:20|xi:38|~36~2' = '|lsm8:16|lsmi:20|xi:38|Xi~2' 
+-- Equation name is '_LC3_A17', type is buried 
+-- synthesized logic cell 
+!_LC3_A17 = _LC3_A17~NOT;
+_LC3_A17~NOT = LCELL( _EQ135);
+  _EQ135 = !F0 & !P16 &  Q16
+         # !_LC3_B1 & !P16
+         #  F0 &  P16;
+
+-- Node name is '|lsm8:16|lsmi:20|xi:38|~36~3' = '|lsm8:16|lsmi:20|xi:38|Xi~3' 
+-- Equation name is '_LC4_A17', type is buried 
+-- synthesized logic cell 
+!_LC4_A17 = _LC4_A17~NOT;
+_LC4_A17~NOT = LCELL( _EQ136);
+  _EQ136 =  F3 &  Q16
+         # !F0 &  F3
+         #  F2;
+
+-- Node name is '|lsm8:16|lsmi:20|xi:38|~36~4' = '|lsm8:16|lsmi:20|xi:38|Xi~4' 
+-- Equation name is '_LC5_A17', type is buried 
+-- synthesized logic cell 
+_LC5_A17 = LCELL( _EQ137);
+  _EQ137 =  _LC1_B12 & !Q16
+         # !_LC4_A17 &  P16;
+
+-- Node name is '|lsm8:16|lsmi:20|yi:39|:15' = '|lsm8:16|lsmi:20|yi:39|Yi' 
+-- Equation name is '_LC6_A17', type is buried 
+!_LC6_A17 = _LC6_A17~NOT;
+_LC6_A17~NOT = LCELL( _EQ138);
+  _EQ138 = !F3 &  _LC6_B1
+         #  F0 &  _LC6_B1
+         # !F0 & !Q16
+         #  F0 &  Q16;
+
+-- Node name is '|lsm8:16|lsmi:21|c_i_plus_1:27|:23' = '|lsm8:16|lsmi:21|c_i_plus_1:27|C_i_plus_1' 
+-- Equation name is '_LC3_A5', type is buried 
+!_LC3_A5 = _LC3_A5~NOT;
+_LC3_A5~NOT = LCELL( _EQ139);
+  _EQ139 = !_LC1_A21 & !_LC4_A5
+         # !_LC1_A21 & !_LC7_A17
+         # !_LC4_A5 & !_LC7_A17
+         # !F2;
+
+-- Node name is '|lsm8:16|lsmi:21|sum_xor2:26|:12' = '|lsm8:16|lsmi:21|sum_xor2:26|Di' 
+-- Equation name is '_LC1_A5', type is buried 
+_LC1_A5  = LCELL( _EQ140);
+  _EQ140 =  _LC1_A21 & !_LC4_A5 & !_LC7_A17
+         # !_LC1_A21 &  _LC4_A5 & !_LC7_A17
+         #  _LC1_A21 &  _LC4_A5 &  _LC7_A17
+         # !_LC1_A21 & !_LC4_A5 &  _LC7_A17;
+
+-- Node name is '|lsm8:16|lsmi:21|xi:38|:36' = '|lsm8:16|lsmi:21|xi:38|Xi' 
+-- Equation name is '_LC1_A21', type is buried 
+_LC1_A21 = LCELL( _EQ141);
+  _EQ141 = !_LC3_A21 & !_LC4_A21
+         #  F1 & !_LC4_A21
+         #  _LC1_A3;
+
+-- Node name is '|lsm8:16|lsmi:21|xi:38|~36~1' = '|lsm8:16|lsmi:21|xi:38|Xi~1' 
+-- Equation name is '_LC3_A21', type is buried 
+-- synthesized logic cell 
+!_LC3_A21 = _LC3_A21~NOT;
+_LC3_A21~NOT = LCELL( _EQ142);
+  _EQ142 =  F0 & !F3 & !P17
+         # !F3 & !Q17;
+
+-- Node name is '|lsm8:16|lsmi:21|xi:38|~36~2' = '|lsm8:16|lsmi:21|xi:38|Xi~2' 
+-- Equation name is '_LC4_A21', type is buried 
+-- synthesized logic cell 
+!_LC4_A21 = _LC4_A21~NOT;
+_LC4_A21~NOT = LCELL( _EQ143);
+  _EQ143 = !F0 & !P17 &  Q17
+         # !_LC3_B1 & !P17
+         #  F0 &  P17;
+
+-- Node name is '|lsm8:16|lsmi:21|xi:38|~36~3' = '|lsm8:16|lsmi:21|xi:38|Xi~3' 
+-- Equation name is '_LC2_A3', type is buried 
+-- synthesized logic cell 
+!_LC2_A3 = _LC2_A3~NOT;
+_LC2_A3~NOT = LCELL( _EQ144);
+  _EQ144 =  F3 &  Q17
+         # !F0 &  F3
+         #  F2;
+
+-- Node name is '|lsm8:16|lsmi:21|xi:38|~36~4' = '|lsm8:16|lsmi:21|xi:38|Xi~4' 
+-- Equation name is '_LC1_A3', type is buried 
+-- synthesized logic cell 
+_LC1_A3  = LCELL( _EQ145);
+  _EQ145 =  _LC1_B12 & !Q17
+         # !_LC2_A3 &  P17;
+
+-- Node name is '|lsm8:16|lsmi:21|yi:39|:15' = '|lsm8:16|lsmi:21|yi:39|Yi' 
+-- Equation name is '_LC4_A5', type is buried 
+!_LC4_A5 = _LC4_A5~NOT;
+_LC4_A5~NOT = LCELL( _EQ146);
+  _EQ146 = !F3 &  _LC6_B1
+         #  F0 &  _LC6_B1
+         # !F0 & !Q17
+         #  F0 &  Q17;
+
+-- Node name is '|lsm8:16|lsmi:23|c_i_plus_1:27|:23' = '|lsm8:16|lsmi:23|c_i_plus_1:27|C_i_plus_1' 
+-- Equation name is '_LC8_A5', type is buried 
+!_LC8_A5 = _LC8_A5~NOT;
+_LC8_A5~NOT = LCELL( _EQ147);
+  _EQ147 = !_LC4_A7 & !_LC5_A5
+         # !_LC3_A5 & !_LC4_A7
+         # !_LC3_A5 & !_LC5_A5
+         # !F2;
+
+-- Node name is '|lsm8:16|lsmi:23|sum_xor2:26|:12' = '|lsm8:16|lsmi:23|sum_xor2:26|Di' 
+-- Equation name is '_LC2_A5', type is buried 
+_LC2_A5  = LCELL( _EQ148);
+  _EQ148 = !_LC3_A5 &  _LC4_A7 & !_LC5_A5
+         # !_LC3_A5 & !_LC4_A7 &  _LC5_A5
+         #  _LC3_A5 &  _LC4_A7 &  _LC5_A5
+         #  _LC3_A5 & !_LC4_A7 & !_LC5_A5;
+
+-- Node name is '|lsm8:16|lsmi:23|xi:38|:36' = '|lsm8:16|lsmi:23|xi:38|Xi' 
+-- Equation name is '_LC4_A7', type is buried 
+_LC4_A7  = LCELL( _EQ149);
+  _EQ149 = !_LC2_A7 & !_LC3_A7
+         #  F1 & !_LC2_A7
+         #  _LC5_A7;
+
+-- Node name is '|lsm8:16|lsmi:23|xi:38|~36~1' = '|lsm8:16|lsmi:23|xi:38|Xi~1' 
+-- Equation name is '_LC3_A7', type is buried 
+-- synthesized logic cell 
+!_LC3_A7 = _LC3_A7~NOT;
+_LC3_A7~NOT = LCELL( _EQ150);
+  _EQ150 =  F0 & !F3 & !P18
+         # !F3 & !Q18;
+
+-- Node name is '|lsm8:16|lsmi:23|xi:38|~36~2' = '|lsm8:16|lsmi:23|xi:38|Xi~2' 
+-- Equation name is '_LC2_A7', type is buried 
+-- synthesized logic cell 
+!_LC2_A7 = _LC2_A7~NOT;
+_LC2_A7~NOT = LCELL( _EQ151);
+  _EQ151 = !F0 & !P18 &  Q18
+         # !_LC3_B1 & !P18
+         #  F0 &  P18;
+
+-- Node name is '|lsm8:16|lsmi:23|xi:38|~36~3' = '|lsm8:16|lsmi:23|xi:38|Xi~3' 
+-- Equation name is '_LC1_A7', type is buried 
+-- synthesized logic cell 
+!_LC1_A7 = _LC1_A7~NOT;
+_LC1_A7~NOT = LCELL( _EQ152);
+  _EQ152 =  F3 &  Q18
+         # !F0 &  F3
+         #  F2;
+
+-- Node name is '|lsm8:16|lsmi:23|xi:38|~36~4' = '|lsm8:16|lsmi:23|xi:38|Xi~4' 
+-- Equation name is '_LC5_A7', type is buried 
+-- synthesized logic cell 
+_LC5_A7  = LCELL( _EQ153);
+  _EQ153 =  _LC1_B12 & !Q18
+         # !_LC1_A7 &  P18;
+
+-- Node name is '|lsm8:16|lsmi:23|yi:39|:15' = '|lsm8:16|lsmi:23|yi:39|Yi' 
+-- Equation name is '_LC5_A5', type is buried 
+!_LC5_A5 = _LC5_A5~NOT;
+_LC5_A5~NOT = LCELL( _EQ154);
+  _EQ154 = !F3 &  _LC6_B1
+         #  F0 &  _LC6_B1
+         # !F0 & !Q18
+         #  F0 &  Q18;
+
+-- Node name is '|lsm8:16|lsmi:25|c_i_plus_1:27|:23' = '|lsm8:16|lsmi:25|c_i_plus_1:27|C_i_plus_1' 
+-- Equation name is '_LC7_A15', type is buried 
+!_LC7_A15 = _LC7_A15~NOT;
+_LC7_A15~NOT = LCELL( _EQ155);
+  _EQ155 = !_LC2_A15 & !_LC3_A15
+         # !_LC3_A15 & !_LC8_A5
+         # !_LC2_A15 & !_LC8_A5
+         # !F2;
+
+-- Node name is '|lsm8:16|lsmi:25|sum_xor2:26|:12' = '|lsm8:16|lsmi:25|sum_xor2:26|Di' 
+-- Equation name is '_LC1_A15', type is buried 
+_LC1_A15 = LCELL( _EQ156);
+  _EQ156 = !_LC2_A15 &  _LC3_A15 & !_LC8_A5
+         #  _LC2_A15 & !_LC3_A15 & !_LC8_A5
+         #  _LC2_A15 &  _LC3_A15 &  _LC8_A5
+         # !_LC2_A15 & !_LC3_A15 &  _LC8_A5;
+
+-- Node name is '|lsm8:16|lsmi:25|xi:38|:36' = '|lsm8:16|lsmi:25|xi:38|Xi' 
+-- Equation name is '_LC3_A15', type is buried 
+_LC3_A15 = LCELL( _EQ157);
+  _EQ157 = !_LC6_A15 & !_LC8_A15
+         #  F1 & !_LC6_A15
+         #  _LC4_A15;
+
+-- Node name is '|lsm8:16|lsmi:25|xi:38|~36~1' = '|lsm8:16|lsmi:25|xi:38|Xi~1' 
+-- Equation name is '_LC8_A15', type is buried 
+-- synthesized logic cell 
+!_LC8_A15 = _LC8_A15~NOT;
+_LC8_A15~NOT = LCELL( _EQ158);
+  _EQ158 =  F0 & !F3 & !P19
+         # !F3 & !Q19;
+
+-- Node name is '|lsm8:16|lsmi:25|xi:38|~36~2' = '|lsm8:16|lsmi:25|xi:38|Xi~2' 
+-- Equation name is '_LC6_A15', type is buried 
+-- synthesized logic cell 
+!_LC6_A15 = _LC6_A15~NOT;
+_LC6_A15~NOT = LCELL( _EQ159);
+  _EQ159 = !F0 & !P19 &  Q19
+         # !_LC3_B1 & !P19
+         #  F0 &  P19;
+
+-- Node name is '|lsm8:16|lsmi:25|xi:38|~36~3' = '|lsm8:16|lsmi:25|xi:38|Xi~3' 
+-- Equation name is '_LC5_A15', type is buried 
+-- synthesized logic cell 
+!_LC5_A15 = _LC5_A15~NOT;
+_LC5_A15~NOT = LCELL( _EQ160);
+  _EQ160 =  F3 &  Q19
+         # !F0 &  F3
+         #  F2;
+
+-- Node name is '|lsm8:16|lsmi:25|xi:38|~36~4' = '|lsm8:16|lsmi:25|xi:38|Xi~4' 
+-- Equation name is '_LC4_A15', type is buried 
+-- synthesized logic cell 
+_LC4_A15 = LCELL( _EQ161);
+  _EQ161 =  _LC1_B12 & !Q19
+         # !_LC5_A15 &  P19;
+
+-- Node name is '|lsm8:16|lsmi:25|yi:39|:15' = '|lsm8:16|lsmi:25|yi:39|Yi' 
+-- Equation name is '_LC2_A15', type is buried 
+!_LC2_A15 = _LC2_A15~NOT;
+_LC2_A15~NOT = LCELL( _EQ162);
+  _EQ162 = !F3 &  _LC6_B1
+         #  F0 &  _LC6_B1
+         # !F0 & !Q19
+         #  F0 &  Q19;
+
+-- Node name is '|lsm8:16|lsmi:26|c_i_plus_1:27|:23' = '|lsm8:16|lsmi:26|c_i_plus_1:27|C_i_plus_1' 
+-- Equation name is '_LC1_B21', type is buried 
+!_LC1_B21 = _LC1_B21~NOT;
+_LC1_B21~NOT = LCELL( _EQ163);
+  _EQ163 = !_LC7_B21 & !_LC8_B21
+         # !_LC4_B17 & !_LC7_B21
+         # !_LC4_B17 & !_LC8_B21
+         # !F2;
+
+-- Node name is '|lsm8:16|lsmi:26|sum_xor2:26|:12' = '|lsm8:16|lsmi:26|sum_xor2:26|Di' 
+-- Equation name is '_LC2_B21', type is buried 
+_LC2_B21 = LCELL( _EQ164);
+  _EQ164 = !_LC4_B17 &  _LC7_B21 & !_LC8_B21
+         # !_LC4_B17 & !_LC7_B21 &  _LC8_B21
+         #  _LC4_B17 &  _LC7_B21 &  _LC8_B21
+         #  _LC4_B17 & !_LC7_B21 & !_LC8_B21;
+
+-- Node name is '|lsm8:16|lsmi:26|xi:38|:36' = '|lsm8:16|lsmi:26|xi:38|Xi' 
+-- Equation name is '_LC7_B21', type is buried 
+_LC7_B21 = LCELL( _EQ165);
+  _EQ165 = !_LC3_B21 & !_LC4_B21
+         #  F1 & !_LC3_B21
+         #  _LC6_B21;
+
+-- Node name is '|lsm8:16|lsmi:26|xi:38|~36~1' = '|lsm8:16|lsmi:26|xi:38|Xi~1' 
+-- Equation name is '_LC4_B21', type is buried 
+-- synthesized logic cell 
+!_LC4_B21 = _LC4_B21~NOT;
+_LC4_B21~NOT = LCELL( _EQ166);
+  _EQ166 =  F0 & !F3 & !P23
+         # !F3 & !Q23;
+
+-- Node name is '|lsm8:16|lsmi:26|xi:38|~36~2' = '|lsm8:16|lsmi:26|xi:38|Xi~2' 
+-- Equation name is '_LC3_B21', type is buried 
+-- synthesized logic cell 
+!_LC3_B21 = _LC3_B21~NOT;
+_LC3_B21~NOT = LCELL( _EQ167);
+  _EQ167 = !F0 & !P23 &  Q23
+         # !_LC3_B1 & !P23
+         #  F0 &  P23;
+
+-- Node name is '|lsm8:16|lsmi:26|xi:38|~36~3' = '|lsm8:16|lsmi:26|xi:38|Xi~3' 
+-- Equation name is '_LC5_B21', type is buried 
+-- synthesized logic cell 
+!_LC5_B21 = _LC5_B21~NOT;
+_LC5_B21~NOT = LCELL( _EQ168);
+  _EQ168 =  F3 &  Q23
+         # !F0 &  F3
+         #  F2;
+
+-- Node name is '|lsm8:16|lsmi:26|xi:38|~36~4' = '|lsm8:16|lsmi:26|xi:38|Xi~4' 
+-- Equation name is '_LC6_B21', type is buried 
+-- synthesized logic cell 
+_LC6_B21 = LCELL( _EQ169);
+  _EQ169 =  _LC1_B12 & !Q23
+         # !_LC5_B21 &  P23;
+
+-- Node name is '|lsm8:16|lsmi:26|yi:39|:15' = '|lsm8:16|lsmi:26|yi:39|Yi' 
+-- Equation name is '_LC8_B21', type is buried 
+!_LC8_B21 = _LC8_B21~NOT;
+_LC8_B21~NOT = LCELL( _EQ170);
+  _EQ170 = !F3 &  _LC6_B1
+         #  F0 &  _LC6_B1
+         # !F0 & !Q23
+         #  F0 &  Q23;
+
+-- Node name is '|lsm8:16|lsmi:27|c_i_plus_1:27|:23' = '|lsm8:16|lsmi:27|c_i_plus_1:27|C_i_plus_1' 
+-- Equation name is '_LC4_B17', type is buried 
+!_LC4_B17 = _LC4_B17~NOT;
+_LC4_B17~NOT = LCELL( _EQ171);
+  _EQ171 = !_LC2_B17 & !_LC3_B17
+         # !_LC3_B17 & !_LC6_A10
+         # !_LC2_B17 & !_LC6_A10
+         # !F2;
+
+-- Node name is '|lsm8:16|lsmi:27|sum_xor2:26|:12' = '|lsm8:16|lsmi:27|sum_xor2:26|Di' 
+-- Equation name is '_LC1_B17', type is buried 
+_LC1_B17 = LCELL( _EQ172);
+  _EQ172 = !_LC2_B17 &  _LC3_B17 & !_LC6_A10
+         #  _LC2_B17 & !_LC3_B17 & !_LC6_A10
+         #  _LC2_B17 &  _LC3_B17 &  _LC6_A10
+         # !_LC2_B17 & !_LC3_B17 &  _LC6_A10;
+
+-- Node name is '|lsm8:16|lsmi:27|xi:38|:36' = '|lsm8:16|lsmi:27|xi:38|Xi' 
+-- Equation name is '_LC3_B17', type is buried 
+_LC3_B17 = LCELL( _EQ173);
+  _EQ173 = !_LC7_B17 & !_LC8_B17
+         #  F1 & !_LC7_B17
+         #  _LC5_B17;
+
+-- Node name is '|lsm8:16|lsmi:27|xi:38|~36~1' = '|lsm8:16|lsmi:27|xi:38|Xi~1' 
+-- Equation name is '_LC8_B17', type is buried 
+-- synthesized logic cell 
+!_LC8_B17 = _LC8_B17~NOT;
+_LC8_B17~NOT = LCELL( _EQ174);
+  _EQ174 =  F0 & !F3 & !P22
+         # !F3 & !Q22;
+
+-- Node name is '|lsm8:16|lsmi:27|xi:38|~36~2' = '|lsm8:16|lsmi:27|xi:38|Xi~2' 
+-- Equation name is '_LC7_B17', type is buried 
+-- synthesized logic cell 
+!_LC7_B17 = _LC7_B17~NOT;
+_LC7_B17~NOT = LCELL( _EQ175);
+  _EQ175 = !F0 & !P22 &  Q22
+         # !_LC3_B1 & !P22
+         #  F0 &  P22;
+
+-- Node name is '|lsm8:16|lsmi:27|xi:38|~36~3' = '|lsm8:16|lsmi:27|xi:38|Xi~3' 
+-- Equation name is '_LC6_B17', type is buried 
+-- synthesized logic cell 
+!_LC6_B17 = _LC6_B17~NOT;
+_LC6_B17~NOT = LCELL( _EQ176);
+  _EQ176 =  F3 &  Q22
+         # !F0 &  F3
+         #  F2;
+
+-- Node name is '|lsm8:16|lsmi:27|xi:38|~36~4' = '|lsm8:16|lsmi:27|xi:38|Xi~4' 
+-- Equation name is '_LC5_B17', type is buried 
+-- synthesized logic cell 
+_LC5_B17 = LCELL( _EQ177);
+  _EQ177 =  _LC1_B12 & !Q22
+         # !_LC6_B17 &  P22;
+
+-- Node name is '|lsm8:16|lsmi:27|yi:39|:15' = '|lsm8:16|lsmi:27|yi:39|Yi' 
+-- Equation name is '_LC2_B17', type is buried 
+!_LC2_B17 = _LC2_B17~NOT;
+_LC2_B17~NOT = LCELL( _EQ178);
+  _EQ178 = !F3 &  _LC6_B1
+         #  F0 &  _LC6_B1
+         # !F0 & !Q22
+         #  F0 &  Q22;
+
+-- Node name is '|lsm8:16|lsmi:28|c_i_plus_1:27|:23' = '|lsm8:16|lsmi:28|c_i_plus_1:27|C_i_plus_1' 
+-- Equation name is '_LC6_A10', type is buried 
+!_LC6_A10 = _LC6_A10~NOT;
+_LC6_A10~NOT = LCELL( _EQ179);
+  _EQ179 = !_LC4_A10 & !_LC5_A10
+         # !_LC5_A10 & !_LC5_A13
+         # !_LC4_A10 & !_LC5_A13
+         # !F2;
+
+-- Node name is '|lsm8:16|lsmi:28|sum_xor2:26|:12' = '|lsm8:16|lsmi:28|sum_xor2:26|Di' 
+-- Equation name is '_LC1_A10', type is buried 
+_LC1_A10 = LCELL( _EQ180);
+  _EQ180 = !_LC4_A10 &  _LC5_A10 & !_LC5_A13
+         #  _LC4_A10 & !_LC5_A10 & !_LC5_A13
+         #  _LC4_A10 &  _LC5_A10 &  _LC5_A13
+         # !_LC4_A10 & !_LC5_A10 &  _LC5_A13;
+
+-- Node name is '|lsm8:16|lsmi:28|xi:38|:36' = '|lsm8:16|lsmi:28|xi:38|Xi' 
+-- Equation name is '_LC5_A10', type is buried 
+_LC5_A10 = LCELL( _EQ181);
+  _EQ181 = !_LC2_A10 & !_LC3_A10
+         #  F1 & !_LC3_A10
+         #  _LC7_A10;
+
+-- Node name is '|lsm8:16|lsmi:28|xi:38|~36~1' = '|lsm8:16|lsmi:28|xi:38|Xi~1' 
+-- Equation name is '_LC2_A10', type is buried 
+-- synthesized logic cell 
+!_LC2_A10 = _LC2_A10~NOT;
+_LC2_A10~NOT = LCELL( _EQ182);
+  _EQ182 =  F0 & !F3 & !P21
+         # !F3 & !Q21;
+
+-- Node name is '|lsm8:16|lsmi:28|xi:38|~36~2' = '|lsm8:16|lsmi:28|xi:38|Xi~2' 
+-- Equation name is '_LC3_A10', type is buried 
+-- synthesized logic cell 
+!_LC3_A10 = _LC3_A10~NOT;
+_LC3_A10~NOT = LCELL( _EQ183);
+  _EQ183 = !F0 & !P21 &  Q21
+         # !_LC3_B1 & !P21
+         #  F0 &  P21;
+
+-- Node name is '|lsm8:16|lsmi:28|xi:38|~36~3' = '|lsm8:16|lsmi:28|xi:38|Xi~3' 
+-- Equation name is '_LC8_A10', type is buried 
+-- synthesized logic cell 
+!_LC8_A10 = _LC8_A10~NOT;
+_LC8_A10~NOT = LCELL( _EQ184);
+  _EQ184 =  F3 &  Q21
+         # !F0 &  F3
+         #  F2;
+
+-- Node name is '|lsm8:16|lsmi:28|xi:38|~36~4' = '|lsm8:16|lsmi:28|xi:38|Xi~4' 
+-- Equation name is '_LC7_A10', type is buried 
+-- synthesized logic cell 
+_LC7_A10 = LCELL( _EQ185);
+  _EQ185 =  _LC1_B12 & !Q21
+         # !_LC8_A10 &  P21;
+
+-- Node name is '|lsm8:16|lsmi:28|yi:39|:15' = '|lsm8:16|lsmi:28|yi:39|Yi' 
+-- Equation name is '_LC4_A10', type is buried 
+!_LC4_A10 = _LC4_A10~NOT;
+_LC4_A10~NOT = LCELL( _EQ186);
+  _EQ186 = !F3 &  _LC6_B1
+         #  F0 &  _LC6_B1
+         # !F0 & !Q21
+         #  F0 &  Q21;
+
+-- Node name is '|lsm8:16|lsmi:29|c_i_plus_1:27|:23' = '|lsm8:16|lsmi:29|c_i_plus_1:27|C_i_plus_1' 
+-- Equation name is '_LC5_A13', type is buried 
+!_LC5_A13 = _LC5_A13~NOT;
+_LC5_A13~NOT = LCELL( _EQ187);
+  _EQ187 = !_LC2_A13 & !_LC3_A13
+         # !_LC3_A13 & !_LC7_A15
+         # !_LC2_A13 & !_LC7_A15
+         # !F2;
+
+-- Node name is '|lsm8:16|lsmi:29|sum_xor2:26|:12' = '|lsm8:16|lsmi:29|sum_xor2:26|Di' 
+-- Equation name is '_LC1_A13', type is buried 
+_LC1_A13 = LCELL( _EQ188);
+  _EQ188 = !_LC2_A13 &  _LC3_A13 & !_LC7_A15
+         #  _LC2_A13 & !_LC3_A13 & !_LC7_A15
+         #  _LC2_A13 &  _LC3_A13 &  _LC7_A15
+         # !_LC2_A13 & !_LC3_A13 &  _LC7_A15;
+
+-- Node name is '|lsm8:16|lsmi:29|xi:38|:36' = '|lsm8:16|lsmi:29|xi:38|Xi' 
+-- Equation name is '_LC3_A13', type is buried 
+_LC3_A13 = LCELL( _EQ189);
+  _EQ189 = !_LC7_A13 & !_LC8_A13
+         #  F1 & !_LC7_A13
+         #  _LC4_A13;
+
+-- Node name is '|lsm8:16|lsmi:29|xi:38|~36~1' = '|lsm8:16|lsmi:29|xi:38|Xi~1' 
+-- Equation name is '_LC8_A13', type is buried 
+-- synthesized logic cell 
+!_LC8_A13 = _LC8_A13~NOT;
+_LC8_A13~NOT = LCELL( _EQ190);
+  _EQ190 =  F0 & !F3 & !P20
+         # !F3 & !Q20;
+
+-- Node name is '|lsm8:16|lsmi:29|xi:38|~36~2' = '|lsm8:16|lsmi:29|xi:38|Xi~2' 
+-- Equation name is '_LC7_A13', type is buried 
+-- synthesized logic cell 
+!_LC7_A13 = _LC7_A13~NOT;
+_LC7_A13~NOT = LCELL( _EQ191);
+  _EQ191 = !F0 & !P20 &  Q20
+         # !_LC3_B1 & !P20
+         #  F0 &  P20;
+
+-- Node name is '|lsm8:16|lsmi:29|xi:38|~36~3' = '|lsm8:16|lsmi:29|xi:38|Xi~3' 
+-- Equation name is '_LC6_A13', type is buried 
+-- synthesized logic cell 
+!_LC6_A13 = _LC6_A13~NOT;
+_LC6_A13~NOT = LCELL( _EQ192);
+  _EQ192 =  F3 &  Q20
+         # !F0 &  F3
+         #  F2;
+
+-- Node name is '|lsm8:16|lsmi:29|xi:38|~36~4' = '|lsm8:16|lsmi:29|xi:38|Xi~4' 
+-- Equation name is '_LC4_A13', type is buried 
+-- synthesized logic cell 
+_LC4_A13 = LCELL( _EQ193);
+  _EQ193 =  _LC1_B12 & !Q20
+         # !_LC6_A13 &  P20;
+
+-- Node name is '|lsm8:16|lsmi:29|yi:39|:15' = '|lsm8:16|lsmi:29|yi:39|Yi' 
+-- Equation name is '_LC2_A13', type is buried 
+!_LC2_A13 = _LC2_A13~NOT;
+_LC2_A13~NOT = LCELL( _EQ194);
+  _EQ194 = !F3 &  _LC6_B1
+         #  F0 &  _LC6_B1
+         # !F0 & !Q20
+         #  F0 &  Q20;
+
+-- Node name is '|lsm8:17|lsmi:20|c_i_plus_1:27|:23' = '|lsm8:17|lsmi:20|c_i_plus_1:27|C_i_plus_1' 
+-- Equation name is '_LC8_B8', type is buried 
+!_LC8_B8 = _LC8_B8~NOT;
+_LC8_B8~NOT = LCELL( _EQ195);
+  _EQ195 = !_LC2_B1 & !_LC4_B8
+         # !_LC1_B21 & !_LC4_B8
+         # !_LC1_B21 & !_LC2_B1
+         # !F2;
+
+-- Node name is '|lsm8:17|lsmi:20|sum_xor2:26|:12' = '|lsm8:17|lsmi:20|sum_xor2:26|Di' 
+-- Equation name is '_LC1_B8', type is buried 
+_LC1_B8  = LCELL( _EQ196);
+  _EQ196 = !_LC1_B21 & !_LC2_B1 &  _LC4_B8
+         # !_LC1_B21 &  _LC2_B1 & !_LC4_B8
+         #  _LC1_B21 &  _LC2_B1 &  _LC4_B8
+         #  _LC1_B21 & !_LC2_B1 & !_LC4_B8;
+
+-- Node name is '|lsm8:17|lsmi:20|xi:38|:36' = '|lsm8:17|lsmi:20|xi:38|Xi' 
+-- Equation name is '_LC4_B8', type is buried 
+_LC4_B8  = LCELL( _EQ197);
+  _EQ197 = !_LC7_B8 & !_LC8_B1
+         #  F1 & !_LC8_B1
+         #  _LC5_B8;
+
+-- Node name is '|lsm8:17|lsmi:20|xi:38|~36~1' = '|lsm8:17|lsmi:20|xi:38|Xi~1' 
+-- Equation name is '_LC7_B8', type is buried 
+-- synthesized logic cell 
+!_LC7_B8 = _LC7_B8~NOT;
+_LC7_B8~NOT = LCELL( _EQ198);
+  _EQ198 =  F0 & !F3 & !P24
+         # !F3 & !Q24;
+
+-- Node name is '|lsm8:17|lsmi:20|xi:38|~36~2' = '|lsm8:17|lsmi:20|xi:38|Xi~2' 
+-- Equation name is '_LC8_B1', type is buried 
+-- synthesized logic cell 
+!_LC8_B1 = _LC8_B1~NOT;
+_LC8_B1~NOT = LCELL( _EQ199);
+  _EQ199 = !F0 & !P24 &  Q24
+         # !_LC3_B1 & !P24
+         #  F0 &  P24;
+
+-- Node name is '|lsm8:17|lsmi:20|xi:38|~36~3' = '|lsm8:17|lsmi:20|xi:38|Xi~3' 
+-- Equation name is '_LC6_B8', type is buried 
+-- synthesized logic cell 
+!_LC6_B8 = _LC6_B8~NOT;
+_LC6_B8~NOT = LCELL( _EQ200);
+  _EQ200 =  F3 &  Q24
+         # !F0 &  F3
+         #  F2;
+
+-- Node name is '|lsm8:17|lsmi:20|xi:38|~36~4' = '|lsm8:17|lsmi:20|xi:38|Xi~4' 
+-- Equation name is '_LC5_B8', type is buried 
+-- synthesized logic cell 
+_LC5_B8  = LCELL( _EQ201);
+  _EQ201 =  _LC1_B12 & !Q24
+         # !_LC6_B8 &  P24;
+
+-- Node name is '|lsm8:17|lsmi:20|yi:39|:15' = '|lsm8:17|lsmi:20|yi:39|Yi' 
+-- Equation name is '_LC2_B1', type is buried 
+!_LC2_B1 = _LC2_B1~NOT;
+_LC2_B1~NOT = LCELL( _EQ202);
+  _EQ202 = !F3 &  _LC6_B1
+         #  F0 &  _LC6_B1
+         # !F0 & !Q24
+         #  F0 &  Q24;
+
+-- Node name is '|lsm8:17|lsmi:21|c_i_plus_1:27|:23' = '|lsm8:17|lsmi:21|c_i_plus_1:27|C_i_plus_1' 
+-- Equation name is '_LC2_B8', type is buried 
+!_LC2_B8 = _LC2_B8~NOT;
+_LC2_B8~NOT = LCELL( _EQ203);
+  _EQ203 = !_LC1_B20 & !_LC5_B12
+         # !_LC1_B20 & !_LC8_B8
+         # !_LC5_B12 & !_LC8_B8
+         # !F2;
+
+-- Node name is '|lsm8:17|lsmi:21|sum_xor2:26|:12' = '|lsm8:17|lsmi:21|sum_xor2:26|Di' 
+-- Equation name is '_LC3_B8', type is buried 
+_LC3_B8  = LCELL( _EQ204);
+  _EQ204 =  _LC1_B20 & !_LC5_B12 & !_LC8_B8
+         # !_LC1_B20 &  _LC5_B12 & !_LC8_B8
+         #  _LC1_B20 &  _LC5_B12 &  _LC8_B8
+         # !_LC1_B20 & !_LC5_B12 &  _LC8_B8;
+
+-- Node name is '|lsm8:17|lsmi:21|xi:38|:36' = '|lsm8:17|lsmi:21|xi:38|Xi' 
+-- Equation name is '_LC1_B20', type is buried 
+_LC1_B20 = LCELL( _EQ205);
+  _EQ205 = !_LC3_B20 & !_LC4_B20
+         #  F1 & !_LC3_B20
+         #  _LC5_B20;
+
+-- Node name is '|lsm8:17|lsmi:21|xi:38|~36~1' = '|lsm8:17|lsmi:21|xi:38|Xi~1' 
+-- Equation name is '_LC4_B20', type is buried 
+-- synthesized logic cell 
+!_LC4_B20 = _LC4_B20~NOT;
+_LC4_B20~NOT = LCELL( _EQ206);
+  _EQ206 =  F0 & !F3 & !P25
+         # !F3 & !Q25;
+
+-- Node name is '|lsm8:17|lsmi:21|xi:38|~36~2' = '|lsm8:17|lsmi:21|xi:38|Xi~2' 
+-- Equation name is '_LC3_B20', type is buried 
+-- synthesized logic cell 
+!_LC3_B20 = _LC3_B20~NOT;
+_LC3_B20~NOT = LCELL( _EQ207);
+  _EQ207 = !F0 & !P25 &  Q25
+         # !_LC3_B1 & !P25
+         #  F0 &  P25;
+
+-- Node name is '|lsm8:17|lsmi:21|xi:38|~36~3' = '|lsm8:17|lsmi:21|xi:38|Xi~3' 
+-- Equation name is '_LC2_B20', type is buried 
+-- synthesized logic cell 
+!_LC2_B20 = _LC2_B20~NOT;
+_LC2_B20~NOT = LCELL( _EQ208);
+  _EQ208 =  F3 &  Q25
+         # !F0 &  F3
+         #  F2;
+
+-- Node name is '|lsm8:17|lsmi:21|xi:38|~36~4' = '|lsm8:17|lsmi:21|xi:38|Xi~4' 
+-- Equation name is '_LC5_B20', type is buried 
+-- synthesized logic cell 
+_LC5_B20 = LCELL( _EQ209);
+  _EQ209 =  _LC1_B12 & !Q25
+         # !_LC2_B20 &  P25;
+
+-- Node name is '|lsm8:17|lsmi:21|yi:39|:15' = '|lsm8:17|lsmi:21|yi:39|Yi' 
+-- Equation name is '_LC5_B12', type is buried 
+!_LC5_B12 = _LC5_B12~NOT;
+_LC5_B12~NOT = LCELL( _EQ210);
+  _EQ210 = !F3 &  _LC6_B1
+         #  F0 &  _LC6_B1
+         # !F0 & !Q25
+         #  F0 &  Q25;
+
+-- Node name is '|lsm8:17|lsmi:23|c_i_plus_1:27|:23' = '|lsm8:17|lsmi:23|c_i_plus_1:27|C_i_plus_1' 
+-- Equation name is '_LC5_B14', type is buried 
+!_LC5_B14 = _LC5_B14~NOT;
+_LC5_B14~NOT = LCELL( _EQ211);
+  _EQ211 = !_LC2_B14 & !_LC3_B14
+         # !_LC2_B8 & !_LC3_B14
+         # !_LC2_B8 & !_LC2_B14
+         # !F2;
+
+-- Node name is '|lsm8:17|lsmi:23|sum_xor2:26|:12' = '|lsm8:17|lsmi:23|sum_xor2:26|Di' 
+-- Equation name is '_LC1_B14', type is buried 
+_LC1_B14 = LCELL( _EQ212);
+  _EQ212 = !_LC2_B8 & !_LC2_B14 &  _LC3_B14
+         # !_LC2_B8 &  _LC2_B14 & !_LC3_B14
+         #  _LC2_B8 &  _LC2_B14 &  _LC3_B14
+         #  _LC2_B8 & !_LC2_B14 & !_LC3_B14;
+
+-- Node name is '|lsm8:17|lsmi:23|xi:38|:36' = '|lsm8:17|lsmi:23|xi:38|Xi' 
+-- Equation name is '_LC3_B14', type is buried 
+_LC3_B14 = LCELL( _EQ213);
+  _EQ213 = !_LC7_B14 & !_LC8_B14
+         #  F1 & !_LC7_B14
+         #  _LC4_B14;
+
+-- Node name is '|lsm8:17|lsmi:23|xi:38|~36~1' = '|lsm8:17|lsmi:23|xi:38|Xi~1' 
+-- Equation name is '_LC8_B14', type is buried 
+-- synthesized logic cell 
+!_LC8_B14 = _LC8_B14~NOT;
+_LC8_B14~NOT = LCELL( _EQ214);
+  _EQ214 =  F0 & !F3 & !P26
+         # !F3 & !Q26;
+
+-- Node name is '|lsm8:17|lsmi:23|xi:38|~36~2' = '|lsm8:17|lsmi:23|xi:38|Xi~2' 
+-- Equation name is '_LC7_B14', type is buried 
+-- synthesized logic cell 
+!_LC7_B14 = _LC7_B14~NOT;
+_LC7_B14~NOT = LCELL( _EQ215);
+  _EQ215 = !F0 & !P26 &  Q26
+         # !_LC3_B1 & !P26
+         #  F0 &  P26;
+
+-- Node name is '|lsm8:17|lsmi:23|xi:38|~36~3' = '|lsm8:17|lsmi:23|xi:38|Xi~3' 
+-- Equation name is '_LC6_B14', type is buried 
+-- synthesized logic cell 
+!_LC6_B14 = _LC6_B14~NOT;
+_LC6_B14~NOT = LCELL( _EQ216);
+  _EQ216 =  F3 &  Q26
+         # !F0 &  F3
+         #  F2;
+
+-- Node name is '|lsm8:17|lsmi:23|xi:38|~36~4' = '|lsm8:17|lsmi:23|xi:38|Xi~4' 
+-- Equation name is '_LC4_B14', type is buried 
+-- synthesized logic cell 
+_LC4_B14 = LCELL( _EQ217);
+  _EQ217 =  _LC1_B12 & !Q26
+         # !_LC6_B14 &  P26;
+
+-- Node name is '|lsm8:17|lsmi:23|yi:39|:15' = '|lsm8:17|lsmi:23|yi:39|Yi' 
+-- Equation name is '_LC2_B14', type is buried 
+!_LC2_B14 = _LC2_B14~NOT;
+_LC2_B14~NOT = LCELL( _EQ218);
+  _EQ218 = !F3 &  _LC6_B1
+         #  F0 &  _LC6_B1
+         # !F0 & !Q26
+         #  F0 &  Q26;
+
+-- Node name is '|lsm8:17|lsmi:25|c_i_plus_1:27|:23' = '|lsm8:17|lsmi:25|c_i_plus_1:27|C_i_plus_1' 
+-- Equation name is '_LC5_B13', type is buried 
+!_LC5_B13 = _LC5_B13~NOT;
+_LC5_B13~NOT = LCELL( _EQ219);
+  _EQ219 = !_LC2_B13 & !_LC3_B13
+         # !_LC3_B13 & !_LC5_B14
+         # !_LC2_B13 & !_LC5_B14
+         # !F2;
+
+-- Node name is '|lsm8:17|lsmi:25|sum_xor2:26|:12' = '|lsm8:17|lsmi:25|sum_xor2:26|Di' 
+-- Equation name is '_LC1_B13', type is buried 
+_LC1_B13 = LCELL( _EQ220);
+  _EQ220 = !_LC2_B13 &  _LC3_B13 & !_LC5_B14
+         #  _LC2_B13 & !_LC3_B13 & !_LC5_B14
+         #  _LC2_B13 &  _LC3_B13 &  _LC5_B14
+         # !_LC2_B13 & !_LC3_B13 &  _LC5_B14;
+
+-- Node name is '|lsm8:17|lsmi:25|xi:38|:36' = '|lsm8:17|lsmi:25|xi:38|Xi' 
+-- Equation name is '_LC3_B13', type is buried 
+_LC3_B13 = LCELL( _EQ221);
+  _EQ221 = !_LC7_B13 & !_LC8_B13
+         #  F1 & !_LC7_B13
+         #  _LC4_B13;
+
+-- Node name is '|lsm8:17|lsmi:25|xi:38|~36~1' = '|lsm8:17|lsmi:25|xi:38|Xi~1' 
+-- Equation name is '_LC8_B13', type is buried 
+-- synthesized logic cell 
+!_LC8_B13 = _LC8_B13~NOT;
+_LC8_B13~NOT = LCELL( _EQ222);
+  _EQ222 =  F0 & !F3 & !P27
+         # !F3 & !Q27;
+
+-- Node name is '|lsm8:17|lsmi:25|xi:38|~36~2' = '|lsm8:17|lsmi:25|xi:38|Xi~2' 
+-- Equation name is '_LC7_B13', type is buried 
+-- synthesized logic cell 
+!_LC7_B13 = _LC7_B13~NOT;
+_LC7_B13~NOT = LCELL( _EQ223);
+  _EQ223 = !F0 & !P27 &  Q27
+         # !_LC3_B1 & !P27
+         #  F0 &  P27;
+
+-- Node name is '|lsm8:17|lsmi:25|xi:38|~36~3' = '|lsm8:17|lsmi:25|xi:38|Xi~3' 
+-- Equation name is '_LC6_B13', type is buried 
+-- synthesized logic cell 
+!_LC6_B13 = _LC6_B13~NOT;
+_LC6_B13~NOT = LCELL( _EQ224);
+  _EQ224 =  F3 &  Q27
+         # !F0 &  F3
+         #  F2;
+
+-- Node name is '|lsm8:17|lsmi:25|xi:38|~36~4' = '|lsm8:17|lsmi:25|xi:38|Xi~4' 
+-- Equation name is '_LC4_B13', type is buried 
+-- synthesized logic cell 
+_LC4_B13 = LCELL( _EQ225);
+  _EQ225 =  _LC1_B12 & !Q27
+         # !_LC6_B13 &  P27;
+
+-- Node name is '|lsm8:17|lsmi:25|yi:39|:15' = '|lsm8:17|lsmi:25|yi:39|Yi' 
+-- Equation name is '_LC2_B13', type is buried 
+!_LC2_B13 = _LC2_B13~NOT;
+_LC2_B13~NOT = LCELL( _EQ226);
+  _EQ226 = !F3 &  _LC6_B1
+         #  F0 &  _LC6_B1
+         # !F0 & !Q27
+         #  F0 &  Q27;
+
+-- Node name is '|lsm8:17|lsmi:26|c_i_plus_1:27|:23' = '|lsm8:17|lsmi:26|c_i_plus_1:27|C_i_plus_1' 
+-- Equation name is '_LC1_B3', type is buried 
+_LC1_B3  = LCELL( _EQ227);
+  _EQ227 =  F2 &  _LC2_B19 &  _LC3_B3
+         #  F2 &  _LC3_B3 &  _LC5_B3
+         #  F2 &  _LC2_B19 &  _LC5_B3;
+
+-- Node name is '|lsm8:17|lsmi:26|sum_xor2:26|:12' = '|lsm8:17|lsmi:26|sum_xor2:26|Di' 
+-- Equation name is '_LC4_B3', type is buried 
+_LC4_B3  = LCELL( _EQ228);
+  _EQ228 =  _LC2_B19 & !_LC3_B3 & !_LC5_B3
+         # !_LC2_B19 & !_LC3_B3 &  _LC5_B3
+         #  _LC2_B19 &  _LC3_B3 &  _LC5_B3
+         # !_LC2_B19 &  _LC3_B3 & !_LC5_B3;
+
+-- Node name is '|lsm8:17|lsmi:26|xi:38|:36' = '|lsm8:17|lsmi:26|xi:38|Xi' 
+-- Equation name is '_LC2_B19', type is buried 
+_LC2_B19 = LCELL( _EQ229);
+  _EQ229 = !_LC5_B19 & !_LC6_B19
+         #  F1 & !_LC5_B19
+         #  _LC1_B19;
+
+-- Node name is '|lsm8:17|lsmi:26|xi:38|~36~1' = '|lsm8:17|lsmi:26|xi:38|Xi~1' 
+-- Equation name is '_LC3_B1', type is buried 
+-- synthesized logic cell 
+!_LC3_B1 = _LC3_B1~NOT;
+_LC3_B1~NOT = LCELL( _EQ230);
+  _EQ230 = !F1 & !F2;
+
+-- Node name is '|lsm8:17|lsmi:26|xi:38|~36~2' = '|lsm8:17|lsmi:26|xi:38|Xi~2' 
+-- Equation name is '_LC6_B19', type is buried 
+-- synthesized logic cell 
+!_LC6_B19 = _LC6_B19~NOT;
+_LC6_B19~NOT = LCELL( _EQ231);
+  _EQ231 =  F0 & !F3 & !P31
+         # !F3 & !Q31;
+
+-- Node name is '|lsm8:17|lsmi:26|xi:38|~36~3' = '|lsm8:17|lsmi:26|xi:38|Xi~3' 
+-- Equation name is '_LC5_B19', type is buried 
+-- synthesized logic cell 
+!_LC5_B19 = _LC5_B19~NOT;
+_LC5_B19~NOT = LCELL( _EQ232);
+  _EQ232 = !F0 & !P31 &  Q31
+         # !_LC3_B1 & !P31
+         #  F0 &  P31;
+
+-- Node name is '|lsm8:17|lsmi:26|xi:38|~36~4' = '|lsm8:17|lsmi:26|xi:38|Xi~4' 
+-- Equation name is '_LC4_B19', type is buried 
+-- synthesized logic cell 
+_LC4_B19 = LCELL( _EQ233);
+  _EQ233 =  F0 &  F1 & !Q31;
+
+-- Node name is '|lsm8:17|lsmi:26|xi:38|~36~5' = '|lsm8:17|lsmi:26|xi:38|Xi~5' 
+-- Equation name is '_LC3_B19', type is buried 
+-- synthesized logic cell 
+!_LC3_B19 = _LC3_B19~NOT;
+_LC3_B19~NOT = LCELL( _EQ234);
+  _EQ234 =  F3 &  Q31
+         # !F0 &  F3;
+
+-- Node name is '|lsm8:17|lsmi:26|xi:38|~36~6' = '|lsm8:17|lsmi:26|xi:38|Xi~6' 
+-- Equation name is '_LC1_B19', type is buried 
+-- synthesized logic cell 
+_LC1_B19 = LCELL( _EQ235);
+  _EQ235 = !F2 &  _LC4_B19
+         # !_LC3_B19 &  P31
+         #  F2 &  P31;
+
+-- Node name is '|lsm8:17|lsmi:26|yi:39|:15' = '|lsm8:17|lsmi:26|yi:39|Yi' 
+-- Equation name is '_LC5_B3', type is buried 
+!_LC5_B3 = _LC5_B3~NOT;
+_LC5_B3~NOT = LCELL( _EQ236);
+  _EQ236 = !F0 & !Q31
+         #  F0 &  Q31
+         # !F3 &  _LC6_B1
+         #  F0 &  _LC6_B1;
+
+-- Node name is '|lsm8:17|lsmi:26|yi:39|~19~1' 
+-- Equation name is '_LC6_B1', type is buried 
+-- synthesized logic cell 
+_LC6_B1  = LCELL( _EQ237);
+  _EQ237 = !F2
+         #  F1;
+
+-- Node name is '|lsm8:17|lsmi:27|c_i_plus_1:27|:23' = '|lsm8:17|lsmi:27|c_i_plus_1:27|C_i_plus_1' 
+-- Equation name is '_LC3_B3', type is buried 
+!_LC3_B3 = _LC3_B3~NOT;
+_LC3_B3~NOT = LCELL( _EQ238);
+  _EQ238 = !_LC3_B9 & !_LC6_B3
+         # !_LC3_B9 & !_LC5_B7
+         # !_LC5_B7 & !_LC6_B3
+         # !F2;
+
+-- Node name is '|lsm8:17|lsmi:27|sum_xor2:26|:12' = '|lsm8:17|lsmi:27|sum_xor2:26|Di' 
+-- Equation name is '_LC2_B3', type is buried 
+_LC2_B3  = LCELL( _EQ239);
+  _EQ239 =  _LC3_B9 & !_LC5_B7 & !_LC6_B3
+         # !_LC3_B9 & !_LC5_B7 &  _LC6_B3
+         #  _LC3_B9 &  _LC5_B7 &  _LC6_B3
+         # !_LC3_B9 &  _LC5_B7 & !_LC6_B3;
+
+-- Node name is '|lsm8:17|lsmi:27|xi:38|:36' = '|lsm8:17|lsmi:27|xi:38|Xi' 
+-- Equation name is '_LC3_B9', type is buried 
+_LC3_B9  = LCELL( _EQ240);
+  _EQ240 = !_LC4_B9 & !_LC5_B9
+         #  F1 & !_LC4_B9
+         #  _LC1_B9;
+
+-- Node name is '|lsm8:17|lsmi:27|xi:38|~36~1' = '|lsm8:17|lsmi:27|xi:38|Xi~1' 
+-- Equation name is '_LC1_B12', type is buried 
+-- synthesized logic cell 
+_LC1_B12 = LCELL( _EQ241);
+  _EQ241 =  F0 &  F1 & !F2;
+
+-- Node name is '|lsm8:17|lsmi:27|xi:38|~36~2' = '|lsm8:17|lsmi:27|xi:38|Xi~2' 
+-- Equation name is '_LC5_B9', type is buried 
+-- synthesized logic cell 
+!_LC5_B9 = _LC5_B9~NOT;
+_LC5_B9~NOT = LCELL( _EQ242);
+  _EQ242 =  F0 & !F3 & !P30
+         # !F3 & !Q30;
+
+-- Node name is '|lsm8:17|lsmi:27|xi:38|~36~3' = '|lsm8:17|lsmi:27|xi:38|Xi~3' 
+-- Equation name is '_LC4_B9', type is buried 
+-- synthesized logic cell 
+!_LC4_B9 = _LC4_B9~NOT;
+_LC4_B9~NOT = LCELL( _EQ243);
+  _EQ243 = !F0 & !P30 &  Q30
+         # !_LC3_B1 & !P30
+         #  F0 &  P30;
+
+-- Node name is '|lsm8:17|lsmi:27|xi:38|~36~4' = '|lsm8:17|lsmi:27|xi:38|Xi~4' 
+-- Equation name is '_LC2_B9', type is buried 
+-- synthesized logic cell 
+!_LC2_B9 = _LC2_B9~NOT;
+_LC2_B9~NOT = LCELL( _EQ244);
+  _EQ244 =  F3 &  Q30
+         # !F0 &  F3
+         #  F2;
+
+-- Node name is '|lsm8:17|lsmi:27|xi:38|~36~5' = '|lsm8:17|lsmi:27|xi:38|Xi~5' 
+-- Equation name is '_LC1_B9', type is buried 
+-- synthesized logic cell 
+_LC1_B9  = LCELL( _EQ245);
+  _EQ245 =  _LC1_B12 & !Q30
+         # !_LC2_B9 &  P30;
+
+-- Node name is '|lsm8:17|lsmi:27|yi:39|:15' = '|lsm8:17|lsmi:27|yi:39|Yi' 
+-- Equation name is '_LC6_B3', type is buried 
+!_LC6_B3 = _LC6_B3~NOT;
+_LC6_B3~NOT = LCELL( _EQ246);
+  _EQ246 = !F3 &  _LC6_B1
+         #  F0 &  _LC6_B1
+         # !F0 & !Q30
+         #  F0 &  Q30;
+
+-- Node name is '|lsm8:17|lsmi:28|c_i_plus_1:27|:23' = '|lsm8:17|lsmi:28|c_i_plus_1:27|C_i_plus_1' 
+-- Equation name is '_LC5_B7', type is buried 
+!_LC5_B7 = _LC5_B7~NOT;
+_LC5_B7~NOT = LCELL( _EQ247);
+  _EQ247 = !_LC2_B5 & !_LC4_B7
+         # !_LC2_B5 & !_LC3_B7
+         # !_LC3_B7 & !_LC4_B7
+         # !F2;
+
+-- Node name is '|lsm8:17|lsmi:28|sum_xor2:26|:12' = '|lsm8:17|lsmi:28|sum_xor2:26|Di' 
+-- Equation name is '_LC2_B7', type is buried 
+_LC2_B7  = LCELL( _EQ248);
+  _EQ248 =  _LC2_B5 & !_LC3_B7 & !_LC4_B7
+         # !_LC2_B5 & !_LC3_B7 &  _LC4_B7
+         #  _LC2_B5 &  _LC3_B7 &  _LC4_B7
+         # !_LC2_B5 &  _LC3_B7 & !_LC4_B7;
+
+-- Node name is '|lsm8:17|lsmi:28|xi:38|:36' = '|lsm8:17|lsmi:28|xi:38|Xi' 
+-- Equation name is '_LC2_B5', type is buried 
+_LC2_B5  = LCELL( _EQ249);
+  _EQ249 = !_LC4_B5 & !_LC5_B5
+         #  F1 & !_LC4_B5
+         #  _LC1_B5;
+
+-- Node name is '|lsm8:17|lsmi:28|xi:38|~36~1' = '|lsm8:17|lsmi:28|xi:38|Xi~1' 
+-- Equation name is '_LC5_B5', type is buried 
+-- synthesized logic cell 
+!_LC5_B5 = _LC5_B5~NOT;
+_LC5_B5~NOT = LCELL( _EQ250);
+  _EQ250 =  F0 & !F3 & !P29
+         # !F3 & !Q29;
+
+-- Node name is '|lsm8:17|lsmi:28|xi:38|~36~2' = '|lsm8:17|lsmi:28|xi:38|Xi~2' 
+-- Equation name is '_LC4_B5', type is buried 
+-- synthesized logic cell 
+!_LC4_B5 = _LC4_B5~NOT;
+_LC4_B5~NOT = LCELL( _EQ251);
+  _EQ251 = !F0 & !P29 &  Q29
+         # !_LC3_B1 & !P29
+         #  F0 &  P29;
+
+-- Node name is '|lsm8:17|lsmi:28|xi:38|~36~3' = '|lsm8:17|lsmi:28|xi:38|Xi~3' 
+-- Equation name is '_LC3_B5', type is buried 
+-- synthesized logic cell 
+!_LC3_B5 = _LC3_B5~NOT;
+_LC3_B5~NOT = LCELL( _EQ252);
+  _EQ252 =  F3 &  Q29
+         # !F0 &  F3
+         #  F2;
+
+-- Node name is '|lsm8:17|lsmi:28|xi:38|~36~4' = '|lsm8:17|lsmi:28|xi:38|Xi~4' 
+-- Equation name is '_LC1_B5', type is buried 
+-- synthesized logic cell 
+_LC1_B5  = LCELL( _EQ253);
+  _EQ253 =  _LC1_B12 & !Q29
+         # !_LC3_B5 &  P29;
+
+-- Node name is '|lsm8:17|lsmi:28|yi:39|:15' = '|lsm8:17|lsmi:28|yi:39|Yi' 
+-- Equation name is '_LC4_B7', type is buried 
+!_LC4_B7 = _LC4_B7~NOT;
+_LC4_B7~NOT = LCELL( _EQ254);
+  _EQ254 = !F3 &  _LC6_B1
+         #  F0 &  _LC6_B1
+         # !F0 & !Q29
+         #  F0 &  Q29;
+
+-- Node name is '|lsm8:17|lsmi:29|c_i_plus_1:27|:23' = '|lsm8:17|lsmi:29|c_i_plus_1:27|C_i_plus_1' 
+-- Equation name is '_LC3_B7', type is buried 
+!_LC3_B7 = _LC3_B7~NOT;
+_LC3_B7~NOT = LCELL( _EQ255);
+  _EQ255 = !_LC1_B7 & !_LC1_B18
+         # !_LC1_B18 & !_LC5_B13
+         # !_LC1_B7 & !_LC5_B13
+         # !F2;
+
+-- Node name is '|lsm8:17|lsmi:29|sum_xor2:26|:12' = '|lsm8:17|lsmi:29|sum_xor2:26|Di' 
+-- Equation name is '_LC8_B7', type is buried 
+_LC8_B7  = LCELL( _EQ256);
+  _EQ256 = !_LC1_B7 &  _LC1_B18 & !_LC5_B13
+         #  _LC1_B7 & !_LC1_B18 & !_LC5_B13
+         #  _LC1_B7 &  _LC1_B18 &  _LC5_B13
+         # !_LC1_B7 & !_LC1_B18 &  _LC5_B13;
+
+-- Node name is '|lsm8:17|lsmi:29|xi:38|:36' = '|lsm8:17|lsmi:29|xi:38|Xi' 
+-- Equation name is '_LC1_B18', type is buried 
+_LC1_B18 = LCELL( _EQ257);
+  _EQ257 = !_LC2_B18 & !_LC3_B18
+         #  F1 & !_LC3_B18
+         #  _LC5_B18;
+
+-- Node name is '|lsm8:17|lsmi:29|xi:38|~36~1' = '|lsm8:17|lsmi:29|xi:38|Xi~1' 
+-- Equation name is '_LC2_B18', type is buried 
+-- synthesized logic cell 
+!_LC2_B18 = _LC2_B18~NOT;
+_LC2_B18~NOT = LCELL( _EQ258);
+  _EQ258 =  F0 & !F3 & !P28
+         # !F3 & !Q28;
+
+-- Node name is '|lsm8:17|lsmi:29|xi:38|~36~2' = '|lsm8:17|lsmi:29|xi:38|Xi~2' 
+-- Equation name is '_LC3_B18', type is buried 
+-- synthesized logic cell 
+!_LC3_B18 = _LC3_B18~NOT;
+_LC3_B18~NOT = LCELL( _EQ259);
+  _EQ259 = !F0 & !P28 &  Q28
+         # !_LC3_B1 & !P28
+         #  F0 &  P28;
+
+-- Node name is '|lsm8:17|lsmi:29|xi:38|~36~3' = '|lsm8:17|lsmi:29|xi:38|Xi~3' 
+-- Equation name is '_LC4_B18', type is buried 
+-- synthesized logic cell 
+!_LC4_B18 = _LC4_B18~NOT;
+_LC4_B18~NOT = LCELL( _EQ260);
+  _EQ260 =  F3 &  Q28
+         # !F0 &  F3
+         #  F2;
+
+-- Node name is '|lsm8:17|lsmi:29|xi:38|~36~4' = '|lsm8:17|lsmi:29|xi:38|Xi~4' 
+-- Equation name is '_LC5_B18', type is buried 
+-- synthesized logic cell 
+_LC5_B18 = LCELL( _EQ261);
+  _EQ261 =  _LC1_B12 & !Q28
+         # !_LC4_B18 &  P28;
+
+-- Node name is '|lsm8:17|lsmi:29|yi:39|:15' = '|lsm8:17|lsmi:29|yi:39|Yi' 
+-- Equation name is '_LC1_B7', type is buried 
+!_LC1_B7 = _LC1_B7~NOT;
+_LC1_B7~NOT = LCELL( _EQ262);
+  _EQ262 = !F3 &  _LC6_B1
+         #  F0 &  _LC6_B1
+         # !F0 & !Q28
+         #  F0 &  Q28;
+
+
+
+Project Informatione:\documents\science\computer_circuity\labs\mylabs\lab2\lsm\lsm32.rpt
+
+** COMPILATION SETTINGS & TIMES **
+
+Processing Menu Commands
+------------------------
+
+Design Doctor                             = off
+
+Logic Synthesis:
+
+   Synthesis Type Used                    = Multi-Level
+
+   Default Synthesis Style                = NORMAL
+
+      Logic option settings in 'NORMAL' style for 'FLEX8000' family
+
+      CARRY_CHAIN                         = ignore
+      CARRY_CHAIN_LENGTH                  = 32
+      CASCADE_CHAIN                       = ignore
+      CASCADE_CHAIN_LENGTH                = 2
+      DECOMPOSE_GATES                     = on
+      DUPLICATE_LOGIC_EXTRACTION          = on
+      MINIMIZATION                        = full
+      MULTI_LEVEL_FACTORING               = on
+      NOT_GATE_PUSH_BACK                  = on
+      REDUCE_LOGIC                        = on
+      REFACTORIZATION                     = on
+      REGISTER_OPTIMIZATION               = on
+      RESYNTHESIZE_NETWORK                = on
+      SLOW_SLEW_RATE                      = off
+      SUBFACTOR_EXTRACTION                = on
+      IGNORE_SOFT_BUFFERS                 = on
+      USE_LPM_FOR_AHDL_OPERATORS          = off
+
+   Other logic synthesis settings:
+
+      Automatic Global Clock              = on
+      Automatic Global Clear              = on
+      Automatic Global Preset             = on
+      Automatic Global Output Enable      = on
+      Automatic Fast I/O                  = off
+      Automatic Register Packing          = off
+      Automatic Open-Drain Pins           = on
+      Automatic Implement in EAB          = off
+      Optimize                            = 5
+
+Default Timing Specifications: None
+
+Cut All Bidir Feedback Timing Paths       = on
+Cut All Clear & Preset Timing Paths       = on
+
+Ignore Timing Assignments                 = off
+
+Functional SNF Extractor                  = off
+
+Linked SNF Extractor                      = off
+Timing SNF Extractor                      = on
+Optimize Timing SNF                       = off
+Generate AHDL TDO File                    = off
+Fitter Settings                           = NORMAL
+Smart Recompile                           = off
+Total Recompile                           = off
+
+Interfaces Menu Commands
+------------------------
+
+EDIF Netlist Writer                       = off
+Verilog Netlist Writer                    = off
+VHDL Netlist Writer                       = off
+
+Compilation Times
+-----------------
+
+   Compiler Netlist Extractor             00:00:01
+   Database Builder                       00:00:00
+   Logic Synthesizer                      00:00:00
+   Partitioner                            00:00:01
+   Fitter                                 00:00:00
+   Timing SNF Extractor                   00:00:00
+   Assembler                              00:00:00
+   --------------------------             --------
+   Total Time                             00:00:02
+
+
+Memory Allocated
+-----------------
+
+Peak memory allocated during compilation  = 13,888K

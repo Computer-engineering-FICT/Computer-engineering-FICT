@@ -1,0 +1,476 @@
+Fitter report for Lab1
+Sat Sep 29 19:38:27 2012
+Quartus II Version 9.1 Build 222 10/21/2009 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Fitter Summary
+  3. Fitter Settings
+  4. Parallel Compilation
+  5. Pin-Out File
+  6. Fitter Resource Usage Summary
+  7. Input Pins
+  8. Output Pins
+  9. All Package Pins
+ 10. I/O Standard
+ 11. Dedicated Inputs I/O
+ 12. Output Pin Default Load For Reported TCO
+ 13. Fitter Resource Utilization by Entity
+ 14. Control Signals
+ 15. Non-Global High Fan-Out Signals
+ 16. Interconnect Usage Summary
+ 17. LAB Macrocells
+ 18. Parallel Expander
+ 19. Shareable Expander
+ 20. Logic Cell Interconnection
+ 21. Fitter Device Options
+ 22. Fitter Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2009 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++------------------------------------------------------------------+
+; Fitter Summary                                                   ;
++-----------------------+------------------------------------------+
+; Fitter Status         ; Successful - Sat Sep 29 19:38:27 2012    ;
+; Quartus II Version    ; 9.1 Build 222 10/21/2009 SJ Full Version ;
+; Revision Name         ; Lab1                                     ;
+; Top-level Entity Name ; Lab1_blocked                             ;
+; Family                ; MAX7000S                                 ;
+; Device                ; EPM7032SLC44-5                           ;
+; Timing Models         ; Final                                    ;
+; Total macrocells      ; 26 / 32 ( 81 % )                         ;
+; Total pins            ; 34 / 36 ( 94 % )                         ;
++-----------------------+------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------+
+; Fitter Settings                                                                                       ;
++----------------------------------------------------------------------------+----------+---------------+
+; Option                                                                     ; Setting  ; Default Value ;
++----------------------------------------------------------------------------+----------+---------------+
+; Device                                                                     ; AUTO     ;               ;
+; Use smart compilation                                                      ; Off      ; Off           ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On       ; On            ;
+; Enable compact report table                                                ; Off      ; Off           ;
+; Use TimeQuest Timing Analyzer                                              ; Off      ; Off           ;
+; Optimize Timing for ECOs                                                   ; Off      ; Off           ;
+; Regenerate full fit report during ECO compiles                             ; Off      ; Off           ;
+; Optimize IOC Register Placement for Timing                                 ; On       ; On            ;
+; Limit to One Fitting Attempt                                               ; Off      ; Off           ;
+; Fitter Initial Placement Seed                                              ; 1        ; 1             ;
+; Slow Slew Rate                                                             ; Off      ; Off           ;
+; Fitter Effort                                                              ; Auto Fit ; Auto Fit      ;
+; Force Fitter to Avoid Periphery Placement Warnings                         ; Off      ; Off           ;
+; Use Best Effort Settings for Compilation                                   ; Off      ; Off           ;
++----------------------------------------------------------------------------+----------+---------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 2           ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     1 processor            ; 100.0%      ;
+;     2 processors           ;   0.0%      ;
++----------------------------+-------------+
+
+
++--------------+
+; Pin-Out File ;
++--------------+
+The pin-out file can be found in D:/Study/CS/labs/lab1/quartus/Lab1.pin.
+
+
++------------------------------------------------------+
+; Fitter Resource Usage Summary                        ;
++-----------------------------------+------------------+
+; Resource                          ; Usage            ;
++-----------------------------------+------------------+
+; Logic cells                       ; 26 / 32 ( 81 % ) ;
+; Registers                         ; 13 / 32 ( 41 % ) ;
+; Number of pterms used             ; 97               ;
+; User inserted logic elements      ; 0                ;
+; I/O pins                          ; 34 / 36 ( 94 % ) ;
+;     -- Clock pins                 ; 1 / 2 ( 50 % )   ;
+;     -- Dedicated input pins       ; 2 / 2 ( 100 % )  ;
+; Global signals                    ; 0                ;
+; Shareable expanders               ; 2 / 32 ( 6 % )   ;
+; Parallel expanders                ; 13 / 30 ( 43 % ) ;
+; Cells using turbo bit             ; 26 / 32 ( 81 % ) ;
+; Maximum fan-out node              ; F[2]             ;
+; Maximum fan-out                   ; 28               ;
+; Highest non-global fan-out signal ; F[2]             ;
+; Highest non-global fan-out        ; 28               ;
+; Total fan-out                     ; 220              ;
+; Average fan-out                   ; 3.55             ;
++-----------------------------------+------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------+
+; Input Pins                                                                                                                                  ;
++-------+-------+----------+-----+-----------------------+--------------------+--------+----------------+--------------+----------------------+
+; Name  ; Pin # ; I/O Bank ; LAB ; Combinational Fan-Out ; Registered Fan-Out ; Global ; Input Register ; I/O Standard ; Location assigned by ;
++-------+-------+----------+-----+-----------------------+--------------------+--------+----------------+--------------+----------------------+
+; C     ; 25    ; --       ; 2   ; 13                    ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; D[0]  ; 41    ; --       ; 2   ; 1                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; D[10] ; 36    ; --       ; 2   ; 1                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; D[11] ; 9     ; --       ; 1   ; 1                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; D[12] ; 1     ; --       ; --  ; 1                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; D[1]  ; 4     ; --       ; 1   ; 1                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; D[2]  ; 6     ; --       ; 1   ; 1                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; D[3]  ; 2     ; --       ; --  ; 1                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; D[4]  ; 11    ; --       ; 1   ; 1                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; D[5]  ; 31    ; --       ; 2   ; 1                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; D[6]  ; 29    ; --       ; 2   ; 1                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; D[7]  ; 27    ; --       ; 2   ; 1                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; D[8]  ; 44    ; --       ; --  ; 1                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; D[9]  ; 39    ; --       ; 2   ; 1                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; F[0]  ; 20    ; --       ; 1   ; 15                    ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; F[1]  ; 18    ; --       ; 1   ; 16                    ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; F[2]  ; 16    ; --       ; 1   ; 28                    ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
++-------+-------+----------+-----+-----------------------+--------------------+--------+----------------+--------------+----------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Output Pins                                                                                                                                                                                ;
++--------+-------+----------+-----+-----------------+----------------+------------+---------------+--------------+----------------------+-------+----------------------+---------------------+
+; Name   ; Pin # ; I/O Bank ; LAB ; Output Register ; Slow Slew Rate ; Open Drain ; TRI Primitive ; I/O Standard ; Location assigned by ; Load  ; Output Enable Source ; Output Enable Group ;
++--------+-------+----------+-----+-----------------+----------------+------------+---------------+--------------+----------------------+-------+----------------------+---------------------+
+; RG[0]  ; 33    ; --       ; 2   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
+; RG[10] ; 21    ; --       ; 1   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
+; RG[11] ; 14    ; --       ; 1   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
+; RG[12] ; 26    ; --       ; 2   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
+; RG[1]  ; 40    ; --       ; 2   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
+; RG[2]  ; 37    ; --       ; 2   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
+; RG[3]  ; 34    ; --       ; 2   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
+; RG[4]  ; 28    ; --       ; 2   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
+; RG[5]  ; 8     ; --       ; 1   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
+; RG[6]  ; 5     ; --       ; 1   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
+; RG[7]  ; 12    ; --       ; 1   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
+; RG[8]  ; 17    ; --       ; 1   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
+; RG[9]  ; 19    ; --       ; 1   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
++--------+-------+----------+-----+-----------------+----------------+------------+---------------+--------------+----------------------+-------+----------------------+---------------------+
+
+
++-------------------------------------------------------------------------------------------------------+
+; All Package Pins                                                                                      ;
++----------+------------+----------+----------------+--------+--------------+---------+-----------------+
+; Location ; Pad Number ; I/O Bank ; Pin Name/Usage ; Dir.   ; I/O Standard ; Voltage ; User Assignment ;
++----------+------------+----------+----------------+--------+--------------+---------+-----------------+
+; 1        ; 0          ; --       ; D[12]          ; input  ; TTL          ;         ; N               ;
+; 2        ; 1          ; --       ; D[3]           ; input  ; TTL          ;         ; N               ;
+; 3        ; 2          ; --       ; VCC            ; power  ;              ;         ;                 ;
+; 4        ; 3          ; --       ; D[1]           ; input  ; TTL          ;         ; N               ;
+; 5        ; 4          ; --       ; RG[6]          ; output ; TTL          ;         ; N               ;
+; 6        ; 5          ; --       ; D[2]           ; input  ; TTL          ;         ; N               ;
+; 7        ; 6          ; --       ; TDI            ; input  ; TTL          ;         ; N               ;
+; 8        ; 7          ; --       ; RG[5]          ; output ; TTL          ;         ; N               ;
+; 9        ; 8          ; --       ; D[11]          ; input  ; TTL          ;         ; N               ;
+; 10       ; 9          ; --       ; GND            ; gnd    ;              ;         ;                 ;
+; 11       ; 10         ; --       ; D[4]           ; input  ; TTL          ;         ; N               ;
+; 12       ; 11         ; --       ; RG[7]          ; output ; TTL          ;         ; N               ;
+; 13       ; 12         ; --       ; TMS            ; input  ; TTL          ;         ; N               ;
+; 14       ; 13         ; --       ; RG[11]         ; output ; TTL          ;         ; N               ;
+; 15       ; 14         ; --       ; VCC            ; power  ;              ;         ;                 ;
+; 16       ; 15         ; --       ; F[2]           ; input  ; TTL          ;         ; N               ;
+; 17       ; 16         ; --       ; RG[8]          ; output ; TTL          ;         ; N               ;
+; 18       ; 17         ; --       ; F[1]           ; input  ; TTL          ;         ; N               ;
+; 19       ; 18         ; --       ; RG[9]          ; output ; TTL          ;         ; N               ;
+; 20       ; 19         ; --       ; F[0]           ; input  ; TTL          ;         ; N               ;
+; 21       ; 20         ; --       ; RG[10]         ; output ; TTL          ;         ; N               ;
+; 22       ; 21         ; --       ; GND            ; gnd    ;              ;         ;                 ;
+; 23       ; 22         ; --       ; VCC            ; power  ;              ;         ;                 ;
+; 24       ; 23         ; --       ; RESERVED       ;        ;              ;         ;                 ;
+; 25       ; 24         ; --       ; C              ; input  ; TTL          ;         ; N               ;
+; 26       ; 25         ; --       ; RG[12]         ; output ; TTL          ;         ; N               ;
+; 27       ; 26         ; --       ; D[7]           ; input  ; TTL          ;         ; N               ;
+; 28       ; 27         ; --       ; RG[4]          ; output ; TTL          ;         ; N               ;
+; 29       ; 28         ; --       ; D[6]           ; input  ; TTL          ;         ; N               ;
+; 30       ; 29         ; --       ; GND            ; gnd    ;              ;         ;                 ;
+; 31       ; 30         ; --       ; D[5]           ; input  ; TTL          ;         ; N               ;
+; 32       ; 31         ; --       ; TCK            ; input  ; TTL          ;         ; N               ;
+; 33       ; 32         ; --       ; RG[0]          ; output ; TTL          ;         ; N               ;
+; 34       ; 33         ; --       ; RG[3]          ; output ; TTL          ;         ; N               ;
+; 35       ; 34         ; --       ; VCC            ; power  ;              ;         ;                 ;
+; 36       ; 35         ; --       ; D[10]          ; input  ; TTL          ;         ; N               ;
+; 37       ; 36         ; --       ; RG[2]          ; output ; TTL          ;         ; N               ;
+; 38       ; 37         ; --       ; TDO            ; output ; TTL          ;         ; N               ;
+; 39       ; 38         ; --       ; D[9]           ; input  ; TTL          ;         ; N               ;
+; 40       ; 39         ; --       ; RG[1]          ; output ; TTL          ;         ; N               ;
+; 41       ; 40         ; --       ; D[0]           ; input  ; TTL          ;         ; N               ;
+; 42       ; 41         ; --       ; GND            ; gnd    ;              ;         ;                 ;
+; 43       ; 42         ; --       ; GND+           ;        ;              ;         ;                 ;
+; 44       ; 43         ; --       ; D[8]           ; input  ; TTL          ;         ; N               ;
++----------+------------+----------+----------------+--------+--------------+---------+-----------------+
+Note: Pin directions (input, output or bidir) are based on device operating in user mode.
+
+
++--------------------------------------------------------------------------------------------------+
+; I/O Standard                                                                                     ;
++--------------+------------+----------------------+-------------------+-------------------+-------+
+; I/O Standard ; Input Vref ; Dedicated Input Pins ; Pins in I/O Bank1 ; Pins in I/O Bank2 ; Total ;
++--------------+------------+----------------------+-------------------+-------------------+-------+
+; TTL          ; -          ; 3                    ; 0                 ; 0                 ; 3     ;
++--------------+------------+----------------------+-------------------+-------------------+-------+
+
+
++---------------------------------------------------------------------+
+; Dedicated Inputs I/O                                                ;
++-------+-------+-------+-------+--------------+------------+---------+
+; Name  ; Pin # ; Type  ; VCCIO ; I/O Standard ; Input Vref ; Current ;
++-------+-------+-------+-------+--------------+------------+---------+
+; D[12] ; 1     ; Input ; --    ; TTL          ; -          ; 0 mA    ;
+; D[3]  ; 2     ; Input ; --    ; TTL          ; -          ; 0 mA    ;
+; D[8]  ; 44    ; Input ; --    ; TTL          ; -          ; 0 mA    ;
++-------+-------+-------+-------+--------------+------------+---------+
+
+
++-----------------------------------------------+
+; Output Pin Default Load For Reported TCO      ;
++--------------+-------+------------------------+
+; I/O Standard ; Load  ; Termination Resistance ;
++--------------+-------+------------------------+
+; TTL          ; 10 pF ; Not Available          ;
++--------------+-------+------------------------+
+Note: User assignments will override these defaults. The user specified values are listed in the Output Pins and Bidir Pins tables.
+
+
++-----------------------------------------------------------------------------------------------------+
+; Fitter Resource Utilization by Entity                                                               ;
++----------------------------+------------+------+-------------------------------------+--------------+
+; Compilation Hierarchy Node ; Macrocells ; Pins ; Full Hierarchy Name                 ; Library Name ;
++----------------------------+------------+------+-------------------------------------+--------------+
+; |Lab1_blocked              ; 26         ; 34   ; |Lab1_blocked                       ; work         ;
+;    |CTR11:inst|            ; 23         ; 0    ; |Lab1_blocked|CTR11:inst            ; work         ;
+;       |CTR:inst10|         ; 2          ; 0    ; |Lab1_blocked|CTR11:inst|CTR:inst10 ; work         ;
+;       |CTR:inst1|          ; 2          ; 0    ; |Lab1_blocked|CTR11:inst|CTR:inst1  ; work         ;
+;       |CTR:inst2|          ; 2          ; 0    ; |Lab1_blocked|CTR11:inst|CTR:inst2  ; work         ;
+;       |CTR:inst3|          ; 2          ; 0    ; |Lab1_blocked|CTR11:inst|CTR:inst3  ; work         ;
+;       |CTR:inst4|          ; 2          ; 0    ; |Lab1_blocked|CTR11:inst|CTR:inst4  ; work         ;
+;       |CTR:inst5|          ; 2          ; 0    ; |Lab1_blocked|CTR11:inst|CTR:inst5  ; work         ;
+;       |CTR:inst6|          ; 2          ; 0    ; |Lab1_blocked|CTR11:inst|CTR:inst6  ; work         ;
+;       |CTR:inst7|          ; 2          ; 0    ; |Lab1_blocked|CTR11:inst|CTR:inst7  ; work         ;
+;       |CTR:inst8|          ; 2          ; 0    ; |Lab1_blocked|CTR11:inst|CTR:inst8  ; work         ;
+;       |CTR:inst9|          ; 2          ; 0    ; |Lab1_blocked|CTR11:inst|CTR:inst9  ; work         ;
+;       |CTR:inst|           ; 3          ; 0    ; |Lab1_blocked|CTR11:inst|CTR:inst   ; work         ;
+;    |RG2:inst1|             ; 3          ; 0    ; |Lab1_blocked|RG2:inst1             ; work         ;
+;       |RG:inst1|           ; 2          ; 0    ; |Lab1_blocked|RG2:inst1|RG:inst1    ; work         ;
+;       |RG:inst|            ; 1          ; 0    ; |Lab1_blocked|RG2:inst1|RG:inst     ; work         ;
++----------------------------+------------+------+-------------------------------------+--------------+
+
+
++-------------------------------------------------------------------------------------------------+
+; Control Signals                                                                                 ;
++----------+----------+---------+--------------+--------+----------------------+------------------+
+; Name     ; Location ; Fan-Out ; Usage        ; Global ; Global Resource Used ; Global Line Name ;
++----------+----------+---------+--------------+--------+----------------------+------------------+
+; C        ; PIN_25   ; 13      ; Clock        ; no     ; --                   ; --               ;
+; F[0]     ; PIN_20   ; 15      ; Async. clear ; no     ; --                   ; --               ;
+; F[2]     ; PIN_16   ; 28      ; Async. clear ; no     ; --                   ; --               ;
+; inst7~14 ; SEXP17   ; 6       ; Clock        ; no     ; --                   ; --               ;
+; inst7~28 ; SEXP1    ; 7       ; Clock        ; no     ; --                   ; --               ;
++----------+----------+---------+--------------+--------+----------------------+------------------+
+
+
++------------------------------------------+
+; Non-Global High Fan-Out Signals          ;
++--------------------------------+---------+
+; Name                           ; Fan-Out ;
++--------------------------------+---------+
+; F[2]                           ; 28      ;
+; F[1]                           ; 16      ;
+; RG2:inst1|RG:inst|467          ; 16      ;
+; F[0]                           ; 15      ;
+; RG2:inst1|RG:inst1|467         ; 15      ;
+; C                              ; 13      ;
+; CTR11:inst|CTR:inst|inst10     ; 13      ;
+; CTR11:inst|CTR:inst1|inst10    ; 11      ;
+; CTR11:inst|CTR:inst4|inst10    ; 10      ;
+; CTR11:inst|CTR:inst2|inst10    ; 9       ;
+; CTR11:inst|CTR:inst3|inst10    ; 8       ;
+; inst7~28                       ; 7       ;
+; CTR11:inst|CTR:inst5|inst10    ; 7       ;
+; CTR11:inst|CTR:inst6|inst10    ; 6       ;
+; inst7~14                       ; 6       ;
+; CTR11:inst|CTR:inst7|inst10    ; 5       ;
+; CTR11:inst|CTR:inst8|inst10    ; 4       ;
+; CTR11:inst|CTR:inst9|inst10    ; 3       ;
+; CTR11:inst|CTR:inst10|inst10   ; 2       ;
+; D[0]                           ; 1       ;
+; D[1]                           ; 1       ;
+; D[2]                           ; 1       ;
+; D[3]                           ; 1       ;
+; D[4]                           ; 1       ;
+; D[5]                           ; 1       ;
+; D[6]                           ; 1       ;
+; D[7]                           ; 1       ;
+; D[8]                           ; 1       ;
+; D[9]                           ; 1       ;
+; D[10]                          ; 1       ;
+; D[11]                          ; 1       ;
+; D[12]                          ; 1       ;
+; CTR11:inst|CTR:inst10|inst8~11 ; 1       ;
+; CTR11:inst|CTR:inst9|inst8~11  ; 1       ;
+; CTR11:inst|CTR:inst8|inst8~10  ; 1       ;
+; CTR11:inst|CTR:inst7|inst8~10  ; 1       ;
+; CTR11:inst|CTR:inst6|inst8~10  ; 1       ;
+; CTR11:inst|CTR:inst5|inst8~10  ; 1       ;
+; CTR11:inst|CTR:inst3|inst8~10  ; 1       ;
+; CTR11:inst|CTR:inst2|inst8~10  ; 1       ;
+; CTR11:inst|CTR:inst4|inst8~10  ; 1       ;
+; CTR11:inst|CTR:inst1|inst8~10  ; 1       ;
+; CTR11:inst|CTR:inst|inst8~11   ; 1       ;
+; CTR11:inst|CTR:inst|inst8~9    ; 1       ;
+; RG2:inst1|RG:inst1|inst11~11   ; 1       ;
++--------------------------------+---------+
+
+
++-----------------------------------------------+
+; Interconnect Usage Summary                    ;
++----------------------------+------------------+
+; Interconnect Resource Type ; Usage            ;
++----------------------------+------------------+
+; Output enables             ; 0 / 6 ( 0 % )    ;
+; PIA buffers                ; 46 / 72 ( 64 % ) ;
++----------------------------+------------------+
+
+
++-----------------------------------------------------------------------+
+; LAB Macrocells                                                        ;
++-----------------------------------------+-----------------------------+
+; Number of Macrocells  (Average = 13.00) ; Number of LABs  (Total = 2) ;
++-----------------------------------------+-----------------------------+
+; 0                                       ; 0                           ;
+; 1                                       ; 0                           ;
+; 2                                       ; 0                           ;
+; 3                                       ; 0                           ;
+; 4                                       ; 0                           ;
+; 5                                       ; 0                           ;
+; 6                                       ; 0                           ;
+; 7                                       ; 0                           ;
+; 8                                       ; 0                           ;
+; 9                                       ; 0                           ;
+; 10                                      ; 0                           ;
+; 11                                      ; 0                           ;
+; 12                                      ; 1                           ;
+; 13                                      ; 0                           ;
+; 14                                      ; 1                           ;
++-----------------------------------------+-----------------------------+
+
+
++---------------------------------------------------------+
+; Parallel Expander                                       ;
++--------------------------+------------------------------+
+; Parallel Expander Length ; Number of Parallel Expanders ;
++--------------------------+------------------------------+
+; 0                        ; 0                            ;
+; 1                        ; 11                           ;
+; 2                        ; 1                            ;
++--------------------------+------------------------------+
+
+
++-------------------------------------------------------------------------------+
+; Shareable Expander                                                            ;
++-------------------------------------------------+-----------------------------+
+; Number of shareable expanders  (Average = 1.00) ; Number of LABs  (Total = 2) ;
++-------------------------------------------------+-----------------------------+
+; 0                                               ; 0                           ;
+; 1                                               ; 2                           ;
++-------------------------------------------------+-----------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Logic Cell Interconnection                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ;
++-----+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; LAB ; Logic Cell ; Input                                                                                                                                                                                                                                                                                                                                                                                                         ; Output                                                                                                                                                                                                                                                                                                                                                                                                                                          ;
++-----+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+;  A  ; LC5        ; CTR11:inst|CTR:inst2|inst8~10, F[1], RG2:inst1|RG:inst1|467, CTR11:inst|CTR:inst4|inst10, CTR11:inst|CTR:inst1|inst10, CTR11:inst|CTR:inst|inst10, F[2], F[0], RG2:inst1|RG:inst|467, C, inst7~28                                                                                                                                                                                                             ; RG[5], CTR11:inst|CTR:inst3|inst10, CTR11:inst|CTR:inst5|inst10, CTR11:inst|CTR:inst6|inst10, CTR11:inst|CTR:inst7|inst10, CTR11:inst|CTR:inst8|inst10, CTR11:inst|CTR:inst9|inst10, CTR11:inst|CTR:inst10|inst10, CTR11:inst|CTR:inst2|inst8~10                                                                                                                                                                                                ;
+;  A  ; LC2        ; CTR11:inst|CTR:inst3|inst8~10, F[1], RG2:inst1|RG:inst1|467, CTR11:inst|CTR:inst2|inst10, CTR11:inst|CTR:inst4|inst10, CTR11:inst|CTR:inst1|inst10, CTR11:inst|CTR:inst|inst10, F[2], F[0], RG2:inst1|RG:inst|467, C, inst7~28                                                                                                                                                                                ; RG[6], CTR11:inst|CTR:inst5|inst10, CTR11:inst|CTR:inst6|inst10, CTR11:inst|CTR:inst7|inst10, CTR11:inst|CTR:inst8|inst10, CTR11:inst|CTR:inst9|inst10, CTR11:inst|CTR:inst10|inst10, CTR11:inst|CTR:inst3|inst8~10                                                                                                                                                                                                                             ;
+;  A  ; LC8        ; CTR11:inst|CTR:inst5|inst8~10, F[1], RG2:inst1|RG:inst1|467, CTR11:inst|CTR:inst3|inst10, CTR11:inst|CTR:inst2|inst10, CTR11:inst|CTR:inst4|inst10, CTR11:inst|CTR:inst1|inst10, CTR11:inst|CTR:inst|inst10, F[2], F[0], RG2:inst1|RG:inst|467, C, inst7~28                                                                                                                                                   ; RG[7], CTR11:inst|CTR:inst6|inst10, CTR11:inst|CTR:inst7|inst10, CTR11:inst|CTR:inst8|inst10, CTR11:inst|CTR:inst9|inst10, CTR11:inst|CTR:inst10|inst10, CTR11:inst|CTR:inst5|inst8~10                                                                                                                                                                                                                                                          ;
+;  A  ; LC12       ; CTR11:inst|CTR:inst6|inst8~10, F[1], RG2:inst1|RG:inst1|467, CTR11:inst|CTR:inst5|inst10, CTR11:inst|CTR:inst3|inst10, CTR11:inst|CTR:inst2|inst10, CTR11:inst|CTR:inst4|inst10, CTR11:inst|CTR:inst1|inst10, CTR11:inst|CTR:inst|inst10, F[2], F[0], RG2:inst1|RG:inst|467, C, inst7~28                                                                                                                      ; RG[8], CTR11:inst|CTR:inst7|inst10, CTR11:inst|CTR:inst8|inst10, CTR11:inst|CTR:inst9|inst10, CTR11:inst|CTR:inst10|inst10, CTR11:inst|CTR:inst6|inst8~10                                                                                                                                                                                                                                                                                       ;
+;  A  ; LC14       ; CTR11:inst|CTR:inst7|inst8~10, F[1], RG2:inst1|RG:inst1|467, CTR11:inst|CTR:inst6|inst10, CTR11:inst|CTR:inst5|inst10, CTR11:inst|CTR:inst3|inst10, CTR11:inst|CTR:inst2|inst10, CTR11:inst|CTR:inst4|inst10, CTR11:inst|CTR:inst1|inst10, CTR11:inst|CTR:inst|inst10, F[2], F[0], RG2:inst1|RG:inst|467, C, inst7~28                                                                                         ; RG[9], CTR11:inst|CTR:inst8|inst10, CTR11:inst|CTR:inst9|inst10, CTR11:inst|CTR:inst10|inst10, CTR11:inst|CTR:inst7|inst8~10                                                                                                                                                                                                                                                                                                                    ;
+;  A  ; LC16       ; CTR11:inst|CTR:inst8|inst8~10, F[1], RG2:inst1|RG:inst1|467, CTR11:inst|CTR:inst7|inst10, CTR11:inst|CTR:inst6|inst10, CTR11:inst|CTR:inst5|inst10, CTR11:inst|CTR:inst3|inst10, CTR11:inst|CTR:inst2|inst10, CTR11:inst|CTR:inst4|inst10, CTR11:inst|CTR:inst1|inst10, CTR11:inst|CTR:inst|inst10, F[2], F[0], RG2:inst1|RG:inst|467, C, inst7~28                                                            ; RG[10], CTR11:inst|CTR:inst9|inst10, CTR11:inst|CTR:inst10|inst10, CTR11:inst|CTR:inst8|inst8~10                                                                                                                                                                                                                                                                                                                                                ;
+;  A  ; LC10       ; CTR11:inst|CTR:inst9|inst8~11, F[1], RG2:inst1|RG:inst1|467, CTR11:inst|CTR:inst8|inst10, CTR11:inst|CTR:inst7|inst10, CTR11:inst|CTR:inst6|inst10, CTR11:inst|CTR:inst5|inst10, CTR11:inst|CTR:inst3|inst10, CTR11:inst|CTR:inst2|inst10, CTR11:inst|CTR:inst4|inst10, CTR11:inst|CTR:inst1|inst10, CTR11:inst|CTR:inst|inst10, F[2], F[0], RG2:inst1|RG:inst|467, C, inst7~28                               ; RG[11], CTR11:inst|CTR:inst10|inst10, CTR11:inst|CTR:inst9|inst8~11                                                                                                                                                                                                                                                                                                                                                                             ;
+;  A  ; LC4        ; D[5], CTR11:inst|CTR:inst2|inst10, F[2]                                                                                                                                                                                                                                                                                                                                                                       ; CTR11:inst|CTR:inst2|inst10                                                                                                                                                                                                                                                                                                                                                                                                                     ;
+;  A  ; LC1        ; D[6], CTR11:inst|CTR:inst3|inst10, F[2]                                                                                                                                                                                                                                                                                                                                                                       ; CTR11:inst|CTR:inst3|inst10                                                                                                                                                                                                                                                                                                                                                                                                                     ;
+;  A  ; LC7        ; D[7], CTR11:inst|CTR:inst5|inst10, F[2]                                                                                                                                                                                                                                                                                                                                                                       ; CTR11:inst|CTR:inst5|inst10                                                                                                                                                                                                                                                                                                                                                                                                                     ;
+;  A  ; LC11       ; D[8], CTR11:inst|CTR:inst6|inst10, F[2]                                                                                                                                                                                                                                                                                                                                                                       ; CTR11:inst|CTR:inst6|inst10                                                                                                                                                                                                                                                                                                                                                                                                                     ;
+;  A  ; LC13       ; D[9], CTR11:inst|CTR:inst7|inst10, F[2]                                                                                                                                                                                                                                                                                                                                                                       ; CTR11:inst|CTR:inst7|inst10                                                                                                                                                                                                                                                                                                                                                                                                                     ;
+;  A  ; LC15       ; D[10], CTR11:inst|CTR:inst8|inst10, F[2]                                                                                                                                                                                                                                                                                                                                                                      ; CTR11:inst|CTR:inst8|inst10                                                                                                                                                                                                                                                                                                                                                                                                                     ;
+;  A  ; LC9        ; D[11], CTR11:inst|CTR:inst9|inst10, F[2]                                                                                                                                                                                                                                                                                                                                                                      ; CTR11:inst|CTR:inst9|inst10                                                                                                                                                                                                                                                                                                                                                                                                                     ;
+;  B  ; LC24       ; D[0], F[2], F[0], RG2:inst1|RG:inst|467, C, inst7~14                                                                                                                                                                                                                                                                                                                                                          ; RG2:inst1|RG:inst|467, RG[0], RG2:inst1|RG:inst1|467, CTR11:inst|CTR:inst|inst10, CTR11:inst|CTR:inst1|inst10, CTR11:inst|CTR:inst4|inst10, CTR11:inst|CTR:inst2|inst10, CTR11:inst|CTR:inst3|inst10, CTR11:inst|CTR:inst5|inst10, CTR11:inst|CTR:inst6|inst10, CTR11:inst|CTR:inst7|inst10, CTR11:inst|CTR:inst8|inst10, CTR11:inst|CTR:inst9|inst10, CTR11:inst|CTR:inst10|inst10, RG2:inst1|RG:inst1|inst11~11, CTR11:inst|CTR:inst|inst8~11 ;
+;  B  ; LC18       ; RG2:inst1|RG:inst1|inst11~11, F[2], F[1], RG2:inst1|RG:inst1|467, F[0], RG2:inst1|RG:inst|467, C, inst7~14                                                                                                                                                                                                                                                                                                    ; RG2:inst1|RG:inst1|467, RG[1], CTR11:inst|CTR:inst|inst10, CTR11:inst|CTR:inst1|inst10, CTR11:inst|CTR:inst4|inst10, CTR11:inst|CTR:inst2|inst10, CTR11:inst|CTR:inst3|inst10, CTR11:inst|CTR:inst5|inst10, CTR11:inst|CTR:inst6|inst10, CTR11:inst|CTR:inst7|inst10, CTR11:inst|CTR:inst8|inst10, CTR11:inst|CTR:inst9|inst10, CTR11:inst|CTR:inst10|inst10, RG2:inst1|RG:inst1|inst11~11, CTR11:inst|CTR:inst|inst8~11                        ;
+;  B  ; LC21       ; CTR11:inst|CTR:inst|inst8~11, F[1], F[2], CTR11:inst|CTR:inst|inst10, F[0], RG2:inst1|RG:inst|467, RG2:inst1|RG:inst1|467, C, inst7~14                                                                                                                                                                                                                                                                        ; CTR11:inst|CTR:inst|inst10, RG[2], CTR11:inst|CTR:inst1|inst10, CTR11:inst|CTR:inst4|inst10, CTR11:inst|CTR:inst2|inst10, CTR11:inst|CTR:inst3|inst10, CTR11:inst|CTR:inst5|inst10, CTR11:inst|CTR:inst6|inst10, CTR11:inst|CTR:inst7|inst10, CTR11:inst|CTR:inst8|inst10, CTR11:inst|CTR:inst9|inst10, CTR11:inst|CTR:inst10|inst10, CTR11:inst|CTR:inst|inst8~11                                                                              ;
+;  B  ; LC23       ; CTR11:inst|CTR:inst1|inst8~10, F[1], RG2:inst1|RG:inst1|467, CTR11:inst|CTR:inst|inst10, F[2], F[0], RG2:inst1|RG:inst|467, C, inst7~14                                                                                                                                                                                                                                                                       ; RG[3], CTR11:inst|CTR:inst4|inst10, CTR11:inst|CTR:inst2|inst10, CTR11:inst|CTR:inst3|inst10, CTR11:inst|CTR:inst5|inst10, CTR11:inst|CTR:inst6|inst10, CTR11:inst|CTR:inst7|inst10, CTR11:inst|CTR:inst8|inst10, CTR11:inst|CTR:inst9|inst10, CTR11:inst|CTR:inst10|inst10, CTR11:inst|CTR:inst1|inst8~10                                                                                                                                      ;
+;  B  ; LC28       ; CTR11:inst|CTR:inst4|inst8~10, F[1], RG2:inst1|RG:inst1|467, CTR11:inst|CTR:inst1|inst10, CTR11:inst|CTR:inst|inst10, F[2], F[0], RG2:inst1|RG:inst|467, C, inst7~14                                                                                                                                                                                                                                          ; RG[4], CTR11:inst|CTR:inst2|inst10, CTR11:inst|CTR:inst3|inst10, CTR11:inst|CTR:inst5|inst10, CTR11:inst|CTR:inst6|inst10, CTR11:inst|CTR:inst7|inst10, CTR11:inst|CTR:inst8|inst10, CTR11:inst|CTR:inst9|inst10, CTR11:inst|CTR:inst10|inst10, CTR11:inst|CTR:inst4|inst8~10                                                                                                                                                                   ;
+;  B  ; LC30       ; CTR11:inst|CTR:inst10|inst8~11, F[1], RG2:inst1|RG:inst1|467, CTR11:inst|CTR:inst9|inst10, CTR11:inst|CTR:inst8|inst10, CTR11:inst|CTR:inst7|inst10, CTR11:inst|CTR:inst6|inst10, CTR11:inst|CTR:inst5|inst10, CTR11:inst|CTR:inst3|inst10, CTR11:inst|CTR:inst2|inst10, CTR11:inst|CTR:inst4|inst10, CTR11:inst|CTR:inst1|inst10, CTR11:inst|CTR:inst|inst10, F[2], F[0], RG2:inst1|RG:inst|467, C, inst7~14 ; RG[12], CTR11:inst|CTR:inst10|inst8~11                                                                                                                                                                                                                                                                                                                                                                                                          ;
+;  B  ; LC17       ; D[1], F[2], F[1], RG2:inst1|RG:inst1|467, F[0], RG2:inst1|RG:inst|467                                                                                                                                                                                                                                                                                                                                         ; RG2:inst1|RG:inst1|467                                                                                                                                                                                                                                                                                                                                                                                                                          ;
+;  B  ; LC19       ; D[2], F[2]                                                                                                                                                                                                                                                                                                                                                                                                    ; CTR11:inst|CTR:inst|inst8~11                                                                                                                                                                                                                                                                                                                                                                                                                    ;
+;  B  ; LC20       ; CTR11:inst|CTR:inst|inst8~9, F[1], F[2], CTR11:inst|CTR:inst|inst10, RG2:inst1|RG:inst1|467, F[0], RG2:inst1|RG:inst|467                                                                                                                                                                                                                                                                                      ; CTR11:inst|CTR:inst|inst10                                                                                                                                                                                                                                                                                                                                                                                                                      ;
+;  B  ; LC22       ; D[3], CTR11:inst|CTR:inst1|inst10, F[2]                                                                                                                                                                                                                                                                                                                                                                       ; CTR11:inst|CTR:inst1|inst10                                                                                                                                                                                                                                                                                                                                                                                                                     ;
+;  B  ; LC27       ; D[4], CTR11:inst|CTR:inst4|inst10, F[2]                                                                                                                                                                                                                                                                                                                                                                       ; CTR11:inst|CTR:inst4|inst10                                                                                                                                                                                                                                                                                                                                                                                                                     ;
+;  B  ; LC29       ; D[12], CTR11:inst|CTR:inst10|inst10, F[2]                                                                                                                                                                                                                                                                                                                                                                     ; CTR11:inst|CTR:inst10|inst10                                                                                                                                                                                                                                                                                                                                                                                                                    ;
++-----+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------+
+; Fitter Device Options                                         ;
++----------------------------------------------+----------------+
+; Option                                       ; Setting        ;
++----------------------------------------------+----------------+
+; Enable user-supplied start-up clock (CLKUSR) ; Off            ;
+; Enable device-wide reset (DEV_CLRn)          ; Off            ;
+; Enable device-wide output enable (DEV_OE)    ; Off            ;
+; Enable INIT_DONE output                      ; Off            ;
+; Configuration scheme                         ; Passive Serial ;
+; Security bit                                 ; Off            ;
+; Base pin-out file on sameframe device        ; Off            ;
++----------------------------------------------+----------------+
+
+
++-----------------+
+; Fitter Messages ;
++-----------------+
+Info: *******************************************************************
+Info: Running Quartus II Fitter
+    Info: Version 9.1 Build 222 10/21/2009 SJ Full Version
+    Info: Processing started: Sat Sep 29 19:38:26 2012
+Info: Command: quartus_fit --read_settings_files=off --write_settings_files=off Lab1 -c Lab1
+Info: Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info: Automatically selected device EPM7032SLC44-5 for design Lab1
+Info: Quartus II Fitter was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 184 megabytes
+    Info: Processing ended: Sat Sep 29 19:38:27 2012
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:00
+
+

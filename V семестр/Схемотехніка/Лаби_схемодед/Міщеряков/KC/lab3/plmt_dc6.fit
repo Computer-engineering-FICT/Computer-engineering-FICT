@@ -1,0 +1,117 @@
+-- MAX+plus II Compiler Fit File      
+-- Version 10.1 06/12/2001            
+-- Compiled: 10/12/2010 21:52:19      
+
+-- Copyright (C) 1988-2001 Altera Corporation
+-- Any megafunction design, and related net list (encrypted or decrypted),
+-- support information, device programming or simulation file, and any other
+-- associated documentation or information provided by Altera or a partner
+-- under Altera's Megafunction Partnership Program may be used only to
+-- program PLD devices (but not masked PLD devices) from Altera.  Any other
+-- use of such megafunction design, net list, support information, device
+-- programming or simulation file, or any other related documentation or
+-- information is prohibited for any other purpose, including, but not
+-- limited to modification, reverse engineering, de-compiling, or use with
+-- any other silicon devices, unless such use is explicitly licensed under
+-- a separate agreement with Altera or a megafunction partner.  Title to
+-- the intellectual property, including patents, copyrights, trademarks,
+-- trade secrets, or maskworks, embodied in any such megafunction design,
+-- net list, support information, device programming or simulation file, or
+-- any other related documentation or information provided by Altera or a
+-- megafunction partner, remains with Altera, the megafunction partner, or
+-- their respective licensors.  No other licenses, including any licenses
+-- needed under any third party's intellectual property, are provided herein.
+
+CHIP "plmt_dc6"
+BEGIN
+
+    DEVICE = "EP1800ILC-70";
+
+    "A0"                           : INPUT_PIN  = 56     ;
+    "A1"                           : INPUT_PIN  = 55     ;
+    "A2"                           : INPUT_PIN  = 54     ;
+    "A3"                           : INPUT_PIN  = 50     ;
+    "A4"                           : INPUT_PIN  = 49     ;
+    "A5"                           : INPUT_PIN  = 48     ;
+    "E"                            : INPUT_PIN  = 22     ;
+    "Q1"                           : OUTPUT_PIN = 9      ; -- LC8
+    "Q2"                           : OUTPUT_PIN = 43     ; -- LC32
+    "Q3"                           : OUTPUT_PIN = 34     ; -- LC24
+    "Q4"                           : OUTPUT_PIN = 8      ; -- LC7
+    "Q5"                           : OUTPUT_PIN = 42     ; -- LC31
+    "Q6"                           : OUTPUT_PIN = 33     ; -- LC23
+    "Q7"                           : OUTPUT_PIN = 7      ; -- LC6
+    "Q8"                           : OUTPUT_PIN = 41     ; -- LC30
+    "Q9"                           : OUTPUT_PIN = 32     ; -- LC22
+    "Q10"                          : OUTPUT_PIN = 6      ; -- LC5
+    "Q11"                          : OUTPUT_PIN = 68     ; -- LC48
+    "Q12"                          : OUTPUT_PIN = 67     ; -- LC47
+    "Q13"                          : OUTPUT_PIN = 66     ; -- LC46
+    "Q14"                          : OUTPUT_PIN = 65     ; -- LC45
+    "Q15"                          : OUTPUT_PIN = 40     ; -- LC29
+    "Q16"                          : OUTPUT_PIN = 31     ; -- LC21
+    "Q17"                          : OUTPUT_PIN = 5      ; -- LC4
+    "Q18"                          : OUTPUT_PIN = 64     ; -- LC44
+    "Q19"                          : OUTPUT_PIN = 39     ; -- LC28
+    "Q20"                          : OUTPUT_PIN = 30     ; -- LC20
+    "Q21"                          : OUTPUT_PIN = 4      ; -- LC3
+    "Q22"                          : OUTPUT_PIN = 63     ; -- LC43
+    "Q23"                          : OUTPUT_PIN = 38     ; -- LC27
+    "Q24"                          : OUTPUT_PIN = 29     ; -- LC19
+    "Q25"                          : OUTPUT_PIN = 3      ; -- LC2
+    "Q26"                          : OUTPUT_PIN = 62     ; -- LC42
+    "Q27"                          : OUTPUT_PIN = 37     ; -- LC26
+    "Q28"                          : OUTPUT_PIN = 28     ; -- LC18
+    "Q29"                          : OUTPUT_PIN = 2      ; -- LC1
+    "Q30"                          : OUTPUT_PIN = 61     ; -- LC41
+    "Q31"                          : OUTPUT_PIN = 36     ; -- LC25
+    "Q32"                          : OUTPUT_PIN = 27     ; -- LC17
+    "Q48"                          : OUTPUT_PIN = 13     ; -- LC12
+    "Q49"                          : OUTPUT_PIN = 60     ; -- LC40
+    "Q50"                          : OUTPUT_PIN = 47     ; -- LC36
+    "Q51"                          : OUTPUT_PIN = 26     ; -- LC16
+    "Q52"                          : OUTPUT_PIN = 12     ; -- LC11
+    "Q53"                          : OUTPUT_PIN = 59     ; -- LC39
+    "Q54"                          : OUTPUT_PIN = 46     ; -- LC35
+    "Q55"                          : OUTPUT_PIN = 25     ; -- LC15
+    "Q56"                          : OUTPUT_PIN = 11     ; -- LC10
+    "Q57"                          : OUTPUT_PIN = 58     ; -- LC38
+    "Q58"                          : OUTPUT_PIN = 45     ; -- LC34
+    "Q59"                          : OUTPUT_PIN = 24     ; -- LC14
+    "Q60"                          : OUTPUT_PIN = 10     ; -- LC9
+    "Q61"                          : OUTPUT_PIN = 57     ; -- LC37
+    "Q62"                          : OUTPUT_PIN = 44     ; -- LC33
+    "Q63"                          : OUTPUT_PIN = 23     ; -- LC13
+
+END;
+
+CHIP "plmt_dc1"
+BEGIN
+
+    DEVICE = "EP910ILC-12";
+
+    "A0"                           : INPUT_PIN  = 43     ;
+    "A1"                           : INPUT_PIN  = 42     ;
+    "A2"                           : INPUT_PIN  = 41     ;
+    "A3"                           : INPUT_PIN  = 27     ;
+    "A4"                           : INPUT_PIN  = 26     ;
+    "A5"                           : INPUT_PIN  = 25     ;
+    "E"                            : INPUT_PIN  = 21     ;
+    "Q0"                           : OUTPUT_PIN = 18     ; -- LC24
+    "Q33"                          : OUTPUT_PIN = 16     ; -- LC23
+    "Q34"                          : OUTPUT_PIN = 15     ; -- LC22
+    "Q35"                          : OUTPUT_PIN = 14     ; -- LC21
+    "Q36"                          : OUTPUT_PIN = 13     ; -- LC20
+    "Q37"                          : OUTPUT_PIN = 12     ; -- LC19
+    "Q38"                          : OUTPUT_PIN = 11     ; -- LC18
+    "Q39"                          : OUTPUT_PIN = 10     ; -- LC17
+    "Q40"                          : OUTPUT_PIN = 9      ; -- LC16
+    "Q41"                          : OUTPUT_PIN = 8      ; -- LC15
+    "Q42"                          : OUTPUT_PIN = 7      ; -- LC14
+    "Q43"                          : OUTPUT_PIN = 6      ; -- LC13
+    "Q44"                          : OUTPUT_PIN = 40     ; -- LC1
+    "Q45"                          : OUTPUT_PIN = 38     ; -- LC2
+    "Q46"                          : OUTPUT_PIN = 37     ; -- LC3
+    "Q47"                          : OUTPUT_PIN = 36     ; -- LC4
+
+END;

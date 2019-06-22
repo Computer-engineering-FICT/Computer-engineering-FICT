@@ -1,0 +1,660 @@
+Simulator report for AU
+Tue Nov 29 00:31:30 2011
+Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Simulator Summary
+  3. Simulator Settings
+  4. Simulation Waveforms
+  5. Coverage Summary
+  6. Complete 1/0-Value Coverage
+  7. Missing 1-Value Coverage
+  8. Missing 0-Value Coverage
+  9. Simulator INI Usage
+ 10. Simulator Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------+
+; Simulator Summary                          ;
++-----------------------------+--------------+
+; Type                        ; Value        ;
++-----------------------------+--------------+
+; Simulation Start Time       ; 0 ps         ;
+; Simulation End Time         ; 1.0 us       ;
+; Simulation Netlist Size     ; 262 nodes    ;
+; Simulation Coverage         ;      15.19 % ;
+; Total Number of Transitions ; 1086         ;
+; Simulation Breakpoints      ; 0            ;
+; Family                      ; Cyclone II   ;
+; Device                      ; EP2C5F256I8  ;
++-----------------------------+--------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Simulator Settings                                                                                                      ;
++--------------------------------------------------------------------------------------------+------------+---------------+
+; Option                                                                                     ; Setting    ; Default Value ;
++--------------------------------------------------------------------------------------------+------------+---------------+
+; Simulation mode                                                                            ; Timing     ; Timing        ;
+; Start time                                                                                 ; 0 ns       ; 0 ns          ;
+; Simulation results format                                                                  ; CVWF       ;               ;
+; Add pins automatically to simulation output waveforms                                      ; On         ; On            ;
+; Check outputs                                                                              ; Off        ; Off           ;
+; Report simulation coverage                                                                 ; On         ; On            ;
+; Display complete 1/0 value coverage report                                                 ; On         ; On            ;
+; Display missing 1-value coverage report                                                    ; On         ; On            ;
+; Display missing 0-value coverage report                                                    ; On         ; On            ;
+; Detect setup and hold time violations                                                      ; Off        ; Off           ;
+; Detect glitches                                                                            ; Off        ; Off           ;
+; Disable timing delays in Timing Simulation                                                 ; Off        ; Off           ;
+; Generate Signal Activity File                                                              ; Off        ; Off           ;
+; Generate VCD File for PowerPlay Power Analyzer                                             ; Off        ; Off           ;
+; Group bus channels in simulation results                                                   ; Off        ; Off           ;
+; Preserve fewer signal transitions to reduce memory requirements                            ; On         ; On            ;
+; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE ; INPUT_EDGE    ;
+; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off        ; Off           ;
+; Overwrite Waveform Inputs With Simulation Outputs                                          ; Off        ;               ;
+; Perform Glitch Filtering in Timing Simulation                                              ; Auto       ; Auto          ;
++--------------------------------------------------------------------------------------------+------------+---------------+
+
+
++----------------------+
+; Simulation Waveforms ;
++----------------------+
+Waveform report data cannot be output to ASCII.
+Please use Quartus II to view the waveform report data.
+
+
++--------------------------------------------------------------------+
+; Coverage Summary                                                   ;
++-----------------------------------------------------+--------------+
+; Type                                                ; Value        ;
++-----------------------------------------------------+--------------+
+; Total coverage as a percentage                      ;      15.19 % ;
+; Total nodes checked                                 ; 262          ;
+; Total output ports checked                          ; 270          ;
+; Total output ports with complete 1/0-value coverage ; 41           ;
+; Total output ports with no 1/0-value coverage       ; 229          ;
+; Total output ports with no 1-value coverage         ; 229          ;
+; Total output ports with no 0-value coverage         ; 229          ;
++-----------------------------------------------------+--------------+
+
+
+The following table displays output ports that toggle between 1 and 0 during simulation.
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Complete 1/0-Value Coverage                                                                                                                                                            ;
++----------------------------------------------------------------------------------+----------------------------------------------------------------------------------+------------------+
+; Node Name                                                                        ; Output Port Name                                                                 ; Output Port Type ;
++----------------------------------------------------------------------------------+----------------------------------------------------------------------------------+------------------+
+; |AU|lsm:inst1|lsmi:inst|sum:inst|7~8                                             ; |AU|lsm:inst1|lsmi:inst|sum:inst|7~8                                             ; combout          ;
+; |AU|lsm:inst1|lsmi:inst|sum:inst|7~8                                             ; |AU|lsm:inst1|lsmi:inst|sum:inst|7~9                                             ; cout             ;
+; |AU|lsm:inst1|lsmi:inst|sum:inst|7~10                                            ; |AU|lsm:inst1|lsmi:inst|sum:inst|7~10                                            ; combout          ;
+; |AU|lsm:inst1|lsmi:inst|sum:inst|7~10                                            ; |AU|lsm:inst1|lsmi:inst|sum:inst|7~11                                            ; cout             ;
+; |AU|lsm:inst1|lsmi:inst|sum:inst|7~12                                            ; |AU|lsm:inst1|lsmi:inst|sum:inst|7~12                                            ; combout          ;
+; |AU|lsm:inst1|lsmi:inst|sum:inst|7~12                                            ; |AU|lsm:inst1|lsmi:inst|sum:inst|7~13                                            ; cout             ;
+; |AU|lsm:inst1|lsmi:inst|sum:inst|7~14                                            ; |AU|lsm:inst1|lsmi:inst|sum:inst|7~14                                            ; combout          ;
+; |AU|fm:inst|fm_full:inst5|fm0000:inst|fmi:inst|9                                 ; |AU|fm:inst|fm_full:inst5|fm0000:inst|fmi:inst|9                                 ; regout           ;
+; |AU|fm:inst|fm_full:inst5|Q~0                                                    ; |AU|fm:inst|fm_full:inst5|Q~0                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst5|Q~4                                                    ; |AU|fm:inst|fm_full:inst5|Q~4                                                    ; combout          ;
+; |AU|MUX8:inst5|lpm_mux:lpm_mux_component|mux_smc:auto_generated|result_node[5]~2 ; |AU|MUX8:inst5|lpm_mux:lpm_mux_component|mux_smc:auto_generated|result_node[5]~2 ; combout          ;
+; |AU|fm:inst|fm_full:inst6|fm0000:inst|fmi:inst|9                                 ; |AU|fm:inst|fm_full:inst6|fm0000:inst|fmi:inst|9                                 ; regout           ;
+; |AU|fm:inst|fm_full:inst6|Q~0                                                    ; |AU|fm:inst|fm_full:inst6|Q~0                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst6|Q~4                                                    ; |AU|fm:inst|fm_full:inst6|Q~4                                                    ; combout          ;
+; |AU|MUX8:inst5|lpm_mux:lpm_mux_component|mux_smc:auto_generated|result_node[4]~3 ; |AU|MUX8:inst5|lpm_mux:lpm_mux_component|mux_smc:auto_generated|result_node[4]~3 ; combout          ;
+; |AU|fm:inst|fm_full:inst7|fm0000:inst|fmi:inst|9                                 ; |AU|fm:inst|fm_full:inst7|fm0000:inst|fmi:inst|9                                 ; regout           ;
+; |AU|fm:inst|fm_full:inst7|Q~0                                                    ; |AU|fm:inst|fm_full:inst7|Q~0                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst7|Q~4                                                    ; |AU|fm:inst|fm_full:inst7|Q~4                                                    ; combout          ;
+; |AU|MUX8:inst5|lpm_mux:lpm_mux_component|mux_smc:auto_generated|result_node[3]~4 ; |AU|MUX8:inst5|lpm_mux:lpm_mux_component|mux_smc:auto_generated|result_node[3]~4 ; combout          ;
+; |AU|fm:inst|fm_full:inst10|fm0011:inst20|fmi:inst|74~0                           ; |AU|fm:inst|fm_full:inst10|fm0011:inst20|fmi:inst|74~0                           ; combout          ;
+; |AU|fm:inst|fm_full:inst3|fm0000:inst|fmi:inst|74                                ; |AU|fm:inst|fm_full:inst3|fm0000:inst|fmi:inst|74                                ; combout          ;
+; |AU|lsm:inst1|lsmi:inst3|y:inst1|inst13~0                                        ; |AU|lsm:inst1|lsmi:inst3|y:inst1|inst13~0                                        ; combout          ;
+; |AU|lsm:inst1|lsmi:inst3|y:inst1|inst13~1                                        ; |AU|lsm:inst1|lsmi:inst3|y:inst1|inst13~1                                        ; combout          ;
+; |AU|lsm:inst1|lsmi:inst4|y:inst1|inst13~0                                        ; |AU|lsm:inst1|lsmi:inst4|y:inst1|inst13~0                                        ; combout          ;
+; |AU|lsm:inst1|lsmi:inst4|y:inst1|inst13~1                                        ; |AU|lsm:inst1|lsmi:inst4|y:inst1|inst13~1                                        ; combout          ;
+; |AU|lsm:inst1|lsmi:inst5|y:inst1|inst13~0                                        ; |AU|lsm:inst1|lsmi:inst5|y:inst1|inst13~0                                        ; combout          ;
+; |AU|lsm:inst1|lsmi:inst5|y:inst1|inst13~1                                        ; |AU|lsm:inst1|lsmi:inst5|y:inst1|inst13~1                                        ; combout          ;
+; |AU|fm:inst|fm_full:inst4|fm0000:inst|fmi:inst|74                                ; |AU|fm:inst|fm_full:inst4|fm0000:inst|fmi:inst|74                                ; combout          ;
+; |AU|fm:inst|fm_full:inst5|fm0000:inst|fmi:inst|74                                ; |AU|fm:inst|fm_full:inst5|fm0000:inst|fmi:inst|74                                ; combout          ;
+; |AU|fm:inst|fm_full:inst6|fm0000:inst|fmi:inst|74                                ; |AU|fm:inst|fm_full:inst6|fm0000:inst|fmi:inst|74                                ; combout          ;
+; |AU|fm:inst|fm_full:inst7|fm0000:inst|fmi:inst|74                                ; |AU|fm:inst|fm_full:inst7|fm0000:inst|fmi:inst|74                                ; combout          ;
+; |AU|fm:inst|fm_full:inst8|fm0000:inst|fmi:inst|74                                ; |AU|fm:inst|fm_full:inst8|fm0000:inst|fmi:inst|74                                ; combout          ;
+; |AU|fm:inst|fm_full:inst9|fm0000:inst|fmi:inst|74                                ; |AU|fm:inst|fm_full:inst9|fm0000:inst|fmi:inst|74                                ; combout          ;
+; |AU|fm:inst|fm_full:inst10|fm0000:inst|fmi:inst|74                               ; |AU|fm:inst|fm_full:inst10|fm0000:inst|fmi:inst|74                               ; combout          ;
+; |AU|SELECT                                                                       ; |AU|SELECT~corein                                                                ; combout          ;
+; |AU|SHIFT                                                                        ; |AU|SHIFT~corein                                                                 ; combout          ;
+; |AU|C                                                                            ; |AU|C~corein                                                                     ; combout          ;
+; |AU|SHIFT~clkctrl                                                                ; |AU|SHIFT~clkctrl                                                                ; outclk           ;
+; |AU|fm:inst|fm_full:inst5|fm0101:inst22|fmi:inst|9~feeder                        ; |AU|fm:inst|fm_full:inst5|fm0101:inst22|fmi:inst|9~feeder                        ; combout          ;
+; |AU|fm:inst|fm_full:inst6|fm0100:inst21|fmi:inst|9~feeder                        ; |AU|fm:inst|fm_full:inst6|fm0100:inst21|fmi:inst|9~feeder                        ; combout          ;
+; |AU|fm:inst|fm_full:inst7|fm0100:inst21|fmi:inst|9~feeder                        ; |AU|fm:inst|fm_full:inst7|fm0100:inst21|fmi:inst|9~feeder                        ; combout          ;
++----------------------------------------------------------------------------------+----------------------------------------------------------------------------------+------------------+
+
+
+The following table displays output ports that do not toggle to 1 during simulation.
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Missing 1-Value Coverage                                                                                                                                                               ;
++----------------------------------------------------------------------------------+----------------------------------------------------------------------------------+------------------+
+; Node Name                                                                        ; Output Port Name                                                                 ; Output Port Type ;
++----------------------------------------------------------------------------------+----------------------------------------------------------------------------------+------------------+
+; |AU|lsm:inst1|lsmi:inst|sum:inst|7~1                                             ; |AU|lsm:inst1|lsmi:inst|sum:inst|7~1                                             ; cout             ;
+; |AU|lsm:inst1|lsmi:inst|sum:inst|7~2                                             ; |AU|lsm:inst1|lsmi:inst|sum:inst|7~2                                             ; combout          ;
+; |AU|lsm:inst1|lsmi:inst|sum:inst|7~2                                             ; |AU|lsm:inst1|lsmi:inst|sum:inst|7~3                                             ; cout             ;
+; |AU|lsm:inst1|lsmi:inst|sum:inst|7~4                                             ; |AU|lsm:inst1|lsmi:inst|sum:inst|7~4                                             ; combout          ;
+; |AU|lsm:inst1|lsmi:inst|sum:inst|7~4                                             ; |AU|lsm:inst1|lsmi:inst|sum:inst|7~5                                             ; cout             ;
+; |AU|lsm:inst1|lsmi:inst|sum:inst|7~6                                             ; |AU|lsm:inst1|lsmi:inst|sum:inst|7~6                                             ; combout          ;
+; |AU|lsm:inst1|lsmi:inst|sum:inst|7~6                                             ; |AU|lsm:inst1|lsmi:inst|sum:inst|7~7                                             ; cout             ;
+; |AU|lsm:inst1|lsmi:inst|sum:inst|7~14                                            ; |AU|lsm:inst1|lsmi:inst|sum:inst|7~15                                            ; cout             ;
+; |AU|lsm:inst1|lsmi:inst|sum:inst|7~16                                            ; |AU|lsm:inst1|lsmi:inst|sum:inst|7~16                                            ; combout          ;
+; |AU|lsm:inst1|lsmi:inst|sum:inst|7~16                                            ; |AU|lsm:inst1|lsmi:inst|sum:inst|7~17                                            ; cout             ;
+; |AU|lsm:inst1|lsmi:inst|sum:inst|7~18                                            ; |AU|lsm:inst1|lsmi:inst|sum:inst|7~18                                            ; combout          ;
+; |AU|fm:inst|fm_full:inst10|Q~0                                                   ; |AU|fm:inst|fm_full:inst10|Q~0                                                   ; combout          ;
+; |AU|fm:inst|fm_full:inst3|fm0001:inst4|fmi:inst|9                                ; |AU|fm:inst|fm_full:inst3|fm0001:inst4|fmi:inst|9                                ; regout           ;
+; |AU|fm:inst|fm_full:inst3|fm0000:inst|fmi:inst|9                                 ; |AU|fm:inst|fm_full:inst3|fm0000:inst|fmi:inst|9                                 ; regout           ;
+; |AU|fm:inst|fm_full:inst3|Q~0                                                    ; |AU|fm:inst|fm_full:inst3|Q~0                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst10|Q~1                                                   ; |AU|fm:inst|fm_full:inst10|Q~1                                                   ; combout          ;
+; |AU|fm:inst|fm_full:inst3|fm0011:inst20|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst3|fm0011:inst20|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst3|fm0010:inst19|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst3|fm0010:inst19|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst3|Q~1                                                    ; |AU|fm:inst|fm_full:inst3|Q~1                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst10|Q~2                                                   ; |AU|fm:inst|fm_full:inst10|Q~2                                                   ; combout          ;
+; |AU|fm:inst|fm_full:inst3|fm0110:inst23|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst3|fm0110:inst23|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst3|fm0100:inst21|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst3|fm0100:inst21|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst3|Q~2                                                    ; |AU|fm:inst|fm_full:inst3|Q~2                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst10|Q~3                                                   ; |AU|fm:inst|fm_full:inst10|Q~3                                                   ; combout          ;
+; |AU|fm:inst|fm_full:inst3|fm0111:inst24|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst3|fm0111:inst24|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst3|fm0101:inst22|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst3|fm0101:inst22|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst3|Q~3                                                    ; |AU|fm:inst|fm_full:inst3|Q~3                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst3|Q~4                                                    ; |AU|fm:inst|fm_full:inst3|Q~4                                                    ; combout          ;
+; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[7]                         ; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[7]                         ; regout           ;
+; |AU|MUX8:inst5|lpm_mux:lpm_mux_component|mux_smc:auto_generated|result_node[7]~0 ; |AU|MUX8:inst5|lpm_mux:lpm_mux_component|mux_smc:auto_generated|result_node[7]~0 ; combout          ;
+; |AU|fm:inst|fm_full:inst4|fm0001:inst4|fmi:inst|9                                ; |AU|fm:inst|fm_full:inst4|fm0001:inst4|fmi:inst|9                                ; regout           ;
+; |AU|fm:inst|fm_full:inst4|fm0000:inst|fmi:inst|9                                 ; |AU|fm:inst|fm_full:inst4|fm0000:inst|fmi:inst|9                                 ; regout           ;
+; |AU|fm:inst|fm_full:inst4|Q~0                                                    ; |AU|fm:inst|fm_full:inst4|Q~0                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst4|fm0011:inst20|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst4|fm0011:inst20|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst4|fm0010:inst19|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst4|fm0010:inst19|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst4|Q~1                                                    ; |AU|fm:inst|fm_full:inst4|Q~1                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst4|fm0110:inst23|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst4|fm0110:inst23|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst4|fm0100:inst21|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst4|fm0100:inst21|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst4|Q~2                                                    ; |AU|fm:inst|fm_full:inst4|Q~2                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst4|fm0111:inst24|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst4|fm0111:inst24|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst4|fm0101:inst22|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst4|fm0101:inst22|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst4|Q~3                                                    ; |AU|fm:inst|fm_full:inst4|Q~3                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst4|Q~4                                                    ; |AU|fm:inst|fm_full:inst4|Q~4                                                    ; combout          ;
+; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[6]                         ; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[6]                         ; regout           ;
+; |AU|MUX8:inst5|lpm_mux:lpm_mux_component|mux_smc:auto_generated|result_node[6]~1 ; |AU|MUX8:inst5|lpm_mux:lpm_mux_component|mux_smc:auto_generated|result_node[6]~1 ; combout          ;
+; |AU|fm:inst|fm_full:inst5|fm0001:inst4|fmi:inst|9                                ; |AU|fm:inst|fm_full:inst5|fm0001:inst4|fmi:inst|9                                ; regout           ;
+; |AU|fm:inst|fm_full:inst5|fm0011:inst20|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst5|fm0011:inst20|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst5|fm0010:inst19|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst5|fm0010:inst19|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst5|Q~1                                                    ; |AU|fm:inst|fm_full:inst5|Q~1                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst5|fm0110:inst23|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst5|fm0110:inst23|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst5|fm0100:inst21|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst5|fm0100:inst21|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst5|Q~2                                                    ; |AU|fm:inst|fm_full:inst5|Q~2                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst5|fm0111:inst24|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst5|fm0111:inst24|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst5|fm0101:inst22|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst5|fm0101:inst22|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst5|Q~3                                                    ; |AU|fm:inst|fm_full:inst5|Q~3                                                    ; combout          ;
+; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[5]                         ; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[5]                         ; regout           ;
+; |AU|fm:inst|fm_full:inst6|fm0001:inst4|fmi:inst|9                                ; |AU|fm:inst|fm_full:inst6|fm0001:inst4|fmi:inst|9                                ; regout           ;
+; |AU|fm:inst|fm_full:inst6|fm0011:inst20|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst6|fm0011:inst20|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst6|fm0010:inst19|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst6|fm0010:inst19|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst6|Q~1                                                    ; |AU|fm:inst|fm_full:inst6|Q~1                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst6|fm0110:inst23|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst6|fm0110:inst23|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst6|fm0100:inst21|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst6|fm0100:inst21|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst6|Q~2                                                    ; |AU|fm:inst|fm_full:inst6|Q~2                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst6|fm0111:inst24|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst6|fm0111:inst24|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst6|fm0101:inst22|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst6|fm0101:inst22|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst6|Q~3                                                    ; |AU|fm:inst|fm_full:inst6|Q~3                                                    ; combout          ;
+; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[4]                         ; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[4]                         ; regout           ;
+; |AU|fm:inst|fm_full:inst7|fm0001:inst4|fmi:inst|9                                ; |AU|fm:inst|fm_full:inst7|fm0001:inst4|fmi:inst|9                                ; regout           ;
+; |AU|fm:inst|fm_full:inst7|fm0011:inst20|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst7|fm0011:inst20|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst7|fm0010:inst19|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst7|fm0010:inst19|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst7|Q~1                                                    ; |AU|fm:inst|fm_full:inst7|Q~1                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst7|fm0110:inst23|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst7|fm0110:inst23|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst7|fm0100:inst21|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst7|fm0100:inst21|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst7|Q~2                                                    ; |AU|fm:inst|fm_full:inst7|Q~2                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst7|fm0111:inst24|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst7|fm0111:inst24|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst7|fm0101:inst22|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst7|fm0101:inst22|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst7|Q~3                                                    ; |AU|fm:inst|fm_full:inst7|Q~3                                                    ; combout          ;
+; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[3]                         ; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[3]                         ; regout           ;
+; |AU|fm:inst|fm_full:inst8|fm0001:inst4|fmi:inst|9                                ; |AU|fm:inst|fm_full:inst8|fm0001:inst4|fmi:inst|9                                ; regout           ;
+; |AU|fm:inst|fm_full:inst8|fm0000:inst|fmi:inst|9                                 ; |AU|fm:inst|fm_full:inst8|fm0000:inst|fmi:inst|9                                 ; regout           ;
+; |AU|fm:inst|fm_full:inst8|Q~0                                                    ; |AU|fm:inst|fm_full:inst8|Q~0                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst8|fm0011:inst20|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst8|fm0011:inst20|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst8|fm0010:inst19|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst8|fm0010:inst19|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst8|Q~1                                                    ; |AU|fm:inst|fm_full:inst8|Q~1                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst8|fm0110:inst23|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst8|fm0110:inst23|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst8|fm0100:inst21|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst8|fm0100:inst21|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst8|Q~2                                                    ; |AU|fm:inst|fm_full:inst8|Q~2                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst8|fm0111:inst24|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst8|fm0111:inst24|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst8|fm0101:inst22|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst8|fm0101:inst22|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst8|Q~3                                                    ; |AU|fm:inst|fm_full:inst8|Q~3                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst8|Q~4                                                    ; |AU|fm:inst|fm_full:inst8|Q~4                                                    ; combout          ;
+; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[2]                         ; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[2]                         ; regout           ;
+; |AU|MUX8:inst5|lpm_mux:lpm_mux_component|mux_smc:auto_generated|result_node[2]~5 ; |AU|MUX8:inst5|lpm_mux:lpm_mux_component|mux_smc:auto_generated|result_node[2]~5 ; combout          ;
+; |AU|fm:inst|fm_full:inst9|fm0001:inst4|fmi:inst|9                                ; |AU|fm:inst|fm_full:inst9|fm0001:inst4|fmi:inst|9                                ; regout           ;
+; |AU|fm:inst|fm_full:inst9|fm0000:inst|fmi:inst|9                                 ; |AU|fm:inst|fm_full:inst9|fm0000:inst|fmi:inst|9                                 ; regout           ;
+; |AU|fm:inst|fm_full:inst9|Q~0                                                    ; |AU|fm:inst|fm_full:inst9|Q~0                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst9|fm0011:inst20|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst9|fm0011:inst20|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst9|fm0010:inst19|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst9|fm0010:inst19|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst9|Q~1                                                    ; |AU|fm:inst|fm_full:inst9|Q~1                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst9|fm0110:inst23|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst9|fm0110:inst23|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst9|fm0100:inst21|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst9|fm0100:inst21|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst9|Q~2                                                    ; |AU|fm:inst|fm_full:inst9|Q~2                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst9|fm0111:inst24|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst9|fm0111:inst24|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst9|fm0101:inst22|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst9|fm0101:inst22|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst9|Q~3                                                    ; |AU|fm:inst|fm_full:inst9|Q~3                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst9|Q~4                                                    ; |AU|fm:inst|fm_full:inst9|Q~4                                                    ; combout          ;
+; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[1]                         ; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[1]                         ; regout           ;
+; |AU|MUX8:inst5|lpm_mux:lpm_mux_component|mux_smc:auto_generated|result_node[1]~6 ; |AU|MUX8:inst5|lpm_mux:lpm_mux_component|mux_smc:auto_generated|result_node[1]~6 ; combout          ;
+; |AU|fm:inst|fm_full:inst10|fm0001:inst4|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst10|fm0001:inst4|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst10|fm0000:inst|fmi:inst|9                                ; |AU|fm:inst|fm_full:inst10|fm0000:inst|fmi:inst|9                                ; regout           ;
+; |AU|fm:inst|fm_full:inst10|Q~4                                                   ; |AU|fm:inst|fm_full:inst10|Q~4                                                   ; combout          ;
+; |AU|fm:inst|fm_full:inst10|fm0011:inst20|fmi:inst|9                              ; |AU|fm:inst|fm_full:inst10|fm0011:inst20|fmi:inst|9                              ; regout           ;
+; |AU|fm:inst|fm_full:inst10|fm0010:inst19|fmi:inst|9                              ; |AU|fm:inst|fm_full:inst10|fm0010:inst19|fmi:inst|9                              ; regout           ;
+; |AU|fm:inst|fm_full:inst10|Q~5                                                   ; |AU|fm:inst|fm_full:inst10|Q~5                                                   ; combout          ;
+; |AU|fm:inst|fm_full:inst10|fm0110:inst23|fmi:inst|9                              ; |AU|fm:inst|fm_full:inst10|fm0110:inst23|fmi:inst|9                              ; regout           ;
+; |AU|fm:inst|fm_full:inst10|fm0100:inst21|fmi:inst|9                              ; |AU|fm:inst|fm_full:inst10|fm0100:inst21|fmi:inst|9                              ; regout           ;
+; |AU|fm:inst|fm_full:inst10|Q~6                                                   ; |AU|fm:inst|fm_full:inst10|Q~6                                                   ; combout          ;
+; |AU|fm:inst|fm_full:inst10|fm0111:inst24|fmi:inst|9                              ; |AU|fm:inst|fm_full:inst10|fm0111:inst24|fmi:inst|9                              ; regout           ;
+; |AU|fm:inst|fm_full:inst10|fm0101:inst22|fmi:inst|9                              ; |AU|fm:inst|fm_full:inst10|fm0101:inst22|fmi:inst|9                              ; regout           ;
+; |AU|fm:inst|fm_full:inst10|Q~7                                                   ; |AU|fm:inst|fm_full:inst10|Q~7                                                   ; combout          ;
+; |AU|fm:inst|fm_full:inst10|Q~8                                                   ; |AU|fm:inst|fm_full:inst10|Q~8                                                   ; combout          ;
+; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[0]                         ; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[0]                         ; regout           ;
+; |AU|MUX8:inst5|lpm_mux:lpm_mux_component|mux_smc:auto_generated|result_node[0]~7 ; |AU|MUX8:inst5|lpm_mux:lpm_mux_component|mux_smc:auto_generated|result_node[0]~7 ; combout          ;
+; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|_~0                             ; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|_~0                             ; combout          ;
+; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|_~1                             ; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|_~1                             ; combout          ;
+; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|_~2                             ; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|_~2                             ; combout          ;
+; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|_~3                             ; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|_~3                             ; combout          ;
+; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|_~4                             ; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|_~4                             ; combout          ;
+; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|_~5                             ; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|_~5                             ; combout          ;
+; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|_~6                             ; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|_~6                             ; combout          ;
+; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|_~7                             ; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|_~7                             ; combout          ;
+; |AU|fm:inst|fm_full:inst3|fm0001:inst4|fmi:inst|74                               ; |AU|fm:inst|fm_full:inst3|fm0001:inst4|fmi:inst|74                               ; combout          ;
+; |AU|fm:inst|fm_full:inst3|fm0011:inst20|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst3|fm0011:inst20|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst3|fm0010:inst19|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst3|fm0010:inst19|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst10|fm0110:inst23|fmi:inst|74~0                           ; |AU|fm:inst|fm_full:inst10|fm0110:inst23|fmi:inst|74~0                           ; combout          ;
+; |AU|fm:inst|fm_full:inst3|fm0110:inst23|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst3|fm0110:inst23|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst3|fm0100:inst21|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst3|fm0100:inst21|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst3|fm0111:inst24|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst3|fm0111:inst24|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst3|fm0101:inst22|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst3|fm0101:inst22|fmi:inst|74                              ; combout          ;
+; |AU|lsm:inst1|lsmi:inst|y:inst1|inst13~0                                         ; |AU|lsm:inst1|lsmi:inst|y:inst1|inst13~0                                         ; combout          ;
+; |AU|lsm:inst1|lsmi:inst|y:inst1|inst13~1                                         ; |AU|lsm:inst1|lsmi:inst|y:inst1|inst13~1                                         ; combout          ;
+; |AU|lsm:inst1|lsmi:inst1|y:inst1|inst13~0                                        ; |AU|lsm:inst1|lsmi:inst1|y:inst1|inst13~0                                        ; combout          ;
+; |AU|lsm:inst1|lsmi:inst1|y:inst1|inst13~1                                        ; |AU|lsm:inst1|lsmi:inst1|y:inst1|inst13~1                                        ; combout          ;
+; |AU|lsm:inst1|lsmi:inst2|y:inst1|inst13~0                                        ; |AU|lsm:inst1|lsmi:inst2|y:inst1|inst13~0                                        ; combout          ;
+; |AU|lsm:inst1|lsmi:inst2|y:inst1|inst13~1                                        ; |AU|lsm:inst1|lsmi:inst2|y:inst1|inst13~1                                        ; combout          ;
+; |AU|lsm:inst1|lsmi:inst6|y:inst1|inst13~0                                        ; |AU|lsm:inst1|lsmi:inst6|y:inst1|inst13~0                                        ; combout          ;
+; |AU|lsm:inst1|lsmi:inst6|y:inst1|inst13~1                                        ; |AU|lsm:inst1|lsmi:inst6|y:inst1|inst13~1                                        ; combout          ;
+; |AU|lsm:inst1|lsmi:inst7|y:inst1|inst13~0                                        ; |AU|lsm:inst1|lsmi:inst7|y:inst1|inst13~0                                        ; combout          ;
+; |AU|lsm:inst1|lsmi:inst7|y:inst1|inst13~1                                        ; |AU|lsm:inst1|lsmi:inst7|y:inst1|inst13~1                                        ; combout          ;
+; |AU|fm:inst|fm_full:inst4|fm0001:inst4|fmi:inst|74                               ; |AU|fm:inst|fm_full:inst4|fm0001:inst4|fmi:inst|74                               ; combout          ;
+; |AU|fm:inst|fm_full:inst5|fm0001:inst4|fmi:inst|74                               ; |AU|fm:inst|fm_full:inst5|fm0001:inst4|fmi:inst|74                               ; combout          ;
+; |AU|fm:inst|fm_full:inst6|fm0001:inst4|fmi:inst|74                               ; |AU|fm:inst|fm_full:inst6|fm0001:inst4|fmi:inst|74                               ; combout          ;
+; |AU|fm:inst|fm_full:inst7|fm0001:inst4|fmi:inst|74                               ; |AU|fm:inst|fm_full:inst7|fm0001:inst4|fmi:inst|74                               ; combout          ;
+; |AU|fm:inst|fm_full:inst8|fm0001:inst4|fmi:inst|74                               ; |AU|fm:inst|fm_full:inst8|fm0001:inst4|fmi:inst|74                               ; combout          ;
+; |AU|fm:inst|fm_full:inst9|fm0001:inst4|fmi:inst|74                               ; |AU|fm:inst|fm_full:inst9|fm0001:inst4|fmi:inst|74                               ; combout          ;
+; |AU|fm:inst|fm_full:inst10|fm0001:inst4|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst10|fm0001:inst4|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst4|fm0011:inst20|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst4|fm0011:inst20|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst5|fm0011:inst20|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst5|fm0011:inst20|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst6|fm0011:inst20|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst6|fm0011:inst20|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst7|fm0011:inst20|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst7|fm0011:inst20|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst8|fm0011:inst20|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst8|fm0011:inst20|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst9|fm0011:inst20|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst9|fm0011:inst20|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst10|fm0011:inst20|fmi:inst|74                             ; |AU|fm:inst|fm_full:inst10|fm0011:inst20|fmi:inst|74                             ; combout          ;
+; |AU|fm:inst|fm_full:inst4|fm0010:inst19|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst4|fm0010:inst19|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst5|fm0010:inst19|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst5|fm0010:inst19|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst6|fm0010:inst19|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst6|fm0010:inst19|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst7|fm0010:inst19|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst7|fm0010:inst19|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst8|fm0010:inst19|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst8|fm0010:inst19|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst9|fm0010:inst19|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst9|fm0010:inst19|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst10|fm0010:inst19|fmi:inst|74                             ; |AU|fm:inst|fm_full:inst10|fm0010:inst19|fmi:inst|74                             ; combout          ;
+; |AU|fm:inst|fm_full:inst4|fm0110:inst23|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst4|fm0110:inst23|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst5|fm0110:inst23|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst5|fm0110:inst23|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst6|fm0110:inst23|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst6|fm0110:inst23|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst7|fm0110:inst23|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst7|fm0110:inst23|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst8|fm0110:inst23|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst8|fm0110:inst23|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst9|fm0110:inst23|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst9|fm0110:inst23|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst10|fm0110:inst23|fmi:inst|74                             ; |AU|fm:inst|fm_full:inst10|fm0110:inst23|fmi:inst|74                             ; combout          ;
+; |AU|fm:inst|fm_full:inst4|fm0100:inst21|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst4|fm0100:inst21|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst5|fm0100:inst21|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst5|fm0100:inst21|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst6|fm0100:inst21|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst6|fm0100:inst21|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst7|fm0100:inst21|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst7|fm0100:inst21|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst8|fm0100:inst21|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst8|fm0100:inst21|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst9|fm0100:inst21|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst9|fm0100:inst21|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst10|fm0100:inst21|fmi:inst|74                             ; |AU|fm:inst|fm_full:inst10|fm0100:inst21|fmi:inst|74                             ; combout          ;
+; |AU|fm:inst|fm_full:inst4|fm0111:inst24|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst4|fm0111:inst24|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst5|fm0111:inst24|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst5|fm0111:inst24|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst6|fm0111:inst24|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst6|fm0111:inst24|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst7|fm0111:inst24|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst7|fm0111:inst24|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst8|fm0111:inst24|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst8|fm0111:inst24|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst9|fm0111:inst24|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst9|fm0111:inst24|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst10|fm0111:inst24|fmi:inst|74                             ; |AU|fm:inst|fm_full:inst10|fm0111:inst24|fmi:inst|74                             ; combout          ;
+; |AU|fm:inst|fm_full:inst4|fm0101:inst22|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst4|fm0101:inst22|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst5|fm0101:inst22|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst5|fm0101:inst22|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst6|fm0101:inst22|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst6|fm0101:inst22|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst7|fm0101:inst22|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst7|fm0101:inst22|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst8|fm0101:inst22|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst8|fm0101:inst22|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst9|fm0101:inst22|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst9|fm0101:inst22|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst10|fm0101:inst22|fmi:inst|74                             ; |AU|fm:inst|fm_full:inst10|fm0101:inst22|fmi:inst|74                             ; combout          ;
+; |AU|_P                                                                           ; |AU|_P                                                                           ; padio            ;
+; |AU|F[0]                                                                         ; |AU|F[0]~corein                                                                  ; combout          ;
+; |AU|RD                                                                           ; |AU|RD~corein                                                                    ; combout          ;
+; |AU|AQ[1]                                                                        ; |AU|AQ[1]~corein                                                                 ; combout          ;
+; |AU|AQ[2]                                                                        ; |AU|AQ[2]~corein                                                                 ; combout          ;
+; |AU|AQ[3]                                                                        ; |AU|AQ[3]~corein                                                                 ; combout          ;
+; |AU|AQ[0]                                                                        ; |AU|AQ[0]~corein                                                                 ; combout          ;
+; |AU|F[1]                                                                         ; |AU|F[1]~corein                                                                  ; combout          ;
+; |AU|F[2]                                                                         ; |AU|F[2]~corein                                                                  ; combout          ;
+; |AU|P[7]                                                                         ; |AU|P[7]~corein                                                                  ; combout          ;
+; |AU|P[6]                                                                         ; |AU|P[6]~corein                                                                  ; combout          ;
+; |AU|P[5]                                                                         ; |AU|P[5]~corein                                                                  ; combout          ;
+; |AU|P[4]                                                                         ; |AU|P[4]~corein                                                                  ; combout          ;
+; |AU|P[3]                                                                         ; |AU|P[3]~corein                                                                  ; combout          ;
+; |AU|P[2]                                                                         ; |AU|P[2]~corein                                                                  ; combout          ;
+; |AU|P[1]                                                                         ; |AU|P[1]~corein                                                                  ; combout          ;
+; |AU|P[0]                                                                         ; |AU|P[0]~corein                                                                  ; combout          ;
+; |AU|_Q                                                                           ; |AU|_Q~corein                                                                    ; combout          ;
+; |AU|LOAD                                                                         ; |AU|LOAD~corein                                                                  ; combout          ;
+; |AU|SHIFT_DATA                                                                   ; |AU|SHIFT_DATA~corein                                                            ; combout          ;
+; |AU|AP[0]                                                                        ; |AU|AP[0]~corein                                                                 ; combout          ;
+; |AU|WR                                                                           ; |AU|WR~corein                                                                    ; combout          ;
+; |AU|AP[2]                                                                        ; |AU|AP[2]~corein                                                                 ; combout          ;
+; |AU|AP[3]                                                                        ; |AU|AP[3]~corein                                                                 ; combout          ;
+; |AU|AP[1]                                                                        ; |AU|AP[1]~corein                                                                 ; combout          ;
+; |AU|fm:inst|fm_full:inst3|fm0011:inst20|fmi:inst|9~feeder                        ; |AU|fm:inst|fm_full:inst3|fm0011:inst20|fmi:inst|9~feeder                        ; combout          ;
+; |AU|fm:inst|fm_full:inst4|fm0101:inst22|fmi:inst|9~feeder                        ; |AU|fm:inst|fm_full:inst4|fm0101:inst22|fmi:inst|9~feeder                        ; combout          ;
+; |AU|fm:inst|fm_full:inst8|fm0100:inst21|fmi:inst|9~feeder                        ; |AU|fm:inst|fm_full:inst8|fm0100:inst21|fmi:inst|9~feeder                        ; combout          ;
+; |AU|fm:inst|fm_full:inst9|fm0101:inst22|fmi:inst|9~feeder                        ; |AU|fm:inst|fm_full:inst9|fm0101:inst22|fmi:inst|9~feeder                        ; combout          ;
+; |AU|fm:inst|fm_full:inst10|fm0101:inst22|fmi:inst|9~feeder                       ; |AU|fm:inst|fm_full:inst10|fm0101:inst22|fmi:inst|9~feeder                       ; combout          ;
+; |AU|fm:inst|fm_full:inst10|fm0010:inst19|fmi:inst|9~feeder                       ; |AU|fm:inst|fm_full:inst10|fm0010:inst19|fmi:inst|9~feeder                       ; combout          ;
++----------------------------------------------------------------------------------+----------------------------------------------------------------------------------+------------------+
+
+
+The following table displays output ports that do not toggle to 0 during simulation.
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Missing 0-Value Coverage                                                                                                                                                               ;
++----------------------------------------------------------------------------------+----------------------------------------------------------------------------------+------------------+
+; Node Name                                                                        ; Output Port Name                                                                 ; Output Port Type ;
++----------------------------------------------------------------------------------+----------------------------------------------------------------------------------+------------------+
+; |AU|lsm:inst1|lsmi:inst|sum:inst|7~1                                             ; |AU|lsm:inst1|lsmi:inst|sum:inst|7~1                                             ; cout             ;
+; |AU|lsm:inst1|lsmi:inst|sum:inst|7~2                                             ; |AU|lsm:inst1|lsmi:inst|sum:inst|7~2                                             ; combout          ;
+; |AU|lsm:inst1|lsmi:inst|sum:inst|7~2                                             ; |AU|lsm:inst1|lsmi:inst|sum:inst|7~3                                             ; cout             ;
+; |AU|lsm:inst1|lsmi:inst|sum:inst|7~4                                             ; |AU|lsm:inst1|lsmi:inst|sum:inst|7~4                                             ; combout          ;
+; |AU|lsm:inst1|lsmi:inst|sum:inst|7~4                                             ; |AU|lsm:inst1|lsmi:inst|sum:inst|7~5                                             ; cout             ;
+; |AU|lsm:inst1|lsmi:inst|sum:inst|7~6                                             ; |AU|lsm:inst1|lsmi:inst|sum:inst|7~6                                             ; combout          ;
+; |AU|lsm:inst1|lsmi:inst|sum:inst|7~6                                             ; |AU|lsm:inst1|lsmi:inst|sum:inst|7~7                                             ; cout             ;
+; |AU|lsm:inst1|lsmi:inst|sum:inst|7~14                                            ; |AU|lsm:inst1|lsmi:inst|sum:inst|7~15                                            ; cout             ;
+; |AU|lsm:inst1|lsmi:inst|sum:inst|7~16                                            ; |AU|lsm:inst1|lsmi:inst|sum:inst|7~16                                            ; combout          ;
+; |AU|lsm:inst1|lsmi:inst|sum:inst|7~16                                            ; |AU|lsm:inst1|lsmi:inst|sum:inst|7~17                                            ; cout             ;
+; |AU|lsm:inst1|lsmi:inst|sum:inst|7~18                                            ; |AU|lsm:inst1|lsmi:inst|sum:inst|7~18                                            ; combout          ;
+; |AU|fm:inst|fm_full:inst10|Q~0                                                   ; |AU|fm:inst|fm_full:inst10|Q~0                                                   ; combout          ;
+; |AU|fm:inst|fm_full:inst3|fm0001:inst4|fmi:inst|9                                ; |AU|fm:inst|fm_full:inst3|fm0001:inst4|fmi:inst|9                                ; regout           ;
+; |AU|fm:inst|fm_full:inst3|fm0000:inst|fmi:inst|9                                 ; |AU|fm:inst|fm_full:inst3|fm0000:inst|fmi:inst|9                                 ; regout           ;
+; |AU|fm:inst|fm_full:inst3|Q~0                                                    ; |AU|fm:inst|fm_full:inst3|Q~0                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst10|Q~1                                                   ; |AU|fm:inst|fm_full:inst10|Q~1                                                   ; combout          ;
+; |AU|fm:inst|fm_full:inst3|fm0011:inst20|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst3|fm0011:inst20|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst3|fm0010:inst19|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst3|fm0010:inst19|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst3|Q~1                                                    ; |AU|fm:inst|fm_full:inst3|Q~1                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst10|Q~2                                                   ; |AU|fm:inst|fm_full:inst10|Q~2                                                   ; combout          ;
+; |AU|fm:inst|fm_full:inst3|fm0110:inst23|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst3|fm0110:inst23|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst3|fm0100:inst21|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst3|fm0100:inst21|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst3|Q~2                                                    ; |AU|fm:inst|fm_full:inst3|Q~2                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst10|Q~3                                                   ; |AU|fm:inst|fm_full:inst10|Q~3                                                   ; combout          ;
+; |AU|fm:inst|fm_full:inst3|fm0111:inst24|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst3|fm0111:inst24|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst3|fm0101:inst22|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst3|fm0101:inst22|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst3|Q~3                                                    ; |AU|fm:inst|fm_full:inst3|Q~3                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst3|Q~4                                                    ; |AU|fm:inst|fm_full:inst3|Q~4                                                    ; combout          ;
+; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[7]                         ; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[7]                         ; regout           ;
+; |AU|MUX8:inst5|lpm_mux:lpm_mux_component|mux_smc:auto_generated|result_node[7]~0 ; |AU|MUX8:inst5|lpm_mux:lpm_mux_component|mux_smc:auto_generated|result_node[7]~0 ; combout          ;
+; |AU|fm:inst|fm_full:inst4|fm0001:inst4|fmi:inst|9                                ; |AU|fm:inst|fm_full:inst4|fm0001:inst4|fmi:inst|9                                ; regout           ;
+; |AU|fm:inst|fm_full:inst4|fm0000:inst|fmi:inst|9                                 ; |AU|fm:inst|fm_full:inst4|fm0000:inst|fmi:inst|9                                 ; regout           ;
+; |AU|fm:inst|fm_full:inst4|Q~0                                                    ; |AU|fm:inst|fm_full:inst4|Q~0                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst4|fm0011:inst20|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst4|fm0011:inst20|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst4|fm0010:inst19|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst4|fm0010:inst19|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst4|Q~1                                                    ; |AU|fm:inst|fm_full:inst4|Q~1                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst4|fm0110:inst23|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst4|fm0110:inst23|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst4|fm0100:inst21|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst4|fm0100:inst21|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst4|Q~2                                                    ; |AU|fm:inst|fm_full:inst4|Q~2                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst4|fm0111:inst24|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst4|fm0111:inst24|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst4|fm0101:inst22|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst4|fm0101:inst22|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst4|Q~3                                                    ; |AU|fm:inst|fm_full:inst4|Q~3                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst4|Q~4                                                    ; |AU|fm:inst|fm_full:inst4|Q~4                                                    ; combout          ;
+; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[6]                         ; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[6]                         ; regout           ;
+; |AU|MUX8:inst5|lpm_mux:lpm_mux_component|mux_smc:auto_generated|result_node[6]~1 ; |AU|MUX8:inst5|lpm_mux:lpm_mux_component|mux_smc:auto_generated|result_node[6]~1 ; combout          ;
+; |AU|fm:inst|fm_full:inst5|fm0001:inst4|fmi:inst|9                                ; |AU|fm:inst|fm_full:inst5|fm0001:inst4|fmi:inst|9                                ; regout           ;
+; |AU|fm:inst|fm_full:inst5|fm0011:inst20|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst5|fm0011:inst20|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst5|fm0010:inst19|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst5|fm0010:inst19|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst5|Q~1                                                    ; |AU|fm:inst|fm_full:inst5|Q~1                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst5|fm0110:inst23|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst5|fm0110:inst23|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst5|fm0100:inst21|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst5|fm0100:inst21|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst5|Q~2                                                    ; |AU|fm:inst|fm_full:inst5|Q~2                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst5|fm0111:inst24|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst5|fm0111:inst24|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst5|fm0101:inst22|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst5|fm0101:inst22|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst5|Q~3                                                    ; |AU|fm:inst|fm_full:inst5|Q~3                                                    ; combout          ;
+; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[5]                         ; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[5]                         ; regout           ;
+; |AU|fm:inst|fm_full:inst6|fm0001:inst4|fmi:inst|9                                ; |AU|fm:inst|fm_full:inst6|fm0001:inst4|fmi:inst|9                                ; regout           ;
+; |AU|fm:inst|fm_full:inst6|fm0011:inst20|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst6|fm0011:inst20|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst6|fm0010:inst19|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst6|fm0010:inst19|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst6|Q~1                                                    ; |AU|fm:inst|fm_full:inst6|Q~1                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst6|fm0110:inst23|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst6|fm0110:inst23|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst6|fm0100:inst21|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst6|fm0100:inst21|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst6|Q~2                                                    ; |AU|fm:inst|fm_full:inst6|Q~2                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst6|fm0111:inst24|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst6|fm0111:inst24|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst6|fm0101:inst22|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst6|fm0101:inst22|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst6|Q~3                                                    ; |AU|fm:inst|fm_full:inst6|Q~3                                                    ; combout          ;
+; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[4]                         ; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[4]                         ; regout           ;
+; |AU|fm:inst|fm_full:inst7|fm0001:inst4|fmi:inst|9                                ; |AU|fm:inst|fm_full:inst7|fm0001:inst4|fmi:inst|9                                ; regout           ;
+; |AU|fm:inst|fm_full:inst7|fm0011:inst20|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst7|fm0011:inst20|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst7|fm0010:inst19|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst7|fm0010:inst19|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst7|Q~1                                                    ; |AU|fm:inst|fm_full:inst7|Q~1                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst7|fm0110:inst23|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst7|fm0110:inst23|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst7|fm0100:inst21|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst7|fm0100:inst21|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst7|Q~2                                                    ; |AU|fm:inst|fm_full:inst7|Q~2                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst7|fm0111:inst24|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst7|fm0111:inst24|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst7|fm0101:inst22|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst7|fm0101:inst22|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst7|Q~3                                                    ; |AU|fm:inst|fm_full:inst7|Q~3                                                    ; combout          ;
+; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[3]                         ; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[3]                         ; regout           ;
+; |AU|fm:inst|fm_full:inst8|fm0001:inst4|fmi:inst|9                                ; |AU|fm:inst|fm_full:inst8|fm0001:inst4|fmi:inst|9                                ; regout           ;
+; |AU|fm:inst|fm_full:inst8|fm0000:inst|fmi:inst|9                                 ; |AU|fm:inst|fm_full:inst8|fm0000:inst|fmi:inst|9                                 ; regout           ;
+; |AU|fm:inst|fm_full:inst8|Q~0                                                    ; |AU|fm:inst|fm_full:inst8|Q~0                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst8|fm0011:inst20|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst8|fm0011:inst20|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst8|fm0010:inst19|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst8|fm0010:inst19|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst8|Q~1                                                    ; |AU|fm:inst|fm_full:inst8|Q~1                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst8|fm0110:inst23|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst8|fm0110:inst23|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst8|fm0100:inst21|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst8|fm0100:inst21|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst8|Q~2                                                    ; |AU|fm:inst|fm_full:inst8|Q~2                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst8|fm0111:inst24|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst8|fm0111:inst24|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst8|fm0101:inst22|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst8|fm0101:inst22|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst8|Q~3                                                    ; |AU|fm:inst|fm_full:inst8|Q~3                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst8|Q~4                                                    ; |AU|fm:inst|fm_full:inst8|Q~4                                                    ; combout          ;
+; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[2]                         ; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[2]                         ; regout           ;
+; |AU|MUX8:inst5|lpm_mux:lpm_mux_component|mux_smc:auto_generated|result_node[2]~5 ; |AU|MUX8:inst5|lpm_mux:lpm_mux_component|mux_smc:auto_generated|result_node[2]~5 ; combout          ;
+; |AU|fm:inst|fm_full:inst9|fm0001:inst4|fmi:inst|9                                ; |AU|fm:inst|fm_full:inst9|fm0001:inst4|fmi:inst|9                                ; regout           ;
+; |AU|fm:inst|fm_full:inst9|fm0000:inst|fmi:inst|9                                 ; |AU|fm:inst|fm_full:inst9|fm0000:inst|fmi:inst|9                                 ; regout           ;
+; |AU|fm:inst|fm_full:inst9|Q~0                                                    ; |AU|fm:inst|fm_full:inst9|Q~0                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst9|fm0011:inst20|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst9|fm0011:inst20|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst9|fm0010:inst19|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst9|fm0010:inst19|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst9|Q~1                                                    ; |AU|fm:inst|fm_full:inst9|Q~1                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst9|fm0110:inst23|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst9|fm0110:inst23|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst9|fm0100:inst21|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst9|fm0100:inst21|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst9|Q~2                                                    ; |AU|fm:inst|fm_full:inst9|Q~2                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst9|fm0111:inst24|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst9|fm0111:inst24|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst9|fm0101:inst22|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst9|fm0101:inst22|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst9|Q~3                                                    ; |AU|fm:inst|fm_full:inst9|Q~3                                                    ; combout          ;
+; |AU|fm:inst|fm_full:inst9|Q~4                                                    ; |AU|fm:inst|fm_full:inst9|Q~4                                                    ; combout          ;
+; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[1]                         ; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[1]                         ; regout           ;
+; |AU|MUX8:inst5|lpm_mux:lpm_mux_component|mux_smc:auto_generated|result_node[1]~6 ; |AU|MUX8:inst5|lpm_mux:lpm_mux_component|mux_smc:auto_generated|result_node[1]~6 ; combout          ;
+; |AU|fm:inst|fm_full:inst10|fm0001:inst4|fmi:inst|9                               ; |AU|fm:inst|fm_full:inst10|fm0001:inst4|fmi:inst|9                               ; regout           ;
+; |AU|fm:inst|fm_full:inst10|fm0000:inst|fmi:inst|9                                ; |AU|fm:inst|fm_full:inst10|fm0000:inst|fmi:inst|9                                ; regout           ;
+; |AU|fm:inst|fm_full:inst10|Q~4                                                   ; |AU|fm:inst|fm_full:inst10|Q~4                                                   ; combout          ;
+; |AU|fm:inst|fm_full:inst10|fm0011:inst20|fmi:inst|9                              ; |AU|fm:inst|fm_full:inst10|fm0011:inst20|fmi:inst|9                              ; regout           ;
+; |AU|fm:inst|fm_full:inst10|fm0010:inst19|fmi:inst|9                              ; |AU|fm:inst|fm_full:inst10|fm0010:inst19|fmi:inst|9                              ; regout           ;
+; |AU|fm:inst|fm_full:inst10|Q~5                                                   ; |AU|fm:inst|fm_full:inst10|Q~5                                                   ; combout          ;
+; |AU|fm:inst|fm_full:inst10|fm0110:inst23|fmi:inst|9                              ; |AU|fm:inst|fm_full:inst10|fm0110:inst23|fmi:inst|9                              ; regout           ;
+; |AU|fm:inst|fm_full:inst10|fm0100:inst21|fmi:inst|9                              ; |AU|fm:inst|fm_full:inst10|fm0100:inst21|fmi:inst|9                              ; regout           ;
+; |AU|fm:inst|fm_full:inst10|Q~6                                                   ; |AU|fm:inst|fm_full:inst10|Q~6                                                   ; combout          ;
+; |AU|fm:inst|fm_full:inst10|fm0111:inst24|fmi:inst|9                              ; |AU|fm:inst|fm_full:inst10|fm0111:inst24|fmi:inst|9                              ; regout           ;
+; |AU|fm:inst|fm_full:inst10|fm0101:inst22|fmi:inst|9                              ; |AU|fm:inst|fm_full:inst10|fm0101:inst22|fmi:inst|9                              ; regout           ;
+; |AU|fm:inst|fm_full:inst10|Q~7                                                   ; |AU|fm:inst|fm_full:inst10|Q~7                                                   ; combout          ;
+; |AU|fm:inst|fm_full:inst10|Q~8                                                   ; |AU|fm:inst|fm_full:inst10|Q~8                                                   ; combout          ;
+; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[0]                         ; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[0]                         ; regout           ;
+; |AU|MUX8:inst5|lpm_mux:lpm_mux_component|mux_smc:auto_generated|result_node[0]~7 ; |AU|MUX8:inst5|lpm_mux:lpm_mux_component|mux_smc:auto_generated|result_node[0]~7 ; combout          ;
+; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|_~0                             ; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|_~0                             ; combout          ;
+; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|_~1                             ; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|_~1                             ; combout          ;
+; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|_~2                             ; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|_~2                             ; combout          ;
+; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|_~3                             ; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|_~3                             ; combout          ;
+; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|_~4                             ; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|_~4                             ; combout          ;
+; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|_~5                             ; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|_~5                             ; combout          ;
+; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|_~6                             ; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|_~6                             ; combout          ;
+; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|_~7                             ; |AU|RG:inst3|lpm_shiftreg:lpm_shiftreg_component|_~7                             ; combout          ;
+; |AU|fm:inst|fm_full:inst3|fm0001:inst4|fmi:inst|74                               ; |AU|fm:inst|fm_full:inst3|fm0001:inst4|fmi:inst|74                               ; combout          ;
+; |AU|fm:inst|fm_full:inst3|fm0011:inst20|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst3|fm0011:inst20|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst3|fm0010:inst19|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst3|fm0010:inst19|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst10|fm0110:inst23|fmi:inst|74~0                           ; |AU|fm:inst|fm_full:inst10|fm0110:inst23|fmi:inst|74~0                           ; combout          ;
+; |AU|fm:inst|fm_full:inst3|fm0110:inst23|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst3|fm0110:inst23|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst3|fm0100:inst21|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst3|fm0100:inst21|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst3|fm0111:inst24|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst3|fm0111:inst24|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst3|fm0101:inst22|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst3|fm0101:inst22|fmi:inst|74                              ; combout          ;
+; |AU|lsm:inst1|lsmi:inst|y:inst1|inst13~0                                         ; |AU|lsm:inst1|lsmi:inst|y:inst1|inst13~0                                         ; combout          ;
+; |AU|lsm:inst1|lsmi:inst|y:inst1|inst13~1                                         ; |AU|lsm:inst1|lsmi:inst|y:inst1|inst13~1                                         ; combout          ;
+; |AU|lsm:inst1|lsmi:inst1|y:inst1|inst13~0                                        ; |AU|lsm:inst1|lsmi:inst1|y:inst1|inst13~0                                        ; combout          ;
+; |AU|lsm:inst1|lsmi:inst1|y:inst1|inst13~1                                        ; |AU|lsm:inst1|lsmi:inst1|y:inst1|inst13~1                                        ; combout          ;
+; |AU|lsm:inst1|lsmi:inst2|y:inst1|inst13~0                                        ; |AU|lsm:inst1|lsmi:inst2|y:inst1|inst13~0                                        ; combout          ;
+; |AU|lsm:inst1|lsmi:inst2|y:inst1|inst13~1                                        ; |AU|lsm:inst1|lsmi:inst2|y:inst1|inst13~1                                        ; combout          ;
+; |AU|lsm:inst1|lsmi:inst6|y:inst1|inst13~0                                        ; |AU|lsm:inst1|lsmi:inst6|y:inst1|inst13~0                                        ; combout          ;
+; |AU|lsm:inst1|lsmi:inst6|y:inst1|inst13~1                                        ; |AU|lsm:inst1|lsmi:inst6|y:inst1|inst13~1                                        ; combout          ;
+; |AU|lsm:inst1|lsmi:inst7|y:inst1|inst13~0                                        ; |AU|lsm:inst1|lsmi:inst7|y:inst1|inst13~0                                        ; combout          ;
+; |AU|lsm:inst1|lsmi:inst7|y:inst1|inst13~1                                        ; |AU|lsm:inst1|lsmi:inst7|y:inst1|inst13~1                                        ; combout          ;
+; |AU|fm:inst|fm_full:inst4|fm0001:inst4|fmi:inst|74                               ; |AU|fm:inst|fm_full:inst4|fm0001:inst4|fmi:inst|74                               ; combout          ;
+; |AU|fm:inst|fm_full:inst5|fm0001:inst4|fmi:inst|74                               ; |AU|fm:inst|fm_full:inst5|fm0001:inst4|fmi:inst|74                               ; combout          ;
+; |AU|fm:inst|fm_full:inst6|fm0001:inst4|fmi:inst|74                               ; |AU|fm:inst|fm_full:inst6|fm0001:inst4|fmi:inst|74                               ; combout          ;
+; |AU|fm:inst|fm_full:inst7|fm0001:inst4|fmi:inst|74                               ; |AU|fm:inst|fm_full:inst7|fm0001:inst4|fmi:inst|74                               ; combout          ;
+; |AU|fm:inst|fm_full:inst8|fm0001:inst4|fmi:inst|74                               ; |AU|fm:inst|fm_full:inst8|fm0001:inst4|fmi:inst|74                               ; combout          ;
+; |AU|fm:inst|fm_full:inst9|fm0001:inst4|fmi:inst|74                               ; |AU|fm:inst|fm_full:inst9|fm0001:inst4|fmi:inst|74                               ; combout          ;
+; |AU|fm:inst|fm_full:inst10|fm0001:inst4|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst10|fm0001:inst4|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst4|fm0011:inst20|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst4|fm0011:inst20|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst5|fm0011:inst20|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst5|fm0011:inst20|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst6|fm0011:inst20|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst6|fm0011:inst20|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst7|fm0011:inst20|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst7|fm0011:inst20|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst8|fm0011:inst20|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst8|fm0011:inst20|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst9|fm0011:inst20|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst9|fm0011:inst20|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst10|fm0011:inst20|fmi:inst|74                             ; |AU|fm:inst|fm_full:inst10|fm0011:inst20|fmi:inst|74                             ; combout          ;
+; |AU|fm:inst|fm_full:inst4|fm0010:inst19|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst4|fm0010:inst19|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst5|fm0010:inst19|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst5|fm0010:inst19|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst6|fm0010:inst19|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst6|fm0010:inst19|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst7|fm0010:inst19|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst7|fm0010:inst19|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst8|fm0010:inst19|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst8|fm0010:inst19|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst9|fm0010:inst19|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst9|fm0010:inst19|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst10|fm0010:inst19|fmi:inst|74                             ; |AU|fm:inst|fm_full:inst10|fm0010:inst19|fmi:inst|74                             ; combout          ;
+; |AU|fm:inst|fm_full:inst4|fm0110:inst23|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst4|fm0110:inst23|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst5|fm0110:inst23|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst5|fm0110:inst23|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst6|fm0110:inst23|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst6|fm0110:inst23|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst7|fm0110:inst23|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst7|fm0110:inst23|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst8|fm0110:inst23|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst8|fm0110:inst23|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst9|fm0110:inst23|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst9|fm0110:inst23|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst10|fm0110:inst23|fmi:inst|74                             ; |AU|fm:inst|fm_full:inst10|fm0110:inst23|fmi:inst|74                             ; combout          ;
+; |AU|fm:inst|fm_full:inst4|fm0100:inst21|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst4|fm0100:inst21|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst5|fm0100:inst21|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst5|fm0100:inst21|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst6|fm0100:inst21|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst6|fm0100:inst21|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst7|fm0100:inst21|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst7|fm0100:inst21|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst8|fm0100:inst21|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst8|fm0100:inst21|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst9|fm0100:inst21|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst9|fm0100:inst21|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst10|fm0100:inst21|fmi:inst|74                             ; |AU|fm:inst|fm_full:inst10|fm0100:inst21|fmi:inst|74                             ; combout          ;
+; |AU|fm:inst|fm_full:inst4|fm0111:inst24|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst4|fm0111:inst24|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst5|fm0111:inst24|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst5|fm0111:inst24|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst6|fm0111:inst24|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst6|fm0111:inst24|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst7|fm0111:inst24|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst7|fm0111:inst24|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst8|fm0111:inst24|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst8|fm0111:inst24|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst9|fm0111:inst24|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst9|fm0111:inst24|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst10|fm0111:inst24|fmi:inst|74                             ; |AU|fm:inst|fm_full:inst10|fm0111:inst24|fmi:inst|74                             ; combout          ;
+; |AU|fm:inst|fm_full:inst4|fm0101:inst22|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst4|fm0101:inst22|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst5|fm0101:inst22|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst5|fm0101:inst22|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst6|fm0101:inst22|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst6|fm0101:inst22|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst7|fm0101:inst22|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst7|fm0101:inst22|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst8|fm0101:inst22|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst8|fm0101:inst22|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst9|fm0101:inst22|fmi:inst|74                              ; |AU|fm:inst|fm_full:inst9|fm0101:inst22|fmi:inst|74                              ; combout          ;
+; |AU|fm:inst|fm_full:inst10|fm0101:inst22|fmi:inst|74                             ; |AU|fm:inst|fm_full:inst10|fm0101:inst22|fmi:inst|74                             ; combout          ;
+; |AU|_P                                                                           ; |AU|_P                                                                           ; padio            ;
+; |AU|F[0]                                                                         ; |AU|F[0]~corein                                                                  ; combout          ;
+; |AU|RD                                                                           ; |AU|RD~corein                                                                    ; combout          ;
+; |AU|AQ[1]                                                                        ; |AU|AQ[1]~corein                                                                 ; combout          ;
+; |AU|AQ[2]                                                                        ; |AU|AQ[2]~corein                                                                 ; combout          ;
+; |AU|AQ[3]                                                                        ; |AU|AQ[3]~corein                                                                 ; combout          ;
+; |AU|AQ[0]                                                                        ; |AU|AQ[0]~corein                                                                 ; combout          ;
+; |AU|F[1]                                                                         ; |AU|F[1]~corein                                                                  ; combout          ;
+; |AU|F[2]                                                                         ; |AU|F[2]~corein                                                                  ; combout          ;
+; |AU|P[7]                                                                         ; |AU|P[7]~corein                                                                  ; combout          ;
+; |AU|P[6]                                                                         ; |AU|P[6]~corein                                                                  ; combout          ;
+; |AU|P[5]                                                                         ; |AU|P[5]~corein                                                                  ; combout          ;
+; |AU|P[4]                                                                         ; |AU|P[4]~corein                                                                  ; combout          ;
+; |AU|P[3]                                                                         ; |AU|P[3]~corein                                                                  ; combout          ;
+; |AU|P[2]                                                                         ; |AU|P[2]~corein                                                                  ; combout          ;
+; |AU|P[1]                                                                         ; |AU|P[1]~corein                                                                  ; combout          ;
+; |AU|P[0]                                                                         ; |AU|P[0]~corein                                                                  ; combout          ;
+; |AU|_Q                                                                           ; |AU|_Q~corein                                                                    ; combout          ;
+; |AU|LOAD                                                                         ; |AU|LOAD~corein                                                                  ; combout          ;
+; |AU|SHIFT_DATA                                                                   ; |AU|SHIFT_DATA~corein                                                            ; combout          ;
+; |AU|AP[0]                                                                        ; |AU|AP[0]~corein                                                                 ; combout          ;
+; |AU|WR                                                                           ; |AU|WR~corein                                                                    ; combout          ;
+; |AU|AP[2]                                                                        ; |AU|AP[2]~corein                                                                 ; combout          ;
+; |AU|AP[3]                                                                        ; |AU|AP[3]~corein                                                                 ; combout          ;
+; |AU|AP[1]                                                                        ; |AU|AP[1]~corein                                                                 ; combout          ;
+; |AU|fm:inst|fm_full:inst3|fm0011:inst20|fmi:inst|9~feeder                        ; |AU|fm:inst|fm_full:inst3|fm0011:inst20|fmi:inst|9~feeder                        ; combout          ;
+; |AU|fm:inst|fm_full:inst4|fm0101:inst22|fmi:inst|9~feeder                        ; |AU|fm:inst|fm_full:inst4|fm0101:inst22|fmi:inst|9~feeder                        ; combout          ;
+; |AU|fm:inst|fm_full:inst8|fm0100:inst21|fmi:inst|9~feeder                        ; |AU|fm:inst|fm_full:inst8|fm0100:inst21|fmi:inst|9~feeder                        ; combout          ;
+; |AU|fm:inst|fm_full:inst9|fm0101:inst22|fmi:inst|9~feeder                        ; |AU|fm:inst|fm_full:inst9|fm0101:inst22|fmi:inst|9~feeder                        ; combout          ;
+; |AU|fm:inst|fm_full:inst10|fm0101:inst22|fmi:inst|9~feeder                       ; |AU|fm:inst|fm_full:inst10|fm0101:inst22|fmi:inst|9~feeder                       ; combout          ;
+; |AU|fm:inst|fm_full:inst10|fm0010:inst19|fmi:inst|9~feeder                       ; |AU|fm:inst|fm_full:inst10|fm0010:inst19|fmi:inst|9~feeder                       ; combout          ;
++----------------------------------------------------------------------------------+----------------------------------------------------------------------------------+------------------+
+
+
++---------------------+
+; Simulator INI Usage ;
++--------+------------+
+; Option ; Usage      ;
++--------+------------+
+
+
++--------------------+
+; Simulator Messages ;
++--------------------+
+Info: *******************************************************************
+Info: Running Quartus II Simulator
+    Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+    Info: Processing started: Tue Nov 29 00:31:30 2011
+Info: Command: quartus_sim --read_settings_files=on --write_settings_files=off AU -c AU
+Info: Using vector source file "C:/altera/91sp2/quartus/9108/AU/AU.vwf"
+Info: Option to preserve fewer signal transitions to reduce memory requirements is enabled
+    Info: Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
+Info: Simulation partitioned into 1 sub-simulations
+Info: Simulation coverage is      15.19 %
+Info: Number of transitions in simulation is 1086
+Info: Quartus II Simulator was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 149 megabytes
+    Info: Processing ended: Tue Nov 29 00:31:30 2011
+    Info: Elapsed time: 00:00:00
+    Info: Total CPU time (on all processors): 00:00:01
+
+

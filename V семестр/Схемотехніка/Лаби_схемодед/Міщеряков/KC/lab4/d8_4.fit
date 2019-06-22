@@ -1,0 +1,96 @@
+-- MAX+plus II Compiler Fit File      
+-- Version 10.1 06/12/2001            
+-- Compiled: 10/26/2010 23:04:10      
+
+-- Copyright (C) 1988-2001 Altera Corporation
+-- Any megafunction design, and related net list (encrypted or decrypted),
+-- support information, device programming or simulation file, and any other
+-- associated documentation or information provided by Altera or a partner
+-- under Altera's Megafunction Partnership Program may be used only to
+-- program PLD devices (but not masked PLD devices) from Altera.  Any other
+-- use of such megafunction design, net list, support information, device
+-- programming or simulation file, or any other related documentation or
+-- information is prohibited for any other purpose, including, but not
+-- limited to modification, reverse engineering, de-compiling, or use with
+-- any other silicon devices, unless such use is explicitly licensed under
+-- a separate agreement with Altera or a megafunction partner.  Title to
+-- the intellectual property, including patents, copyrights, trademarks,
+-- trade secrets, or maskworks, embodied in any such megafunction design,
+-- net list, support information, device programming or simulation file, or
+-- any other related documentation or information provided by Altera or a
+-- megafunction partner, remains with Altera, the megafunction partner, or
+-- their respective licensors.  No other licenses, including any licenses
+-- needed under any third party's intellectual property, are provided herein.
+
+CHIP "d8_4"
+BEGIN
+
+    DEVICE = "EP1810LC-20";
+
+    "ABP"                          : INPUT_PIN  = 56     ;
+    "ABQ"                          : INPUT_PIN  = 55     ;
+    "AP0"                          : INPUT_PIN  = 54     ;
+    "AP1"                          : INPUT_PIN  = 50     ;
+    "AQ0"                          : INPUT_PIN  = 49     ;
+    "AQ1"                          : INPUT_PIN  = 48     ;
+    "P0"                           : INPUT_PIN  = 22     ;
+    "P1"                           : INPUT_PIN  = 21     ;
+    "P2"                           : INPUT_PIN  = 20     ;
+    "P3"                           : INPUT_PIN  = 16     ;
+    "P4"                           : INPUT_PIN  = 15     ;
+    "P5"                           : INPUT_PIN  = 14     ;
+    "P6"                           : INPUT_PIN  = 17     ;
+    "P7"                           : INPUT_PIN  = 19     ;
+    "Q0"                           : INPUT_PIN  = 46     ; -- LC35
+    "Q1"                           : INPUT_PIN  = 25     ; -- LC15
+    "Q2"                           : INPUT_PIN  = 26     ; -- LC16
+    "Q3"                           : INPUT_PIN  = 47     ; -- LC36
+    "Q4"                           : INPUT_PIN  = 10     ; -- LC9
+    "Q5"                           : INPUT_PIN  = 11     ; -- LC10
+    "Q6"                           : INPUT_PIN  = 12     ; -- LC11
+    "Q7"                           : INPUT_PIN  = 13     ; -- LC12
+    "WP"                           : INPUT_PIN  = 51     ;
+    "WQ"                           : INPUT_PIN  = 53     ;
+    "Q0_0"                         : OUTPUT_PIN = 68     ; -- LC48
+    "Q0_1"                         : OUTPUT_PIN = 67     ; -- LC47
+    "Q0_2"                         : OUTPUT_PIN = 66     ; -- LC46
+    "Q0_3"                         : OUTPUT_PIN = 65     ; -- LC45
+    "Q0_4"                         : OUTPUT_PIN = 64     ; -- LC44
+    "Q0_5"                         : OUTPUT_PIN = 63     ; -- LC43
+    "Q0_6"                         : OUTPUT_PIN = 43     ; -- LC32
+    "Q0_7"                         : OUTPUT_PIN = 42     ; -- LC31
+    "Q1_0"                         : OUTPUT_PIN = 62     ; -- LC42
+    "Q1_1"                         : OUTPUT_PIN = 9      ; -- LC8
+    "Q1_2"                         : OUTPUT_PIN = 41     ; -- LC30
+    "Q1_3"                         : OUTPUT_PIN = 40     ; -- LC29
+    "Q1_4"                         : OUTPUT_PIN = 39     ; -- LC28
+    "Q1_5"                         : OUTPUT_PIN = 38     ; -- LC27
+    "Q1_6"                         : OUTPUT_PIN = 37     ; -- LC26
+    "Q1_7"                         : OUTPUT_PIN = 36     ; -- LC25
+    "Q2_0"                         : OUTPUT_PIN = 34     ; -- LC24
+    "Q2_1"                         : OUTPUT_PIN = 33     ; -- LC23
+    "Q2_2"                         : OUTPUT_PIN = 32     ; -- LC22
+    "Q2_3"                         : OUTPUT_PIN = 31     ; -- LC21
+    "Q2_4"                         : OUTPUT_PIN = 30     ; -- LC20
+    "Q2_5"                         : OUTPUT_PIN = 29     ; -- LC19
+    "Q2_6"                         : OUTPUT_PIN = 28     ; -- LC18
+    "Q2_7"                         : OUTPUT_PIN = 27     ; -- LC17
+    "Q3_0"                         : OUTPUT_PIN = 61     ; -- LC41
+    "Q3_1"                         : OUTPUT_PIN = 8      ; -- LC7
+    "Q3_2"                         : OUTPUT_PIN = 7      ; -- LC6
+    "Q3_3"                         : OUTPUT_PIN = 6      ; -- LC5
+    "Q3_4"                         : OUTPUT_PIN = 5      ; -- LC4
+    "Q3_5"                         : OUTPUT_PIN = 4      ; -- LC3
+    "Q3_6"                         : OUTPUT_PIN = 3      ; -- LC2
+    "Q3_7"                         : OUTPUT_PIN = 2      ; -- LC1
+    "|c4:14|~1~1"                  : LOCATION   = LC33   ; -- PIN 44  -- |c4:14|C3~1
+    "|c4:14|~14~1"                 : LOCATION   = LC34   ; -- PIN 45  -- |c4:14|C2~1
+    "|c4:14|~14~2"                 : LOCATION   = LC16   ; -- PIN 26  -- |c4:14|C2~2
+    "|c4:14|~18~1"                 : LOCATION   = LC13   ; -- PIN 23  -- |c4:14|C1~1
+    "|c4:14|~18~2"                 : LOCATION   = LC14   ; -- PIN 24  -- |c4:14|C1~2
+    "|c4:14|~22~1"                 : LOCATION   = LC37   ; -- PIN 57  -- |c4:14|C0~1
+    "|c4:14|~22~2"                 : LOCATION   = LC38   ; -- PIN 58  -- |c4:14|C0~2
+    "|c4:14|~22~3"                 : LOCATION   = LC39   ; -- PIN 59  -- |c4:14|C0~3
+    "|c4:14|~22~4"                 : LOCATION   = LC40   ; -- PIN 60  -- |c4:14|C0~4
+
+END;

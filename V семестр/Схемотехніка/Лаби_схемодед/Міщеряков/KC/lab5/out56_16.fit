@@ -1,0 +1,247 @@
+-- MAX+plus II Compiler Fit File      
+-- Version 10.1 06/12/2001            
+-- Compiled: 10/26/2010 22:00:56      
+
+-- Copyright (C) 1988-2001 Altera Corporation
+-- Any megafunction design, and related net list (encrypted or decrypted),
+-- support information, device programming or simulation file, and any other
+-- associated documentation or information provided by Altera or a partner
+-- under Altera's Megafunction Partnership Program may be used only to
+-- program PLD devices (but not masked PLD devices) from Altera.  Any other
+-- use of such megafunction design, net list, support information, device
+-- programming or simulation file, or any other related documentation or
+-- information is prohibited for any other purpose, including, but not
+-- limited to modification, reverse engineering, de-compiling, or use with
+-- any other silicon devices, unless such use is explicitly licensed under
+-- a separate agreement with Altera or a megafunction partner.  Title to
+-- the intellectual property, including patents, copyrights, trademarks,
+-- trade secrets, or maskworks, embodied in any such megafunction design,
+-- net list, support information, device programming or simulation file, or
+-- any other related documentation or information provided by Altera or a
+-- megafunction partner, remains with Altera, the megafunction partner, or
+-- their respective licensors.  No other licenses, including any licenses
+-- needed under any third party's intellectual property, are provided herein.
+
+CHIP "out56_41"
+BEGIN
+
+    DEVICE = "EP1800ILC-70";
+
+    "AB0"                          : INPUT_PIN  = 56     ;
+    "AB1"                          : INPUT_PIN  = 55     ;
+    "AB2"                          : INPUT_PIN  = 54     ;
+    "AB3"                          : INPUT_PIN  = 50     ;
+    "A0"                           : INPUT_PIN  = 49     ;
+    "A1"                           : INPUT_PIN  = 48     ;
+    "|out8_4:13|out:22|~8~1~2~2"   : INPUT_PIN  = 24     ; -- LC14
+    "O0_5"                         : INPUT_PIN  = 47     ; -- LC36
+    "O0_7"                         : INPUT_PIN  = 60     ; -- LC40
+    "O1_5"                         : INPUT_PIN  = 22     ;
+    "O1_7"                         : INPUT_PIN  = 21     ;
+    "O2_5"                         : INPUT_PIN  = 20     ;
+    "O2_7"                         : INPUT_PIN  = 16     ;
+    "O3_5"                         : INPUT_PIN  = 46     ; -- LC35
+    "O3_7"                         : INPUT_PIN  = 59     ; -- LC39
+    "O4_5"                         : INPUT_PIN  = 36     ; -- LC25
+    "O4_7"                         : INPUT_PIN  = 61     ; -- LC41
+    "O5_5"                         : INPUT_PIN  = 15     ;
+    "O5_7"                         : INPUT_PIN  = 14     ;
+    "O6_5"                         : INPUT_PIN  = 17     ;
+    "O6_7"                         : INPUT_PIN  = 19     ;
+    "O7_5"                         : INPUT_PIN  = 37     ; -- LC26
+    "O7_7"                         : INPUT_PIN  = 62     ; -- LC42
+    "O8_5"                         : INPUT_PIN  = 38     ; -- LC27
+    "O8_7"                         : INPUT_PIN  = 63     ; -- LC43
+    "O9_5"                         : INPUT_PIN  = 51     ;
+    "O9_7"                         : INPUT_PIN  = 64     ; -- LC44
+    "O10_5"                        : INPUT_PIN  = 39     ; -- LC28
+    "O10_7"                        : INPUT_PIN  = 65     ; -- LC45
+    "O11_5"                        : INPUT_PIN  = 40     ; -- LC29
+    "O11_7"                        : INPUT_PIN  = 66     ; -- LC46
+    "O12_5"                        : INPUT_PIN  = 57     ; -- LC37
+    "O12_7"                        : INPUT_PIN  = 67     ; -- LC47
+    "O13_5"                        : INPUT_PIN  = 58     ; -- LC38
+    "O13_7"                        : INPUT_PIN  = 44     ; -- LC33
+    "O14_5"                        : INPUT_PIN  = 41     ; -- LC30
+    "O14_7"                        : INPUT_PIN  = 45     ; -- LC34
+    "O15_5"                        : INPUT_PIN  = 42     ; -- LC31
+    "O15_7"                        : INPUT_PIN  = 23     ; -- LC13
+    "RD"                           : INPUT_PIN  = 53     ;
+    "Q5"                           : OUTPUT_PIN = 43     ; -- LC32
+    "Q7"                           : OUTPUT_PIN = 68     ; -- LC48
+    "|out8_4:13|out:1|~8~1~3~2"    : LOCATION   = LC38   ; -- PIN 58
+    "|out8_4:13|out:1|~8~1~3~3"    : LOCATION   = LC37   ; -- PIN 57
+    "|out8_4:13|out:1|~8~1~3~4"    : LOCATION   = LC40   ; -- PIN 60
+    "|out8_4:13|out:17|~8~1~3~2"   : LOCATION   = LC34   ; -- PIN 45
+    "|out8_4:13|out:17|~8~1~3~3"   : LOCATION   = LC33   ; -- PIN 44
+    "|out8_4:13|out:17|~8~1~3~4"   : LOCATION   = LC36   ; -- PIN 47
+
+END;
+
+CHIP "out56_11"
+BEGIN
+
+    DEVICE = "EP1800ILC-70";
+
+    "AB0"                          : INPUT_PIN  = 56     ;
+    "AB1"                          : INPUT_PIN  = 55     ;
+    "AB2"                          : INPUT_PIN  = 54     ;
+    "AB3"                          : INPUT_PIN  = 50     ;
+    "A0"                           : INPUT_PIN  = 49     ;
+    "A1"                           : INPUT_PIN  = 48     ;
+    "|out8_4:13|out:22|~8~1~2~2"   : INPUT_PIN  = 24     ; -- LC14
+    "O0_2"                         : INPUT_PIN  = 47     ; -- LC36
+    "O0_4"                         : INPUT_PIN  = 60     ; -- LC40
+    "O1_2"                         : INPUT_PIN  = 22     ;
+    "O1_4"                         : INPUT_PIN  = 21     ;
+    "O2_2"                         : INPUT_PIN  = 20     ;
+    "O2_4"                         : INPUT_PIN  = 16     ;
+    "O3_2"                         : INPUT_PIN  = 46     ; -- LC35
+    "O3_4"                         : INPUT_PIN  = 59     ; -- LC39
+    "O4_2"                         : INPUT_PIN  = 36     ; -- LC25
+    "O4_4"                         : INPUT_PIN  = 61     ; -- LC41
+    "O5_2"                         : INPUT_PIN  = 15     ;
+    "O5_4"                         : INPUT_PIN  = 14     ;
+    "O6_2"                         : INPUT_PIN  = 17     ;
+    "O6_4"                         : INPUT_PIN  = 19     ;
+    "O7_2"                         : INPUT_PIN  = 37     ; -- LC26
+    "O7_4"                         : INPUT_PIN  = 62     ; -- LC42
+    "O8_2"                         : INPUT_PIN  = 38     ; -- LC27
+    "O8_4"                         : INPUT_PIN  = 63     ; -- LC43
+    "O9_2"                         : INPUT_PIN  = 51     ;
+    "O9_4"                         : INPUT_PIN  = 64     ; -- LC44
+    "O10_2"                        : INPUT_PIN  = 39     ; -- LC28
+    "O10_4"                        : INPUT_PIN  = 65     ; -- LC45
+    "O11_2"                        : INPUT_PIN  = 40     ; -- LC29
+    "O11_4"                        : INPUT_PIN  = 66     ; -- LC46
+    "O12_2"                        : INPUT_PIN  = 57     ; -- LC37
+    "O12_4"                        : INPUT_PIN  = 67     ; -- LC47
+    "O13_2"                        : INPUT_PIN  = 58     ; -- LC38
+    "O13_4"                        : INPUT_PIN  = 44     ; -- LC33
+    "O14_2"                        : INPUT_PIN  = 41     ; -- LC30
+    "O14_4"                        : INPUT_PIN  = 45     ; -- LC34
+    "O15_2"                        : INPUT_PIN  = 42     ; -- LC31
+    "O15_4"                        : INPUT_PIN  = 23     ; -- LC13
+    "RD"                           : INPUT_PIN  = 53     ;
+    "Q2"                           : OUTPUT_PIN = 43     ; -- LC32
+    "Q4"                           : OUTPUT_PIN = 68     ; -- LC48
+    "|out8_4:13|out:18|~8~1~3~2"   : LOCATION   = LC38   ; -- PIN 58
+    "|out8_4:13|out:18|~8~1~3~3"   : LOCATION   = LC37   ; -- PIN 57
+    "|out8_4:13|out:18|~8~1~3~4"   : LOCATION   = LC40   ; -- PIN 60
+    "|out8_4:13|out:20|~8~1~3~2"   : LOCATION   = LC34   ; -- PIN 45
+    "|out8_4:13|out:20|~8~1~3~3"   : LOCATION   = LC33   ; -- PIN 44
+    "|out8_4:13|out:20|~8~1~3~4"   : LOCATION   = LC36   ; -- PIN 47
+
+END;
+
+CHIP "out56_12"
+BEGIN
+
+    DEVICE = "EP1800ILC-70";
+
+    "AB0"                          : INPUT_PIN  = 56     ;
+    "AB1"                          : INPUT_PIN  = 55     ;
+    "AB2"                          : INPUT_PIN  = 54     ;
+    "AB3"                          : INPUT_PIN  = 50     ;
+    "A0"                           : INPUT_PIN  = 49     ;
+    "A1"                           : INPUT_PIN  = 48     ;
+    "O0_1"                         : INPUT_PIN  = 36     ; -- LC25
+    "O0_6"                         : INPUT_PIN  = 60     ; -- LC40
+    "O1_1"                         : INPUT_PIN  = 22     ;
+    "O1_6"                         : INPUT_PIN  = 21     ;
+    "O2_1"                         : INPUT_PIN  = 20     ;
+    "O2_6"                         : INPUT_PIN  = 16     ;
+    "O3_1"                         : INPUT_PIN  = 37     ; -- LC26
+    "O3_6"                         : INPUT_PIN  = 59     ; -- LC39
+    "O4_1"                         : INPUT_PIN  = 38     ; -- LC27
+    "O4_6"                         : INPUT_PIN  = 58     ; -- LC38
+    "O5_1"                         : INPUT_PIN  = 15     ;
+    "O5_6"                         : INPUT_PIN  = 14     ;
+    "O6_1"                         : INPUT_PIN  = 17     ;
+    "O6_6"                         : INPUT_PIN  = 19     ;
+    "O7_1"                         : INPUT_PIN  = 39     ; -- LC28
+    "O7_6"                         : INPUT_PIN  = 57     ; -- LC37
+    "O8_1"                         : INPUT_PIN  = 40     ; -- LC29
+    "O8_6"                         : INPUT_PIN  = 61     ; -- LC41
+    "O9_1"                         : INPUT_PIN  = 51     ;
+    "O9_6"                         : INPUT_PIN  = 62     ; -- LC42
+    "O10_1"                        : INPUT_PIN  = 46     ; -- LC35
+    "O10_6"                        : INPUT_PIN  = 63     ; -- LC43
+    "O11_1"                        : INPUT_PIN  = 41     ; -- LC30
+    "O11_6"                        : INPUT_PIN  = 64     ; -- LC44
+    "O12_1"                        : INPUT_PIN  = 42     ; -- LC31
+    "O12_6"                        : INPUT_PIN  = 65     ; -- LC45
+    "O13_1"                        : INPUT_PIN  = 47     ; -- LC36
+    "O13_6"                        : INPUT_PIN  = 23     ; -- LC13
+    "O14_1"                        : INPUT_PIN  = 24     ; -- LC14
+    "O14_6"                        : INPUT_PIN  = 25     ; -- LC15
+    "O15_1"                        : INPUT_PIN  = 43     ; -- LC32
+    "O15_6"                        : INPUT_PIN  = 26     ; -- LC16
+    "RD"                           : INPUT_PIN  = 53     ;
+    "|out8_4:13|out:22|~8~1~2~2"   : OUTPUT_PIN = 68     ; -- LC48  -- ~PIN000
+    "Q1"                           : OUTPUT_PIN = 67     ; -- LC47
+    "Q6"                           : OUTPUT_PIN = 66     ; -- LC46
+    "|out8_4:13|out:16|~8~1~3~2"   : LOCATION   = LC40   ; -- PIN 60
+    "|out8_4:13|out:16|~8~1~3~3"   : LOCATION   = LC39   ; -- PIN 59
+    "|out8_4:13|out:16|~8~1~3~4"   : LOCATION   = LC38   ; -- PIN 58
+    "|out8_4:13|out:21|~8~1~3~2"   : LOCATION   = LC33   ; -- PIN 44
+    "|out8_4:13|out:21|~8~1~3~3"   : LOCATION   = LC37   ; -- PIN 57
+    "|out8_4:13|out:21|~8~1~3~4"   : LOCATION   = LC34   ; -- PIN 45
+
+END;
+
+CHIP "out56_13"
+BEGIN
+
+    DEVICE = "EP1800ILC-70";
+
+    "AB0"                          : INPUT_PIN  = 56     ;
+    "AB1"                          : INPUT_PIN  = 55     ;
+    "AB2"                          : INPUT_PIN  = 54     ;
+    "AB3"                          : INPUT_PIN  = 50     ;
+    "A0"                           : INPUT_PIN  = 49     ;
+    "A1"                           : INPUT_PIN  = 48     ;
+    "|out8_4:13|out:22|~8~1~2~2"   : INPUT_PIN  = 24     ; -- LC14
+    "O0_0"                         : INPUT_PIN  = 47     ; -- LC36
+    "O0_3"                         : INPUT_PIN  = 60     ; -- LC40
+    "O1_0"                         : INPUT_PIN  = 22     ;
+    "O1_3"                         : INPUT_PIN  = 21     ;
+    "O2_0"                         : INPUT_PIN  = 20     ;
+    "O2_3"                         : INPUT_PIN  = 16     ;
+    "O3_0"                         : INPUT_PIN  = 46     ; -- LC35
+    "O3_3"                         : INPUT_PIN  = 59     ; -- LC39
+    "O4_0"                         : INPUT_PIN  = 36     ; -- LC25
+    "O4_3"                         : INPUT_PIN  = 61     ; -- LC41
+    "O5_0"                         : INPUT_PIN  = 15     ;
+    "O5_3"                         : INPUT_PIN  = 14     ;
+    "O6_0"                         : INPUT_PIN  = 17     ;
+    "O6_3"                         : INPUT_PIN  = 19     ;
+    "O7_0"                         : INPUT_PIN  = 37     ; -- LC26
+    "O7_3"                         : INPUT_PIN  = 62     ; -- LC42
+    "O8_0"                         : INPUT_PIN  = 38     ; -- LC27
+    "O8_3"                         : INPUT_PIN  = 63     ; -- LC43
+    "O9_0"                         : INPUT_PIN  = 51     ;
+    "O9_3"                         : INPUT_PIN  = 64     ; -- LC44
+    "O10_0"                        : INPUT_PIN  = 39     ; -- LC28
+    "O10_3"                        : INPUT_PIN  = 65     ; -- LC45
+    "O11_0"                        : INPUT_PIN  = 40     ; -- LC29
+    "O11_3"                        : INPUT_PIN  = 66     ; -- LC46
+    "O12_0"                        : INPUT_PIN  = 57     ; -- LC37
+    "O12_3"                        : INPUT_PIN  = 67     ; -- LC47
+    "O13_0"                        : INPUT_PIN  = 58     ; -- LC38
+    "O13_3"                        : INPUT_PIN  = 44     ; -- LC33
+    "O14_0"                        : INPUT_PIN  = 41     ; -- LC30
+    "O14_3"                        : INPUT_PIN  = 45     ; -- LC34
+    "O15_0"                        : INPUT_PIN  = 42     ; -- LC31
+    "O15_3"                        : INPUT_PIN  = 23     ; -- LC13
+    "RD"                           : INPUT_PIN  = 53     ;
+    "Q0"                           : OUTPUT_PIN = 43     ; -- LC32
+    "Q3"                           : OUTPUT_PIN = 68     ; -- LC48
+    "|out8_4:13|out:19|~8~1~3~2"   : LOCATION   = LC38   ; -- PIN 58
+    "|out8_4:13|out:19|~8~1~3~3"   : LOCATION   = LC37   ; -- PIN 57
+    "|out8_4:13|out:19|~8~1~3~4"   : LOCATION   = LC40   ; -- PIN 60
+    "|out8_4:13|out:22|~8~1~3~2"   : LOCATION   = LC34   ; -- PIN 45
+    "|out8_4:13|out:22|~8~1~3~3"   : LOCATION   = LC33   ; -- PIN 44
+    "|out8_4:13|out:22|~8~1~3~4"   : LOCATION   = LC36   ; -- PIN 47
+
+END;

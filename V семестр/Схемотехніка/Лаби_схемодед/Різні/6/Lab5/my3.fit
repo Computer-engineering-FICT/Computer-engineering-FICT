@@ -1,0 +1,79 @@
+-- MAX+plus II Compiler Fit File      
+-- Version 10.1 06/12/2001            
+-- Compiled: 12/24/2008 02:23:35      
+
+-- Copyright (C) 1988-2001 Altera Corporation
+-- Any megafunction design, and related net list (encrypted or decrypted),
+-- support information, device programming or simulation file, and any other
+-- associated documentation or information provided by Altera or a partner
+-- under Altera's Megafunction Partnership Program may be used only to
+-- program PLD devices (but not masked PLD devices) from Altera.  Any other
+-- use of such megafunction design, net list, support information, device
+-- programming or simulation file, or any other related documentation or
+-- information is prohibited for any other purpose, including, but not
+-- limited to modification, reverse engineering, de-compiling, or use with
+-- any other silicon devices, unless such use is explicitly licensed under
+-- a separate agreement with Altera or a megafunction partner.  Title to
+-- the intellectual property, including patents, copyrights, trademarks,
+-- trade secrets, or maskworks, embodied in any such megafunction design,
+-- net list, support information, device programming or simulation file, or
+-- any other related documentation or information provided by Altera or a
+-- megafunction partner, remains with Altera, the megafunction partner, or
+-- their respective licensors.  No other licenses, including any licenses
+-- needed under any third party's intellectual property, are provided herein.
+
+CHIP "my3"
+BEGIN
+
+    DEVICE = "EPM7032BLC44-3";
+
+    "A0"                           : INPUT_PIN  = 12     ; -- LC8
+    "A1"                           : INPUT_PIN  = 14     ; -- LC10
+    "A2"                           : INPUT_PIN  = 16     ; -- LC11
+    "C"                            : INPUT_PIN  = 43     ;
+    "D0"                           : INPUT_PIN  = 11     ; -- LC7
+    "D1"                           : INPUT_PIN  = 4      ; -- LC1
+    "D2"                           : INPUT_PIN  = 5      ; -- LC2
+    "D3"                           : INPUT_PIN  = 6      ; -- LC3
+    "E"                            : INPUT_PIN  = 8      ; -- LC5
+    "WR"                           : INPUT_PIN  = 9      ; -- LC6
+    "DO0"                          : OUTPUT_PIN = 41     ; -- LC17
+    "DO1"                          : OUTPUT_PIN = 31     ; -- LC26
+    "DO2"                          : OUTPUT_PIN = 29     ; -- LC27
+    "DO3"                          : OUTPUT_PIN = 28     ; -- LC28
+    "|ram:14|:33"                  : LOCATION   = LC25   ; -- PIN 32  -- |ram:14|Qi
+    "|ram:15|:33"                  : LOCATION   = LC24   ; -- PIN 33  -- |ram:15|Qi
+    "|ram:16|:33"                  : LOCATION   = LC23   ; -- PIN 34  -- |ram:16|Qi
+    "|ram:17|:33"                  : LOCATION   = LC22   ; -- PIN 36  -- |ram:17|Qi
+    "|ram:18|:33"                  : LOCATION   = LC21   ; -- PIN 37  -- |ram:18|Qi
+    "|ram:19|:33"                  : LOCATION   = LC20   ; -- PIN 38  -- |ram:19|Qi
+    "|ram:20|:33"                  : LOCATION   = LC19   ; -- PIN 39  -- |ram:20|Qi
+    "|ram:21|:33"                  : LOCATION   = LC18   ; -- PIN 40  -- |ram:21|Qi
+
+END;
+
+INTERNAL_INFO "my3"
+BEGIN
+	DEVICE = EPM7032BLC44-3;
+	LC17    : LORAX = "G13R0";
+	LC28    : LORAX = "G41R0";
+	LC27    : LORAX = "G40R0";
+	LC26    : LORAX = "G39R0";
+	OH7R0P12 : LORAX = "G63R0,PA33R0C1";
+	OH10R0P16 : LORAX = "G2R0,PA0R0C1";
+	OH9R0P14 : LORAX = "G1R0,PA4R0C1";
+	OH4R0P8 : LORAX = "G60R0,PA29R0C1";
+	LC25    : LORAX = "G38R0,PA18R0C1";
+	OH6R0P11 : LORAX = "G62R0,PA31R0C1";
+	OH5R0P9 : LORAX = "G61R0,PA28R0C1";
+	LC21    : LORAX = "G30R0,PA16R0C1";
+	LC22    : LORAX = "G31R0,PA14R0C1";
+	OH2R0P6 : LORAX = "G45R0,PA22R0C1";
+	LC18    : LORAX = "G14R0,PA6R0C1";
+	LC23    : LORAX = "G32R0,PA12R0C1";
+	OH1R0P5 : LORAX = "G44R0,PA19R0C1";
+	LC19    : LORAX = "G15R0,PA3R0C1";
+	LC24    : LORAX = "G33R0,PA10R0C1";
+	OH0R0P4 : LORAX = "G43R0,PA20R0C1";
+	LC20    : LORAX = "G16R0,PA1R0C1";
+END;

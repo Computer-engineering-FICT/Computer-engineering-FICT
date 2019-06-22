@@ -1,0 +1,372 @@
+Project Information                       d:\maxplus2\max2lib\lab3\plmt_d8.rpt
+
+MAX+plus II Compiler Report File
+Version 10.1 06/12/2001
+Compiled: 10/12/2010 20:11:07
+
+Copyright (C) 1988-2001 Altera Corporation
+Any megafunction design, and related net list (encrypted or decrypted),
+support information, device programming or simulation file, and any other
+associated documentation or information provided by Altera or a partner
+under Altera's Megafunction Partnership Program may be used only to
+program PLD devices (but not masked PLD devices) from Altera.  Any other
+use of such megafunction design, net list, support information, device
+programming or simulation file, or any other related documentation or
+information is prohibited for any other purpose, including, but not
+limited to modification, reverse engineering, de-compiling, or use with
+any other silicon devices, unless such use is explicitly licensed under
+a separate agreement with Altera or a megafunction partner.  Title to
+the intellectual property, including patents, copyrights, trademarks,
+trade secrets, or maskworks, embodied in any such megafunction design,
+net list, support information, device programming or simulation file, or
+any other related documentation or information provided by Altera or a
+megafunction partner, remains with Altera, the megafunction partner, or
+their respective licensors.  No other licenses, including any licenses
+needed under any third party's intellectual property, are provided herein.
+
+
+
+***** Project compilation was successful
+
+
+
+
+** DEVICE SUMMARY **
+
+Chip/                     Input   Output   Bidir 			    LCs
+POF       Device          Pins    Pins     Pins      LCs    % Utilized
+
+plmt_d8   EP610ILC-10      9        8        0       8           50 %
+
+User Pins:                 9        8        0  
+
+
+
+Project Information                       d:\maxplus2\max2lib\lab3\plmt_d8.rpt
+
+** AUTO GLOBAL SIGNALS **
+
+
+
+INFO: Signal 'ABW' chosen for auto global Clock
+
+
+Project Information                       d:\maxplus2\max2lib\lab3\plmt_d8.rpt
+
+** FILE HIERARCHY **
+
+
+
+|plmt_d:7|
+|plmt_d:11|
+|plmt_d:6|
+|plmt_d:5|
+|plmt_d:4|
+|plmt_d:3|
+|plmt_d:2|
+|plmt_d:1|
+
+
+Device-Specific Information:              d:\maxplus2\max2lib\lab3\plmt_d8.rpt
+plmt_d8
+
+***** Logic for device 'plmt_d8' compiled without errors.
+
+
+
+
+Device: EP610ILC-10
+
+Device Options:
+    Turbo Bit                                    = ON
+    Security Bit                                 = OFF
+
+                                R  
+                                E  
+                                S  
+                                E  
+                                R  
+                    A  V  V     V  
+              O  D  B  C  C  D  E  
+              7  3  W  C  C  0  D  
+            -----------------------_ 
+          /   4  3  2  1 28 27 26   | 
+         |                          |
+      O6 |  5                    25 | RESERVED 
+         |                          |
+      O5 |  6                    24 | RESERVED 
+         |                          |
+      O4 |  7                    23 | RESERVED 
+         |                          |
+      O3 |  8    EP610ILC-10     22 | D7 
+         |                          |
+      O2 |  9                    21 | D6 
+         |                          |
+      O1 | 10                    20 | D5 
+         |                          |
+    N.C. | 11                    19 | N.C. 
+         |_  12 13 14 15 16 17 18  _| 
+           ------------------------ 
+              O  D  G  G  G  D  D  
+              0  2  N  N  N  1  4  
+                    D  D  D        
+                                   
+                                   
+                                   
+                                   
+                                   
+
+
+N.C. = No Connect. This pin has no internal connection to the device.
+VCC = Dedicated power pin, which MUST be connected to VCC.
+GND = Dedicated ground pin or unused dedicated input, which MUST be connected to GND.
+RESERVED = Unused I/O pin, which MUST be left unconnected.
+
+
+
+Device-Specific Information:              d:\maxplus2\max2lib\lab3\plmt_d8.rpt
+plmt_d8
+
+** RESOURCE USAGE **
+
+Logic Array Block     Logic Cells   I/O Pins       
+
+A:      LC1 - LC8     0/ 8(  0%)   4/ 8( 50%) 
+B:     LC9 - LC16     8/ 8(100%)   8/ 8(100%) 
+
+
+Total dedicated input pins used:                 4/4      (100%)
+Total I/O pins used:                            12/16     ( 75%)
+Total logic cells used:                          8/16     ( 50%)
+Average fan-in:                                  2.00
+Total fan-in:                                    16
+
+Total input pins required:                       9
+Total output pins required:                      8
+Total bidirectional pins required:               0
+Total logic cells required:                      8
+Total flipflops required:                        8
+
+Synthesized logic cells:                         0/  16   (  0%)
+
+
+
+Device-Specific Information:              d:\maxplus2\max2lib\lab3\plmt_d8.rpt
+plmt_d8
+
+** INPUTS **
+
+                                        Fan-In    Fan-Out
+ Pin     LC  LAB  Primitive    Code   INP  FBK  OUT  FBK  Name
+  27      -   -       INPUT              0    0    1    0  D0
+  17      -   -       INPUT              0    0    1    0  D1
+  13      -   -       INPUT              0    0    1    0  D2
+   3      -   -       INPUT              0    0    1    0  D3
+  18    (8)  (A)      INPUT              0    0    1    0  D4
+  20    (7)  (A)      INPUT              0    0    1    0  D5
+  21    (6)  (A)      INPUT              0    0    1    0  D6
+  22    (5)  (A)      INPUT              0    0    1    0  D7
+
+
+Code:
+
+s = Synthesized pin or logic cell
++ = Synchronous flipflop
+! = NOT gate push-back
+r = Fitter-inserted logic cell
+
+
+Device-Specific Information:              d:\maxplus2\max2lib\lab3\plmt_d8.rpt
+plmt_d8
+
+** OUTPUTS **
+
+                                        Fan-In    Fan-Out
+ Pin     LC  LAB  Primitive    Code   INP  FBK  OUT  FBK  Name
+  12     16    B         FF   +          1    0    0    0  O0 (|plmt_d:1|:4)
+  10     15    B         FF   +          1    0    0    0  O1 (|plmt_d:2|:4)
+   9     14    B         FF   +          1    0    0    0  O2 (|plmt_d:3|:4)
+   8     13    B         FF   +          1    0    0    0  O3 (|plmt_d:4|:4)
+   7     12    B         FF   +          1    0    0    0  O4 (|plmt_d:5|:4)
+   6     11    B         FF   +          1    0    0    0  O5 (|plmt_d:6|:4)
+   5     10    B         FF   +          1    0    0    0  O6 (|plmt_d:7|:4)
+   4      9    B         FF   +          1    0    0    0  O7 (|plmt_d:11|:4)
+
+
+Code:
+
+s = Synthesized pin or logic cell
++ = Synchronous flipflop
+! = NOT gate push-back
+r = Fitter-inserted logic cell
+
+
+Device-Specific Information:              d:\maxplus2\max2lib\lab3\plmt_d8.rpt
+plmt_d8
+
+** LOGIC CELL INTERCONNECTIONS **
+
+                         Logic cells placed in LAB 'B'
+        +--------------- LC16 O0
+        | +------------- LC15 O1
+        | | +----------- LC14 O2
+        | | | +--------- LC13 O3
+        | | | | +------- LC12 O4
+        | | | | | +----- LC11 O5
+        | | | | | | +--- LC10 O6
+        | | | | | | | +- LC9 O7
+        | | | | | | | | 
+        | | | | | | | |   Other LABs fed by signals
+        | | | | | | | |   that feed LAB 'B'
+LC      | | | | | | | | 
+LC16 -> - - - - - - - - | <-- O0
+LC15 -> - - - - - - - - | <-- O1
+LC14 -> - - - - - - - - | <-- O2
+LC13 -> - - - - - - - - | <-- O3
+LC12 -> - - - - - - - - | <-- O4
+LC11 -> - - - - - - - - | <-- O5
+LC10 -> - - - - - - - - | <-- O6
+LC9  -> - - - - - - - - | <-- O7
+
+Pin
+27   -> @ - - - - - - - | <-- D0
+17   -> - @ - - - - - - | <-- D1
+13   -> - - @ - - - - - | <-- D2
+3    -> - - - @ - - - - | <-- D3
+18   -> - - - - * - - - | <-- D4
+20   -> - - - - - * - - | <-- D5
+21   -> - - - - - - * - | <-- D6
+22   -> - - - - - - - * | <-- D7
+
+
+* = The logic cell or pin is an input to the logic cell (or LAB) through the PIA.
+@ = The input pin or logic cell feeds the logic cell (or LAB) using direct interconnect.
+- = The logic cell or pin is not an input to the logic cell (or LAB).
+
+
+Device-Specific Information:              d:\maxplus2\max2lib\lab3\plmt_d8.rpt
+plmt_d8
+
+** EQUATIONS **
+
+ABW      : INPUT;
+D0       : INPUT;
+D1       : INPUT;
+D2       : INPUT;
+D3       : INPUT;
+D4       : INPUT;
+D5       : INPUT;
+D6       : INPUT;
+D7       : INPUT;
+
+-- Node name is 'O0' = '|plmt_d:1|O' 
+-- Equation name is 'O0', type is output 
+ O0      = DFF( D0, GLOBAL( ABW),  VCC,  VCC);
+
+-- Node name is 'O1' = '|plmt_d:2|O' 
+-- Equation name is 'O1', type is output 
+ O1      = DFF( D1, GLOBAL( ABW),  VCC,  VCC);
+
+-- Node name is 'O2' = '|plmt_d:3|O' 
+-- Equation name is 'O2', type is output 
+ O2      = DFF( D2, GLOBAL( ABW),  VCC,  VCC);
+
+-- Node name is 'O3' = '|plmt_d:4|O' 
+-- Equation name is 'O3', type is output 
+ O3      = DFF( D3, GLOBAL( ABW),  VCC,  VCC);
+
+-- Node name is 'O4' = '|plmt_d:5|O' 
+-- Equation name is 'O4', type is output 
+ O4      = DFF( D4, GLOBAL( ABW),  VCC,  VCC);
+
+-- Node name is 'O5' = '|plmt_d:6|O' 
+-- Equation name is 'O5', type is output 
+ O5      = DFF( D5, GLOBAL( ABW),  VCC,  VCC);
+
+-- Node name is 'O6' = '|plmt_d:7|O' 
+-- Equation name is 'O6', type is output 
+ O6      = DFF( D6, GLOBAL( ABW),  VCC,  VCC);
+
+-- Node name is 'O7' = '|plmt_d:11|O' 
+-- Equation name is 'O7', type is output 
+ O7      = DFF( D7, GLOBAL( ABW),  VCC,  VCC);
+
+
+
+Project Information                       d:\maxplus2\max2lib\lab3\plmt_d8.rpt
+
+** COMPILATION SETTINGS & TIMES **
+
+Processing Menu Commands
+------------------------
+
+Design Doctor                             = off
+
+Logic Synthesis:
+
+   Synthesis Type Used                    = Standard
+
+   Default Synthesis Style                = NORMAL
+
+      Logic option settings in 'NORMAL' style for 'CLASSIC' family
+
+      MINIMIZATION                        = full
+      SOFT_BUFFER_INSERTION               = on
+      TURBO_BIT                           = on
+      USE_LPM_FOR_AHDL_OPERATORS          = off
+
+   Other logic synthesis settings:
+
+      Automatic Global Clock              = on
+      Automatic Global Clear              = on
+      Automatic Global Preset             = on
+      Automatic Global Output Enable      = on
+      Automatic Fast I/O                  = off
+      Automatic Register Packing          = off
+      Automatic Open-Drain Pins           = on
+      Automatic Implement in EAB          = off
+      One-Hot State Machine Encoding      = off
+      Optimize                            = 5
+
+Default Timing Specifications: None
+
+Cut All Bidir Feedback Timing Paths       = on
+Cut All Clear & Preset Timing Paths       = on
+
+Ignore Timing Assignments                 = off
+
+Functional SNF Extractor                  = off
+
+Linked SNF Extractor                      = off
+Timing SNF Extractor                      = on
+Optimize Timing SNF                       = off
+Generate AHDL TDO File                    = off
+Fitter Settings                           = NORMAL
+Smart Recompile                           = off
+Total Recompile                           = off
+
+Interfaces Menu Commands
+------------------------
+
+EDIF Netlist Writer                       = off
+Verilog Netlist Writer                    = off
+VHDL Netlist Writer                       = off
+
+Compilation Times
+-----------------
+
+   Compiler Netlist Extractor             00:00:00
+   Database Builder                       00:00:00
+   Logic Synthesizer                      00:00:00
+   Partitioner                            00:00:00
+   Fitter                                 00:00:00
+   Timing SNF Extractor                   00:00:00
+   Assembler                              00:00:00
+   --------------------------             --------
+   Total Time                             00:00:00
+
+
+Memory Allocated
+-----------------
+
+Peak memory allocated during compilation  = 2,516K

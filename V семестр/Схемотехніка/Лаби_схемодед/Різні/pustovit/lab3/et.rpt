@@ -1,0 +1,362 @@
+Project Information              c:\univer\circuits\schemlab3\pmaschem3\et.rpt
+
+MAX+plus II Compiler Report File
+Version 10.1 06/12/2001
+Compiled: 10/20/2009 23:42:31
+
+Copyright (C) 1988-2001 Altera Corporation
+Any megafunction design, and related net list (encrypted or decrypted),
+support information, device programming or simulation file, and any other
+associated documentation or information provided by Altera or a partner
+under Altera's Megafunction Partnership Program may be used only to
+program PLD devices (but not masked PLD devices) from Altera.  Any other
+use of such megafunction design, net list, support information, device
+programming or simulation file, or any other related documentation or
+information is prohibited for any other purpose, including, but not
+limited to modification, reverse engineering, de-compiling, or use with
+any other silicon devices, unless such use is explicitly licensed under
+a separate agreement with Altera or a megafunction partner.  Title to
+the intellectual property, including patents, copyrights, trademarks,
+trade secrets, or maskworks, embodied in any such megafunction design,
+net list, support information, device programming or simulation file, or
+any other related documentation or information provided by Altera or a
+megafunction partner, remains with Altera, the megafunction partner, or
+their respective licensors.  No other licenses, including any licenses
+needed under any third party's intellectual property, are provided herein.
+
+
+
+***** Project compilation was successful
+
+
+
+
+** DEVICE SUMMARY **
+
+Chip/                     Input   Output   Bidir         Shareable
+POF       Device          Pins    Pins     Pins     LCs  Expanders  % Utilized
+
+et        EPM7032LC44-6    12       2        0      2       0           6  %
+
+User Pins:                 11       1        0  
+
+
+
+Project Information              c:\univer\circuits\schemlab3\pmaschem3\et.rpt
+
+** MULTIPLE PIN CONNECTIONS **
+
+
+For node name '~88~2' (Same as node '~PIN001')
+For node name '~88~1' (Same as node '~PIN002')
+Connect: {et@44,        et@40}
+
+
+Device-Specific Information:     c:\univer\circuits\schemlab3\pmaschem3\et.rpt
+et
+
+***** Logic for device 'et' compiled without errors.
+
+
+
+
+Device: EPM7032LC44-6
+
+Device Options:
+    Turbo Bit                                    = ON
+    Security Bit                                 = OFF
+
+                                               
+                                ~           ~  
+                                P           P  
+                                I           I  
+                                N           N  
+                    A  V  G  G  0  G  G     0  
+              d  r  1  C  N  N  0  N  N  E  0  
+              i  d  2  C  D  D  1  D  D  t  2  
+            -----------------------------------_ 
+          /   6  5  4  3  2  1 44 43 42 41 40   | 
+dcA10A11 |  7                                39 | RESERVED 
+  dcA8A9 |  8                                38 | RESERVED 
+  dcA6A7 |  9                                37 | RESERVED 
+     GND | 10                                36 | RESERVED 
+  dcA4A5 | 11                                35 | VCC 
+  dcA2A3 | 12         EPM7032LC44-6          34 | RESERVED 
+  dcA0A1 | 13                                33 | RESERVED 
+   clock | 14                                32 | RESERVED 
+     VCC | 15                                31 | RESERVED 
+     wr0 | 16                                30 | GND 
+RESERVED | 17                                29 | RESERVED 
+         |_  18 19 20 21 22 23 24 25 26 27 28  _| 
+           ------------------------------------ 
+              R  R  R  R  G  V  R  R  R  R  R  
+              E  E  E  E  N  C  E  E  E  E  E  
+              S  S  S  S  D  C  S  S  S  S  S  
+              E  E  E  E        E  E  E  E  E  
+              R  R  R  R        R  R  R  R  R  
+              V  V  V  V        V  V  V  V  V  
+              E  E  E  E        E  E  E  E  E  
+              D  D  D  D        D  D  D  D  D  
+
+
+N.C. = No Connect. This pin has no internal connection to the device.
+VCC = Dedicated power pin, which MUST be connected to VCC.
+GND = Dedicated ground pin or unused dedicated input, which MUST be connected to GND.
+RESERVED = Unused I/O pin, which MUST be left unconnected.
+
+
+
+Device-Specific Information:     c:\univer\circuits\schemlab3\pmaschem3\et.rpt
+et
+
+** RESOURCE USAGE **
+
+                                                Shareable     External
+Logic Array Block     Logic Cells   I/O Pins    Expanders   Interconnect
+
+A:     LC1 - LC16     0/16(  0%)  11/16( 68%)   0/16(  0%)   0/36(  0%) 
+B:    LC17 - LC32     2/16( 12%)   2/16( 12%)   0/16(  0%)  11/36( 30%) 
+
+
+Total dedicated input pins used:                 1/4      ( 25%)
+Total I/O pins used:                            13/32     ( 40%)
+Total logic cells used:                          2/32     (  6%)
+Total shareable expanders used:                  0/32     (  0%)
+Total Turbo logic cells used:                    2/32     (  6%)
+Total shareable expanders not available (n/a):   0/32     (  0%)
+Average fan-in:                                  9.50
+Total fan-in:                                    19
+
+Total input pins required:                      12
+Total output pins required:                      2
+Total bidirectional pins required:               0
+Total logic cells required:                      2
+Total flipflops required:                        1
+Total product terms required:                    3
+Total logic cells lending parallel expanders:    0
+Total shareable expanders in database:           0
+
+Synthesized logic cells:                         0/  32   (  0%)
+
+
+
+Device-Specific Information:     c:\univer\circuits\schemlab3\pmaschem3\et.rpt
+et
+
+** INPUTS **
+
+                                         Shareable
+                                         Expanders     Fan-In    Fan-Out
+ Pin     LC  LAB  Primitive    Code   Total Shared n/a INP  FBK  OUT  FBK  Name
+   4    (1)  (A)      INPUT               0      0   0    0    0    2    0  A12
+  14   (10)  (A)      INPUT               0      0   0    0    0    1    0  clock
+  13    (9)  (A)      INPUT               0      0   0    0    0    2    0  dcA0A1
+  12    (8)  (A)      INPUT               0      0   0    0    0    2    0  dcA2A3
+  11    (7)  (A)      INPUT               0      0   0    0    0    2    0  dcA4A5
+   9    (6)  (A)      INPUT               0      0   0    0    0    2    0  dcA6A7
+   8    (5)  (A)      INPUT               0      0   0    0    0    2    0  dcA8A9
+   7    (4)  (A)      INPUT               0      0   0    0    0    2    0  dcA10A11
+   6    (3)  (A)      INPUT               0      0   0    0    0    1    0  di
+  44      -   -       INPUT  G s          0      0   0    0    0    0    0  ~PIN001
+   5    (2)  (A)      INPUT               0      0   0    0    0    1    0  rd
+  16   (11)  (A)      INPUT               0      0   0    0    0    1    0  wr0
+
+
+Code:
+
+s = Synthesized pin or logic cell
+t = Turbo logic cell
++ = Synchronous flipflop
+! = NOT gate push-back
+r = Fitter-inserted logic cell
+G = Global Source. Fan-out destinations counted here do not include destinations
+that are driven using global routing resources. Refer to the Auto Global Signals,
+Clock Signals, Clear Signals, Synchronous Load Signals, and Synchronous Clear Signals
+Sections of this Report File for information on which signals' fan-outs are used as
+Clock, Clear, Preset, Output Enable, and synchronous Load signals.
+
+
+Device-Specific Information:     c:\univer\circuits\schemlab3\pmaschem3\et.rpt
+et
+
+** OUTPUTS **
+
+                                         Shareable
+                                         Expanders     Fan-In    Fan-Out
+ Pin     LC  LAB  Primitive    Code   Total Shared n/a INP  FBK  OUT  FBK  Name
+  41     17    B     TRI/FF      t        0      0   0   10    0    0    0  Et (:34)
+  40     18    B     OUTPUT      t        0      0   0    8    0    0    0  ~PIN002
+
+
+Code:
+
+s = Synthesized pin or logic cell
+t = Turbo logic cell
++ = Synchronous flipflop
+! = NOT gate push-back
+r = Fitter-inserted logic cell
+
+
+Device-Specific Information:     c:\univer\circuits\schemlab3\pmaschem3\et.rpt
+et
+
+** LOGIC CELL INTERCONNECTIONS **
+
+Logic Array Block 'B':
+
+             Logic cells placed in LAB 'B'
+        +--- LC17 Et
+        | +- LC18 ~PIN002
+        | | 
+        | |   Other LABs fed by signals
+        | |   that feed LAB 'B'
+LC      | | | A B |     Logic cells that feed LAB 'B':
+
+Pin
+4    -> * * | - * | <-- A12
+14   -> * - | - * | <-- clock
+13   -> * * | - * | <-- dcA0A1
+12   -> * * | - * | <-- dcA2A3
+11   -> * * | - * | <-- dcA4A5
+9    -> * * | - * | <-- dcA6A7
+8    -> * * | - * | <-- dcA8A9
+7    -> * * | - * | <-- dcA10A11
+6    -> * - | - * | <-- di
+44   -> - - | - - | <-- ~PIN001
+5    -> - * | - * | <-- rd
+16   -> * - | - * | <-- wr0
+
+
+* = The logic cell or pin is an input to the logic cell (or LAB) through the PIA.
+- = The logic cell or pin is not an input to the logic cell (or LAB).
+
+
+Device-Specific Information:     c:\univer\circuits\schemlab3\pmaschem3\et.rpt
+et
+
+** EQUATIONS **
+
+A12      : INPUT;
+clock    : INPUT;
+dcA0A1   : INPUT;
+dcA2A3   : INPUT;
+dcA4A5   : INPUT;
+dcA6A7   : INPUT;
+dcA8A9   : INPUT;
+dcA10A11 : INPUT;
+di       : INPUT;
+rd       : INPUT;
+wr0      : INPUT;
+~PIN001  : INPUT;
+
+-- Node name is 'Et' = 'q' 
+-- Equation name is 'Et', location is LC017, type is output.
+Et       = TRI(q, GLOBAL(!~PIN001));
+q        = DFFE( di $  GND,  _EQ001,  VCC,  VCC,  VCC);
+  _EQ001 =  A12 &  clock &  dcA0A1 &  dcA2A3 &  dcA4A5 &  dcA6A7 &  dcA8A9 & 
+              dcA10A11 &  wr0;
+
+-- Node name is '~88~1' 
+-- Equation name is '~88~1', location is LC018, type is output.
+ ~PIN002 = LCELL( _EQ002 $  VCC);
+  _EQ002 =  A12 &  dcA0A1 &  dcA2A3 &  dcA4A5 &  dcA6A7 &  dcA8A9 &  dcA10A11 & 
+              rd;
+
+
+
+--     Shareable expanders that are duplicated in multiple LABs:
+--     (none)
+
+
+
+
+Project Information              c:\univer\circuits\schemlab3\pmaschem3\et.rpt
+
+** COMPILATION SETTINGS & TIMES **
+
+Processing Menu Commands
+------------------------
+
+Design Doctor                             = off
+
+Logic Synthesis:
+
+   Synthesis Type Used                    = Standard
+
+   Default Synthesis Style                = NORMAL
+
+      Logic option settings in 'NORMAL' style for 'MAX7000' family
+
+      DECOMPOSE_GATES                     = on
+      DUPLICATE_LOGIC_EXTRACTION          = on
+      MINIMIZATION                        = full
+      MULTI_LEVEL_FACTORING               = on
+      NOT_GATE_PUSH_BACK                  = on
+      PARALLEL_EXPANDERS                  = off
+      REDUCE_LOGIC                        = on
+      REFACTORIZATION                     = on
+      REGISTER_OPTIMIZATION               = on
+      RESYNTHESIZE_NETWORK                = on
+      SLOW_SLEW_RATE                      = off
+      SOFT_BUFFER_INSERTION               = on
+      SUBFACTOR_EXTRACTION                = on
+      TURBO_BIT                           = on
+      XOR_SYNTHESIS                       = on
+      IGNORE_SOFT_BUFFERS                 = off
+      USE_LPM_FOR_AHDL_OPERATORS          = off
+
+   Other logic synthesis settings:
+
+      Automatic Global Clock              = on
+      Automatic Global Clear              = on
+      Automatic Global Preset             = on
+      Automatic Global Output Enable      = on
+      Automatic Fast I/O                  = off
+      Automatic Register Packing          = off
+      Automatic Open-Drain Pins           = on
+      Automatic Implement in EAB          = off
+      One-Hot State Machine Encoding      = off
+      Optimize                            = 5
+
+Default Timing Specifications: None
+
+Cut All Bidir Feedback Timing Paths       = on
+Cut All Clear & Preset Timing Paths       = on
+
+Ignore Timing Assignments                 = off
+
+Functional SNF Extractor                  = off
+
+Linked SNF Extractor                      = off
+Timing SNF Extractor                      = on
+Optimize Timing SNF                       = off
+Generate AHDL TDO File                    = off
+Fitter Settings                           = NORMAL
+Smart Recompile                           = off
+Total Recompile                           = off
+
+Interfaces Menu Commands
+------------------------
+
+EDIF Netlist Writer                       = off
+Verilog Netlist Writer                    = off
+VHDL Netlist Writer                       = off
+
+Compilation Times
+-----------------
+
+   Compiler Netlist Extractor             00:00:00
+   Database Builder                       00:00:00
+   Logic Synthesizer                      00:00:00
+   Partitioner                            00:00:01
+   Fitter                                 00:00:00
+   Timing SNF Extractor                   00:00:00
+   Assembler                              00:00:00
+   --------------------------             --------
+   Total Time                             00:00:01
+
+
+Memory Allocated
+-----------------
+
+Peak memory allocated during compilation  = 7,999K

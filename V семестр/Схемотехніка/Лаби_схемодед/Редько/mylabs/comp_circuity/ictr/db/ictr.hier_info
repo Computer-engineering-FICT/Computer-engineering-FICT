@@ -1,0 +1,463 @@
+|ictr
+CLK => rg4:RG.CLK
+CLK => ctr11:CTR.CLK
+D[0] => rg4:RG.D[0]
+D[1] => rg4:RG.D[1]
+D[2] => rg4:RG.D[2]
+D[3] => rg4:RG.D[3]
+D[4] => ctr11:CTR.D[4]
+D[5] => ctr11:CTR.D[5]
+D[6] => ctr11:CTR.D[6]
+D[7] => ctr11:CTR.D[7]
+D[8] => ctr11:CTR.D[8]
+D[9] => ctr11:CTR.D[9]
+D[10] => ctr11:CTR.D[10]
+D[11] => ctr11:CTR.D[11]
+D[12] => ctr11:CTR.D[12]
+D[13] => ctr11:CTR.D[13]
+D[14] => ctr11:CTR.D[14]
+F[0] => sm4:SM.F[0]
+F[0] => rg4:RG.F[0]
+F[0] => ctr11:CTR.F[0]
+F[1] => sm4:SM.F[1]
+F[1] => rg4:RG.F[1]
+F[1] => ctr11:CTR.F[1]
+F[2] => sm4:SM.F[2]
+F[2] => rg4:RG.F[2]
+F[2] => ctr11:CTR.F[2]
+F[3] => sm4:SM.F[3]
+F[3] => rg4:RG.F[3]
+F[3] => ctr11:CTR.F[3]
+
+
+|ictr|sm4:SM
+Q[0] => sm1:SUM0.Qi
+Q[1] => sm1:SUM3:1:SUM1.Qi
+Q[2] => sm1:SUM3:2:SUM1.Qi
+Q[3] => sm1:SUM3:3:SUM1.Qi
+F[0] => sm1:SUM0.Fi
+F[1] => sm1:SUM3:1:SUM1.Fi
+F[2] => sm1:SUM3:2:SUM1.Fi
+F[3] => sm1:SUM3:3:SUM1.Fi
+
+
+|ictr|sm4:SM|sm1:SUM0
+Fi => q_i_plus_1.IN0
+Fi => q_i_plus_1.IN0
+Fi => Si.IN0
+Fi => Si.IN0
+Fi => Si.IN0
+Qi => q_i_plus_1.IN1
+Qi => q_i_plus_1.IN0
+Qi => Si.IN1
+Qi => Si.IN1
+Qi => Si.IN1
+q_i => q_i_plus_1.IN1
+q_i => q_i_plus_1.IN1
+q_i => Si.IN1
+q_i => Si.IN1
+q_i => Si.IN1
+q_i => Si.IN1
+
+
+|ictr|sm4:SM|sm1:\SUM3:1:SUM1
+Fi => q_i_plus_1.IN0
+Fi => q_i_plus_1.IN0
+Fi => Si.IN0
+Fi => Si.IN0
+Fi => Si.IN0
+Qi => q_i_plus_1.IN1
+Qi => q_i_plus_1.IN0
+Qi => Si.IN1
+Qi => Si.IN1
+Qi => Si.IN1
+q_i => q_i_plus_1.IN1
+q_i => q_i_plus_1.IN1
+q_i => Si.IN1
+q_i => Si.IN1
+q_i => Si.IN1
+q_i => Si.IN1
+
+
+|ictr|sm4:SM|sm1:\SUM3:2:SUM1
+Fi => q_i_plus_1.IN0
+Fi => q_i_plus_1.IN0
+Fi => Si.IN0
+Fi => Si.IN0
+Fi => Si.IN0
+Qi => q_i_plus_1.IN1
+Qi => q_i_plus_1.IN0
+Qi => Si.IN1
+Qi => Si.IN1
+Qi => Si.IN1
+q_i => q_i_plus_1.IN1
+q_i => q_i_plus_1.IN1
+q_i => Si.IN1
+q_i => Si.IN1
+q_i => Si.IN1
+q_i => Si.IN1
+
+
+|ictr|sm4:SM|sm1:\SUM3:3:SUM1
+Fi => q_i_plus_1.IN0
+Fi => q_i_plus_1.IN0
+Fi => Si.IN0
+Fi => Si.IN0
+Fi => Si.IN0
+Qi => q_i_plus_1.IN1
+Qi => q_i_plus_1.IN0
+Qi => Si.IN1
+Qi => Si.IN1
+Qi => Si.IN1
+q_i => q_i_plus_1.IN1
+q_i => q_i_plus_1.IN1
+q_i => Si.IN1
+q_i => Si.IN1
+q_i => Si.IN1
+q_i => Si.IN1
+
+
+|ictr|rg4:RG
+CLK => rg1:RG:0:REG1.CLK
+CLK => rg1:RG:1:REG1.CLK
+CLK => rg1:RG:2:REG1.CLK
+CLK => rg1:RG:3:REG1.CLK
+F[0] => rg1:RG:0:REG1.F[0]
+F[0] => rg1:RG:1:REG1.F[0]
+F[0] => rg1:RG:2:REG1.F[0]
+F[0] => rg1:RG:3:REG1.F[0]
+F[1] => rg1:RG:0:REG1.F[1]
+F[1] => rg1:RG:1:REG1.F[1]
+F[1] => rg1:RG:2:REG1.F[1]
+F[1] => rg1:RG:3:REG1.F[1]
+F[2] => rg1:RG:0:REG1.F[2]
+F[2] => rg1:RG:1:REG1.F[2]
+F[2] => rg1:RG:2:REG1.F[2]
+F[2] => rg1:RG:3:REG1.F[2]
+F[3] => rg1:RG:0:REG1.F[3]
+F[3] => rg1:RG:1:REG1.F[3]
+F[3] => rg1:RG:2:REG1.F[3]
+F[3] => rg1:RG:3:REG1.F[3]
+D[0] => rg1:RG:0:REG1.Di
+D[1] => rg1:RG:1:REG1.Di
+D[2] => rg1:RG:2:REG1.Di
+D[3] => rg1:RG:3:REG1.Di
+S[0] => rg1:RG:0:REG1.Si
+S[1] => rg1:RG:1:REG1.Si
+S[2] => rg1:RG:2:REG1.Si
+S[3] => rg1:RG:3:REG1.Si
+
+
+|ictr|rg4:RG|rg1:\RG:0:REG1
+CLK => DFFcomp.CLK
+F[0] => R.IN0
+F[1] => Dt.IN1
+F[1] => Dt.IN0
+F[2] => ~NO_FANOUT~
+F[3] => Dt.IN0
+F[3] => R.IN1
+F[3] => Dt.IN0
+Di => Dt.IN1
+Si => Dt.IN1
+Si => Dt.IN1
+
+
+|ictr|rg4:RG|rg1:\RG:1:REG1
+CLK => DFFcomp.CLK
+F[0] => R.IN0
+F[1] => Dt.IN1
+F[1] => Dt.IN0
+F[2] => ~NO_FANOUT~
+F[3] => Dt.IN0
+F[3] => R.IN1
+F[3] => Dt.IN0
+Di => Dt.IN1
+Si => Dt.IN1
+Si => Dt.IN1
+
+
+|ictr|rg4:RG|rg1:\RG:2:REG1
+CLK => DFFcomp.CLK
+F[0] => R.IN0
+F[1] => Dt.IN1
+F[1] => Dt.IN0
+F[2] => ~NO_FANOUT~
+F[3] => Dt.IN0
+F[3] => R.IN1
+F[3] => Dt.IN0
+Di => Dt.IN1
+Si => Dt.IN1
+Si => Dt.IN1
+
+
+|ictr|rg4:RG|rg1:\RG:3:REG1
+CLK => DFFcomp.CLK
+F[0] => R.IN0
+F[1] => Dt.IN1
+F[1] => Dt.IN0
+F[2] => ~NO_FANOUT~
+F[3] => Dt.IN0
+F[3] => R.IN1
+F[3] => Dt.IN0
+Di => Dt.IN1
+Si => Dt.IN1
+Si => Dt.IN1
+
+
+|ictr|ctr11:CTR
+CLK => ctr1:CT0.CLK
+CLK => ctr1:CT:5:CT1.CLK
+CLK => ctr1:CT:6:CT1.CLK
+CLK => ctr1:CT:7:CT1.CLK
+CLK => ctr1:CT:8:CT1.CLK
+CLK => ctr1:CT:9:CT1.CLK
+CLK => ctr1:CT:10:CT1.CLK
+CLK => ctr1:CT:11:CT1.CLK
+CLK => ctr1:CT:12:CT1.CLK
+CLK => ctr1:CT:13:CT1.CLK
+CLK => ctr1:CT:14:CT1.CLK
+F[0] => ctr1:CT0.F[0]
+F[0] => ctr1:CT:5:CT1.F[0]
+F[0] => ctr1:CT:6:CT1.F[0]
+F[0] => ctr1:CT:7:CT1.F[0]
+F[0] => ctr1:CT:8:CT1.F[0]
+F[0] => ctr1:CT:9:CT1.F[0]
+F[0] => ctr1:CT:10:CT1.F[0]
+F[0] => ctr1:CT:11:CT1.F[0]
+F[0] => ctr1:CT:12:CT1.F[0]
+F[0] => ctr1:CT:13:CT1.F[0]
+F[0] => ctr1:CT:14:CT1.F[0]
+F[1] => ctr1:CT0.F[1]
+F[1] => ctr1:CT:5:CT1.F[1]
+F[1] => ctr1:CT:6:CT1.F[1]
+F[1] => ctr1:CT:7:CT1.F[1]
+F[1] => ctr1:CT:8:CT1.F[1]
+F[1] => ctr1:CT:9:CT1.F[1]
+F[1] => ctr1:CT:10:CT1.F[1]
+F[1] => ctr1:CT:11:CT1.F[1]
+F[1] => ctr1:CT:12:CT1.F[1]
+F[1] => ctr1:CT:13:CT1.F[1]
+F[1] => ctr1:CT:14:CT1.F[1]
+F[2] => ctr1:CT0.F[2]
+F[2] => ctr1:CT:5:CT1.F[2]
+F[2] => ctr1:CT:6:CT1.F[2]
+F[2] => ctr1:CT:7:CT1.F[2]
+F[2] => ctr1:CT:8:CT1.F[2]
+F[2] => ctr1:CT:9:CT1.F[2]
+F[2] => ctr1:CT:10:CT1.F[2]
+F[2] => ctr1:CT:11:CT1.F[2]
+F[2] => ctr1:CT:12:CT1.F[2]
+F[2] => ctr1:CT:13:CT1.F[2]
+F[2] => ctr1:CT:14:CT1.F[2]
+F[3] => ctr1:CT0.F[3]
+F[3] => ctr1:CT:5:CT1.F[3]
+F[3] => ctr1:CT:6:CT1.F[3]
+F[3] => ctr1:CT:7:CT1.F[3]
+F[3] => ctr1:CT:8:CT1.F[3]
+F[3] => ctr1:CT:9:CT1.F[3]
+F[3] => ctr1:CT:10:CT1.F[3]
+F[3] => ctr1:CT:11:CT1.F[3]
+F[3] => ctr1:CT:12:CT1.F[3]
+F[3] => ctr1:CT:13:CT1.F[3]
+F[3] => ctr1:CT:14:CT1.F[3]
+D[4] => ctr1:CT0.Di
+D[5] => ctr1:CT:5:CT1.Di
+D[6] => ctr1:CT:6:CT1.Di
+D[7] => ctr1:CT:7:CT1.Di
+D[8] => ctr1:CT:8:CT1.Di
+D[9] => ctr1:CT:9:CT1.Di
+D[10] => ctr1:CT:10:CT1.Di
+D[11] => ctr1:CT:11:CT1.Di
+D[12] => ctr1:CT:12:CT1.Di
+D[13] => ctr1:CT:13:CT1.Di
+D[14] => ctr1:CT:14:CT1.Di
+C4 => ctr1:CT0.Ci
+
+
+|ictr|ctr11:CTR|ctr1:CT0
+CLK => DFFcomp.CLK
+Ci => Dt.IN0
+Ci => Dt.IN0
+Ci => C_i_plus_1.IN0
+Ci => Dt.IN0
+F[0] => R.IN1
+F[1] => Dt.IN1
+F[1] => Dt.IN1
+F[1] => R.IN0
+F[2] => ~NO_FANOUT~
+F[3] => Dt.IN0
+F[3] => R.IN1
+F[3] => Dt.IN1
+Di => Dt.IN1
+
+
+|ictr|ctr11:CTR|ctr1:\CT:5:CT1
+CLK => DFFcomp.CLK
+Ci => Dt.IN0
+Ci => Dt.IN0
+Ci => C_i_plus_1.IN0
+Ci => Dt.IN0
+F[0] => R.IN1
+F[1] => Dt.IN1
+F[1] => Dt.IN1
+F[1] => R.IN0
+F[2] => ~NO_FANOUT~
+F[3] => Dt.IN0
+F[3] => R.IN1
+F[3] => Dt.IN1
+Di => Dt.IN1
+
+
+|ictr|ctr11:CTR|ctr1:\CT:6:CT1
+CLK => DFFcomp.CLK
+Ci => Dt.IN0
+Ci => Dt.IN0
+Ci => C_i_plus_1.IN0
+Ci => Dt.IN0
+F[0] => R.IN1
+F[1] => Dt.IN1
+F[1] => Dt.IN1
+F[1] => R.IN0
+F[2] => ~NO_FANOUT~
+F[3] => Dt.IN0
+F[3] => R.IN1
+F[3] => Dt.IN1
+Di => Dt.IN1
+
+
+|ictr|ctr11:CTR|ctr1:\CT:7:CT1
+CLK => DFFcomp.CLK
+Ci => Dt.IN0
+Ci => Dt.IN0
+Ci => C_i_plus_1.IN0
+Ci => Dt.IN0
+F[0] => R.IN1
+F[1] => Dt.IN1
+F[1] => Dt.IN1
+F[1] => R.IN0
+F[2] => ~NO_FANOUT~
+F[3] => Dt.IN0
+F[3] => R.IN1
+F[3] => Dt.IN1
+Di => Dt.IN1
+
+
+|ictr|ctr11:CTR|ctr1:\CT:8:CT1
+CLK => DFFcomp.CLK
+Ci => Dt.IN0
+Ci => Dt.IN0
+Ci => C_i_plus_1.IN0
+Ci => Dt.IN0
+F[0] => R.IN1
+F[1] => Dt.IN1
+F[1] => Dt.IN1
+F[1] => R.IN0
+F[2] => ~NO_FANOUT~
+F[3] => Dt.IN0
+F[3] => R.IN1
+F[3] => Dt.IN1
+Di => Dt.IN1
+
+
+|ictr|ctr11:CTR|ctr1:\CT:9:CT1
+CLK => DFFcomp.CLK
+Ci => Dt.IN0
+Ci => Dt.IN0
+Ci => C_i_plus_1.IN0
+Ci => Dt.IN0
+F[0] => R.IN1
+F[1] => Dt.IN1
+F[1] => Dt.IN1
+F[1] => R.IN0
+F[2] => ~NO_FANOUT~
+F[3] => Dt.IN0
+F[3] => R.IN1
+F[3] => Dt.IN1
+Di => Dt.IN1
+
+
+|ictr|ctr11:CTR|ctr1:\CT:10:CT1
+CLK => DFFcomp.CLK
+Ci => Dt.IN0
+Ci => Dt.IN0
+Ci => C_i_plus_1.IN0
+Ci => Dt.IN0
+F[0] => R.IN1
+F[1] => Dt.IN1
+F[1] => Dt.IN1
+F[1] => R.IN0
+F[2] => ~NO_FANOUT~
+F[3] => Dt.IN0
+F[3] => R.IN1
+F[3] => Dt.IN1
+Di => Dt.IN1
+
+
+|ictr|ctr11:CTR|ctr1:\CT:11:CT1
+CLK => DFFcomp.CLK
+Ci => Dt.IN0
+Ci => Dt.IN0
+Ci => C_i_plus_1.IN0
+Ci => Dt.IN0
+F[0] => R.IN1
+F[1] => Dt.IN1
+F[1] => Dt.IN1
+F[1] => R.IN0
+F[2] => ~NO_FANOUT~
+F[3] => Dt.IN0
+F[3] => R.IN1
+F[3] => Dt.IN1
+Di => Dt.IN1
+
+
+|ictr|ctr11:CTR|ctr1:\CT:12:CT1
+CLK => DFFcomp.CLK
+Ci => Dt.IN0
+Ci => Dt.IN0
+Ci => C_i_plus_1.IN0
+Ci => Dt.IN0
+F[0] => R.IN1
+F[1] => Dt.IN1
+F[1] => Dt.IN1
+F[1] => R.IN0
+F[2] => ~NO_FANOUT~
+F[3] => Dt.IN0
+F[3] => R.IN1
+F[3] => Dt.IN1
+Di => Dt.IN1
+
+
+|ictr|ctr11:CTR|ctr1:\CT:13:CT1
+CLK => DFFcomp.CLK
+Ci => Dt.IN0
+Ci => Dt.IN0
+Ci => C_i_plus_1.IN0
+Ci => Dt.IN0
+F[0] => R.IN1
+F[1] => Dt.IN1
+F[1] => Dt.IN1
+F[1] => R.IN0
+F[2] => ~NO_FANOUT~
+F[3] => Dt.IN0
+F[3] => R.IN1
+F[3] => Dt.IN1
+Di => Dt.IN1
+
+
+|ictr|ctr11:CTR|ctr1:\CT:14:CT1
+CLK => DFFcomp.CLK
+Ci => Dt.IN0
+Ci => Dt.IN0
+Ci => C_i_plus_1.IN0
+Ci => Dt.IN0
+F[0] => R.IN1
+F[1] => Dt.IN1
+F[1] => Dt.IN1
+F[1] => R.IN0
+F[2] => ~NO_FANOUT~
+F[3] => Dt.IN0
+F[3] => R.IN1
+F[3] => Dt.IN1
+Di => Dt.IN1
+
+

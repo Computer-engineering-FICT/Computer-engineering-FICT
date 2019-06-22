@@ -1,0 +1,338 @@
+|Lab1_blocked
+RG[0] <= RG2:inst1.RG[0]
+RG[1] <= RG2:inst1.RG[1]
+RG[2] <= CTR11:inst.RG[2]
+RG[3] <= CTR11:inst.RG[3]
+RG[4] <= CTR11:inst.RG[4]
+RG[5] <= CTR11:inst.RG[5]
+RG[6] <= CTR11:inst.RG[6]
+RG[7] <= CTR11:inst.RG[7]
+RG[8] <= CTR11:inst.RG[8]
+RG[9] <= CTR11:inst.RG[9]
+RG[10] <= CTR11:inst.RG[10]
+RG[11] <= CTR11:inst.RG[11]
+RG[12] <= CTR11:inst.RG[12]
+F[0] => RG2:inst1.F0
+F[0] => SM2:inst2.F[0]
+F[0] => CTR11:inst.F0
+F[1] => inst9.IN0
+F[1] => SM2:inst2.F[1]
+F[2] => RG2:inst1.F2
+F[2] => inst10.IN0
+F[2] => CTR11:inst.F2
+C => inst7.IN1
+D[0] => RG2:inst1.D[0]
+D[1] => RG2:inst1.D[1]
+D[2] => CTR11:inst.D[2]
+D[3] => CTR11:inst.D[3]
+D[4] => CTR11:inst.D[4]
+D[5] => CTR11:inst.D[5]
+D[6] => CTR11:inst.D[6]
+D[7] => CTR11:inst.D[7]
+D[8] => CTR11:inst.D[8]
+D[9] => CTR11:inst.D[9]
+D[10] => CTR11:inst.D[10]
+D[11] => CTR11:inst.D[11]
+D[12] => CTR11:inst.D[12]
+
+
+|Lab1_blocked|RG2:inst1
+RG[1] <= RG:inst1.RG
+RG[0] <= RG:inst.RG
+F0 => RG:inst.F0
+F0 => RG:inst1.F0
+F2 => RG:inst.F2
+F2 => RG:inst1.F2
+D[1] => RG:inst1.D
+D[0] => RG:inst.D
+S[1] => RG:inst1.S
+S[0] => RG:inst.S
+CLK => RG:inst.CLK
+CLK => RG:inst1.CLK
+
+
+|Lab1_blocked|RG2:inst1|RG:inst
+RG <= 467.DB_MAX_OUTPUT_PORT_TYPE
+F2 => inst10.IN0
+F2 => inst6.IN0
+F2 => inst8.IN0
+F0 => inst.IN0
+CLK => 467.CLK
+S => inst9.IN1
+D => inst8.IN1
+
+
+|Lab1_blocked|RG2:inst1|RG:inst1
+RG <= 467.DB_MAX_OUTPUT_PORT_TYPE
+F2 => inst10.IN0
+F2 => inst6.IN0
+F2 => inst8.IN0
+F0 => inst.IN0
+CLK => 467.CLK
+S => inst9.IN1
+D => inst8.IN1
+
+
+|Lab1_blocked|SM2:inst2
+q2 <= SM:inst1.q_i_1
+F[1] => SM:inst1.F_i
+F[0] => SM:inst.F_i
+RG[1] => SM:inst1.Qi
+RG[0] => SM:inst.Qi
+S[1] <= SM:inst1.S_i
+S[0] <= SM:inst.S_i
+
+
+|Lab1_blocked|SM2:inst2|SM:inst1
+q_i_1 <= inst18.DB_MAX_OUTPUT_PORT_TYPE
+Qi => inst16.IN0
+Qi => inst15.IN1
+Qi => inst19.IN1
+Qi => inst2.IN0
+Qi => inst20.IN1
+q_i => inst16.IN1
+q_i => inst17.IN1
+q_i => inst19.IN2
+q_i => inst3.IN0
+q_i => inst22.IN2
+F_i => inst17.IN0
+F_i => inst15.IN0
+F_i => inst19.IN0
+F_i => inst21.IN0
+F_i => inst.IN0
+S_i <= inst23.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Lab1_blocked|SM2:inst2|SM:inst
+q_i_1 <= inst18.DB_MAX_OUTPUT_PORT_TYPE
+Qi => inst16.IN0
+Qi => inst15.IN1
+Qi => inst19.IN1
+Qi => inst2.IN0
+Qi => inst20.IN1
+q_i => inst16.IN1
+q_i => inst17.IN1
+q_i => inst19.IN2
+q_i => inst3.IN0
+q_i => inst22.IN2
+F_i => inst17.IN0
+F_i => inst15.IN0
+F_i => inst19.IN0
+F_i => inst21.IN0
+F_i => inst.IN0
+S_i <= inst23.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Lab1_blocked|CTR11:inst
+RG[12] <= CTR:inst10.Q_i
+RG[11] <= CTR:inst9.Q_i
+RG[10] <= CTR:inst8.Q_i
+RG[9] <= CTR:inst7.Q_i
+RG[8] <= CTR:inst6.Q_i
+RG[7] <= CTR:inst5.Q_i
+RG[6] <= CTR:inst3.Q_i
+RG[5] <= CTR:inst2.Q_i
+RG[4] <= CTR:inst4.Q_i
+RG[3] <= CTR:inst1.Q_i
+RG[2] <= CTR:inst.Q_i
+F0 => CTR:inst.F0
+F0 => CTR:inst1.F0
+F0 => CTR:inst4.F0
+F0 => CTR:inst2.F0
+F0 => CTR:inst3.F0
+F0 => CTR:inst5.F0
+F0 => CTR:inst6.F0
+F0 => CTR:inst7.F0
+F0 => CTR:inst8.F0
+F0 => CTR:inst9.F0
+F0 => CTR:inst10.F0
+F2 => CTR:inst.F2
+F2 => CTR:inst1.F2
+F2 => CTR:inst4.F2
+F2 => CTR:inst2.F2
+F2 => CTR:inst3.F2
+F2 => CTR:inst5.F2
+F2 => CTR:inst6.F2
+F2 => CTR:inst7.F2
+F2 => CTR:inst8.F2
+F2 => CTR:inst9.F2
+F2 => CTR:inst10.F2
+D[12] => CTR:inst10.D
+D[11] => CTR:inst9.D
+D[10] => CTR:inst8.D
+D[9] => CTR:inst7.D
+D[8] => CTR:inst6.D
+D[7] => CTR:inst5.D
+D[6] => CTR:inst3.D
+D[5] => CTR:inst2.D
+D[4] => CTR:inst4.D
+D[3] => CTR:inst1.D
+D[2] => CTR:inst.D
+q2 => CTR:inst.C
+CLK => CTR:inst.CLK
+CLK => CTR:inst1.CLK
+CLK => CTR:inst4.CLK
+CLK => CTR:inst2.CLK
+CLK => CTR:inst3.CLK
+CLK => CTR:inst5.CLK
+CLK => CTR:inst6.CLK
+CLK => CTR:inst7.CLK
+CLK => CTR:inst8.CLK
+CLK => CTR:inst9.CLK
+CLK => CTR:inst10.CLK
+
+
+|Lab1_blocked|CTR11:inst|CTR:inst
+q_i_1 <= inst9.DB_MAX_OUTPUT_PORT_TYPE
+C => inst9.IN0
+C => inst3.IN0
+C => inst6.IN1
+F0 => inst.IN0
+F2 => inst7.IN1
+F2 => inst2.IN0
+F2 => inst4.IN0
+CLK => inst10.CLK
+D => inst4.IN1
+Q_i <= inst10.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Lab1_blocked|CTR11:inst|CTR:inst1
+q_i_1 <= inst9.DB_MAX_OUTPUT_PORT_TYPE
+C => inst9.IN0
+C => inst3.IN0
+C => inst6.IN1
+F0 => inst.IN0
+F2 => inst7.IN1
+F2 => inst2.IN0
+F2 => inst4.IN0
+CLK => inst10.CLK
+D => inst4.IN1
+Q_i <= inst10.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Lab1_blocked|CTR11:inst|CTR:inst4
+q_i_1 <= inst9.DB_MAX_OUTPUT_PORT_TYPE
+C => inst9.IN0
+C => inst3.IN0
+C => inst6.IN1
+F0 => inst.IN0
+F2 => inst7.IN1
+F2 => inst2.IN0
+F2 => inst4.IN0
+CLK => inst10.CLK
+D => inst4.IN1
+Q_i <= inst10.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Lab1_blocked|CTR11:inst|CTR:inst2
+q_i_1 <= inst9.DB_MAX_OUTPUT_PORT_TYPE
+C => inst9.IN0
+C => inst3.IN0
+C => inst6.IN1
+F0 => inst.IN0
+F2 => inst7.IN1
+F2 => inst2.IN0
+F2 => inst4.IN0
+CLK => inst10.CLK
+D => inst4.IN1
+Q_i <= inst10.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Lab1_blocked|CTR11:inst|CTR:inst3
+q_i_1 <= inst9.DB_MAX_OUTPUT_PORT_TYPE
+C => inst9.IN0
+C => inst3.IN0
+C => inst6.IN1
+F0 => inst.IN0
+F2 => inst7.IN1
+F2 => inst2.IN0
+F2 => inst4.IN0
+CLK => inst10.CLK
+D => inst4.IN1
+Q_i <= inst10.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Lab1_blocked|CTR11:inst|CTR:inst5
+q_i_1 <= inst9.DB_MAX_OUTPUT_PORT_TYPE
+C => inst9.IN0
+C => inst3.IN0
+C => inst6.IN1
+F0 => inst.IN0
+F2 => inst7.IN1
+F2 => inst2.IN0
+F2 => inst4.IN0
+CLK => inst10.CLK
+D => inst4.IN1
+Q_i <= inst10.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Lab1_blocked|CTR11:inst|CTR:inst6
+q_i_1 <= inst9.DB_MAX_OUTPUT_PORT_TYPE
+C => inst9.IN0
+C => inst3.IN0
+C => inst6.IN1
+F0 => inst.IN0
+F2 => inst7.IN1
+F2 => inst2.IN0
+F2 => inst4.IN0
+CLK => inst10.CLK
+D => inst4.IN1
+Q_i <= inst10.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Lab1_blocked|CTR11:inst|CTR:inst7
+q_i_1 <= inst9.DB_MAX_OUTPUT_PORT_TYPE
+C => inst9.IN0
+C => inst3.IN0
+C => inst6.IN1
+F0 => inst.IN0
+F2 => inst7.IN1
+F2 => inst2.IN0
+F2 => inst4.IN0
+CLK => inst10.CLK
+D => inst4.IN1
+Q_i <= inst10.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Lab1_blocked|CTR11:inst|CTR:inst8
+q_i_1 <= inst9.DB_MAX_OUTPUT_PORT_TYPE
+C => inst9.IN0
+C => inst3.IN0
+C => inst6.IN1
+F0 => inst.IN0
+F2 => inst7.IN1
+F2 => inst2.IN0
+F2 => inst4.IN0
+CLK => inst10.CLK
+D => inst4.IN1
+Q_i <= inst10.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Lab1_blocked|CTR11:inst|CTR:inst9
+q_i_1 <= inst9.DB_MAX_OUTPUT_PORT_TYPE
+C => inst9.IN0
+C => inst3.IN0
+C => inst6.IN1
+F0 => inst.IN0
+F2 => inst7.IN1
+F2 => inst2.IN0
+F2 => inst4.IN0
+CLK => inst10.CLK
+D => inst4.IN1
+Q_i <= inst10.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Lab1_blocked|CTR11:inst|CTR:inst10
+q_i_1 <= inst9.DB_MAX_OUTPUT_PORT_TYPE
+C => inst9.IN0
+C => inst3.IN0
+C => inst6.IN1
+F0 => inst.IN0
+F2 => inst7.IN1
+F2 => inst2.IN0
+F2 => inst4.IN0
+CLK => inst10.CLK
+D => inst4.IN1
+Q_i <= inst10.DB_MAX_OUTPUT_PORT_TYPE
+
+

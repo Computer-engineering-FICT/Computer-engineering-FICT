@@ -1,0 +1,329 @@
+Project Information                      d:\maxplus2\max2lib\lab3\plmt_out.rpt
+
+MAX+plus II Compiler Report File
+Version 10.1 06/12/2001
+Compiled: 10/12/2010 22:31:05
+
+Copyright (C) 1988-2001 Altera Corporation
+Any megafunction design, and related net list (encrypted or decrypted),
+support information, device programming or simulation file, and any other
+associated documentation or information provided by Altera or a partner
+under Altera's Megafunction Partnership Program may be used only to
+program PLD devices (but not masked PLD devices) from Altera.  Any other
+use of such megafunction design, net list, support information, device
+programming or simulation file, or any other related documentation or
+information is prohibited for any other purpose, including, but not
+limited to modification, reverse engineering, de-compiling, or use with
+any other silicon devices, unless such use is explicitly licensed under
+a separate agreement with Altera or a megafunction partner.  Title to
+the intellectual property, including patents, copyrights, trademarks,
+trade secrets, or maskworks, embodied in any such megafunction design,
+net list, support information, device programming or simulation file, or
+any other related documentation or information provided by Altera or a
+megafunction partner, remains with Altera, the megafunction partner, or
+their respective licensors.  No other licenses, including any licenses
+needed under any third party's intellectual property, are provided herein.
+
+
+
+***** Project compilation was successful
+
+
+
+
+** DEVICE SUMMARY **
+
+Chip/                     Input   Output   Bidir 			    LCs
+POF       Device          Pins    Pins     Pins      LCs    % Utilized
+
+plmt_out  EP610ILC-10      16       1        0       1           6  %
+
+User Pins:                 16       1        0  
+
+
+
+Device-Specific Information:             d:\maxplus2\max2lib\lab3\plmt_out.rpt
+plmt_out
+
+***** Logic for device 'plmt_out' compiled without errors.
+
+
+
+
+Device: EP610ILC-10
+
+Device Options:
+    Turbo Bit                                    = ON
+    Security Bit                                 = OFF
+
+                                R  
+                                E  
+                                S  
+                                E  
+              A  A           A  R  
+              B  B  G  V  V  B  V  
+              R  R  N  C  C  R  E  
+              4  3  D  C  C  0  D  
+            -----------------------_ 
+          /   4  3  2  1 28 27 26   | 
+         |                          |
+    ABR5 |  5                    25 | RESERVED 
+         |                          |
+    ABR6 |  6                    24 | RESERVED 
+         |                          |
+    ABR7 |  7                    23 | O7 
+         |                          |
+      O0 |  8    EP610ILC-10     22 | O6 
+         |                          |
+      O1 |  9                    21 | O5 
+         |                          |
+      O2 | 10                    20 | O4 
+         |                          |
+    N.C. | 11                    19 | N.C. 
+         |_  12 13 14 15 16 17 18  _| 
+           ------------------------ 
+              Q  A  G  G  G  A  O  
+                 B  N  N  N  B  3  
+                 R  D  D  D  R     
+                 2           1     
+                                   
+                                   
+                                   
+                                   
+
+
+N.C. = No Connect. This pin has no internal connection to the device.
+VCC = Dedicated power pin, which MUST be connected to VCC.
+GND = Dedicated ground pin or unused dedicated input, which MUST be connected to GND.
+RESERVED = Unused I/O pin, which MUST be left unconnected.
+
+
+
+Device-Specific Information:             d:\maxplus2\max2lib\lab3\plmt_out.rpt
+plmt_out
+
+** RESOURCE USAGE **
+
+Logic Array Block     Logic Cells   I/O Pins       
+
+A:      LC1 - LC8     0/ 8(  0%)   5/ 8( 62%) 
+B:     LC9 - LC16     1/ 8( 12%)   8/ 8(100%) 
+
+
+Total dedicated input pins used:                 4/4      (100%)
+Total I/O pins used:                            13/16     ( 81%)
+Total logic cells used:                          1/16     (  6%)
+Average fan-in:                                  16.00
+Total fan-in:                                    16
+
+Total input pins required:                      16
+Total output pins required:                      1
+Total bidirectional pins required:               0
+Total logic cells required:                      1
+Total flipflops required:                        0
+
+Synthesized logic cells:                         0/  16   (  0%)
+
+
+
+Device-Specific Information:             d:\maxplus2\max2lib\lab3\plmt_out.rpt
+plmt_out
+
+** INPUTS **
+
+                                        Fan-In    Fan-Out
+ Pin     LC  LAB  Primitive    Code   INP  FBK  OUT  FBK  Name
+  27      -   -       INPUT              0    0    1    0  ABR0
+  17      -   -       INPUT              0    0    1    0  ABR1
+  13      -   -       INPUT              0    0    1    0  ABR2
+   3      -   -       INPUT              0    0    1    0  ABR3
+   4    (9)  (B)      INPUT              0    0    1    0  ABR4
+   5   (10)  (B)      INPUT              0    0    1    0  ABR5
+   6   (11)  (B)      INPUT              0    0    1    0  ABR6
+   7   (12)  (B)      INPUT              0    0    1    0  ABR7
+   8   (13)  (B)      INPUT              0    0    1    0  O0
+   9   (14)  (B)      INPUT              0    0    1    0  O1
+  10   (15)  (B)      INPUT              0    0    1    0  O2
+  18    (8)  (A)      INPUT              0    0    1    0  O3
+  20    (7)  (A)      INPUT              0    0    1    0  O4
+  21    (6)  (A)      INPUT              0    0    1    0  O5
+  22    (5)  (A)      INPUT              0    0    1    0  O6
+  23    (4)  (A)      INPUT              0    0    1    0  O7
+
+
+Code:
+
+s = Synthesized pin or logic cell
++ = Synchronous flipflop
+! = NOT gate push-back
+r = Fitter-inserted logic cell
+
+
+Device-Specific Information:             d:\maxplus2\max2lib\lab3\plmt_out.rpt
+plmt_out
+
+** OUTPUTS **
+
+                                        Fan-In    Fan-Out
+ Pin     LC  LAB  Primitive    Code   INP  FBK  OUT  FBK  Name
+  12     16    B     OUTPUT             16    0    0    0  Q
+
+
+Code:
+
+s = Synthesized pin or logic cell
++ = Synchronous flipflop
+! = NOT gate push-back
+r = Fitter-inserted logic cell
+
+
+Device-Specific Information:             d:\maxplus2\max2lib\lab3\plmt_out.rpt
+plmt_out
+
+** LOGIC CELL INTERCONNECTIONS **
+
+           Logic cells placed in LAB 'B'
+        +- LC16 Q
+        | 
+        |   Other LABs fed by signals
+        |   that feed LAB 'B'
+LC      | 
+LC16 -> - | <-- Q
+
+Pin
+27   -> @ | <-- ABR0
+17   -> @ | <-- ABR1
+13   -> @ | <-- ABR2
+3    -> @ | <-- ABR3
+4    -> * | <-- ABR4
+5    -> * | <-- ABR5
+6    -> * | <-- ABR6
+7    -> * | <-- ABR7
+8    -> * | <-- O0
+9    -> * | <-- O1
+10   -> * | <-- O2
+18   -> * | <-- O3
+20   -> * | <-- O4
+21   -> * | <-- O5
+22   -> * | <-- O6
+23   -> * | <-- O7
+
+
+* = The logic cell or pin is an input to the logic cell (or LAB) through the PIA.
+@ = The input pin or logic cell feeds the logic cell (or LAB) using direct interconnect.
+- = The logic cell or pin is not an input to the logic cell (or LAB).
+
+
+Device-Specific Information:             d:\maxplus2\max2lib\lab3\plmt_out.rpt
+plmt_out
+
+** EQUATIONS **
+
+ABR0     : INPUT;
+ABR1     : INPUT;
+ABR2     : INPUT;
+ABR3     : INPUT;
+ABR4     : INPUT;
+ABR5     : INPUT;
+ABR6     : INPUT;
+ABR7     : INPUT;
+O0       : INPUT;
+O1       : INPUT;
+O2       : INPUT;
+O3       : INPUT;
+O4       : INPUT;
+O5       : INPUT;
+O6       : INPUT;
+O7       : INPUT;
+
+-- Node name is 'Q' 
+-- Equation name is 'Q', location is LC016, type is output.
+ Q       = LCELL( _EQ001);
+  _EQ001 =  ABR7 &  O7
+         #  ABR6 &  O6
+         #  ABR5 &  O5
+         #  ABR4 &  O4
+         #  ABR3 &  O3
+         #  ABR2 &  O2
+         #  ABR1 &  O1
+         #  ABR0 &  O0;
+
+
+
+Project Information                      d:\maxplus2\max2lib\lab3\plmt_out.rpt
+
+** COMPILATION SETTINGS & TIMES **
+
+Processing Menu Commands
+------------------------
+
+Design Doctor                             = off
+
+Logic Synthesis:
+
+   Synthesis Type Used                    = Standard
+
+   Default Synthesis Style                = NORMAL
+
+      Logic option settings in 'NORMAL' style for 'CLASSIC' family
+
+      MINIMIZATION                        = full
+      SOFT_BUFFER_INSERTION               = on
+      TURBO_BIT                           = on
+      USE_LPM_FOR_AHDL_OPERATORS          = off
+
+   Other logic synthesis settings:
+
+      Automatic Global Clock              = on
+      Automatic Global Clear              = on
+      Automatic Global Preset             = on
+      Automatic Global Output Enable      = on
+      Automatic Fast I/O                  = off
+      Automatic Register Packing          = off
+      Automatic Open-Drain Pins           = on
+      Automatic Implement in EAB          = off
+      One-Hot State Machine Encoding      = off
+      Optimize                            = 5
+
+Default Timing Specifications: None
+
+Cut All Bidir Feedback Timing Paths       = on
+Cut All Clear & Preset Timing Paths       = on
+
+Ignore Timing Assignments                 = off
+
+Functional SNF Extractor                  = off
+
+Linked SNF Extractor                      = off
+Timing SNF Extractor                      = on
+Optimize Timing SNF                       = off
+Generate AHDL TDO File                    = off
+Fitter Settings                           = NORMAL
+Smart Recompile                           = off
+Total Recompile                           = off
+
+Interfaces Menu Commands
+------------------------
+
+EDIF Netlist Writer                       = off
+Verilog Netlist Writer                    = off
+VHDL Netlist Writer                       = off
+
+Compilation Times
+-----------------
+
+   Compiler Netlist Extractor             00:00:00
+   Database Builder                       00:00:00
+   Logic Synthesizer                      00:00:00
+   Partitioner                            00:00:00
+   Fitter                                 00:00:00
+   Timing SNF Extractor                   00:00:00
+   Assembler                              00:00:00
+   --------------------------             --------
+   Total Time                             00:00:00
+
+
+Memory Allocated
+-----------------
+
+Peak memory allocated during compilation  = 4,870K

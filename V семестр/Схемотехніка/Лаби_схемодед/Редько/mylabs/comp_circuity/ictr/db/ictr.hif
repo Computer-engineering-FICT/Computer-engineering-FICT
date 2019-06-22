@@ -1,0 +1,295 @@
+Quartus II
+Version 11.0 Build 157 04/27/2011 SJ Full Version
+40
+4661
+OFF
+OFF
+OFF
+ON
+ON
+ON
+FV_OFF
+Level2
+0
+0
+VRSM_ON
+VHSM_ON
+0
+-- Start Library Paths --
+-- End Library Paths --
+-- Start VHDL Libraries --
+-- End VHDL Libraries --
+# entity
+ctr11
+# storage
+db|ictr.(0).cnf
+db|ictr.(0).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+src|ctr11.vhd
+e4d9532551976506687ac803dd72414
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# include_file {
+src|ctr1.vhd
+8ec09e85369ffbda483be1c848dbc1f
+}
+# hierarchies {
+ctr11:CTR
+}
+# macro_sequence
+
+# end
+# entity
+ctr1
+# storage
+db|ictr.(1).cnf
+db|ictr.(1).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+src|ctr1.vhd
+8ec09e85369ffbda483be1c848dbc1f
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(f)
+3 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+ctr11:CTR|ctr1:CT0
+ctr11:CTR|ctr1:\CT:5:CT1
+ctr11:CTR|ctr1:\CT:6:CT1
+ctr11:CTR|ctr1:\CT:7:CT1
+ctr11:CTR|ctr1:\CT:8:CT1
+ctr11:CTR|ctr1:\CT:9:CT1
+ctr11:CTR|ctr1:\CT:10:CT1
+ctr11:CTR|ctr1:\CT:11:CT1
+ctr11:CTR|ctr1:\CT:12:CT1
+ctr11:CTR|ctr1:\CT:13:CT1
+ctr11:CTR|ctr1:\CT:14:CT1
+}
+# macro_sequence
+
+# end
+# entity
+rg1
+# storage
+db|ictr.(2).cnf
+db|ictr.(2).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+src|rg1.vhd
+545b8e9891f88cf40de7928eb2911b9
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# hierarchies {
+rg4:RG|rg1:\RG:0:REG1
+rg4:RG|rg1:\RG:1:REG1
+rg4:RG|rg1:\RG:2:REG1
+rg4:RG|rg1:\RG:3:REG1
+}
+# macro_sequence
+
+# end
+# entity
+rg4
+# storage
+db|ictr.(3).cnf
+db|ictr.(3).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+src|rg4.vhd
+c54a6f02e21b1f3a945fd58ec58b0da
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# include_file {
+src|rg1.vhd
+545b8e9891f88cf40de7928eb2911b9
+}
+# hierarchies {
+rg4:RG
+}
+# macro_sequence
+
+# end
+# entity
+ictr
+# storage
+db|ictr.(4).cnf
+db|ictr.(4).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+src|ictr.vhd
+ef947fbbee78924faec1f02ec5cb8cf7
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# include_file {
+src|sm1.vhd
+4cc262aa2416dcdb8a8bfd9ccbc64b
+src|rg4.vhd
+c54a6f02e21b1f3a945fd58ec58b0da
+src|sm4.vhd
+5192fcc4ce627cf940604eb3e4396c1
+src|ctr1.vhd
+8ec09e85369ffbda483be1c848dbc1f
+src|rg1.vhd
+545b8e9891f88cf40de7928eb2911b9
+src|ctr11.vhd
+e4d9532551976506687ac803dd72414
+}
+# hierarchies {
+|
+}
+# macro_sequence
+
+# end
+# entity
+sm4
+# storage
+db|ictr.(5).cnf
+db|ictr.(5).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+src|sm4.vhd
+5192fcc4ce627cf940604eb3e4396c1
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(q)
+3 downto 0
+PARAMETER_STRING
+USR
+ constraint(f)
+3 downto 0
+PARAMETER_STRING
+USR
+ constraint(s)
+3 downto 0
+PARAMETER_STRING
+USR
+}
+# include_file {
+src|sm1.vhd
+4cc262aa2416dcdb8a8bfd9ccbc64b
+}
+# hierarchies {
+sm4:SM
+}
+# macro_sequence
+
+# end
+# entity
+sm1
+# storage
+db|ictr.(6).cnf
+db|ictr.(6).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+src|sm1.vhd
+4cc262aa2416dcdb8a8bfd9ccbc64b
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# hierarchies {
+sm4:SM|sm1:SUM0
+sm4:SM|sm1:\SUM3:1:SUM1
+sm4:SM|sm1:\SUM3:2:SUM1
+sm4:SM|sm1:\SUM3:3:SUM1
+}
+# macro_sequence
+
+# end
+# complete
+

@@ -1,0 +1,19 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;
+
+entity sm4 is
+	port (
+		R : in STD_LOGIC_VECTOR(3 downto 0); --даное с регистра
+		F : in STD_LOGIC_VECTOR(3 downto 0);-- инкремент
+		S : out STD_LOGIC_VECTOR(3 downto 0);-- сумма
+		Q : out STD_LOGIC);
+	);
+end sm4;
+
+
+architecture Behavior of sm1 is
+begin
+	q_i_plus_1 <= ( (Qi and Fi) or (Qi and q_i) or (Fi and q_i) );
+	Si <= ( (not Qi and not Fi and q_i) or (not Qi and Fi and not q_i) or 
+		(Qi and not Fi and not q_i) or (Qi and Fi and q_i) );
+end Behavior;

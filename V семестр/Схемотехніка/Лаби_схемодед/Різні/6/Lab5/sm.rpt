@@ -1,0 +1,551 @@
+Project Information                                    c:\max2work\lab5\sm.rpt
+
+MAX+plus II Compiler Report File
+Version 10.1 06/12/2001
+Compiled: 12/25/2008 18:13:50
+
+Copyright (C) 1988-2001 Altera Corporation
+Any megafunction design, and related net list (encrypted or decrypted),
+support information, device programming or simulation file, and any other
+associated documentation or information provided by Altera or a partner
+under Altera's Megafunction Partnership Program may be used only to
+program PLD devices (but not masked PLD devices) from Altera.  Any other
+use of such megafunction design, net list, support information, device
+programming or simulation file, or any other related documentation or
+information is prohibited for any other purpose, including, but not
+limited to modification, reverse engineering, de-compiling, or use with
+any other silicon devices, unless such use is explicitly licensed under
+a separate agreement with Altera or a megafunction partner.  Title to
+the intellectual property, including patents, copyrights, trademarks,
+trade secrets, or maskworks, embodied in any such megafunction design,
+net list, support information, device programming or simulation file, or
+any other related documentation or information provided by Altera or a
+megafunction partner, remains with Altera, the megafunction partner, or
+their respective licensors.  No other licenses, including any licenses
+needed under any third party's intellectual property, are provided herein.
+
+
+
+***** Project compilation was successful
+
+
+
+
+** DEVICE SUMMARY **
+
+Chip/                     Input   Output   Bidir         Shareable
+POF       Device          Pins    Pins     Pins     LCs  Expanders  % Utilized
+
+sm        EPM7032BLC44-3   8        5        0      8       8           25 %
+
+User Pins:                 8        5        0  
+
+
+
+Project Information                                    c:\max2work\lab5\sm.rpt
+
+** PROJECT TIMING MESSAGES **
+
+Warning: Timing characteristics of device EPM7032BLC44-3 are preliminary
+
+
+Project Information                                    c:\max2work\lab5\sm.rpt
+
+** FILE HIERARCHY **
+
+
+
+|smbit:36|
+|smbit:36|sumbit:3|
+|smbit:36|cobit:4|
+|smbit:38|
+|smbit:38|sumbit:3|
+|smbit:38|cobit:4|
+|smbit:37|
+|smbit:37|sumbit:3|
+|smbit:37|cobit:4|
+|smbit:1|
+|smbit:1|sumbit:3|
+|smbit:1|cobit:4|
+
+
+Device-Specific Information:                           c:\max2work\lab5\sm.rpt
+sm
+
+***** Logic for device 'sm' compiled without errors.
+
+
+
+
+Device: EPM7032BLC44-3
+
+Device Options:
+    Turbo Bit                                    = ON
+    Security Bit                                 = OFF
+    Enable JTAG Support                        = ON
+    User Code                                  = ffffffff
+    MultiVolt I/O                              = OFF
+
+                     V                       
+                     C                       
+                     C                       
+                     I  G  G  G  G  G        
+            Q  Q  Q  N  N  N  N  N  N  S  S  
+            1  2  3  T  D  D  D  D  D  3  2  
+          -----------------------------------_ 
+        /   6  5  4  3  2  1 44 43 42 41 40   | 
+  #TDI |  7                                39 | S1 
+    Q0 |  8                                38 | #TDO 
+    F3 |  9                                37 | S0 
+   GND | 10                                36 | GND* 
+    F2 | 11                                35 | VCCIO2 
+    F1 | 12         EPM7032BLC44-3         34 | GND* 
+  #TMS | 13                                33 | CO 
+    F0 | 14                                32 | #TCK 
+VCCIO1 | 15                                31 | GND* 
+  GND* | 16                                30 | GND 
+  GND* | 17                                29 | GND* 
+       |_  18 19 20 21 22 23 24 25 26 27 28  _| 
+         ------------------------------------ 
+            G  G  G  G  G  V  G  G  G  G  G  
+            N  N  N  N  N  C  N  N  N  N  N  
+            D  D  D  D  D  C  D  D  D  D  D  
+            *  *  *  *     I  *  *  *  *  *  
+                           N                 
+                           T                 
+
+
+N.C. = No Connect. This pin has no internal connection to the device.
+VCCINT = Dedicated power pin, which MUST be connected to VCC (2.5 volts).
+VCCIO1 = Dedicated power pin, which MUST be connected to VCC (3.3 volts).
+VCCIO2 = Dedicated power pin, which MUST be connected to VCC (3.3 volts).
+GND = Dedicated ground pin or unused dedicated input, which MUST be connected to GND.
+GND* = These I/O pins can either be left unconnected or connected to GND. Connecting these pins to GND will improve the device's immunity to noise.
+RESERVED = Unused I/O pin, which MUST be left unconnected.
+
+^ = Dedicated configuration pin.
++ = Reserved configuration pin, which is tri-stated during user mode.
+* = Reserved configuration pin, which drives out in user mode.
+PDn = Power Down pin. 
+@ = Special-purpose pin. 
+# = JTAG Boundary-Scan Testing/In-System Programming or Configuration Pin. The JTAG inputs TMS and TDI should be tied to VCC and TCK should be tied to GND when not in use.
+& = JTAG pin used for I/O. When used as user I/O, JTAG pins must be kept stable before and during configuration.  JTAG pin stability prevents accidental loading of JTAG instructions.
+
+
+Device-Specific Information:                           c:\max2work\lab5\sm.rpt
+sm
+
+** RESOURCE USAGE **
+
+                                                Shareable     External
+Logic Array Block     Logic Cells   I/O Pins    Expanders   Interconnect
+
+A:     LC1 - LC16     0/16(  0%)  10/16( 62%)   0/16(  0%)   0/36(  0%) 
+B:    LC17 - LC32     8/16( 50%)   7/16( 43%)  13/16( 81%)  11/36( 30%) 
+
+
+Total dedicated input pins used:                 0/4      (  0%)
+Total I/O pins used:                            17/32     ( 53%)
+Total logic cells used:                          8/32     ( 25%)
+Total shareable expanders used:                  8/32     ( 25%)
+Total Turbo logic cells used:                    8/32     ( 25%)
+Total shareable expanders not available (n/a):   5/32     ( 15%)
+Average fan-in:                                  6.25
+Total fan-in:                                    50
+
+Total input pins required:                       8
+Total output pins required:                      5
+Total bidirectional pins required:               0
+Total reserved pins required                     4
+Total logic cells required:                      8
+Total flipflops required:                        0
+Total product terms required:                   41
+Total logic cells lending parallel expanders:    0
+Total shareable expanders in database:           8
+
+Synthesized logic cells:                         3/  32   (  9%)
+
+
+
+Device-Specific Information:                           c:\max2work\lab5\sm.rpt
+sm
+
+** INPUTS **
+
+                                         Shareable
+                                         Expanders     Fan-In    Fan-Out
+ Pin     LC  LAB  Primitive    Code   Total Shared n/a INP  FBK  OUT  FBK  Name
+  14   (10)  (A)      INPUT                 0      0   0    0    0    2    0  F0
+  12    (8)  (A)      INPUT                 0      0   0    0    0    3    3  F1
+  11    (7)  (A)      INPUT                 0      0   0    0    0    3    3  F2
+   9    (6)  (A)      INPUT                 0      0   0    0    0    4    3  F3
+   8    (5)  (A)      INPUT                 0      0   0    0    0    2    3  Q0
+   6    (3)  (A)      INPUT                 0      0   0    0    0    3    3  Q1
+   5    (2)  (A)      INPUT                 0      0   0    0    0    4    3  Q2
+   4    (1)  (A)      INPUT                 0      0   0    0    0    5    3  Q3
+
+
+Code:
+
+s = Synthesized pin or logic cell
+t = Turbo logic cell
++ = Synchronous flipflop
+/ = Slow slew-rate output
+! = NOT gate push-back
+r = Fitter-inserted logic cell
+^ = Increased input delay
+h = Register powers up high
+
+
+Device-Specific Information:                           c:\max2work\lab5\sm.rpt
+sm
+
+** OUTPUTS **
+
+                                         Shareable
+                                         Expanders     Fan-In    Fan-Out
+ Pin     LC  LAB  Primitive    Code   Total Shared n/a INP  FBK  OUT  FBK  Name
+  33     24    B     OUTPUT      t         4      1   1    8    0    0    0  CO
+  37     21    B     OUTPUT      t         3      0   0    6    3    0    0  S0
+  39     19    B     OUTPUT      t         4      1   1    6    0    0    0  S1
+  40     18    B     OUTPUT      t         0      0   0    4    0    0    0  S2
+  41     17    B     OUTPUT      t         0      0   0    2    0    0    0  S3
+
+
+Code:
+
+s = Synthesized pin or logic cell
+t = Turbo logic cell
++ = Synchronous flipflop
+/ = Slow slew-rate output
+! = NOT gate push-back
+r = Fitter-inserted logic cell
+^ = Increased input delay
+h = Register powers up high
+
+
+Device-Specific Information:                           c:\max2work\lab5\sm.rpt
+sm
+
+** BURIED LOGIC **
+
+                                         Shareable
+                                         Expanders     Fan-In    Fan-Out
+ Pin     LC  LAB  Primitive    Code   Total Shared n/a INP  FBK  OUT  FBK  Name
+ (34)    23    B       SOFT    s t         1      0   1    7    0    1    0  |smbit:38|sumbit:3|Si~1 (|smbit:38|sumbit:3|~18~1)
+ (36)    22    B       SOFT    s t         1      0   1    7    0    1    0  |smbit:38|sumbit:3|Si~2 (|smbit:38|sumbit:3|~18~2)
+ (38)    20    B       SOFT    s t         1      0   1    7    0    1    0  |smbit:38|sumbit:3|Si~3 (|smbit:38|sumbit:3|~18~3)
+
+
+Code:
+
+s = Synthesized pin or logic cell
+t = Turbo logic cell
++ = Synchronous flipflop
+/ = Slow slew-rate output
+! = NOT gate push-back
+r = Fitter-inserted logic cell
+^ = Increased input delay
+h = Register powers up high
+
+
+Device-Specific Information:                           c:\max2work\lab5\sm.rpt
+sm
+
+** I/O STANDARDS **
+
+                              Dedicated      Pins in      Pins in        
+   I/O Standard  Input Ref   Input Pins   I/O Bank 1   I/O Bank 2   Total
+          LVTTL          -            0            8            5      13
+
+Total VCCIO Current is   20 ma (Limit is  400 ma)
+Total GNDIO Current is   20 ma (Limit is  400 ma)
+
+IOVCC                VCCIO    VCCIO    Current
+Group    I/O Pins   Voltage  Current    Limit
+A:      8/10( 80%)    3.3V      0 ma /  100 ma (  0%)
+B:      0/ 6(  0%)    3.3V      0 ma /  100 ma (  0%)
+C:      1/10( 10%)    3.3V      4 ma /  100 ma (  4%)
+D:      4/ 6( 66%)    3.3V     16 ma /  100 ma ( 16%)
+
+IOGND                         GNDIO    Current
+Group    I/O Pins            Current    Limit
+A:     10/16( 62%)             20 ma /  200 ma ( 10%)
+B:      3/16( 18%)              0 ma /  200 ma (  0%)
+
+IOVCC group A:  VCCIO Current is    0 ma (Limit is  100 ma)
+
+ Pin    Type  Code  VCCIO     I/O Standard  Input Ref  Current  Name
+   4   INPUT            -            LVTTL          -        -  Q3
+   5   INPUT            -            LVTTL          -        -  Q2
+   6   INPUT            -            LVTTL          -        -  Q1
+   8   INPUT            -            LVTTL          -        -  Q0
+   9   INPUT            -            LVTTL          -        -  F3
+  11   INPUT            -            LVTTL          -        -  F2
+  12   INPUT            -            LVTTL          -        -  F1
+  14   INPUT            -            LVTTL          -        -  F0
+
+IOVCC group C:  VCCIO Current is    4 ma (Limit is  100 ma)
+
+ Pin    Type  Code  VCCIO     I/O Standard  Input Ref  Current  Name
+  33  OUTPUT         3.3V            LVTTL          -     4 ma  CO
+
+IOVCC group D:  VCCIO Current is   16 ma (Limit is  100 ma)
+
+ Pin    Type  Code  VCCIO     I/O Standard  Input Ref  Current  Name
+  37  OUTPUT         3.3V            LVTTL          -     4 ma  S0
+  39  OUTPUT         3.3V            LVTTL          -     4 ma  S1
+  40  OUTPUT         3.3V            LVTTL          -     4 ma  S2
+  41  OUTPUT         3.3V            LVTTL          -     4 ma  S3
+
+IOGND group A:  GNDIO Current is   20 ma (Limit is  200 ma)
+
+ Pin    Type  Code  VCCIO     I/O Standard  Input Ref  Current  Name
+   4   INPUT            -            LVTTL          -        -  Q3
+   5   INPUT            -            LVTTL          -        -  Q2
+   6   INPUT            -            LVTTL          -        -  Q1
+   8   INPUT            -            LVTTL          -        -  Q0
+   9   INPUT            -            LVTTL          -        -  F3
+  33  OUTPUT            -            LVTTL          -     4 ma  CO
+  37  OUTPUT            -            LVTTL          -     4 ma  S0
+  39  OUTPUT            -            LVTTL          -     4 ma  S1
+  40  OUTPUT            -            LVTTL          -     4 ma  S2
+  41  OUTPUT            -            LVTTL          -     4 ma  S3
+
+IOGND group B:  GNDIO Current is    0 ma (Limit is  200 ma)
+
+ Pin    Type  Code  VCCIO     I/O Standard  Input Ref  Current  Name
+  11   INPUT            -            LVTTL          -        -  F2
+  12   INPUT            -            LVTTL          -        -  F1
+  14   INPUT            -            LVTTL          -        -  F0
+
+Code:
+
+/ = Slow slew-rate output
+z = Pull-Up Resistor
+b = Bus-Hold
+
+
+Device-Specific Information:                           c:\max2work\lab5\sm.rpt
+sm
+
+** LOGIC CELL INTERCONNECTIONS **
+
+Logic Array Block 'B':
+
+                         Logic cells placed in LAB 'B'
+        +--------------- LC24 CO
+        | +------------- LC23 |smbit:38|sumbit:3|Si~1
+        | | +----------- LC22 |smbit:38|sumbit:3|Si~2
+        | | | +--------- LC20 |smbit:38|sumbit:3|Si~3
+        | | | | +------- LC21 S0
+        | | | | | +----- LC19 S1
+        | | | | | | +--- LC18 S2
+        | | | | | | | +- LC17 S3
+        | | | | | | | | 
+        | | | | | | | |   Other LABs fed by signals
+        | | | | | | | |   that feed LAB 'B'
+LC      | | | | | | | | | A B |     Logic cells that feed LAB 'B':
+LC23 -> - - - - * - - - | - * | <-- |smbit:38|sumbit:3|Si~1
+LC22 -> - - - - * - - - | - * | <-- |smbit:38|sumbit:3|Si~2
+LC20 -> - - - - * - - - | - * | <-- |smbit:38|sumbit:3|Si~3
+
+Pin
+14   -> * - - - * - - - | - * | <-- F0
+12   -> * * * * * * - - | - * | <-- F1
+11   -> * * * * - * * - | - * | <-- F2
+9    -> * * * * - * * * | - * | <-- F3
+8    -> * * * * * - - - | - * | <-- Q0
+6    -> * * * * * * - - | - * | <-- Q1
+5    -> * * * * * * * - | - * | <-- Q2
+4    -> * * * * * * * * | - * | <-- Q3
+
+
+* = The logic cell or pin is an input to the logic cell (or LAB) through the PIA.
+- = The logic cell or pin is not an input to the logic cell (or LAB).
+
+
+Device-Specific Information:                           c:\max2work\lab5\sm.rpt
+sm
+
+** EQUATIONS **
+
+F0       : INPUT;
+F1       : INPUT;
+F2       : INPUT;
+F3       : INPUT;
+Q0       : INPUT;
+Q1       : INPUT;
+Q2       : INPUT;
+Q3       : INPUT;
+
+-- Node name is 'CO' 
+-- Equation name is 'CO', location is LC024, type is output.
+ CO      = LCELL( _EQ001 $  GND);
+  _EQ001 =  F3 &  Q0 &  Q3 &  _X001 &  _X002
+         #  F0 &  F3 &  Q3 &  _X001 &  _X002
+         #  F2 &  Q2 &  _X001 &  _X003
+         #  F1 &  Q1 &  _X003
+         #  F0 &  Q0;
+  _X001  = EXP(!F1 & !Q1);
+  _X002  = EXP(!F2 & !Q2);
+  _X003  = EXP(!F0 & !Q0);
+
+-- Node name is 'S0' 
+-- Equation name is 'S0', location is LC021, type is output.
+ S0      = LCELL( _EQ002 $ !F0);
+  _EQ002 = !_LC020 & !_LC022 & !_LC023 &  _X004 &  _X005 &  _X006;
+  _X004  = EXP( Q0 & !Q1 & !Q2 & !Q3);
+  _X005  = EXP( F1 & !Q0 &  Q1);
+  _X006  = EXP(!F1 &  Q0 & !Q1);
+
+-- Node name is 'S1' 
+-- Equation name is 'S1', location is LC019, type is output.
+ S1      = LCELL( _EQ003 $  F1);
+  _EQ003 =  F3 & !Q1 &  Q3 &  _X002
+         #  F2 & !Q1 &  Q2
+         # !F2 &  Q1 &  _X007
+         #  Q1 & !Q2 &  _X008;
+  _X002  = EXP(!F2 & !Q2);
+  _X007  = EXP( F3 &  Q2 &  Q3);
+  _X008  = EXP( F3 &  Q3);
+
+-- Node name is 'S2' 
+-- Equation name is 'S2', location is LC018, type is output.
+ S2      = LCELL( _EQ004 $  F2);
+  _EQ004 =  F3 & !Q2 &  Q3
+         # !F3 &  Q2
+         #  Q2 & !Q3;
+
+-- Node name is 'S3' 
+-- Equation name is 'S3', location is LC017, type is output.
+ S3      = LCELL( Q3 $  F3);
+
+-- Node name is '|smbit:38|sumbit:3|~18~1' = '|smbit:38|sumbit:3|Si~1' 
+-- Equation name is '_LC023', type is buried 
+-- synthesized logic cell 
+_LC023   = LCELL( _EQ005 $  GND);
+  _EQ005 =  F1 &  F2 &  F3 & !Q0 &  Q3
+         #  F1 &  F3 & !Q0 &  Q2 &  Q3
+         #  F2 &  F3 & !Q0 &  Q1 &  Q3
+         #  F3 & !Q0 &  Q1 &  Q2 &  Q3
+         #  F1 &  F2 & !Q0 &  Q2;
+
+-- Node name is '|smbit:38|sumbit:3|~18~2' = '|smbit:38|sumbit:3|Si~2' 
+-- Equation name is '_LC022', type is buried 
+-- synthesized logic cell 
+_LC022   = LCELL( _EQ006 $  GND);
+  _EQ006 =  F2 & !Q0 &  Q1 &  Q2
+         # !F1 & !F2 &  Q0 & !Q2
+         # !F1 & !F2 & !F3 &  Q0
+         # !F1 & !F2 &  Q0 & !Q3
+         # !F1 & !F3 &  Q0 & !Q2;
+
+-- Node name is '|smbit:38|sumbit:3|~18~3' = '|smbit:38|sumbit:3|Si~3' 
+-- Equation name is '_LC020', type is buried 
+-- synthesized logic cell 
+_LC020   = LCELL( _EQ007 $  GND);
+  _EQ007 = !F1 &  Q0 & !Q2 & !Q3
+         # !F2 &  Q0 & !Q1 & !Q2
+         # !F2 & !F3 &  Q0 & !Q1
+         # !F2 &  Q0 & !Q1 & !Q3
+         # !F3 &  Q0 & !Q1 & !Q2;
+
+
+
+--     Shareable expanders that are duplicated in multiple LABs:
+--     (none)
+
+
+
+
+Project Information                                    c:\max2work\lab5\sm.rpt
+
+** COMPILATION SETTINGS & TIMES **
+
+Processing Menu Commands
+------------------------
+
+Design Doctor                             = off
+
+Logic Synthesis:
+
+   Synthesis Type Used                    = Standard
+
+   Default Synthesis Style                = NORMAL
+
+      Logic option settings in 'NORMAL' style for 'MAX7000B' family
+
+      DECOMPOSE_GATES                     = on
+      DUPLICATE_LOGIC_EXTRACTION          = on
+      MINIMIZATION                        = full
+      MULTI_LEVEL_FACTORING               = on
+      NOT_GATE_PUSH_BACK                  = on
+      PARALLEL_EXPANDERS                  = off
+      REDUCE_LOGIC                        = on
+      REFACTORIZATION                     = on
+      REGISTER_OPTIMIZATION               = on
+      RESYNTHESIZE_NETWORK                = on
+      SLOW_SLEW_RATE                      = off
+      SOFT_BUFFER_INSERTION               = on
+      SUBFACTOR_EXTRACTION                = on
+      TURBO_BIT                           = on
+      XOR_SYNTHESIS                       = on
+      IGNORE_SOFT_BUFFERS                 = off
+      USE_LPM_FOR_AHDL_OPERATORS          = off
+
+   Other logic synthesis settings:
+
+      Automatic Global Clock              = on
+      Automatic Global Clear              = on
+      Automatic Global Preset             = on
+      Automatic Global Output Enable      = on
+      Automatic Fast I/O                  = off
+      Automatic Register Packing          = off
+      Automatic Open-Drain Pins           = on
+      Automatic Implement in EAB          = off
+      One-Hot State Machine Encoding      = off
+      Optimize                            = 5
+
+Default Timing Specifications: None
+
+Cut All Bidir Feedback Timing Paths       = on
+Cut All Clear & Preset Timing Paths       = on
+
+Ignore Timing Assignments                 = off
+
+Functional SNF Extractor                  = off
+
+Linked SNF Extractor                      = off
+Timing SNF Extractor                      = on
+Optimize Timing SNF                       = off
+Generate AHDL TDO File                    = off
+Fitter Settings                           = NORMAL
+Smart Recompile                           = off
+Total Recompile                           = off
+
+Interfaces Menu Commands
+------------------------
+
+EDIF Netlist Writer                       = off
+Verilog Netlist Writer                    = off
+VHDL Netlist Writer                       = off
+
+Compilation Times
+-----------------
+
+   Compiler Netlist Extractor             00:00:00
+   Database Builder                       00:00:00
+   Logic Synthesizer                      00:00:00
+   Partitioner                            00:00:00
+   Fitter                                 00:00:01
+   Timing SNF Extractor                   00:00:00
+   Assembler                              00:00:00
+   --------------------------             --------
+   Total Time                             00:00:01
+
+
+Memory Allocated
+-----------------
+
+Peak memory allocated during compilation  = 3,383K

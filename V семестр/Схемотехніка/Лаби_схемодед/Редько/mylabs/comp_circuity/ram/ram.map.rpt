@@ -1,0 +1,2501 @@
+Analysis & Elaboration report for ram
+Tue Nov 27 02:16:55 2012
+Quartus II Version 11.0 Build 157 04/27/2011 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Elaboration Summary
+  3. Parallel Compilation
+  4. Parameter Settings for User Entity Instance: PLM_4:U_DC0
+  5. Parameter Settings for User Entity Instance: PLM_4:U_DC1
+  6. Parameter Settings for User Entity Instance: PLM_4:U_DC2
+  7. Parameter Settings for User Entity Instance: PLM_4:U_DC3
+  8. Parameter Settings for User Entity Instance: PLM_4:U_DC4
+  9. Parameter Settings for User Entity Instance: PLM_4:U_DC5
+ 10. Parameter Settings for User Entity Instance: PLM_4:U_DC6
+ 11. Parameter Settings for User Entity Instance: PLM_4:U_DC7
+ 12. Parameter Settings for User Entity Instance: MUX8:\U_MUX:0:MUXD|PLM_6:U_MUX0
+ 13. Parameter Settings for User Entity Instance: MUX8:\U_MUX:0:MUXD|PLM_6:U_MUX1
+ 14. Parameter Settings for User Entity Instance: MUX8:\U_MUX:0:MUXD|PLM_3:U_MUX3
+ 15. Parameter Settings for User Entity Instance: MUX8:\U_MUX:0:MUXP|PLM_6:U_MUX0
+ 16. Parameter Settings for User Entity Instance: MUX8:\U_MUX:0:MUXP|PLM_6:U_MUX1
+ 17. Parameter Settings for User Entity Instance: MUX8:\U_MUX:0:MUXP|PLM_3:U_MUX3
+ 18. Parameter Settings for User Entity Instance: MUX8:\U_MUX:1:MUXD|PLM_6:U_MUX0
+ 19. Parameter Settings for User Entity Instance: MUX8:\U_MUX:1:MUXD|PLM_6:U_MUX1
+ 20. Parameter Settings for User Entity Instance: MUX8:\U_MUX:1:MUXD|PLM_3:U_MUX3
+ 21. Parameter Settings for User Entity Instance: MUX8:\U_MUX:1:MUXP|PLM_6:U_MUX0
+ 22. Parameter Settings for User Entity Instance: MUX8:\U_MUX:1:MUXP|PLM_6:U_MUX1
+ 23. Parameter Settings for User Entity Instance: MUX8:\U_MUX:1:MUXP|PLM_3:U_MUX3
+ 24. Parameter Settings for User Entity Instance: MUX8:\U_MUX:2:MUXD|PLM_6:U_MUX0
+ 25. Parameter Settings for User Entity Instance: MUX8:\U_MUX:2:MUXD|PLM_6:U_MUX1
+ 26. Parameter Settings for User Entity Instance: MUX8:\U_MUX:2:MUXD|PLM_3:U_MUX3
+ 27. Parameter Settings for User Entity Instance: MUX8:\U_MUX:2:MUXP|PLM_6:U_MUX0
+ 28. Parameter Settings for User Entity Instance: MUX8:\U_MUX:2:MUXP|PLM_6:U_MUX1
+ 29. Parameter Settings for User Entity Instance: MUX8:\U_MUX:2:MUXP|PLM_3:U_MUX3
+ 30. Parameter Settings for User Entity Instance: MUX8:\U_MUX:3:MUXD|PLM_6:U_MUX0
+ 31. Parameter Settings for User Entity Instance: MUX8:\U_MUX:3:MUXD|PLM_6:U_MUX1
+ 32. Parameter Settings for User Entity Instance: MUX8:\U_MUX:3:MUXD|PLM_3:U_MUX3
+ 33. Parameter Settings for User Entity Instance: MUX8:\U_MUX:3:MUXP|PLM_6:U_MUX0
+ 34. Parameter Settings for User Entity Instance: MUX8:\U_MUX:3:MUXP|PLM_6:U_MUX1
+ 35. Parameter Settings for User Entity Instance: MUX8:\U_MUX:3:MUXP|PLM_3:U_MUX3
+ 36. Parameter Settings for User Entity Instance: MUX8:\U_MUX:4:MUXD|PLM_6:U_MUX0
+ 37. Parameter Settings for User Entity Instance: MUX8:\U_MUX:4:MUXD|PLM_6:U_MUX1
+ 38. Parameter Settings for User Entity Instance: MUX8:\U_MUX:4:MUXD|PLM_3:U_MUX3
+ 39. Parameter Settings for User Entity Instance: MUX8:\U_MUX:4:MUXP|PLM_6:U_MUX0
+ 40. Parameter Settings for User Entity Instance: MUX8:\U_MUX:4:MUXP|PLM_6:U_MUX1
+ 41. Parameter Settings for User Entity Instance: MUX8:\U_MUX:4:MUXP|PLM_3:U_MUX3
+ 42. Parameter Settings for User Entity Instance: MUX8:\U_MUX:5:MUXD|PLM_6:U_MUX0
+ 43. Parameter Settings for User Entity Instance: MUX8:\U_MUX:5:MUXD|PLM_6:U_MUX1
+ 44. Parameter Settings for User Entity Instance: MUX8:\U_MUX:5:MUXD|PLM_3:U_MUX3
+ 45. Parameter Settings for User Entity Instance: MUX8:\U_MUX:5:MUXP|PLM_6:U_MUX0
+ 46. Parameter Settings for User Entity Instance: MUX8:\U_MUX:5:MUXP|PLM_6:U_MUX1
+ 47. Parameter Settings for User Entity Instance: MUX8:\U_MUX:5:MUXP|PLM_3:U_MUX3
+ 48. Parameter Settings for User Entity Instance: MUX8:\U_MUX:6:MUXD|PLM_6:U_MUX0
+ 49. Parameter Settings for User Entity Instance: MUX8:\U_MUX:6:MUXD|PLM_6:U_MUX1
+ 50. Parameter Settings for User Entity Instance: MUX8:\U_MUX:6:MUXD|PLM_3:U_MUX3
+ 51. Parameter Settings for User Entity Instance: MUX8:\U_MUX:6:MUXP|PLM_6:U_MUX0
+ 52. Parameter Settings for User Entity Instance: MUX8:\U_MUX:6:MUXP|PLM_6:U_MUX1
+ 53. Parameter Settings for User Entity Instance: MUX8:\U_MUX:6:MUXP|PLM_3:U_MUX3
+ 54. Parameter Settings for User Entity Instance: MUX8:\U_MUX:7:MUXD|PLM_6:U_MUX0
+ 55. Parameter Settings for User Entity Instance: MUX8:\U_MUX:7:MUXD|PLM_6:U_MUX1
+ 56. Parameter Settings for User Entity Instance: MUX8:\U_MUX:7:MUXD|PLM_3:U_MUX3
+ 57. Parameter Settings for User Entity Instance: MUX8:\U_MUX:7:MUXP|PLM_6:U_MUX0
+ 58. Parameter Settings for User Entity Instance: MUX8:\U_MUX:7:MUXP|PLM_6:U_MUX1
+ 59. Parameter Settings for User Entity Instance: MUX8:\U_MUX:7:MUXP|PLM_3:U_MUX3
+ 60. Parameter Settings for User Entity Instance: MUX8:\U_MUX:8:MUXD|PLM_6:U_MUX0
+ 61. Parameter Settings for User Entity Instance: MUX8:\U_MUX:8:MUXD|PLM_6:U_MUX1
+ 62. Parameter Settings for User Entity Instance: MUX8:\U_MUX:8:MUXD|PLM_3:U_MUX3
+ 63. Parameter Settings for User Entity Instance: MUX8:\U_MUX:8:MUXP|PLM_6:U_MUX0
+ 64. Parameter Settings for User Entity Instance: MUX8:\U_MUX:8:MUXP|PLM_6:U_MUX1
+ 65. Parameter Settings for User Entity Instance: MUX8:\U_MUX:8:MUXP|PLM_3:U_MUX3
+ 66. Parameter Settings for User Entity Instance: MUX8:\U_MUX:9:MUXD|PLM_6:U_MUX0
+ 67. Parameter Settings for User Entity Instance: MUX8:\U_MUX:9:MUXD|PLM_6:U_MUX1
+ 68. Parameter Settings for User Entity Instance: MUX8:\U_MUX:9:MUXD|PLM_3:U_MUX3
+ 69. Parameter Settings for User Entity Instance: MUX8:\U_MUX:9:MUXP|PLM_6:U_MUX0
+ 70. Parameter Settings for User Entity Instance: MUX8:\U_MUX:9:MUXP|PLM_6:U_MUX1
+ 71. Parameter Settings for User Entity Instance: MUX8:\U_MUX:9:MUXP|PLM_3:U_MUX3
+ 72. Parameter Settings for User Entity Instance: MUX8:\U_MUX:10:MUXD|PLM_6:U_MUX0
+ 73. Parameter Settings for User Entity Instance: MUX8:\U_MUX:10:MUXD|PLM_6:U_MUX1
+ 74. Parameter Settings for User Entity Instance: MUX8:\U_MUX:10:MUXD|PLM_3:U_MUX3
+ 75. Parameter Settings for User Entity Instance: MUX8:\U_MUX:10:MUXP|PLM_6:U_MUX0
+ 76. Parameter Settings for User Entity Instance: MUX8:\U_MUX:10:MUXP|PLM_6:U_MUX1
+ 77. Parameter Settings for User Entity Instance: MUX8:\U_MUX:10:MUXP|PLM_3:U_MUX3
+ 78. Parameter Settings for User Entity Instance: MUX8:\U_MUX:11:MUXD|PLM_6:U_MUX0
+ 79. Parameter Settings for User Entity Instance: MUX8:\U_MUX:11:MUXD|PLM_6:U_MUX1
+ 80. Parameter Settings for User Entity Instance: MUX8:\U_MUX:11:MUXD|PLM_3:U_MUX3
+ 81. Parameter Settings for User Entity Instance: MUX8:\U_MUX:11:MUXP|PLM_6:U_MUX0
+ 82. Parameter Settings for User Entity Instance: MUX8:\U_MUX:11:MUXP|PLM_6:U_MUX1
+ 83. Parameter Settings for User Entity Instance: MUX8:\U_MUX:11:MUXP|PLM_3:U_MUX3
+ 84. Parameter Settings for User Entity Instance: MUX8:\U_MUX:12:MUXD|PLM_6:U_MUX0
+ 85. Parameter Settings for User Entity Instance: MUX8:\U_MUX:12:MUXD|PLM_6:U_MUX1
+ 86. Parameter Settings for User Entity Instance: MUX8:\U_MUX:12:MUXD|PLM_3:U_MUX3
+ 87. Parameter Settings for User Entity Instance: MUX8:\U_MUX:12:MUXP|PLM_6:U_MUX0
+ 88. Parameter Settings for User Entity Instance: MUX8:\U_MUX:12:MUXP|PLM_6:U_MUX1
+ 89. Parameter Settings for User Entity Instance: MUX8:\U_MUX:12:MUXP|PLM_3:U_MUX3
+ 90. Parameter Settings for User Entity Instance: MUX8:\U_MUX:13:MUXD|PLM_6:U_MUX0
+ 91. Parameter Settings for User Entity Instance: MUX8:\U_MUX:13:MUXD|PLM_6:U_MUX1
+ 92. Parameter Settings for User Entity Instance: MUX8:\U_MUX:13:MUXD|PLM_3:U_MUX3
+ 93. Parameter Settings for User Entity Instance: MUX8:\U_MUX:13:MUXP|PLM_6:U_MUX0
+ 94. Parameter Settings for User Entity Instance: MUX8:\U_MUX:13:MUXP|PLM_6:U_MUX1
+ 95. Parameter Settings for User Entity Instance: MUX8:\U_MUX:13:MUXP|PLM_3:U_MUX3
+ 96. Parameter Settings for User Entity Instance: MUX8:\U_MUX:14:MUXD|PLM_6:U_MUX0
+ 97. Parameter Settings for User Entity Instance: MUX8:\U_MUX:14:MUXD|PLM_6:U_MUX1
+ 98. Parameter Settings for User Entity Instance: MUX8:\U_MUX:14:MUXD|PLM_3:U_MUX3
+ 99. Parameter Settings for User Entity Instance: MUX8:\U_MUX:14:MUXP|PLM_6:U_MUX0
+100. Parameter Settings for User Entity Instance: MUX8:\U_MUX:14:MUXP|PLM_6:U_MUX1
+101. Parameter Settings for User Entity Instance: MUX8:\U_MUX:14:MUXP|PLM_3:U_MUX3
+102. Analysis & Elaboration Settings
+103. Port Connectivity Checks: "FDRE:\U_FM:7:U_RG:14:U_TT"
+104. Port Connectivity Checks: "FDRE:\U_FM:7:U_RG:13:U_TT"
+105. Port Connectivity Checks: "FDRE:\U_FM:7:U_RG:12:U_TT"
+106. Port Connectivity Checks: "FDRE:\U_FM:7:U_RG:11:U_TT"
+107. Port Connectivity Checks: "FDRE:\U_FM:7:U_RG:10:U_TT"
+108. Port Connectivity Checks: "FDRE:\U_FM:7:U_RG:9:U_TT"
+109. Port Connectivity Checks: "FDRE:\U_FM:7:U_RG:8:U_TT"
+110. Port Connectivity Checks: "FDRE:\U_FM:7:U_RG:7:U_TT"
+111. Port Connectivity Checks: "FDRE:\U_FM:7:U_RG:6:U_TT"
+112. Port Connectivity Checks: "FDRE:\U_FM:7:U_RG:5:U_TT"
+113. Port Connectivity Checks: "FDRE:\U_FM:7:U_RG:4:U_TT"
+114. Port Connectivity Checks: "FDRE:\U_FM:7:U_RG:3:U_TT"
+115. Port Connectivity Checks: "FDRE:\U_FM:7:U_RG:2:U_TT"
+116. Port Connectivity Checks: "FDRE:\U_FM:7:U_RG:1:U_TT"
+117. Port Connectivity Checks: "FDRE:\U_FM:7:U_RG:0:U_TT"
+118. Port Connectivity Checks: "FDRE:\U_FM:6:U_RG:14:U_TT"
+119. Port Connectivity Checks: "FDRE:\U_FM:6:U_RG:13:U_TT"
+120. Port Connectivity Checks: "FDRE:\U_FM:6:U_RG:12:U_TT"
+121. Port Connectivity Checks: "FDRE:\U_FM:6:U_RG:11:U_TT"
+122. Port Connectivity Checks: "FDRE:\U_FM:6:U_RG:10:U_TT"
+123. Port Connectivity Checks: "FDRE:\U_FM:6:U_RG:9:U_TT"
+124. Port Connectivity Checks: "FDRE:\U_FM:6:U_RG:8:U_TT"
+125. Port Connectivity Checks: "FDRE:\U_FM:6:U_RG:7:U_TT"
+126. Port Connectivity Checks: "FDRE:\U_FM:6:U_RG:6:U_TT"
+127. Port Connectivity Checks: "FDRE:\U_FM:6:U_RG:5:U_TT"
+128. Port Connectivity Checks: "FDRE:\U_FM:6:U_RG:4:U_TT"
+129. Port Connectivity Checks: "FDRE:\U_FM:6:U_RG:3:U_TT"
+130. Port Connectivity Checks: "FDRE:\U_FM:6:U_RG:2:U_TT"
+131. Port Connectivity Checks: "FDRE:\U_FM:6:U_RG:1:U_TT"
+132. Port Connectivity Checks: "FDRE:\U_FM:6:U_RG:0:U_TT"
+133. Port Connectivity Checks: "FDRE:\U_FM:5:U_RG:14:U_TT"
+134. Port Connectivity Checks: "FDRE:\U_FM:5:U_RG:13:U_TT"
+135. Port Connectivity Checks: "FDRE:\U_FM:5:U_RG:12:U_TT"
+136. Port Connectivity Checks: "FDRE:\U_FM:5:U_RG:11:U_TT"
+137. Port Connectivity Checks: "FDRE:\U_FM:5:U_RG:10:U_TT"
+138. Port Connectivity Checks: "FDRE:\U_FM:5:U_RG:9:U_TT"
+139. Port Connectivity Checks: "FDRE:\U_FM:5:U_RG:8:U_TT"
+140. Port Connectivity Checks: "FDRE:\U_FM:5:U_RG:7:U_TT"
+141. Port Connectivity Checks: "FDRE:\U_FM:5:U_RG:6:U_TT"
+142. Port Connectivity Checks: "FDRE:\U_FM:5:U_RG:5:U_TT"
+143. Port Connectivity Checks: "FDRE:\U_FM:5:U_RG:4:U_TT"
+144. Port Connectivity Checks: "FDRE:\U_FM:5:U_RG:3:U_TT"
+145. Port Connectivity Checks: "FDRE:\U_FM:5:U_RG:2:U_TT"
+146. Port Connectivity Checks: "FDRE:\U_FM:5:U_RG:1:U_TT"
+147. Port Connectivity Checks: "FDRE:\U_FM:5:U_RG:0:U_TT"
+148. Port Connectivity Checks: "FDRE:\U_FM:4:U_RG:14:U_TT"
+149. Port Connectivity Checks: "FDRE:\U_FM:4:U_RG:13:U_TT"
+150. Port Connectivity Checks: "FDRE:\U_FM:4:U_RG:12:U_TT"
+151. Port Connectivity Checks: "FDRE:\U_FM:4:U_RG:11:U_TT"
+152. Port Connectivity Checks: "FDRE:\U_FM:4:U_RG:10:U_TT"
+153. Port Connectivity Checks: "FDRE:\U_FM:4:U_RG:9:U_TT"
+154. Port Connectivity Checks: "FDRE:\U_FM:4:U_RG:8:U_TT"
+155. Port Connectivity Checks: "FDRE:\U_FM:4:U_RG:7:U_TT"
+156. Port Connectivity Checks: "FDRE:\U_FM:4:U_RG:6:U_TT"
+157. Port Connectivity Checks: "FDRE:\U_FM:4:U_RG:5:U_TT"
+158. Port Connectivity Checks: "FDRE:\U_FM:4:U_RG:4:U_TT"
+159. Port Connectivity Checks: "FDRE:\U_FM:4:U_RG:3:U_TT"
+160. Port Connectivity Checks: "FDRE:\U_FM:4:U_RG:2:U_TT"
+161. Port Connectivity Checks: "FDRE:\U_FM:4:U_RG:1:U_TT"
+162. Port Connectivity Checks: "FDRE:\U_FM:4:U_RG:0:U_TT"
+163. Port Connectivity Checks: "FDRE:\U_FM:3:U_RG:14:U_TT"
+164. Port Connectivity Checks: "FDRE:\U_FM:3:U_RG:13:U_TT"
+165. Port Connectivity Checks: "FDRE:\U_FM:3:U_RG:12:U_TT"
+166. Port Connectivity Checks: "FDRE:\U_FM:3:U_RG:11:U_TT"
+167. Port Connectivity Checks: "FDRE:\U_FM:3:U_RG:10:U_TT"
+168. Port Connectivity Checks: "FDRE:\U_FM:3:U_RG:9:U_TT"
+169. Port Connectivity Checks: "FDRE:\U_FM:3:U_RG:8:U_TT"
+170. Port Connectivity Checks: "FDRE:\U_FM:3:U_RG:7:U_TT"
+171. Port Connectivity Checks: "FDRE:\U_FM:3:U_RG:6:U_TT"
+172. Port Connectivity Checks: "FDRE:\U_FM:3:U_RG:5:U_TT"
+173. Port Connectivity Checks: "FDRE:\U_FM:3:U_RG:4:U_TT"
+174. Port Connectivity Checks: "FDRE:\U_FM:3:U_RG:3:U_TT"
+175. Port Connectivity Checks: "FDRE:\U_FM:3:U_RG:2:U_TT"
+176. Port Connectivity Checks: "FDRE:\U_FM:3:U_RG:1:U_TT"
+177. Port Connectivity Checks: "FDRE:\U_FM:3:U_RG:0:U_TT"
+178. Port Connectivity Checks: "FDRE:\U_FM:2:U_RG:14:U_TT"
+179. Port Connectivity Checks: "FDRE:\U_FM:2:U_RG:13:U_TT"
+180. Port Connectivity Checks: "FDRE:\U_FM:2:U_RG:12:U_TT"
+181. Port Connectivity Checks: "FDRE:\U_FM:2:U_RG:11:U_TT"
+182. Port Connectivity Checks: "FDRE:\U_FM:2:U_RG:10:U_TT"
+183. Port Connectivity Checks: "FDRE:\U_FM:2:U_RG:9:U_TT"
+184. Port Connectivity Checks: "FDRE:\U_FM:2:U_RG:8:U_TT"
+185. Port Connectivity Checks: "FDRE:\U_FM:2:U_RG:7:U_TT"
+186. Port Connectivity Checks: "FDRE:\U_FM:2:U_RG:6:U_TT"
+187. Port Connectivity Checks: "FDRE:\U_FM:2:U_RG:5:U_TT"
+188. Port Connectivity Checks: "FDRE:\U_FM:2:U_RG:4:U_TT"
+189. Port Connectivity Checks: "FDRE:\U_FM:2:U_RG:3:U_TT"
+190. Port Connectivity Checks: "FDRE:\U_FM:2:U_RG:2:U_TT"
+191. Port Connectivity Checks: "FDRE:\U_FM:2:U_RG:1:U_TT"
+192. Port Connectivity Checks: "FDRE:\U_FM:2:U_RG:0:U_TT"
+193. Port Connectivity Checks: "FDRE:\U_FM:1:U_RG:14:U_TT"
+194. Port Connectivity Checks: "FDRE:\U_FM:1:U_RG:13:U_TT"
+195. Port Connectivity Checks: "FDRE:\U_FM:1:U_RG:12:U_TT"
+196. Port Connectivity Checks: "FDRE:\U_FM:1:U_RG:11:U_TT"
+197. Port Connectivity Checks: "FDRE:\U_FM:1:U_RG:10:U_TT"
+198. Port Connectivity Checks: "FDRE:\U_FM:1:U_RG:9:U_TT"
+199. Port Connectivity Checks: "FDRE:\U_FM:1:U_RG:8:U_TT"
+200. Port Connectivity Checks: "FDRE:\U_FM:1:U_RG:7:U_TT"
+201. Port Connectivity Checks: "FDRE:\U_FM:1:U_RG:6:U_TT"
+202. Port Connectivity Checks: "FDRE:\U_FM:1:U_RG:5:U_TT"
+203. Port Connectivity Checks: "FDRE:\U_FM:1:U_RG:4:U_TT"
+204. Port Connectivity Checks: "FDRE:\U_FM:1:U_RG:3:U_TT"
+205. Port Connectivity Checks: "FDRE:\U_FM:1:U_RG:2:U_TT"
+206. Port Connectivity Checks: "FDRE:\U_FM:1:U_RG:1:U_TT"
+207. Port Connectivity Checks: "FDRE:\U_FM:1:U_RG:0:U_TT"
+208. Port Connectivity Checks: "FDRE:\U_FM:0:U_RG:14:U_TT"
+209. Port Connectivity Checks: "FDRE:\U_FM:0:U_RG:13:U_TT"
+210. Port Connectivity Checks: "FDRE:\U_FM:0:U_RG:12:U_TT"
+211. Port Connectivity Checks: "FDRE:\U_FM:0:U_RG:11:U_TT"
+212. Port Connectivity Checks: "FDRE:\U_FM:0:U_RG:10:U_TT"
+213. Port Connectivity Checks: "FDRE:\U_FM:0:U_RG:9:U_TT"
+214. Port Connectivity Checks: "FDRE:\U_FM:0:U_RG:8:U_TT"
+215. Port Connectivity Checks: "FDRE:\U_FM:0:U_RG:7:U_TT"
+216. Port Connectivity Checks: "FDRE:\U_FM:0:U_RG:6:U_TT"
+217. Port Connectivity Checks: "FDRE:\U_FM:0:U_RG:5:U_TT"
+218. Port Connectivity Checks: "FDRE:\U_FM:0:U_RG:4:U_TT"
+219. Port Connectivity Checks: "FDRE:\U_FM:0:U_RG:3:U_TT"
+220. Port Connectivity Checks: "FDRE:\U_FM:0:U_RG:2:U_TT"
+221. Port Connectivity Checks: "FDRE:\U_FM:0:U_RG:1:U_TT"
+222. Port Connectivity Checks: "FDRE:\U_FM:0:U_RG:0:U_TT"
+223. Analysis & Elaboration Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2011 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------+
+; Analysis & Elaboration Summary                                                 ;
++------------------------------------+-------------------------------------------+
+; Analysis & Elaboration Status      ; Successful - Tue Nov 27 02:16:55 2012     ;
+; Quartus II Version                 ; 11.0 Build 157 04/27/2011 SJ Full Version ;
+; Revision Name                      ; ram                                       ;
+; Top-level Entity Name              ; RAM                                       ;
+; Family                             ; Cyclone IV GX                             ;
+; Total logic elements               ; N/A until Partition Merge                 ;
+;     Total combinational functions  ; N/A until Partition Merge                 ;
+;     Dedicated logic registers      ; N/A until Partition Merge                 ;
+; Total registers                    ; N/A until Partition Merge                 ;
+; Total pins                         ; N/A until Partition Merge                 ;
+; Total virtual pins                 ; N/A until Partition Merge                 ;
+; Total memory bits                  ; N/A until Partition Merge                 ;
+; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                 ;
+; Total GXB Receiver Channel PCS     ; N/A until Partition Merge                 ;
+; Total GXB Receiver Channel PMA     ; N/A until Partition Merge                 ;
+; Total GXB Transmitter Channel PCS  ; N/A until Partition Merge                 ;
+; Total GXB Transmitter Channel PMA  ; N/A until Partition Merge                 ;
+; Total PLLs                         ; N/A until Partition Merge                 ;
++------------------------------------+-------------------------------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 2           ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     1 processor            ; 100.0%      ;
+;     2 processors           ;   0.0%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PLM_4:U_DC0 ;
++----------------+-------+---------------------------------+
+; Parameter Name ; Value ; Type                            ;
++----------------+-------+---------------------------------+
+; td             ; 0 fs  ; Physical                        ;
++----------------+-------+---------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PLM_4:U_DC1 ;
++----------------+-------+---------------------------------+
+; Parameter Name ; Value ; Type                            ;
++----------------+-------+---------------------------------+
+; td             ; 0 fs  ; Physical                        ;
++----------------+-------+---------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PLM_4:U_DC2 ;
++----------------+-------+---------------------------------+
+; Parameter Name ; Value ; Type                            ;
++----------------+-------+---------------------------------+
+; td             ; 0 fs  ; Physical                        ;
++----------------+-------+---------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PLM_4:U_DC3 ;
++----------------+-------+---------------------------------+
+; Parameter Name ; Value ; Type                            ;
++----------------+-------+---------------------------------+
+; td             ; 0 fs  ; Physical                        ;
++----------------+-------+---------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PLM_4:U_DC4 ;
++----------------+-------+---------------------------------+
+; Parameter Name ; Value ; Type                            ;
++----------------+-------+---------------------------------+
+; td             ; 0 fs  ; Physical                        ;
++----------------+-------+---------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PLM_4:U_DC5 ;
++----------------+-------+---------------------------------+
+; Parameter Name ; Value ; Type                            ;
++----------------+-------+---------------------------------+
+; td             ; 0 fs  ; Physical                        ;
++----------------+-------+---------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PLM_4:U_DC6 ;
++----------------+-------+---------------------------------+
+; Parameter Name ; Value ; Type                            ;
++----------------+-------+---------------------------------+
+; td             ; 0 fs  ; Physical                        ;
++----------------+-------+---------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PLM_4:U_DC7 ;
++----------------+-------+---------------------------------+
+; Parameter Name ; Value ; Type                            ;
++----------------+-------+---------------------------------+
+; td             ; 0 fs  ; Physical                        ;
++----------------+-------+---------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:0:MUXD|PLM_6:U_MUX0 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:0:MUXD|PLM_6:U_MUX1 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:0:MUXD|PLM_3:U_MUX3 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:0:MUXP|PLM_6:U_MUX0 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:0:MUXP|PLM_6:U_MUX1 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:0:MUXP|PLM_3:U_MUX3 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:1:MUXD|PLM_6:U_MUX0 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:1:MUXD|PLM_6:U_MUX1 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:1:MUXD|PLM_3:U_MUX3 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:1:MUXP|PLM_6:U_MUX0 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:1:MUXP|PLM_6:U_MUX1 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:1:MUXP|PLM_3:U_MUX3 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:2:MUXD|PLM_6:U_MUX0 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:2:MUXD|PLM_6:U_MUX1 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:2:MUXD|PLM_3:U_MUX3 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:2:MUXP|PLM_6:U_MUX0 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:2:MUXP|PLM_6:U_MUX1 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:2:MUXP|PLM_3:U_MUX3 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:3:MUXD|PLM_6:U_MUX0 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:3:MUXD|PLM_6:U_MUX1 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:3:MUXD|PLM_3:U_MUX3 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:3:MUXP|PLM_6:U_MUX0 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:3:MUXP|PLM_6:U_MUX1 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:3:MUXP|PLM_3:U_MUX3 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:4:MUXD|PLM_6:U_MUX0 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:4:MUXD|PLM_6:U_MUX1 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:4:MUXD|PLM_3:U_MUX3 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:4:MUXP|PLM_6:U_MUX0 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:4:MUXP|PLM_6:U_MUX1 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:4:MUXP|PLM_3:U_MUX3 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:5:MUXD|PLM_6:U_MUX0 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:5:MUXD|PLM_6:U_MUX1 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:5:MUXD|PLM_3:U_MUX3 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:5:MUXP|PLM_6:U_MUX0 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:5:MUXP|PLM_6:U_MUX1 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:5:MUXP|PLM_3:U_MUX3 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:6:MUXD|PLM_6:U_MUX0 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:6:MUXD|PLM_6:U_MUX1 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:6:MUXD|PLM_3:U_MUX3 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:6:MUXP|PLM_6:U_MUX0 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:6:MUXP|PLM_6:U_MUX1 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:6:MUXP|PLM_3:U_MUX3 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:7:MUXD|PLM_6:U_MUX0 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:7:MUXD|PLM_6:U_MUX1 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:7:MUXD|PLM_3:U_MUX3 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:7:MUXP|PLM_6:U_MUX0 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:7:MUXP|PLM_6:U_MUX1 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:7:MUXP|PLM_3:U_MUX3 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:8:MUXD|PLM_6:U_MUX0 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:8:MUXD|PLM_6:U_MUX1 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:8:MUXD|PLM_3:U_MUX3 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:8:MUXP|PLM_6:U_MUX0 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:8:MUXP|PLM_6:U_MUX1 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:8:MUXP|PLM_3:U_MUX3 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:9:MUXD|PLM_6:U_MUX0 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:9:MUXD|PLM_6:U_MUX1 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:9:MUXD|PLM_3:U_MUX3 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:9:MUXP|PLM_6:U_MUX0 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:9:MUXP|PLM_6:U_MUX1 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:9:MUXP|PLM_3:U_MUX3 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; td             ; 0 fs  ; Physical                                            ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:10:MUXD|PLM_6:U_MUX0 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; td             ; 0 fs  ; Physical                                             ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:10:MUXD|PLM_6:U_MUX1 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; td             ; 0 fs  ; Physical                                             ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:10:MUXD|PLM_3:U_MUX3 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; td             ; 0 fs  ; Physical                                             ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:10:MUXP|PLM_6:U_MUX0 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; td             ; 0 fs  ; Physical                                             ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:10:MUXP|PLM_6:U_MUX1 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; td             ; 0 fs  ; Physical                                             ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:10:MUXP|PLM_3:U_MUX3 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; td             ; 0 fs  ; Physical                                             ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:11:MUXD|PLM_6:U_MUX0 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; td             ; 0 fs  ; Physical                                             ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:11:MUXD|PLM_6:U_MUX1 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; td             ; 0 fs  ; Physical                                             ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:11:MUXD|PLM_3:U_MUX3 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; td             ; 0 fs  ; Physical                                             ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:11:MUXP|PLM_6:U_MUX0 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; td             ; 0 fs  ; Physical                                             ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:11:MUXP|PLM_6:U_MUX1 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; td             ; 0 fs  ; Physical                                             ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:11:MUXP|PLM_3:U_MUX3 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; td             ; 0 fs  ; Physical                                             ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:12:MUXD|PLM_6:U_MUX0 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; td             ; 0 fs  ; Physical                                             ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:12:MUXD|PLM_6:U_MUX1 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; td             ; 0 fs  ; Physical                                             ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:12:MUXD|PLM_3:U_MUX3 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; td             ; 0 fs  ; Physical                                             ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:12:MUXP|PLM_6:U_MUX0 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; td             ; 0 fs  ; Physical                                             ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:12:MUXP|PLM_6:U_MUX1 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; td             ; 0 fs  ; Physical                                             ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:12:MUXP|PLM_3:U_MUX3 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; td             ; 0 fs  ; Physical                                             ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:13:MUXD|PLM_6:U_MUX0 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; td             ; 0 fs  ; Physical                                             ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:13:MUXD|PLM_6:U_MUX1 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; td             ; 0 fs  ; Physical                                             ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:13:MUXD|PLM_3:U_MUX3 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; td             ; 0 fs  ; Physical                                             ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:13:MUXP|PLM_6:U_MUX0 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; td             ; 0 fs  ; Physical                                             ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:13:MUXP|PLM_6:U_MUX1 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; td             ; 0 fs  ; Physical                                             ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:13:MUXP|PLM_3:U_MUX3 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; td             ; 0 fs  ; Physical                                             ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:14:MUXD|PLM_6:U_MUX0 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; td             ; 0 fs  ; Physical                                             ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:14:MUXD|PLM_6:U_MUX1 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; td             ; 0 fs  ; Physical                                             ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:14:MUXD|PLM_3:U_MUX3 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; td             ; 0 fs  ; Physical                                             ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:14:MUXP|PLM_6:U_MUX0 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; td             ; 0 fs  ; Physical                                             ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:14:MUXP|PLM_6:U_MUX1 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; td             ; 0 fs  ; Physical                                             ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX8:\U_MUX:14:MUXP|PLM_3:U_MUX3 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; td             ; 0 fs  ; Physical                                             ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Elaboration Settings                                                                                      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Top-level entity name                                                      ; RAM                ; ram                ;
+; Family name                                                                ; Cyclone IV GX      ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                 ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM Block Balancing                                                   ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; On                 ; On                 ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:7:U_RG:14:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:7:U_RG:13:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:7:U_RG:12:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:7:U_RG:11:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:7:U_RG:10:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:7:U_RG:9:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:7:U_RG:8:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:7:U_RG:7:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:7:U_RG:6:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:7:U_RG:5:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:7:U_RG:4:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:7:U_RG:3:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:7:U_RG:2:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:7:U_RG:1:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:7:U_RG:0:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:6:U_RG:14:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:6:U_RG:13:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:6:U_RG:12:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:6:U_RG:11:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:6:U_RG:10:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:6:U_RG:9:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:6:U_RG:8:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:6:U_RG:7:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:6:U_RG:6:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:6:U_RG:5:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:6:U_RG:4:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:6:U_RG:3:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:6:U_RG:2:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:6:U_RG:1:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:6:U_RG:0:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:5:U_RG:14:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:5:U_RG:13:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:5:U_RG:12:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:5:U_RG:11:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:5:U_RG:10:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:5:U_RG:9:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:5:U_RG:8:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:5:U_RG:7:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:5:U_RG:6:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:5:U_RG:5:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:5:U_RG:4:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:5:U_RG:3:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:5:U_RG:2:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:5:U_RG:1:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:5:U_RG:0:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:4:U_RG:14:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:4:U_RG:13:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:4:U_RG:12:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:4:U_RG:11:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:4:U_RG:10:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:4:U_RG:9:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:4:U_RG:8:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:4:U_RG:7:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:4:U_RG:6:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:4:U_RG:5:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:4:U_RG:4:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:4:U_RG:3:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:4:U_RG:2:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:4:U_RG:1:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:4:U_RG:0:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:3:U_RG:14:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:3:U_RG:13:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:3:U_RG:12:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:3:U_RG:11:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:3:U_RG:10:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:3:U_RG:9:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:3:U_RG:8:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:3:U_RG:7:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:3:U_RG:6:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:3:U_RG:5:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:3:U_RG:4:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:3:U_RG:3:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:3:U_RG:2:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:3:U_RG:1:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:3:U_RG:0:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:2:U_RG:14:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:2:U_RG:13:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:2:U_RG:12:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:2:U_RG:11:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:2:U_RG:10:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:2:U_RG:9:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:2:U_RG:8:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:2:U_RG:7:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:2:U_RG:6:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:2:U_RG:5:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:2:U_RG:4:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:2:U_RG:3:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:2:U_RG:2:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:2:U_RG:1:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:2:U_RG:0:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:1:U_RG:14:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:1:U_RG:13:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:1:U_RG:12:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:1:U_RG:11:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:1:U_RG:10:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:1:U_RG:9:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:1:U_RG:8:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:1:U_RG:7:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:1:U_RG:6:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:1:U_RG:5:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:1:U_RG:4:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:1:U_RG:3:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:1:U_RG:2:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:1:U_RG:1:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:1:U_RG:0:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:0:U_RG:14:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:0:U_RG:13:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:0:U_RG:12:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:0:U_RG:11:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:0:U_RG:10:U_TT" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; r    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:0:U_RG:9:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:0:U_RG:8:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:0:U_RG:7:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:0:U_RG:6:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:0:U_RG:5:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:0:U_RG:4:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:0:U_RG:3:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:0:U_RG:2:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:0:U_RG:1:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "FDRE:\U_FM:0:U_RG:0:U_TT" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; r    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++---------------------------------+
+; Analysis & Elaboration Messages ;
++---------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Analysis & Elaboration
+    Info: Version 11.0 Build 157 04/27/2011 SJ Full Version
+    Info: Processing started: Tue Nov 27 02:16:52 2012
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off lab3 -c ram --analysis_and_elaboration
+Info: Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info: Found 2 design units, including 1 entities, in source file src/fdre.vhd
+    Info: Found design unit 1: FDRE-FDRE_BEH
+    Info: Found entity 1: FDRE
+Info: Found 2 design units, including 1 entities, in source file src/ram.vhd
+    Info: Found design unit 1: RAM-Behavior
+    Info: Found entity 1: RAM
+Info: Found 1 design units, including 0 entities, in source file src/plm6_mux.vhd
+    Info: Found design unit 1: PLM_6-PLM6_MUX
+Info: Found 1 design units, including 0 entities, in source file src/plm4_dc7.vhd
+    Info: Found design unit 1: PLM_4-PLM4_DC7
+Info: Found 1 design units, including 0 entities, in source file src/plm4_dc6.vhd
+    Info: Found design unit 1: PLM_4-PLM4_DC6
+Info: Found 1 design units, including 0 entities, in source file src/plm4_dc5.vhd
+    Info: Found design unit 1: PLM_4-PLM4_DC5
+Info: Found 1 design units, including 0 entities, in source file src/plm4_dc4.vhd
+    Info: Found design unit 1: PLM_4-PLM4_DC4
+Info: Found 1 design units, including 0 entities, in source file src/plm4_dc3.vhd
+    Info: Found design unit 1: PLM_4-PLM4_DC3
+Info: Found 1 design units, including 0 entities, in source file src/plm4_dc2.vhd
+    Info: Found design unit 1: PLM_4-PLM4_DC2
+Info: Found 1 design units, including 0 entities, in source file src/plm4_dc1.vhd
+    Info: Found design unit 1: PLM_4-PLM4_DC1
+Info: Found 1 design units, including 0 entities, in source file src/plm4_dc0.vhd
+    Info: Found design unit 1: PLM_4-PLM4_DC0
+Info: Found 1 design units, including 0 entities, in source file src/plm3_mux.vhd
+    Info: Found design unit 1: PLM_3-PLM3_MUX
+Info: Found 1 design units, including 1 entities, in source file src/plm_6.vhd
+    Info: Found entity 1: PLM_6
+Info: Found 1 design units, including 1 entities, in source file src/plm_4.vhd
+    Info: Found entity 1: PLM_4
+Info: Found 1 design units, including 1 entities, in source file src/plm_3.vhd
+    Info: Found entity 1: PLM_3
+Info: Found 2 design units, including 1 entities, in source file src/mux8.vhd
+    Info: Found design unit 1: MUX8-Behavioral
+    Info: Found entity 1: MUX8
+Info: Elaborating entity "RAM" for the top level hierarchy
+Info: Elaborating entity "PLM_4" using architecture "A:plm4_dc0" for hierarchy "PLM_4:U_DC0"
+Info: Elaborating entity "PLM_4" using architecture "A:plm4_dc1" for hierarchy "PLM_4:U_DC1"
+Info: Elaborating entity "PLM_4" using architecture "A:plm4_dc2" for hierarchy "PLM_4:U_DC2"
+Info: Elaborating entity "PLM_4" using architecture "A:plm4_dc3" for hierarchy "PLM_4:U_DC3"
+Info: Elaborating entity "PLM_4" using architecture "A:plm4_dc4" for hierarchy "PLM_4:U_DC4"
+Info: Elaborating entity "PLM_4" using architecture "A:plm4_dc5" for hierarchy "PLM_4:U_DC5"
+Info: Elaborating entity "PLM_4" using architecture "A:plm4_dc6" for hierarchy "PLM_4:U_DC6"
+Info: Elaborating entity "PLM_4" using architecture "A:plm4_dc7" for hierarchy "PLM_4:U_DC7"
+Info: Elaborating entity "FDRE" for hierarchy "FDRE:\U_FM:0:U_RG:0:U_TT"
+Info: Elaborating entity "MUX8" for hierarchy "MUX8:\U_MUX:0:MUXD"
+Info: Elaborating entity "PLM_6" using architecture "A:plm6_mux" for hierarchy "MUX8:\U_MUX:0:MUXD|PLM_6:U_MUX0"
+Info: Elaborating entity "PLM_3" using architecture "A:plm3_mux" for hierarchy "MUX8:\U_MUX:0:MUXD|PLM_3:U_MUX3"
+Info: Quartus II Analysis & Elaboration was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 467 megabytes
+    Info: Processing ended: Tue Nov 27 02:16:55 2012
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:03
+
+

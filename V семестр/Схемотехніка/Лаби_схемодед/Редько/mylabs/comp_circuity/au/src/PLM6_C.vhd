@@ -1,0 +1,17 @@
+
+architecture PLM6_C of PLM_6_2 is
+	
+	-- F2 Y1 Y0 X1 X0 Ci
+	-- F  E  D  C  B  A
+	signal c1, c0: STD_LOGIC;
+begin
+	
+	LNCi: entity work.PLM_4(PLM4_Ci) port map
+		(A => B, B => D, C => A, D => F, Y => c1);
+	
+	LNCi_plus_1: entity work.PLM_6(PLM6_Ci_plus_1) port map
+		(A => C, B => E, C => B, D => D, E => A, F => F, Y => c0);
+	
+	Y1 <= c1;
+	Y0 <= c0;
+end PLM6_C;

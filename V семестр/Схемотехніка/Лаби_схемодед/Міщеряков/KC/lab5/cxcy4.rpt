@@ -1,0 +1,354 @@
+Project Information                         d:\maxplus2\max2lib\lab4\cxcy4.rpt
+
+MAX+plus II Compiler Report File
+Version 10.1 06/12/2001
+Compiled: 10/26/2010 23:03:52
+
+Copyright (C) 1988-2001 Altera Corporation
+Any megafunction design, and related net list (encrypted or decrypted),
+support information, device programming or simulation file, and any other
+associated documentation or information provided by Altera or a partner
+under Altera's Megafunction Partnership Program may be used only to
+program PLD devices (but not masked PLD devices) from Altera.  Any other
+use of such megafunction design, net list, support information, device
+programming or simulation file, or any other related documentation or
+information is prohibited for any other purpose, including, but not
+limited to modification, reverse engineering, de-compiling, or use with
+any other silicon devices, unless such use is explicitly licensed under
+a separate agreement with Altera or a megafunction partner.  Title to
+the intellectual property, including patents, copyrights, trademarks,
+trade secrets, or maskworks, embodied in any such megafunction design,
+net list, support information, device programming or simulation file, or
+any other related documentation or information provided by Altera or a
+megafunction partner, remains with Altera, the megafunction partner, or
+their respective licensors.  No other licenses, including any licenses
+needed under any third party's intellectual property, are provided herein.
+
+
+
+***** Project compilation was successful
+
+
+
+
+** DEVICE SUMMARY **
+
+Chip/                     Input   Output   Bidir 			    LCs
+POF       Device          Pins    Pins     Pins      LCs    % Utilized
+
+cxcy4     EP610ILC-10      8        8        0       8           50 %
+
+User Pins:                 8        8        0  
+
+
+
+Device-Specific Information:                d:\maxplus2\max2lib\lab4\cxcy4.rpt
+cxcy4
+
+***** Logic for device 'cxcy4' compiled without errors.
+
+
+
+
+Device: EP610ILC-10
+
+Device Options:
+    Turbo Bit                                    = ON
+    Security Bit                                 = OFF
+
+                                R  
+                                E  
+                                S  
+                                E  
+                             A  R  
+              C  A  G  V  V  B  V  
+              Y  P  N  C  C  W  E  
+              3  1  D  C  C  P  D  
+            -----------------------_ 
+          /   4  3  2  1 28 27 26   | 
+         |                          |
+     CY2 |  5                    25 | RESERVED 
+         |                          |
+     CY1 |  6                    24 | RESERVED 
+         |                          |
+     CY0 |  7                    23 | RESERVED 
+         |                          |
+     CX3 |  8    EP610ILC-10     22 | WQ 
+         |                          |
+     CX2 |  9                    21 | WP 
+         |                          |
+     CX1 | 10                    20 | AQ1 
+         |                          |
+    N.C. | 11                    19 | N.C. 
+         |_  12 13 14 15 16 17 18  _| 
+           ------------------------ 
+              C  A  G  G  G  A  A  
+              X  P  N  N  N  B  Q  
+              0  0  D  D  D  W  0  
+                             Q     
+                                   
+                                   
+                                   
+                                   
+
+
+N.C. = No Connect. This pin has no internal connection to the device.
+VCC = Dedicated power pin, which MUST be connected to VCC.
+GND = Dedicated ground pin or unused dedicated input, which MUST be connected to GND.
+RESERVED = Unused I/O pin, which MUST be left unconnected.
+
+
+
+Device-Specific Information:                d:\maxplus2\max2lib\lab4\cxcy4.rpt
+cxcy4
+
+** RESOURCE USAGE **
+
+Logic Array Block     Logic Cells   I/O Pins       
+
+A:      LC1 - LC8     0/ 8(  0%)   4/ 8( 50%) 
+B:     LC9 - LC16     8/ 8(100%)   8/ 8(100%) 
+
+
+Total dedicated input pins used:                 4/4      (100%)
+Total I/O pins used:                            12/16     ( 75%)
+Total logic cells used:                          8/16     ( 50%)
+Average fan-in:                                  4.00
+Total fan-in:                                    32
+
+Total input pins required:                       8
+Total output pins required:                      8
+Total bidirectional pins required:               0
+Total logic cells required:                      8
+Total flipflops required:                        0
+
+Synthesized logic cells:                         0/  16   (  0%)
+
+
+
+Device-Specific Information:                d:\maxplus2\max2lib\lab4\cxcy4.rpt
+cxcy4
+
+** INPUTS **
+
+                                        Fan-In    Fan-Out
+ Pin     LC  LAB  Primitive    Code   INP  FBK  OUT  FBK  Name
+  27      -   -       INPUT              0    0    4    0  ABWP
+  17      -   -       INPUT              0    0    4    0  ABWQ
+  13      -   -       INPUT              0    0    4    0  AP0
+   3      -   -       INPUT              0    0    4    0  AP1
+  18    (8)  (A)      INPUT              0    0    4    0  AQ0
+  20    (7)  (A)      INPUT              0    0    4    0  AQ1
+  21    (6)  (A)      INPUT              0    0    4    0  WP
+  22    (5)  (A)      INPUT              0    0    4    0  WQ
+
+
+Code:
+
+s = Synthesized pin or logic cell
++ = Synchronous flipflop
+! = NOT gate push-back
+r = Fitter-inserted logic cell
+
+
+Device-Specific Information:                d:\maxplus2\max2lib\lab4\cxcy4.rpt
+cxcy4
+
+** OUTPUTS **
+
+                                        Fan-In    Fan-Out
+ Pin     LC  LAB  Primitive    Code   INP  FBK  OUT  FBK  Name
+  12     16    B     OUTPUT              4    0    0    0  CX0
+  10     15    B     OUTPUT              4    0    0    0  CX1
+   9     14    B     OUTPUT              4    0    0    0  CX2
+   8     13    B     OUTPUT              4    0    0    0  CX3
+   7     12    B     OUTPUT              4    0    0    0  CY0
+   6     11    B     OUTPUT              4    0    0    0  CY1
+   5     10    B     OUTPUT              4    0    0    0  CY2
+   4      9    B     OUTPUT              4    0    0    0  CY3
+
+
+Code:
+
+s = Synthesized pin or logic cell
++ = Synchronous flipflop
+! = NOT gate push-back
+r = Fitter-inserted logic cell
+
+
+Device-Specific Information:                d:\maxplus2\max2lib\lab4\cxcy4.rpt
+cxcy4
+
+** LOGIC CELL INTERCONNECTIONS **
+
+                         Logic cells placed in LAB 'B'
+        +--------------- LC16 CX0
+        | +------------- LC15 CX1
+        | | +----------- LC14 CX2
+        | | | +--------- LC13 CX3
+        | | | | +------- LC12 CY0
+        | | | | | +----- LC11 CY1
+        | | | | | | +--- LC10 CY2
+        | | | | | | | +- LC9 CY3
+        | | | | | | | | 
+        | | | | | | | |   Other LABs fed by signals
+        | | | | | | | |   that feed LAB 'B'
+LC      | | | | | | | | 
+LC16 -> - - - - - - - - | <-- CX0
+LC15 -> - - - - - - - - | <-- CX1
+LC14 -> - - - - - - - - | <-- CX2
+LC13 -> - - - - - - - - | <-- CX3
+LC12 -> - - - - - - - - | <-- CY0
+LC11 -> - - - - - - - - | <-- CY1
+LC10 -> - - - - - - - - | <-- CY2
+LC9  -> - - - - - - - - | <-- CY3
+
+Pin
+27   -> - - - - @ @ @ @ | <-- ABWP
+17   -> @ @ @ @ - - - - | <-- ABWQ
+13   -> - - - - @ @ @ @ | <-- AP0
+3    -> - - - - @ @ @ @ | <-- AP1
+18   -> * * * * - - - - | <-- AQ0
+20   -> * * * * - - - - | <-- AQ1
+21   -> - - - - * * * * | <-- WP
+22   -> * * * * - - - - | <-- WQ
+
+
+* = The logic cell or pin is an input to the logic cell (or LAB) through the PIA.
+@ = The input pin or logic cell feeds the logic cell (or LAB) using direct interconnect.
+- = The logic cell or pin is not an input to the logic cell (or LAB).
+
+
+Device-Specific Information:                d:\maxplus2\max2lib\lab4\cxcy4.rpt
+cxcy4
+
+** EQUATIONS **
+
+ABWP     : INPUT;
+ABWQ     : INPUT;
+AP0      : INPUT;
+AP1      : INPUT;
+AQ0      : INPUT;
+AQ1      : INPUT;
+WP       : INPUT;
+WQ       : INPUT;
+
+-- Node name is 'CX0' 
+-- Equation name is 'CX0', location is LC016, type is output.
+ CX0     = LCELL( _EQ001);
+  _EQ001 =  ABWQ & !AQ0 & !AQ1 &  WQ;
+
+-- Node name is 'CX1' 
+-- Equation name is 'CX1', location is LC015, type is output.
+ CX1     = LCELL( _EQ002);
+  _EQ002 =  ABWQ &  AQ0 & !AQ1 &  WQ;
+
+-- Node name is 'CX2' 
+-- Equation name is 'CX2', location is LC014, type is output.
+ CX2     = LCELL( _EQ003);
+  _EQ003 =  ABWQ & !AQ0 &  AQ1 &  WQ;
+
+-- Node name is 'CX3' 
+-- Equation name is 'CX3', location is LC013, type is output.
+ CX3     = LCELL( _EQ004);
+  _EQ004 =  ABWQ &  AQ0 &  AQ1 &  WQ;
+
+-- Node name is 'CY0' 
+-- Equation name is 'CY0', location is LC012, type is output.
+ CY0     = LCELL( _EQ005);
+  _EQ005 =  ABWP & !AP0 & !AP1 &  WP;
+
+-- Node name is 'CY1' 
+-- Equation name is 'CY1', location is LC011, type is output.
+ CY1     = LCELL( _EQ006);
+  _EQ006 =  ABWP &  AP0 & !AP1 &  WP;
+
+-- Node name is 'CY2' 
+-- Equation name is 'CY2', location is LC010, type is output.
+ CY2     = LCELL( _EQ007);
+  _EQ007 =  ABWP & !AP0 &  AP1 &  WP;
+
+-- Node name is 'CY3' 
+-- Equation name is 'CY3', location is LC009, type is output.
+ CY3     = LCELL( _EQ008);
+  _EQ008 =  ABWP &  AP0 &  AP1 &  WP;
+
+
+
+Project Information                         d:\maxplus2\max2lib\lab4\cxcy4.rpt
+
+** COMPILATION SETTINGS & TIMES **
+
+Processing Menu Commands
+------------------------
+
+Design Doctor                             = off
+
+Logic Synthesis:
+
+   Synthesis Type Used                    = Standard
+
+   Default Synthesis Style                = NORMAL
+
+      Logic option settings in 'NORMAL' style for 'CLASSIC' family
+
+      MINIMIZATION                        = full
+      SOFT_BUFFER_INSERTION               = on
+      TURBO_BIT                           = on
+      USE_LPM_FOR_AHDL_OPERATORS          = off
+
+   Other logic synthesis settings:
+
+      Automatic Global Clock              = on
+      Automatic Global Clear              = on
+      Automatic Global Preset             = on
+      Automatic Global Output Enable      = on
+      Automatic Fast I/O                  = off
+      Automatic Register Packing          = off
+      Automatic Open-Drain Pins           = on
+      Automatic Implement in EAB          = off
+      One-Hot State Machine Encoding      = off
+      Optimize                            = 5
+
+Default Timing Specifications: None
+
+Cut All Bidir Feedback Timing Paths       = on
+Cut All Clear & Preset Timing Paths       = on
+
+Ignore Timing Assignments                 = off
+
+Functional SNF Extractor                  = off
+
+Linked SNF Extractor                      = off
+Timing SNF Extractor                      = on
+Optimize Timing SNF                       = off
+Generate AHDL TDO File                    = off
+Fitter Settings                           = NORMAL
+Smart Recompile                           = off
+Total Recompile                           = off
+
+Interfaces Menu Commands
+------------------------
+
+EDIF Netlist Writer                       = off
+Verilog Netlist Writer                    = off
+VHDL Netlist Writer                       = off
+
+Compilation Times
+-----------------
+
+   Compiler Netlist Extractor             00:00:00
+   Database Builder                       00:00:00
+   Logic Synthesizer                      00:00:00
+   Partitioner                            00:00:00
+   Fitter                                 00:00:00
+   Timing SNF Extractor                   00:00:00
+   Assembler                              00:00:00
+   --------------------------             --------
+   Total Time                             00:00:00
+
+
+Memory Allocated
+-----------------
+
+Peak memory allocated during compilation  = 9,076K

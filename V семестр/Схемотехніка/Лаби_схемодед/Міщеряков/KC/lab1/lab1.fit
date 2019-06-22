@@ -1,0 +1,168 @@
+-- MAX+plus II Compiler Fit File      
+-- Version 10.1 06/12/2001            
+-- Compiled: 09/21/2010 19:18:06      
+
+-- Copyright (C) 1988-2001 Altera Corporation
+-- Any megafunction design, and related net list (encrypted or decrypted),
+-- support information, device programming or simulation file, and any other
+-- associated documentation or information provided by Altera or a partner
+-- under Altera's Megafunction Partnership Program may be used only to
+-- program PLD devices (but not masked PLD devices) from Altera.  Any other
+-- use of such megafunction design, net list, support information, device
+-- programming or simulation file, or any other related documentation or
+-- information is prohibited for any other purpose, including, but not
+-- limited to modification, reverse engineering, de-compiling, or use with
+-- any other silicon devices, unless such use is explicitly licensed under
+-- a separate agreement with Altera or a megafunction partner.  Title to
+-- the intellectual property, including patents, copyrights, trademarks,
+-- trade secrets, or maskworks, embodied in any such megafunction design,
+-- net list, support information, device programming or simulation file, or
+-- any other related documentation or information provided by Altera or a
+-- megafunction partner, remains with Altera, the megafunction partner, or
+-- their respective licensors.  No other licenses, including any licenses
+-- needed under any third party's intellectual property, are provided herein.
+
+CHIP "lab1"
+BEGIN
+
+    DEVICE = "EP1810LC-20";
+
+    "C"                            : INPUT_PIN  = 17     ;
+    "C"                            : INPUT_PIN  = 19     ;
+    "C"                            : INPUT_PIN  = 51     ;
+    "C"                            : INPUT_PIN  = 53     ;
+    "D0"                           : INPUT_PIN  = 57     ; -- LC37
+    "D1"                           : INPUT_PIN  = 60     ; -- LC40
+    "D3"                           : INPUT_PIN  = 56     ;
+    "D4"                           : INPUT_PIN  = 55     ;
+    "D5"                           : INPUT_PIN  = 54     ;
+    "D6"                           : INPUT_PIN  = 50     ;
+    "D7"                           : INPUT_PIN  = 49     ;
+    "D8"                           : INPUT_PIN  = 48     ;
+    "D9"                           : INPUT_PIN  = 22     ;
+    "F0"                           : INPUT_PIN  = 21     ;
+    "F1"                           : INPUT_PIN  = 20     ;
+    "F2"                           : INPUT_PIN  = 16     ;
+    "F3"                           : INPUT_PIN  = 15     ;
+    "Q2"                           : INPUT_PIN  = 14     ;
+    "Q0"                           : OUTPUT_PIN = 24     ; -- LC14
+    "Q1"                           : OUTPUT_PIN = 58     ; -- LC38
+    "Q3"                           : OUTPUT_PIN = 25     ; -- LC15
+    "Q4"                           : OUTPUT_PIN = 45     ; -- LC34
+    "Q5"                           : OUTPUT_PIN = 11     ; -- LC10
+    "Q6"                           : OUTPUT_PIN = 12     ; -- LC11
+    "Q7"                           : OUTPUT_PIN = 26     ; -- LC16
+    "Q8"                           : OUTPUT_PIN = 46     ; -- LC35
+    "Q9"                           : OUTPUT_PIN = 68     ; -- LC48
+    "|ctr:27|qi2:9|~23~1"          : LOCATION   = LC37   ; -- PIN 57
+    "|ctr:27|qi2:9|~23~2"          : LOCATION   = LC40   ; -- PIN 60
+    "|ctr:27|qi2:9|~23~3"          : LOCATION   = LC41   ; -- PIN 61
+    "|ctr:27|qi2:9|~23~4"          : LOCATION   = LC42   ; -- PIN 62
+    "|ctr:27|qi2:9|~23~5"          : LOCATION   = LC43   ; -- PIN 63
+    "|ctr:27|qi2:9|~23~6"          : LOCATION   = LC44   ; -- PIN 64
+    "|ctr:27|qi2:9|~23~7"          : LOCATION   = LC45   ; -- PIN 65
+    "|ctr:27|qi2:11|~23~1"         : LOCATION   = LC25   ; -- PIN 36
+    "|ctr:27|qi2:11|~23~2"         : LOCATION   = LC13   ; -- PIN 23
+    "|ctr:27|qi2:11|~23~3"         : LOCATION   = LC26   ; -- PIN 37
+    "|ctr:27|qi2:11|~23~4"         : LOCATION   = LC27   ; -- PIN 38
+    "|ctr:27|qi2:11|~23~5"         : LOCATION   = LC28   ; -- PIN 39
+    "|ctr:27|qi2:11|~23~6"         : LOCATION   = LC29   ; -- PIN 40
+    "|ctr:27|qi2:13|~23~1"         : LOCATION   = LC9    ; -- PIN 10
+    "|ctr:27|qi2:13|~23~2"         : LOCATION   = LC33   ; -- PIN 44
+    "|ctr:27|qi2:13|~23~3"         : LOCATION   = LC17   ; -- PIN 27
+    "|ctr:27|qi2:13|~23~4"         : LOCATION   = LC18   ; -- PIN 28
+    "|ctr:27|qi2:13|~23~5"         : LOCATION   = LC19   ; -- PIN 29
+    "|ctr:27|qi2:13|~23~6"         : LOCATION   = LC20   ; -- PIN 30
+    "|ctr:27|qi2:15|~23~1"         : LOCATION   = LC12   ; -- PIN 13
+    "|ctr:27|qi2:15|~23~2"         : LOCATION   = LC1    ; -- PIN 2
+    "|ctr:27|qi2:15|~23~3"         : LOCATION   = LC2    ; -- PIN 3
+    "|ctr:27|qi2:15|~23~4"         : LOCATION   = LC3    ; -- PIN 4
+    "|ctr:27|qi2:15|~23~5"         : LOCATION   = LC4    ; -- PIN 5
+    "|ctr:27|qi2:15|~23~6"         : LOCATION   = LC5    ; -- PIN 6
+    "|ctr:27|qi2:17|~23~1"         : LOCATION   = LC6    ; -- PIN 7
+    "|ctr:27|qi2:17|~23~2"         : LOCATION   = LC7    ; -- PIN 8
+    "|ctr:27|qi2:17|~23~3"         : LOCATION   = LC8    ; -- PIN 9
+    "|ctr:27|qi2:19|~23~1"         : LOCATION   = LC30   ; -- PIN 41
+    "|ctr:27|qi2:19|~23~2"         : LOCATION   = LC31   ; -- PIN 42
+    "|ctr:27|qi2:19|~23~3"         : LOCATION   = LC32   ; -- PIN 43
+    "|rg:1|qi1:2|~9~1"             : LOCATION   = LC46   ; -- PIN 66
+    "|rg:1|qi1:2|~9~2"             : LOCATION   = LC36   ; -- PIN 47
+    "|rg:1|qi1:4|~9~1"             : LOCATION   = LC21   ; -- PIN 31
+    "|rg:1|qi1:4|~9~2"             : LOCATION   = LC22   ; -- PIN 32
+    "|rg:1|qi1:4|~9~3"             : LOCATION   = LC23   ; -- PIN 33
+    "|rg:1|qi1:4|~9~4"             : LOCATION   = LC24   ; -- PIN 34
+    "|rg:1|qi1:4|~9~5"             : LOCATION   = LC39   ; -- PIN 59
+
+END;
+
+CHIP "lab11"
+BEGIN
+
+    DEVICE = "EP1810LC-20";
+
+    "C"                            : INPUT_PIN  = 19     ;
+    "C"                            : INPUT_PIN  = 51     ;
+    "C"                            : INPUT_PIN  = 53     ;
+    "D2"                           : INPUT_PIN  = 5      ; -- LC4
+    "D10"                          : INPUT_PIN  = 6      ; -- LC5
+    "D11"                          : INPUT_PIN  = 26     ; -- LC16
+    "D12"                          : INPUT_PIN  = 43     ; -- LC32
+    "D13"                          : INPUT_PIN  = 60     ; -- LC40
+    "F0"                           : INPUT_PIN  = 56     ;
+    "F1"                           : INPUT_PIN  = 55     ;
+    "F2"                           : INPUT_PIN  = 54     ;
+    "F3"                           : INPUT_PIN  = 50     ;
+    "Q0"                           : INPUT_PIN  = 49     ;
+    "Q1"                           : INPUT_PIN  = 48     ;
+    "Q3"                           : INPUT_PIN  = 22     ;
+    "Q4"                           : INPUT_PIN  = 21     ;
+    "Q5"                           : INPUT_PIN  = 20     ;
+    "Q6"                           : INPUT_PIN  = 16     ;
+    "Q7"                           : INPUT_PIN  = 15     ;
+    "Q8"                           : INPUT_PIN  = 14     ;
+    "Q9"                           : INPUT_PIN  = 17     ;
+    "O"                            : OUTPUT_PIN = 9      ; -- LC8
+    "Q2"                           : OUTPUT_PIN = 23     ; -- LC13
+    "Q10"                          : OUTPUT_PIN = 58     ; -- LC38
+    "Q11"                          : OUTPUT_PIN = 24     ; -- LC14
+    "Q12"                          : OUTPUT_PIN = 59     ; -- LC39
+    "Q13"                          : OUTPUT_PIN = 47     ; -- LC36
+    "|ctr:27|ci2:1|~4~1"           : LOCATION   = LC1    ; -- PIN 2  -- |ctr:27|ci2:1|Ci2~1
+    "|ctr:27|ci2:1|~4~2"           : LOCATION   = LC2    ; -- PIN 3  -- |ctr:27|ci2:1|Ci2~2
+    "|ctr:27|ci2:1|~4~3"           : LOCATION   = LC3    ; -- PIN 4  -- |ctr:27|ci2:1|Ci2~3
+    "|ctr:27|qi2:2|~23~1"          : LOCATION   = LC25   ; -- PIN 36
+    "|ctr:27|qi2:2|~23~2"          : LOCATION   = LC26   ; -- PIN 37
+    "|ctr:27|qi2:2|~23~3"          : LOCATION   = LC27   ; -- PIN 38
+    "|ctr:27|qi2:2|~23~4"          : LOCATION   = LC28   ; -- PIN 39
+    "|ctr:27|qi2:2|~23~5"          : LOCATION   = LC37   ; -- PIN 57
+    "|ctr:27|qi2:2|~23~6"          : LOCATION   = LC29   ; -- PIN 40
+    "|ctr:27|qi2:2|~23~7"          : LOCATION   = LC30   ; -- PIN 41
+    "|ctr:27|qi2:2|~23~8"          : LOCATION   = LC31   ; -- PIN 42
+    "|ctr:27|qi2:3|~23~1"          : LOCATION   = LC40   ; -- PIN 60
+    "|ctr:27|qi2:3|~23~2"          : LOCATION   = LC41   ; -- PIN 61
+    "|ctr:27|qi2:3|~23~3"          : LOCATION   = LC42   ; -- PIN 62
+    "|ctr:27|qi2:3|~23~4"          : LOCATION   = LC43   ; -- PIN 63
+    "|ctr:27|qi2:3|~23~5"          : LOCATION   = LC33   ; -- PIN 44
+    "|ctr:27|qi2:3|~23~6"          : LOCATION   = LC44   ; -- PIN 64
+    "|ctr:27|qi2:3|~23~7"          : LOCATION   = LC45   ; -- PIN 65
+    "|ctr:27|qi2:3|~23~8"          : LOCATION   = LC46   ; -- PIN 66
+    "|ctr:27|qi2:5|~23~1"          : LOCATION   = LC16   ; -- PIN 26
+    "|ctr:27|qi2:5|~23~2"          : LOCATION   = LC15   ; -- PIN 25
+    "|ctr:27|qi2:5|~23~3"          : LOCATION   = LC17   ; -- PIN 27
+    "|ctr:27|qi2:5|~23~4"          : LOCATION   = LC18   ; -- PIN 28
+    "|ctr:27|qi2:5|~23~5"          : LOCATION   = LC19   ; -- PIN 29
+    "|ctr:27|qi2:5|~23~6"          : LOCATION   = LC20   ; -- PIN 30
+    "|ctr:27|qi2:5|~23~7"          : LOCATION   = LC21   ; -- PIN 31
+    "|ctr:27|qi2:5|~23~8"          : LOCATION   = LC22   ; -- PIN 32
+    "|ctr:27|qi2:7|~23~1"          : LOCATION   = LC47   ; -- PIN 67
+    "|ctr:27|qi2:7|~23~2"          : LOCATION   = LC34   ; -- PIN 45
+    "|ctr:27|qi2:7|~23~3"          : LOCATION   = LC35   ; -- PIN 46
+    "|ctr:27|qi2:7|~23~4"          : LOCATION   = LC48   ; -- PIN 68
+    "|ctr:27|qi2:7|~23~5"          : LOCATION   = LC9    ; -- PIN 10
+    "|ctr:27|qi2:7|~23~6"          : LOCATION   = LC10   ; -- PIN 11
+    "|ctr:27|qi2:7|~23~7"          : LOCATION   = LC11   ; -- PIN 12
+    "|rg:1|qi1:3|~9~1"             : LOCATION   = LC12   ; -- PIN 13
+    "|rg:1|qi1:3|~9~2"             : LOCATION   = LC23   ; -- PIN 33
+    "|rg:1|qi1:3|~9~3"             : LOCATION   = LC24   ; -- PIN 34
+
+END;

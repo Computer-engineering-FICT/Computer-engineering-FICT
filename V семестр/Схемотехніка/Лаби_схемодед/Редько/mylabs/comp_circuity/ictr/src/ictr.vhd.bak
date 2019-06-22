@@ -1,0 +1,12 @@
+
+
+entity ICTR is
+	port (
+		CLK : in BIT; -- синхровход
+		R : in BIT; -- сброс
+		WR : in BIT; -- сигнал записи
+		D : inBIT_VECTOR(19 downto0); -- адрес перехода
+		F : inBIT_VECTOR(2 downto0); -- функция
+		A : outBIT_VECTOR(19 downto0) -- выходной адрес
+	); 
+end ICTR; 

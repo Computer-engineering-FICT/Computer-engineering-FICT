@@ -1,0 +1,178 @@
+-- MAX+plus II Compiler Fit File      
+-- Version 10.1 06/12/2001            
+-- Compiled: 10/12/2010 22:32:42      
+
+-- Copyright (C) 1988-2001 Altera Corporation
+-- Any megafunction design, and related net list (encrypted or decrypted),
+-- support information, device programming or simulation file, and any other
+-- associated documentation or information provided by Altera or a partner
+-- under Altera's Megafunction Partnership Program may be used only to
+-- program PLD devices (but not masked PLD devices) from Altera.  Any other
+-- use of such megafunction design, net list, support information, device
+-- programming or simulation file, or any other related documentation or
+-- information is prohibited for any other purpose, including, but not
+-- limited to modification, reverse engineering, de-compiling, or use with
+-- any other silicon devices, unless such use is explicitly licensed under
+-- a separate agreement with Altera or a megafunction partner.  Title to
+-- the intellectual property, including patents, copyrights, trademarks,
+-- trade secrets, or maskworks, embodied in any such megafunction design,
+-- net list, support information, device programming or simulation file, or
+-- any other related documentation or information provided by Altera or a
+-- megafunction partner, remains with Altera, the megafunction partner, or
+-- their respective licensors.  No other licenses, including any licenses
+-- needed under any third party's intellectual property, are provided herein.
+
+CHIP "plmt_d8_8"
+BEGIN
+
+    DEVICE = "EP1800ILC-70";
+
+    "ABR0"                         : INPUT_PIN  = 56     ;
+    "ABR1"                         : INPUT_PIN  = 55     ;
+    "ABR2"                         : INPUT_PIN  = 54     ;
+    "ABR3"                         : INPUT_PIN  = 50     ;
+    "ABR4"                         : INPUT_PIN  = 49     ;
+    "ABR5"                         : INPUT_PIN  = 48     ;
+    "ABR6"                         : INPUT_PIN  = 22     ;
+    "ABR7"                         : INPUT_PIN  = 21     ;
+    "ABW1"                         : INPUT_PIN  = 10     ; -- LC9
+    "ABW2"                         : INPUT_PIN  = 23     ; -- LC13
+    "ABW3"                         : INPUT_PIN  = 57     ; -- LC37
+    "ABW4"                         : INPUT_PIN  = 53     ;
+    "ABW5"                         : INPUT_PIN  = 51     ;
+    "ABW7"                         : INPUT_PIN  = 17     ;
+    "ABW7"                         : INPUT_PIN  = 19     ;
+    "D1"                           : INPUT_PIN  = 11     ; -- LC10
+    "D4"                           : INPUT_PIN  = 12     ; -- LC11
+    "D5"                           : INPUT_PIN  = 44     ; -- LC33
+    "D6"                           : INPUT_PIN  = 24     ; -- LC14
+    "|plmt_d8:14|plmt_d:2|:4"      : INPUT_PIN  = 37     ; -- LC26
+    "|plmt_d8:14|plmt_d:5|:4"      : INPUT_PIN  = 62     ; -- LC42
+    "|plmt_d8:14|plmt_d:6|:4"      : INPUT_PIN  = 14     ;
+    "|plmt_d8:14|plmt_d:7|:4"      : INPUT_PIN  = 16     ;
+    "|plmt_d8:20|plmt_d:2|:4"      : INPUT_PIN  = 36     ; -- LC25
+    "|plmt_d8:20|plmt_d:5|:4"      : INPUT_PIN  = 61     ; -- LC41
+    "|plmt_d8:20|plmt_d:6|:4"      : INPUT_PIN  = 15     ;
+    "|plmt_d8:20|plmt_d:7|:4"      : INPUT_PIN  = 20     ;
+    "Q1"                           : OUTPUT_PIN = 43     ; -- LC32
+    "Q4"                           : OUTPUT_PIN = 68     ; -- LC48
+    "Q5"                           : OUTPUT_PIN = 9      ; -- LC8
+    "Q6"                           : OUTPUT_PIN = 34     ; -- LC24
+    "|plmt_d8:15|plmt_d:2|:4"      : LOCATION   = LC33   ; -- PIN 44  -- |plmt_d8:15|plmt_d:2|O
+    "|plmt_d8:15|plmt_d:5|:4"      : LOCATION   = LC37   ; -- PIN 57  -- |plmt_d8:15|plmt_d:5|O
+    "|plmt_d8:15|plmt_d:6|:4"      : LOCATION   = LC11   ; -- PIN 12  -- |plmt_d8:15|plmt_d:6|O
+    "|plmt_d8:15|plmt_d:7|:4"      : LOCATION   = LC14   ; -- PIN 24  -- |plmt_d8:15|plmt_d:7|O
+    "|plmt_d8:16|plmt_d:2|:4"      : LOCATION   = LC27   ; -- PIN 38  -- |plmt_d8:16|plmt_d:2|O
+    "|plmt_d8:16|plmt_d:5|:4"      : LOCATION   = LC43   ; -- PIN 63  -- |plmt_d8:16|plmt_d:5|O
+    "|plmt_d8:16|plmt_d:6|:4"      : LOCATION   = LC10   ; -- PIN 11  -- |plmt_d8:16|plmt_d:6|O
+    "|plmt_d8:16|plmt_d:7|:4"      : LOCATION   = LC13   ; -- PIN 23  -- |plmt_d8:16|plmt_d:7|O
+    "|plmt_d8:17|plmt_d:2|:4"      : LOCATION   = LC28   ; -- PIN 39  -- |plmt_d8:17|plmt_d:2|O
+    "|plmt_d8:17|plmt_d:5|:4"      : LOCATION   = LC44   ; -- PIN 64  -- |plmt_d8:17|plmt_d:5|O
+    "|plmt_d8:17|plmt_d:6|:4"      : LOCATION   = LC9    ; -- PIN 10  -- |plmt_d8:17|plmt_d:6|O
+    "|plmt_d8:17|plmt_d:7|:4"      : LOCATION   = LC17   ; -- PIN 27  -- |plmt_d8:17|plmt_d:7|O
+    "|plmt_d8:18|plmt_d:2|:4"      : LOCATION   = LC38   ; -- PIN 58  -- |plmt_d8:18|plmt_d:2|O
+    "|plmt_d8:18|plmt_d:5|:4"      : LOCATION   = LC45   ; -- PIN 65  -- |plmt_d8:18|plmt_d:5|O
+    "|plmt_d8:18|plmt_d:6|:4"      : LOCATION   = LC39   ; -- PIN 59  -- |plmt_d8:18|plmt_d:6|O
+    "|plmt_d8:18|plmt_d:7|:4"      : LOCATION   = LC40   ; -- PIN 60  -- |plmt_d8:18|plmt_d:7|O
+    "|plmt_d8:19|plmt_d:2|:4"      : LOCATION   = LC29   ; -- PIN 40  -- |plmt_d8:19|plmt_d:2|O
+    "|plmt_d8:19|plmt_d:5|:4"      : LOCATION   = LC34   ; -- PIN 45  -- |plmt_d8:19|plmt_d:5|O
+    "|plmt_d8:19|plmt_d:6|:4"      : LOCATION   = LC35   ; -- PIN 46  -- |plmt_d8:19|plmt_d:6|O
+    "|plmt_d8:19|plmt_d:7|:4"      : LOCATION   = LC36   ; -- PIN 47  -- |plmt_d8:19|plmt_d:7|O
+    "|plmt_d8:21|plmt_d:2|:4"      : LOCATION   = LC12   ; -- PIN 13  -- |plmt_d8:21|plmt_d:2|O
+    "|plmt_d8:21|plmt_d:5|:4"      : LOCATION   = LC15   ; -- PIN 25  -- |plmt_d8:21|plmt_d:5|O
+    "|plmt_d8:21|plmt_d:6|:4"      : LOCATION   = LC16   ; -- PIN 26  -- |plmt_d8:21|plmt_d:6|O
+    "|plmt_d8:21|plmt_d:7|:4"      : LOCATION   = LC18   ; -- PIN 28  -- |plmt_d8:21|plmt_d:7|O
+
+END;
+
+CHIP "plmt_d8_81"
+BEGIN
+
+    DEVICE = "EP1800ILC-70";
+
+    "ABR0"                         : INPUT_PIN  = 56     ;
+    "ABR1"                         : INPUT_PIN  = 55     ;
+    "ABR2"                         : INPUT_PIN  = 54     ;
+    "ABR3"                         : INPUT_PIN  = 50     ;
+    "ABR4"                         : INPUT_PIN  = 49     ;
+    "ABR5"                         : INPUT_PIN  = 48     ;
+    "ABR6"                         : INPUT_PIN  = 22     ;
+    "ABR7"                         : INPUT_PIN  = 21     ;
+    "ABW0"                         : INPUT_PIN  = 60     ; -- LC40
+    "ABW1"                         : INPUT_PIN  = 57     ; -- LC37
+    "ABW2"                         : INPUT_PIN  = 10     ; -- LC9
+    "ABW3"                         : INPUT_PIN  = 44     ; -- LC33
+    "ABW4"                         : INPUT_PIN  = 51     ;
+    "ABW5"                         : INPUT_PIN  = 19     ;
+    "ABW6"                         : INPUT_PIN  = 53     ;
+    "ABW7"                         : INPUT_PIN  = 17     ;
+    "D0"                           : INPUT_PIN  = 20     ;
+    "D2"                           : INPUT_PIN  = 16     ;
+    "D3"                           : INPUT_PIN  = 58     ; -- LC38
+    "D7"                           : INPUT_PIN  = 59     ; -- LC39
+    "|plmt_d8:14|plmt_d:4|:4"      : INPUT_PIN  = 3      ; -- LC2
+    "|plmt_d8:14|plmt_d:11|:4"     : INPUT_PIN  = 14     ;
+    "|plmt_d8:20|plmt_d:4|:4"      : INPUT_PIN  = 2      ; -- LC1
+    "|plmt_d8:20|plmt_d:11|:4"     : INPUT_PIN  = 15     ;
+    "Q0"                           : OUTPUT_PIN = 68     ; -- LC48
+    "Q2"                           : OUTPUT_PIN = 67     ; -- LC47
+    "Q3"                           : OUTPUT_PIN = 9      ; -- LC8
+    "Q7"                           : OUTPUT_PIN = 43     ; -- LC32
+    "|plmt_d8:14|plmt_d:1|:4"      : LOCATION   = LC39   ; -- PIN 59  -- |plmt_d8:14|plmt_d:1|O
+    "|plmt_d8:14|plmt_d:3|:4"      : LOCATION   = LC38   ; -- PIN 58  -- |plmt_d8:14|plmt_d:3|O
+    "|plmt_d8:15|plmt_d:1|:4"      : LOCATION   = LC37   ; -- PIN 57  -- |plmt_d8:15|plmt_d:1|O
+    "|plmt_d8:15|plmt_d:3|:4"      : LOCATION   = LC40   ; -- PIN 60  -- |plmt_d8:15|plmt_d:3|O
+    "|plmt_d8:15|plmt_d:4|:4"      : LOCATION   = LC9    ; -- PIN 10  -- |plmt_d8:15|plmt_d:4|O
+    "|plmt_d8:15|plmt_d:11|:4"     : LOCATION   = LC33   ; -- PIN 44  -- |plmt_d8:15|plmt_d:11|O
+    "|plmt_d8:16|plmt_d:1|:4"      : LOCATION   = LC41   ; -- PIN 61  -- |plmt_d8:16|plmt_d:1|O
+    "|plmt_d8:16|plmt_d:3|:4"      : LOCATION   = LC42   ; -- PIN 62  -- |plmt_d8:16|plmt_d:3|O
+    "|plmt_d8:16|plmt_d:4|:4"      : LOCATION   = LC3    ; -- PIN 4  -- |plmt_d8:16|plmt_d:4|O
+    "|plmt_d8:16|plmt_d:11|:4"     : LOCATION   = LC25   ; -- PIN 36  -- |plmt_d8:16|plmt_d:11|O
+    "|plmt_d8:17|plmt_d:1|:4"      : LOCATION   = LC43   ; -- PIN 63  -- |plmt_d8:17|plmt_d:1|O
+    "|plmt_d8:17|plmt_d:3|:4"      : LOCATION   = LC44   ; -- PIN 64  -- |plmt_d8:17|plmt_d:3|O
+    "|plmt_d8:17|plmt_d:4|:4"      : LOCATION   = LC4    ; -- PIN 5  -- |plmt_d8:17|plmt_d:4|O
+    "|plmt_d8:17|plmt_d:11|:4"     : LOCATION   = LC26   ; -- PIN 37  -- |plmt_d8:17|plmt_d:11|O
+    "|plmt_d8:18|plmt_d:1|:4"      : LOCATION   = LC34   ; -- PIN 45  -- |plmt_d8:18|plmt_d:1|O
+    "|plmt_d8:18|plmt_d:3|:4"      : LOCATION   = LC35   ; -- PIN 46  -- |plmt_d8:18|plmt_d:3|O
+    "|plmt_d8:18|plmt_d:4|:4"      : LOCATION   = LC36   ; -- PIN 47  -- |plmt_d8:18|plmt_d:4|O
+    "|plmt_d8:18|plmt_d:11|:4"     : LOCATION   = LC27   ; -- PIN 38  -- |plmt_d8:18|plmt_d:11|O
+    "|plmt_d8:19|plmt_d:1|:4"      : LOCATION   = LC13   ; -- PIN 23  -- |plmt_d8:19|plmt_d:1|O
+    "|plmt_d8:19|plmt_d:3|:4"      : LOCATION   = LC14   ; -- PIN 24  -- |plmt_d8:19|plmt_d:3|O
+    "|plmt_d8:19|plmt_d:4|:4"      : LOCATION   = LC15   ; -- PIN 25  -- |plmt_d8:19|plmt_d:4|O
+    "|plmt_d8:19|plmt_d:11|:4"     : LOCATION   = LC16   ; -- PIN 26  -- |plmt_d8:19|plmt_d:11|O
+    "|plmt_d8:20|plmt_d:1|:4"      : LOCATION   = LC45   ; -- PIN 65  -- |plmt_d8:20|plmt_d:1|O
+    "|plmt_d8:20|plmt_d:3|:4"      : LOCATION   = LC46   ; -- PIN 66  -- |plmt_d8:20|plmt_d:3|O
+    "|plmt_d8:21|plmt_d:1|:4"      : LOCATION   = LC10   ; -- PIN 11  -- |plmt_d8:21|plmt_d:1|O
+    "|plmt_d8:21|plmt_d:3|:4"      : LOCATION   = LC11   ; -- PIN 12  -- |plmt_d8:21|plmt_d:3|O
+    "|plmt_d8:21|plmt_d:4|:4"      : LOCATION   = LC5    ; -- PIN 6  -- |plmt_d8:21|plmt_d:4|O
+    "|plmt_d8:21|plmt_d:11|:4"     : LOCATION   = LC12   ; -- PIN 13  -- |plmt_d8:21|plmt_d:11|O
+
+END;
+
+CHIP "plmt_d8_82"
+BEGIN
+
+    DEVICE = "EP610ILC-10";
+
+    "ABW0"                         : INPUT_PIN  = 27     ;
+    "ABW6"                         : INPUT_PIN  = 2      ;
+    "D1"                           : INPUT_PIN  = 17     ;
+    "D3"                           : INPUT_PIN  = 13     ;
+    "D4"                           : INPUT_PIN  = 3      ;
+    "D5"                           : INPUT_PIN  = 18     ; -- LC8
+    "D6"                           : INPUT_PIN  = 20     ; -- LC7
+    "D7"                           : INPUT_PIN  = 21     ; -- LC6
+    "|plmt_d8:14|plmt_d:2|:4"      : OUTPUT_PIN = 23     ; -- LC4  -- ~PIN011
+    "|plmt_d8:14|plmt_d:4|:4"      : OUTPUT_PIN = 24     ; -- LC3  -- ~PIN009
+    "|plmt_d8:14|plmt_d:5|:4"      : OUTPUT_PIN = 25     ; -- LC2  -- ~PIN007
+    "|plmt_d8:14|plmt_d:6|:4"      : OUTPUT_PIN = 26     ; -- LC1  -- ~PIN005
+    "|plmt_d8:14|plmt_d:7|:4"      : OUTPUT_PIN = 8      ; -- LC13  -- ~PIN003
+    "|plmt_d8:14|plmt_d:11|:4"     : OUTPUT_PIN = 10     ; -- LC15  -- ~PIN001
+    "|plmt_d8:20|plmt_d:2|:4"      : OUTPUT_PIN = 4      ; -- LC9  -- ~PIN010
+    "|plmt_d8:20|plmt_d:4|:4"      : OUTPUT_PIN = 5      ; -- LC10  -- ~PIN008
+    "|plmt_d8:20|plmt_d:5|:4"      : OUTPUT_PIN = 6      ; -- LC11  -- ~PIN006
+    "|plmt_d8:20|plmt_d:6|:4"      : OUTPUT_PIN = 7      ; -- LC12  -- ~PIN004
+    "|plmt_d8:20|plmt_d:7|:4"      : OUTPUT_PIN = 9      ; -- LC14  -- ~PIN002
+    "|plmt_d8:20|plmt_d:11|:4"     : OUTPUT_PIN = 12     ; -- LC16  -- ~PIN000
+
+END;

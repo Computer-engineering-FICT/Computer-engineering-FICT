@@ -1,0 +1,21 @@
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;
+
+entity MUX8 is port(D0, D1, D2, D3, D4, D5, D6, D7: in STD_LOGIC;
+		A: in STD_LOGIC_VECTOR(2 downto 0);
+		Q: out STD_LOGIC);
+end MUX8; 
+
+architecture Behavioral of MUX8 is 
+	signal mux0, mux1 : STD_LOGIC; 
+begin
+	
+	U_MUX0: entity PLM_6(PLM6_MUX)
+		port map(F => D3, E => D2, D => D1, C => D0, B => A(1), A => A(0), Y => mux0);
+	U_MUX1: entity PLM_6(PLM6_MUX) 
+		port map(F => D7, E => D6, D => D5, C => D4, B => A(1), A => A(0), Y => mux1);
+	U_MUX3: entity PLM_3(PLM3_MUX)
+		port map(C => mux1, B => mux0, A => A(2), Y => Q);
+	
+end Behavioral;

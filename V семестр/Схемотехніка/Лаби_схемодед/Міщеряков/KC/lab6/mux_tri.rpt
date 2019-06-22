@@ -1,0 +1,566 @@
+Project Information                       d:\maxplus2\max2lib\lab6\mux_tri.rpt
+
+MAX+plus II Compiler Report File
+Version 10.1 06/12/2001
+Compiled: 11/24/2010 11:00:00
+
+Copyright (C) 1988-2001 Altera Corporation
+Any megafunction design, and related net list (encrypted or decrypted),
+support information, device programming or simulation file, and any other
+associated documentation or information provided by Altera or a partner
+under Altera's Megafunction Partnership Program may be used only to
+program PLD devices (but not masked PLD devices) from Altera.  Any other
+use of such megafunction design, net list, support information, device
+programming or simulation file, or any other related documentation or
+information is prohibited for any other purpose, including, but not
+limited to modification, reverse engineering, de-compiling, or use with
+any other silicon devices, unless such use is explicitly licensed under
+a separate agreement with Altera or a megafunction partner.  Title to
+the intellectual property, including patents, copyrights, trademarks,
+trade secrets, or maskworks, embodied in any such megafunction design,
+net list, support information, device programming or simulation file, or
+any other related documentation or information provided by Altera or a
+megafunction partner, remains with Altera, the megafunction partner, or
+their respective licensors.  No other licenses, including any licenses
+needed under any third party's intellectual property, are provided herein.
+
+
+
+***** Project compilation was successful
+
+
+
+
+** DEVICE SUMMARY **
+
+Chip/                     Input Output Bidir  Memory  Memory  			 LCs
+POF       Device          Pins  Pins   Pins   Bits % Utilized  LCs  % Utilized
+
+mux_tri   EPF10K10LC84-3   18     8      0    0         0  %    8        1  %
+
+User Pins:                 18     8      0  
+
+
+
+Project Information                       d:\maxplus2\max2lib\lab6\mux_tri.rpt
+
+** PROJECT COMPILATION MESSAGES **
+
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+Warning: No superset bus at connection -- "B[7..0]"
+
+
+Device-Specific Information:              d:\maxplus2\max2lib\lab6\mux_tri.rpt
+mux_tri
+
+***** Logic for device 'mux_tri' compiled without errors.
+
+
+
+
+Device: EPF10K10LC84-3
+
+FLEX 10K Configuration Scheme: Passive Serial
+
+Device Options:
+    User-Supplied Start-Up Clock               = OFF
+    Auto-Restart Configuration on Frame Error  = OFF
+    Release Clears Before Tri-States           = OFF
+    Enable Chip_Wide Reset                     = OFF
+    Enable Chip-Wide Output Enable             = OFF
+    Enable INIT_DONE Output                    = OFF
+    JTAG User Code                             = 7f
+
+                                                                         ^     
+                                                                         C     
+                R  R  R  R  R  R  R     R                       R        O     
+                E  E  E  E  E  E  E     E                       E        N     
+                S  S  S  S  S  S  S  V  S              G        S        F     
+                E  E  E  E  E  E  E  C  E              N        E        _  ^  
+                R  R  R  R  R  R  R  C  R              D        R     #  D  n  
+                V  V  V  V  V  V  V  I  V              I        V     T  O  C  
+                E  E  E  E  E  E  E  N  E     A  B  O  N  B  A  E  A  C  N  E  
+                D  D  D  D  D  D  D  T  D  E  1  0  3  T  5  7  D  5  K  E  O  
+              -----------------------------------------------------------------_ 
+            /  11 10  9  8  7  6  5  4  3  2  1 84 83 82 81 80 79 78 77 76 75   | 
+    ^DATA0 | 12                                                              74 | #TDO 
+     ^DCLK | 13                                                              73 | RESERVED 
+      ^nCE | 14                                                              72 | RESERVED 
+      #TDI | 15                                                              71 | RESERVED 
+  RESERVED | 16                                                              70 | RESERVED 
+  RESERVED | 17                                                              69 | O5 
+  RESERVED | 18                                                              68 | GNDINT 
+  RESERVED | 19                                                              67 | A3 
+    VCCINT | 20                                                              66 | O1 
+        B3 | 21                                                              65 | O2 
+        B4 | 22                        EPF10K10LC84-3                        64 | O4 
+        O6 | 23                                                              63 | VCCINT 
+        A6 | 24                                                              62 | O0 
+        B2 | 25                                                              61 | RESERVED 
+    GNDINT | 26                                                              60 | RESERVED 
+  RESERVED | 27                                                              59 | RESERVED 
+  RESERVED | 28                                                              58 | RESERVED 
+  RESERVED | 29                                                              57 | #TMS 
+  RESERVED | 30                                                              56 | #TRST 
+    ^MSEL0 | 31                                                              55 | ^nSTATUS 
+    ^MSEL1 | 32                                                              54 | RESERVED 
+           |_  33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53  _| 
+             ------------------------------------------------------------------ 
+                V  ^  R  R  R  R  R  V  G  A  B  S  V  G  O  A  B  B  R  R  A  
+                C  n  E  E  E  E  E  C  N  0  1  E  C  N  7  4  7  6  E  E  2  
+                C  C  S  S  S  S  S  C  D        L  C  D              S  S     
+                I  O  E  E  E  E  E  I  I           I  I              E  E     
+                N  N  R  R  R  R  R  N  N           N  N              R  R     
+                T  F  V  V  V  V  V  T  T           T  T              V  V     
+                   I  E  E  E  E  E                                   E  E     
+                   G  D  D  D  D  D                                   D  D     
+                                                                               
+                                                                               
+
+
+N.C. = No Connect. This pin has no internal connection to the device.
+VCCINT = Dedicated power pin, which MUST be connected to VCC (5.0 volts).
+VCCIO = Dedicated power pin, which MUST be connected to VCC (5.0 volts).
+GNDINT = Dedicated ground pin or unused dedicated input, which MUST be connected to GND.
+GNDIO = Dedicated ground pin, which MUST be connected to GND.
+RESERVED = Unused I/O pin, which MUST be left unconnected.
+
+^ = Dedicated configuration pin.
++ = Reserved configuration pin, which is tri-stated during user mode.
+* = Reserved configuration pin, which drives out in user mode.
+PDn = Power Down pin. 
+@ = Special-purpose pin. 
+# = JTAG Boundary-Scan Testing/In-System Programming or Configuration Pin. The JTAG inputs TMS and TDI should be tied to VCC and TCK should be tied to GND when not in use.
+& = JTAG pin used for I/O. When used as user I/O, JTAG pins must be kept stable before and during configuration.  JTAG pin stability prevents accidental loading of JTAG instructions.
+
+
+Device-Specific Information:              d:\maxplus2\max2lib\lab6\mux_tri.rpt
+mux_tri
+
+** RESOURCE USAGE **
+
+Logic                Column       Row                                   
+Array                Interconnect Interconnect         Clears/     External  
+Block   Logic Cells  Driven       Driven       Clocks  Presets   Interconnect
+B13      8/ 8(100%)   4/ 8( 50%)   4/ 8( 50%)    0/2    0/2      17/22( 77%)   
+
+
+Embedded             Column       Row                                   
+Array     Embedded   Interconnect Interconnect         Read/      External  
+Block     Cells      Driven       Driven       Clocks  Write    Interconnect
+
+
+Total dedicated input pins used:                 6/6      (100%)
+Total I/O pins used:                            20/53     ( 37%)
+Total logic cells used:                          8/576    (  1%)
+Total embedded cells used:                       0/24     (  0%)
+Total EABs used:                                 0/3      (  0%)
+Average fan-in:                                 3.00/4    ( 75%)
+Total fan-in:                                  24/2304    (  1%)
+
+Total input pins required:                      18
+Total input I/O cell registers required:         0
+Total output pins required:                      8
+Total output I/O cell registers required:        0
+Total buried I/O cell registers required:        0
+Total bidirectional pins required:               0
+Total reserved pins required                     0
+Total logic cells required:                      8
+Total flipflops required:                        0
+Total packed registers required:                 0
+Total logic cells in carry chains:               0
+Total number of carry chains:                    0
+Total logic cells in cascade chains:             0
+Total number of cascade chains:                  0
+Total single-pin Clock Enables required:         0
+Total single-pin Output Enables required:        0
+
+Synthesized logic cells:                         0/ 576   (  0%)
+
+Logic Cell and Embedded Cell Counts
+
+Column:  01  02  03  04  05  06  07  08  09  10  11  12  EA  13  14  15  16  17  18  19  20  21  22  23  24  Total(LC/EC)
+ A:      0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0      0/0  
+ B:      0   0   0   0   0   0   0   0   0   0   0   0   0   8   0   0   0   0   0   0   0   0   0   0   0      8/0  
+ C:      0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0      0/0  
+
+Total:   0   0   0   0   0   0   0   0   0   0   0   0   0   8   0   0   0   0   0   0   0   0   0   0   0      8/0  
+
+
+
+Device-Specific Information:              d:\maxplus2\max2lib\lab6\mux_tri.rpt
+mux_tri
+
+** INPUTS **
+
+                                                    Fan-In    Fan-Out
+ Pin     LC     EC   Row  Col  Primitive    Code      INP  FBK  OUT  FBK  Name
+  42      -     -    -    --      INPUT                0    0    0    1  A0
+   1      -     -    -    --      INPUT                0    0    0    1  A1
+  53      -     -    -    20      INPUT                0    0    0    1  A2
+  67      -     -    B    --      INPUT                0    0    0    1  A3
+  48      -     -    -    15      INPUT                0    0    0    1  A4
+  78      -     -    -    24      INPUT                0    0    0    1  A5
+  24      -     -    B    --      INPUT                0    0    0    1  A6
+  80      -     -    -    23      INPUT                0    0    0    1  A7
+  84      -     -    -    --      INPUT                0    0    0    1  B0
+  43      -     -    -    --      INPUT                0    0    0    1  B1
+  25      -     -    B    --      INPUT                0    0    0    1  B2
+  21      -     -    B    --      INPUT                0    0    0    1  B3
+  22      -     -    B    --      INPUT                0    0    0    1  B4
+  81      -     -    -    22      INPUT                0    0    0    1  B5
+  50      -     -    -    17      INPUT                0    0    0    1  B6
+  49      -     -    -    16      INPUT                0    0    0    1  B7
+   2      -     -    -    --      INPUT  G             0    0    0    0  E
+  44      -     -    -    --      INPUT                0    0    0    8  SEL
+
+
+Code:
+
+s = Synthesized pin or logic cell
++ = Synchronous flipflop
+/ = Slow slew-rate output
+! = NOT gate push-back
+r = Fitter-inserted logic cell
+@ = Uses single-pin Clock Enable
+& = Uses single-pin Output Enable
+G = Global Source. Fan-out destinations counted here do not include destinations
+that are driven using global routing resources. Refer to the Auto Global Signals,
+Clock Signals, Clear Signals, Synchronous Load Signals, and Synchronous Clear Signals
+Sections of this Report File for information on which signals' fan-outs are used as
+Clock, Clear, Preset, Output Enable, and synchronous Load signals.
+
+
+Device-Specific Information:              d:\maxplus2\max2lib\lab6\mux_tri.rpt
+mux_tri
+
+** OUTPUTS **
+
+       Fed By Fed By                                Fan-In    Fan-Out
+ Pin     LC     EC   Row  Col  Primitive    Code      INP  FBK  OUT  FBK  Name
+  62      -     -    C    --        TRI                0    1    0    0  O0
+  66      -     -    B    --        TRI                0    1    0    0  O1
+  65      -     -    B    --        TRI                0    1    0    0  O2
+  83      -     -    -    13        TRI                0    1    0    0  O3
+  64      -     -    B    --        TRI                0    1    0    0  O4
+  69      -     -    A    --        TRI                0    1    0    0  O5
+  23      -     -    B    --        TRI                0    1    0    0  O6
+  47      -     -    -    14        TRI                0    1    0    0  O7
+
+
+Code:
+
+s = Synthesized pin or logic cell
++ = Synchronous flipflop
+/ = Slow slew-rate output
+! = NOT gate push-back
+r = Fitter-inserted logic cell
+@ = Uses single-pin Clock Enable
+& = Uses single-pin Output Enable
+
+
+Device-Specific Information:              d:\maxplus2\max2lib\lab6\mux_tri.rpt
+mux_tri
+
+** BURIED LOGIC **
+
+                                                    Fan-In    Fan-Out
+ IOC     LC     EC   Row  Col  Primitive    Code      INP  FBK  OUT  FBK  Name
+   -      6     -    B    13        OR2                3    0    1    0  Q3 (:2)
+   -      2     -    B    13        OR2                3    0    1    0  Q7 (:3)
+   -      5     -    B    13        OR2                3    0    1    0  Q2 (:4)
+   -      4     -    B    13        OR2                3    0    1    0  Q6 (:5)
+   -      3     -    B    13        OR2                3    0    1    0  Q1 (:6)
+   -      8     -    B    13        OR2                3    0    1    0  Q5 (:7)
+   -      1     -    B    13        OR2                3    0    1    0  Q0 (:8)
+   -      7     -    B    13        OR2                3    0    1    0  Q4 (:9)
+
+
+Code:
+
+s = Synthesized pin or logic cell
++ = Synchronous flipflop
+/ = Slow slew-rate output
+! = NOT gate push-back
+r = Fitter-inserted logic cell
+p = Packed register
+
+
+Device-Specific Information:              d:\maxplus2\max2lib\lab6\mux_tri.rpt
+mux_tri
+
+** FASTTRACK INTERCONNECT UTILIZATION **
+
+Row FastTrack Interconnect:
+
+          Global         Left Half-      Right Half-
+         FastTrack       FastTrack       FastTrack 
+Row     Interconnect    Interconnect    Interconnect    Input Pins     Output Pins     Bidir Pins
+A:       0/ 96(  0%)     0/ 48(  0%)     1/ 48(  2%)    0/16(  0%)      1/16(  6%)     0/16(  0%)
+B:       7/ 96(  7%)     0/ 48(  0%)     9/ 48( 18%)    5/16( 31%)      4/16( 25%)     0/16(  0%)
+C:       0/ 96(  0%)     0/ 48(  0%)     1/ 48(  2%)    0/16(  0%)      1/16(  6%)     0/16(  0%)
+
+
+Column FastTrack Interconnect:
+
+         FastTrack                                 
+Column  Interconnect    Input Pins     Output Pins     Bidir Pins
+01:      0/24(  0%)     0/4(  0%)      0/4(  0%)       0/4(  0%)
+02:      0/24(  0%)     0/4(  0%)      0/4(  0%)       0/4(  0%)
+03:      0/24(  0%)     0/4(  0%)      0/4(  0%)       0/4(  0%)
+04:      0/24(  0%)     0/4(  0%)      0/4(  0%)       0/4(  0%)
+05:      0/24(  0%)     0/4(  0%)      0/4(  0%)       0/4(  0%)
+06:      0/24(  0%)     0/4(  0%)      0/4(  0%)       0/4(  0%)
+07:      0/24(  0%)     0/4(  0%)      0/4(  0%)       0/4(  0%)
+08:      0/24(  0%)     0/4(  0%)      0/4(  0%)       0/4(  0%)
+09:      0/24(  0%)     0/4(  0%)      0/4(  0%)       0/4(  0%)
+10:      0/24(  0%)     0/4(  0%)      0/4(  0%)       0/4(  0%)
+11:      0/24(  0%)     0/4(  0%)      0/4(  0%)       0/4(  0%)
+12:      0/24(  0%)     0/4(  0%)      0/4(  0%)       0/4(  0%)
+13:      3/24( 12%)     0/4(  0%)      1/4( 25%)       0/4(  0%)
+14:      1/24(  4%)     0/4(  0%)      1/4( 25%)       0/4(  0%)
+15:      1/24(  4%)     1/4( 25%)      0/4(  0%)       0/4(  0%)
+16:      1/24(  4%)     1/4( 25%)      0/4(  0%)       0/4(  0%)
+17:      1/24(  4%)     1/4( 25%)      0/4(  0%)       0/4(  0%)
+18:      0/24(  0%)     0/4(  0%)      0/4(  0%)       0/4(  0%)
+19:      0/24(  0%)     0/4(  0%)      0/4(  0%)       0/4(  0%)
+20:      1/24(  4%)     1/4( 25%)      0/4(  0%)       0/4(  0%)
+21:      0/24(  0%)     0/4(  0%)      0/4(  0%)       0/4(  0%)
+22:      1/24(  4%)     1/4( 25%)      0/4(  0%)       0/4(  0%)
+23:      1/24(  4%)     1/4( 25%)      0/4(  0%)       0/4(  0%)
+24:      1/24(  4%)     1/4( 25%)      0/4(  0%)       0/4(  0%)
+EA:      0/24(  0%)     0/4(  0%)      0/4(  0%)       0/4(  0%)
+
+
+Device-Specific Information:              d:\maxplus2\max2lib\lab6\mux_tri.rpt
+mux_tri
+
+** EQUATIONS **
+
+A0       : INPUT;
+A1       : INPUT;
+A2       : INPUT;
+A3       : INPUT;
+A4       : INPUT;
+A5       : INPUT;
+A6       : INPUT;
+A7       : INPUT;
+B0       : INPUT;
+B1       : INPUT;
+B2       : INPUT;
+B3       : INPUT;
+B4       : INPUT;
+B5       : INPUT;
+B6       : INPUT;
+B7       : INPUT;
+E        : INPUT;
+SEL      : INPUT;
+
+-- Node name is 'O0' 
+-- Equation name is 'O0', type is output 
+O0       = TRI(Q0, GLOBAL( E));
+
+-- Node name is 'O1' 
+-- Equation name is 'O1', type is output 
+O1       = TRI(Q1, GLOBAL( E));
+
+-- Node name is 'O2' 
+-- Equation name is 'O2', type is output 
+O2       = TRI(Q2, GLOBAL( E));
+
+-- Node name is 'O3' 
+-- Equation name is 'O3', type is output 
+O3       = TRI(Q3, GLOBAL( E));
+
+-- Node name is 'O4' 
+-- Equation name is 'O4', type is output 
+O4       = TRI(Q4, GLOBAL( E));
+
+-- Node name is 'O5' 
+-- Equation name is 'O5', type is output 
+O5       = TRI(Q5, GLOBAL( E));
+
+-- Node name is 'O6' 
+-- Equation name is 'O6', type is output 
+O6       = TRI(Q6, GLOBAL( E));
+
+-- Node name is 'O7' 
+-- Equation name is 'O7', type is output 
+O7       = TRI(Q7, GLOBAL( E));
+
+-- Node name is ':8' = 'Q0' 
+-- Equation name is 'Q0', location is LC1_B13, type is buried.
+Q0       = LCELL( _EQ001);
+  _EQ001 =  A0 &  SEL
+         #  B0 & !SEL;
+
+-- Node name is ':6' = 'Q1' 
+-- Equation name is 'Q1', location is LC3_B13, type is buried.
+Q1       = LCELL( _EQ002);
+  _EQ002 =  A1 &  SEL
+         #  B1 & !SEL;
+
+-- Node name is ':4' = 'Q2' 
+-- Equation name is 'Q2', location is LC5_B13, type is buried.
+Q2       = LCELL( _EQ003);
+  _EQ003 =  A2 &  SEL
+         #  B2 & !SEL;
+
+-- Node name is ':2' = 'Q3' 
+-- Equation name is 'Q3', location is LC6_B13, type is buried.
+Q3       = LCELL( _EQ004);
+  _EQ004 =  A3 &  SEL
+         #  B3 & !SEL;
+
+-- Node name is ':9' = 'Q4' 
+-- Equation name is 'Q4', location is LC7_B13, type is buried.
+Q4       = LCELL( _EQ005);
+  _EQ005 =  A4 &  SEL
+         #  B4 & !SEL;
+
+-- Node name is ':7' = 'Q5' 
+-- Equation name is 'Q5', location is LC8_B13, type is buried.
+Q5       = LCELL( _EQ006);
+  _EQ006 =  A5 &  SEL
+         #  B5 & !SEL;
+
+-- Node name is ':5' = 'Q6' 
+-- Equation name is 'Q6', location is LC4_B13, type is buried.
+Q6       = LCELL( _EQ007);
+  _EQ007 =  A6 &  SEL
+         #  B6 & !SEL;
+
+-- Node name is ':3' = 'Q7' 
+-- Equation name is 'Q7', location is LC2_B13, type is buried.
+Q7       = LCELL( _EQ008);
+  _EQ008 =  A7 &  SEL
+         #  B7 & !SEL;
+
+
+
+Project Information                       d:\maxplus2\max2lib\lab6\mux_tri.rpt
+
+** COMPILATION SETTINGS & TIMES **
+
+Processing Menu Commands
+------------------------
+
+Design Doctor                             = off
+
+Logic Synthesis:
+
+   Synthesis Type Used                    = Multi-Level
+
+   Default Synthesis Style                = NORMAL
+
+      Logic option settings in 'NORMAL' style for 'FLEX10K' family
+
+      CARRY_CHAIN                         = ignore
+      CARRY_CHAIN_LENGTH                  = 32
+      CASCADE_CHAIN                       = ignore
+      CASCADE_CHAIN_LENGTH                = 2
+      DECOMPOSE_GATES                     = on
+      DUPLICATE_LOGIC_EXTRACTION          = on
+      MINIMIZATION                        = full
+      MULTI_LEVEL_FACTORING               = on
+      NOT_GATE_PUSH_BACK                  = on
+      REDUCE_LOGIC                        = on
+      REFACTORIZATION                     = on
+      REGISTER_OPTIMIZATION               = on
+      RESYNTHESIZE_NETWORK                = on
+      SLOW_SLEW_RATE                      = off
+      SUBFACTOR_EXTRACTION                = on
+      IGNORE_SOFT_BUFFERS                 = on
+      USE_LPM_FOR_AHDL_OPERATORS          = off
+
+   Other logic synthesis settings:
+
+      Automatic Global Clock              = on
+      Automatic Global Clear              = on
+      Automatic Global Preset             = on
+      Automatic Global Output Enable      = on
+      Automatic Fast I/O                  = off
+      Automatic Register Packing          = off
+      Automatic Open-Drain Pins           = on
+      Automatic Implement in EAB          = off
+      Optimize                            = 5
+
+Default Timing Specifications: None
+
+Cut All Bidir Feedback Timing Paths       = on
+Cut All Clear & Preset Timing Paths       = on
+
+Ignore Timing Assignments                 = off
+
+Functional SNF Extractor                  = off
+
+Linked SNF Extractor                      = off
+Timing SNF Extractor                      = on
+Optimize Timing SNF                       = off
+Generate AHDL TDO File                    = off
+Fitter Settings                           = NORMAL
+Use Quartus Fitter                        = on
+Smart Recompile                           = off
+Total Recompile                           = off
+
+Interfaces Menu Commands
+------------------------
+
+EDIF Netlist Writer                       = off
+Verilog Netlist Writer                    = off
+VHDL Netlist Writer                       = off
+
+Compilation Times
+-----------------
+
+   Compiler Netlist Extractor             00:00:00
+   Database Builder                       00:00:00
+   Logic Synthesizer                      00:00:00
+   Partitioner                            00:00:00
+   Fitter                                 00:00:00
+   Timing SNF Extractor                   00:00:00
+   Assembler                              00:00:00
+   --------------------------             --------
+   Total Time                             00:00:00
+
+
+Memory Allocated
+-----------------
+
+Peak memory allocated during compilation  = 11,212K

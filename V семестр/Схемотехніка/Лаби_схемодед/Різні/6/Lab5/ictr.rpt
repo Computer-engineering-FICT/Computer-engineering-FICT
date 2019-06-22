@@ -1,0 +1,981 @@
+Project Information                                  c:\max2work\lab5\ictr.rpt
+
+MAX+plus II Compiler Report File
+Version 10.1 06/12/2001
+Compiled: 12/25/2008 21:18:35
+
+Copyright (C) 1988-2001 Altera Corporation
+Any megafunction design, and related net list (encrypted or decrypted),
+support information, device programming or simulation file, and any other
+associated documentation or information provided by Altera or a partner
+under Altera's Megafunction Partnership Program may be used only to
+program PLD devices (but not masked PLD devices) from Altera.  Any other
+use of such megafunction design, net list, support information, device
+programming or simulation file, or any other related documentation or
+information is prohibited for any other purpose, including, but not
+limited to modification, reverse engineering, de-compiling, or use with
+any other silicon devices, unless such use is explicitly licensed under
+a separate agreement with Altera or a megafunction partner.  Title to
+the intellectual property, including patents, copyrights, trademarks,
+trade secrets, or maskworks, embodied in any such megafunction design,
+net list, support information, device programming or simulation file, or
+any other related documentation or information provided by Altera or a
+megafunction partner, remains with Altera, the megafunction partner, or
+their respective licensors.  No other licenses, including any licenses
+needed under any third party's intellectual property, are provided herein.
+
+
+
+***** Project compilation was successful
+
+
+
+
+** DEVICE SUMMARY **
+
+Chip/                     Input   Output   Bidir         Shareable
+POF       Device          Pins    Pins     Pins     LCs  Expanders  % Utilized
+
+ictr      EPM7032BLC44-3   15       10       0      32      8           100%
+
+User Pins:                 15       10       0  
+
+
+
+Project Information                                  c:\max2work\lab5\ictr.rpt
+
+** PROJECT TIMING MESSAGES **
+
+Warning: Timing characteristics of device EPM7032BLC44-3 are preliminary
+
+
+Project Information                                  c:\max2work\lab5\ictr.rpt
+
+** AUTO GLOBAL SIGNALS **
+
+
+
+INFO: Signal 'C' chosen for auto global Clock
+
+
+Project Information                                  c:\max2work\lab5\ictr.rpt
+
+** FILE HIERARCHY **
+
+
+
+|ctrr:1|
+|ctrr:1|ctrbit:20|
+|ctrr:1|ctrbit:20|xf3f1:3|
+|ctrr:1|ctrbit:55|
+|ctrr:1|ctrbit:55|xf3f1:3|
+|ctrr:1|ctrbit:54|
+|ctrr:1|ctrbit:54|xf3f1:3|
+|ctrr:1|ctrbit:47|
+|ctrr:1|ctrbit:47|xf3f1:3|
+|ctrr:1|ctrbit:46|
+|ctrr:1|ctrbit:46|xf3f1:3|
+|ctrr:1|ctrbit:45|
+|ctrr:1|ctrbit:45|xf3f1:3|
+|sm:2|
+|sm:2|smbit:36|
+|sm:2|smbit:36|sumbit:3|
+|sm:2|smbit:36|cobit:4|
+|sm:2|smbit:38|
+|sm:2|smbit:38|sumbit:3|
+|sm:2|smbit:38|cobit:4|
+|sm:2|smbit:37|
+|sm:2|smbit:37|sumbit:3|
+|sm:2|smbit:37|cobit:4|
+|sm:2|smbit:1|
+|sm:2|smbit:1|sumbit:3|
+|sm:2|smbit:1|cobit:4|
+|rgictrgdf:3|
+|rgictrgdf:3|rgplmt2:1|
+|rgictrgdf:3|rgplmt2:30|
+|rgictrgdf:3|rgplmt2:29|
+|rgictrgdf:3|rgplmt2:28|
+
+
+Device-Specific Information:                         c:\max2work\lab5\ictr.rpt
+ictr
+
+***** Logic for device 'ictr' compiled without errors.
+
+
+
+
+Device: EPM7032BLC44-3
+
+Device Options:
+    Turbo Bit                                    = ON
+    Security Bit                                 = OFF
+    Enable JTAG Support                        = ON
+    User Code                                  = ffffffff
+    MultiVolt I/O                              = OFF
+
+
+
+Device-Specific Information:                         c:\max2work\lab5\ictr.rpt
+ictr
+
+** ERROR SUMMARY **
+
+Info: Chip 'ictr' in device 'EPM7032BLC44-3' has less than 10% of logic cells available for future logic changes -- if your project is likely to change, Altera recommends using a larger device
+                     V                       
+                     C                       
+                     C                       
+                     I  G  G  G     G        
+            Q  F  F  N  N  N  N     N  F  D  
+            9  2  3  T  D  D  D  C  D  1  0  
+          -----------------------------------_ 
+        /   6  5  4  3  2  1 44 43 42 41 40   | 
+  #TDI |  7                                39 | D9 
+    F0 |  8                                38 | #TDO 
+    Q8 |  9                                37 | D8 
+   GND | 10                                36 | D7 
+    Q7 | 11                                35 | VCCIO2 
+    Q6 | 12         EPM7032BLC44-3         34 | D5 
+  #TMS | 13                                33 | D4 
+    Q2 | 14                                32 | #TCK 
+VCCIO1 | 15                                31 | D1 
+    D6 | 16                                30 | GND 
+    Q3 | 17                                29 | GND* 
+       |_  18 19 20 21 22 23 24 25 26 27 28  _| 
+         ------------------------------------ 
+            Q  Q  Q  Q  G  V  G  G  D  D  G  
+            1  4  5  0  N  C  N  N  3  2  N  
+                        D  C  D  D        D  
+                           I  *  *        *  
+                           N                 
+                           T                 
+
+
+N.C. = No Connect. This pin has no internal connection to the device.
+VCCINT = Dedicated power pin, which MUST be connected to VCC (2.5 volts).
+VCCIO1 = Dedicated power pin, which MUST be connected to VCC (3.3 volts).
+VCCIO2 = Dedicated power pin, which MUST be connected to VCC (3.3 volts).
+GND = Dedicated ground pin or unused dedicated input, which MUST be connected to GND.
+GND* = These I/O pins can either be left unconnected or connected to GND. Connecting these pins to GND will improve the device's immunity to noise.
+RESERVED = Unused I/O pin, which MUST be left unconnected.
+
+^ = Dedicated configuration pin.
++ = Reserved configuration pin, which is tri-stated during user mode.
+* = Reserved configuration pin, which drives out in user mode.
+PDn = Power Down pin. 
+@ = Special-purpose pin. 
+# = JTAG Boundary-Scan Testing/In-System Programming or Configuration Pin. The JTAG inputs TMS and TDI should be tied to VCC and TCK should be tied to GND when not in use.
+& = JTAG pin used for I/O. When used as user I/O, JTAG pins must be kept stable before and during configuration.  JTAG pin stability prevents accidental loading of JTAG instructions.
+
+
+Device-Specific Information:                         c:\max2work\lab5\ictr.rpt
+ictr
+
+** RESOURCE USAGE **
+
+                                                Shareable     External
+Logic Array Block     Logic Cells   I/O Pins    Expanders   Interconnect
+
+A:     LC1 - LC16    16/16(100%)  16/16(100%)  16/16(100%)  28/36( 77%) 
+B:    LC17 - LC32    16/16(100%)  12/16( 75%)  14/16( 87%)  17/36( 47%) 
+
+
+Total dedicated input pins used:                 1/4      ( 25%)
+Total I/O pins used:                            28/32     ( 87%)
+Total logic cells used:                         32/32     (100%)
+Total shareable expanders used:                  8/32     ( 25%)
+Total Turbo logic cells used:                   32/32     (100%)
+Total shareable expanders not available (n/a):  22/32     ( 68%)
+Average fan-in:                                  7.56
+Total fan-in:                                   242
+
+Total input pins required:                      15
+Total output pins required:                     10
+Total bidirectional pins required:               0
+Total reserved pins required                     4
+Total logic cells required:                     32
+Total flipflops required:                       10
+Total product terms required:                  144
+Total logic cells lending parallel expanders:    0
+Total shareable expanders in database:           8
+
+Synthesized logic cells:                        18/  32   ( 56%)
+
+
+
+Device-Specific Information:                         c:\max2work\lab5\ictr.rpt
+ictr
+
+** INPUTS **
+
+                                         Shareable
+                                         Expanders     Fan-In    Fan-Out
+ Pin     LC  LAB  Primitive    Code   Total Shared n/a INP  FBK  OUT  FBK  Name
+  43      -   -       INPUT  G              0      0   0    0    0    0    0  C
+  40   (18)  (B)      INPUT                 0      0   0    0    0    0   14  D0
+  31   (26)  (B)      INPUT                 0      0   0    0    0    0    1  D1
+  27   (29)  (B)      INPUT                 0      0   0    0    0    0    1  D2
+  26   (30)  (B)      INPUT                 0      0   0    0    0    0    1  D3
+  33   (24)  (B)      INPUT                 0      0   0    0    0    1    0  D4
+  34   (23)  (B)      INPUT                 0      0   0    0    0    1    0  D5
+  16   (11)  (A)      INPUT                 0      0   0    0    0    1    0  D6
+  36   (22)  (B)      INPUT                 0      0   0    0    0    1    0  D7
+  37   (21)  (B)      INPUT                 0      0   0    0    0    1    0  D8
+  39   (19)  (B)      INPUT                 0      0   0    0    0    1    0  D9
+   8    (5)  (A)      INPUT                 0      0   0    0    0    7    9  F0
+  41   (17)  (B)      INPUT                 0      0   0    0    0    7   20  F1
+   5    (2)  (A)      INPUT                 0      0   0    0    0    8   20  F2
+   4    (1)  (A)      INPUT                 0      0   0    0    0    9   16  F3
+
+
+Code:
+
+s = Synthesized pin or logic cell
+t = Turbo logic cell
++ = Synchronous flipflop
+/ = Slow slew-rate output
+! = NOT gate push-back
+r = Fitter-inserted logic cell
+^ = Increased input delay
+h = Register powers up high
+G = Global Source. Fan-out destinations counted here do not include destinations
+that are driven using global routing resources. Refer to the Auto Global Signals,
+Clock Signals, Clear Signals, Synchronous Load Signals, and Synchronous Clear Signals
+Sections of this Report File for information on which signals' fan-outs are used as
+Clock, Clear, Preset, Output Enable, and synchronous Load signals.
+
+
+Device-Specific Information:                         c:\max2work\lab5\ictr.rpt
+ictr
+
+** OUTPUTS **
+
+                                         Shareable
+                                         Expanders     Fan-In    Fan-Out
+ Pin     LC  LAB  Primitive    Code   Total Shared n/a INP  FBK  OUT  FBK  Name
+  21     16    A     OUTPUT      t         0      0   0    1    4    0    0  Q0
+  18     13    A     OUTPUT      t         4      0   1    3    3    0    0  Q1
+  14     10    A     OUTPUT      t         0      0   0    2    2    0    0  Q2
+  17     12    A     OUTPUT      t         0      0   0    1    1    0    0  Q3
+  19     14    A         FF   +  t         5      4   1    5    4    0    0  Q4 (|ctrr:1|ctrbit:20|:21)
+  20     15    A         FF   +  t         5      4   1    5    4    0    0  Q5 (|ctrr:1|ctrbit:45|:21)
+  12      8    A         FF   +  t         5      4   1    5    4    0    0  Q6 (|ctrr:1|ctrbit:46|:21)
+  11      7    A         FF   +  t         5      4   1    5    4    0    0  Q7 (|ctrr:1|ctrbit:47|:21)
+   9      6    A         FF   +  t         5      4   1    5    4    0    0  Q8 (|ctrr:1|ctrbit:54|:21)
+   6      3    A         FF   +  t         5      4   1    5    4    0    0  Q9 (|ctrr:1|ctrbit:55|:21)
+
+
+Code:
+
+s = Synthesized pin or logic cell
+t = Turbo logic cell
++ = Synchronous flipflop
+/ = Slow slew-rate output
+! = NOT gate push-back
+r = Fitter-inserted logic cell
+^ = Increased input delay
+h = Register powers up high
+
+
+Device-Specific Information:                         c:\max2work\lab5\ictr.rpt
+ictr
+
+** BURIED LOGIC **
+
+                                         Shareable
+                                         Expanders     Fan-In    Fan-Out
+ Pin     LC  LAB  Primitive    Code   Total Shared n/a INP  FBK  OUT  FBK  Name
+  (8)     5    A       DFFE   +  t         1      0   0    5    1    9   18  |rgictrgdf:3|rgplmt2:1|Q (|rgictrgdf:3|rgplmt2:1|:68)
+  (5)     2    A       DFFE   +  t         0      0   0    3    2    8   17  |rgictrgdf:3|rgplmt2:28|Q (|rgictrgdf:3|rgplmt2:28|:68)
+ (13)     9    A       SOFT    s t         1      0   1    4    2    0    1  |rgictrgdf:3|rgplmt2:28|~70~1
+  (7)     4    A       SOFT    s t         0      0   0    2    2    0    1  |rgictrgdf:3|rgplmt2:28|~70~2
+  (4)     1    A       DFFE   +  t         0      0   0    3    4    7   17  |rgictrgdf:3|rgplmt2:29|Q (|rgictrgdf:3|rgplmt2:29|:68)
+ (38)    20    B       SOFT    s t         1      0   1    4    3    0    1  |rgictrgdf:3|rgplmt2:29|~70~1
+ (40)    18    B       SOFT    s t         1      0   1    4    3    0    1  |rgictrgdf:3|rgplmt2:29|~70~2
+ (41)    17    B       SOFT    s t         1      0   1    3    3    0    1  |rgictrgdf:3|rgplmt2:29|~70~3
+ (16)    11    A       SOFT    s t         0      0   0    4    2    0    1  |rgictrgdf:3|rgplmt2:29|~70~4
+ (33)    24    B       DFFE   +  t         1      0   1    5   12    6   13  |rgictrgdf:3|rgplmt2:30|Q (|rgictrgdf:3|rgplmt2:30|:68)
+ (28)    28    B       SOFT    s t         1      0   1    5    4    0    1  |rgictrgdf:3|rgplmt2:30|~70~1
+ (31)    26    B       SOFT    s t         1      0   1    4    4    0    1  |rgictrgdf:3|rgplmt2:30|~70~2
+ (34)    23    B       SOFT    s t         1      0   1    4    4    0    1  |rgictrgdf:3|rgplmt2:30|~70~3
+ (36)    22    B       SOFT    s t         1      0   1    4    3    0    1  |rgictrgdf:3|rgplmt2:30|~70~4
+ (37)    21    B       SOFT    s t         1      0   1    5    4    0    1  |rgictrgdf:3|rgplmt2:30|~70~5
+ (27)    29    B       SOFT    s t         1      0   1    4    4    0    1  |rgictrgdf:3|rgplmt2:30|~70~6
+ (26)    30    B       SOFT    s t         1      0   1    5    4    0    1  |rgictrgdf:3|rgplmt2:30|~70~7
+ (25)    31    B       SOFT    s t         0      0   0    4    2    0    1  |rgictrgdf:3|rgplmt2:30|~70~8
+ (24)    32    B       SOFT    s t         1      0   1    3    4    1    0  ~55~1
+ (39)    19    B       SOFT    s t         1      0   1    3    4    1    0  ~55~2
+ (32)    25    B       SOFT    s t         1      0   1    3    4    1    0  ~55~3
+ (29)    27    B       SOFT    s t         0      0   0    1    4    1    0  ~55~4
+
+
+Code:
+
+s = Synthesized pin or logic cell
+t = Turbo logic cell
++ = Synchronous flipflop
+/ = Slow slew-rate output
+! = NOT gate push-back
+r = Fitter-inserted logic cell
+^ = Increased input delay
+h = Register powers up high
+
+
+Device-Specific Information:                         c:\max2work\lab5\ictr.rpt
+ictr
+
+** I/O STANDARDS **
+
+                              Dedicated      Pins in      Pins in        
+   I/O Standard  Input Ref   Input Pins   I/O Bank 1   I/O Bank 2   Total
+          LVTTL          -            1           14           10      25
+
+Total VCCIO Current is   40 ma (Limit is  400 ma)
+Total GNDIO Current is   40 ma (Limit is  400 ma)
+
+IOVCC                VCCIO    VCCIO    Current
+Group    I/O Pins   Voltage  Current    Limit
+A:      8/10( 80%)    3.3V     20 ma /  100 ma ( 20%)
+B:      6/ 6(100%)    3.3V     20 ma /  100 ma ( 20%)
+C:      5/10( 50%)    3.3V      0 ma /  100 ma (  0%)
+D:      5/ 6( 83%)    3.3V      0 ma /  100 ma (  0%)
+
+IOGND                         GNDIO    Current
+Group    I/O Pins            Current    Limit
+A:     13/16( 81%)              8 ma /  200 ma (  4%)
+B:     11/16( 68%)             32 ma /  200 ma ( 16%)
+
+Dedicated Inputs:
+
+ Pin    Type  Code  VCCIO     I/O Standard  Input Ref  Current  Name
+  43   INPUT            -            LVTTL          -        -  C
+
+IOVCC group A:  VCCIO Current is   20 ma (Limit is  100 ma)
+
+ Pin    Type  Code  VCCIO     I/O Standard  Input Ref  Current  Name
+   4   INPUT            -            LVTTL          -        -  F3
+   5   INPUT            -            LVTTL          -        -  F2
+   6  OUTPUT         3.3V            LVTTL          -     4 ma  Q9
+   8   INPUT            -            LVTTL          -        -  F0
+   9  OUTPUT         3.3V            LVTTL          -     4 ma  Q8
+  11  OUTPUT         3.3V            LVTTL          -     4 ma  Q7
+  12  OUTPUT         3.3V            LVTTL          -     4 ma  Q6
+  14  OUTPUT         3.3V            LVTTL          -     4 ma  Q2
+
+IOVCC group B:  VCCIO Current is   20 ma (Limit is  100 ma)
+
+ Pin    Type  Code  VCCIO     I/O Standard  Input Ref  Current  Name
+  16   INPUT            -            LVTTL          -        -  D6
+  17  OUTPUT         3.3V            LVTTL          -     4 ma  Q3
+  18  OUTPUT         3.3V            LVTTL          -     4 ma  Q1
+  19  OUTPUT         3.3V            LVTTL          -     4 ma  Q4
+  20  OUTPUT         3.3V            LVTTL          -     4 ma  Q5
+  21  OUTPUT         3.3V            LVTTL          -     4 ma  Q0
+
+IOVCC group C:  VCCIO Current is    0 ma (Limit is  100 ma)
+
+ Pin    Type  Code  VCCIO     I/O Standard  Input Ref  Current  Name
+  26   INPUT            -            LVTTL          -        -  D3
+  27   INPUT            -            LVTTL          -        -  D2
+  31   INPUT            -            LVTTL          -        -  D1
+  33   INPUT            -            LVTTL          -        -  D4
+  34   INPUT            -            LVTTL          -        -  D5
+
+IOVCC group D:  VCCIO Current is    0 ma (Limit is  100 ma)
+
+ Pin    Type  Code  VCCIO     I/O Standard  Input Ref  Current  Name
+  36   INPUT            -            LVTTL          -        -  D7
+  37   INPUT            -            LVTTL          -        -  D8
+  39   INPUT            -            LVTTL          -        -  D9
+  40   INPUT            -            LVTTL          -        -  D0
+  41   INPUT            -            LVTTL          -        -  F1
+
+IOGND group A:  GNDIO Current is    8 ma (Limit is  200 ma)
+
+ Pin    Type  Code  VCCIO     I/O Standard  Input Ref  Current  Name
+   4   INPUT            -            LVTTL          -        -  F3
+   5   INPUT            -            LVTTL          -        -  F2
+   6  OUTPUT            -            LVTTL          -     4 ma  Q9
+   8   INPUT            -            LVTTL          -        -  F0
+   9  OUTPUT            -            LVTTL          -     4 ma  Q8
+  31   INPUT            -            LVTTL          -        -  D1
+  33   INPUT            -            LVTTL          -        -  D4
+  34   INPUT            -            LVTTL          -        -  D5
+  36   INPUT            -            LVTTL          -        -  D7
+  37   INPUT            -            LVTTL          -        -  D8
+  39   INPUT            -            LVTTL          -        -  D9
+  40   INPUT            -            LVTTL          -        -  D0
+  41   INPUT            -            LVTTL          -        -  F1
+
+IOGND group B:  GNDIO Current is   32 ma (Limit is  200 ma)
+
+ Pin    Type  Code  VCCIO     I/O Standard  Input Ref  Current  Name
+  11  OUTPUT            -            LVTTL          -     4 ma  Q7
+  12  OUTPUT            -            LVTTL          -     4 ma  Q6
+  14  OUTPUT            -            LVTTL          -     4 ma  Q2
+  16   INPUT            -            LVTTL          -        -  D6
+  17  OUTPUT            -            LVTTL          -     4 ma  Q3
+  18  OUTPUT            -            LVTTL          -     4 ma  Q1
+  19  OUTPUT            -            LVTTL          -     4 ma  Q4
+  20  OUTPUT            -            LVTTL          -     4 ma  Q5
+  21  OUTPUT            -            LVTTL          -     4 ma  Q0
+  26   INPUT            -            LVTTL          -        -  D3
+  27   INPUT            -            LVTTL          -        -  D2
+
+Code:
+
+/ = Slow slew-rate output
+z = Pull-Up Resistor
+b = Bus-Hold
+
+
+Device-Specific Information:                         c:\max2work\lab5\ictr.rpt
+ictr
+
+** LOGIC CELL INTERCONNECTIONS **
+
+Logic Array Block 'A':
+
+                                         Logic cells placed in LAB 'A'
+        +------------------------------- LC16 Q0
+        | +----------------------------- LC13 Q1
+        | | +--------------------------- LC10 Q2
+        | | | +------------------------- LC12 Q3
+        | | | | +----------------------- LC14 Q4
+        | | | | | +--------------------- LC15 Q5
+        | | | | | | +------------------- LC8 Q6
+        | | | | | | | +----------------- LC7 Q7
+        | | | | | | | | +--------------- LC6 Q8
+        | | | | | | | | | +------------- LC3 Q9
+        | | | | | | | | | | +----------- LC5 |rgictrgdf:3|rgplmt2:1|Q
+        | | | | | | | | | | | +--------- LC2 |rgictrgdf:3|rgplmt2:28|Q
+        | | | | | | | | | | | | +------- LC9 |rgictrgdf:3|rgplmt2:28|~70~1
+        | | | | | | | | | | | | | +----- LC4 |rgictrgdf:3|rgplmt2:28|~70~2
+        | | | | | | | | | | | | | | +--- LC1 |rgictrgdf:3|rgplmt2:29|Q
+        | | | | | | | | | | | | | | | +- LC11 |rgictrgdf:3|rgplmt2:29|~70~4
+        | | | | | | | | | | | | | | | | 
+        | | | | | | | | | | | | | | | |   Other LABs fed by signals
+        | | | | | | | | | | | | | | | |   that feed LAB 'A'
+LC      | | | | | | | | | | | | | | | | | A B |     Logic cells that feed LAB 'A':
+LC5  -> - * * * * * * * * * * - * * - * | * * | <-- |rgictrgdf:3|rgplmt2:1|Q
+LC2  -> - * * - * * * * * * - - * * - - | * * | <-- |rgictrgdf:3|rgplmt2:28|Q
+LC9  -> - - - - - - - - - - - * - - - - | * - | <-- |rgictrgdf:3|rgplmt2:28|~70~1
+LC4  -> - - - - - - - - - - - * - - - - | * - | <-- |rgictrgdf:3|rgplmt2:28|~70~2
+LC1  -> - * - - * * * * * * - - - - - * | * * | <-- |rgictrgdf:3|rgplmt2:29|Q
+LC11 -> - - - - - - - - - - - - - - * - | * - | <-- |rgictrgdf:3|rgplmt2:29|~70~4
+
+Pin
+43   -> - - - - - - - - - - - - - - - - | - - | <-- C
+40   -> - - - - - - - - - - * * * - * * | * * | <-- D0
+31   -> - - - - - - - - - - - - - - - * | * - | <-- D1
+27   -> - - - - - - - - - - - - * - - - | * - | <-- D2
+26   -> - - - - - - - - - - * - - - - - | * - | <-- D3
+33   -> - - - - * - - - - - - - - - - - | * - | <-- D4
+34   -> - - - - - * - - - - - - - - - - | * - | <-- D5
+16   -> - - - - - - * - - - - - - - - - | * - | <-- D6
+36   -> - - - - - - - * - - - - - - - - | * - | <-- D7
+37   -> - - - - - - - - * - - - - - - - | * - | <-- D8
+39   -> - - - - - - - - - * - - - - - - | * - | <-- D9
+8    -> * - - - * * * * * * - - - - - - | * * | <-- F0
+41   -> - * - - * * * * * * * * - - * * | * * | <-- F1
+5    -> - * * - * * * * * * * * * * * * | * * | <-- F2
+4    -> - * * * * * * * * * * - * * - - | * * | <-- F3
+LC20 -> - - - - - - - - - - - - - - * - | * - | <-- |rgictrgdf:3|rgplmt2:29|~70~1
+LC18 -> - - - - - - - - - - - - - - * - | * - | <-- |rgictrgdf:3|rgplmt2:29|~70~2
+LC17 -> - - - - - - - - - - - - - - * - | * - | <-- |rgictrgdf:3|rgplmt2:29|~70~3
+LC24 -> - - - - * * * * * * - - - - - - | * * | <-- |rgictrgdf:3|rgplmt2:30|Q
+LC32 -> * - - - - - - - - - - - - - - - | * - | <-- ~55~1
+LC19 -> * - - - - - - - - - - - - - - - | * - | <-- ~55~2
+LC25 -> * - - - - - - - - - - - - - - - | * - | <-- ~55~3
+LC27 -> * - - - - - - - - - - - - - - - | * - | <-- ~55~4
+
+
+* = The logic cell or pin is an input to the logic cell (or LAB) through the PIA.
+- = The logic cell or pin is not an input to the logic cell (or LAB).
+
+
+Device-Specific Information:                         c:\max2work\lab5\ictr.rpt
+ictr
+
+** LOGIC CELL INTERCONNECTIONS **
+
+Logic Array Block 'B':
+
+                                         Logic cells placed in LAB 'B'
+        +------------------------------- LC20 |rgictrgdf:3|rgplmt2:29|~70~1
+        | +----------------------------- LC18 |rgictrgdf:3|rgplmt2:29|~70~2
+        | | +--------------------------- LC17 |rgictrgdf:3|rgplmt2:29|~70~3
+        | | | +------------------------- LC24 |rgictrgdf:3|rgplmt2:30|Q
+        | | | | +----------------------- LC28 |rgictrgdf:3|rgplmt2:30|~70~1
+        | | | | | +--------------------- LC26 |rgictrgdf:3|rgplmt2:30|~70~2
+        | | | | | | +------------------- LC23 |rgictrgdf:3|rgplmt2:30|~70~3
+        | | | | | | | +----------------- LC22 |rgictrgdf:3|rgplmt2:30|~70~4
+        | | | | | | | | +--------------- LC21 |rgictrgdf:3|rgplmt2:30|~70~5
+        | | | | | | | | | +------------- LC29 |rgictrgdf:3|rgplmt2:30|~70~6
+        | | | | | | | | | | +----------- LC30 |rgictrgdf:3|rgplmt2:30|~70~7
+        | | | | | | | | | | | +--------- LC31 |rgictrgdf:3|rgplmt2:30|~70~8
+        | | | | | | | | | | | | +------- LC32 ~55~1
+        | | | | | | | | | | | | | +----- LC19 ~55~2
+        | | | | | | | | | | | | | | +--- LC25 ~55~3
+        | | | | | | | | | | | | | | | +- LC27 ~55~4
+        | | | | | | | | | | | | | | | | 
+        | | | | | | | | | | | | | | | |   Other LABs fed by signals
+        | | | | | | | | | | | | | | | |   that feed LAB 'B'
+LC      | | | | | | | | | | | | | | | | | A B |     Logic cells that feed LAB 'B':
+LC24 -> - - - * * * * * * * * * * * * * | * * | <-- |rgictrgdf:3|rgplmt2:30|Q
+LC28 -> - - - * - - - - - - - - - - - - | - * | <-- |rgictrgdf:3|rgplmt2:30|~70~1
+LC26 -> - - - * - - - - - - - - - - - - | - * | <-- |rgictrgdf:3|rgplmt2:30|~70~2
+LC23 -> - - - * - - - - - - - - - - - - | - * | <-- |rgictrgdf:3|rgplmt2:30|~70~3
+LC22 -> - - - * - - - - - - - - - - - - | - * | <-- |rgictrgdf:3|rgplmt2:30|~70~4
+LC21 -> - - - * - - - - - - - - - - - - | - * | <-- |rgictrgdf:3|rgplmt2:30|~70~5
+LC29 -> - - - * - - - - - - - - - - - - | - * | <-- |rgictrgdf:3|rgplmt2:30|~70~6
+LC30 -> - - - * - - - - - - - - - - - - | - * | <-- |rgictrgdf:3|rgplmt2:30|~70~7
+LC31 -> - - - * - - - - - - - - - - - - | - * | <-- |rgictrgdf:3|rgplmt2:30|~70~8
+
+Pin
+43   -> - - - - - - - - - - - - - - - - | - - | <-- C
+40   -> * * - * * - - * * * * * - - - - | * * | <-- D0
+8    -> - - - * * * * * * * * * - - - - | * * | <-- F0
+41   -> * * * * * * * * * * * * * * * * | * * | <-- F1
+5    -> * * * * * * * * * - * * * * * - | * * | <-- F2
+4    -> * * * * * * * - * * * - * * * - | * * | <-- F3
+LC5  -> * * * * * * * - * * * - * * * * | * * | <-- |rgictrgdf:3|rgplmt2:1|Q
+LC2  -> * * * * * * * * * * * - * * * * | * * | <-- |rgictrgdf:3|rgplmt2:28|Q
+LC1  -> * * * * * * * * * * * * * * * * | * * | <-- |rgictrgdf:3|rgplmt2:29|Q
+
+
+* = The logic cell or pin is an input to the logic cell (or LAB) through the PIA.
+- = The logic cell or pin is not an input to the logic cell (or LAB).
+
+
+Device-Specific Information:                         c:\max2work\lab5\ictr.rpt
+ictr
+
+** EQUATIONS **
+
+C        : INPUT;
+D0       : INPUT;
+D1       : INPUT;
+D2       : INPUT;
+D3       : INPUT;
+D4       : INPUT;
+D5       : INPUT;
+D6       : INPUT;
+D7       : INPUT;
+D8       : INPUT;
+D9       : INPUT;
+F0       : INPUT;
+F1       : INPUT;
+F2       : INPUT;
+F3       : INPUT;
+
+-- Node name is 'Q0' 
+-- Equation name is 'Q0', location is LC016, type is output.
+ Q0      = LCELL( _EQ001 $ !F0);
+  _EQ001 = !_LC019 & !_LC025 & !_LC027 & !_LC032;
+
+-- Node name is 'Q1' 
+-- Equation name is 'Q1', location is LC013, type is output.
+ Q1      = LCELL( _EQ002 $  F1);
+  _EQ002 =  F3 & !_LC001 &  _LC005 &  _X001
+         #  F2 & !_LC001 &  _LC002
+         # !F2 &  _LC001 &  _X002
+         #  _LC001 & !_LC002 &  _X003;
+  _X001  = EXP(!F2 & !_LC002);
+  _X002  = EXP( F3 &  _LC002 &  _LC005);
+  _X003  = EXP( F3 &  _LC005);
+
+-- Node name is 'Q2' 
+-- Equation name is 'Q2', location is LC010, type is output.
+ Q2      = LCELL( _EQ003 $  F2);
+  _EQ003 =  F3 & !_LC002 &  _LC005
+         # !F3 &  _LC002
+         #  _LC002 & !_LC005;
+
+-- Node name is 'Q3' 
+-- Equation name is 'Q3', location is LC012, type is output.
+ Q3      = LCELL( _LC005 $  F3);
+
+-- Node name is 'Q4' = '|ctrr:1|ctrbit:20|Qi' 
+-- Equation name is 'Q4', type is output 
+ Q4      = DFFE( _EQ004 $  VCC, GLOBAL( C),  VCC, !_EQ005,  VCC);
+  _EQ004 = !D4 & !F2 & !_LC001 &  _X004 &  _X005
+         # !D4 & !_LC001 & !_LC002 & !_LC005 &  _X004
+         # !D4 & !F0 & !_LC024
+         #  _X006;
+  _X004  = EXP( F0 &  _LC024);
+  _X005  = EXP( _LC002 &  _LC005);
+  _X006  = EXP( F1 &  F3);
+  _EQ005 =  _X007;
+  _X007  = EXP(!F0 &  F1 &  F3);
+
+-- Node name is 'Q5' = '|ctrr:1|ctrbit:45|Qi' 
+-- Equation name is 'Q5', type is output 
+ Q5      = DFFE( _EQ006 $  VCC, GLOBAL( C),  VCC, !_EQ007,  VCC);
+  _EQ006 = !D5 & !F2 & !_LC001 &  _X004 &  _X005
+         # !D5 & !_LC001 & !_LC002 & !_LC005 &  _X004
+         # !D5 & !F0 & !_LC024
+         #  _X006;
+  _X004  = EXP( F0 &  _LC024);
+  _X005  = EXP( _LC002 &  _LC005);
+  _X006  = EXP( F1 &  F3);
+  _EQ007 =  _X007;
+  _X007  = EXP(!F0 &  F1 &  F3);
+
+-- Node name is 'Q6' = '|ctrr:1|ctrbit:46|Qi' 
+-- Equation name is 'Q6', type is output 
+ Q6      = DFFE( _EQ008 $  VCC, GLOBAL( C),  VCC, !_EQ009,  VCC);
+  _EQ008 = !D6 & !F2 & !_LC001 &  _X004 &  _X005
+         # !D6 & !_LC001 & !_LC002 & !_LC005 &  _X004
+         # !D6 & !F0 & !_LC024
+         #  _X006;
+  _X004  = EXP( F0 &  _LC024);
+  _X005  = EXP( _LC002 &  _LC005);
+  _X006  = EXP( F1 &  F3);
+  _EQ009 =  _X007;
+  _X007  = EXP(!F0 &  F1 &  F3);
+
+-- Node name is 'Q7' = '|ctrr:1|ctrbit:47|Qi' 
+-- Equation name is 'Q7', type is output 
+ Q7      = DFFE( _EQ010 $  VCC, GLOBAL( C),  VCC, !_EQ011,  VCC);
+  _EQ010 = !D7 & !F2 & !_LC001 &  _X004 &  _X005
+         # !D7 & !_LC001 & !_LC002 & !_LC005 &  _X004
+         # !D7 & !F0 & !_LC024
+         #  _X006;
+  _X004  = EXP( F0 &  _LC024);
+  _X005  = EXP( _LC002 &  _LC005);
+  _X006  = EXP( F1 &  F3);
+  _EQ011 =  _X007;
+  _X007  = EXP(!F0 &  F1 &  F3);
+
+-- Node name is 'Q8' = '|ctrr:1|ctrbit:54|Qi' 
+-- Equation name is 'Q8', type is output 
+ Q8      = DFFE( _EQ012 $  VCC, GLOBAL( C),  VCC, !_EQ013,  VCC);
+  _EQ012 = !D8 & !F2 & !_LC001 &  _X004 &  _X005
+         # !D8 & !_LC001 & !_LC002 & !_LC005 &  _X004
+         # !D8 & !F0 & !_LC024
+         #  _X006;
+  _X004  = EXP( F0 &  _LC024);
+  _X005  = EXP( _LC002 &  _LC005);
+  _X006  = EXP( F1 &  F3);
+  _EQ013 =  _X007;
+  _X007  = EXP(!F0 &  F1 &  F3);
+
+-- Node name is 'Q9' = '|ctrr:1|ctrbit:55|Qi' 
+-- Equation name is 'Q9', type is output 
+ Q9      = DFFE( _EQ014 $  VCC, GLOBAL( C),  VCC, !_EQ015,  VCC);
+  _EQ014 = !D9 & !F2 & !_LC001 &  _X004 &  _X005
+         # !D9 & !_LC001 & !_LC002 & !_LC005 &  _X004
+         # !D9 & !F0 & !_LC024
+         #  _X006;
+  _X004  = EXP( F0 &  _LC024);
+  _X005  = EXP( _LC002 &  _LC005);
+  _X006  = EXP( F1 &  F3);
+  _EQ015 =  _X007;
+  _X007  = EXP(!F0 &  F1 &  F3);
+
+-- Node name is '|rgictrgdf:3|rgplmt2:1|:68' = '|rgictrgdf:3|rgplmt2:1|Q' 
+-- Equation name is '_LC005', type is buried 
+_LC005   = DFFE( _EQ016 $  VCC, GLOBAL( C), !_EQ017,  VCC,  VCC);
+  _EQ016 =  F3 & !_LC005 &  _X008
+         # !F3 &  _LC005 &  _X008
+         #  D0 &  F2;
+  _X008  = EXP(!D0 & !D3 & !F2);
+  _EQ017 = !D0 & !F1 & !F2;
+
+-- Node name is '|rgictrgdf:3|rgplmt2:28|:68' = '|rgictrgdf:3|rgplmt2:28|Q' 
+-- Equation name is '_LC002', type is buried 
+_LC002   = DFFE( _EQ018 $  VCC, GLOBAL( C), !_EQ019,  VCC,  VCC);
+  _EQ018 = !_LC004 & !_LC009;
+  _EQ019 = !D0 & !F1 & !F2;
+
+-- Node name is '|rgictrgdf:3|rgplmt2:28|~70~1' 
+-- Equation name is '_LC009', type is buried 
+-- synthesized logic cell 
+_LC009   = LCELL( _EQ020 $  GND);
+  _EQ020 = !D0 &  F2 &  F3 & !_LC002 &  _LC005
+         # !F2 &  F3 &  _LC002 &  _LC005
+         # !D0 &  F2 & !F3 &  _LC002
+         # !D0 &  F2 &  _LC002 & !_LC005
+         # !D0 & !D2 & !F2;
+
+-- Node name is '|rgictrgdf:3|rgplmt2:28|~70~2' 
+-- Equation name is '_LC004', type is buried 
+-- synthesized logic cell 
+_LC004   = LCELL( _EQ021 $  GND);
+  _EQ021 = !F2 & !F3 & !_LC002
+         # !F2 & !_LC002 & !_LC005;
+
+-- Node name is '|rgictrgdf:3|rgplmt2:29|:68' = '|rgictrgdf:3|rgplmt2:29|Q' 
+-- Equation name is '_LC001', type is buried 
+_LC001   = DFFE( _EQ022 $  VCC, GLOBAL( C), !_EQ023,  VCC,  VCC);
+  _EQ022 = !_LC011 & !_LC017 & !_LC018 & !_LC020;
+  _EQ023 = !D0 & !F1 & !F2;
+
+-- Node name is '|rgictrgdf:3|rgplmt2:29|~70~1' 
+-- Equation name is '_LC020', type is buried 
+-- synthesized logic cell 
+_LC020   = LCELL( _EQ024 $  GND);
+  _EQ024 = !D0 &  F1 &  F2 &  F3 & !_LC001 &  _LC005
+         # !D0 & !F1 &  F2 &  F3 &  _LC001 &  _LC005
+         #  F1 & !F2 &  F3 & !_LC001 &  _LC002 &  _LC005
+         # !F1 & !F2 &  F3 &  _LC001 &  _LC002 &  _LC005
+         # !D0 &  F1 &  F2 & !_LC001 &  _LC002;
+
+-- Node name is '|rgictrgdf:3|rgplmt2:29|~70~2' 
+-- Equation name is '_LC018', type is buried 
+-- synthesized logic cell 
+_LC018   = LCELL( _EQ025 $  GND);
+  _EQ025 = !D0 & !F1 &  F2 &  _LC001 &  _LC002
+         # !D0 &  F1 & !F3 &  _LC001 & !_LC002
+         # !D0 &  F1 &  _LC001 & !_LC002 & !_LC005
+         # !D0 & !F1 & !F3 & !_LC001 & !_LC002
+         # !D0 & !F1 & !_LC001 & !_LC002 & !_LC005;
+
+-- Node name is '|rgictrgdf:3|rgplmt2:29|~70~3' 
+-- Equation name is '_LC017', type is buried 
+-- synthesized logic cell 
+_LC017   = LCELL( _EQ026 $  GND);
+  _EQ026 =  F1 & !F2 &  _LC001 & !_LC002
+         #  F1 & !F2 & !F3 &  _LC001
+         #  F1 & !F2 &  _LC001 & !_LC005
+         # !F1 & !F2 & !_LC001 & !_LC002
+         # !F1 & !F2 & !F3 & !_LC001;
+
+-- Node name is '|rgictrgdf:3|rgplmt2:29|~70~4' 
+-- Equation name is '_LC011', type is buried 
+-- synthesized logic cell 
+_LC011   = LCELL( _EQ027 $  GND);
+  _EQ027 = !F1 & !F2 & !_LC001 & !_LC005
+         # !D0 & !D1 & !F2;
+
+-- Node name is '|rgictrgdf:3|rgplmt2:30|:68' = '|rgictrgdf:3|rgplmt2:30|Q' 
+-- Equation name is '_LC024', type is buried 
+_LC024   = DFFE( _EQ028 $  _EQ029, GLOBAL( C), !_EQ030,  VCC,  VCC);
+  _EQ028 =  D0 &  F0 &  F3 &  _LC001 &  _LC002 &  _LC005 & !_LC021 & !_LC022 & 
+             !_LC023 &  _LC024 & !_LC026 & !_LC028 & !_LC029 & !_LC030 & 
+             !_LC031
+         #  D0 &  F0 &  F1 &  F3 &  _LC002 &  _LC005 & !_LC021 & !_LC022 & 
+             !_LC023 &  _LC024 & !_LC026 & !_LC028 & !_LC029 & !_LC030 & 
+             !_LC031
+         #  D0 & !F0 &  F3 &  _LC001 &  _LC002 &  _LC005 & !_LC021 & !_LC022 & 
+             !_LC023 & !_LC024 & !_LC026 & !_LC028 & !_LC029 & !_LC030 & 
+             !_LC031;
+  _EQ029 = !_LC021 & !_LC022 & !_LC023 & !_LC026 & !_LC028 & !_LC029 & 
+             !_LC030 & !_LC031;
+  _EQ030 = !D0 & !F1 & !F2;
+
+-- Node name is '|rgictrgdf:3|rgplmt2:30|~70~1' 
+-- Equation name is '_LC028', type is buried 
+-- synthesized logic cell 
+_LC028   = LCELL( _EQ031 $  GND);
+  _EQ031 =  D0 &  F2
+         #  D0 & !F0 &  F1 &  F3 &  _LC002 &  _LC005 & !_LC024
+         #  F0 &  F2 &  F3 &  _LC001 &  _LC005 &  _LC024
+         #  F0 &  F1 &  F2 &  F3 &  _LC005 &  _LC024
+         # !F0 &  F2 &  F3 &  _LC001 &  _LC005 & !_LC024;
+
+-- Node name is '|rgictrgdf:3|rgplmt2:30|~70~2' 
+-- Equation name is '_LC026', type is buried 
+-- synthesized logic cell 
+_LC026   = LCELL( _EQ032 $  GND);
+  _EQ032 = !F0 &  F1 &  F2 &  F3 &  _LC005 & !_LC024
+         #  F0 &  F2 & !_LC001 & !_LC002 & !_LC005 & !_LC024
+         #  F0 &  F2 & !F3 & !_LC001 & !_LC002 & !_LC024
+         #  F0 & !F1 &  F2 & !_LC002 & !_LC005 & !_LC024
+         #  F0 & !F1 &  F2 & !F3 & !_LC002 & !_LC024;
+
+-- Node name is '|rgictrgdf:3|rgplmt2:30|~70~3' 
+-- Equation name is '_LC023', type is buried 
+-- synthesized logic cell 
+_LC023   = LCELL( _EQ033 $  GND);
+  _EQ033 = !F0 &  F2 & !_LC001 & !_LC002 & !_LC005 &  _LC024
+         # !F0 &  F2 & !F3 & !_LC001 & !_LC002 &  _LC024
+         # !F0 & !F1 &  F2 & !_LC002 & !_LC005 &  _LC024
+         # !F0 & !F1 &  F2 & !F3 & !_LC002 &  _LC024
+         #  F0 &  F2 &  _LC001 &  _LC002 &  _LC024;
+
+-- Node name is '|rgictrgdf:3|rgplmt2:30|~70~4' 
+-- Equation name is '_LC022', type is buried 
+-- synthesized logic cell 
+_LC022   = LCELL( _EQ034 $  GND);
+  _EQ034 =  F0 &  F1 &  F2 &  _LC002 &  _LC024
+         #  F0 &  F1 &  F2 &  _LC001 &  _LC024
+         #  D0 &  F0 &  F1 &  _LC001 &  _LC024
+         # !F0 &  F2 &  _LC001 &  _LC002 & !_LC024
+         # !F0 &  F1 &  F2 &  _LC002 & !_LC024;
+
+-- Node name is '|rgictrgdf:3|rgplmt2:30|~70~5' 
+-- Equation name is '_LC021', type is buried 
+-- synthesized logic cell 
+_LC021   = LCELL( _EQ035 $  GND);
+  _EQ035 = !F0 &  F1 &  F2 &  _LC001 & !_LC024
+         #  D0 & !F0 &  F1 &  _LC001 & !_LC024
+         #  D0 &  F0 & !_LC001 & !_LC005 & !_LC024
+         #  D0 &  F0 & !F3 & !_LC001 & !_LC024
+         #  D0 &  F0 & !_LC001 & !_LC002 & !_LC024;
+
+-- Node name is '|rgictrgdf:3|rgplmt2:30|~70~6' 
+-- Equation name is '_LC029', type is buried 
+-- synthesized logic cell 
+_LC029   = LCELL( _EQ036 $  GND);
+  _EQ036 =  D0 &  F0 & !F1 & !_LC005 & !_LC024
+         #  D0 &  F0 & !F1 & !F3 & !_LC024
+         #  D0 &  F0 & !F1 & !_LC002 & !_LC024
+         #  D0 & !F0 & !_LC001 & !_LC005 &  _LC024
+         #  D0 & !F0 & !F3 & !_LC001 &  _LC024;
+
+-- Node name is '|rgictrgdf:3|rgplmt2:30|~70~7' 
+-- Equation name is '_LC030', type is buried 
+-- synthesized logic cell 
+_LC030   = LCELL( _EQ037 $  GND);
+  _EQ037 =  D0 & !F0 & !_LC001 & !_LC002 &  _LC024
+         #  D0 & !F0 & !F1 & !_LC005 &  _LC024
+         #  D0 & !F0 & !F1 & !F3 &  _LC024
+         #  D0 & !F0 & !F1 & !_LC002 &  _LC024
+         #  F0 & !F1 &  F2 & !_LC001 & !_LC024;
+
+-- Node name is '|rgictrgdf:3|rgplmt2:30|~70~8' 
+-- Equation name is '_LC031', type is buried 
+-- synthesized logic cell 
+_LC031   = LCELL( _EQ038 $  GND);
+  _EQ038 = !F0 & !F1 &  F2 & !_LC001 &  _LC024
+         #  D0 &  F0 & !F1 & !_LC001 & !_LC024
+         #  D0 & !F0 & !F1 & !_LC001 &  _LC024;
+
+-- Node name is '~55~1' 
+-- Equation name is '~55~1', location is LC032, type is buried.
+-- synthesized logic cell 
+_LC032   = LCELL( _EQ039 $  GND);
+  _EQ039 =  F1 &  F2 &  F3 &  _LC005 & !_LC024
+         #  F1 &  F3 &  _LC002 &  _LC005 & !_LC024
+         #  F2 &  F3 &  _LC001 &  _LC005 & !_LC024
+         #  F3 &  _LC001 &  _LC002 &  _LC005 & !_LC024
+         #  F1 &  F2 &  _LC002 & !_LC024;
+
+-- Node name is '~55~2' 
+-- Equation name is '~55~2', location is LC019, type is buried.
+-- synthesized logic cell 
+_LC019   = LCELL( _EQ040 $  GND);
+  _EQ040 =  F2 &  _LC001 &  _LC002 & !_LC024
+         # !F1 & !F2 & !_LC002 &  _LC024
+         # !F1 & !F2 & !F3 &  _LC024
+         # !F1 & !F2 & !_LC005 &  _LC024
+         # !F1 & !F3 & !_LC002 &  _LC024;
+
+-- Node name is '~55~3' 
+-- Equation name is '~55~3', location is LC025, type is buried.
+-- synthesized logic cell 
+_LC025   = LCELL( _EQ041 $  GND);
+  _EQ041 = !F1 & !_LC002 & !_LC005 &  _LC024
+         # !F2 & !_LC001 & !_LC002 &  _LC024
+         # !F2 & !F3 & !_LC001 &  _LC024
+         # !F2 & !_LC001 & !_LC005 &  _LC024
+         # !F3 & !_LC001 & !_LC002 &  _LC024;
+
+-- Node name is '~55~4' 
+-- Equation name is '~55~4', location is LC027, type is buried.
+-- synthesized logic cell 
+_LC027   = LCELL( _EQ042 $  GND);
+  _EQ042 = !_LC001 & !_LC002 & !_LC005 &  _LC024
+         #  F1 &  _LC001 & !_LC024
+         # !F1 & !_LC001 &  _LC024;
+
+
+
+--     Shareable expanders that are duplicated in multiple LABs:
+--     (none)
+
+
+
+
+Project Information                                  c:\max2work\lab5\ictr.rpt
+
+** COMPILATION SETTINGS & TIMES **
+
+Processing Menu Commands
+------------------------
+
+Design Doctor                             = off
+
+Logic Synthesis:
+
+   Synthesis Type Used                    = Standard
+
+   Default Synthesis Style                = NORMAL
+
+      Logic option settings in 'NORMAL' style for 'MAX7000B' family
+
+      DECOMPOSE_GATES                     = on
+      DUPLICATE_LOGIC_EXTRACTION          = on
+      MINIMIZATION                        = full
+      MULTI_LEVEL_FACTORING               = on
+      NOT_GATE_PUSH_BACK                  = on
+      PARALLEL_EXPANDERS                  = off
+      REDUCE_LOGIC                        = on
+      REFACTORIZATION                     = on
+      REGISTER_OPTIMIZATION               = on
+      RESYNTHESIZE_NETWORK                = on
+      SLOW_SLEW_RATE                      = off
+      SOFT_BUFFER_INSERTION               = on
+      SUBFACTOR_EXTRACTION                = on
+      TURBO_BIT                           = on
+      XOR_SYNTHESIS                       = on
+      IGNORE_SOFT_BUFFERS                 = off
+      USE_LPM_FOR_AHDL_OPERATORS          = off
+
+   Other logic synthesis settings:
+
+      Automatic Global Clock              = on
+      Automatic Global Clear              = on
+      Automatic Global Preset             = on
+      Automatic Global Output Enable      = on
+      Automatic Fast I/O                  = off
+      Automatic Register Packing          = off
+      Automatic Open-Drain Pins           = on
+      Automatic Implement in EAB          = off
+      One-Hot State Machine Encoding      = off
+      Optimize                            = 5
+
+Default Timing Specifications: None
+
+Cut All Bidir Feedback Timing Paths       = on
+Cut All Clear & Preset Timing Paths       = on
+
+Ignore Timing Assignments                 = off
+
+Functional SNF Extractor                  = off
+
+Linked SNF Extractor                      = off
+Timing SNF Extractor                      = on
+Optimize Timing SNF                       = off
+Generate AHDL TDO File                    = off
+Fitter Settings                           = NORMAL
+Smart Recompile                           = off
+Total Recompile                           = off
+
+Interfaces Menu Commands
+------------------------
+
+EDIF Netlist Writer                       = off
+Verilog Netlist Writer                    = off
+VHDL Netlist Writer                       = off
+
+Compilation Times
+-----------------
+
+   Compiler Netlist Extractor             00:00:00
+   Database Builder                       00:00:00
+   Logic Synthesizer                      00:00:01
+   Partitioner                            00:00:00
+   Fitter                                 00:00:00
+   Timing SNF Extractor                   00:00:00
+   Assembler                              00:00:00
+   --------------------------             --------
+   Total Time                             00:00:01
+
+
+Memory Allocated
+-----------------
+
+Peak memory allocated during compilation  = 3,802K

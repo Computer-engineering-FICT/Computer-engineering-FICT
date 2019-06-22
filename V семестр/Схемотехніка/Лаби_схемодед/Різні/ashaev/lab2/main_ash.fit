@@ -1,0 +1,212 @@
+-- MAX+plus II Compiler Fit File      
+-- Version 10.0 9/14/2000             
+-- Compiled: 10/07/2009 01:40:02      
+
+-- Copyright (C) 1988-2000 Altera Corporation
+-- Any megafunction design, and related net list (encrypted or decrypted),
+-- support information, device programming or simulation file, and any other
+-- associated documentation or information provided by Altera or a partner
+-- under Altera's Megafunction Partnership Program may be used only to
+-- program PLD devices (but not masked PLD devices) from Altera.  Any other
+-- use of such megafunction design, net list, support information, device
+-- programming or simulation file, or any other related documentation or
+-- information is prohibited for any other purpose, including, but not
+-- limited to modification, reverse engineering, de-compiling, or use with
+-- any other silicon devices, unless such use is explicitly licensed under
+-- a separate agreement with Altera or a megafunction partner.  Title to
+-- the intellectual property, including patents, copyrights, trademarks,
+-- trade secrets, or maskworks, embodied in any such megafunction design,
+-- net list, support information, device programming or simulation file, or
+-- any other related documentation or information provided by Altera or a
+-- megafunction partner, remains with Altera, the megafunction partner, or
+-- their respective licensors.  No other licenses, including any licenses
+-- needed under any third party's intellectual property, are provided herein.
+
+CHIP "main_ash"
+BEGIN
+
+    DEVICE = "EPM9320LC84-15";
+
+    "F0"                           : INPUT_PIN  = 84     ;
+    "F1"                           : INPUT_PIN  = 1      ;
+    "F2"                           : INPUT_PIN  = 13     ;
+    "F3"                           : INPUT_PIN  = 72     ;
+    "P00"                          : INPUT_PIN  = 38     ;
+    "P01"                          : INPUT_PIN  = 16     ;
+    "P02"                          : INPUT_PIN  = 39     ;
+    "P03"                          : INPUT_PIN  = 65     ;
+    "P04"                          : INPUT_PIN  = 69     ;
+    "P05"                          : INPUT_PIN  = 34     ;
+    "P06"                          : INPUT_PIN  = 22     ;
+    "P07"                          : INPUT_PIN  = 11     ;
+    "P08"                          : INPUT_PIN  = 59     ;
+    "P09"                          : INPUT_PIN  = 27     ;
+    "P10"                          : INPUT_PIN  = 9      ;
+    "P11"                          : INPUT_PIN  = 35     ;
+    "Q00"                          : INPUT_PIN  = 33     ;
+    "Q01"                          : INPUT_PIN  = 8      ;
+    "Q02"                          : INPUT_PIN  = 10     ;
+    "Q03"                          : INPUT_PIN  = 20     ;
+    "Q04"                          : INPUT_PIN  = 68     ;
+    "Q05"                          : INPUT_PIN  = 17     ;
+    "Q06"                          : INPUT_PIN  = 62     ;
+    "Q07"                          : INPUT_PIN  = 36     ;
+    "Q08"                          : INPUT_PIN  = 26     ;
+    "Q09"                          : INPUT_PIN  = 58     ;
+    "Q10"                          : INPUT_PIN  = 66     ;
+    "Q11"                          : INPUT_PIN  = 19     ;
+    "D00"                          : OUTPUT_PIN = 80     ;
+    "D01"                          : OUTPUT_PIN = 53     ;
+    "D02"                          : OUTPUT_PIN = 49     ;
+    "D03"                          : OUTPUT_PIN = 41     ;
+    "D04"                          : OUTPUT_PIN = 5      ;
+    "D05"                          : OUTPUT_PIN = 7      ;
+    "D06"                          : OUTPUT_PIN = 23     ;
+    "D07"                          : OUTPUT_PIN = 51     ;
+    "D08"                          : OUTPUT_PIN = 31     ;
+    "D09"                          : OUTPUT_PIN = 32     ;
+    "D10"                          : OUTPUT_PIN = 12     ;
+    "D11"                          : OUTPUT_PIN = 63     ;
+    "rz"                           : OUTPUT_PIN = 46     ;
+    "si"                           : OUTPUT_PIN = 44     ;
+    "|ci1:79|:30"                  : LOCATION   = LC1_D5 ;  -- |ci1:79|Cnext
+    "|ci1:79|~30~1"                : LOCATION   = LC7_D5 ;  -- |ci1:79|Cnext~1
+    "|ci1:79|~30~2"                : LOCATION   = LC5_D5 ;  -- |ci1:79|Cnext~2
+    "|ci1:79|~30~3"                : LOCATION   = LC6_D5 ;  -- |ci1:79|Cnext~3
+    "|ci1:81|~22~1"                : LOCATION   = LC1_C4 ;
+    "|ci1:81|~30~1"                : LOCATION   = LC5_C3 ;  -- |ci1:81|Cnext~1
+    "|ci1:81|~30~2"                : LOCATION   = LC7_C3 ;  -- |ci1:81|Cnext~2
+    "|ci1:81|~30~3"                : LOCATION   = LC9_C3 ;  -- |ci1:81|Cnext~3
+    "|ci1:81|~30~4"                : LOCATION   = LC1_C3 ;  -- |ci1:81|Cnext~4
+    "|ci1:81|~30~5"                : LOCATION   = LC10_C3;  -- |ci1:81|Cnext~5
+    "|ci1:82|:30"                  : LOCATION   = LC4_D2 ;  -- |ci1:82|Cnext
+    "|ci1:82|~30~1"                : LOCATION   = LC11_D2;  -- |ci1:82|Cnext~1
+    "|ci1:82|~30~2"                : LOCATION   = LC12_D2;  -- |ci1:82|Cnext~2
+    "|ci1:82|~30~3"                : LOCATION   = LC13_D2;  -- |ci1:82|Cnext~3
+    "|ci1:82|~30~4"                : LOCATION   = LC9_D2 ;  -- |ci1:82|Cnext~4
+    "|ci1:84|~22~1"                : LOCATION   = LC14_A1;
+    "|ci1:84|~30~1"                : LOCATION   = LC7_B5 ;  -- |ci1:84|Cnext~1
+    "|ci1:84|~30~2"                : LOCATION   = LC8_B5 ;  -- |ci1:84|Cnext~2
+    "|ci1:84|~30~3"                : LOCATION   = LC9_B5 ;  -- |ci1:84|Cnext~3
+    "|ci1:84|~30~4"                : LOCATION   = LC1_B5 ;  -- |ci1:84|Cnext~4
+    "|ci1:84|~30~5"                : LOCATION   = LC10_B5;  -- |ci1:84|Cnext~5
+    "|ci1:85|:30"                  : LOCATION   = LC3_A1 ;  -- |ci1:85|Cnext
+    "|ci1:85|~30~1"                : LOCATION   = LC10_A1;  -- |ci1:85|Cnext~1
+    "|ci1:85|~30~2"                : LOCATION   = LC11_A1;  -- |ci1:85|Cnext~2
+    "|ci1:85|~30~3"                : LOCATION   = LC12_A1;  -- |ci1:85|Cnext~3
+    "|ci1:85|~30~4"                : LOCATION   = LC13_A1;  -- |ci1:85|Cnext~4
+    "|rz_form:78|:3"               : LOCATION   = LC1_B4 ;  -- |rz_form:78|rz
+    "|si:75|:6"                    : LOCATION   = LC1_B3 ;  -- |si:75|Si
+    "|xishem:28|:37"               : LOCATION   = LC11_C3;  -- |xishem:28|Xi
+    "|xishem:32|:37"               : LOCATION   = LC12_C3;  -- |xishem:32|Xi
+    "|xishem:44|:37"               : LOCATION   = LC14_D2;  -- |xishem:44|Xi
+    "|xishem:58|:37"               : LOCATION   = LC11_B5;  -- |xishem:58|Xi
+    "|xishem:59|:37"               : LOCATION   = LC15_A1;  -- |xishem:59|Xi
+    "|xishem:60|:37"               : LOCATION   = LC12_B5;  -- |xishem:60|Xi
+    "|xishem:67|:37"               : LOCATION   = LC8_C1 ;  -- |xishem:67|Xi
+    "|xor:9|:12"                   : LOCATION   = LC2_B4 ;  -- |xor:9|Di
+    "|xor:9|~12~1"                 : LOCATION   = LC7_B4 ;  -- |xor:9|Di~1
+    "|xor:9|~12~2"                 : LOCATION   = LC6_B4 ;  -- |xor:9|Di~2
+    "|xor:9|~12~3"                 : LOCATION   = LC5_B4 ;  -- |xor:9|Di~3
+    "|xor:22|:12"                  : LOCATION   = LC10_D5;  -- |xor:22|Di
+    "|xor:22|~12~1"                : LOCATION   = LC3_D5 ;  -- |xor:22|Di~1
+    "|xor:22|~12~2"                : LOCATION   = LC2_D5 ;  -- |xor:22|Di~2
+    "|xor:26|:12"                  : LOCATION   = LC3_B4 ;  -- |xor:26|Di
+    "|xor:26|~12~1"                : LOCATION   = LC8_C3 ;  -- |xor:26|Di~1
+    "|xor:26|~12~2"                : LOCATION   = LC4_B4 ;  -- |xor:26|Di~2
+    "|xor:30|:12"                  : LOCATION   = LC6_C3 ;  -- |xor:30|Di
+    "|xor:30|~12~1"                : LOCATION   = LC2_C3 ;  -- |xor:30|Di~1
+    "|xor:30|~12~2"                : LOCATION   = LC3_C3 ;  -- |xor:30|Di~2
+    "|xor:38|:12"                  : LOCATION   = LC10_D2;  -- |xor:38|Di
+    "|xor:38|~12~1"                : LOCATION   = LC1_D2 ;  -- |xor:38|Di~1
+    "|xor:38|~12~2"                : LOCATION   = LC6_D2 ;  -- |xor:38|Di~2
+    "|xor:38|~12~3"                : LOCATION   = LC7_D2 ;  -- |xor:38|Di~3
+    "|xor:42|:12"                  : LOCATION   = LC2_D2 ;  -- |xor:42|Di
+    "|xor:42|~12~1"                : LOCATION   = LC8_D2 ;  -- |xor:42|Di~1
+    "|xor:42|~12~2"                : LOCATION   = LC5_D2 ;  -- |xor:42|Di~2
+    "|xor:42|~12~3"                : LOCATION   = LC3_D2 ;  -- |xor:42|Di~3
+    "|xor:49|:12"                  : LOCATION   = LC2_A1 ;  -- |xor:49|Di
+    "|xor:49|~12~1"                : LOCATION   = LC6_A1 ;  -- |xor:49|Di~1
+    "|xor:49|~12~2"                : LOCATION   = LC5_A1 ;  -- |xor:49|Di~2
+    "|xor:49|~12~3"                : LOCATION   = LC4_A1 ;  -- |xor:49|Di~3
+    "|xor:50|:12"                  : LOCATION   = LC13_B5;  -- |xor:50|Di
+    "|xor:50|~12~1"                : LOCATION   = LC3_B5 ;  -- |xor:50|Di~1
+    "|xor:50|~12~2"                : LOCATION   = LC4_B5 ;  -- |xor:50|Di~2
+    "|xor:51|:12"                  : LOCATION   = LC1_A1 ;  -- |xor:51|Di
+    "|xor:51|~12~1"                : LOCATION   = LC7_A1 ;  -- |xor:51|Di~1
+    "|xor:51|~12~2"                : LOCATION   = LC8_A1 ;  -- |xor:51|Di~2
+    "|xor:51|~12~3"                : LOCATION   = LC9_A1 ;  -- |xor:51|Di~3
+    "|xor:52|:12"                  : LOCATION   = LC2_B5 ;  -- |xor:52|Di
+    "|xor:52|~12~1"                : LOCATION   = LC6_B5 ;  -- |xor:52|Di~1
+    "|xor:52|~12~2"                : LOCATION   = LC5_B5 ;  -- |xor:52|Di~2
+    "|xor:63|:12"                  : LOCATION   = LC3_C1 ;  -- |xor:63|Di
+    "|xor:63|~12~1"                : LOCATION   = LC1_C1 ;  -- |xor:63|Di~1
+    "|xor:63|~12~2"                : LOCATION   = LC2_C1 ;  -- |xor:63|Di~2
+    "|xor:64|:12"                  : LOCATION   = LC11_C1;  -- |xor:64|Di
+    "|xor:64|~12~1"                : LOCATION   = LC7_C1 ;  -- |xor:64|Di~1
+    "|xor:64|~12~2"                : LOCATION   = LC6_C1 ;  -- |xor:64|Di~2
+    "|xor:64|~12~3"                : LOCATION   = LC5_C1 ;  -- |xor:64|Di~3
+    "|xor:64|~12~4"                : LOCATION   = LC4_C1 ;  -- |xor:64|Di~4
+    "|yishem:23|:33"               : LOCATION   = LC4_D5 ;  -- |yishem:23|Yi
+    "|yishem:27|:33"               : LOCATION   = LC4_C3 ;  -- |yishem:27|Yi
+    "|yishem:54|:33"               : LOCATION   = LC14_B5;  -- |yishem:54|Yi
+
+END;
+
+INTERNAL_INFO "main_ash"
+BEGIN
+	DEVICE = EPM9320LC84-15;
+    LC1_D5  : LORAX = "1:V1C4,G2R2,PA13R2C2->LC5_C3,->LC7_C3,->LC9_C3,->LC1_C3,->LC8_C3,->LC3_C3,->LC6_C3|";
+    LC1_C4  : LORAX = "1:V1C3,G1R3,PA12R3C1->LC12_D2,->LC13_D2,->LC4_D2,->LC6_D2,->LC5_D2,->LC2_D2|";
+    LC1_C3  : LORAX = "1:V0C2,G10R3,PA15R3C1->LC12_D2,->LC13_D2,->LC4_D2,->LC6_D2,->LC5_D2,->LC2_D2|";
+    LC4_D2  : LORAX = "1:V9C1,G17R1,PA1R1C4->LC7_B5,->LC8_B5,->LC9_B5,->LC1_B5,->LC3_B5,->LC5_B5,->LC2_B5|";
+    LC1_B5  : LORAX = "1:V0C4,G2R0,PA13R0C0->LC10_A1,->LC11_A1,->LC12_A1,->LC3_A1,->LC5_A1,->LC8_A1,->LC1_A1|";
+    LC3_A1  : LORAX = "1:V7C0,G14R2,PA30R2C0->LC1_C1,->LC7_C1,->LC5_C1|";
+    OD2P84  : LORAX = "  1/  2. 1:->LC7_D5,->LC5_D5,->LC1_D5,->LC1_C4,->LC5_C3,->LC7_C3,->LC9_C3,->LC1_C3,->LC10_C3,->LC11_D2,->LC12_D2,->LC13_D2,->LC4_D2,->LC14_A1,->LC7_B5,->LC8_B5,->LC9_B5,->LC1_B5,->LC10_B5,->LC10_A1,->LC11_A1,->LC12_A1,->LC3_A1,->LC11_C3,->LC12_C3,->LC14_D2,->LC11_B5,->LC15_A1,->LC12_B5,->LC8_C1,->LC7_B4,->LC2_B4,->LC3_D5,->LC10_D5,->LC3_B4,->LC2_C3,->LC6_C3,->LC1_D2,->LC10_D2,->LC8_D2,->LC5_D2,->LC2_D2,->LC6_A1,->LC2_A1,->LC13_B5,->LC7_A1,->LC8_A1,->LC1_A1,->LC6_B5,->LC2_B5,->LC1_C1,->LC3_C1,->LC7_C1,->LC6_C1,->LC5_C1,->LC11_C1,->LC4_D5,->LC4_C3,->LC14_B5|2:G70R0,PA7R0C0->LC14_A1,->LC10_A1,->LC11_A1,->LC12_A1,->LC3_A1,->LC15_A1,->LC6_A1,->LC2_A1,->LC7_A1,->LC8_A1,->LC1_A1|,2:G70R1|3:PA7R1C3->LC7_B4,->LC2_B4,->LC3_B4|,3:PA7R1C4->LC7_B5,->LC8_B5,->LC9_B5,->LC1_B5,->LC10_B5,->LC11_B5,->LC12_B5,->LC13_B5,->LC6_B5,->LC2_B5,->LC14_B5||,2:G70R2|3:PA7R2C3->LC1_C4|,3:PA7R2C0->LC8_C1,->LC1_C1,->LC3_C1,->LC7_C1,->LC6_C1,->LC5_C1,->LC11_C1|,3:PA7R2C2->LC5_C3,->LC7_C3,->LC9_C3,->LC1_C3,->LC10_C3,-";
+    OD2P84  : LORAX = "  2/  2. >LC11_C3,->LC12_C3,->LC2_C3,->LC6_C3,->LC4_C3||,2:G70R3|3:PA7R3C4->LC7_D5,->LC5_D5,->LC1_D5,->LC3_D5,->LC10_D5,->LC4_D5|,3:PA7R3C1->LC11_D2,->LC12_D2,->LC13_D2,->LC4_D2,->LC14_D2,->LC1_D2,->LC10_D2,->LC8_D2,->LC5_D2,->LC2_D2|||";
+    OD1P1   : LORAX = "  1/  2. 1:->LC7_D5,->LC1_D5,->LC1_C4,->LC5_C3,->LC7_C3,->LC9_C3,->LC1_C3,->LC11_D2,->LC12_D2,->LC13_D2,->LC4_D2,->LC14_A1,->LC7_B5,->LC8_B5,->LC9_B5,->LC1_B5,->LC10_A1,->LC11_A1,->LC12_A1,->LC3_A1,->LC11_C3,->LC12_C3,->LC14_D2,->LC11_B5,->LC15_A1,->LC12_B5,->LC8_C1,->LC7_B4,->LC6_B4,->LC5_B4,->LC2_B4,->LC3_D5,->LC10_D5,->LC3_B4,->LC2_C3,->LC6_C3,->LC1_D2,->LC10_D2,->LC8_D2,->LC5_D2,->LC2_D2,->LC6_A1,->LC2_A1,->LC13_B5,->LC7_A1,->LC8_A1,->LC1_A1,->LC6_B5,->LC2_B5,->LC1_C1,->LC3_C1,->LC7_C1,->LC6_C1,->LC5_C1,->LC11_C1,->LC4_D5,->LC4_C3,->LC14_B5|2:G59R0,PA32R0C0->LC14_A1,->LC10_A1,->LC11_A1,->LC12_A1,->LC3_A1,->LC15_A1,->LC6_A1,->LC2_A1,->LC7_A1,->LC8_A1,->LC1_A1|,2:G59R1|3:PA32R1C3->LC7_B4,->LC6_B4,->LC5_B4,->LC2_B4,->LC3_B4|,3:PA32R1C4->LC7_B5,->LC8_B5,->LC9_B5,->LC1_B5,->LC11_B5,->LC12_B5,->LC13_B5,->LC6_B5,->LC2_B5,->LC14_B5||,2:G59R2|3:PA32R2C3->LC1_C4|,3:PA32R2C0->LC8_C1,->LC1_C1,->LC3_C1,->LC7_C1,->LC6_C1,->LC5_C1,->LC11_C1|,3:PA32R2C2->LC5_C3,->LC7_C3,->LC9_C3,->LC1_C3,->LC11_C";
+    OD1P1   : LORAX = "  2/  2. 3,->LC12_C3,->LC2_C3,->LC6_C3,->LC4_C3||,2:G59R3|3:PA32R3C4->LC7_D5,->LC1_D5,->LC3_D5,->LC10_D5,->LC4_D5|,3:PA32R3C1->LC11_D2,->LC12_D2,->LC13_D2,->LC4_D2,->LC14_D2,->LC1_D2,->LC10_D2,->LC8_D2,->LC5_D2,->LC2_D2|||";
+    OD0P13  : LORAX = "  1/  2. 1:->LC7_D5,->LC1_D5,->LC1_C4,->LC5_C3,->LC7_C3,->LC9_C3,->LC1_C3,->LC11_D2,->LC12_D2,->LC13_D2,->LC4_D2,->LC14_A1,->LC7_B5,->LC8_B5,->LC9_B5,->LC1_B5,->LC13_A1,->LC1_B3,->LC11_C3,->LC12_C3,->LC14_D2,->LC11_B5,->LC15_A1,->LC12_B5,->LC8_C1,->LC7_B4,->LC6_B4,->LC2_B4,->LC3_D5,->LC2_D5,->LC10_D5,->LC4_B4,->LC3_B4,->LC2_C3,->LC6_C3,->LC1_D2,->LC7_D2,->LC10_D2,->LC8_D2,->LC3_D2,->LC6_A1,->LC4_A1,->LC2_A1,->LC4_B5,->LC13_B5,->LC7_A1,->LC9_A1,->LC6_B5,->LC2_B5,->LC1_C1,->LC2_C1,->LC3_C1,->LC7_C1,->LC6_C1,->LC5_C1,->LC4_C1,->LC11_C1,->LC4_D5,->LC4_C3,->LC14_B5|2:G58R0,PA31R0C0->LC14_A1,->LC13_A1,->LC15_A1,->LC6_A1,->LC4_A1,->LC2_A1,->LC7_A1,->LC9_A1|,2:G58R1|3:PA31R1C2->LC1_B3|,3:PA31R1C3->LC7_B4,->LC6_B4,->LC2_B4,->LC4_B4,->LC3_B4|,3:PA31R1C4->LC7_B5,->LC8_B5,->LC9_B5,->LC1_B5,->LC11_B5,->LC12_B5,->LC4_B5,->LC13_B5,->LC6_B5,->LC2_B5,->LC14_B5||,2:G58R2|3:PA31R2C3->LC1_C4|,3:PA31R2C0->LC8_C1,->LC1_C1,->LC2_C1,->LC3_C1,->LC7_C1,->LC6_C1,->LC5_C1,->LC4_C1,->LC11_C1|,3:PA31R2C2->LC5_C3,-";
+    OD0P13  : LORAX = "  2/  2. >LC7_C3,->LC9_C3,->LC1_C3,->LC11_C3,->LC12_C3,->LC2_C3,->LC6_C3,->LC4_C3||,2:G58R3|3:PA31R3C4->LC7_D5,->LC1_D5,->LC3_D5,->LC2_D5,->LC10_D5,->LC4_D5|,3:PA31R3C1->LC11_D2,->LC12_D2,->LC13_D2,->LC4_D2,->LC14_D2,->LC1_D2,->LC7_D2,->LC10_D2,->LC8_D2,->LC3_D2|||";
+    OD3P72  : LORAX = "  1/  2. 1:->LC7_D5,->LC1_D5,->LC1_C4,->LC5_C3,->LC7_C3,->LC9_C3,->LC1_C3,->LC10_C3,->LC11_D2,->LC12_D2,->LC13_D2,->LC14_A1,->LC7_B5,->LC8_B5,->LC9_B5,->LC1_B5,->LC10_B5,->LC10_A1,->LC11_A1,->LC12_A1,->LC11_C3,->LC12_C3,->LC14_D2,->LC11_B5,->LC15_A1,->LC12_B5,->LC8_C1,->LC7_B4,->LC2_B4,->LC3_D5,->LC2_D5,->LC10_D5,->LC4_B4,->LC3_B4,->LC2_C3,->LC6_C3,->LC1_D2,->LC7_D2,->LC10_D2,->LC8_D2,->LC5_D2,->LC2_D2,->LC6_A1,->LC4_A1,->LC2_A1,->LC4_B5,->LC13_B5,->LC7_A1,->LC8_A1,->LC1_A1,->LC6_B5,->LC2_B5,->LC1_C1,->LC2_C1,->LC3_C1,->LC7_C1,->LC6_C1,->LC5_C1,->LC4_C1,->LC11_C1,->LC4_D5,->LC4_C3,->LC14_B5|2:G71R0,PA19R0C0->LC14_A1,->LC10_A1,->LC11_A1,->LC12_A1,->LC15_A1,->LC6_A1,->LC4_A1,->LC2_A1,->LC7_A1,->LC8_A1,->LC1_A1|,2:G71R1|3:PA24R1C4->LC7_B5,->LC8_B5,->LC9_B5,->LC1_B5,->LC10_B5,->LC11_B5,->LC12_B5,->LC4_B5,->LC13_B5,->LC6_B5,->LC2_B5,->LC14_B5|,3:PA24R1C3->LC7_B4,->LC2_B4,->LC4_B4,->LC3_B4||,2:G71R2|3:PA24R2C3->LC1_C4|,3:PA24R2C0->LC8_C1,->LC1_C1,->LC2_C1,->LC3_C1,->LC7_C1,->LC6_C1,->LC5_C1";
+    OD3P72  : LORAX = "  2/  2. ,->LC4_C1,->LC11_C1|,3:PA24R2C2->LC5_C3,->LC7_C3,->LC9_C3,->LC1_C3,->LC10_C3,->LC11_C3,->LC12_C3,->LC2_C3,->LC6_C3,->LC4_C3||,2:G71R3|3:PA24R3C4->LC7_D5,->LC1_D5,->LC3_D5,->LC2_D5,->LC10_D5,->LC4_D5|,3:PA24R3C1->LC11_D2,->LC12_D2,->LC13_D2,->LC14_D2,->LC1_D2,->LC7_D2,->LC10_D2,->LC8_D2,->LC5_D2,->LC2_D2|||";
+    OV14C1P38 : LORAX = "1:V25C1|2:G51R1,PA14R1C3->LC7_B4,->LC5_B4,->LC2_B4|,2:G51R3,PA14R3C4->LC7_D5,->LC6_D5,->LC1_D5,->LC10_D5||";
+    OH12R3P16 : LORAX = "1:G82R3,PA2R3C4->LC7_D5,->LC6_D5,->LC1_D5,->LC3_D5,->LC4_D5|";
+    OV18C1P39 : LORAX = "1:V20C1|2:G94R1,PA30R1C3->LC3_B4|,2:G39R2,PA23R2C2->LC5_C3,->LC7_C3,->LC9_C3,->LC1_C3,->LC11_C3,->LC6_C3,->LC4_C3||";
+    OH9R2P65 : LORAX = "1:G90R2|2:PA26R2C3->LC1_C4|,2:PA26R2C2->LC5_C3,->LC9_C3,->LC1_C3,->LC10_C3,->LC12_C3,->LC2_C3||";
+    OH13R3P69 : LORAX = "1:G83R3,PA18R3C1->LC11_D2,->LC12_D2,->LC13_D2,->LC4_D2,->LC1_D2,->LC10_D2,->LC5_D2,->LC2_D2|";
+    OV18C0P34 : LORAX = "1:V20C0,G46R3,PA11R3C1->LC11_D2,->LC12_D2,->LC13_D2,->LC14_D2,->LC8_D2|";
+    OH12R1P22 : LORAX = "1:G82R1,PA2R1C4->LC7_B5,->LC8_B5,->LC9_B5,->LC1_B5,->LC11_B5,->LC13_B5,->LC2_B5,->LC14_B5|";
+    OV7C0P11 : LORAX = "1:V10C0|2:G19R0,PA17R0C0->LC14_A1|,2:G19R1,PA17R1C4->LC7_B5,->LC9_B5,->LC1_B5,->LC10_B5,->LC12_B5,->LC6_B5||";
+    OH13R0P59 : LORAX = "1:G83R0,PA18R0C0->LC10_A1,->LC11_A1,->LC12_A1,->LC6_A1,->LC2_A1,->LC8_A1,->LC1_A1|";
+    OH8R0P27 : LORAX = "1:G89R0,PA24R0C0->LC10_A1,->LC11_A1,->LC12_A1,->LC3_A1,->LC15_A1,->LC7_A1|";
+    OV19C0P9 : LORAX = "1:V23C0,G42R2,PA27R2C0->LC8_C1,->LC1_C1,->LC3_C1,->LC7_C1|";
+    OV2C1P35 : LORAX = "1:V2C1,G3R2,PA3R2C0->LC6_C1,->LC11_C1|";
+    OV14C0P33 : LORAX = "1:V25C0|2:G49R1,PA6R1C3->LC7_B4,->LC2_B4|,2:G49R3,PA6R3C4->LC7_D5,->LC5_D5,->LC1_D5,->LC10_D5||";
+    OV3C1P8 : LORAX = "1:V4C1,G7R3,PA23R3C4->LC1_D5,->LC3_D5,->LC2_D5,->LC4_D5|";
+    OV15C0P10 : LORAX = "1:V28C0|2:G57R1,PA18R1C3->LC4_B4,->LC3_B4|,2:G57R2,PA18R2C2->LC5_C3,->LC7_C3,->LC11_C3,->LC6_C3,->LC4_C3||";
+    OH8R2P20 : LORAX = "1:G89R2|2:PA17R2C3->LC1_C4|,2:PA17R2C2->LC5_C3,->LC1_C3,->LC10_C3,->LC12_C3,->LC2_C3||";
+    OH9R3P68 : LORAX = "1:G90R3,PA26R3C1->LC11_D2,->LC13_D2,->LC4_D2,->LC1_D2,->LC7_D2,->LC10_D2,->LC5_D2,->LC2_D2|";
+    OH8R3P17 : LORAX = "1:G89R3,PA17R3C1->LC11_D2,->LC12_D2,->LC13_D2,->LC4_D2,->LC14_D2,->LC8_D2|";
+    OH9R1P62 : LORAX = "1:G90R1,PA26R1C4->LC7_B5,->LC8_B5,->LC11_B5,->LC4_B5,->LC13_B5,->LC2_B5,->LC14_B5|";
+    OV6C1P36 : LORAX = "1:V8C1|2:G16R0,PA0R0C0->LC14_A1|,2:G16R1,PA0R1C4->LC7_B5,->LC1_B5,->LC10_B5,->LC12_B5,->LC6_B5||";
+    OH12R0P26 : LORAX = "1:G82R0,PA2R0C0->LC10_A1,->LC11_A1,->LC12_A1,->LC3_A1,->LC6_A1,->LC4_A1,->LC2_A1,->LC8_A1,->LC1_A1|";
+    OH9R0P58 : LORAX = "1:G90R0,PA26R0C0->LC10_A1,->LC11_A1,->LC12_A1,->LC3_A1,->LC15_A1,->LC7_A1|";
+    OH13R2P66 : LORAX = "1:G83R2,PA8R2C0->LC8_C1,->LC1_C1,->LC2_C1,->LC3_C1,->LC7_C1,->LC5_C1|";
+    OH12R2P19 : LORAX = "1:G82R2,PA2R2C0->LC6_C1,->LC4_C1,->LC11_C1|";
+    LC1_B4  : LORAX = "1:V0C3->OV2C3P46|";
+    LC1_B3  : LORAX = "1:V2C2->OV14C2P44|";
+    LC2_B4  : LORAX = "1:V3C3->OV7C3P80|";
+    LC10_D5 : LORAX = "1:V27C4->OV14C4P53|2:G53R1,PA3R1C3->LC1_B4||";
+    LC8_C3  : LORAX = "1:V21C2,G44R1,PA29R1C3->LC3_B4|";
+    LC3_B4  : LORAX = "1:V7C3->OV14C3P49|";
+    LC6_C3  : LORAX = "1:V15C2->OV6C2P41|2:G31R1,PA8R1C3->LC1_B4||";
+    LC10_D2 : LORAX = "1:V27C1->OV15C1P5|2:G54R1,PA20R1C3->LC1_B4||";
+    LC2_D2  : LORAX = "1:V3C1->OV7C1P7|2:G7R1,PA23R1C3->LC1_B4||";
+    LC2_A1  : LORAX = "1:V3C0->OV2C0P31,2:G11R1,PA5R1C3->LC1_B4||";
+    LC13_B5 : LORAX = "1:G76R1->OH8R1P23,2:PA27R1C3->LC1_B4||";
+    LC1_A1  : LORAX = "1:|2:V2C0,G10R1,PA15R1C3->LC1_B4|,2:V0C0->OV6C0P32||";
+    LC2_B5  : LORAX = "1:|2:G9R1,PA25R1C3->LC1_B4|,2:V3C4->OV2C4P51||";
+    LC3_C1  : LORAX = "1:V6C0->OV3C0P12|2:G22R1,PA22R1C3->LC1_B4||";
+    LC11_C1 : LORAX = "1:V30C0,G61R1->OH13R1P63|2:PA28R1C2->LC1_B3|,2:PA28R1C3->LC1_B4||";
+END;

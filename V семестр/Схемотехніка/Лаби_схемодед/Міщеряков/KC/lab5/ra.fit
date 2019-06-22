@@ -1,0 +1,80 @@
+-- MAX+plus II Compiler Fit File      
+-- Version 10.1 06/12/2001            
+-- Compiled: 11/09/2010 23:11:05      
+
+-- Copyright (C) 1988-2001 Altera Corporation
+-- Any megafunction design, and related net list (encrypted or decrypted),
+-- support information, device programming or simulation file, and any other
+-- associated documentation or information provided by Altera or a partner
+-- under Altera's Megafunction Partnership Program may be used only to
+-- program PLD devices (but not masked PLD devices) from Altera.  Any other
+-- use of such megafunction design, net list, support information, device
+-- programming or simulation file, or any other related documentation or
+-- information is prohibited for any other purpose, including, but not
+-- limited to modification, reverse engineering, de-compiling, or use with
+-- any other silicon devices, unless such use is explicitly licensed under
+-- a separate agreement with Altera or a megafunction partner.  Title to
+-- the intellectual property, including patents, copyrights, trademarks,
+-- trade secrets, or maskworks, embodied in any such megafunction design,
+-- net list, support information, device programming or simulation file, or
+-- any other related documentation or information provided by Altera or a
+-- megafunction partner, remains with Altera, the megafunction partner, or
+-- their respective licensors.  No other licenses, including any licenses
+-- needed under any third party's intellectual property, are provided herein.
+
+CHIP "ra"
+BEGIN
+
+    DEVICE = "EPM9320LC84-15";
+
+    "C"                            : INPUT_PIN  = 13     ;
+    "D0"                           : INPUT_PIN  = 63     ;
+    "D1"                           : INPUT_PIN  = 31     ;
+    "D2"                           : INPUT_PIN  = 12     ;
+    "D3"                           : INPUT_PIN  = 62     ;
+    "D4"                           : INPUT_PIN  = 23     ;
+    "D5"                           : INPUT_PIN  = 84     ;
+    "D6"                           : INPUT_PIN  = 1      ;
+    "D7"                           : INPUT_PIN  = 22     ;
+    "W"                            : INPUT_PIN  = 72     ;
+    "Q0"                           : BIDIR_PIN  = 27     ;
+    "Q1"                           : BIDIR_PIN  = 32     ;
+    "Q2"                           : BIDIR_PIN  = 34     ;
+    "Q3"                           : BIDIR_PIN  = 11     ;
+    "Q4"                           : BIDIR_PIN  = 33     ;
+    "Q5"                           : BIDIR_PIN  = 9      ;
+    "Q6"                           : BIDIR_PIN  = 10     ;
+    "Q7"                           : BIDIR_PIN  = 35     ;
+    ":1"                           : LOCATION   = LC1_B2 ;  -- O7
+    ":2"                           : LOCATION   = LC5_B1 ;  -- O6
+    ":3"                           : LOCATION   = LC4_B1 ;  -- O5
+    ":4"                           : LOCATION   = LC3_B1 ;  -- O4
+    ":26"                          : LOCATION   = LC2_B1 ;  -- O3
+    ":27"                          : LOCATION   = LC6_B1 ;  -- O2
+    ":28"                          : LOCATION   = LC1_B1 ;  -- O1
+    ":29"                          : LOCATION   = LC9_B1 ;  -- O0
+
+END;
+
+INTERNAL_INFO "ra"
+BEGIN
+	DEVICE = EPM9320LC84-15;
+    OD0P13  : LORAX = "1:G58R1|2:PA31R1C1->LC1_B2|,2:PA31R1C0->LC5_B1,->LC4_B1,->LC3_B1,->LC2_B1,->LC6_B1,->LC1_B1,->LC9_B1||";
+    OH13R1P63 : LORAX = "1:G83R1,PA18R1C0->LC9_B1|";
+    OV2C0P31 : LORAX = "1:V2C0,G0R1,PA1R1C0->LC1_B1|";
+    OV3C0P12 : LORAX = "1:V4C0,G11R1,PA27R1C0->LC6_B1|";
+    OH9R1P62 : LORAX = "1:G90R1,PA26R1C0->LC2_B1|";
+    OH8R1P23 : LORAX = "1:G89R1,PA17R1C0->LC3_B1|";
+    OD2P84  : LORAX = "1:G70R1,PA7R1C0->LC4_B1|";
+    OD1P1   : LORAX = "1:G59R1,PA32R1C0->LC5_B1|";
+    OH12R1P22 : LORAX = "1:G82R1,PA2R1C1->LC1_B2|";
+    OD3P72  : LORAX = "1:->LC1_B2,->LC5_B1,->LC4_B1,->LC3_B1,->LC2_B1,->LC6_B1,->LC1_B1,->LC9_B1|2:CLR1->OH8R0P27,->OV6C0P32,->OV18C0P34,->OV7C0P11,->OV14C0P33,->OV19C0P9,->OV15C0P10,->OV2C1P35|,2:G71R1|3:PA24R1C1->LC1_B2|,3:PA24R1C0->LC5_B1,->LC4_B1,->LC3_B1,->LC2_B1,->LC6_B1,->LC1_B1,->LC9_B1|||";
+    LC1_B2  : LORAX = "1:V0C1->OV2C1P35|";
+    LC5_B1  : LORAX = "1:V13C0->OV15C0P10|";
+    LC4_B1  : LORAX = "1:V11C0->OV19C0P9|";
+    LC3_B1  : LORAX = "1:V7C0->OV14C0P33|";
+    LC2_B1  : LORAX = "1:V3C0->OV7C0P11|";
+    LC6_B1  : LORAX = "1:V16C0->OV18C0P34|";
+    LC1_B1  : LORAX = "1:V0C0->OV6C0P32|";
+    LC9_B1  : LORAX = "1:V24C0,G49R0->OH8R0P27|";
+END;

@@ -1,0 +1,63 @@
+-- MAX+plus II Compiler Fit File      
+-- Version 10.1 06/12/2001            
+-- Compiled: 10/15/2012 21:49:00      
+
+-- Copyright (C) 1988-2001 Altera Corporation
+-- Any megafunction design, and related net list (encrypted or decrypted),
+-- support information, device programming or simulation file, and any other
+-- associated documentation or information provided by Altera or a partner
+-- under Altera's Megafunction Partnership Program may be used only to
+-- program PLD devices (but not masked PLD devices) from Altera.  Any other
+-- use of such megafunction design, net list, support information, device
+-- programming or simulation file, or any other related documentation or
+-- information is prohibited for any other purpose, including, but not
+-- limited to modification, reverse engineering, de-compiling, or use with
+-- any other silicon devices, unless such use is explicitly licensed under
+-- a separate agreement with Altera or a megafunction partner.  Title to
+-- the intellectual property, including patents, copyrights, trademarks,
+-- trade secrets, or maskworks, embodied in any such megafunction design,
+-- net list, support information, device programming or simulation file, or
+-- any other related documentation or information provided by Altera or a
+-- megafunction partner, remains with Altera, the megafunction partner, or
+-- their respective licensors.  No other licenses, including any licenses
+-- needed under any third party's intellectual property, are provided herein.
+
+CHIP "eti"
+BEGIN
+
+    DEVICE = "EPM9320LC84-15";
+
+    "A12"                          : INPUT_PIN  = 13     ;
+    "clock"                        : INPUT_PIN  = 11     ;
+    "dcA0A1"                       : INPUT_PIN  = 32     ;
+    "dcA2A3"                       : INPUT_PIN  = 12     ;
+    "dcA4A5"                       : INPUT_PIN  = 31     ;
+    "dcA6A7"                       : INPUT_PIN  = 63     ;
+    "dcA8A9"                       : INPUT_PIN  = 22     ;
+    "dcA10A11"                     : INPUT_PIN  = 62     ;
+    "di"                           : INPUT_PIN  = 72     ;
+    "rd"                           : INPUT_PIN  = 84     ;
+    "wr0"                          : INPUT_PIN  = 1      ;
+    "Et"                           : OUTPUT_PIN = 23     ;
+    "Et~1"                         : LOCATION   = LC16_B1;
+    ":34"                          : LOCATION   = LC9_B1 ;  -- q
+
+END;
+
+INTERNAL_INFO "eti"
+BEGIN
+	DEVICE = EPM9320LC84-15;
+    OD0P13  : LORAX = "1:G58R1,PA31R1C0->LC16_B1,->LC9_B1|";
+    OV7C0P11 : LORAX = "1:V10C0,G19R1,PA10R1C0->LC9_B1|";
+    OV6C0P32 : LORAX = "1:V8C0,G14R1,PA30R1C0->LC16_B1,->LC9_B1|";
+    OV3C0P12 : LORAX = "1:V4C0,G11R1,PA27R1C0->LC16_B1,->LC9_B1|";
+    OV2C0P31 : LORAX = "1:V2C0,G0R1,PA1R1C0->LC16_B1,->LC9_B1|";
+    OH13R1P63 : LORAX = "1:G83R1,PA18R1C0->LC16_B1,->LC9_B1|";
+    OH12R1P22 : LORAX = "1:G82R1,PA2R1C0->LC16_B1,->LC9_B1|";
+    OH9R1P62 : LORAX = "1:G90R1,PA26R1C0->LC16_B1,->LC9_B1|";
+    OD3P72  : LORAX = "1:G71R1,PA19R1C0->LC9_B1|";
+    LC16_B1 : LORAX = "1:G89R1,CLR1->OH8R1P23|";
+    OD2P84  : LORAX = "1:G70R1,PA7R1C0->LC16_B1|";
+    OD1P1   : LORAX = "1:G59R1,PA32R1C0->LC9_B1|";
+    LC9_B1  : LORAX = "1:G49R1->OH8R1P23|";
+END;
