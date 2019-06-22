@@ -1,0 +1,179 @@
+********************************************************************************
+***                   Micro-Cap 9.0.6.1 Evaluation Version                   ***
+***                                   User                                   ***
+***                                   hOME                                   ***
+***          Анализ переходных процессов Transient analysis of lab3          ***
+********************************************************************************
+Limits
+======
+Time Range           2
+Maximum Time Step    0
+Number of Points     51
+Temperature          Linear 27
+Run Options          Normal
+State Variables      Zero
+Operating Point      On
+Operating Point Only Off
+
+
+*****************************************************
+***                Temperature=27                 ***
+*****************************************************
+
+Temperature=27 
+
+Model parameters for devices of type Sine Source
+================================================
+Instance:              V1   
+Using model:      GENERAL   
+A                 10.000    
+DC                 0.000 (*)
+F                  1.000    
+PH                 0.000 (*)
+RP                 0.000 (*)
+RS                 1.000m(*)
+TAU                0.000 (*)
+(*) Default Parameter
+
+
+
+Model parameters for devices of type Bipolar Junction Transistors NPN
+=====================================================================
+Instance:              Q1   
+Using model:      2N2222A   
+LEVEL                   1(*)
+AF                 1.000 (*)
+BF               200.601    
+BR               155.257m   
+CJC               36.644p   
+CJE               35.353p   
+CJS                0.000 (*)
+EG                 1.110 (*)
+FC               500.000m(*)
+IKF                1.771    
+IKR              995.298    
+IRB                0.000 (*)
+IS                10.017f   
+ISC                9.153p   
+ISE              999.157f   
+ISS                0.000 (*)
+ITF                9.910m   
+KF                 0.000 (*)
+MJC              558.066m   
+MJE              642.880m   
+MJS                0.000 (*)
+NC                 2.000 (*)
+NE                 1.834    
+NF               979.990m   
+NK               500.000m(*)
+NR                 1.000 (*)
+NS                 1.000 (*)
+PTF                0.000 (*)
+RB                 0.000 (*)
+RBM                0.000 (*)
+RC                 0.000 (*)
+RE               668.817m   
+T_ABS           UNDEFINED(*)
+T_MEASURED      UNDEFINED(*)
+T_REL_GLOBAL    UNDEFINED(*)
+T_REL_LOCAL     UNDEFINED(*)
+TF               336.941p   
+TR                 2.263u   
+TRB1               0.000 (*)
+TRB2               0.000 (*)
+TRC1               0.000 (*)
+TRC2               0.000 (*)
+TRE1               0.000 (*)
+TRE2               0.000 (*)
+TRM1               0.000 (*)
+TRM2               0.000 (*)
+VAF              100.000    
+VAR                0.000 (*)
+VJC              700.000m   
+VJE              700.000m   
+VJS              750.000m(*)
+VTF               10.000    
+XCJC               1.000 (*)
+XTB                0.000 (*)
+XTF              499.994m   
+XTI                3.000 (*)
+(*) Default Parameter
+
+
+
+DC Operating Point Voltages
+===========================
+Node         Voltage  Node         Voltage  Node         Voltage 
+1            24.012f  2            20.000   3            24.036p 
+4            20.000  
+
+
+Operating point for devices of type Bipolar Junction Transistors NPN
+====================================================================
+Instance:                 Q1
+Using model:         2N2222A
+IB                 -138.036p
+IC                  162.048p
+VBE                 -24.036p
+VBC                 -20.000 
+VCE                  20.000 
+BETADC               -1.174 
+GM                  274.140f
+RPI                  47.470G
+RX                    0.000 
+RO                  714.235G
+CPI                  35.353p
+CMU                   5.535p
+CBX                   0.000 
+CJS                   0.000 
+BETAAC               13.013m
+FT                    1.067m
+
+DC Power Terms:
+PD                    3.241n
+PS                    0.000 
+
+DC Pin Currents:
+Ib                 -138.036p
+Ic                  162.048p
+Ie                  -24.012p
+Is                    0.000 
+
+Condition:
+State                    OFF
+
+
+
+Operating point for devices of type Resistor
+============================================
+Instance:               RS_V1              R1              R2
+DC Power Terms:
+PD                 5.766E-025      5.766E-022          0.011f
+
+DC Pin Currents:
+Ir                    24.012p        -24.012p       -162.048p
+
+
+
+Operating point for devices of type Sine Source
+===============================================
+Instance:                  V1
+Using model:          GENERAL
+DC Power Terms:
+PG                     0.000 
+
+DC Pin Currents:
+ISource               24.012p
+
+
+
+Operating point for devices of type SPICE Source
+================================================
+Instance:                 V2
+DC Power Terms:
+PG                    3.241n
+
+DC Pin Currents:
+ISource            -162.048p
+
+

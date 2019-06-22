@@ -1,0 +1,25 @@
+* /root/laba7/3.oregano
+*----------------------------------------------
+*	NGSPICE - NETLIST
+.options NOPAGE 
+.include /usr/X11R6/share/gnome/oregano/models/UA741.model
+
+*----------------------------------------------
+
+R_R4 5 0 10k 
+V_V2 6 0 dc 0.0 ac 0.0 sin(0.0 1.0 1.0 0 0) 
+R_R3 6 5 10k 
+V_V1 4 0 dc 0.0 ac 0.0 sin(0.0 1.0 1.0 0 0) 
+V_V3 0 1 dc 10 
+X_U1 5 7 3 1 2  UA741 
+R_R1 7 2 10k 
+V_V4 3 0 dc 10 
+R_R2 4 7 10k 
+
+*----------------------------------------------
+
+.dc V_V1 0 10 3 V_V2 0 10 1
+.print dc   v(4)
+.op
+
+.end

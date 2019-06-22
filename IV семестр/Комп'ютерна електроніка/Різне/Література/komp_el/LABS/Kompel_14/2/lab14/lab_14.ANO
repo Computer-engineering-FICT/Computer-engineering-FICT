@@ -1,0 +1,182 @@
+********************************************************************************
+***                            Micro-Cap 9.0.6.1                             ***
+***                                  yozhik                                  ***
+***                                   hata                                   ***
+***                          AC Analysis of lab_14                           ***
+***                                                                          ***
+********************************************************************************
+Limits
+======
+Frequency Range  1E8,1Meg
+Number of Points 51
+Temperature      Linear 27
+Maximum Change % 5
+Noise Input      NONE
+Noise Output     2
+Run Options      Normal
+State Variables  Zero
+Frequency Step   Auto
+Operating Point  On
+
+
+*****************************************************
+***                Temperature=27                 ***
+*****************************************************
+
+Temperature=27 
+
+Model parameters for devices of type Bipolar Junction Transistors NPN
+=====================================================================
+Instance:              Q1   
+Using model:       2N2484   
+LEVEL                   1(*)
+AF                 1.000 (*)
+BF               350.263    
+BR                 8.899m   
+CJC                9.950p   
+CJE                5.657p   
+CJS                0.000 (*)
+EG                 1.110 (*)
+FC               500.000m(*)
+IKF               53.382m   
+IKR               11.531m   
+IRB                0.000 (*)
+IS                 9.996f   
+ISC               98.704p   
+ISE                6.815p   
+ISS                0.000 (*)
+ITF               10.000m   
+KF                 0.000 (*)
+MJC              571.780m   
+MJE              642.887m   
+MJS                0.000 (*)
+NC                 2.000 (*)
+NE                 2.999    
+NF                 1.091    
+NK               500.000m(*)
+NR                 1.000 (*)
+NS                 1.000 (*)
+PTF                0.000 (*)
+RB                 0.000 (*)
+RBM                0.000 (*)
+RC                 2.000    
+RE                 2.000    
+T_ABS           UNDEFINED(*)
+T_MEASURED      UNDEFINED(*)
+T_REL_GLOBAL    UNDEFINED(*)
+T_REL_LOCAL     UNDEFINED(*)
+TF                 1.000n   
+TR                10.000n   
+TRB1               0.000 (*)
+TRB2               0.000 (*)
+TRC1               0.000 (*)
+TRC2               0.000 (*)
+TRE1               0.000 (*)
+TRE2               0.000 (*)
+TRM1               0.000 (*)
+TRM2               0.000 (*)
+VAF              100.000    
+VAR                0.000 (*)
+VJC              700.229m   
+VJE              700.000m   
+VJS              750.000m(*)
+VTF               10.000    
+XCJC               1.000 (*)
+XTB                0.000 (*)
+XTF              500.000m   
+XTI                3.000 (*)
+(*) Default Parameter
+
+
+
+Model parameters for devices of type Pulse
+==========================================
+Instance:              V1   
+Using model:        PULSE   
+P1               100.000n(*)
+P2               110.000n(*)
+P3               500.000n(*)
+P4               510.000n(*)
+P5                 1.000u(*)
+VONE               5.000 (*)
+VZERO              0.000 (*)
+(*) Default Parameter
+
+
+
+DC Operating Point Voltages
+===========================
+Node         Voltage  Node         Voltage  Node         Voltage 
+1             3.049   2           663.632n  3             5.000  
+4             0.000  
+
+
+Operating point for devices of type Bipolar Junction Transistors NPN
+====================================================================
+Instance:                 Q1
+Using model:          2N2484
+IB                 -442.421p
+IC                  445.573p
+VBE                 663.632n
+VBC                  -3.049 
+VCE                   3.049 
+BETADC               -1.007 
+GM                  334.426f
+RPI                  11.382G
+RX                    0.000 
+RO                  942.440G
+CPI                   5.657p
+CMU                   3.812p
+CBX                   0.000 
+CJS                   0.000 
+BETAAC                3.806m
+FT                    5.621m
+
+DC Power Terms:
+PD                    1.358n
+PS                    0.000 
+
+DC Pin Currents:
+Ib                 -442.421p
+Ic                  445.573p
+Ie                   -3.152p
+Is                    0.000 
+
+Condition:
+State                    OFF
+
+
+
+Operating point for devices of type Resistor
+============================================
+Instance:                  R1              R2              R3
+DC Power Terms:
+PD                    46.475m         29.744m          0.294f
+
+DC Pin Currents:
+Ir                    15.244m         15.244m       -442.421p
+
+
+
+Operating point for devices of type Pulse
+=========================================
+Instance:                  V1
+Using model:            PULSE
+DC Power Terms:
+PG                     0.000 
+
+DC Pin Currents:
+ISource              442.421p
+
+
+
+Operating point for devices of type SPICE Source
+================================================
+Instance:                 V2
+DC Power Terms:
+PG                   76.220m
+
+DC Pin Currents:
+ISource             -15.244m
+
+

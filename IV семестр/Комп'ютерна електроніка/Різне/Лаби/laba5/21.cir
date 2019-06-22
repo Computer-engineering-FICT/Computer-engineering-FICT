@@ -1,0 +1,26 @@
+* /root/laba5/21.oregano
+*----------------------------------------------
+*	NGSPICE - NETLIST
+.options NOPAGE 
+.include /usr/X11R6/share/gnome/oregano/models/NPN.model
+
+*----------------------------------------------
+
+V_V2 2 0 dc 10 
+C_C2 1 0 5e-5 IC=0 
+.model NPN NPN (is=3.0E-14 NF=1.0 BF=200 IKF=0.5 VAF=100 ISE=7.5E-15 NE=1.4 NR=1.0 BR=4 IKR=0.24 VAR=28 ISC=1.0E-11 NC=1.4 RB=0.1 RE=0.2 RC=0.1 CJC=9.0E-12 MJC=0.35 VJC=0.4 CJE=27.0E-12 TF=0.3E-9 TR=100E-9) 
+R_R3 4 0 4k 
+R_R4 1 0 400 
+Q_Q1 3 4 1 NPN 
+R_R1 2 3 800 
+V_V1 5 0 dc 0.0 ac 100m sin(0.0 10 10000 0 0) 
+R_R2 2 4 7.5k 
+R_R5 5 4 1 
+
+*----------------------------------------------
+
+.dc V_V1 0 5 0.01
+.print dc   v(3)
+.op
+
+.end

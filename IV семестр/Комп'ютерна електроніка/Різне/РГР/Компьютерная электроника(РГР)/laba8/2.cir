@@ -1,0 +1,20 @@
+* /root/laba8/2.oregano
+*----------------------------------------------
+*	NGSPICE - NETLIST
+.options NOPAGE 
+
+*----------------------------------------------
+
+.model nmos nmos (vto=3.63886 KP=20u  gamma=0 phi=600m lambda=35.07m rd=1.10826 rs=187.488m cbd=397.524p cgso=617.586p cgdo=617.586p tox=0 nsub=0 tpg=1 uo=600 ) 
+R_R1 3 0 2k 
+V_V2 2 0 dc -1 ac 0.0 PULSE 0 17 20n 0.01n 0.01n 80n 200n 
+M_M1 1 2 3 0 nmos 
+V_V1 1 0 dc 0.0 ac 0.0 sin(5 7 10meg 0 0) 
+
+*----------------------------------------------
+
+.tran 1e-08 2e-07 0 UIC
+.print tran  v(1)
+.op
+
+.end

@@ -1,0 +1,228 @@
+********************************************************************************
+***                  Micro-Cap 10.0.3.0 Evaluation Version                   ***
+***                                    1                                     ***
+***                                    2                                     ***
+***                            AC Analysis of 5_1                            ***
+***                                                                          ***
+********************************************************************************
+Limits
+======
+Frequency Range  Log 1E8,1
+Number of Points 51
+Temperature      Linear 27
+Maximum Change % 5
+Noise Input      NONE
+Noise Output     2
+Run Options      Normal
+State Variables  Zero
+Operating Point  On
+
+
+*****************************************************
+***                Temperature=27                 ***
+*****************************************************
+
+Temperature=27 
+
+Model parameters for devices of type Sine Source
+================================================
+Instance:              V2   
+Using model:         60HZ   
+A                169.700    
+DC                 0.000 (*)
+F                 60.000    
+PH                 0.000 (*)
+RP                 0.000 (*)
+RS                 1.000m(*)
+TAU                0.000 (*)
+(*) Default Parameter
+
+
+
+Model parameters for devices of type Bipolar Junction Transistors NPN
+=====================================================================
+Instance:             VT1   
+Using model:       2N3020   
+LEVEL                   1(*)
+AF                 1.000 (*)
+BF               199.956    
+BR                 5.000    
+CJC               54.966p   
+CJE               84.848p   
+CJS                0.000 (*)
+EG                 1.110 (*)
+FC               500.000m(*)
+GAMMA             10.000p(*)
+IKF              106.503m   
+IKR              320.274    
+IRB                0.000 (*)
+IS                10.023f   
+ISC                0.012f   
+ISE                1.034p   
+ISS                0.000 (*)
+ITF                9.524m   
+KF                 0.000 (*)
+MJC              558.067m   
+MJE              642.888m   
+MJS                0.000 (*)
+NC                 2.000 (*)
+NE                 1.628    
+NF                 1.020    
+NK               500.000m(*)
+NR                 1.000 (*)
+NS                 1.000 (*)
+PTF                0.000 (*)
+QCO                0.000 (*)
+QUASIMOD           0.000 (*)
+RB                 0.000 (*)
+RBM                0.000 (*)
+RC                 0.000 (*)
+RCO                0.000 (*)
+RE                 2.000    
+T_ABS           UNDEFINED(*)
+T_MEASURED      UNDEFINED(*)
+T_REL_GLOBAL    UNDEFINED(*)
+T_REL_LOCAL     UNDEFINED(*)
+TF                 1.492n   
+TR                10.000n   
+TRB1               0.000 (*)
+TRB2               0.000 (*)
+TRC1               0.000 (*)
+TRC2               0.000 (*)
+TRE1               0.000 (*)
+TRE2               0.000 (*)
+TRM1               0.000 (*)
+TRM2               0.000 (*)
+VAF              100.000    
+VAR                0.000 (*)
+VG                 1.206 (*)
+VJC              700.000m   
+VJE              700.000m   
+VJS              750.000m(*)
+VO                10.000 (*)
+VTF               10.000    
+XCJC               1.000 (*)
+XTB                0.000 (*)
+XTF              499.997m   
+XTI                3.000 (*)
+(*) Default Parameter
+
+
+
+DC Operating Point Voltages
+===========================
+Node         Voltage  Node         Voltage  Node         Voltage 
+1             0.000   2             1.209   3            86.008  
+4           205.000  
+
+
+Operating Point for Devices of Type Bipolar Junction Transistors NPN
+====================================================================
+Instance:                VT1
+Using model:          2N3020
+
+Beta Terms:
+BETADC              151.500 
+BETAAC              107.989 
+
+Capacitance Terms:
+CPI                   7.727n
+CMU                   3.763p
+CBX                   0.000 
+CJS                   0.000 
+
+Conductance Terms:
+GM                    5.006 
+
+Current Terms:
+IB                    1.309m
+IC                  198.320m
+
+Resistance Terms:
+RPI                  21.571 
+RX                    0.000 
+RO                  931.826 
+
+Voltage Terms:
+VBE                   1.209 
+VBC                 -84.799 
+VCE                  86.008 
+
+Frequency Terms:
+FT                103.059MEG
+
+Power DC Terms:
+PD                   17.059 
+PS                    0.000 
+
+DC Pin Currents:
+Ib                    1.309m
+Ic                  198.320m
+Ie                 -199.629m
+Is                    0.000 
+
+Condition:
+State                    HOT
+
+Device Variables:
+area                  1.000 
+vbe                   0.000 
+vce                   0.000 
+
+
+
+Operating Point for Devices of Type Resistor
+============================================
+Instance:               V2.RS              R1              R2
+V                      0.000         118.992        -203.791 
+Power DC Terms:
+PD                     0.000          23.598         266.771m
+
+DC Pin Currents:
+Ir                     0.000         198.320m         -1.309m
+
+Device Variables:
+tc1                    0.000           0.000           0.000 
+tc2                    0.000           0.000           0.000 
+
+
+
+Operating Point for Devices of Type Capacitor
+=============================================
+Instance:                  C1
+V                     -1.209 
+Power DC Terms:
+PS                     0.000 
+
+DC Pin Currents:
+Ic                     0.000 
+
+Device Variables:
+ic                     0.000 
+
+
+
+Operating Point for Devices of Type Sine Source
+===============================================
+Instance:                  V2
+Using model:             60HZ
+V                      0.000 
+Power DC Terms:
+PG                     0.000 
+
+DC Pin Currents:
+ISource                0.000 
+
+
+
+Operating Point for Devices of Type SPICE Source
+================================================
+Instance:                 V1
+V                   205.000 
+Power DC Terms:
+PG                   40.924 
+
+DC Pin Currents:
+ISource            -199.629m
+
+

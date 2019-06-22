@@ -1,0 +1,25 @@
+* /root/laba6/2.oregano
+*----------------------------------------------
+*	NGSPICE - NETLIST
+.options NOPAGE 
+
+*----------------------------------------------
+
+.model NPN NPN (is=3.0E-14 NF=1.0 BF=200 IKF=0.5 VAF=100 ISE=7.5E-15 NE=1.4 NR=1.0 BR=4 IKR=0.24 VAR=28 ISC=1.0E-11 NC=1.4 RB=0.1 RE=0.2 RC=0.1 CJC=9.0E-12 MJC=0.35 VJC=0.4 CJE=27.0E-12 TF=0.3E-9 TR=100E-9) 
+R_R3 7 5 800 
+R_R1 4 1 1 
+Q_Q1 5 1 2 NPN 
+V_V1 4 0 dc 0.0 ac 0.0 sin(0.0 5 10000 0 0) 
+R_R4 7 3 800 
+Q_Q2 3 1 2 NPN 
+R_R2 2 6 3k 
+V_V3 7 0 dc 15 
+V_V2 0 6 dc 15 
+VTPI@1 4 1 0
+*----------------------------------------------
+
+.dc V_V1 -3 3 0.01
+.print dc   v(4)
+.op
+
+.end

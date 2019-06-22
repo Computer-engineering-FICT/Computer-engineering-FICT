@@ -1,0 +1,33 @@
+* /root/laba10/2.oregano
+*----------------------------------------------
+*	NGSPICE - NETLIST
+.options NOPAGE 
+
+.include /usr/X11R6/share/gnome/oregano/models/4LB10.model
+
+*----------------------------------------------
+
+D_D6 3 1 M_D6 
+.model M_D6 d(IS=5.7239F, RS=5.7 CJO=1.575N TT=5U BV=8.97 IBV=100p) 
+D_D5 2 6 M_D5 
+.model M_D5 d(IS=5.7239F, RS=5.7 CJO=1.575N TT=5U BV=8.97 IBV=100p) 
+C_C1 4 1 1e-7 IC=0 
+V_V4 0 7 dc 10 
+R_R6 7 5 5k 
+V_V2 9 0 dc 10 
+V_V3 0 8 dc 10 
+V_V1 4 0 dc 0.0 ac 0.0 PULSE 0.0 10 0.0 0.0001m 0.0001m 0.8m 1m 
+C_C2 0 2 1e-7 IC=0 
+R_R5 3 0 5k 
+R_R4 3 6 5k 
+R_R3 1 0 50k 
+R_R1 5 6 5k 
+X_U1 3 2 9 8 6 4LB10 
+
+*----------------------------------------------
+
+.tran 1e-05 0.003 0 UIC
+.print tran  v(2)
+.op
+
+.end

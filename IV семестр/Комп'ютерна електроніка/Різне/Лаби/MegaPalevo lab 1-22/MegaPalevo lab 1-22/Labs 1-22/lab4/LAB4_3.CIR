@@ -1,0 +1,766 @@
+[Main]
+FileType=CIR
+Version=7.00
+Program=Micro-Cap
+Screen=1024,768
+MCAPVersion=7.0.0.0
+Key ID=12 345 678
+NLCnt=13
+TXCnt=0
+
+[shapedef]
+Name=Battery
+Line=0,0,22,0
+Line=22,-3,22,3
+Line=26,-7,26,7
+Line=26,0,48,0
+Current=32,8,16,8
+
+[shapedef]
+Name=Sine_Source
+Root="Vsource.root",0,-12,0
+Line=24,-6,26,-4
+Line=26,-4,26,-2
+Line=26,-2,22,2
+Line=22,2,22,4
+Line=22,4,24,6
+
+[shapedef]
+Name=Resistor
+PolyOpen=12 
+PolyLine=0,0
+PolyLine=0,0
+PolyLine=12,0
+PolyLine=14,-4
+PolyLine=18,4
+PolyLine=22,-4
+PolyLine=26,4
+PolyLine=30,-4
+PolyLine=34,4
+PolyLine=36,0
+PolyLine=48,0
+PolyLine=48,0
+Current=32,8,16,8
+
+[shapedef]
+Name=NMOS
+Root="Mos1.root",0,-24,0
+Line=14,0,24,0
+PolyClosed=3 ,Solid
+PolyLine=16,0
+PolyLine=20,4
+PolyLine=20,-4
+Current=32,-4,24,-4
+
+[shapedef]
+Name=Ground
+Line=0,0,12,0
+Line=12,-8,12,8
+Line=18,-4,18,4
+Line=24,0,24,0
+
+[shapedef]
+Name=Vsource.root
+Line=0,0,12,0
+Line=36,0,48,0
+Ellipse=12,-12,36,12
+Line=7,5,7,9
+Root="Plus.root",39,5,0
+Current=32,16,16,16
+
+[shapedef]
+Name=Plus.root
+Line=-2,0,2,0
+Line=0,-2,0,2
+
+[shapedef]
+Name=Mos1.root
+Line=0,0,10,0
+Line=10,-8,10,8
+Rectangle=12,-12,14,12,SOLID
+Line=14,-8,24,-8
+Line=14,8,24,8
+Line=24,8,24,24
+Line=24,-8,24,-24
+Current=32,-24,32,-16
+Current=32,24,32,16
+Current=0,-8,8,-8
+
+[compdef]
+Name=Sine Source
+Definition=Sine source
+Shape=Sine_Source
+Mask=4865
+Label Offset=18,12,15,12
+PinCnt=2
+Pin="Plus",6,0,-6,-6
+Pin="Minus",0,0,-19,-6
+
+[compdef]
+Name=Resistor
+Definition=Resistor
+Shape=Resistor
+Mask=7425
+Label Offset=18,6,8,11
+PinCnt=2
+Pin="Plus",6,0,-10,-4
+Pin="Minus",0,0,-14,-4
+
+[compdef]
+Name=Battery
+Definition=Battery
+Shape=Battery
+Mask=5377
+Label Offset=19,7,10,13
+PinCnt=2
+Pin="Plus",6,0,-4,-5
+Pin="Minus",0,0,-10,-5
+
+[compdef]
+Name=Ground
+Definition=Ground
+Shape=Ground
+Mask=1793
+Label Offset=0,0,0,0
+PinCnt=1
+Pin="PinA",0,0,-3,-7
+
+[compdef]
+Name=NMOS
+Definition=NMOS
+Shape=NMOS
+Mask=4096
+Label Offset=29,1,7,25
+PinCnt=4
+Pin="Drain",3,-3,8,9
+Pin="Gate",0,0,-20,-4
+Pin="Source",3,3,8,4
+Pin="Body",3,0,8,-1
+
+[Circuit]
+WinBackGround Color=15
+Grid Text Color=Height=-12,FStyle=0,Color=1,Name=Arial
+Object Default=Height=-20,FStyle=0,Color=0,Name=Arial
+Component Color=4
+Attribute Text=Height=-12,FStyle=0,Color=2,Name=Arial
+Wire Color=0
+Select Color=6
+Pin Connection=Height=-13,FStyle=0,Color=9,Name=Arial
+Select Box Color=4
+Node Number=Height=-15,FStyle=0,Color=2,Name=Arial
+Node Voltage Color=0
+Current=Height=-11,FStyle=0,Color=12,Name=Arial
+Power/Condition=Height=-11,FStyle=0,Color=9,Name=Arial
+Digital Path Color=9
+Title Block=Height=-15,FStyle=0,Color=0,Name=Arial
+Digital 0 Color=0
+Digital R Color=11
+Digital F Color=11
+Digital 1 Color=9
+Digital X Color=7
+Digital Z Color=8
+Window Placement=2,3, -1,-1, -6,-32, 132,165,969,598
+Window Placement in Analysis=2,3, -1,-1, -6,-32, 132,165,969,598
+Window Placement in Probe=0,0, 0,0, 0,0, 0,0,0,0
+Block Select Color=41
+TitleBlock Field_1=$name
+TitleBlock Field_2=$user $company
+TitleBlock Field_3
+TitleBlock Field_4=$date
+TitleBlock Field_5=Page $page of $maxpage
+TitleBlock One Title=True
+Title_Block_Border=False
+Title_Block=False
+
+[Comp]
+Name=Sine Source
+Grid=31,22
+Rot=3
+
+[Attr]
+ONV=-32,-29,PART,V2
+Style=8192
+Height=-15
+Color=9
+
+[Attr]
+ONV=0,16,MODEL,GENERAL
+Height=-15
+Color=9
+
+[Comp]
+Name=Resistor
+Grid=40,25
+Rot=3
+
+[Attr]
+ONV=-27,-28,PART,R1
+Style=8192
+Height=-15
+Color=9
+
+[Attr]
+ONV=-40,-45,VALUE,200
+Style=8192
+Height=-15
+Color=9
+
+[Attr]
+ONV=0,32,MODEL,
+Height=-15
+Color=9
+
+[Attr]
+ONV=0,55,SLIDER_MAX,200
+
+[Comp]
+Name=Battery
+Grid=46,7
+Rot=2
+
+[Attr]
+ONV=-36,-24,PART,V1
+Style=8192
+Height=-15
+Color=9
+
+[Attr]
+ONV=0,16,VALUE,15
+Height=-15
+Color=9
+
+[Attr]
+ONV=0,33,SLIDER_MAX,15
+
+[Comp]
+Name=Ground
+Grid=46,7
+
+[Comp]
+Name=Ground
+Grid=40,25
+Rot=1
+
+[Comp]
+Name=Ground
+Grid=31,22
+Rot=1
+
+[Comp]
+Name=Ground
+Grid=40,16
+Rot=4
+
+[Wire]
+Grids=31,16,37,16
+
+[Comp]
+Name=NMOS
+Grid=37,16
+
+[Attr]
+ONV=-13,-29,PART,M1
+Style=8192
+Height=-15
+Color=9
+
+[Attr]
+ONV=0,16,VALUE,
+Height=-15
+Color=9
+
+[Attr]
+ONV=0,32,MODEL,IRF743
+Height=-15
+Color=9
+
+[Wire]
+Grids=40,7,40,13
+
+[Comp]
+Name=Resistor
+Grid=40,19
+Rot=4
+
+[Attr]
+ONV=14,-19,PART,R2
+Style=8192
+Height=-15
+Color=9
+
+[Attr]
+ONV=18,-40,VALUE,1
+Style=8192
+Height=-15
+Color=9
+
+[Attr]
+ONV=0,32,MODEL,
+Height=-15
+Color=9
+
+[Comp]
+Name=Sine Source
+Grid=46,25
+Rot=3
+
+[Attr]
+ONV=-32,-29,PART,V3
+Style=8192
+Height=-15
+Color=9
+
+[Attr]
+ONV=0,16,MODEL,GENERAL
+Height=-15
+Color=9
+
+[Comp]
+Name=Ground
+Grid=46,25
+Rot=7
+
+[Node Offsets]
+
+[Condition Offsets]
+
+[Schematic]
+Page 0=0
+TabSize 0=340
+Page 1=0
+TabSize 1=340
+Page 2=0
+TabSize 2=340
+Page 3=0
+TabSize 3=340
+Splitter.xs=0
+Splitter.ys=0
+TextQuad=4099
+Scale=1
+PrinterScale=1
+View=305
+
+[Tools]
+Pos=Top
+SELECT=Yes
+COMP=Yes
+TEXT=Yes
+WIRE=Yes
+WIRED=Yes
+GRAPHIC=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+FLAG=Yes
+META=No
+INFO=Yes
+HELP=Yes
+DIGTRC=No
+DIGTRC2=No
+DIGALL=No
+GRIDTEXT=Yes
+COMPTEXT=Yes
+NODE=Yes
+NODEV=Yes
+CURRENT=Yes
+POWER=Yes
+CONDITIN=Yes
+PIN=Yes
+CROSS=Yes
+GRID=Yes
+BORDER=Yes
+TITLE=Yes
+RUBBER=Yes
+PROPERTY=Yes
+STEP=Yes
+MIRROR=Yes
+ROTATE=Yes
+FLIPY=Yes
+FILPX=Yes
+FINDCOMP=Yes
+FIND=Yes
+REPEAT=No
+MODEL=Yes
+CIR2CKT=No
+ATTDISP=No
+TOFRONT=Yes
+TOBACK=Yes
+PAGEADD=Yes
+PAGEDEL=Yes
+ZOOMIN=Yes
+ZOOMOUT=Yes
+GOTOFLAG=Yes
+COLOR=Yes
+FONT=Yes
+
+[Page]
+Index=0
+Name=Page 1
+Scale 0=1
+Scale 1=1
+Scale 2=1
+Scale 3=1
+Grid=65,9
+
+[Text Area]
+Font=Height=-20,FStyle=0,Color=9,Name=Courier New
+Comment Color=8
+Background Color=15
+Len=250
+.MODEL GENERAL SIN (F=10MEG RP=1000N TAU=250N)
+.MODEL 2N6823 NMOS (VTO=3.49944 KP=20U L=2U W=264.455M GAMMA=0 PHI=600M
++ LAMBDA=50M RD=1.68851 RS=265.791M CBD=567.891P CGSO=1.01229N CGDO=56.139P
++ TOX=0 NSUB=0 TPG=1 UO=600 RG=190.782 RDS=2.4MEG)
+
+
+[Printer]
+T.AutoTile=No
+T.BlackBorder=No
+A.AutoTile=No
+A.BlackBorder=No
+D.AutoTile=No
+D.BlackBorder=No
+
+[TRANSIENT]
+AutoTitle=Yes
+Grid Weight=1
+Grid Pattern=Dot
+
+[AC]
+AutoTitle=Yes
+Grid Weight=1
+Grid Pattern=Dot
+
+[DC]
+AutoTitle=Yes
+Grid Weight=1
+Grid Pattern=Dot
+
+[Analysis]
+Window Placement=2,3, -1,-1, -6,-32, 132,165,969,598
+Window Placement in Probe=0,0, 0,0, 0,0, 0,0,0,0
+Num Out Header Left
+Num Out Header Center=$MC\n$user\n$company\n$Analysis of $name\n
+Num Out Header Right
+Num Out Delimiter=32
+Analysis Text=Height=-20,FStyle=0,Color=0,Name=Arial
+Analysis Grid Color=0
+Analysis Graph Background=15
+Object Default=Height=-20,FStyle=0,Color=0,Name=Arial
+Analysis Window Background=15
+NumOut=Height=-20,FStyle=0,Color=9,Name=Courier New
+ScaleColor=On
+Select Color=9
+Select Box Color=4
+Cursor Select Color Primary=7
+Cursor Select Color Secondary=9
+Tracker Intercept=False
+Tracker Mouse=True
+Tracker Cursor=True
+Tracker Foreground=Height=-15,FStyle=0,Color=0,Name=Arial
+Tracker Background=11
+Data Point Labels Color Fore=Height=-15,FStyle=0,Color=0,Name=Arial
+Data Point Labels Color Back=11
+AnimateWait=0
+AnimateWaitTime=500
+Same Y Scales=Yes
+T.Save_For_Future=No
+A.Save_For_Future=No
+D.Save_For_Future=No
+T.Reduce_Display=1
+T.Reduce_Save=1
+A.Reduce_Display=1
+A.Reduce_Save=1
+D.Reduce_Display=1
+D.Reduce_Save=1
+
+[Tools]
+Pos=Top
+SELECT=Yes
+GRAPHIC=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+POLYCLOS=No
+SCALE=Yes
+CURSOR=Yes
+MEASUREH=Yes
+MEASUREV=Yes
+TAG=Yes
+TEXT=Yes
+PROPERTY=Yes
+START=Yes
+STOP=Yes
+PAUSE=Yes
+DATAPTS=Yes
+TOKENS=Yes
+RULER=Yes
+PLUS=Yes
+XAXIS=Yes
+YAXIS=Yes
+MINORLOG=Yes
+BASELINE=Yes
+HORIZCUR=Yes
+GOTOX=Yes
+GOTOY=Yes
+GOTOPERF=Yes
+GOTOBRNC=Yes
+NEXT=Yes
+NEXTIN=Yes
+PEAK=Yes
+VALLEY=Yes
+HIGH=Yes
+LOW=Yes
+INFLECTN=Yes
+GHIGH=Yes
+GLOW=Yes
+BOTTOM=Yes
+TOP=Yes
+AOUTPUT=Yes
+ZOOMIN=Yes
+ZOOMOUT=Yes
+COLOR=Yes
+FONT=Yes
+
+[Monte Carlo Options]
+Analysis=Transient
+Status=Off
+Distribution=Normal
+Number of Runs
+
+[Monte Carlo Options]
+Analysis=AC
+Status=Off
+Distribution=Normal
+Number of Runs
+
+[Monte Carlo Options]
+Analysis=DC
+Status=Off
+Distribution=Normal
+Number of Runs
+
+[Limits]
+Analysis=Transient
+OPT=120
+Horizontal Cursor=False
+Temperature Type=Linear
+
+[WaveForm]
+Analysis=Transient
+Options=LINEARX,LINEARY
+AliasID=1
+Plt=1
+VFmtX=3
+SFmtX=2
+SFmtY=2
+
+[WaveForm]
+Analysis=Transient
+Options=LINEARX,LINEARY
+AliasID=2
+Plt=1
+VFmtX=3
+SFmtX=2
+SFmtY=2
+Line Color=1
+Text Color=1
+
+[WaveForm]
+Analysis=Transient
+Options=LINEARX,LINEARY
+AliasID=3
+VFmtX=3
+SFmtX=2
+SFmtY=2
+Line Color=4
+Text Color=4
+
+[Limits]
+Analysis=AC
+FRange=1E8,1Meg
+NPts=51
+Temp=27
+MaxChng=5
+NInput=NONE
+NOutput=2
+OPT=64
+Horizontal Cursor=False
+Temperature Type=Linear
+
+[WaveForm]
+Analysis=AC
+Options=LINEARY
+AliasID=1
+Plt=1
+XExp=F
+YExp=db(v(1))
+XRng=Auto
+YRng=Auto
+VFmtX=3
+VFmtY=3
+SFmtX=2
+SFmtY=2
+
+[WaveForm]
+Analysis=AC
+Options=LINEARY
+AliasID=2
+Plt=1
+XExp=F
+YExp=ph(v(1))
+XRng=Auto
+YRng=Auto
+VFmtX=3
+VFmtY=3
+SFmtX=2
+SFmtY=2
+Line Color=1
+Text Color=1
+
+[WaveForm]
+Analysis=AC
+Options=LINEARY
+AliasID=3
+VFmtX=3
+SFmtX=2
+SFmtY=2
+Line Color=4
+Text Color=4
+
+[Limits]
+Analysis=DC
+I2Range=10
+I2=v1
+I1Range=10
+I1=v3
+NPts=0
+Temp=20
+MaxChng=5
+OPT=32792
+Horizontal Cursor=False
+Temperature Type=Linear
+Sweep1 type=Auto
+Sweep2 type=Linear
+
+[WaveForm]
+Analysis=DC
+Options=LINEARX,LINEARY
+AliasID=1
+Plt=1
+XExp=v(4)
+YExp=i(2,4)
+XRng=16,-4
+YRng=0.04,-0.06
+Range Grid X=4
+Range Grid Y=0.02
+VFmtX=3
+VFmtY=3
+SFmtX=2
+SFmtY=2
+
+[WaveForm]
+Analysis=DC
+Options=LINEARX,LINEARY
+AliasID=4
+XExp=v(4)
+YExp=i(2,4)
+XRng=16,-4
+YRng=0.04,-0.06
+Range Grid X=4
+Range Grid Y=0.02
+VFmtX=3
+VFmtY=3
+SFmtX=2
+SFmtY=2
+Line Color=9
+Text Color=9
+
+[WaveForm]
+Analysis=DC
+Options=LINEARX,LINEARY
+AliasID=3
+VFmtX=3
+VFmtY=3
+SFmtX=2
+SFmtY=2
+Line Color=4
+Text Color=4
+
+[Stepping]
+Analysis=Transient
+Index=1
+Parameter Type=Component
+Name=R2
+Param=Value
+From=100
+To=50000
+Value=5000
+
+[Stepping]
+Analysis=AC
+Index=1
+Parameter Type=Component
+Name=R2
+Param=Value
+From=100
+To=50000
+Value=5000
+
+[Stepping]
+Analysis=DC
+Index=1
+Parameter Type=Component
+Name=R2
+Param=Value
+From=100
+To=50000
+Value=5000
+
+[Optimize]
+Format=3
+
+[Optimize]
+Analysis=Transient
+Method=Standard_Powell
+
+[Optimize]
+Analysis=AC
+Method=Standard_Powell
+
+[Optimize]
+Analysis=DC
+Method=Standard_Powell
+
+[Watch]
+Format=3
+
+[Watch]
+Analysis=Transient
+ExprPercentWidth=80
+
+[Watch]
+Analysis=AC
+ExprPercentWidth=80
+
+[Watch]
+Analysis=DC
+ExprPercentWidth=80
+
+[DSP]
+T.Status=Off
+A.Status=Off
+
+[TF]
+Input Source
+Place Text=False
+
+[SENS]
+Multiple=False
+Parameter Type=Component

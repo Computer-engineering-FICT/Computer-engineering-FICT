@@ -1,0 +1,22 @@
+* /root/laba17/2.oregano
+*----------------------------------------------
+*	NGSPICE - NETLIST
+.options NOPAGE 
+
+*----------------------------------------------
+
+.model nmos nmos (vto=2.5 KP=0.06   cgso=300n cgdo=300n cgbo=100n tox=0 nsub=0 tpg=1 uo=600 ) 
+M_M1 2 3 0 0 nmos 
+M_M2 1 1 2 0 nmos 
+V_V2 1 0 dc 10 
+V_V1 3 0 dc 0.0 ac 0.0 PULSE 0.0 5 0 0.01u 0.01u 0.1u 0.7u 
+
+*----------------------------------------------
+
+.tran 1e-07 2e-06 0 UIC
+.print tran  v(1)
+.dc V_V1 0 5 0.1
+.print dc   v(1)
+.op
+
+.end

@@ -1,0 +1,24 @@
+* /root/laba12/12.oregano
+*----------------------------------------------
+*	NGSPICE - NETLIST
+.options NOPAGE 
+
+
+*----------------------------------------------
+
+R_R2 1 0 400 
+V_V1 2 0 dc 0.0 ac 0.0 sin(0.0 10 25 0 0) 
+D_D3 0 1 M_D3 
+.model M_D3 d(IS=0.1PA, RS=16 CJO=2PF TT=12N BV=100 IBV=0.1PA) 
+C_C1 3 0 2e-3 IC=0 
+R_R1 3 1 400 
+D_D2 2 3 M_D2 
+.model M_D2 d(IS=0.1PA, RS=16 CJO=2PF TT=12N BV=100 IBV=0.1PA) 
+
+*----------------------------------------------
+
+.tran 0.001 0.5 0 UIC
+.print tran  v(1)
+.op
+
+.end

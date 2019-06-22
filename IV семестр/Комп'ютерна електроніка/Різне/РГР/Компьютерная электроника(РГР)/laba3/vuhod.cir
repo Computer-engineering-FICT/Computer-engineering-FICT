@@ -1,0 +1,25 @@
+* /root/laba3/vuhod.oregano
+*----------------------------------------------
+*	NGSPICE - NETLIST
+.options NOPAGE 
+.include /usr/local/share/gnome/oregano/models/15NPN.model
+
+*----------------------------------------------
+
+.model 15NPN NPN(Is=9.86f nf=1.293 Bf=971 ikf=10.03m vaf=100 ise=1e-22 ne=1.006 + nr=1.0 br=1m ikr=10m var=0 isc=99p nc=2 rb=0.1 re=0.1 + rc=1.1 cjc=13.3p mjc=571.78m vjc=700m cje=2p tf=5.8n + tr=10n)
+
+R_R3 5 1 1 
+R_R2 5 0 500 
+R_R1 4 2 1 
+Q_Q1 3 2 5 15NPN 
+V_V1 4 0 dc 0 ac 0.0 sin(0.0 5 10000 0 0) 
+V_V2 3 0 dc 10 
+V_V3 1 0 dc 0 ac 0.0 sin(0.0 5 10000 0 0) 
+VTpi@1 5 1 0
+*----------------------------------------------
+
+.dc V_V1 0 10 3 V_V3 0 10 1
+.print dc   v(3)
+.op
+
+.end

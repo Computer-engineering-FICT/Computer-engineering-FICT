@@ -1,0 +1,17 @@
+*----------------------------------------------
+.options OUT=120 
+*------------- Models -------------------------
+.include /usr/share/oregano/models/NPN.model
+*------------- Circuit Description-------------
+Q_Q1 1 4 0 NPN3 
+V_V1 3 0 dc 0.0 ac 0.0 sin(0.0 30.0 10k 0 0) 
+R_R6 3 4 10 
+V_V3 2 0 dc 100.0 
+R_R5 1 2 400 
+
+*----------------------------------------------
+.print dc  v(1)
+.dc V_V1 0 0 0
+.print op v(nodes)
+.op
+.end

@@ -1,0 +1,216 @@
+********************************************************************************
+***                  Micro-Cap 10.0.9.2 Evaluation Version                   ***
+***                                   Aruy                                   ***
+***                                  Тазік                                   ***
+***                 Transient Analysis of уніполяр_транз_ОИ                  ***
+********************************************************************************
+Limits
+======
+Time Range           300u
+Maximum Time Step    0
+Number of Points     51
+Temperature          Linear 27
+Retrace Runs         1
+Run Options          Normal
+State Variables      Zero
+Operating Point      On
+Operating Point Only Off
+
+
+*****************************************************
+***                Temperature=27                 ***
+*****************************************************
+
+Temperature=27 
+
+Model parameters for devices of type Sine Source
+================================================
+Instance:               V1   
+Using model:       GENERAL   
+A                  14.000    
+DC                  0.000 (*)
+F                10.000MEG   
+PH                  0.000 (*)
+RP                  0.000 (*)
+RS                  1.000m(*)
+TAU                 0.000 (*)
+(*) Default Parameter
+
+
+
+Model parameters for devices of type Mosfet NMOS
+================================================
+Instance:               M1   
+Using model:     MTP15N06L   
+LEVEL            UNDEFINED(*)
+AF                  1.000 (*)
+CBD                 1.420n   
+CBS                 0.000 (*)
+CGBO                0.000 (*)
+CGDO              429.102p   
+CGSO                2.398n   
+CJ                  0.000 (*)
+CJSW                0.000 (*)
+DELTA               0.000 (*)
+ETA                 0.000 (*)
+FC                500.000m(*)
+GAMMA               0.000    
+GDSNOI              1.000 (*)
+IS                 10.000f   
+JS                 10.000n   
+JSW                 0.000 (*)
+KAPPA            UNDEFINED(*)
+KF                  0.000 (*)
+KP                 20.000u   
+L                   2.000u   
+LAMBDA            109.675f   
+LD                  0.000 (*)
+MJ                500.000m(*)
+MJSW              330.000m   
+N                   1.000 (*)
+NEFF                1.000 (*)
+NFS                 0.000 (*)
+NLEV             UNDEFINED(*)
+NSS              UNDEFINED(*)
+NSUB                0.000    
+PB                800.000m(*)
+PBSW              800.000m   
+PHI               600.000m   
+RB                  0.000 (*)
+RD                  5.961m   
+RDS              60.000MEG   
+RG                108.606    
+RS                  0.000 (*)
+RSH                 0.000 (*)
+T_ABS            UNDEFINED(*)
+T_MEASURED       UNDEFINED(*)
+T_REL_GLOBAL     UNDEFINED(*)
+T_REL_LOCAL      UNDEFINED(*)
+THETA               0.000 (*)
+TOX                 0.000    
+TPG                 1.000    
+TT                  0.000 (*)
+UCRIT              10.000K(*)
+UEXP                0.000 (*)
+UO                600.000    
+UTRA                0.000 (*)
+VMAX                0.000 (*)
+VTO                 1.338    
+W                 353.426m   
+WD                  0.000 (*)
+XJ                  0.000 (*)
+XQC                 1.000 (*)
+(*) Default Parameter
+
+
+
+DC Operating Point Voltages
+===========================
+Node         Voltage  Node         Voltage  Node         Voltage 
+1             0.000   2            14.000   3            14.000  
+
+
+Operating Point for Devices of Type Mosfet NMOS
+===============================================
+Instance:                  M1
+Using model:        MTP15N06L
+
+Capacitance Terms:
+CBD                  330.083p
+CBS                    0.000 
+CGSOVL               847.598p
+CGDOVL               151.656p
+CGBOVL                 0.000 
+CGS                    0.000 
+CGD                    0.000 
+CGB                    0.000 
+
+Conductance Terms:
+GM                     0.000 
+GDS                    0.000 
+GMBS                   0.000 
+
+Current Terms:
+ID                   233.348n
+
+Voltage Terms:
+VGS                    0.000 
+VDS                   14.000 
+VBS                    0.000 
+VGB                    0.000 
+VGD                  -14.000 
+VDB                   14.000 
+VTH                    1.338 
+VDSAT                  0.000 
+
+Power DC Terms:
+PD                     3.267u
+PS                     0.000 
+
+DC Pin Currents:
+Ig                     0.000 
+Id                   233.348n
+Is                  -233.329n
+Ib                   -19.413p
+
+Condition:
+State                     OFF
+
+Device Variables:
+m                      1.000 
+l                      0.000 
+w                      0.000 
+ad                     0.000 
+as                     0.000 
+pd                     0.000 
+ps                     0.000 
+nrd                    0.000 
+nrs                    0.000 
+nrb                    0.000 
+nrg                    0.000 
+vds                    0.000 
+vgs                    0.000 
+vbs                    0.000 
+
+
+
+Operating Point for Devices of Type Resistor
+============================================
+Instance:                V1.RS               R1
+V                       0.000          280.018u
+Power DC Terms:
+PD                      0.000           65.342p
+
+DC Pin Currents:
+Ir                      0.000          233.348n
+
+Device Variables:
+tc1                     0.000            0.000 
+tc2                     0.000            0.000 
+
+
+
+Operating Point for Devices of Type Sine Source
+===============================================
+Instance:                   V1
+Using model:           GENERAL
+V                       0.000 
+Power DC Terms:
+PG                      0.000 
+
+DC Pin Currents:
+ISource                 0.000 
+
+
+
+Operating Point for Devices of Type SPICE Source
+================================================
+Instance:                  V3
+V                     14.000 
+Power DC Terms:
+PG                     3.267u
+
+DC Pin Currents:
+ISource             -233.348n
+
+

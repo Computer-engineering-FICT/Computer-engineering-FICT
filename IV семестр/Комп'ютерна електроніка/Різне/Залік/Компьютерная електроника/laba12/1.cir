@@ -1,0 +1,24 @@
+* /root/laba12/1.oregano
+*----------------------------------------------
+*	NGSPICE - NETLIST
+.options NOPAGE 
+.include /usr/X11R6/share/gnome/oregano/models/NPN.model
+
+*----------------------------------------------
+.model M_D3 d(IS=5.72f tt=5u rs=1 CJO=1.34N vj=750m M=503m BV=4 ) 
+.model M_D2 d(IS=5.72f tt=5u rs=8.9 CJO=1.34N vj=750m M=503m BV=10 ) 
+C_C1 5 0 2e-3 IC=0 
+Q_Q1 5 1 4 NPN 
+D_D3 0 1 M_D3 
+D_D2 2 3 M_D2 
+R_R2 4 0 400 
+R_R1 3 1 2k 
+V_V1 2 0 dc 0.0 ac 0.0 sin(0.0 10 25 0 0) 
+
+*----------------------------------------------
+
+.tran 0.01 0.5 0
+.print tran  v(5)
+.op
+
+.end

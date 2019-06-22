@@ -1,0 +1,34 @@
+* /root/laba19/2.oregano
+*----------------------------------------------
+*	NGSPICE - NETLIST
+.options NOPAGE 
+.include /usr/X11R6/share/gnome/oregano/models/1NPN.model
+
+
+*----------------------------------------------
+
+D_D5 4 3 diode  
+Q_Q1 5 3 0 1NPN 
+R_R2 7 4 1.8k 
+R_R4 7 5 150 
+V_V2 7 0 dc 5 
+R_R3 3 0 4k 
+R_R5 8 1 1k 
+V_V3 1 0 dc 5 
+.model diode D ( is=5.72393f bv=6.67 rs=4.1 tt=5u cjo=2.02683n vj=750.143m m=504.468m) 
+D_D4 8 5 diode 
+D_D3 4 2 diode 
+D_D2 4 2 diode 
+D_D1 4 2 diode 
+V_V1 6 0 dc 0.0 ac 0.0 PULSE 0.0 5 0.0 0.01u 0.01u 0.5u 0.7u 
+R_R1 2 6 1 
+vtpi@1 6 2 0
+*----------------------------------------------
+
+.tran 1e-07 6e-06 0 UIC
+.print tran  v(3)
+.dc V_V1 0 5 0.1
+.print dc   v(3)
+.op
+
+.end

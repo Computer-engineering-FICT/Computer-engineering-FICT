@@ -1,0 +1,28 @@
+* /root/laba9/1.oregano
+*----------------------------------------------
+*	NGSPICE - NETLIST
+.options NOPAGE 
+
+
+*----------------------------------------------
+
+.model NPN NPN (is=3.0E-14 NF=1.0 BF=200 IKF=0.5 VAF=100 ISE=7.5E-15 NE=1.4 NR=1.0 BR=4 IKR=0.24 VAR=28 ISC=1.0E-11 NC=1.4 RB=0.1 RE=0.2 RC=0.1 CJC=9.0E-12 MJC=0.35 VJC=0.4 CJE=27.0E-12 TF=0.3E-9 TR=100E-9) 
+Q_Q1 2 6 1 NPN 
+V_V1 4 0 dc 7 
+C_C4 2 3 1e-5 IC=0 
+L_L1 6 3 3.5e-4 
+C_C3 3 0 1e-8 IC=0 
+C_C2 6 0 1e-7 IC=0 
+C_C1 1 0 1e-5 IC=0 
+R_R4 4 2 1k 
+R_R3 1 0 200 
+R_R2 4 5 35k 
+R_R1 5 0 8k 
+
+*----------------------------------------------
+
+.tran 1e-10 0.0001 0 UIC
+.print tran  v(4)
+.op
+
+.end

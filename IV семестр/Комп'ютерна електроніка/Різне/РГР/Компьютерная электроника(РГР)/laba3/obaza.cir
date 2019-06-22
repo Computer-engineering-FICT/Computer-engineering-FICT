@@ -1,0 +1,24 @@
+* /root/laba3/obaza.oregano
+*----------------------------------------------
+*	NGSPICE - NETLIST
+.options NOPAGE 
+.include /usr/local/share/gnome/oregano/models/15NPN.model
+
+*----------------------------------------------
+
+R_R2 3 1 700
+
+.model 15NPN NPN(Is=9.86f nf=1.293 Bf=971 ikf=10.03m vaf=100 ise=1e-22 ne=1.006 + nr=1.0 br=1m ikr=10m var=0 isc=99p nc=2 rb=0.1 re=0.1 + rc=1.1 cjc=13.3p mjc=571.78m vjc=700m cje=2p tf=5.8n + tr=10n)
+
+Q_Q1 3 0 2 15NPN 
+R_R1 2 4 1 
+V_V1 4 0 dc 0.0 ac 0.0 sin(0.0 5 10000 0 0) 
+V_V2 1 0 dc 10 
+VTPI@1 4 2 0
+*----------------------------------------------
+
+.dc V_V1 -1.5 3.5 0.01
+.print dc   v(1)
+.op
+
+.end

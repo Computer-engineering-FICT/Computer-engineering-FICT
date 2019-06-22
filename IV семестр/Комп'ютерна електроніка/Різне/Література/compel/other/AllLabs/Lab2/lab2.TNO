@@ -1,0 +1,179 @@
+********************************************************************************
+***                            MC-9 GUAP Edition                             ***
+***                                                                          ***
+***                                                                          ***
+***          Анализ переходных процессов Transient analysis of lab2          ***
+********************************************************************************
+Limits
+======
+Time Range           1u
+Maximum Time Step    0
+Number of Points     51
+Temperature          Linear 27
+Run Options          Normal
+State Variables      Zero
+Operating Point      On
+Operating Point Only Off
+
+
+*****************************************************
+***                Temperature=27                 ***
+*****************************************************
+
+Temperature=27 
+
+Model parameters for devices of type Sine Source
+================================================
+Instance:                V1   
+Using model:        GENERAL   
+A                    1.000 (*)
+DC                   0.000 (*)
+F                 10.000MEG   
+PH                   0.000 (*)
+RP                   0.000 (*)
+RS                   1.000m(*)
+TAU                  0.000 (*)
+(*) Default Parameter
+
+
+
+Model parameters for devices of type Bipolar Junction Transistors NPN
+=====================================================================
+Instance:                Q1   
+Using model:       2SC509GT   
+LEVEL                     1(*)
+AF                   1.000 (*)
+BF                 204.448    
+BR                  10.000    
+CJC                 43.022p   
+CJE                  2.000p   
+CJS                  0.000 (*)
+EG                   1.110 (*)
+FC                 500.000m(*)
+IKF                  1.156    
+IKR                306.270m   
+IRB                  0.000 (*)
+IS                  35.879f   
+ISC              1.218E-020   
+ISE                  5.886f   
+ISS                  0.000 (*)
+ITF                 10.015m   
+KF                   0.000 (*)
+MJC                500.133m   
+MJE                500.000m   
+MJS                  0.000 (*)
+NC                   2.995    
+NE                   1.170    
+NF                   1.000 (*)
+NK                 500.000m(*)
+NR                   1.000 (*)
+NS                   1.000 (*)
+PTF                  0.000 (*)
+RB                   0.000 (*)
+RBM                  0.000 (*)
+RC                 148.248m   
+RE                   3.588    
+T_ABS             UNDEFINED(*)
+T_MEASURED        UNDEFINED(*)
+T_REL_GLOBAL      UNDEFINED(*)
+T_REL_LOCAL       UNDEFINED(*)
+TF                   1.638n   
+TR                  94.577n   
+TRB1                 0.000 (*)
+TRB2                 0.000 (*)
+TRC1                 0.000 (*)
+TRC2                 0.000 (*)
+TRE1                 0.000 (*)
+TRE2                 0.000 (*)
+TRM1                 0.000 (*)
+TRM2                 0.000 (*)
+VAF                100.000    
+VAR                  0.000 (*)
+VJC                699.997m   
+VJE                750.000m(*)
+VJS                750.000m(*)
+VTF                 10.000    
+XCJC                 1.000 (*)
+XTB                  0.000 (*)
+XTF                500.001m   
+XTI                  3.000 (*)
+(*) Default Parameter
+
+
+
+DC Operating Point Voltages
+===========================
+Node         Voltage  Node         Voltage  Node         Voltage 
+1        -3.889E-034  2        -2.256E-029  3        -1.143E-028 
+4             0.000  
+
+
+Operating point for devices of type Bipolar Junction Transistors NPN
+====================================================================
+Instance:                   Q1
+Using model:          2SC509GT
+IB                  1.397E-025
+IC                 -1.492E-024
+VBE                -2.256E-029
+VBC                 9.170E-029
+VCE                -1.143E-028
+BETADC                -10.677 
+GM                 -3.041E-023
+RPI                     4.849T
+RX                      0.000 
+RO                    418.897G
+CPI                     2.000p
+CMU                    43.022p
+CBX                     0.000 
+CJS                     0.000 
+BETAAC               -147.473p
+FT                   -107.507f
+
+DC Power Terms:
+PD                  8.477E-037
+PS                      0.000 
+
+DC Pin Currents:
+Ib                  1.397E-025
+Ic                 -1.492E-024
+Ie                  1.352E-024
+Is                      0.000 
+
+Condition:
+State                      OFF
+
+
+
+Operating point for devices of type Resistor
+============================================
+Instance:                 RS_V1                R1                R2
+DC Power Terms:
+PD                   1.513E-064        8.774E-060        1.125E-058
+
+DC Pin Currents:
+Ir                  -3.889E-031        3.889E-031       -9.850E-031
+
+
+
+Operating point for devices of type Sine Source
+===============================================
+Instance:                    V1
+Using model:            GENERAL
+DC Power Terms:
+PG                       0.000 
+
+DC Pin Currents:
+ISource             -3.889E-031
+
+
+
+Operating point for devices of type SPICE Source
+================================================
+Instance:                   V2
+DC Power Terms:
+PG                      0.000 
+
+DC Pin Currents:
+ISource            -9.850E-031
+
+

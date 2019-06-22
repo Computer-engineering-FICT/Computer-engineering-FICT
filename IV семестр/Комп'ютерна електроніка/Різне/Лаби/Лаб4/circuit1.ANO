@@ -1,0 +1,217 @@
+********************************************************************************
+***                            Micro-Cap 10.0.4.0                            ***
+***                                                                          ***
+***                                                                          ***
+***                         AC Analysis of circuit1                          ***
+***                           21.03.2014 19:04:43                            ***
+********************************************************************************
+Limits
+======
+Frequency Range  Log 1E8,1Meg
+Number of Points 1001
+Temperature      Linear 27
+Maximum Change % 5
+Noise Input      NONE
+Noise Output     2
+Run Options      Normal
+State Variables  Zero
+Operating Point  On
+
+
+*****************************************************
+***                Temperature=27                 ***
+*****************************************************
+
+Temperature=27 
+
+Model parameters for devices of type Sine Source
+================================================
+Instance:               V1   
+Using model:       GENERAL   
+A                   1.000 (*)
+DC                  0.000 (*)
+F                10.000MEG   
+PH                  0.000 (*)
+RP                  0.000 (*)
+RS                  1.000m(*)
+TAU                 0.000 (*)
+(*) Default Parameter
+
+
+
+Model parameters for devices of type Mosfet NMOS
+================================================
+Instance:               M1   
+Using model:        IRF710   
+LEVEL            UNDEFINED(*)
+AF                  1.000 (*)
+CBD               135.000p   
+CBS                 0.000 (*)
+CGBO                0.000 (*)
+CGDO              191.497p   
+CGSO                3.246n   
+CJ                  0.000 (*)
+CJSW                0.000 (*)
+DELTA               0.000 (*)
+ETA                 0.000 (*)
+FC                500.000m(*)
+GAMMA               0.000    
+GDSNOI              0.000    
+IS                 10.000f   
+JS                 10.000n   
+JSW                 0.000 (*)
+KAPPA            UNDEFINED(*)
+KF                  0.000 (*)
+KP                 20.000u   
+L                   2.000u   
+LAMBDA              5.716m   
+LD                  0.000 (*)
+MJ                500.000m(*)
+MJSW              330.000m(*)
+N                   1.000 (*)
+NEFF                1.000 (*)
+NFS                 0.000 (*)
+NLEV                0.000    
+NSS              UNDEFINED(*)
+NSUB                0.000    
+PB                800.000m(*)
+PBSW              800.000m(*)
+PHI               600.000m   
+RB                  0.000 (*)
+RD                  2.816    
+RDS               1.600MEG   
+RG                 14.154    
+RS                  0.000 (*)
+RSH                 0.000 (*)
+T_ABS            UNDEFINED(*)
+T_MEASURED       UNDEFINED(*)
+T_REL_GLOBAL     UNDEFINED(*)
+T_REL_LOCAL      UNDEFINED(*)
+THETA               0.000 (*)
+TOX                 0.000    
+TPG                 1.000    
+TT                  0.000 (*)
+UCRIT              10.000K(*)
+UEXP                0.000 (*)
+UO                600.000    
+UTRA                0.000 (*)
+VMAX                0.000 (*)
+VTO                 3.458    
+W                  94.846m   
+WD                  0.000 (*)
+XJ                  0.000 (*)
+XQC                 1.000 (*)
+(*) Default Parameter
+
+
+
+DC Operating Point Voltages
+===========================
+Node         Voltage  Node         Voltage  Node         Voltage 
+1             0.000   2             3.999   3             4.000  
+
+
+Operating Point for Devices of Type Mosfet NMOS
+===============================================
+Instance:                  M1
+Using model:           IRF710
+
+Capacitance Terms:
+CBD                  134.999p
+CBS                    0.000 
+CGSOVL               307.906p
+CGDOVL                18.163p
+CGBOVL                 0.000 
+CGS                    0.000 
+CGD                    0.000 
+CGB                    0.000 
+
+Conductance Terms:
+GM                     0.000 
+GDS                    0.000 
+GMBS                   0.000 
+
+Current Terms:
+ID                    -2.499u
+
+Voltage Terms:
+VGS                   -3.999 
+VDS                   -3.999 
+VBS                   -3.999 
+VGB                    0.000 
+VGD                    0.000 
+VDB                    0.000 
+VTH                    3.458 
+VDSAT                  0.000 
+
+Power DC Terms:
+PD                     9.994u
+PS                     0.000 
+
+DC Pin Currents:
+Ig                     0.000 
+Id                    -2.499u
+Is                     2.499u
+Ib                    -5.545p
+
+Condition:
+State                     OFF
+
+Device Variables:
+m                      1.000 
+l                      0.000 
+w                      0.000 
+ad                     0.000 
+as                     0.000 
+pd                     0.000 
+ps                     0.000 
+nrd                    0.000 
+nrs                    0.000 
+nrb                    0.000 
+nrg                    0.000 
+vds                    0.000 
+vgs                    0.000 
+vbs                    0.000 
+
+
+
+Operating Point for Devices of Type Resistor
+============================================
+Instance:                V1.RS               R1
+V                       0.000            1.250m
+Power DC Terms:
+PD                      0.000            3.123n
+
+DC Pin Currents:
+Ir                      0.000            2.499u
+
+Device Variables:
+tc1                     0.000            0.000 
+tc2                     0.000            0.000 
+
+
+
+Operating Point for Devices of Type Sine Source
+===============================================
+Instance:                   V1
+Using model:           GENERAL
+V                       0.000 
+Power DC Terms:
+PG                      0.000 
+
+DC Pin Currents:
+ISource                 0.000 
+
+
+
+Operating Point for Devices of Type SPICE Source
+================================================
+Instance:                  V2
+V                      4.000 
+Power DC Terms:
+PG                     9.997u
+
+DC Pin Currents:
+ISource               -2.499u
+
+

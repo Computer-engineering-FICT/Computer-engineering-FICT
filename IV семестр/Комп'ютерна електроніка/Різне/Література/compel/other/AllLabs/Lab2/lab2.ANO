@@ -1,0 +1,181 @@
+********************************************************************************
+***                            MC-9 GUAP Edition                             ***
+***                                                                          ***
+***                                                                          ***
+***                   Частотный анализ AC Analysis of lab2                   ***
+********************************************************************************
+Limits
+======
+Frequency Range  1E8,1Meg
+Number of Points 51
+Temperature      Linear 27
+Maximum Change % 5
+Noise Input      NONE
+Noise Output     2
+Run Options      Normal
+State Variables  Zero
+Frequency Step   Auto
+Operating Point  On
+
+
+*****************************************************
+***                Temperature=27                 ***
+*****************************************************
+
+Temperature=27 
+
+Model parameters for devices of type Sine Source
+================================================
+Instance:               V1   
+Using model:       GENERAL   
+A                   1.000 (*)
+DC                  0.000 (*)
+F                10.000MEG   
+PH                  0.000 (*)
+RP                  0.000 (*)
+RS                  1.000m(*)
+TAU                 0.000 (*)
+(*) Default Parameter
+
+
+
+Model parameters for devices of type Bipolar Junction Transistors NPN
+=====================================================================
+Instance:               Q1   
+Using model:           118   
+LEVEL                    1(*)
+AF                  1.000 (*)
+BF                100.000 (*)
+BR                  1.000 (*)
+CJC                 0.000 (*)
+CJE                 0.000 (*)
+CJS                 0.000 (*)
+EG                  1.110 (*)
+FC                500.000m(*)
+IKF                 0.000 (*)
+IKR                 0.000 (*)
+IRB                 0.000 (*)
+IS                  0.100f(*)
+ISC                 0.000 (*)
+ISE                 0.000 (*)
+ISS                 0.000 (*)
+ITF                 0.000 (*)
+KF                  0.000 (*)
+MJC               330.000m(*)
+MJE               330.000m(*)
+MJS                 0.000 (*)
+NC                  2.000 (*)
+NE                  1.500 (*)
+NF                  1.000 (*)
+NK                500.000m(*)
+NR                  1.000 (*)
+NS                  1.000 (*)
+PTF                 0.000 (*)
+RB                  0.000 (*)
+RBM                 0.000 (*)
+RC                  0.000 (*)
+RE                  0.000 (*)
+T_ABS            UNDEFINED(*)
+T_MEASURED       UNDEFINED(*)
+T_REL_GLOBAL     UNDEFINED(*)
+T_REL_LOCAL      UNDEFINED(*)
+TF                  0.000 (*)
+TR                  0.000 (*)
+TRB1                0.000 (*)
+TRB2                0.000 (*)
+TRC1                0.000 (*)
+TRC2                0.000 (*)
+TRE1                0.000 (*)
+TRE2                0.000 (*)
+TRM1                0.000 (*)
+TRM2                0.000 (*)
+VAF                 0.000 (*)
+VAR                 0.000 (*)
+VJC               750.000m(*)
+VJE               750.000m(*)
+VJS               750.000m(*)
+VTF                 0.000 (*)
+XCJC                1.000 (*)
+XTB                 0.000 (*)
+XTF                 0.000 (*)
+XTI                 3.000 (*)
+(*) Default Parameter
+
+
+
+DC Operating Point Voltages
+===========================
+Node         Voltage  Node         Voltage  Node         Voltage 
+1        -5.161E-036  2        -2.065E-032  3         2.226E-030 
+4             0.000  
+
+
+Operating point for devices of type Bipolar Junction Transistors NPN
+====================================================================
+Instance:                  Q1
+Using model:              118
+IB                -7.329E-027
+IC                 1.466E-026
+VBE               -2.065E-032
+VBC               -2.247E-030
+VCE                2.226E-030
+BETADC                -2.000 
+GM                 1.212E-027
+RPI                   99.615T
+RX                     0.000 
+RO                   996.149G
+CPI                    0.000 
+CMU                    0.000 
+CBX                    0.000 
+CJS                    0.000 
+BETAAC               120.702f
+FT                    19.285n
+
+DC Power Terms:
+PD                 1.071E-040
+PS                     0.000 
+
+DC Pin Currents:
+Ib                -7.329E-027
+Ic                 1.466E-026
+Ie                -7.332E-027
+Is                     0.000 
+
+Condition:
+State                     OFF
+
+
+
+Operating point for devices of type Resistor
+============================================
+Instance:                RS_V1               R1               R2
+DC Power Terms:
+PD                  2.664E-068       1.065E-064       4.764E-062
+
+DC Pin Currents:
+Ir                 -5.161E-033       5.161E-033       2.140E-032
+
+
+
+Operating point for devices of type Sine Source
+===============================================
+Instance:                   V1
+Using model:           GENERAL
+DC Power Terms:
+PG                      0.000 
+
+DC Pin Currents:
+ISource            -5.161E-033
+
+
+
+Operating point for devices of type SPICE Source
+================================================
+Instance:                  V2
+DC Power Terms:
+PG                     0.000 
+
+DC Pin Currents:
+ISource            2.140E-032
+
+

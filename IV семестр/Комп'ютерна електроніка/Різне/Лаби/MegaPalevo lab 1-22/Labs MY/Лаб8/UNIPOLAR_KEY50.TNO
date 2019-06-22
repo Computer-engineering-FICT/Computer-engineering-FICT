@@ -1,0 +1,212 @@
+********************************************************************************
+***                   Micro-Cap 9.0.6.1 Evaluation Version                   ***
+***                                   ASH                                    ***
+***                                   ASH                                    ***
+***     Анализ переходных процессов Transient analysis of UNIPOLAR_KEY50     ***
+***                                                                          ***
+********************************************************************************
+Limits
+======
+Time Range           0.1m
+Maximum Time Step    0.0000001
+Number of Points     51
+Temperature          Linear 27
+Run Options          Normal
+State Variables      Zero
+Operating Point      On
+Operating Point Only Off
+
+
+*****************************************************
+***                Temperature=27                 ***
+*****************************************************
+
+Temperature=27 
+
+Model parameters for devices of type Sine Source
+================================================
+Instance:              V2   
+Using model:       SOURCE   
+A                 10.000    
+DC                 0.000 (*)
+F                450.000K   
+PH                 0.000 (*)
+RP                 0.000 (*)
+RS                 1.000m(*)
+TAU                0.000 (*)
+(*) Default Parameter
+
+
+
+Model parameters for devices of type Mosfet NMOS
+================================================
+Instance:              M1   
+Using model:       2N6661   
+LEVEL           UNDEFINED(*)
+AF                 1.000 (*)
+CBD                1.739n   
+CBS                0.000 (*)
+CGBO               0.000 (*)
+CGDO               1.135n   
+CGSO               1.135n   
+CJ                 0.000 (*)
+CJSW               0.000 (*)
+DELTA              0.000 (*)
+ETA                0.000 (*)
+FC               500.000m(*)
+GAMMA              0.000    
+GDSNOI             1.000 (*)
+IS                10.000f   
+JS                 0.000 (*)
+JSW                0.000 (*)
+KAPPA           UNDEFINED(*)
+KF                 0.000 (*)
+KP                20.000u   
+L                  2.000u   
+LAMBDA           623.694f   
+LD                 0.000 (*)
+MJ               500.000m(*)
+MJSW             330.000m(*)
+N                  1.000 (*)
+NEFF               1.000 (*)
+NFS                0.000 (*)
+NLEV            UNDEFINED(*)
+NSS             UNDEFINED(*)
+NSUB               0.000    
+PB               800.000m(*)
+PBSW             800.000m(*)
+PHI              600.000m   
+RB                 0.000 (*)
+RD                 0.000 (*)
+RDS              9.000MEG   
+RG                 7.738    
+RS                 0.000 (*)
+RSH                0.000 (*)
+T_ABS           UNDEFINED(*)
+T_MEASURED      UNDEFINED(*)
+T_REL_GLOBAL    UNDEFINED(*)
+T_REL_LOCAL     UNDEFINED(*)
+THETA              0.000 (*)
+TOX                0.000    
+TPG                1.000    
+TT                 0.000 (*)
+UCRIT             10.000K(*)
+UEXP               0.000 (*)
+UO               600.000    
+UTRA               0.000 (*)
+VMAX               0.000 (*)
+VTO                1.532    
+W                  7.969m   
+WD                 0.000 (*)
+XJ                 0.000 (*)
+XQC                1.000 (*)
+(*) Default Parameter
+
+
+
+Model parameters for devices of type Pulse
+==========================================
+Instance:              V1   
+Using model:      CONTROL   
+P1                 0.000    
+P2                 0.000    
+P3                 2.220u   
+P4                 2.220u   
+P5                22.200u   
+VONE              10.000    
+VZERO              0.000 (*)
+(*) Default Parameter
+
+
+
+DC Operating Point Voltages
+===========================
+Node         Voltage  Node         Voltage  Node         Voltage 
+1        -1.830E-030  2             0.000   3        -2.034E-040 
+4        -2.036E-037 
+
+
+Operating point for devices of type Mosfet NMOS
+===============================================
+Instance:                 M1
+Using model:          2N6661
+ID                    0.011f
+VGS               1.830E-030
+VDS               1.830E-030
+VBS               1.830E-030
+VTH                   1.532 
+VDSAT                 0.000 
+GM                    0.000 
+GDS                   0.000 
+GMB                   0.000 
+CBD                   1.739n
+CBS                   0.000 
+CGSOVL                9.047p
+CGDOVL                9.047p
+CGBOVL                0.000 
+CGS                   0.000 
+CGD                   0.000 
+CGB                   0.000 
+
+DC Power Terms:
+PD                1.111E-027
+PS                    0.000 
+
+DC Pin Currents:
+Ig                    0.000 
+Id                    0.011f
+Is                   -0.011f
+Ib                1.387E-022
+
+Condition:
+State                    OFF
+
+Device Variables:
+m                     1.000 
+l                     0.000 
+w                     0.000 
+ad                    0.000 
+as                    0.000 
+pd                    0.000 
+ps                    0.000 
+nrd                   0.000 
+nrs                   0.000 
+nrb                   0.000 
+nrg                   0.000 
+
+
+
+Operating point for devices of type Resistor
+============================================
+Instance:                  R1           RS_V2              R2
+DC Power Terms:
+PD                 1.675E-062      4.136E-077      4.136E-074
+
+DC Pin Currents:
+Ir                -9.152E-033     -2.034E-037      2.034E-037
+
+
+
+Operating point for devices of type Sine Source
+===============================================
+Instance:                  V2
+Using model:           SOURCE
+DC Power Terms:
+PG                     0.000 
+
+DC Pin Currents:
+ISource           -2.034E-037
+
+
+
+Operating point for devices of type Pulse
+=========================================
+Instance:                  V1
+Using model:          CONTROL
+DC Power Terms:
+PG                     0.000 
+
+DC Pin Currents:
+ISource                0.000 
+
+

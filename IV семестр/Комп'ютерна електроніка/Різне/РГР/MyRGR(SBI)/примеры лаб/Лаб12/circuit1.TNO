@@ -1,0 +1,162 @@
+********************************************************************************
+***                  Micro-Cap 10.0.3.0 Evaluation Version                   ***
+***                                    1                                     ***
+***                                    2                                     ***
+***                      Transient Analysis of circuit1                      ***
+***                           06.04.2011 23:47:04                            ***
+********************************************************************************
+Limits
+======
+Time Range           100m
+Maximum Time Step    0.01m
+Number of Points     51
+Temperature          Linear 27
+Retrace Runs         1
+Run Options          Normal
+State Variables      Zero
+Operating Point      On
+Operating Point Only Off
+
+
+*****************************************************
+***                Temperature=27                 ***
+*****************************************************
+
+Temperature=27 
+
+Model parameters for devices of type Diode
+==========================================
+Instance:              D1              D2              D3              D4   
+Using model:       1N5399          1N5399          1N5399          1N5399   
+LEVEL                   1(*)            1(*)            1(*)            1(*)
+AF                 1.000 (*)       1.000 (*)       1.000 (*)       1.000 (*)
+BV                 1.000K          1.000K          1.000K          1.000K   
+CJO               36.056p         36.056p         36.056p         36.056p   
+EG                 1.110 (*)       1.110 (*)       1.110 (*)       1.110 (*)
+FC               500.000m(*)     500.000m(*)     500.000m(*)     500.000m(*)
+IBV              100.000p        100.000p        100.000p        100.000p   
+IBVL               0.000 (*)       0.000 (*)       0.000 (*)       0.000 (*)
+IKF                0.000 (*)       0.000 (*)       0.000 (*)       0.000 (*)
+IS                 7.888n          7.888n          7.888n          7.888n   
+ISR                0.000 (*)       0.000 (*)       0.000 (*)       0.000 (*)
+KF                 0.000 (*)       0.000 (*)       0.000 (*)       0.000 (*)
+M                512.418m        512.418m        512.418m        512.418m   
+N                  1.900           1.900           1.900           1.900    
+NBV                1.000 (*)       1.000 (*)       1.000 (*)       1.000 (*)
+NBVL               1.000 (*)       1.000 (*)       1.000 (*)       1.000 (*)
+NR                 2.000 (*)       2.000 (*)       2.000 (*)       2.000 (*)
+RL                 1.000G          1.000G          1.000G          1.000G   
+RS                38.950m         38.950m         38.950m         38.950m   
+T_ABS           UNDEFINED(*)    UNDEFINED(*)    UNDEFINED(*)    UNDEFINED(*)
+T_MEASURED      UNDEFINED(*)    UNDEFINED(*)    UNDEFINED(*)    UNDEFINED(*)
+T_REL_GLOBAL    UNDEFINED(*)    UNDEFINED(*)    UNDEFINED(*)    UNDEFINED(*)
+T_REL_LOCAL     UNDEFINED(*)    UNDEFINED(*)    UNDEFINED(*)    UNDEFINED(*)
+TBV1               0.000 (*)       0.000 (*)       0.000 (*)       0.000 (*)
+TBV2               0.000 (*)       0.000 (*)       0.000 (*)       0.000 (*)
+TIKF               0.000 (*)       0.000 (*)       0.000 (*)       0.000 (*)
+TRS1               0.000 (*)       0.000 (*)       0.000 (*)       0.000 (*)
+TRS2               0.000 (*)       0.000 (*)       0.000 (*)       0.000 (*)
+TT                 7.584u          7.584u          7.584u          7.584u   
+VJ               700.000m        700.000m        700.000m        700.000m   
+XTI                3.000 (*)       3.000 (*)       3.000 (*)       3.000 (*)
+(*) Default Parameter
+
+
+
+Model parameters for devices of type Sine Source
+================================================
+Instance:              V1   
+Using model:      GENERAL   
+A                 20.000    
+DC                 0.000 (*)
+F                 50.000    
+PH                 0.000 (*)
+RP                 0.000 (*)
+RS                 1.000m(*)
+TAU                0.000 (*)
+(*) Default Parameter
+
+
+
+DC Operating Point Voltages
+===========================
+Node         Voltage  Node         Voltage  Node         Voltage 
+1             0.001f  2             0.001f  3        -1.211E-023 
+
+
+Operating Point for Devices of Type Diode
+=========================================
+Instance:                 D1              D2              D3              D4
+Using model:          1N5399          1N5399          1N5399          1N5399
+
+Capacitance Terms:
+CAP                  37.273p         37.273p         37.273p         37.273p
+
+Current Terms:
+ID               -5.151E-028      5.151E-028     -5.151E-028      5.151E-028
+
+Resistance Terms:
+REQ                 6.190MEG        6.190MEG        6.190MEG        6.190MEG
+
+Voltage Terms:
+VD                   -0.001f          0.001f         -0.001f          0.001f
+
+Power DC Terms:
+PD                2.651E-046      2.651E-046      2.651E-046      2.651E-046
+PS                    0.000           0.000           0.000           0.000 
+
+DC Pin Currents:
+Id               -5.151E-028      5.151E-028     -5.151E-028      5.151E-028
+
+Condition:
+State                    OFF             OFF             OFF             OFF
+
+Device Variables:
+area                  1.000           1.000           1.000           1.000 
+ic                    0.000           0.000           0.000           0.000 
+
+
+
+Operating Point for Devices of Type Resistor
+============================================
+Instance:               V1.RS              R1
+V                 -9.630E-035     -1.211E-023
+Power DC Terms:
+PD                 9.273E-066      7.334E-049
+
+DC Pin Currents:
+Ir                -9.630E-032     -6.055E-026
+
+Device Variables:
+tc1                    0.000           0.000 
+tc2                    0.000           0.000 
+
+
+
+Operating Point for Devices of Type Capacitor
+=============================================
+Instance:                  C1
+V                 -1.211E-023
+Power DC Terms:
+PS                     0.000 
+
+DC Pin Currents:
+Ic                     0.000 
+
+Device Variables:
+ic                     0.000 
+
+
+
+Operating Point for Devices of Type Sine Source
+===============================================
+Instance:                  V1
+Using model:          GENERAL
+V                 -9.630E-035
+Power DC Terms:
+PG                     0.000 
+
+DC Pin Currents:
+ISource            1.063E-032
+
+

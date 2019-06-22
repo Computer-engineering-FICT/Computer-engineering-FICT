@@ -1,0 +1,183 @@
+********************************************************************************
+***                            Micro-Cap 9.0.7.0                             ***
+***                             Micro-Cap 9.0.7                              ***
+***                            Spectrum Software                             ***
+***        Анализ переходных процессов Transient analysis of circuit2        ***
+********************************************************************************
+Limits
+======
+Time Range           5u
+Maximum Time Step    0
+Number of Points     51
+Temperature          Linear 27
+Run Options          Normal
+State Variables      Zero
+Operating Point      On
+Operating Point Only Off
+
+
+*****************************************************
+***                Temperature=27                 ***
+*****************************************************
+
+Temperature=27 
+
+Model parameters for devices of type Mosfet NMOS
+================================================
+Instance:               M1               M2   
+Using model:     MTP15N05L        MTP15N05L   
+LEVEL            UNDEFINED(*)     UNDEFINED(*)
+AF                  1.000 (*)        1.000 (*)
+CBD                 1.420n           1.420n   
+CBS                 0.000 (*)        0.000 (*)
+CGBO                0.000 (*)        0.000 (*)
+CGDO              429.102p         429.102p   
+CGSO                2.398n           2.398n   
+CJ                  0.000 (*)        0.000 (*)
+CJSW                0.000 (*)        0.000 (*)
+DELTA               0.000 (*)        0.000 (*)
+ETA                 0.000 (*)        0.000 (*)
+FC                500.000m(*)      500.000m(*)
+GAMMA               0.000            0.000    
+GDSNOI              0.000            0.000    
+IS                 10.000f(*)       10.000f(*)
+JS                 10.000n          10.000n   
+JSW                 0.000 (*)        0.000 (*)
+KAPPA            UNDEFINED(*)     UNDEFINED(*)
+KF                  0.000 (*)        0.000 (*)
+KP                 20.000u          20.000u   
+L                   5.000u           5.000u   
+LAMBDA            109.675f         109.675f   
+LD                  0.000 (*)        0.000 (*)
+MJ                500.000m(*)      500.000m(*)
+MJSW              330.000m(*)      330.000m(*)
+N                   1.000 (*)        1.000 (*)
+NEFF                1.000 (*)        1.000 (*)
+NFS                 0.000 (*)        0.000 (*)
+NLEV                0.000            0.000    
+NSS              UNDEFINED(*)     UNDEFINED(*)
+NSUB                0.000            0.000    
+PB                800.000m(*)      800.000m(*)
+PBSW              800.000m(*)      800.000m(*)
+PHI               600.000m         600.000m   
+RB                  0.000 (*)        0.000 (*)
+RD                  5.961m           5.961m   
+RDS              50.000MEG        50.000MEG   
+RG                108.606          108.606    
+RS                  0.000 (*)        0.000 (*)
+RSH                 0.000 (*)        0.000 (*)
+T_ABS            UNDEFINED(*)     UNDEFINED(*)
+T_MEASURED       UNDEFINED(*)     UNDEFINED(*)
+T_REL_GLOBAL     UNDEFINED(*)     UNDEFINED(*)
+T_REL_LOCAL      UNDEFINED(*)     UNDEFINED(*)
+THETA               0.000 (*)        0.000 (*)
+TOX                 0.000            0.000    
+TPG                 1.000            1.000    
+TT                  0.000 (*)        0.000 (*)
+UCRIT              10.000K(*)       10.000K(*)
+UEXP                0.000 (*)        0.000 (*)
+UO                600.000          600.000    
+UTRA                0.000 (*)        0.000 (*)
+VMAX                0.000 (*)        0.000 (*)
+VTO                 1.338            1.338    
+W                  50.426m          50.426m   
+WD                  0.000 (*)        0.000 (*)
+XJ                  0.000 (*)        0.000 (*)
+XQC                 1.000 (*)        1.000 (*)
+(*) Default Parameter
+
+
+
+Model parameters for devices of type Pulse
+==========================================
+Instance:               V2   
+Using model:         PULSE   
+P1                100.000n(*)
+P2                100.000n   
+P3                500.000n(*)
+P4                500.000n   
+P5                  1.000u(*)
+VONE                5.000 (*)
+VZERO               0.000 (*)
+(*) Default Parameter
+
+
+
+DC Operating Point Voltages
+===========================
+Node         Voltage  Node         Voltage  Node         Voltage 
+1             0.000   2             3.661   3             5.000  
+
+
+Operating point for devices of type Mosfet NMOS
+===============================================
+Instance:                  M1               M2
+Using model:        MTP15N05L        MTP15N05L
+ID                   -73.223n         -73.229n
+VGS                   -3.661            0.000 
+VDS                   -3.661           -1.339 
+VBS                   -3.661           -5.000 
+VTH                    1.338            1.338 
+VDSAT                  0.000          678.709u
+GM                     0.000          136.898u
+GDS                    0.000        5.095E-021
+GMB                    0.000            0.000 
+CBD                    1.420n         601.210p
+CBS                    0.000            0.000 
+CGSOVL               120.933p         120.933p
+CGDOVL                21.638p          21.638p
+CGBOVL                 0.000            0.000 
+CGS                    0.000            0.000 
+CGD                    0.000            0.000 
+CGB                    0.000            0.000 
+
+DC Power Terms:
+PD                   268.102n          98.101n
+PS                     0.000            0.000 
+
+DC Pin Currents:
+Ig                     0.000            0.000 
+Id                   -73.223n         -73.229n
+Is                    73.229n          73.241n
+Ib                    -5.077p         -12.010p
+
+Condition:
+State                     OFF              SAT
+
+Device Variables:
+m                      1.000            1.000 
+l                      0.000            0.000 
+w                      0.000            0.000 
+ad                     0.000            0.000 
+as                     0.000            0.000 
+pd                     0.000            0.000 
+ps                     0.000            0.000 
+nrd                    0.000            0.000 
+nrs                    0.000            0.000 
+nrb                    0.000            0.000 
+nrg                    0.000            0.000 
+
+
+
+Operating point for devices of type Pulse
+=========================================
+Instance:                   V2
+Using model:             PULSE
+DC Power Terms:
+PG                      0.000 
+
+DC Pin Currents:
+ISource                 0.000 
+
+
+
+Operating point for devices of type SPICE Source
+================================================
+Instance:                  V1
+DC Power Terms:
+PG                   366.203n
+
+DC Pin Currents:
+ISource              -73.241n
+
+

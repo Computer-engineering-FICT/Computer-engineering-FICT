@@ -1,0 +1,21 @@
+* /root/laba4/4_4.oregano
+*----------------------------------------------
+*	NGSPICE - NETLIST
+.options NOPAGE 
+
+*----------------------------------------------
+
+M_M1 1 0 3 3 nmos 
+.model nmos nmos (vto=3.63886 KP=20u  gamma=0 phi=600m lambda=35.07m rd=1.10826 rs=187.488m cbd=397.524p cgso=617.586p cgdo=617.586p tox=0 nsub=0 tpg=1 uo=600 ) 
+V_V2 2 0 dc 10 
+R_R1 1 2 1k 
+R_R2 3 4 1 
+V_V1 4 0 dc 0.0 ac 0.0 sin(0.0 5 1meg 0 0) 
+VTpi@1 4 3 0
+*----------------------------------------------
+
+.dc V_V1 -5.5 1.5 0.01
+.print dc   v(1)
+.op
+
+.end

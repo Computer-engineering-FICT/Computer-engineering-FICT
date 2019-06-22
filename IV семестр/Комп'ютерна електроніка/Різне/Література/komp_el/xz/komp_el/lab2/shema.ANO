@@ -1,0 +1,181 @@
+********************************************************************************
+***                            Micro-Cap 9.0.7.0                             ***
+***                                  click                                   ***
+***                                   KPI                                    ***
+***                  Частотный анализ AC Analysis of shema                   ***
+********************************************************************************
+Limits
+======
+Frequency Range  1E8,1Meg
+Number of Points 51
+Temperature      Linear 27
+Maximum Change % 5
+Noise Input      NONE
+Noise Output     2
+Run Options      Normal
+State Variables  Zero
+Frequency Step   Auto
+Operating Point  On
+
+
+*****************************************************
+***                Temperature=27                 ***
+*****************************************************
+
+Temperature=27 
+
+Model parameters for devices of type Sine Source
+================================================
+Instance:              V2   
+Using model:            Y   
+A                  3.000    
+DC                 0.000 (*)
+F                1.000MEG(*)
+PH                 0.000 (*)
+RP                 0.000 (*)
+RS                 1.000m(*)
+TAU                0.000 (*)
+(*) Default Parameter
+
+
+
+Model parameters for devices of type Bipolar Junction Transistors NPN
+=====================================================================
+Instance:              Q1   
+Using model:       2N2218   
+LEVEL                   1(*)
+AF                 1.000 (*)
+BF               112.570    
+BR               171.222m   
+CJC               36.644p   
+CJE               42.424p   
+CJS                0.000 (*)
+EG                 1.110 (*)
+FC               500.000m(*)
+IKF              314.795m   
+IKR              476.235    
+IRB                0.000 (*)
+IS                10.017f   
+ISC                2.934p   
+ISE              955.182f   
+ISS                0.000 (*)
+ITF               10.287m   
+KF                 0.000 (*)
+MJC              558.066m   
+MJE              642.887m   
+MJS                0.000 (*)
+NC                 2.000 (*)
+NE                 1.613    
+NF               979.990m   
+NK               500.000m(*)
+NR                 1.000 (*)
+NS                 1.000 (*)
+PTF                0.000 (*)
+RB                 0.000 (*)
+RBM                0.000 (*)
+RC                 0.000 (*)
+RE               668.817m   
+T_ABS           UNDEFINED(*)
+T_MEASURED      UNDEFINED(*)
+T_REL_GLOBAL    UNDEFINED(*)
+T_REL_LOCAL     UNDEFINED(*)
+TF               407.084p   
+TR                 2.301u   
+TRB1               0.000 (*)
+TRB2               0.000 (*)
+TRC1               0.000 (*)
+TRC2               0.000 (*)
+TRE1               0.000 (*)
+TRE2               0.000 (*)
+TRM1               0.000 (*)
+TRM2               0.000 (*)
+VAF              100.000    
+VAR                0.000 (*)
+VJC              700.000m   
+VJE              700.000m   
+VJS              750.000m(*)
+VTF               10.000    
+XCJC               1.000 (*)
+XTB                0.000 (*)
+XTF              500.021m   
+XTI                3.000 (*)
+(*) Default Parameter
+
+
+
+DC Operating Point Voltages
+===========================
+Node         Voltage  Node         Voltage  Node         Voltage 
+1            10.000   2           614.025p  3            10.000  
+4            61.396f 
+
+
+Operating point for devices of type Bipolar Junction Transistors NPN
+====================================================================
+Instance:                 Q1
+Using model:          2N2218
+IB                  -61.396p
+IC                   72.407p
+VBE                 614.025p
+VBC                 -10.000 
+VCE                  10.000 
+BETADC               -1.179 
+GM                  334.620f
+RPI                  43.648G
+RX                    0.000 
+RO                  833.264G
+CPI                  42.424p
+CMU                   8.000p
+CBX                   0.000 
+CJS                   0.000 
+BETAAC               14.606m
+FT                    1.056m
+
+DC Power Terms:
+PD                  724.074p
+PS                    0.000 
+
+DC Pin Currents:
+Ib                  -61.396p
+Ic                   72.407p
+Ie                  -11.011p
+Is                    0.000 
+
+Condition:
+State                    OFF
+
+
+
+Operating point for devices of type Resistor
+============================================
+Instance:                  R1              R2           RS_V2
+DC Power Terms:
+PD                     0.002f      3.770E-020      3.770E-024
+
+DC Pin Currents:
+Ir                   -72.407p        -61.396p         61.396p
+
+
+
+Operating point for devices of type Sine Source
+===============================================
+Instance:                  V2
+Using model:                Y
+DC Power Terms:
+PG                     0.000 
+
+DC Pin Currents:
+ISource               61.396p
+
+
+
+Operating point for devices of type SPICE Source
+================================================
+Instance:                 V1
+DC Power Terms:
+PG                  724.074p
+
+DC Pin Currents:
+ISource             -72.407p
+
+

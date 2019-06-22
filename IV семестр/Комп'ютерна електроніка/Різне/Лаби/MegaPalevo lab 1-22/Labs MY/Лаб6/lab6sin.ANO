@@ -1,0 +1,191 @@
+********************************************************************************
+***                   Micro-Cap 9.0.6.1 Evaluation Version                   ***
+***                                   ASH                                    ***
+***                                   ASH                                    ***
+***                 Частотный анализ AC Analysis of lab6sin                  ***
+***                                                                          ***
+********************************************************************************
+Limits
+======
+Frequency Range  1E8,1Meg
+Number of Points 51
+Temperature      Linear 27
+Maximum Change % 5
+Noise Input      NONE
+Noise Output     2
+Run Options      Normal
+State Variables  Zero
+Frequency Step   Auto
+Operating Point  On
+
+
+*****************************************************
+***                Temperature=27                 ***
+*****************************************************
+
+Temperature=27 
+
+Model parameters for devices of type Sine Source
+================================================
+Instance:              V1   
+Using model:       SOURCE   
+A                  1.000 (*)
+DC                 0.000 (*)
+F                1.000MEG(*)
+PH                 0.000 (*)
+RP                 0.000 (*)
+RS                 1.000m(*)
+TAU                0.000 (*)
+(*) Default Parameter
+
+
+
+Model parameters for devices of type Bipolar Junction Transistors NPN
+=====================================================================
+Instance:              Q1              Q2   
+Using model:       2N2102          2N2102   
+LEVEL                   1(*)            1(*)
+AF                 1.000 (*)       1.000 (*)
+BF               100.000         100.000    
+BR                 4.195           4.195    
+CJC               27.483p         27.483p   
+CJE               70.707p         70.707p   
+CJS                0.000 (*)       0.000 (*)
+EG                 1.110 (*)       1.110 (*)
+FC               500.000m(*)     500.000m(*)
+IKF              468.816m        468.816m   
+IKR              999.881m        999.881m   
+IRB                0.000 (*)       0.000 (*)
+IS                10.000f         10.000f   
+ISC                5.687p          5.687p   
+ISE                0.237f          0.237f   
+ISS                0.000 (*)       0.000 (*)
+ITF                9.977m          9.977m   
+KF                 0.000 (*)       0.000 (*)
+MJC              558.067m        558.067m   
+MJE              642.888m        642.888m   
+MJS                0.000 (*)       0.000 (*)
+NC                 2.000 (*)       2.000 (*)
+NE                 1.144           1.144    
+NF                 1.000           1.000    
+NK               500.000m(*)     500.000m(*)
+NR                 1.000 (*)       1.000 (*)
+NS                 1.000 (*)       1.000 (*)
+PTF                0.000 (*)       0.000 (*)
+RB                 0.000 (*)       0.000 (*)
+RBM                0.000 (*)       0.000 (*)
+RC                 0.000 (*)       0.000 (*)
+RE               634.829m        634.829m   
+T_ABS           UNDEFINED(*)    UNDEFINED(*)
+T_MEASURED      UNDEFINED(*)    UNDEFINED(*)
+T_REL_GLOBAL    UNDEFINED(*)    UNDEFINED(*)
+T_REL_LOCAL     UNDEFINED(*)    UNDEFINED(*)
+TF                 2.446n          2.446n   
+TR                10.000n         10.000n   
+TRB1               0.000 (*)       0.000 (*)
+TRB2               0.000 (*)       0.000 (*)
+TRC1               0.000 (*)       0.000 (*)
+TRC2               0.000 (*)       0.000 (*)
+TRE1               0.000 (*)       0.000 (*)
+TRE2               0.000 (*)       0.000 (*)
+TRM1               0.000 (*)       0.000 (*)
+TRM2               0.000 (*)       0.000 (*)
+VAF              100.000         100.000    
+VAR                0.000 (*)       0.000 (*)
+VJC              700.000m        700.000m   
+VJE              700.000m        700.000m   
+VJS              750.000m(*)     750.000m(*)
+VTF               10.000          10.000    
+XCJC               1.000 (*)       1.000 (*)
+XTB                0.000 (*)       0.000 (*)
+XTF              500.000m        500.000m   
+XTI                3.000 (*)       3.000 (*)
+(*) Default Parameter
+
+
+
+DC Operating Point Voltages
+===========================
+Node         Voltage  Node         Voltage  Node         Voltage 
+1            -1.175n  2            -1.176u  3            50.000  
+4            45.096   5            45.096   6          -578.466m 
+7           -50.000  
+
+
+Operating point for devices of type Bipolar Junction Transistors NPN
+====================================================================
+Instance:                 Q1              Q2
+Using model:          2N2102          2N2102
+IB                  587.533n        587.533n
+IC                   74.636u         74.636u
+VBE                 578.465m        578.465m
+VBC                 -45.096         -45.096 
+VCE                  45.675          45.675 
+BETADC              127.032         127.032 
+GM                    2.885m          2.885m
+RPI                  44.726K         44.726K
+RX                    0.000           0.000 
+RO                  1.944MEG        1.944MEG
+CPI                 163.783p        163.783p
+CMU                   2.665p          2.665p
+CBX                   0.000           0.000 
+CJS                   0.000           0.000 
+BETAAC              129.013         129.013 
+FT                  2.758MEG        2.758MEG
+
+DC Power Terms:
+PD                    3.409m          3.409m
+PS                    0.000           0.000 
+
+DC Pin Currents:
+Ib                  587.533n        587.533n
+Ic                   74.636u         74.636u
+Ie                  -75.223u        -75.223u
+Is                    0.000           0.000 
+
+Condition:
+State                    LIN             LIN
+
+
+
+Operating point for devices of type Resistor
+============================================
+Instance:               RS_V1              R1              R2              R3
+DC Power Terms:
+PD                     1.381f          1.381p        365.979u        365.979u
+
+DC Pin Currents:
+Ir                    -1.175u         -1.175u         74.636u         74.636u
+
+
+Instance:                  R4
+DC Power Terms:
+PD                     7.435m
+
+DC Pin Currents:
+Ir                   150.446u
+
+
+
+Operating point for devices of type Sine Source
+===============================================
+Instance:                  V1
+Using model:           SOURCE
+DC Power Terms:
+PG                     0.000 
+
+DC Pin Currents:
+ISource               -1.175u
+
+
+
+Operating point for devices of type SPICE Source
+================================================
+Instance:                 V2              V3
+DC Power Terms:
+PG                    7.464m          7.522m
+
+DC Pin Currents:
+ISource            -149.271u       -150.446u
+
+
