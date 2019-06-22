@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_lab3" default="compile.module.lab3">
+  <dirname property="module.lab3.basedir" file="${ant.file.module_lab3}"/>
+  
+  <property name="module.jdk.home.lab3" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.lab3" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.lab3" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.lab3" value="${compiler.args}"/>
+  
+  <property name="lab3.output.dir" value="${module.lab3.basedir}/out/production/Lab3"/>
+  <property name="lab3.testoutput.dir" value="${module.lab3.basedir}/out/test/Lab3"/>
+  
+  <path id="lab3.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="lab3.module.classpath">
+    <path refid="${module.jdk.classpath.lab3}"/>
+    <pathelement location="${basedir}/lib/jfreechart-1.0.13.jar"/>
+    <pathelement location="${basedir}/lib/jcommon-1.0.16.jar"/>
+  </path>
+  
+  <path id="lab3.runtime.module.classpath">
+    <pathelement location="${lab3.output.dir}"/>
+    <pathelement location="${lab3.testoutput.dir}"/>
+    <pathelement location="${basedir}/lib/jfreechart-1.0.13.jar"/>
+    <pathelement location="${basedir}/lib/jcommon-1.0.16.jar"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.lab3">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.lab3">
+    <patternset refid="excluded.from.module.lab3"/>
+  </patternset>
+  
+  <path id="lab3.module.sourcepath">
+    <dirset dir="${module.lab3.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.lab3" depends="compile.module.lab3.production,compile.module.lab3.tests" description="Compile module Lab3"/>
+  
+  <target name="compile.module.lab3.production" description="Compile module Lab3; production classes">
+    <mkdir dir="${lab3.output.dir}"/>
+    <javac2 destdir="${lab3.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.lab3}/javac">
+      <compilerarg line="${compiler.args.lab3}"/>
+      <bootclasspath refid="lab3.module.bootclasspath"/>
+      <classpath refid="lab3.module.classpath"/>
+      <src refid="lab3.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.lab3"/>
+    </javac2>
+    
+    <copy todir="${lab3.output.dir}">
+      <fileset dir="${module.lab3.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.lab3.tests" depends="compile.module.lab3.production" description="compile module Lab3; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.lab3" description="cleanup module">
+    <delete dir="${lab3.output.dir}"/>
+    <delete dir="${lab3.testoutput.dir}"/>
+  </target>
+</project>

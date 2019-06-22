@@ -1,0 +1,1 @@
+allocator.d: ../allocator.cpp

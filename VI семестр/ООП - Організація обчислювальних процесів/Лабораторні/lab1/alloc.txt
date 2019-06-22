@@ -1,0 +1,70 @@
+@Override
+	public Block mem_alloc(int size) {
+		if(totalFreeSize < size) {
+			return null;
+		}
+		else {
+			//Перегляд всіх блоків з початку 
+			Block block = Block.read(memory, first.getNextOffset());
+			while(!block.equals(last)) {
+				if (block.isFree()) {
+					Block start = block;
+					int innerFreeSpace = -2;// Не враховуємо DESCRIPTOR_SIZE
+											// першого вільного блока
+					while (block.isFree()) {
+						innerFreeSpace += Block.DESCRIPTOR_SIZE + block.getSize();
+						if (innerFreeSpace >= size) {
+							Block allocated;
+							//if(start.getSize() >= size) {
+								allocated = start.divide(size);//new Block(size, true, start.getPrevSize(), start.getOffset());
+								allocated.makeFree(false);
+								totalFreeSize -= allocated.record(memory);
+								block.record(memory);
+							/*} else {
+								block.divide(block.getSize() - (innerFreeSpace - size));
+								totalFreeSize += block.record(memory);
+								allocated = new Block(size, false, start.getPrevSize(), start.getOffset());//start.divide(size);
+								allocated.makeFree(false);
+								totalFreeSize -= allocated.record(memory);
+							}*/
+							return allocated;
+						}
+						block = Block.read(memory, block.getNextOffset());
+					}
+				}
+				block = Block.read(memory, block.getNextOffset());
+				
+			}
+			return null;
+		}
+	}
+
+@Override
+	public void mem_free(Block start) {
+		// Перевіряємо чи вільний блок зліва
+		Block left = Block.read(memory, start.getPreviousOffset());
+		if (left.isFree() && !left.equals(first)) {
+			// Об'єднуємо з лівим
+			start = Block.merge(left, start);
+		}
+		// Перевіряємо чи вільний блок справа
+		Block right = Block.read(memory, start.getNextOffset());
+		if (right.isFree() && !right.equals(last)) {
+			// Об'єднуємо з правим
+			start = Block.merge(start, right);
+		}
+		/*
+		 * //Пошук крайнього вільного блоку зліва від початкового Block prev =
+		 * start; do { Block bPrev = Block.read(memory,
+		 * prev.getPreviousOffset()); if(bPrev.isFree()) { prev = bPrev; } else
+		 * { break; } } while(!prev.equals(first) && prev.isFree());
+		 * 
+		 * //Пошук крайнього вільного блоку справа від початкового Block next =
+		 * start; do { Block pNext = Block.read(memory, next.getNextOffset());
+		 * if(pNext.isFree()) { next = pNext; } else { break; } }
+		 * while(!next.equals(last) && next.isFree());
+		 */
+
+		start.makeFree(true);
+		totalFreeSize += start.record(memory);
+	}

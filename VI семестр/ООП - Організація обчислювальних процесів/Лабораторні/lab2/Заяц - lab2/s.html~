@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<script>
+var myMap = new Map();
+ 
+var keyObj = {},
+    keyFunc = function () {},
+    keyString = "a string";
+ 
+// setting the values
+myMap.set(keyString, "value associated with 'a string'");
+myMap.set(keyObj, "value associated with keyObj");
+myMap.set(keyFunc, "value associated with keyFunc");
+ 
+myMap.size; // 3
+ 
+// getting the values
+myMap.get(keyString);    // "value associated with 'a string'"
+myMap.get(keyObj);       // "value associated with keyObj"
+myMap.get(keyFunc);      // "value associated with keyFunc"
+ console.log(myMap.get(keyFunc));
+myMap.get("a string");   // "value associated with 'a string'"
+console.log(myMap.get("a string"));                 
+        // because keyString === 'a string'
+myMap.get({});           // undefined, because keyObj !== {}
+myMap.get(function() {}) // undefined, because keyFunc !== function () {}
+</script>
+</head>
+</html>
+
+
+
+
+
+
+
+
+
+
+function createNewPageForBlocks(blockSize) {
+	var pageAddress = findFreePage();
+		if (pageAddress === null)
+			return null;
+	markPageAsBlockBusy(pageAddress, blockSize);
+	var pageIndex = getPageIndex(pageAddress);
+	pageMap.get(blockSize).add(pageIndex);
+	memory[pageAddress + 1]--;
+	var result = pagesDescription.get(pageIndex);
+	memory[pageAddress + 2] = pagesDescription.get(pageIndex);
+	memory[pageAddress + 3] = blockSize;
+	return result;
+}
+function findFreePage() {
+	var pos = 0;
+		while (pos < memory_size) {
+			if (memory[pos] === free)
+				return pos;
+			pos = nextPage(pos);
+		}
+	return null;
+}
+function nextPage(currentPos) {
+	var additionalSize = 0;
+	if (memory[currentPos] === multi)
+		additionalSize = page_size * (memory[currentPos + 1] - 1);
+	return currentPos += page_size + additionalSize;
+}
+function markPageAsBlockBusy(pageAddress, blockSize) {
+	memory[pageAddress] = block;
+	var n = (page_size - page_header) / blockSize;
+	memory[pageAddress + 1] = n;
+	var firstFreeBlock = pageAddress + 4;
+	memory[pageAddress + 2] = firstFreeBlock;
+	var pageIndex = getPageIndex(pageAddress);
+	for (var i = 0; i < n; i++) {
+		pagesDescription.get(pageIndex).add(firstFreeBlock + (blockSize * i));
+	}
+}
+
+function getPageIndex(pageAddress) {
+	return pageAddress / page_size;
+}
