@@ -1,0 +1,890 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0048)http://www.javaportal.ru/articles/ant10step.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<title>Ant за 10 шагов</title>
+
+<meta name="title" content="Ant за 10 шагов">
+<meta name="keywords" content="Ant,make,java,процесс,сборки,ПО">
+<meta name="description" content="Ant за 10 шагов на сайте JavaPortal, новости и всё о java и javascript">
+<link rel="stylesheet" href="./Ant за 10 шагов_files/stylesheet.css" type="text/css">
+</head>
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tbody><tr>
+<td width="208" valign="center">
+<a href="http://www.javaportal.ru/"><img src="./Ant за 10 шагов_files/jplogo.jpg" border="0" width="208" height="38"></a></td>
+<td width="100%"></td>
+<td width="485">
+<!-- Верхнее меню -->
+<table width="500" border="0" cellspacing="0" cellpadding="0">
+<tbody><tr>
+<td width="150" align="center" valign="center" rowspan="3">
+<form method="POST" action="http://www.javaportal.ru/subs/newsmail/subs.php" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px;">
+<img src="./Ant за 10 шагов_files/4x4.gif"><br>
+<img src="./Ant за 10 шагов_files/4x4.gif"><br>
+<input type="text" name="usermail" value="введите ваш e-mail" style="font-size: 10px; width: 130px; height: 12px"><br>
+<img src="./Ant за 10 шагов_files/4x4.gif"><br>
+<a href="http://www.javaportal.ru/articles/ant10step.html#" onclick="JavaScript:submit()"><img src="./Ant за 10 шагов_files/subscribe.gif" border="0" width="145" height="18"></a>
+</form>
+</td>
+<td width="2" background="./Ant за 10 шагов_files/topl.gif">
+</td>
+<td bgcolor="645E6C">
+<form method="POST" action="http://www.javaportal.ru/registration/login.php" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px;">
+<p class="topmenu">
+Логин:<input type="text" name="login" style="font-size: 10px; width: 100px; height: 12px">
+&nbsp;&nbsp;Пароль:<input type="password" name="password" style="font-size: 10px; width: 100px; height: 12px">
+<input type="submit" name="ok" value="Войти" style="font-size: 9px; width: 40px; height: 19px">
+</p>
+</form></td>
+
+<td width="2" background="./Ant за 10 шагов_files/topr.gif">
+</td>
+</tr>
+<tr height="2">
+</tr>
+<tr>
+<td width="2">
+</td>
+<td width="350" align="center">
+<a href="http://www.javaportal.ru/registration/"><img src="./Ant за 10 шагов_files/register.gif" border="0" width="99" height="18"></a>
+<a href="http://www.javaportal.ru/link.html"><img src="./Ant за 10 шагов_files/contact_us.gif" border="0" width="78" height="18"></a>
+<a href="http://www.javaportal.ru/articles/ant10step.html#" onclick="javascript:window.external.AddFavorite(document.location.href,&quot;JavaPortal--&quot;+document.title)"><img src="./Ant за 10 шагов_files/favourites.gif" border="0" width="77" height="18"></a>
+<a href="http://www.javaportal.ru/project.html"><img src="./Ant за 10 шагов_files/about_project.gif" border="0" width="66" height="18"></a>
+</td>
+<td width="2">
+</td>
+</tr>
+</tbody></table>
+
+
+
+
+</td>
+</tr>
+</tbody></table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tbody><tr>
+    <td align="left" bgcolor="#B4C2AC"><img src="./Ant за 10 шагов_files/advround-t-l.gif" width="4" height="4"></td>
+    <td align="right" bgcolor="#B4C2AC"><img src="./Ant за 10 шагов_files/advround-t-r.gif" width="4" height="4"></td>
+  </tr>
+  <tr height="72">
+    <td colspan="2" bgcolor="#B4C2AC" valign="middle" align="center"><!-- RLE code START -->   
+  
+<script language="JavaScript">
+// <!--
+var RndNum4NoCash = Math.round(Math.random() * 1000000000);
+document.write(
+'<iframe src="http://ad.adriver.ru/cgi-bin/erle.cgi' 
++ '?sid=8843?target=blank?bt=1?pz=0?rnd=' + RndNum4NoCash 
++ '" frameborder=0 vspace=0 hspace=0 width=468 height=60 marginwidth=0 marginheight=0 scrolling=no>' 
++ '<a href="http://ad.adriver.ru/cgi-bin/click.cgi'
++ '?sid=8843?bt=1?pz=0?rnd=' + RndNum4NoCash + '" target=_blank>'
++ '<img src="http://ad.adriver.ru/cgi-bin/rle.cgi?' 
++ 'sid=8843?bt=1?pz=0?rnd=' + RndNum4NoCash 
++ '" alt="-AdRiver-" border=0 width=468 height=60></a></iframe>') 
+// -->
+</script><iframe src="./Ant за 10 шагов_files/erle.htm" frameborder="0" vspace="0" hspace="0" width="468" height="60" marginwidth="0" marginheight="0" scrolling="no">&lt;a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=8843?bt=1?pz=0?rnd=905736788" target=_blank&gt;&lt;img src="http://ad.adriver.ru/cgi-bin/rle.cgi?sid=8843?bt=1?pz=0?rnd=905736788" alt="-AdRiver-" border=0 width=468 height=60&gt;&lt;/a&gt;</iframe>
+<noscript>
+&lt;iframe src="http://ad.adriver.ru/cgi-bin/erle.cgi?sid=8843?target=blank?bt=1?pz=0?rnd=788336537" frameborder=0 vspace=0 hspace=0 width=468 height=60 marginwidth=0 marginheight=0 scrolling=no&gt; 
+&lt;a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=8843?bt=1?pz=0?rnd=788336537" target=_blank&gt; 
+&lt;img src="http://ad.adriver.ru/cgi-bin/rle.cgi?sid=8843?bt=1?pz=0?rnd=788336537" alt="-AdRiver-" border=0 width=468 height=60&gt;&lt;/a&gt;&lt;/iframe&gt; 
+</noscript>
+     
+<!-- RLE code END -->
+
+
+<br><br>
+<table width="99%" border="0" cellspacing="10" cellpadding="0" bgcolor="#ffffff">
+<tbody><tr><td>
+<p align="center">
+<a href="http://online-football-manager.org/" target="_blank">
+<img src="./Ant за 10 шагов_files/reklama.gif" border="0"></a>
+</p>
+</td></tr>
+</tbody></table>
+  </td></tr>
+  <tr>
+    <td align="left" bgcolor="#B4C2AC"><img src="./Ant за 10 шагов_files/advround-b-l.gif" width="4" height="4"></td>
+    <td align="right" bgcolor="#B4C2AC"><img src="./Ant за 10 шагов_files/advround-b-r.gif" width="4" height="4"></td>
+  </tr>
+</tbody></table>
+<br>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF">
+  <tbody><tr>
+    <td colspan="3" align="left"><img src="./Ant за 10 шагов_files/wround-t-l.gif" width="4" height="4"></td>
+    <td colspan="2" align="right"><img src="./Ant за 10 шагов_files/wround-t-r.gif" width="4" height="4"></td>
+  </tr>
+  <tr height="10">
+    <td colspan="5"></td>
+  </tr>
+  <tr>
+<td width="130" valign="top">
+<div style="padding-left:7px; padding-right:7px">
+<!-- Левое меню -->
+<a href="http://www.pokerstars.com/sites/download/ru/?source=10167153" target="_blank">
+<img src="./Ant за 10 шагов_files/120x120.gif" border="0"></a>
+
+<br><br>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tbody><tr>
+    <td align="left" bgcolor="#B4C2AC"><img src="./Ant за 10 шагов_files/advround-t-l.gif" width="4" height="4"></td>
+    <td align="right" bgcolor="#B4C2AC"><img src="./Ant за 10 шагов_files/advround-t-r.gif" width="4" height="4"></td>
+  </tr>
+  <tr height="50">
+    <td colspan="2" bgcolor="#B4C2AC" valign="middle">
+
+<p style="margin-left: 7px">
+<a class="menub" href="http://www.javaportal.ru/news/">Новости</a><br>
+<a class="menub" href="http://www.javaportal.ru/subs/">Рассылки</a><br>
+<a class="menub" href="http://www.javaportal.ru/forum/">Форум</a><br>
+<a class="menub" href="http://www.javaportal.ru/search.html">Поиск</a><br>
+</p>
+</td>
+  </tr>
+  <tr>
+    <td align="left" bgcolor="#B4C2AC"><img src="./Ant за 10 шагов_files/advround-b-l.gif" width="4" height="4"></td>
+    <td align="right" bgcolor="#B4C2AC"><img src="./Ant за 10 шагов_files/advround-b-r.gif" width="4" height="4"></td>
+  </tr>
+</tbody></table>
+<br>
+
+
+<span class="razdel">Java</span><br>
+<a class="menu" href="http://www.javaportal.ru/java/applets/">- Апплеты</a><br>
+<a class="menu" href="http://www.javaportal.ru/java/faq/">- Вопрос-ответ</a><br>
+<a class="menu" href="http://www.javaportal.ru/java/class/">- Классы</a><br>
+<a class="menu" href="http://www.javaportal.ru/java/examples/">- Примеры</a><br>
+<a class="menu" href="http://www.javaportal.ru/java/tutorial/">- Руководства</a><br>
+<a class="menu" href="http://www.javaportal.ru/java/articles/">- Статьи</a><br>
+<a class="menu" href="http://www.javaportal.ru/java/ide/">- IDE</a><br>
+<a class="menu" href="http://www.javaportal.ru/dictionary/">- Словарь терминов</a><br>
+<a class="menu" href="http://www.javaportal.ru/downloads/">- Скачать</a><br><br>
+
+
+<span class="razdel">Мобильная Java</span><br>
+<a class="menu" href="http://www.javaportal.ru/mobiljava/games/">- Игры</a><br>
+<a class="menu" href="http://www.javaportal.ru/mobiljava/examples/">- Примеры</a><br>
+<a class="menu" href="http://www.javaportal.ru/mobiljava/articles/">- Статьи</a><br>
+<a class="menu" href="http://www.javaportal.ru/mobiljava/wapwmlandother/">- WAP, WML и пр.</a><br><br>
+
+<span class="razdel">JavaScript</span><br>
+<a class="menu" href="http://www.javaportal.ru/javascript/faq/">- Вопрос-ответ</a><br>
+<a class="menu" href="http://www.javaportal.ru/javascript/examples/">- Примеры</a><br>
+<a class="menu" href="http://www.javaportal.ru/javascript/articles/">- Статьи</a><br><br>
+
+<span class="razdel">Веб-мастеринг</span><br>
+<a class="menu" href="http://www.javaportal.ru/htmlandcss/">- HTML</a><br>
+<a class="menu" href="http://www.javaportal.ru/htmlandcss/">- CSS</a><br>
+<a class="menu" href="http://www.javaportal.ru/htmlandcss/">- SSI</a><br><br>
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tbody><tr>
+    <td align="left" bgcolor="#B4C2AC"><img src="./Ant за 10 шагов_files/advround-t-l.gif" width="4" height="4"></td>
+    <td align="right" bgcolor="#B4C2AC"><img src="./Ant за 10 шагов_files/advround-t-r.gif" width="4" height="4"></td>
+  </tr>
+  <tr height="50">
+    <td colspan="2" bgcolor="#B4C2AC" valign="middle">
+
+<p style="margin-left: 7px">
+<a class="menub" href="http://www.javaportal.ru/articles/">Разминка для ума</a><br>
+<a class="menub" href="http://www.javaportal.ru/projects/">Проекты</a><br>
+<a class="menub" href="http://www.javaportal.ru/books/">Книги</a><br>
+<a class="menub" href="http://www.javaportal.ru/catalogue/">Ссылки</a><br>
+<a class="menub" href="http://www.javaportal.ru/programs/">Программы</a><br>
+<a class="menub" href="http://www.javaportal.ru/humour/">Юмор :)</a><br>
+</p>
+</td>
+  </tr>
+  <tr>
+    <td align="left" bgcolor="#B4C2AC"><img src="./Ant за 10 шагов_files/advround-b-l.gif" width="4" height="4"></td>
+    <td align="right" bgcolor="#B4C2AC"><img src="./Ant за 10 шагов_files/advround-b-r.gif" width="4" height="4"></td>
+  </tr>
+</tbody></table>
+
+<br>
+<hr>
+<br>
+<p align="center">
+<!--LiveInternet counter--><script language="JavaScript"><!--
+document.write('<a href="http://www.liveinternet.ru/click" '+
+'target=_blank><img src="http://counter.yadro.ru/hit?t54.1;r'+
+escape(document.referrer)+((typeof(screen)=='undefined')?'':
+';s'+screen.width+'*'+screen.height+'*'+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+';'+Math.random()+
+'" alt="liveinternet.ru: показано число просмотров и посетителей за 24 часа" '+
+'border=0 width=88 height=31></a>')//--></script><a href="http://www.liveinternet.ru/click" target="_blank"><img src="./Ant за 10 шагов_files/hit" alt="liveinternet.ru: показано число просмотров и посетителей за 24 часа" border="0" width="88" height="31"></a><!--/LiveInternet-->
+
+
+<!--begin of Top100-->
+<a href="http://top100.rambler.ru/top100/">
+<img src="./Ant за 10 шагов_files/top100.cnt" alt="Rambler&#39;s Top100" width="1" height="1" border="0"></a>
+<!--end of Top100 code--><br>
+<!--begin of Top100 logo-->
+<a href="http://top100.rambler.ru/top100/">
+<img src="./Ant за 10 шагов_files/banner-88x31-rambler-green2.gif" alt="Rambler&#39;s Top100" width="88" height="31" border="0"></a>
+<!--end of Top100 logo -->
+
+
+
+
+<!--Rating@Mail.ru COUNTER--><script language="JavaScript"><!--
+d=document;a='';a+=';r='+escape(d.referrer)
+js=10//--></script><script language="JavaScript1.1"><!--
+a+=';j='+navigator.javaEnabled()
+js=11//--></script><script language="JavaScript1.2"><!--
+s=screen;a+=';s='+s.width+'*'+s.height
+a+=';d='+(s.colorDepth?s.colorDepth:s.pixelDepth)
+js=12//--></script><script language="JavaScript1.3"><!--
+js=13//--></script><script language="JavaScript"><!--
+d.write('<a href="http://top.mail.ru/jump?from=407517"'+
+' target=_top><img src="http://top.list.ru/counter'+
+'?id=407517;t=234;js='+js+a+';rand='+Math.random()+
+'" alt="Рейтинг@Mail.ru"'+' border=0 height=31 width=88></a>')
+if(js>11)d.write('<'+'!-- ')//--></script><a href="http://top.mail.ru/jump?from=407517" target="_top"><img src="./Ant за 10 шагов_files/counter" alt="Рейтинг@Mail.ru" border="0" height="31" width="88"></a><!-- <noscript><a
+target=_top href="http://top.mail.ru/jump?from=407517"><img
+src="http://top.list.ru/counter?js=na;id=407517;t=234"
+border=0 height=31 width=88
+alt="Рейтинг@Mail.ru"></a></noscript><script language="JavaScript"><!--
+if(js>11)d.write('--'+'>')//--><!--/COUNTER-->
+
+
+
+  
+<!-- SpyLOG f:0211 -->
+<script language="javascript"><!--
+Mu="u4129.42.spylog.com";Md=document;Mnv=navigator;Mp=0;
+Md.cookie="b=b";Mc=0;if(Md.cookie)Mc=1;Mrn=Math.random();
+Mn=(Mnv.appName.substring(0,2)=="Mi")?0:1;Mt=(new Date()).getTimezoneOffset();
+Mz="p="+Mp+"&rn="+Mrn+"&c="+Mc+"&t="+Mt;
+if(self!=top){Mfr=1;}else{Mfr=0;}Msl="1.0";
+//--></script><script language="javascript1.1"><!--
+Mpl="";Msl="1.1";Mj = (Mnv.javaEnabled()?"Y":"N");Mz+='&j='+Mj;
+//--></script><script language="javascript1.2"><!-- 
+Msl="1.2";Ms=screen;Mpx=(Mn==0)?Ms.colorDepth:Ms.pixelDepth;
+Mz+="&wh="+Ms.width+'x'+Ms.height+"&px="+Mpx;
+//--></script><script language="javascript1.3"><!--
+Msl="1.3";//--></script><script language="javascript"><!--
+My="";My+="<a href='http://"+Mu+"/cnt?cid=412942&f=3&p="+Mp+"&rn="+Mrn+"' target='_blank'>";
+My+="<img src='http://"+Mu+"/cnt?cid=412942&"+Mz+"&sl="+Msl+"&r="+escape(Md.referrer)+"&fr="+Mfr+"&pg="+escape(window.location.href);
+My+="' border=0 width=88 height=31 alt='SpyLOG'>";
+My+="</a>";Md.write(My);//--></script><a href="http://u4129.42.spylog.com/cnt?cid=412942&f=3&p=0&rn=0.006688731722533703" target="_blank"><img src="./Ant за 10 шагов_files/cnt" border="0" width="88" height="31" alt="SpyLOG"></a><noscript>
+&lt;a href="http://u4129.42.spylog.com/cnt?cid=412942&amp;f=3&amp;p=0" target="_blank"&gt;
+&lt;img src="http://u4129.42.spylog.com/cnt?cid=412942&amp;p=0" alt='SpyLOG' border='0' width=88 height=31 &gt;
+&lt;/a&gt;</noscript>
+<!-- SpyLOG -->
+</p>
+
+
+</div>
+</td>
+<td width="1" background="./Ant за 10 шагов_files/divider.gif"></td>
+<td valign="top" style="padding-left:7px; padding-right:7px">
+<!--ОСНОВНОЙ ТЕКСТ -->
+<span class="news"><a href="http://www.javaportal.ru/articles/index.html">Статьи - разминка для ума</a><img src="./Ant за 10 шагов_files/bulitt.gif"><span class="tt">Ant за 10 шагов</span></span>
+<hr>
+<div class="maintext">
+<h1>Ant за 10 шагов</h1>
+<p>
+Штука в том, что файлы Ant похожи на фруктовый кекс - на самом деле он один,  и  вы  передаете  их  друг другу на протяжении лет. Если больше читателей  прекратят это делать и выучат немного Ant, может их проекты станут  чуточку  лучше. Итак, это 10 вещей, которые вы должны знать об этом инструменте.
+</p>
+<h2>Содержание</h2>
+<ul>
+<li><a href="http://www.javaportal.ru/articles/ant10step.html#a1">Шаг 1: Почему Ant?</a>
+</li><li><a href="http://www.javaportal.ru/articles/ant10step.html#a2">Шаг 2: Как работает Ant</a>
+</li><li><a href="http://www.javaportal.ru/articles/ant10step.html#a3">Шаг 3: Твой первый сценарий Ant.</a>
+</li><li><a href="http://www.javaportal.ru/articles/ant10step.html#a4">Шаг 4: Зависимости в Ant</a>
+</li><li><a href="http://www.javaportal.ru/articles/ant10step.html#a5">Шаг 5: Асоциальные задания</a>
+</li><li><a href="http://www.javaportal.ru/articles/ant10step.html#a6">Шаг 6: Компилирование Java</a>
+</li><li><a href="http://www.javaportal.ru/articles/ant10step.html#a7">Шаг 7: Jar'ы и Filesets</a>
+</li><li><a href="http://www.javaportal.ru/articles/ant10step.html#a8">Шаг 8: Свойства как переменные, но...</a>
+</li><li><a href="http://www.javaportal.ru/articles/ant10step.html#a9">Шаг 9: Файлы Properties</a>
+</li><li><a href="http://www.javaportal.ru/articles/ant10step.html#a10">Шаг 10: Задачи по условию</a>
+</li><li><a href="http://www.javaportal.ru/articles/ant10step.html#a11">В заключение</a>
+</li></ul>
+
+
+<a name="a1"></a><h2>Шаг 1: Почему Ant?</h2>
+
+<p>
+Ant  - это инструмент, который призван автоматизировать процесс сборки ПО.  В идеале Ant сделает из всех ваших исходных файлов инсталлируемый пакет, готовый к записи на CD.
+</p>
+<p>
+Новички  Ant'а  иногда  спрашивают, что может Ant, чего нельзя сделать другими  способами.  Например,  если  я хочу откомпилировать несколько Java  файлов  и  сделать  Jar  из полученных файлов классов, то я могу просто набрать команды руками:
+</p>
+<pre><code>
+  $ javac -d build src/Main.Java src/Utils.src/Java GUI.Java
+  $ cd build
+  $ jar -cvf ../mystuff.jar Main.class Utils.class GUI.class
+
+</code></pre>
+<p>
+Это сработает, но этот метод может порождать ошибки и утомительный, он не станет лучше, если ваша система станет включать все больше и больше Java файлов.
+</p>
+<p>
+Конечно, вы можете засунуть все это в сценарий  оболочки или Perl:
+</p>
+<pre><code>
+  #!/bin/sh
+  javac -d build src/Main.Java src/Utils.Java src/GUI.Java
+  cd buildre are ten things you need to know about this tool.
+  jar -cvf ../mystuff.jar Main.class Utils.class GUI.class
+</code></pre>        
+<p>
+Проблема  в  том,  что  оболочка  и Perl являются инструментами общего назначения  -  наряду со сборкой ПО, вы можете написать web сервер или ПО  баз  данных на Perl. Ant специализируется на одном - на сборке ПО. Он может, и использует любую возможность чтобы помочь вам собрать ваше ПО.  Ant  делает это потому что знает, что вы занимаетесь сборкой ПО - вот  почему  вы  должны  использовать  Ant для сборки и никакие другие средства.
+</p>
+<p>
+Это  отличие  является  несущественным,  когда  вы начинаете маленький проект, но с большими системами специализированные средства, такие как Ant могут быть выбором между жизнью и смертью.
+</p>
+
+<a name="a2"></a><h2>Шаг 2: Как работает Ant</h2>
+<p>
+Ant немного похож на фабрику. Сырьем для него является то, что создают программисты  -  исходный код на Java, программы, написанные на других языках,  дескрипторы  развертывания  и  т.д.  Что  должно получится на выходе - скомпилированные программы, готовые к использованию.
+</p>
+<p>
+В  процессе  получения  из  исходного  кода  готового  продукта, Ant'у необходима  помощь в виде build файла. Build файл (также известный как "Ant  файл", или "build сценарий" ("сценарий сборки") или "файл build.xml") показывает Ant'у что надо делать, чтобы превратить то что есть  (как правило, исходный код) в то что вы хотите. Build файл похож на детальный план - он говорит вам как собрать из частей единое целое.
+</p>
+<p>
+Build  файл  содержит  правила,  которые  указывают  Ant'у делать вещи наподобие таких:
+</p>
+<ul>   
+<li>В  соответствии  с тем что мне нужно, скопируй Russell.jar в каталог релиза...
+</li><li>кстати, сначала ты должен собрать Russell.jar;
+</li><li>кстати, для того, чтобы собрать Russell.jar, примени команду jar к *.class файлам
+</li><li>кстати, тебе нужно скомпилировать class файлы, если ты этого еще не сделал.
+</li><li>Для  того,  чтобы  сделать *.class файлы, запусти компилятор Java для *.java файлов.
+
+</li></ul>
+
+<a name="a3"></a><h2>Шаг 3: Твой первый сценарий Ant.</h2>
+
+<p>Хватит теории, давай посмотрим на реальный, хотя и очень маленький Ant файл. Нижеследующее является "Hello world" build файлов.
+</p>
+<pre><code>
+  &lt;project name="MyProject" default="all"&gt;
+  &lt;target name="all" description="Do the entire build" &gt;
+  &lt;echo&gt;I'm building my software&lt;/echo&gt;
+  &lt;/target&gt;
+  &lt;/project&gt;
+
+</code></pre>
+<p>Как  видишь,  это  XML  файл,  содержащий элемент &lt;project&gt;. &lt;project&gt; содержит 2 атрибута:
+</p><ul>
+<li>Имя;
+</li><li>Задание по умолчанию, под названием "all".
+</li></ul>
+<p>Имя  является  просто  обозначением, обычно оно нигде не используется. Задание  по умолчанию - это имя того задания, которое вы хотите, чтобы Ant выполнял по умолчанию. Это задание Ant выполнит если вы не укажите ему, что собирать.
+</p>
+<p>
+Наполнением  build  файла  являются  элементы  &lt;target&gt;. По сути, этот элемент  &lt;target&gt;  значит следующее: чтобы собрать нечто под названием "all", выполни команду &lt;echo&gt;.
+</p>
+<p>Для  того  чтобы  заставить  Ant  что-то  сделать, вы должны выполнить команду Ant и указать ей какой файл содержит инструкции сборки:
+</p>
+<pre><code>
+  $ Ant -f build.xml
+  Buildfile: build.xml
+
+  all:
+       [echo] I'm building my software
+
+  BUILD SUCCESSFUL
+  Total time: 1 second
+
+</code></pre>
+<p>Итак, что здесь произошло?
+</p><ul>
+<li>Ant нашел build файл и прочитал его;
+</li><li>Так  как  ты  не  указал ему, что делать, он решил выполнить задание по умолчанию "all";
+</li><li>Ant собрал цель путем выполнения команды &lt;echo&gt;.
+</li></ul>
+<p></p>
+
+<a name="a4"></a><h2>Шаг 4: Зависимости в Ant</h2>
+<p>Давай рассмотрим файл с более чем одним заданием:
+</p>
+<pre><code>
+  &lt;project name="02.depend" default="all" &gt;
+
+        &lt;description&gt;This is a project which uses dependancies&lt;/description&gt;
+
+        &lt;target name="make.dirs" description="Make a dir"&gt;
+       &lt;mkdir dir="build"/&gt;
+        &lt;/target&gt;
+        
+        &lt;target name="all" description="Do the build"  depends="make.dirs"&gt;
+       &lt;echo&gt;I'm building my software&lt;/echo&gt;
+        &lt;/target&gt;
+        
+  &lt;/project&gt;
+
+</code></pre>
+<p>Так  как имя по умолчанию для build файла - это build.xml, то мы можем опустить аргумент -f и просто набрать Ant без параметров:
+</p>
+<pre><code>
+  $ Ant
+  Buildfile: build.xml
+
+  make.dirs:
+      [ mkdir] Created dir: /home/russ/Ant_example/02.depend/build
+
+  all:
+       [echo] I'm building my software
+
+  BUILD SUCCESSFUL
+  Total time: 1 second
+
+</code></pre>
+<p>Этот  build  файл  содержит два задания, уже знакомое "all" и новое,
+ "make.dirs". "make.dirs" вызывает встроенную в Ant команду mkdir -
+ Ant  называет  его  встроенные  команды  задачами - для создания новой
+ директории.  Обратите  внимание  на  тот  факт,  что  задание  "all"
+ указывает  на  то,  что  оно  зависит  от  задания  "make.dirs". Эта
+ зависимость  означает,  что  для того чтобы собрать "all", мы должны
+ сначала  собрать  "make.dirs".  Идея зависимости является ключевой в
+ работе  Ant'а - большая часть работы по написанию Ant файлов состоит в
+ построении сложных паутин зависимости.
+</p>
+
+<a name="a5"></a><h2>Шаг 5: Асоциальные задания</h2>
+<p>Наш следующий пример содержит 3-е задание, под названием "clean":
+</p>
+<pre><code>
+  &lt;project name="nodefault" default="all" &gt;
+
+        &lt;target name="make.dirs" description="Make some dirs"&gt;
+       &lt;mkdir dir="build"/&gt;
+        &lt;/target&gt;
+
+        &lt;target name="all" description="Do the build"  depends="make.dirs"&gt;
+       &lt;echo&gt;I'm building my software&lt;/echo&gt;
+        &lt;/target&gt;
+
+        &lt;target name="clean" description="Clean up"&gt;
+       &lt;echo&gt;I'm cleaning up.&lt;/echo&gt;
+       &lt;delete dir="build"/&gt;
+        &lt;/target&gt;
+
+  &lt;/project&gt;
+
+</code></pre>
+<p>"clean"  просто  удаляет  каталог сборки, который создается заданием "make.dirs".  Ты  обычно включаешь "clean" для уборки после сборки всех сгенерированных файлов.
+</p>
+
+<p>Но  замечу,  что "clean" не является заданием по умолчанию и задание по  умолчанию  не  зависит  от  него.  Так как же ты сможешь выполнить "clean"? Путем набора следующего:
+</p>
+<pre><code>
+  $ Ant clean
+  Buildfile: build.xml
+
+  clean:
+       [echo] I'm cleaning up.
+
+  BUILD SUCCESSFUL
+  Total time: 1 second
+
+</code></pre>
+<a name="a6"></a><h2>Шаг 6: Компилирование Java</h2>
+<p>Итак,  давай  попытаемся  сделать что-нибудь полезное с Ant, например, откомпилируем что-то из Java кода:
+</p>
+<pre><code>
+  &lt;project name="MyProject" default="all" &gt;
+
+        &lt;target name="make.dirs" description="Make some dirs"&gt;
+       &lt;mkdir dir="build"/&gt;
+       &lt;mkdir dir="build/class"/&gt;
+        &lt;/target&gt;
+
+        &lt;target name="compile" description="compile java"  depends="make.dirs"&gt;
+       &lt;javac destdir="build/class"&gt;
+      &lt;src path="src"/&gt;
+       &lt;/javac&gt;
+        &lt;/target&gt;
+
+        &lt;target name="all" description="Do the build"  depends="compile"/&gt;
+
+        &lt;target name="clean" description="clean up"&gt;
+       &lt;echo&gt;I'm cleaning up.&lt;/echo&gt;
+       &lt;delete dir="build"/&gt;
+        &lt;/target&gt;
+
+  &lt;/project&gt;
+
+</code></pre>
+<p>Похоже,  что  мы  имеем  задание  по  умолчанию  "all", зависящее от "compile",  которое вызывает задачу javac, встроенную в Ant. Вот что произойдет, когда мы запустим этот сценарий:
+</p>
+<pre><code>
+  Ant
+  Buildfile: build.xml
+        
+  make.dirs:
+      [mkdir] Created dir: /home/rolsen/Documents/Ant/04.compile/build
+      [mkdir] Created dir:
+  /home/rolsen/Documents/Ant/04.compile/build/class
+        
+  compile:
+      [javac] Compiling 1 source file to /home/russ/build/class
+
+  all:
+
+  BUILD SUCCESSFUL
+  Total time: 2 seconds
+
+</code></pre>
+<p>Существует 2 интересные особенности задачи javac. Во-первых, ты можешь
+ не   указывать  непосредственно  имена  java  файлов,  которые  хочешь
+ скомпилировать  -  достаточно просто указать каталог. Во-вторых, javac
+ может  определить, когда class файл существует и новее, чем java файл,
+ в  этом  случае, она ничего не откомпилирует. Ты можешь проверить это,
+ выполнив   строку   дважды   -   во  втором  случае  javac  ничего  не
+ откомпилирует. Эти 2 особенности являются примерами приемов сборки ПО,
+ упоминавшихся  ранее.  Так  как Ant знает, что то, что вы делаете, это
+ попытка собрать ПО, он пропускает все, что уже сделано.
+</p>
+<p>Сейчас  давай  обратимся к яду, отравляющему жизнь Java программиста -
+ classpath. Как ты знаешь, classpath в Java это список Jar файлов и/или
+ каталогов,  который сообщает Java где искать файлы библиотек. Проблема
+ состоит  в  том,  что  в  сложных системах classpath может становиться
+ очень длинным и запутанным.
+</p>
+
+<p>Ant предоставляет тебе 2 метода для определения classpath, или прямо в самой javac:
+</p>
+<pre><code>
+  &lt;project name="04b.classpath" default="all" &gt;
+
+        &lt;target name="make.dirs" description="Make some dirs"&gt;
+       &lt;mkdir dir="build"/&gt;
+       &lt;mkdir dir="build/class"/&gt;
+        &lt;/target&gt;
+
+        &lt;target name="all" description="compile java" depends="make.dirs"&gt;
+       &lt;javac destdir="build/class" classpath="extra.jar"&gt;
+      &lt;src path="src"/&gt;
+       &lt;/javac&gt;
+        &lt;/target&gt;
+        
+  &lt;/project&gt;
+
+</code></pre>
+<p>...или  ты  можешь  указать  classpath  отдельно, что удобно есть путь длинный или используется в нескольких заданиях.
+</p>
+<pre><code>
+  &lt;project name="04c.classpath" default="all" &gt;
+
+        &lt;target name="make.dirs" description="Make some dirs"&gt;
+       &lt;mkdir dir="build"/&gt;
+       &lt;mkdir dir="build/class"/&gt;
+        &lt;/target&gt;
+
+   &lt;path id="myclasspath" &gt;
+       &lt;fileset dir="lib"&gt;
+      &lt;include name="**/*.jar"/&gt;
+       &lt;/fileset&gt;
+        &lt;/path&gt;
+
+        &lt;target name="all" description="compile java" depends="make.dirs"&gt;
+       &lt;javac destdir="build/class" classpathref="myclasspath"&gt;
+      &lt;src path="src"/&gt;
+  &lt;/javac&gt;
+        &lt;/target&gt;
+
+  &lt;/project&gt;
+
+</code></pre>
+<p>Недостаток   этого   в   том,  что  Ant  принимает  это  значение  без дополнительной  проверки,  существует ли jar файл, который ты указал в сценарии.  Поэтому,  если  ты ошибся в имени jar файла, Ant не покажет тебе место ошибки - проверяй то, что вводишь.
+</p>
+
+<a name="a7"></a><h2>Шаг 7: Jar'ы и Filesets</h2>
+<p>Java приложения как правило поставляются упакованными в jar файлы. Jar файлы  похожи  на  привычные  нам  zip  файлы  -  один  jar файл может содержать любое количество файлов собранных вместе и сжатых. Ant предоставляет специальную задачу для создания jar файлов:
+</p>
+<pre><code>
+  &lt;project name="05.jar" default="all" &gt;
+
+        &lt;target name="make.dirs" description="Make some dirs"&gt;
+       &lt;mkdir dir="build"/&gt;
+       &lt;mkdir dir="build/class"/&gt;
+        &lt;/target&gt;
+
+        &lt;target name="compile" description="compile java" depends="make.dirs"&gt;
+
+  &lt;javac destdir="build/class"&gt;
+      &lt;src path="src"/&gt;
+       &lt;/javac&gt;
+        &lt;/target&gt;
+
+        &lt;target name="stuff.jar" description="make jar file" depends="compile"&gt;
+       &lt;jar destfile="build/stuff.jar"&gt;
+      &lt;fileset dir="build/class"&gt;
+    &lt;include name="**/*.class"/&gt;
+    &lt;exclude name="**/CVS"/&gt;
+      &lt;/fileset&gt;
+       &lt;/jar&gt;
+        &lt;/target&gt;
+
+        &lt;target name="all" description="Do the build" depends="stuff.jar"/&gt;
+  &lt;/project&gt;
+
+</code></pre>
+<p>Заметьте, что атрибут "distfile" сообщает Ant'у имя создаваемого jar
+ файла,  в то время как файлы, помещаемые в jar файл, указываются через
+ элемент  fileset. Filese'ыt могут быть использованы во многих задачах,
+ требующих  списков  файлов  и  являются  очень мощным методом указания
+ файлов по маске.
+</p>
+
+<p>Jar  задача  имеет  те  же  особенности,  что  и  javac: если jar файл
+ существует  и  имеет более новую дату и время, то задача jar сэкономит
+ время и ничего не сделает.
+</p>
+
+<a name="a8"></a><h2>Шаг 8: Свойства как переменные, но...</h2>
+<p>Ant  также  позволяет тебе установить аналогичные переменным сущности, называемые свойствами:
+</p>
+<pre><code>
+  &lt;project name="MyProject" default="all" &gt;
+
+        &lt;property name="month" value="July"/&gt;
+        
+   &lt;target name="all" description="Uses properties"&gt;
+       &lt;echo&gt;The month is ${month}&lt;/echo&gt;
+        &lt;/target&gt;
+
+  &lt;/project&gt;
+
+</code></pre>
+<p>Причина  того,  что Ant не называет их переменными в том, что свойства
+ не могут изменять своего значения, будучи раз установленными. То есть,
+ свойства  похожи  на  переменные,  за  исключением  того,  что  они не
+ изменяются. Поэтому, если мы выполним следующий Ant сценарий:
+</p>
+<pre><code>
+  &lt;project name="07.notvars" default="all" &gt;
+
+        &lt;property name="month" value="Jan"/&gt;
+        &lt;property name="month" value="Dec"/&gt;
+
+        &lt;target name="all" description="Uses properties"&gt;
+       &lt;echo&gt;This month is ${month}&lt;/echo&gt;
+        &lt;/target&gt;
+
+  &lt;/project&gt;
+
+</code></pre>
+<p>Значение  month  не  измениться с того времени, как оно установиться в "Jan":
+</p>
+<pre><code>
+  Buildfile: build.xml
+
+  all:
+       [echo] This month is Jan
+        
+  BUILD SUCCESSFUL
+  Total time: 0 seconds
+        
+</code></pre>
+<a name="a9"></a><h2>Шаг 9: Файлы Properties</h2>
+<p>Ant  также  позволяет  тебе установить переменные в отдельном property
+ файле, называемом Ant.properties:
+</p>
+<pre><code>
+  #
+  # A sample Ant properties file
+  #
+  month=30 days
+  year=2004
+
+</code></pre>
+<p>Ты можешь получить доступ к файлу свойств, используя специальную форму элемента &lt;property&gt;:
+</p>
+<pre><code>
+  &lt;project name="08.propfile" default="all" &gt;
+
+        &lt;property file="Ant.properties"/&gt;
+        &lt;property name="month" value="Jan"/&gt;
+        &lt;property name="year" value="1066"/&gt;
+
+        &lt;target name="all" description="Uses properties"&gt;
+       &lt;echo&gt;This month is ${month}&lt;/echo&gt;
+       &lt;echo&gt;This year is ${year}&lt;/echo&gt;
+        &lt;/target&gt;
+
+  &lt;/project&gt;
+
+</code></pre>
+<p>Просто  запомните, что неважно как оно было установлено, если свойство
+ получает  значение,  оно  ведет  себя  как  собака  с  костью: однажды
+ установив, ты не можешь поменять значение свойства.
+</p>
+
+<p>Собрав   все  вместе,  ниже  приведен  ранее  упоминавшийся  пример  с
+ построением jar файла с повторяющимися путями, помещенными в свойства:
+</p>
+<pre><code>
+  &lt;project name="09.jarprops" default="all" &gt;
+
+        &lt;property file="Ant.properties"/&gt;
+        &lt;property name="build.dir" value="build"/&gt;
+        &lt;property name="class.dir" value="${build.dir}/class"/&gt;
+        &lt;property name="stuff.jar" value="${build.dir}/stuff.jar"/&gt;
+
+        &lt;target name="make.dirs" description="Make some dirs"&gt;
+       &lt;mkdir dir="${build.dir}"/&gt;
+       &lt;mkdir dir="${class.dir}"/&gt;
+        &lt;/target&gt;
+
+        &lt;target name="compile" description="compile java" depends="make.dirs"&gt;
+       &lt;javac destdir="${class.dir}"&gt;
+      &lt;src path="src"/&gt;
+       &lt;/javac&gt;
+        &lt;/target&gt;
+
+        &lt;target name="stuff.jar" description="make jar file" depends="compile"&gt;
+       &lt;jar destfile="${stuff.jar}"&gt;
+      &lt;fileset dir="${class.dir}"&gt;
+    &lt;include name="**/*.class"/&gt;
+    &lt;exclude name="**/CVS"/&gt;
+  &lt;/fileset&gt;
+       &lt;/jar&gt;
+        &lt;/target&gt;
+
+        &lt;target name="all" description="Do the build" depends="stuff.jar"/&gt;
+
+        &lt;target name="clean" description="clean up"&gt;
+       &lt;echo&gt;I'm cleaning up.&lt;/echo&gt;
+       &lt;delete dir="${build.dir}"/&gt;
+        &lt;/target&gt;
+
+  &lt;/project&gt;
+
+</code></pre>
+<a name="a10"></a><h2>Шаг 10: Задачи по условию</h2>
+<p>Ты  можешь  использовать свойства для включения и выключения отдельных заданий. Посмотри на следующий пример:
+</p>
+<pre><code>
+  &lt;project name="10.ifprop" default="all" &gt;
+
+        &lt;target name="debug.build" unless="production"&gt;
+       &lt;echo&gt;Pretending to do a debug build&lt;/echo&gt;
+        &lt;/target&gt;
+
+        &lt;target name="production.build" if="production"&gt;
+       &lt;echo&gt;Pretending to do a production build&lt;/echo&gt;
+        &lt;/target&gt;
+
+        &lt;target name="all" description="Do the build" depends="production.build,debug.build"/&gt;
+
+  &lt;/project&gt;
+
+</code></pre>
+<p>Как  видишь,  если установлено свойство "production", то выполниться
+ задание  "production.build",  но  если  свойство  не установлено, то
+ будет выполнено "debug.build".
+</p>
+
+<p>Обрати  внимание на то, что в if и unless Ant лишь проверяет, имеет ли
+ свойство  значение.  Ant не проверяет, какое это значение - поэтому, в
+ преведеном  выше  файле  мы  получим  сборку production  если свойство
+ "production"   будет   установлено   в   "true",   "false"   или
+ "waitingforgodot".
+</p>
+
+<a name="a11"></a><h2>В заключение</h2>
+<p>Естественно,  невозможно в такой статье как эта, провести нечто больше
+ чем  вступление  в  Ant.  К  счастью,  Ant  поставляется  с  детальной
+ документацией.  А  его  основной  сайт   - очень интересное и приятное
+ лекарство от бессонницы.
+</p>
+<p> Напоследок, пара хороших книг:
+<br>
+<br>
+Java Development with Ant<br>
+Erik Hatcher and Steve Loughran<br>
+ISBN 1930110588<br>
+<br>
+Ant: The Definitive Guide<br>
+By Jesse E. Tilly, Eric M. Burke<br>
+ISBN 0596001843<br>
+</p>
+
+
+<br><br>
+<div align="right">
+Оригинал: <a href="http://docs.javatech.info/">docs.javatech.info</a><br>
+Апрель 2006.<br>
+Перевод <a href="http://jroller.com/page/rolsen?entry=ant_in_ten_steps">Ant in Ten Steps by Russ Olsen</a>
+</div>
+
+
+<br><br>
+</div>
+<!--КОНЕЦ ОСНОВНОЙ ТЕКСТ -->
+</td>
+<td width="1" background="./Ant за 10 шагов_files/divider.gif"></td>
+<td width="130" valign="top">
+<div style="padding-left:7px; padding-right:7px">
+<img src="./Ant за 10 шагов_files/bookshelf.gif">
+
+
+
+<span class="news">
+<img src="./Ant за 10 шагов_files/important.gif">
+<font color="red">Узнай</font> о чем ты на самом деле сейчас думаешь <a href="http://www.javaportal.ru/humour/now_you_think.html">тут</a>.
+<br><br><br>
+
+<form method="POST" action="http://www.javaportal.ru/interrogation/result0001.php" target="_blank">
+<font color="red"><b>Опрос</b></font><br>
+Считаете ли вы целесообразным сделать аналог упражнений по Hibernate на базе вопросов <a href="http://www.sql-ex.ru/" target="_blank">www.sql-ex.ru</a>?
+<br>
+<input name="c" value="1" type="radio" checked="" onclick="JavaScrpt: document.getElementById(&#39;drtex1&#39;).disabled=true"> Да, полный аналог упражнений<br>
+<input name="c" value="2" type="radio" onclick="JavaScrpt: document.getElementById(&#39;drtex1&#39;).disabled=true">Да, но с реализацией основных конструкций объектной модели<br>
+<input name="c" value="3" type="radio" onclick="JavaScrpt: document.getElementById(&#39;drtex1&#39;).disabled=false">Нет, Hibernate не актуален, использую др. технологии <input name="drtex" id="drtex1" type="text" style="font-size: 9px; width: 80px; height: 19px" disabled=""><br>
+<input name="c" value="4" type="radio" onclick="JavaScrpt: document.getElementById(&#39;drtex1&#39;).disabled=true"> Нет<br>
+<input type="submit" name="ok" value="Ответ" style="font-size: 9px; width: 40px; height: 19px">
+
+
+<br>
+<br>
+<span class="news">
+<img src="./Ant за 10 шагов_files/news.gif">
+
+</span>
+<br>
+<br>
+<script type="text/javascript"><!--
+google_ad_client = "pub-4001110505267280";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "B4C2AC";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "0000FF";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript" src="./Ant за 10 шагов_files/show_ads.js">
+</script><ins style="display:inline-table;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:120px"><ins id="aswift_0_anchor" style="display:block;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:120px"><iframe width="120" height="600" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;"></iframe></ins></ins>
+</form></span></div>
+</td>
+</tr>
+  <tr height="80">
+<td colspan="5" align="center">
+<p align="center">
+<a href="http://online-football-manager.org/" target="_blank">
+<img src="./Ant за 10 шагов_files/reklama.gif" border="0"></a>
+</p>
+</td>
+  </tr>
+  <tr>
+    <td colspan="3" align="left"><img src="./Ant за 10 шагов_files/wround-b-l.gif" width="4" height="4"></td>
+    <td colspan="2" align="right"><img src="./Ant за 10 шагов_files/wround-b-r.gif" width="4" height="4"></td>
+  </tr>
+</tbody></table>
+<p class="copyright">JavaPortal.ru - всё о Java и Javascript | <a href="http://www.javaportal.ru/adv.html">Реклама на сайте</a> | <a href="http://www.javaportal.ru/link.html">Обратная связь</a><br>
+Copyright © Юрий Ладик 2000-2007 г.</p>
+
+
+
+</body></html>

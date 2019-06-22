@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- saved from url=(0075)http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/basics_unpack.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=KOI8-R">
+<title>Extracting the Contents of a JAR file</title>
+   
+</head>
+<body bgcolor="#ffffff" link="#000099">
+<b><font size="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</font></b>
+<br>
+<table width="550">
+<tbody><tr>
+<td align="left" valign="center">
+<a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/basics_view.html" target="_top"><img src="./Extracting the Contents of a JAR file_files/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/TOC.html#basics" target="_top"><img src="./Extracting the Contents of a JAR file_files/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/basics_mod.html" target="_top"><img src="./Extracting the Contents of a JAR file_files/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+</tr>
+</tbody></table>
+<img src="./Extracting the Contents of a JAR file_files/blueline.gif" width="550" height="8" align="BOTTOM" naturalsizeflag="3">
+<br>
+
+<font size="-1">
+<b>Урок</b>: Использование JAR-файлов: Основы
+</font>
+
+<h2>Выделение содержимого из JAR-файла</h2>
+<blockquote>
+Базовый формат команды для выделения содержимого JAR-файла такой: 
+<blockquote><pre>jar xf <i>jar-файл [архивный-файл(ы)]</i>
+</pre></blockquote>
+<p>
+Давайте рассмотрим опции и аргументы этой команды: 
+</p><ul>
+<li>Опция <tt>x</tt> показывает, что вы хотите <em>выделить</em> (extract)
+файлы из архива JAR.
+</li><li>Опция <tt>f</tt> показывает, что JAR-файл, файлы из которого должны быть выделены,
+задан в командной строке, а не в стандартном потоке ввода. 
+</li><li>Аргумент <tt>jar-file</tt> - это имя файла (или маршрут и имя) для JAR-файла, 
+из которого выделяются файлы.
+</li><li><tt>архивный-файл(ы)(s)</tt> - необязательный аргумент, состоящий из списка с разделителем-пробелом
+файлов, которые должны быть выделены из архива. Если этот аргумент отсутствует,
+утилита Jar будет выделять все файлы из архива.
+</li></ul>
+<p>
+Как обычно, порядок, в котором в команде употребляются опции
+<tt>x</tt> и <tt>f</tt>, не имеет значения, но между ними не должно быть пробелов. 
+</p><p>
+При выделении файлов утилита Jar делает копии требуемых файлов и записывает их в текущий
+каталог, воспроизводя ту структуру каталогов, которая была в архиве. Исходный 
+JAR-файл не изменяется. 
+</p><p>
+
+</p><blockquote>
+<hr>
+<em><b>Внимание:</b> При выделении файлов утилита Jar перезаписывает все существующие
+файлы, имеющие то же полное имя, что и выделяемые файлы.</em>
+<hr></blockquote>
+
+</blockquote>
+<h3>Пример</h3>
+<blockquote>
+Давайте выделим некоторые файлы из JAR-файла TicTacToe, который мы использовали в
+предыдущих разделах. Вспомните, что содержание <tt>TicTacToe.jar</tt> такое:
+<blockquote><pre>META-INF/MANIFEST.MF
+TicTacToe.class
+audio/
+audio/beep.au
+audio/ding.au
+audio/return.au
+audio/yahoo1.au
+audio/yahoo2.au
+images/
+images/cross.gif
+images/not.gif
+</pre></blockquote>
+<p>
+Предположим, вы хотите выделить файл класса <tt>TicTacToe</tt> и файл изображения
+<tt>cross.gif</tt>. Чтобы сделать это, вы можете использовать команду:
+</p><blockquote><pre>jar xf TicTacToe.jar TicTacToe.class images/cross.gif
+</pre></blockquote>
+<p>
+Эта команда делает две вещи:
+</p><ul>
+<li>Помещает копию <tt>TicTacToe.class</tt> в текущий каталог.
+</li><li>Создает в текущем каталоге каталог <tt>images</tt>, если он еще не существует, 
+и копирует в него <tt>cross.gif</tt>.
+</li></ul>
+<p>
+Исходный JAR-файл TicTacToe остается неизменным.
+</p><p>
+Таким путем из JAR-файл может быть извлечено сколько угодно файлов.
+Если в команде не указано, какие файлы выделять, утилита Jar выделяет все файлы
+из архива. Например, вы можете выделить все файлы из архива TicTacToe, используя такую команду:
+</p><blockquote><pre>jar xf TicTacToe.jar
+</pre></blockquote>
+<p>
+
+
+</p></blockquote>
+
+<img src="./Extracting the Contents of a JAR file_files/blueline.gif" width="550" height="8" align="BOTTOM" naturalsizeflag="3">
+<br>
+<table width="550">
+<tbody><tr>
+<td align="left" valign="center">
+<a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/basics_view.html" target="_top"><img src="./Extracting the Contents of a JAR file_files/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/TOC.html#basics" target="_top"><img src="./Extracting the Contents of a JAR file_files/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/basics_mod.html" target="_top"><img src="./Extracting the Contents of a JAR file_files/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+</tr>
+</tbody></table>
+<p>
+<font size="-1">
+Copyright 1995-2002 Sun Microsystems, Inc.  All rights reserved.
+</font>
+</p>
+
+
+</body></html>

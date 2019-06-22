@@ -1,0 +1,145 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[      5112,        136]
+NotebookOptionsPosition[      4786,        120]
+NotebookOutlinePosition[      5128,        135]
+CellTagsIndexPosition[      5085,        132]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"tmin", "=", 
+   RowBox[{
+    RowBox[{"-", "Pi"}], "/", "2"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tmax", "=", 
+   RowBox[{"Pi", "/", "2"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"dt", "=", "0.02"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Animate", "[", 
+  RowBox[{
+   RowBox[{"Graphics", "[", 
+    RowBox[{"{", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Circle", "[", "]"}], ",", 
+       RowBox[{"Line", " ", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Sin", "[", "t", "]"}], "-", "0.5"}], ",", 
+            RowBox[{
+             RowBox[{"Cos", "[", "t", "]"}], "-", "0.5"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Sin", "[", "t", "]"}], "+", "0.5"}], ",", 
+            RowBox[{
+             RowBox[{"Cos", "[", "t", "]"}], "+", "0.5"}]}], "}"}]}], "}"}], 
+        "]"}]}], "}"}], "}"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "tmin", ",", "tmax"}], "}"}], ",", 
+   RowBox[{"AnimationRunning", "\[Rule]", "False"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.635165533571926*^9, 3.6351656428442607`*^9}, {
+  3.6351656815893207`*^9, 3.635165700854349*^9}, {3.6351658073764844`*^9, 
+  3.6351658179930916`*^9}, {3.6351661702287216`*^9, 3.635166187078745*^9}, {
+  3.6351662264228354`*^9, 3.635166226607836*^9}, {3.6351662784769897`*^9, 
+  3.6351663578044453`*^9}, {3.635166398537527*^9, 3.6351664566666384`*^9}, {
+  3.6351665656586633`*^9, 3.6351666134337645`*^9}, {3.635166713287409*^9, 
+  3.635166722687422*^9}, {3.63516677759918*^9, 3.635166778179181*^9}, {
+  3.6351668292824717`*^9, 3.6351668376945114`*^9}, {3.635166895559687*^9, 
+  3.635166896269688*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{Notebook$$12$164955`t$$ = -0.5634882207455424, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{
+      Hold[Notebook$$12$164955`t$$], Rational[-1, 2] Pi, Rational[1, 2] Pi}}, 
+    Typeset`size$$ = {360., {204., 208.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = True, 
+    Notebook$$12$164955`t$1516$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {Notebook$$12$164955`t$$ = Rational[-1, 2] Pi}, 
+      "ControllerVariables" :> {
+        Hold[Notebook$$12$164955`t$$, Notebook$$12$164955`t$1516$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Graphics[{{
+          Circle[], 
+          
+          Line[{{Sin[Notebook$$12$164955`t$$] - 0.5, 
+             Cos[Notebook$$12$164955`t$$] - 0.5}, {
+            Sin[Notebook$$12$164955`t$$] + 0.5, Cos[Notebook$$12$164955`t$$] + 
+             0.5}}]}}], 
+      "Specifications" :> {{
+        Notebook$$12$164955`t$$, Rational[-1, 2] Pi, Rational[1, 2] Pi, 
+         AnimationRunning -> False, 
+         AppearanceElements -> {
+          "ProgressSlider", "PlayPauseButton", "FasterSlowerButtons", 
+           "DirectionButton"}}}, 
+      "Options" :> {
+       ControlType -> Animator, AppearanceElements -> None, DefaultBaseStyle -> 
+        "Animate", DefaultLabelStyle -> "AnimateLabel", SynchronousUpdating -> 
+        True, ShrinkingDelay -> 10.}, "DefaultOptions" :> {}],
+     ImageSizeCache->{409., {242., 247.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Animate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.6351665681236663`*^9, 3.635166615038767*^9}, 
+   3.6351667151824117`*^9, 3.635166778899182*^9, 3.635166833889506*^9, 
+   3.635166900379694*^9, 3.6351669517867923`*^9}]
+}, Open  ]]
+},
+WindowSize->{1272, 673},
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+FrontEndVersion->"8.0 for Microsoft Windows (64-bit) (October 6, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[567, 22, 1805, 44, 92, "Input"],
+Cell[2375, 68, 2395, 49, 506, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

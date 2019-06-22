@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- saved from url=(0073)http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/basics_view.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=KOI8-R">
+<title>Viewing the Contents of a JAR File</title>
+   
+</head>
+<body bgcolor="#ffffff" link="#000099">
+<b><font size="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</font></b>
+<br>
+<table width="550">
+<tbody><tr>
+<td align="left" valign="center">
+<a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/basics_build.html" target="_top"><img src="./Viewing the Contents of a JAR File_files/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/TOC.html#basics" target="_top"><img src="./Viewing the Contents of a JAR File_files/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/basics_unpack.html" target="_top"><img src="./Viewing the Contents of a JAR File_files/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+</tr>
+</tbody></table>
+<img src="./Viewing the Contents of a JAR File_files/blueline.gif" width="550" height="8" align="BOTTOM" naturalsizeflag="3">
+<br>
+
+<font size="-1">
+<b>Урок</b>: Использование JAR-файлов: Основы
+</font>
+
+<h2>Просмотр содержания JAR-файла</h2>
+<blockquote>
+Базовый формат команды для просмотра содержания JAR-файла такой:
+<blockquote><pre>jar tf <i>jar-файл</i>
+</pre></blockquote>
+
+Давайте рассмотрим опции и аргументы, использованные в этой команде: 
+<ul>
+<li>Опция <tt>t</tt> показывает, что вы хотите просмотреть <em>содержание</em>
+(table of contents) JAR-файла.
+</li><li>Опция <tt>f</tt> показывает, что JAR-файл, содержание которого просматривается,
+задан в командной строке. Без опции <tt>f</tt> утилита Jar ожидает, что
+имя файла будет введено в стандартном потоке ввода.
+</li><li>Аргумент <tt>jar-файл</tt> - это имя файла (или маршрут и имя) для
+JAR-файла, содержание которого просматривается.
+</li></ul>
+<p>
+Опции <tt>t</tt> и <tt>f</tt> могут употребляться в любом порядке, но между ними не должно быть пробелов. 
+</p><p>
+Эта команда отобразит содержание JAR-файла в стандартный поток вывода.
+</p><p>
+Вы можете опционно добавить опцию <tt>v</tt> (verbose), для выработки дополнительной 
+выходной информации о размерах и датах последней модификации файлов. 
+
+
+</p></blockquote>
+<h3>Пример</h3>
+<blockquote>
+Давайте используем утилиту Jar для вывода списка содержимого файла
+<tt>TicTacToe.jar</tt>, созданного нами в предыдущем разделе:
+
+<blockquote><pre>jar tf TicTacToe.jar
+</pre></blockquote>
+<p>
+Эта команда выведет содержание JAR-файла в поток вывода:
+</p><blockquote><pre>META-INF/MANIFEST.MF
+TicTacToe.class
+audio/
+audio/beep.au
+audio/ding.au
+audio/return.au
+audio/yahoo1.au
+audio/yahoo2.au
+images/
+images/cross.gif
+images/not.gif
+</pre></blockquote>
+<p>
+JAR-файл содержит файл класса <tt>TicTacToe</tt> и каталоги аудио и образов, как
+и ожидалось. Вывод также показывает, что JAR-файл содержит
+<a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/basics_manifest.html">файл манифеста</a>, 
+<tt>META-INF/MANIFEST.MF</tt>, который автоматически помещается в архив утилитой Jar.
+</p><p>
+Все маршруты выводятся с прямой наклонной чертой, независимо от используемой вами
+платформы или операционной системы. Маршруты в JAR-файлах всегда относительные;
+вы никогда не увидите маршрута, начинающегося, например, с <tt>C:</tt>.
+</p><p>
+Утилита Jar выведет дополнительную информацию, если вы используете опцию <tt>v</tt>:
+</p><blockquote><pre>jar tvf TicTacToe.jar
+</pre></blockquote>
+<p>
+Например, подробный вывод для JAR-файла TicTacToe будет выглядеть примерно так:
+</p><blockquote><pre> 256 Mon Apr 20 10:50:28 PDT 1998 META-INF/MANIFEST.MF
+3885 Mon Apr 20 10:49:50 PDT 1998 TicTacToe.class
+   0 Wed Apr 15 16:39:32 PDT 1998 audio/
+4032 Wed Apr 15 16:39:32 PDT 1998 audio/beep.au
+2566 Wed Apr 15 16:39:32 PDT 1998 audio/ding.au
+6558 Wed Apr 15 16:39:32 PDT 1998 audio/return.au
+7834 Wed Apr 15 16:39:32 PDT 1998 audio/yahoo1.au
+7463 Wed Apr 15 16:39:32 PDT 1998 audio/yahoo2.au
+   0 Wed Apr 15 16:39:44 PDT 1998 images/
+ 157 Wed Apr 15 16:39:44 PDT 1998 images/cross.gif
+ 158 Wed Apr 15 16:39:44 PDT 1998 images/not.gif
+</pre></blockquote>
+
+
+
+</blockquote>
+
+<img src="./Viewing the Contents of a JAR File_files/blueline.gif" width="550" height="8" align="BOTTOM" naturalsizeflag="3">
+<br>
+<table width="550">
+<tbody><tr>
+<td align="left" valign="center">
+<a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/basics_build.html" target="_top"><img src="./Viewing the Contents of a JAR File_files/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/TOC.html#basics" target="_top"><img src="./Viewing the Contents of a JAR File_files/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/basics_unpack.html" target="_top"><img src="./Viewing the Contents of a JAR File_files/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+</tr>
+</tbody></table>
+<p>
+<font size="-1">
+Copyright 1995-2002 Sun Microsystems, Inc.  All rights reserved.
+</font>
+</p>
+
+
+</body></html>

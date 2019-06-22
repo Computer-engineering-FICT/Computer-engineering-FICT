@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- saved from url=(0074)http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/basics_build.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=KOI8-R">
+<title>Creating a JAR File</title>
+   
+</head>
+<body bgcolor="#ffffff" link="#000099">
+<b><font size="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</font></b>
+<br>
+<table width="550">
+<tbody><tr>
+<td align="left" valign="center">
+<a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/basics_index.html" target="_top"><img src="./Creating a JAR File_files/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/TOC.html#basics" target="_top"><img src="./Creating a JAR File_files/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/basics_view.html" target="_top"><img src="./Creating a JAR File_files/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+
+</tr>
+</tbody></table>
+<img src="./Creating a JAR File_files/blueline.gif" width="550" height="8" align="BOTTOM" naturalsizeflag="3">
+<br>
+
+<font size="-1">
+<b>Урок</b>: Использование JAR-файлов: Основы
+</font>
+
+<h2>Создание JAR-файла</h2>
+<blockquote>
+Базовый формат команды для создания JAR-файла такой:
+<blockquote><pre>jar cf <i>jar-файл входной-файл(ы)</i>
+</pre></blockquote>
+
+Давайте рассмотрим опции и аргументы, использованные в этой команде:
+<ul>
+<li>Опция <tt>c</tt> показывает, что вы хотите <em>создать</em> (create) JAR-файл.
+</li><li>Опция <tt>f</tt> показывает, что вы хотите направить вывод в 
+<em>файл</em>, а не в стандартный поток вывода.
+</li><li><tt>jar-файл</tt> - это имя, которое вы хотите дать результирующему
+JAR-файлу. Вы можете использовать любое имя для JAR-файл. По соглашению, имени
+JAR-файла дается расширение <tt>.jar</tt>, хотя это и не обязательно.
+</li><li>Аргумент <tt>входной-файл(ы)</tt> - список с разделителем-пробелом из одного
+или более файлов, которые вы хотите поместить в ваш JAR-файл. Аргумент 
+<tt>входной-файл(ы)</tt> может содержать также символ-джокер <tt>*</tt>. 
+Если любые из "входных-файлов" являются каталогами, содержимое этих каталогов рекурсивно
+добавляется в архив JAR.
+</li></ul>
+<p>
+Опции <tt>c</tt> и <tt>f</tt> употребляются в любом порядке, но между ними не должно быть пробелов.
+</p><p>
+Эта команда сгенерирует сжатый JAR-файл и поместит его в текущий каталог.
+Эта команда также сгенерирует по умолчанию 
+<a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/basics_manifest.html">файл манифеста</a> для архива JAR.
+</p><p>
+Вы можете добавить любую из этих дополнительных опций к опциям 
+<tt>cf</tt> в базовой команде:
+<table border="1" cellpadding="3">
+<tbody><tr><th>Опция</th><th>Пояснение</th></tr>
+<tr><td align="center"><tt>v</tt></td> <td>Вырабатывает <em>подробный</em> (verbose)
+вывод в стандартный поток сообщений об ошибках (версия 1.1) или в стандартный поток 
+вывода (версия 1.2) во время создания JAR-файла. Подробный вывод сообщает вам
+имя каждого файла, когда он добавляется в JAR-файл.</td>
+</tr>  
+<tr><td align="center"><tt>0</tt> (ноль)</td><td>Показывает, что вы не хотите,
+чтобы JAR-файл сжимался.</td></tr>
+<tr><td align="center"><tt>M</tt></td> <td>Показывает, что файл манифеста по умолчанию
+не должен вырабатываться.</td></tr>
+<tr><td align="center"><tt>m</tt></td> <td>Используется для включения информации манифеста
+из существующего файла. Формат использования этой опции такой:
+<blockquote><pre>jar cmf существующий-манифест jar-файл входной-файл(ы)
+</pre></blockquote>
+См. дополнительную информацию об этой опции в <a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/basics_mod.html">Модификация манифеста</a>.</td></tr>
+<tr><td align="center"><tt>-C</tt></td> <td>Для изменения каталога во время выполнения команды.
+Только версия 1.2.  Пример см. ниже.</td></tr>
+</tbody></table>
+
+</p><p>
+В версии 1.1 формат JAR-файла поддерживает только имена файлов в ASCII. 
+В версии 1.2 добавлена поддержка имен в коде UTF8.
+
+<a name="example">
+</a></p></blockquote><a name="example">
+<h3>Пример</h3></a>
+<blockquote>
+Давайте рассмотрим пример. Демонстрационные примеры
+JDK<font size="-2"><sup>TM</sup></font> включают в себя простой аплет
+<tt>TicTacToe</tt>. Этот пример содержит файл байткода класса и изображения,
+все они размещены в каталоге с именем <tt>TicTacToe</tt>, имеющим
+такую структуру: 
+
+<p></p><center><img src="./Creating a JAR File_files/jar1.gif" width="386" height="94" align="BOTTOM" naturalsizeflag="3" alt=""></center><p></p>
+
+Подкаталоги <tt>audio</tt> и <tt>images</tt> содержат звуковые файлы и
+GIF-изображения, используемые аплетом.
+<p>
+Чтобы пакетировать этот пример в один JAR-файл с именем
+<tt>TicTacToe.jar</tt>, вы должны выполнить такую команду из каталога
+<tt>TicTacToe</tt>:
+</p><blockquote><pre>jar cvf TicTacToe.jar TicTacToe.class audio images
+</pre></blockquote>
+Аргументы <tt>audio</tt> и <tt>images</tt> представляют каталоги, так что утилита
+Jar будет рекурсивно помещать их и их содержимое в JAR-файл. 
+Сгенерированный JAR-файл <tt>TicTacToe.jar</tt> будет помещен в текущий каталог.
+Поскольку команда использует опцию <tt>v</tt> для подробного вывода, вы увидите
+при выполнении этой команды вывод вроде следующего:
+<blockquote><pre>adding: TicTacToe.class (in=3825) (out=2222) (deflated 41%)
+adding: audio/ (in=0) (out=0) (stored 0%)
+adding: audio/beep.au (in=4032) (out=3572) (deflated 11%)
+adding: audio/ding.au (in=2566) (out=2055) (deflated 19%)
+adding: audio/return.au (in=6558) (out=4401) (deflated 32%)
+adding: audio/yahoo1.au (in=7834) (out=6985) (deflated 10%)
+adding: audio/yahoo2.au (in=7463) (out=4607) (deflated 38%)
+adding: images/ (in=0) (out=0) (stored 0%)
+adding: images/cross.gif (in=157) (out=160) (deflated -1%)
+adding: images/not.gif (in=158) (out=161) (deflated -1%)
+</pre></blockquote>
+<p>
+Вы можете видеть из этого вывода, что JAR-файл <tt>TicTacToe.jar</tt> сжат.
+Утилита Jar сжимает файлы по умолчанию. Вы можете отключить сжатие при помощи
+опции <tt>0</tt> (ноль), так что команда будет выглядеть как:
+</p><blockquote><pre>jar cvf0 TicTacToe.jar TicTacToe.class audio images
+</pre></blockquote>
+<p>
+Вы можете захотеть обойти сжатие, например, чтобы увеличить скорость загрузки
+JAR-файла браузером. Несжатые JAR-файлы могут в общем случае загружаться более быстро,
+чем сжатые, потому что отпадает необходимость в распаковке файла при его загрузке.
+Однако, за это приходится платить тем, что время загрузки через сеть может быть
+большим для больших, несжатых файлов.
+</p><p>
+Утилита Jar будет принимать аргументы, содержащие символ-джлкер -<tt>*</tt>.
+Пока в каталоге <tt>TicTacToe</tt> нет нежелательных файлов, вы можете использовать
+такую альтернативу команды для построения JAR-файла:
+</p><blockquote><pre>jar cvf TicTacToe.jar *
+</pre></blockquote>
+<p>
+Хотя подробный вывод и не показывает это, утилита Jar автоматически добавляет к архиву JAR 
+файл манифеста с именем <tt>META-INF/MANIFEST.MF</tt>. См. информацию о файле манифеста
+в разделе <a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/basics_manifest.html">Понимание манифеста</a>.
+</p><p>
+В приведенном выше примере файлы в архиве сохраняют свои относительные имена и структуру каталогов.
+Утилита Jar в версии  1.2 Java<font size="-2"><sup>TM</sup></font> 
+Development Kit предоставляет опцию <tt>-C</tt>, которую вы можете использовать для
+создания JAR-файла, в котором относительные имена архивированных файлов не сохраняются.
+</p><p>
+Как пример, предположим, вы хотите поместить аудио-файлы и изображения, используемые
+примером TicTacToe в JAR-файл, и вы хотите, чтобы все файлы были на верхнем уровне, без
+иерархии каталогов. Вы можете проделать это применением такой команды из каталога,
+который является родительским для каталогов <tt>images</tt> и <tt>audio</tt>:
+</p><blockquote><pre>jar cf ImageAudio.jar -C images . -C audio .
+</pre></blockquote>
+Часть этой команды <tt>-C&nbsp;images</tt> велит утилите Jar перейти в каталог 
+<tt>images</tt>, а  <tt>.</tt>, следующая за <tt>-C&nbsp;images</tt>, велит
+утилите Jar архивировать все содержимое каталога. Часть команды 
+<tt>-C&nbsp;audio&nbsp;.</tt> делает то же для каталога <tt>audio</tt>. Результирующий
+JAR-файл будет иметь такое содержание: 
+<blockquote><pre>META-INF/MANIFEST.MF
+cross.gif
+not.gif
+beep.au
+ding.au
+return.au
+yahoo1.au
+yahoo2.au
+</pre></blockquote>
+Для сравнения предположим, что вы используете команду, которая не применяет опцию
+<tt>-C</tt>:
+<blockquote><pre>jar cf ImageAudio.jar images audio
+</pre></blockquote>
+Результирующий JAR-файл будет иметь такое содержание: 
+<blockquote><pre>META-INF/MANIFEST.MF
+images/cross.gif
+images/not.gif
+audio/beep.au
+audio/ding.au
+audio/return.au
+audio/yahoo1.au
+audio/yahoo2.au
+</pre></blockquote>
+</blockquote>
+
+<img src="./Creating a JAR File_files/blueline.gif" width="550" height="8" align="BOTTOM" naturalsizeflag="3">
+<br>
+<table width="550">
+<tbody><tr>
+<td align="left" valign="center">
+<a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/basics_index.html" target="_top"><img src="./Creating a JAR File_files/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/TOC.html#basics" target="_top"><img src="./Creating a JAR File_files/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/basics_view.html" target="_top"><img src="./Creating a JAR File_files/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/search.html" target="_top">Search</a>
+<br><a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</tbody></table>
+<p>
+<font size="-1">
+<a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/information/copyright.html">Copyright</a>
+1995-2002 Sun Microsystems, Inc.  All rights reserved.
+</font>
+</p>
+
+
+</body></html>

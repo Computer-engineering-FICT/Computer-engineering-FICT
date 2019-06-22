@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- saved from url=(0074)http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/basics_index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=KOI8-R">
+<title>Using JAR Files: The Basics</title>
+   
+</head>
+<body bgcolor="#ffffff" link="#000099">
+<b><font size="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</font></b>
+<br>
+<table width="550">
+<tbody><tr>
+<td align="left" valign="center">
+<a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/index.html" target="_top"><img src="./Using JAR Files  The Basics_files/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/TOC.html#basics" target="_top"><img src="./Using JAR Files  The Basics_files/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/basics_build.html" target="_top"><img src="./Using JAR Files  The Basics_files/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+
+</tr>
+</tbody></table>
+<img src="./Using JAR Files  The Basics_files/blueline.gif" width="550" height="8" align="BOTTOM" naturalsizeflag="3">
+
+<br>
+<font size="-1">
+<b>Trail</b>: JAR Files
+</font>
+
+<h2>Урок: Использование JAR-файлов: Основы</h2>
+<blockquote>
+JAR-файлы упакованы в формат файлов ZIP, так что вы можете использовать их для
+"ZIP-подобных" задач, таких как сжатие данных без потерь, архивация, развертывание
+и распаковка архива. Эти задачи относятся к наиболее общему использованию JAR-файлов,
+вы можете реализовать многие преимущества JAR-файлов, используя только эти основные возможности.
+<p>
+Даже если вы хотите получить преимущества от более сложной функциональности,
+обеспечиваемой форматом JAR-файла, такой как электронная подпись, вам сначала
+нужно познакомиться с базовыми операциями. 
+</p><p>
+Чтобы выполнять базовые задачи с JAR-файлами, вы используете утилиту архивирования
+Java<font size="-2"><sup>TM</sup></font> Archive, предоставляемую как часть Java Development Kit. 
+Поскольку утилита Java Archive вызывается командой <tt>jar</tt>, мы для краткости
+будем называть ее "утилитой Jar".
+</p><p>
+
+Как конспект некоторых тем, которые будут рассмотрены в данном уроке, в следующей
+таблице дана сводка общих операций над JAR-файлами:
+</p><p>
+<table border="1" cellpadding="5">
+<tbody><tr>
+<th>Операция</th><th>Команда</th>
+</tr>
+<tr>
+<td>Создание JAR-файла</td><td> <tt>jar cf <i>jar-файл входной файл(ы)</i></tt></td>
+</tr>
+<tr>
+<td>Просмотр содержания JAR-файла</td><td> <tt>jar tf <i>jar-файл</i></tt></td>
+</tr>
+<tr>
+<td>Выделение содержимого из JAR-файла</td><td> <tt>jar xf <i>jar-файл</i></tt></td>
+</tr>
+<tr>
+<td>Выделение заданных файлов из JAR-файла</td><td> <tt>jar xf <i>jar-файл архивированный-файл(ы)</i><tt></tt></tt></td>
+</tr>
+<tr>
+<td>Выполнение приложения, пакетированного как JAR-файл
+<br>(версия 1.1)</td>
+<td valign="middle"><pre>jre -cp <i>приложение.jar MainClass</i></pre></td>
+</tr>
+<tr>
+<td>Выполнение аплета, пакетированного как JAR-файл
+<br>(версия 1.2 - требуется заголовок манифеста <tt>Main-Class)</tt></td>
+<td valign="middle"><pre>java -jar <i>приложение.jar</i></pre></td>
+</tr>
+<tr>
+<td>Вызов аплета, пакетированного как JAR-файл</td><td valign="middle"><pre>&lt;applet code=<em>ИмяКлассаАплета.class</em>
+        archive="<em>ИмяJarФйала.jar</em>"
+        width=<em>ширина</em> height=<em>высота</em>&gt;
+&lt;/applet&gt;</pre></td>
+</tr>
+
+
+</tbody></table>
+</p><p>
+Этот урок покажет вам, как выполнять наиболее общие операции над
+JAR-файлами с примерами по каждой основной возможности:
+
+</p></blockquote>
+<h3><a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/basics_build.html">Создание JAR-файла</a></h3>
+<blockquote>
+Этот раздел показывает вам, как использовать утилиту Jar для пакетирования 
+файлов и каталогов в JAR-файл. 
+</blockquote>
+
+<h3><a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/basics_view.html">Просмотр содержания JAR-файла</a></h3>
+<blockquote>
+Вы можете вывести содержание JAR-файла, чтобы увидеть, что в нем содержится, 
+без распаковки JAR-файла.
+</blockquote>
+
+<h3><a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/basics_unpack.html">Выделение содержимого из JAR-файла</a></h3>
+<blockquote>
+Вы можете использовать утилиту Jar для распаковки JAR-файла. При выделении файлов
+утилита Jar делает копии требуемых файлов и записывает их в текущий каталог,
+воспроизводя ту структуру каталогов, которая была в архиве. 
+</blockquote>
+
+<h3><a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/basics_mod.html">Модификация файла манифеста</a></h3>
+<blockquote>
+Этот раздел показывает вам два способа, которыми вы можете модифицировать содержимое 
+манифеста JAR-файла. Вы можете захотеть модифицировать манифест, например,
+чтобы сделать возможной какую-то специальную функциональность JAR-файла.
+</blockquote>
+
+<h3><a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/basics_update.html">Изменение JAR-файла</a></h3>
+<blockquote>
+Утилита Jar в версии 1.2 Java Development Kit обеспечивает новую функциональность 
+для изменения содержимого существующего JAR-файла путем модификации его манифеста или
+добавления файлов. Этот раздел показывает вам, как использовать эти новые возможности. 
+</blockquote>
+
+<h3><a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/basics_run.html">Выполнение программ, пакетированных в JAR</a></h3>
+<blockquote>
+Этот раздел показывает вам, как вызывать и выполнять аплеты и приложения, которые
+упакованы в JAR-файлы. 
+</blockquote>
+
+<h3><a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/basics_manifest.html">Понимание манифеста</a></h3>
+<blockquote>
+Некоторые более развитые возможности, предлагаемые форматом JAR-файла, делаются
+возможными благодаря <em>манифесту</em> JAR-файла, специальному файлу, который
+содержится в JAR-файлах. В последнем разделе этого урока вы найдете основную
+информацию о структуре файла манифеста и его использовании.
+</blockquote>
+<p>
+
+
+</p><h3>Дополнительная информация</h3>
+<blockquote>
+Документация по Java Development Kit содержит справочные страницы для утилиты
+Jar:
+<ul>
+<li>
+<a target="_blank" href="http://www.mipk-kspu.kharkov.ua/local/library/java2/docs/tooldocs/windows/jar.html"><font color="#009bbb">Jar tool reference for Windows platform</font></a>
+</li><li>
+<a target="_blank" href="http://www.mipk-kspu.kharkov.ua/local/library/java2/docs/tooldocs/solaris/jar.html"><font color="#009bbb">Jar tool reference for Solaris platform</font></a>
+</li></ul>
+</blockquote>
+<p>
+
+
+</p><p>
+
+
+
+<img src="./Using JAR Files  The Basics_files/blueline.gif" width="550" height="8" align="BOTTOM" naturalsizeflag="3">
+<br>
+<table width="550">
+<tbody><tr>
+<td align="left" valign="center">
+<a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/index.html" target="_top"><img src="./Using JAR Files  The Basics_files/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/TOC.html#basics" target="_top"><img src="./Using JAR Files  The Basics_files/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="http://khpi-iip.mipk.kharkiv.edu/library/extent/prog/jar/basics_build.html" target="_top"><img src="./Using JAR Files  The Basics_files/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+</tr>
+</tbody></table>
+</p><p>
+<font size="-1">
+Copyright 1995-2002 Sun Microsystems, Inc.  All rights reserved.
+</font>
+</p>
+
+
+</body></html>
