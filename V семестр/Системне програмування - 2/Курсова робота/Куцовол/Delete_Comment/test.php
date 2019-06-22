@@ -1,0 +1,1 @@
+<? $dat=date("d.m y"); // Вычисляем текущее время\n  $dat=date("d.m y"); $tm=date("h:i:s"); // Вычисляем текущее время\n /*test comment*/\n $a = $v;?>

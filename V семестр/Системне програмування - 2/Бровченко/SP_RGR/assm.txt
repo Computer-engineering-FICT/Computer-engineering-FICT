@@ -1,0 +1,19 @@
+; a[0] := 9 
+mov eax, 9
+mov dword ptr[a+0], eax
+; a[1] := -1 
+mov eax, -1
+mov dword ptr[a+4], eax
+; a[2] := 2 
+mov eax, 2
+mov dword ptr[a+8], eax
+; b := 3 
+mov eax, 3
+mov b, eax
+; n := 1 
+mov eax, 1
+mov n, eax
+; b := b + a[n] 
+mov eax, b
+add eax, dword ptr[a+4]
+mov b, eax

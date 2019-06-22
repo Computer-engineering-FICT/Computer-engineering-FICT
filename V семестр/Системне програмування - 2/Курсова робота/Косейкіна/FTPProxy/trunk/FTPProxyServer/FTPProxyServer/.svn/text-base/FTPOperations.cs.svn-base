@@ -1,0 +1,288 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Net;
+using System.IO;
+
+namespace FTPProxyServer
+{
+    class FTPOperations
+    {
+        private String ftpServerURL;
+        private String user;
+        private String password;
+        public FTPOperations(String ftpServerURL1, String user1, String password1)
+        {
+            ftpServerURL = ftpServerURL1;
+            user = user1;
+            password = password1;
+        }
+
+        public Tuple<String, bool> getElement(String line)
+        {
+            if (line == null)
+            {
+                throw new ArgumentNullException();
+            }
+            if (line.Length == 0)
+            {
+                throw new ArgumentNullException();
+            }
+            bool isDirectory = false;
+            if (line.ElementAt(0) == 'd')
+            {
+                isDirectory = true;
+            }
+
+            line = line.Substring(line.LastIndexOf(' ')+1, line.Length - line.LastIndexOf(' ')-1); 
+            
+            return new Tuple<string,bool>(line,isDirectory);
+        }
+
+        public Node buildNodeFromFolder(String folderName)
+        {
+            if (folderName == null)
+            {
+                throw new ArgumentNullException();
+            }
+            Node node = new Node();
+            node.name = folderName;
+            List<String> currentFolder = getFiles(folderName);
+            Tuple<String, bool> currTup;
+            for (int i = 0; i < currentFolder.Count; i++)
+            {
+                currTup = getElement(currentFolder.ElementAt(i));
+                if (currTup.Item2)
+                {
+                    System.Console.WriteLine("next step=" + folderName + "\\" + currTup.Item1);
+                    node.addFolder(buildNodeFromFolder(folderName+"\\"+currTup.Item1));
+                    
+                }
+                else
+                {
+                    node.addFile(currTup.Item1);
+                }
+            }
+            return node;
+        }
+
+        public MemoryStream buildTree()
+        {
+            MemoryStream ms=null;
+            try
+            {
+                Node head = buildNodeFromFolder("");
+                List<Node> nodes = new List<Node>();
+
+                nodes = head.getList();
+                nodes.Add(head);
+
+                System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(nodes.GetType());
+                ms = new MemoryStream();
+                serializer.Serialize(ms, nodes);
+            }
+            catch (Exception ex)
+            {
+                throw new FTPExceptions(FTPExceptions.INVALID_BUILDING_AND_SERIALIZING_TREE_EXCEPTION);
+            }
+            return ms;
+        }
+
+        public List<String> getFiles(String folderPath)
+        {
+            List<String> fileList = null;
+            try
+            {
+                FtpWebRequest ftpWebRequest = (FtpWebRequest)FtpWebRequest.Create(new Uri(ftpServerURL + folderPath));
+                ftpWebRequest.Credentials = new NetworkCredential(user, password);
+
+                ftpWebRequest.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
+                FtpWebResponse response = (FtpWebResponse)ftpWebRequest.GetResponse();
+                if (response.StatusCode == FtpStatusCode.ActionNotTakenFileUnavailable)
+                {
+                    throw new Exception();
+                }
+                StreamReader reader = new StreamReader(response.GetResponseStream());
+                fileList = new List<String>();
+                String line;
+                while (true)
+                {
+                    line = reader.ReadLine();
+                    if (line != null)
+                    {
+                        fileList.Add(line);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                reader.Close();
+                response.Close();
+                return fileList;
+            }
+            catch (Exception ex)
+            {
+                throw new FTPExceptions(FTPExceptions.INVALID_FILE_LIST_EXCEPTION);
+            }
+        }
+
+        public Stream downloadFile(String fileName)
+        {
+            Stream ftpStream = null;
+            try
+            {
+                FtpWebRequest ftpWebRequest = (FtpWebRequest)FtpWebRequest.Create(new Uri(ftpServerURL + fileName));
+                ftpWebRequest.Credentials = new NetworkCredential(user, password);
+                ftpWebRequest.UseBinary = true;
+                ftpWebRequest.KeepAlive = false;
+                ftpWebRequest.Method = WebRequestMethods.Ftp.DownloadFile;
+                FtpWebResponse response = (FtpWebResponse)ftpWebRequest.GetResponse();
+                if (response.StatusCode == FtpStatusCode.ActionNotTakenFileUnavailable)
+                {
+                    throw new Exception();
+                }
+                ftpStream = response.GetResponseStream();
+                return ftpStream;
+            }
+            catch (Exception ex)
+            {
+                throw new FTPExceptions(FTPExceptions.INVALID_DOWNLOADING_FILE_EXCEPTION);
+            }
+        }
+
+
+        public void uploadFile(String fileDestination, MemoryStream fileSource)
+        {
+            try{
+                FtpWebRequest ftpWebRequest = (FtpWebRequest)FtpWebRequest.Create(new Uri(ftpServerURL + fileDestination));
+                ftpWebRequest.Credentials = new NetworkCredential(user, password);
+                ftpWebRequest.UseBinary = true;
+                ftpWebRequest.KeepAlive = false;
+                ftpWebRequest.Method = WebRequestMethods.Ftp.UploadFile;
+                FtpWebResponse response = (FtpWebResponse)ftpWebRequest.GetResponse();
+                if (response.StatusCode == FtpStatusCode.ActionNotTakenFileUnavailable)
+                {
+                    throw new Exception();
+                }
+            
+                int buffLength = 1024;
+                byte[] buffByte = new byte[buffLength];
+                int contentLen;
+                fileSource.Seek(0, SeekOrigin.Begin);
+                Stream strm = ftpWebRequest.GetRequestStream();
+                contentLen = fileSource.Read(buffByte, 0, buffLength);
+                while (contentLen != 0)
+                {
+                    strm.Write(buffByte, 0, contentLen);
+                    contentLen = fileSource.Read(buffByte, 0, buffLength);
+                }
+
+                strm.Close();
+                fileSource.Close();
+                response.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new FTPExceptions(FTPExceptions.INVALID_UPLOADING_FILE_EXCEPTION);
+            }
+        }
+
+        public void createFolder(String folder)
+        {
+            Stream ftpStream = null;
+            try
+            {
+                FtpWebRequest ftpWebRequest = (FtpWebRequest)FtpWebRequest.Create(new Uri(ftpServerURL + folder));
+                ftpWebRequest.Credentials = new NetworkCredential(user, password);
+                ftpWebRequest.UseBinary = true;
+                ftpWebRequest.Method = WebRequestMethods.Ftp.MakeDirectory;
+                FtpWebResponse response = (FtpWebResponse)ftpWebRequest.GetResponse();
+                if (response.StatusCode == FtpStatusCode.ActionNotTakenFileUnavailable)
+                {
+                    throw new Exception();
+                }
+                ftpStream = response.GetResponseStream();
+                response.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new FTPExceptions(FTPExceptions.INVALID_CREATING_FOLER_EXCEPTION);
+            }
+        }
+
+        public void removeFile(String file)
+        {
+            Stream ftpStream = null;
+            try
+            {
+                FtpWebRequest ftpWebRequest = (FtpWebRequest)FtpWebRequest.Create(new Uri(ftpServerURL + file));
+                ftpWebRequest.Credentials = new NetworkCredential(user, password);
+                ftpWebRequest.UseBinary = true;
+
+                ftpWebRequest.Method = WebRequestMethods.Ftp.DeleteFile;
+                FtpWebResponse response = (FtpWebResponse)ftpWebRequest.GetResponse();
+                if (response.StatusCode == FtpStatusCode.ActionNotTakenFileUnavailable)
+                {
+                    throw new Exception();
+                }
+                ftpStream = response.GetResponseStream();
+                response.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new FTPExceptions(FTPExceptions.INVALID_REMOVING_FILE_EXCEPTION);
+            }
+        }
+
+        public void removeDirectory(String directory)
+        {
+            Stream ftpStream = null;
+            try
+            {
+                FtpWebRequest ftpWebRequest = (FtpWebRequest)FtpWebRequest.Create(new Uri(ftpServerURL + directory));
+                ftpWebRequest.Credentials = new NetworkCredential(user, password);
+                ftpWebRequest.UseBinary = true;
+
+                ftpWebRequest.Method = WebRequestMethods.Ftp.RemoveDirectory;
+                FtpWebResponse response = (FtpWebResponse)ftpWebRequest.GetResponse();
+                if (response.StatusCode == FtpStatusCode.ActionNotTakenFileUnavailable)
+                {
+                    throw new Exception();
+                }
+                ftpStream = response.GetResponseStream();
+                response.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new FTPExceptions(FTPExceptions.INVALID_REMOVING_FOLER_EXCEPTION);
+            }
+        }
+
+        public void renameFile(String currentName,String nextName)
+        {
+            Stream ftpStream = null;
+            try
+            {
+                FtpWebRequest ftpWebRequest = (FtpWebRequest)FtpWebRequest.Create(new Uri(ftpServerURL + currentName));
+                ftpWebRequest.Credentials = new NetworkCredential(user, password);
+                ftpWebRequest.UseBinary = true;
+                ftpWebRequest.Method = WebRequestMethods.Ftp.Rename;
+                ftpWebRequest.RenameTo = nextName;
+                FtpWebResponse response = (FtpWebResponse)ftpWebRequest.GetResponse();
+                if (response.StatusCode == FtpStatusCode.ActionNotTakenFileUnavailable)
+                {
+                    throw new Exception();
+                }
+                ftpStream = response.GetResponseStream();
+                response.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new FTPExceptions(FTPExceptions.INVALID_RENAMING_FILE_EXCEPTION);
+            }
+        }
+    }
+}

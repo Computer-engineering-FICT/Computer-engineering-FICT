@@ -1,0 +1,23 @@
+#!/bin/sh
+
+case $1 in
+
+--version | version)
+  echo @PACKAGE_VERSION@
+  ;;
+
+--incdir | incdir)
+  echo "@DESTDIR@@prefix@/include"
+  ;;
+
+--libdir | libdir)
+  echo "@DESTDIR@@prefix@/lib"
+  ;;
+
+*)
+  echo "usage: flip-config --version|--incdir|--libdir|--info"
+  ;;
+
+esac
+
+exit 0

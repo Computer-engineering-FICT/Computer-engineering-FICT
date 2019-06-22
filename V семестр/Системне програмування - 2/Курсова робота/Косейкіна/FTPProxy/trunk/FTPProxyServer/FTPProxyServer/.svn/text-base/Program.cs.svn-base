@@ -1,0 +1,47 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.IO;
+
+namespace FTPProxyServer
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            System.Console.WriteLine("Hello World");
+            UDPServerToFTP server = new UDPServerToFTP("77.47.165.225", 10,11);
+            
+            //server.sendTree();
+            server.takeConnection();
+            /*String ftpURL="ftp://localhost/";
+            String ftpUser="root";
+            String ftpPass="1993";
+            FTPOperations operations = new FTPOperations(ftpURL, ftpUser, ftpPass);
+            IList<String> files=operations.getFiles("");
+            System.Console.WriteLine("XML document");
+            operations.buildTree();
+            /*System.Console.WriteLine("Files:");
+            for (int i = 0; i < files.Count; i++)
+            {
+                System.Console.WriteLine(files.ElementAt(i));
+            }
+            */
+ 
+            //operations.getElement(files.ElementAt(0));
+            
+            //StreamReader reader=operations.downloadFile("on/doctors.png");
+            //operations.uploadFile("doctors.png", reader);
+
+            //operations.createFolder("newFolder");
+            //operations.removeFile("text.txt");
+            //operations.removeDirectory("newFolder");
+            //operations.renameFile("123", "100");
+            String a;
+            a = System.Console.ReadLine();
+            server.sendTree();
+            a = System.Console.ReadLine();
+        }
+    }
+}

@@ -1,0 +1,1 @@
+int main (void) {float b, a[12]; int n; …}

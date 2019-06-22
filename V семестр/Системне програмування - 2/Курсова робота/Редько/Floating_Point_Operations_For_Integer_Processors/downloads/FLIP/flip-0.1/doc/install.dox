@@ -1,0 +1,96 @@
+/** \file install.dox
+    \brief Documentation page on installation (no code)
+*/
+
+/** \page pginstall Installation
+
+\par Table of Contents:
+
+- \ref scipre
+- \ref scitarball
+- \ref sciconf
+- \ref scicompil
+- \ref scidoc
+- \ref scitest
+- \ref sciinstall
+- \ref scistperf
+- \ref scialgonum
+
+\subsection scipre Prerequisites
+
+The complete ST compilation tool chain (cc, ld, ar, ranlib...) should
+be installed and accessible through the \p PATH variable. The variable
+\p LD_LIBRARY_PATH should be properly defined for the compiler.
+
+The location  of the sources files  (mainly the headers) of  the ST FP
+library can be defined using the \p STLIB variable (if not it must be
+defined as an argument in the configuration step, see \ref sciconf).
+
+\par Example:
+\code
+export STLIB=/home/arenaire/st/include
+\endcode
+
+\subsection scitarball Tarball installation
+
+Download the tarball \p flip-xx.tar.gz from \p lipforge.ens-lyon.fr
+(where \p xx is the version number).
+
+\code
+tar xvfz flip-xx.tar.gz
+cd flip-xx
+\endcode
+
+\subsection sciconf Configuration
+
+If the \p STLIB variable is defined:
+\code
+./configuration 
+\endcode
+
+Specifying the STLIB location in the command line:
+\code
+./configuration STLIB=path_to_stlib
+\endcode
+
+The installation target should be defined using the \p --prefix
+optional argument, example:
+\code
+./configuration --prefix=/tmp
+\endcode
+
+\subsection scicompil Compilation
+
+\code
+make
+\endcode
+
+\subsection scidoc Documentation compilation
+
+The documentation of FLIP is based on \p doxygen tools.
+
+\code 
+cd doc
+make doc
+\endcode
+
+\subsection scitest Test
+
+\code
+make check
+\endcode
+
+
+\subsection sciinstall Installation
+
+\code
+make install
+\endcode
+
+\subsection scistperf STPerf monitoring 
+
+
+\subsection scialgonum Numerical algorithms benchmarks
+
+
+*/

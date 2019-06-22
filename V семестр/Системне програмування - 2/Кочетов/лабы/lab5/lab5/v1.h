@@ -1,0 +1,1 @@
+begin if (a>b) then begin a:=b; end else begin end; end.

@@ -1,0 +1,1 @@
+float *b, a[3];  short n, d; b = 0; b += a[n];

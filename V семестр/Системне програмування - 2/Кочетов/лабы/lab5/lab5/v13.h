@@ -1,0 +1,1 @@
+begin if (a<>j) then begin for i:= 1 to 5 do begin end; if (p < n) then begin k : = t; end; end; end.
