@@ -1,0 +1,14 @@
+//Adt for pairs
+Generic Adt pair['first, 'second] 
+Sorts pair['first, 'second];
+Generators
+	pair : 'first, 'second -> pair['first, 'second];
+Operations
+	first : pair['first, 'second] -> 'first;
+	second : pair['first, 'second] -> 'second;
+Axioms
+	first(pair($f, $s)) = $f;
+	second(pair($f, $s)) = $s;
+Variables
+	f : 'first;
+	s : 'second;	

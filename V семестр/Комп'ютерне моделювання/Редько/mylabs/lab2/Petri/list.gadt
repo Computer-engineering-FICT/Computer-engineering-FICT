@@ -1,0 +1,55 @@
+import "boolean.adt"
+import "nat.adt"
+
+Generic Adt list['sort]
+Sorts 
+	list['sort];
+Generators
+	empty : list['sort];
+	cons : 'sort, list['sort] -> list['sort];
+Operations
+	addEnd : 'sort, list['sort] -> list['sort];
+	size : list['sort] -> nat;
+	head : list['sort] -> 'sort;
+	tail : list['sort] -> list['sort];
+	contains : 'sort, list['sort] -> bool;
+	concat : list['sort], list['sort] -> list['sort];
+	get : list['sort], nat -> 'sort;
+	isEmpty : list['sort] -> bool;
+	
+Axioms
+	//addEnd
+	addEnd($n, empty) = cons($n, empty);
+	addEnd($n, cons($n1, $l)) = cons($n1, addEnd($n, $l));
+	
+	//getSize
+	//We have to add a cast for the "empty" part here, because there may 
+	//be other "empty" constants from other instantiations, and nothing in
+	//this axiom gives a clue about which "empty" to use
+	size(empty[list['sort]]) = zero;
+	size(cons($n, $l)) = suc(size($l));
+	
+	//getFirst
+	head(cons($n, $l)) = $n;
+	
+	//getQueue
+	tail(cons($n, $l)) = $l;
+	
+	//contains
+	contains($n, empty) = false;
+	if $n = $n1 then contains($n, cons($n1, $l)) = true;
+	if $n != $n1 then contains($n, cons($n1, $l)) = contains($n, $l);
+	
+	//concat
+	concat(empty, $l) = $l;
+	concat(cons($n, $l), $l1) = cons($n, concat($l, $l1));
+	
+	//get
+	get(cons($n, $l), zero) = $n;
+	if suc($i) lt size($l) = true then get(cons($n, $l), suc($i)) = get($l, $i); 
+Variables
+	n : 'sort;
+	n1 : 'sort;
+	l : list['sort];
+	l1 : list['sort];
+	i : nat;

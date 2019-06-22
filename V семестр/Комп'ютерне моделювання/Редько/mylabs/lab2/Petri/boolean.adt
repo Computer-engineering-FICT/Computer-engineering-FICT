@@ -1,0 +1,37 @@
+//Definition of the ADT boolean.
+Adt boolean
+	Sorts bool;
+	Generators
+		true : bool;
+		false : bool;
+	Operations 
+		not : bool -> bool;
+		and : bool, bool -> bool;
+		or : bool, bool -> bool;
+		xor : bool, bool -> bool;
+		implies : bool, bool -> bool;
+
+	Axioms
+		//not
+		not(true) = false;
+		not(false) = true;
+		
+		//and
+		and(true, $boolVar) = $boolVar;
+		and(false, $boolVar) = false;
+		
+		//or
+		or(true, $boolVar) = true;
+		or(false, $boolVar) = $boolVar;
+		
+		//xor
+		xor(true, $boolVar) = not($boolVar);
+		xor(false, $boolVar) = $boolVar;
+		
+		//implies
+		implies(false, $boolVar) = true;
+		implies(true, $boolVar) = $boolVar;
+
+	Variables
+		boolVar : bool;
+

@@ -1,0 +1,18 @@
+import "nat.adt"
+import "list.gadt"
+
+Adt listOfNats Is list[nat]
+Operations
+	sum : list[nat] -> nat;
+	average : list[nat] -> nat;
+Axioms
+	//sum
+	sum(empty) = zero;
+	sum(list($n, $l)) = $n plus sum($l);
+	
+	//average
+	average($l) = divide(sum($l), size($l));
+	
+Variables
+	n : nat;
+	l : list[nat];

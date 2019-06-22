@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <Place no="1" x="40" y="80" numTokens="0" >
+        <Arc to="1" x1="40" y1="80" x2="80" y2="80" />
+    </Place>
+
+    <Transition no="1" x="80" y="80" lyambda="0.0" g="0.0" r="0.0" >
+        <Arc to="2" x1="80" y1="80" x2="120" y2="80" />
+    </Transition>
+
+    <Place no="2" x="120" y="80" numTokens="0" >
+        <Arc to="2" x1="120" y1="80" x2="160" y2="80" />
+        <Arc to="3" x1="120" y1="80" x2="120" y2="150" />
+    </Place>
+
+    <Transition no="2" x="160" y="80" lyambda="80.0" g="1.0" r="0.6" >
+        <Arc to="4" x1="160" y1="80" x2="200" y2="80" />
+        <Arc to="3" x1="160" y1="80" x2="176" y2="89" x3="183" y3="202" x4="122" y4="200" />
+    </Transition>
+
+    <Transition no="3" x="120" y="150" lyambda="80.0" g="1.0" r="0.1" >
+        <Arc to="3" x1="120" y1="150" x2="122" y2="200" />
+        <Arc to="1" x1="120" y1="150" x2="39" y2="148" x3="40" y3="80" />
+    </Transition>
+
+    <Place no="3" x="122" y="200" numTokens="1" >
+        <Arc to="1" x1="122" y1="200" x2="66" y2="202" x3="63" y3="93" x4="80" y4="80" />
+    </Place>
+
+    <Place no="4" x="200" y="80" numTokens="0" >
+        <Arc to="4" x1="200" y1="80" x2="240" y2="80" />
+    </Place>
+
+    <Place no="5" x="280" y="80" numTokens="0" >
+        <Arc to="5" x1="280" y1="80" x2="320" y2="80" />
+        <Arc to="6" x1="280" y1="80" x2="280" y2="25" />
+    </Place>
+
+    <Transition no="4" x="240" y="80" lyambda="0.0" g="0.0" r="0.0" >
+        <Arc to="5" x1="240" y1="80" x2="280" y2="80" />
+    </Transition>
+
+    <Transition no="5" x="320" y="80" lyambda="10000.0" g="0.33333333" r="0.9" >
+        <Arc to="7" x1="320" y1="80" x2="360" y2="80" />
+    </Transition>
+
+    <Transition no="6" x="280" y="25" lyambda="10000.0" g="0.33333" r="0.1" >
+        <Arc to="1" x1="280" y1="25" x2="35" y2="20" x3="40" y3="80" />
+        <Arc to="6" x1="280" y1="25" x2="299" y2="24" x3="303" y3="187" x4="287" y4="202" />
+    </Transition>
+
+    <Place no="7" x="360" y="80" numTokens="0" >
+        <Arc to="7" x1="360" y1="80" x2="400" y2="80" />
+    </Place>
+
+    <Transition no="7" x="400" y="80" lyambda="0.0" g="0.0" r="0.0" >
+        <Arc to="8" x1="400" y1="80" x2="438" y2="74" />
+    </Transition>
+
+    <Place no="8" x="438" y="74" numTokens="0" >
+        <Arc to="8" x1="438" y1="74" x2="477" y2="78" />
+        <Arc to="9" x1="438" y1="74" x2="435" y2="21" />
+    </Place>
+
+    <Transition no="8" x="477" y="78" lyambda="50000.0" g="8.0" r="0.2" >
+        <Arc to="10" x1="477" y1="78" x2="520" y2="80" />
+        <Arc to="6" x1="477" y1="78" x2="461" y2="91" x3="465" y3="133" x4="329" y4="143" x5="326" y5="187" x6="287" y6="202" />
+        <Arc to="9" x1="477" y1="78" x2="496" y2="105" x3="498" y3="161" x4="440" y4="200" />
+    </Transition>
+
+    <Transition no="9" x="435" y="21" lyambda="50000.0" g="8.0" r="0.8" >
+        <Arc to="9" x1="435" y1="21" x2="450" y2="23" x3="463" y3="193" x4="440" y4="200" />
+        <Arc to="5" x1="435" y1="21" x2="424" y2="19" x3="424" y3="3" x4="262" y4="3" x5="263" y5="54" x6="280" y6="80" />
+    </Transition>
+
+    <Place no="9" x="440" y="200" numTokens="1" >
+        <Arc to="7" x1="440" y1="200" x2="385" y2="200" x3="385" y3="91" x4="400" y4="80" />
+    </Place>
+
+    <Place no="10" x="520" y="80" numTokens="1" >
+        <Arc to="10" x1="520" y1="80" x2="560" y2="80" />
+    </Place>
+
+    <Transition no="10" x="560" y="80" lyambda="0.0" g="0.0" r="0.0" >
+        <Arc to="11" x1="560" y1="80" x2="600" y2="80" />
+    </Transition>
+
+    <Place no="11" x="600" y="80" numTokens="2" >
+        <Arc to="11" x1="600" y1="80" x2="638" y2="78" />
+    </Place>
+
+    <Transition no="11" x="638" y="78" lyambda="2.0" g="1.0" r="0.0" >
+        <Arc to="12" x1="638" y1="78" x2="652" y2="85" x3="658" y3="125" x4="660" y4="193" x5="610" y5="201" />
+        <Arc to="4" x1="638" y1="78" x2="668" y2="67" x3="661" y3="44" x4="195" y4="47" x5="200" y5="80" />
+    </Transition>
+
+    <Place no="6" x="287" y="202" numTokens="4" >
+        <Arc to="4" x1="287" y1="202" x2="230" y2="201" x3="225" y3="92" x4="240" y4="80" />
+    </Place>
+
+    <Place no="12" x="610" y="201" numTokens="0" >
+        <Arc to="10" x1="610" y1="201" x2="558" y2="202" x3="547" y3="95" x4="560" y4="80" />
+    </Place>
+
+</project>

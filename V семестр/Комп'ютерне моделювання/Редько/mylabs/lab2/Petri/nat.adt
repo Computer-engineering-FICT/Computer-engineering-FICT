@@ -1,0 +1,79 @@
+//The naturals ADT.
+
+import "boolean.adt"
+
+Adt nat
+	Sorts nat;
+	Generators
+		zero : nat;
+		suc : nat -> nat;
+	Operations
+		dec : nat -> nat;
+		plus : nat, nat -> nat;
+		minus : nat, nat -> nat;
+		times : nat, nat -> nat;
+		divide : nat, nat -> nat;
+		mod : nat, nat -> nat;
+		gt : nat, nat -> bool;
+		lt : nat, nat -> bool;
+		ge : nat, nat -> bool;
+		le : nat, nat -> bool;
+		max : nat, nat -> nat;
+		min : nat, nat -> nat;
+		even : nat -> bool;
+	Axioms
+		//dec
+		dec(suc($x)) = $x;
+
+		//plus
+		plus (zero, $x) = $x;
+		plus (suc($x), $y) = suc (plus ($x,$y));
+		
+		//minus
+		minus($x, zero) = $x;
+		minus(suc($x), suc($y)) = minus($x, $y);
+		 
+		//times
+		times($x, zero) = zero;
+		times($x, suc($y)) = plus($x, times($x, $y));
+		
+		//divide
+		if ge($x, $y) = true & gt($y, zero) = true then divide($x, $y) = suc(divide(minus($x, $y), $y));
+		if ge($x, $y) = false & gt($y, zero) = true then divide($x, $y) = zero;
+		
+		//mod
+	    if gt($y, zero) = true then mod($x, $y) = minus($x, times($y, divide($x,$y)));
+
+		//gt
+		gt(zero, $x) = false;
+		gt(suc($x),zero) = true;
+		gt(suc($y), suc($x)) = gt ($y, $x);
+		
+		//st
+		lt(zero, suc($x)) = true;
+		lt($x, zero) = false;
+		lt(suc($y), suc($x)) = lt($y, $x);
+		
+		//ge
+		ge($x, $y) = not(lt($x,$y));
+		
+		//se
+		le($x,$y) = not(gt($x, $y));
+		
+		//max
+		if ge($x, $y) = true then max($x, $y) = $x;
+		if ge($x, $y) = false then max($x, $y) = $y;
+		
+		//min
+		if le($x, $y) = true then max($x, $y) = $x;
+		if le($x, $y) = false then max($x, $y) = $y;
+		
+		//even
+		even(zero) = true;
+		even(suc($x)) = not(even($x));
+		
+	Variables
+		x : nat;
+		y : nat;
+		n : nat;
+
