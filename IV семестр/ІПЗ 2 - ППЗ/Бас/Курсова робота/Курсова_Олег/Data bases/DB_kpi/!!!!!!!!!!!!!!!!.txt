@@ -1,0 +1,50 @@
+INSERT INTO `kpi`.`profilecat` (`idProfileCat`, `Comment`) VALUES ('4', 'fsfgsdfg');
+
+
+INSERT INTO `kpi`.`state` (`idState`, `Comment`) VALUES ('4', 'sdgsfg');
+
+INSERT INTO `kpi`.`inquiry` (`idInquiry`, `Date`, `Type_idType`, `Action_idAction`) VALUES ('1', '1992-01-01', '1', '1');
+INSERT INTO `kpi`.`inquiry` (`idInquiry`, `Date`, `Type_idType`, `Action_idAction`) VALUES ('2', '1994-01-01', '2', '2');
+INSERT INTO `kpi`.`inquiry` (`idInquiry`, `Date`, `Type_idType`, `Action_idAction`) VALUES ('3', '1993-03-03', '3', '3');
+
+
+INSERT INTO `kpi`.`type` (`idType`, `Name`, `Comment`) VALUES ('1', 't1', 'comm');
+INSERT INTO `kpi`.`type` (`idType`, `Name`, `Comment`) VALUES ('2', 't2', 'comm');
+INSERT INTO `kpi`.`type` (`idType`, `Name`, `Comment`) VALUES ('3', 't3', 'comm');
+
+
+INSERT INTO `kpi`.`group` (`idGroup`, `Cipher`) VALUES ('1', '123');
+INSERT INTO `kpi`.`group` (`idGroup`, `Cipher`) VALUES ('2', '34234');
+
+
+INSERT INTO `kpi`.`subject` (`idSubject`, `Name`, `Comment`) VALUES ('1', 'sjkdfngs', 'slnfss');
+
+UPDATE `kpi`.`action` SET `Date`='1000-03-02' WHERE `idAction`='3';
+
+
+UPDATE `kpi`.`inquiry` SET `Action_idAction`='1' WHERE `idInquiry`='1';
+UPDATE `kpi`.`inquiry` SET `Action_idAction`='2' WHERE `idInquiry`='2';
+UPDATE `kpi`.`inquiry` SET `Action_idAction`='3' WHERE `idInquiry`='3';
+
+INSERT INTO `kpi`.`class` (`idClass`, `Pair`, `Aud`, `Date`, `Profile_idProfile`, `Subject_idSubject`) VALUES ('1', '4', '123', '1994-01-01', '1', '1');
+
+
+INSERT INTO `kpi`.`abscence` (`idAbscence`, `Group_idGroup`, `Class_idClass`) VALUES ('1', '1', '1');
+
+
+INSERT INTO `kpi`.`message` (`idMessage`, `Text`, `Theme`, `Date`, `Profile_idProfile`) VALUES ('1', 'sfgd', 'wrgwrg', '1994-01-01', '1');
+
+
+
+INSERT INTO `kpi`.`sending` (`idSending`, `Message_idMessage`, `Group_idGroup`) VALUES ('1', '1', '1');
+
+
+
+INSERT INTO `kpi`.`student` (`idStudent`, `Course`, `Comment`, `BookNum`, `Group_idGroup`, `Profile_idProfile`) VALUES ('1', '2', 'lol', '2201', '1', '1');
+INSERT INTO `kpi`.`student` (`idStudent`, `Course`, `Comment`, `BookNum`, `Group_idGroup`, `Profile_idProfile`) VALUES ('2', '2', 'trololo', '32', '1', '2');
+
+
+INSERT INTO `kpi`.`division` (`idDivision`, `Name`) VALUES ('1', 'div');
+
+
+INSERT INTO `kpi`.`position` (`idPosition`, `Rate`, `Com`, `Profile_idProfile`, `Division_idDivision`) VALUES ('1', '2', 'sgdfg', '1', '1');

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<button id="1">MOVE IT BITCH</button>
+<canvas width="600px" height="600px"></canvas>
+
+<script>
+    var cx = document.querySelector("canvas").getContext("2d");
+    var shapeW = 10;
+    var shapeH = 10;
+    var startPosX = 300;
+    var startPosY = 300;
+
+    drawShape(startPosX, startPosY);
+
+    var button = document.getElementById("1");
+    button.onclick =  function() {
+        moveRound(startPosX, startPosY, true);
+    }
+
+    function drawShape(x, y) {
+        cx.strokeRect(x,y, shapeW, shapeH);
+        cx.strokeRect(x-3,y-3, shapeW+6, shapeH+6);
+        cx.strokeRect(x-4,y-4, shapeW+8, shapeH+8);
+        cx.strokeRect(x-6,y-6, shapeW+12, shapeH+12);
+
+    }
+
+    function moveRound(startPosX, startPosY, clear) {
+        var pos = [startPosX, startPosY];
+        var degree = 0;
+        var r = 20;
+
+
+
+        var timer = setInterval(frame, 10);
+
+
+        function frame() { // функция для отрисовки
+            if (clear) {
+                cx.clearRect(0,0,500,500);
+            }
+
+            degree-=0.017453292519943;
+            pos[0] = startPosX +r * Math.sin(degree);
+            pos[1] = startPosY +r * Math.cos(degree);
+            drawShape(pos[0], pos[1]);
+            console.log(degree);
+            if (degree<=-6.283) {
+                clearInterval(timer); // завершить анимацию
+            }
+
+        }
+
+        
+
+    }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+How to make instrumentation for ActiveJDBC
+  - with Ant:
+    you need to have next lines in build.xml
+    
+    <path id="instrument_classpath">
+      <pathelement location="out/production/SCPI"/> <!--${basedir} - location of the file -->
+      <path location="${basedir}/activejdbc-instrumentation-1.4.9.jar"/>
+      <path location="${basedir}/javassist.jar"/>
+      <path location="${basedir}/activejdbc-1.4.9.jar"/>
+    </path>
+
+    <target name="instrument" depends="compile"> <!-- compile - target for compiling the project -->
+      <java classname="org.javalite.instrumentation.Main">
+        <sysproperty key="outputDirectory" value="${outDir}"/> <!-- ${outDir} - location of *.class files -->
+        <classpath refid="instrument_classpath"/>
+      </java>
+    </target>
+    
+    After each changing of classes for tables in your DB you need to make instrumentation (just run instrument target).

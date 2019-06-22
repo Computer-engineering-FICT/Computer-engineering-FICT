@@ -1,0 +1,1157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/REC-html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>DocFlex/XML (Full Edition), Version 1.9.0 - Release Notes</title>
+
+<style type="text/css">
+
+body {
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+code {
+  white-space:nowrap;
+}
+
+.nowrap {
+  white-space:nowrap;
+}
+
+.note {
+  font-size:90%;
+  padding: 4px;
+  border: solid 1px #999999;
+  background-color:#F3F3F3;
+}
+
+.mrg0 {
+  margin-top:0pt;
+  margin-bottom:0pt;
+}
+
+.brdr1 { border-left: 1px solid #CCCCCC; border-top: 1px solid #CCCCCC; border-right: 1px solid #999999; border-bottom: 1px solid #999999; }
+.brdr2 { border-left: 1px solid #999999; border-top: 1px solid #999999; border-right: 1px solid #CCCCCC; border-bottom: 1px solid #CCCCCC; padding: 5px 6px 5px 6px }
+.brdr3 { border-left: 1px solid #999999; border-top: 1px solid #999999; border-right: 1px solid #CCCCCC; padding: 5px 6px 0px 6px }
+.brdr4 { border-left: 1px solid #999999; border-right: 1px solid #CCCCCC; padding: 0px 6px 0px 6px }
+.brdr5 { border-left: 1px solid #999999; border-right: 1px solid #CCCCCC; border-bottom: 1px solid #CCCCCC; padding: 0px 6px 5px 6px }
+.row1 { background-color:#F3F3F3;}
+.row2 { background-color:#FFFFFF;}
+
+</style>
+</head>
+
+<body>
+
+<center>
+  <h1>DocFlex/XML (Full Edition), Version 1.9.0</h1>
+  <h2>Release Notes</h2>
+</center>
+
+<hr>
+
+<h2>Table Of Contents</h2>
+<ul>
+  <li><a href="#about">About DocFlex/XML (Full Edition)</a>
+    <ul>
+      <li><a href="#docflex-xml-sdk">DocFlex/XML SDK</a></li>
+      <li><a href="#templates">Template Applications</a></li>
+      <li><a href="#integrations">Integrations</a></li>
+    </ul>
+  </li>
+  <li><a href="#contents">Package Contents</a></li>
+  <li><a href="#requirements">Technical Requirements</a></li>
+  <li><a href="#processing_modes">Licensing / Processing Modes</a>
+    <ul>
+      <li><a href="#limited_mode">Limited Mode</a></li>
+      <li><a href="#full_mode">Full Mode</a></li>
+      <li><a href="#trial_mode">Trial Mode</a></li>
+    </ul>
+  </li>
+  <li><a href="#installation">Installation</a>
+    <ul>
+      <li><a href="#windows_installation">Windows Installation</a></li>
+      <li><a href="#linux_installation">Linux Installation</a></li>
+    </ul>
+  </li>
+  <li><a href="#running_xmldoc">Running XMLDoc</a></li>
+  <li><a href="#running_xsddoc">Running XSDDoc</a></li>
+  <li><a href="#running_samples">Running Demo Samples</a></li>
+  <li><a href="#getting_help">Getting Help</a></li>
+  <li><a href="#change_log">Change Log</a></li>
+</ul>
+
+<hr>
+
+<h2>
+  <a name="about"></a>
+  About DocFlex/XML (Full Edition)
+</h2>
+
+<a href="http://www.filigris.com/products/docflex_xml/" target="_blank">DocFlex/XML</a>
+is a template-driven system for programming and execution of any kind of automatic documentation/report generators
+from any data stored in XML files. It also includes some large ready-to-use template applications and integrations
+aimed for particular practical tasks.
+
+<p class="note">
+Actual doc/report generators are created in the form of special templates, which are designed using 
+a graphic Template Designer basing on the datatype information obtained from DTD or XSD (W3C XML Schema) files 
+that describe the particular XML-file data source. All formatting is specified in templates independently of 
+any destination output formats. A template set (called "template application") is interpreted by the template 
+interpreter / output generator, which makes the result XML doc/report generator work. 
+The output format is selected only before generation and may be any of the currently supported
+by the DocFlex core.
+For further details, see <a href="doc/index.html?docflex-xml/about.html" target="_blank">Documentation | About DocFlex/XML</a>.
+</p>
+
+"DocFlex/XML (Full Edition)" is the most complete edition of 
+<a href="http://www.filigris.com/products/docflex_xml/" target="_blank">DocFlex/XML</a>
+software, which includes all features available in this product line:
+
+<ul>
+  <li><a href="#docflex-xml-sdk">DocFlex/XML SDK</a></li>
+  <li><a href="#running_samples">Sample Templates</a></li>
+  <li><a href="#templates">Template Applications</a></li>
+  <li><a href="#integrations">Integrations</a></li>
+</ul>
+
+<h3>
+  <a name="docflex-xml-sdk"></a>
+  DocFlex/XML SDK
+</h3>
+
+The main focus of this edition is to provide a System Development Kit (SDK) to design and modify templates
+(as well as to run template applications). This includes the following main components: 
+
+<ul>
+<li>
+  <b>Template Designer</b>, which provides a high-quality GUI to design templates.
+  This is the only way to create/modify templates. In effect, the Template Designer visualizes
+  the template language and gives you access to the most of DocFlex Technology.
+  <p>
+</li>
+<li>
+  <b>Template Interpreter / Output Generator</b>, which provides the Runtime Environment
+  to execute templates and generate output in various formats.
+</li>
+</ul>
+
+Those components constitute the <b>core functionality</b>, which is covered by 
+a single "DocFlex/XML SDK" license. Depending on that license, the SDK may work in one of three modes:
+<i><a href="#limited_mode">limited</a></i>, <i><a href="#full_mode">full</a></i>,
+<i><a href="#trial_mode">trial</a></i>.
+For more details, please see <a href="#processing_modes">Licensing / Processing Modes</a> (below).
+
+<h3>
+  <a name="templates"></a>
+  Template Applications
+</h3>
+
+DocFlex/XML currently provides two ready-to-use template applications useful for real tasks:
+
+<ol>
+<li>
+  <a href="#running_xmldoc">XMLDoc</a> (<b>&ldquo;XML File Documenter&rdquo;</b>)
+  will allow you to compile any number of generic XML files into a web-ready HTML or
+  printable RTF documentation with the optional inclusion of a namespace binding report
+  that shows which namespace prefixes are bound to which namespace URIs and where.
+  For more details, see <a href="doc/index.html?docflex-xml/samples/xmldoc/index.html" target="_blank">Documentation | XMLDoc</a>.
+  <p>
+</li>
+<li>
+  <a href="#running_xsddoc">XSDDoc</a>
+  (<b>&ldquo;XML Schema Documentation Generator&rdquo;</b>)
+  implements a very powerful XML Schema Documentation Generator able to produce both multi-framed Javadoc-like
+  <a href="doc/index.html?docflex-xml/xsddoc/overview.html#output.html" target="_blank">HTML</a> and printable
+  <a href="doc/index.html?docflex-xml/xsddoc/overview.html#output.rtf" target="_blank">RTF</a> documentation.
+  For more details, see <a href="doc/index.html?docflex-xml/xsddoc/overview.html" target="_blank">Documentation | XSDDoc</a>.
+  <p>
+  <i>NOTE: This is a commercial template application that requires separate licensing. See also:
+  <a href="http://www.filigris.com/buy/licensing_pricing.php#templates.cta" target="_blank">Licensing of Templates | Commercial Template Applications</a>
+  and <a href="http://www.filigris.com/buy/licensing_pricing.php#multiple_licenses" target="_blank">Multiple Licenses</a>.</i>
+</li>
+</ol>
+
+<h3>
+  <a name="integrations"></a>
+  Integrations
+</h3>
+
+Currently, the following integrations of DocFlex/XML with other software systems have been worked out:
+
+<p>
+<table cellspacing="0" cellpadding="0" border="0" class="brdr1">
+
+<tr class="row1">
+  <th class="brdr2">System</th>
+  <th class="brdr2">Integration</td>
+</tr>
+
+<tr class="row2" valign="top">
+<td class="brdr2">
+  <b class="nowrap"><a href="http://ant.apache.org/" target="_blank">Apache Ant</a></b>
+</td>
+<td class="brdr2">
+  Allows you to run DocFlex/XML generator from your Ant build.
+  <p></p>
+  For more details, see
+  <a href="doc/index.html?docflex-xml/integrations/ant.html" target="_blank">Documentation | Integrations | Apache Ant</a>
+  and the example <code>{docflex-xml}/integrations/ant/build.xml</code> file.
+</td>
+</tr>
+
+<tr class="row2" valign="top">
+<td class="brdr2">
+  <b class="nowrap"><a href="http://maven.apache.org/" target="_blank">Apache Maven</a></b>
+</td>
+<td class="brdr2">
+  Allows you to run DocFlex/XML generator from your Maven build. 
+  <p></p>
+  For more details, see
+  <code><a href="integrations/maven/index.html" target="_blank">{docflex-xml}/integrations/maven/index.html</a></code>,
+  <a href="doc/index.html?docflex-xml/integrations/maven.html" target="_blank">Documentation | Integrations | Apache Maven</a>.
+</td>
+</tr>
+
+<tr class="row2" valign="top">
+<td class="brdr2">
+  <b class="nowrap"><a href="http://www.altova.com/xmlspy/" target="_blank">XMLSpy</a></b>
+</td>
+<td class="brdr2">
+  Allows you to insert automatically the graphics diagrams produced by 
+  <a href="http://www.altova.com/xmlspy/" target="_blank">Altova XMLSpy</a>
+  into the XML schema documentation generated by DocFlex/XML XSDDoc
+  (with full support of diagram hyperlinks).
+  <p></p>
+  <i>NOTE: This integration is not covered by the "DocFlex/XML SDK" license and requires separate licensing!</i>
+  <p></p>
+  For more information, see:
+  <code><a href="integrations/XMLSpy/README.html" target="_blank">{docflex-xml}/integrations/XMLSpy/README.html</a></code>,
+  <a href="doc/index.html?docflex-xml/integrations/XMLSpy.html" target="_blank">Documentation | Integrations | XMLSpy</a>,
+  <a href="http://www.filigris.com/buy/licensing_pricing.php#multiple_licenses" target="_blank">Multiple Licenses</a>.
+</td>
+</tr>
+
+<tr class="row2" valign="top">
+<td class="brdr2">
+  <b class="nowrap"><a href="http://www.oxygenxml.com" target="_blank">Oxygen XML</a></b>
+</td>
+<td class="brdr2">
+  A similar integration (as with XMLSpy), but now the provider of diagrams is
+  <a href="http://www.oxygenxml.com" target="_blank">Oxygen XML Editor</a>.
+  <p></p>
+  <i>NOTE: This integration is not covered by the "DocFlex/XML SDK" license and requires separate licensing!</i>
+  <p></p>
+  For more information, see:
+  <code><a href="integrations/OxygenXML/README.html" target="_blank">{docflex-xml}/integrations/OxygenXML/README.html</a></code>,
+  <a href="doc/index.html?docflex-xml/integrations/OxygenXML.html" target="_blank">Documentation | Integrations | Oxygen XML</a>,
+  <a href="http://www.filigris.com/buy/licensing_pricing.php#multiple_licenses" target="_blank">Multiple Licenses</a>.
+</td>
+</tr>
+
+</table>
+
+<h2>
+  <a name="contents"></a>
+  Package Contents
+</h2>
+
+<table cellspacing="0" cellpadding="0" border="0" class="brdr1">
+
+<!-- LICENSE -->
+
+<tr class="row1">
+  <td class="brdr2">
+    <code>LICENSE.html</code>
+  </td>
+  <td class="brdr2">
+    <a href="LICENSE.html" target="_blank">DocFlex Software License</a>
+  </td>
+</tr>
+
+<!-- README -->
+
+<tr class="row2">
+  <td class="brdr2">
+    <code>README.html</code>
+  </td>
+  <td class="brdr2">
+    this file
+  </td>
+</tr>
+
+<!-- CHANGES -->
+
+<tr class="row1">
+  <td class="brdr2">
+    <code>CHANGES.html</code>
+  </td>
+  <td class="brdr2">
+    <a href="CHANGES.html">change log</a> of DocFlex/XML
+  </td>
+</tr>
+
+<!-- DOCS -->
+
+<tr class="row2">
+  <td class="brdr2">
+    <code>doc/</code>
+  </td>
+  <td class="brdr2">
+    <a href="doc/index.html" target="_blank">DocFlex/XML & Technology Documentation</a>
+    &#8211; an HTML copy of all descriptions/documentation published
+    on the product <a href="http://www.filigris.com/products/docflex_xml/" target="_blank">web-site</a>
+    (on the moment of the release). It may be useful when you cannot access the online pages
+    or they changed too much since this release.
+  </td>
+</tr>
+
+<!-- *.BAT -->
+
+<tr class="row1" valign="top">
+  <td class="brdr3">
+    <code>*.bat</code>
+  </td>
+  <td class="brdr3">
+    Files prepared for <a href="#windows_installation">Windows Installation</a>:
+  </td>
+</tr>
+
+<tr class="row1" valign="top">
+  <td class="brdr4">
+    <code>designer.bat</code>
+  </td>
+  <td class="brdr4">
+    <ul class="mrg0">
+      <li>launches the Template Designer</li>
+    </ul>
+  </td>
+</tr>
+
+<tr class="row1" valign="top">
+  <td class="brdr4">
+    <code>generator.bat</code>
+  </td>
+  <td class="brdr4">
+    <ul class="mrg0">
+      <li>starts only generator from command line</li>
+    </ul>
+  </td>
+</tr>
+
+<tr class="row1" valign="top">
+  <td class="brdr5">
+    <code>update_templates.bat</code>
+  </td>
+  <td class="brdr5">
+    <ul class="mrg0">
+      <li>updates your templates according to new DocFlex/XML version or new license</li>
+    </ul>
+  </td>
+</tr>
+
+<!-- LINUX -->
+
+<tr class="row2" valign="top">
+  <td class="brdr3">
+    <code>linux/</code>
+  </td>
+  <td class="brdr3">
+    Files prepared for <a href="#linux_installation">Linux Installation</a>:
+  </td>  
+</tr>
+
+<tr class="row2" valign="top">
+  <td class="brdr4">
+    <code>linux/designer.sh</code>
+  </td>
+  <td class="brdr4">
+    <ul class="mrg0">
+      <li>shell script file to launch the Template Designer</li>
+    </ul>
+  </td>
+</tr>
+
+<tr class="row2" valign="top">
+  <td class="brdr4">
+    <code>linux/generator.sh</code>
+  </td>
+  <td class="brdr4">
+    <ul class="mrg0">
+      <li>shell script file to start DocFlex/XML generator</li>
+    </ul>
+  </td>
+</tr>
+
+<tr class="row2" valign="top">
+  <td class="brdr4">
+    <code>linux/update_templates.sh</code>
+  </td>
+  <td class="brdr4">
+    <ul class="mrg0">
+      <li>shell script to updates your templates according to new DocFlex/XML version or new license</li>
+    </ul>
+  </td>
+</tr>
+
+<tr class="row2" valign="top">
+  <td class="brdr5">
+    <code>linux/docflex.config</code>
+  </td>
+  <td class="brdr5">
+    <ul class="mrg0">
+      <li>DocFlex main configuration file prepared for Linux</li>
+    </ul>
+  </td>
+</tr>
+
+<!-- LIB -->
+
+<tr class="row1" valign="top">
+  <td class="brdr3">
+    <code>lib/</code>
+  </td>
+  <td class="brdr3">
+    Runtime Environment:
+  </td>  
+</tr>
+
+<tr class="row1" valign="top">
+  <td class="brdr4">
+    <code>lib/docflex-xml.jar</code>
+  </td>
+  <td class="brdr4">
+    <ul class="mrg0">
+      <li>
+        DocFlex/XML Java library
+      </li>
+    </ul>
+  </td>  
+</tr>
+
+<tr class="row1" valign="top">
+  <td class="brdr4">
+    <code>lib/docflex.config</code>
+  </td>
+  <td class="brdr4">
+    <ul class="mrg0">
+      <li>
+        DocFlex main configuration file prepared for <a href="#windows_installation">Windows&nbsp;Installation</a>.
+        This file contains locations of other configuration files and various important settings.
+      </li>
+    </ul>
+  </td>  
+</tr>
+
+<tr class="row1">
+  <td class="brdr5">
+    <code>
+      lib/xml-apis.jar<br>
+      lib/xercesImpl.jar<br>
+      lib/resolver.jar
+    </code>
+  </td>
+  <td class="brdr5">
+    <ul class="mrg0">
+      <li><a href="http://xerces.apache.org/xerces2-j/" target="_blank">Apache Xerces2 Java Parser 2.9.1</a></li>
+    </ul>
+  </td>  
+</tr>
+
+<!-- LIB | RESOURCES -->
+
+<tr class="row2" valign="top">
+  <td class="brdr3">
+    <code>lib/resources/</code>
+  </td>
+  <td class="brdr3">
+    Runtime Environment Resources:
+  </td>  
+</tr>
+
+<tr class="row2" valign="top">
+  <td class="brdr4">
+    <code>lib/resources/catalog.xml</code>
+  </td>
+  <td class="brdr4">
+    <ul class="mrg0">
+      <li>
+        Default XML catalog
+      </li>
+    </ul>
+  </td>  
+</tr>
+
+<tr class="row2" valign="top">
+  <td class="brdr5">
+    <code>
+      lib/resources/http_www_w3_org/
+    </code>
+  </td>
+  <td class="brdr5">
+    <ul class="mrg0">
+      <li>
+        Contains local copies of some standard XML schemas (e.g.
+        <a href="http://www.w3.org/2001/XMLSchema.xsd" target="_blank" class="nowrap">http://www.w3.org/2001/XMLSchema.xsd</a>),
+        to which the default XML catalog points. Those schemas are critical for big template applications like
+        <a href="#running_xsddoc">XSDDoc</a>!
+      </li>
+    </ul>
+  </td>  
+</tr>
+
+<!-- CONFIG -->
+
+<tr class="row1" valign="top">
+  <td class="brdr3">
+    <code>config/</code>
+  </td>
+  <td class="brdr3">
+    Configuration files (created and updated dynamically):
+  </td>  
+</tr>
+
+<tr class="row1" valign="top">
+  <td class="brdr4">
+    <code>config/designer.config</code>
+  </td>
+  <td class="brdr4">
+    <ul class="mrg0">
+      <li>
+        The Template Designer configuration file
+      </li>
+    </ul>
+  </td>
+</tr>
+
+<tr class="row1" valign="top">
+  <td class="brdr5">
+    <code>config/generator.config</code>
+  </td>
+  <td class="brdr5">
+    <ul class="mrg0">
+      <li>
+        The generator configuration file prepared to run a demo
+        (normally, it is maintained automatically by the Generator GUI)
+      </li>
+    </ul>
+  </td>
+</tr>
+
+<!-- TEMPLATES -->
+
+<tr class="row2" valign="top">
+  <td class="brdr2">
+    <code>templates/</code>
+  </td>
+  <td class="brdr2">
+    bundled template applications
+  </td>  
+</tr>
+
+<!-- TEMPLATES | XMLDOC -->
+
+<tr class="row1" valign="top">
+  <td class="brdr3">
+    <code>templates/XMLDoc/</code>
+  </td>
+  <td class="brdr3">
+    The <i>"XML File Documentor"</i> (<a href="#running_xmldoc">XMLDoc</a>) template set:
+  </td>  
+</tr>
+
+<tr class="row1" valign="top">
+  <td class="brdr4">
+    <code>
+      templates/XMLDoc/PlainDoc.tpl
+    </code>
+  </td>
+  <td class="brdr4">
+    <ul class="mrg0">
+      <li>
+        The template to generate single-file documentation (in HTML or RTF format).
+      </li>
+    </ul>
+  </td>  
+</tr>
+
+<tr class="row1" valign="top">
+  <td class="brdr4">
+    <code>
+      templates/XMLDoc/FramedDoc.tpl
+    </code>
+  </td>
+  <td class="brdr4">
+    <ul class="mrg0">
+      <li>
+        The template to generate framed HTML documentation.
+      </li>
+    </ul>
+  </td>  
+</tr>
+
+<tr class="row1" valign="top">
+  <td class="brdr5">
+    <code>
+      templates/XMLDoc/xmldoc.xmltype
+    </code>
+  </td>
+  <td class="brdr5">
+    <ul class="mrg0">
+      <li>
+        The configuration file that defines the <code>'xmldoc'</code> XML type,
+        on which all <a href="#running_xmldoc">XMLDoc</a> templates are based.
+      </li>
+    </ul>
+  </td>  
+</tr>
+
+<!-- TEMPLATES | XSDDOC -->
+
+<tr class="row2" valign="top">
+  <td class="brdr2">
+    <code>templates/XSDDoc/</code>
+  </td>
+  <td class="brdr2">
+    The <i>"XML Schema Documentation Generator"</i> (<a href="#running_xsddoc">XSDDoc</a>) template set.
+    For more details, see:
+    <code><a href="templates/XSDDoc/README.html" target="_blank">{docflex-xml}/templates/XSDDoc/README.html</a></code>
+  </td>  
+</tr>
+
+<!-- SAMPLES -->
+
+<tr class="row1" valign="top">
+  <td class="brdr3">
+    <code>samples/</code>
+  </td>
+  <td class="brdr3">
+    <a href="#running_samples">Demo</a> samples:
+  </td>  
+</tr>
+
+<tr class="row1" valign="top">
+  <td class="brdr4">
+    <code>
+      samples/sales/
+    </code>
+  </td>
+  <td class="brdr4">
+    <ul class="mrg0">
+      <li>
+        <i>"Sales Report"</i> -- template sample
+      </li>
+    </ul>
+  </td>  
+</tr>
+
+<tr class="row1" valign="top">
+  <td class="brdr4">
+    <code>
+      samples/personal/
+    </code>
+  </td>
+  <td class="brdr4">
+    <ul class="mrg0">
+      <li>
+        <i>"Alternative to XSLT"</i> -- template sample
+      </li>
+    </ul>
+  </td>  
+</tr>
+
+<tr class="row1" valign="top">
+  <td class="brdr5">
+    <code>samples/HumanEvolution/</code>
+  </td>
+  <td class="brdr5">
+    <ul class="mrg0">
+      <li>
+        <i>"XML Schema of Human Evolution"</i> -- a demo XML schema that shows in every detail 
+        how to use XHTML and insert images in XML schema annotations.
+        To see what a documentation it produces, just run this schema with either
+        <code>XSDDoc/FramedDoc.tpl</code> (for framed HTML) or
+        <code>XSDDoc/PlainDoc.tpl</code> (for RTF) template.
+      </li>
+    </ul>
+  </td>
+</tr>
+
+<!-- INTEGRATIONS -->
+
+<tr class="row2" valign="top">
+  <td class="brdr2">
+    <code>integrations/</code>
+  </td>
+  <td class="brdr2">
+    The support files for <a href="#integrations">integrations</a> of DocFlex/XML with other software systems
+  </td>  
+</tr>
+
+<!-- INTEGRATIONS | ANT -->
+
+<tr class="row1" valign="top">
+  <td class="brdr3">
+    <code>integrations/ant/</code>
+  </td>
+  <td class="brdr3">
+    Ant example files:
+  </td>  
+</tr>
+
+<tr class="row1" valign="top">
+  <td class="brdr4">
+    <code>integrations/ant/build.xml</code>
+  </td>
+  <td class="brdr4">
+    <ul class="mrg0">
+      <li>
+        The Ant build file that demonstrates how to integrate DocFlex/XML generator
+        with the <a href="http://ant.apache.org/" target="_blank">Apache&nbsp;Ant</a>
+        (in particular, this file executes the
+        <a href="templates/XSDDoc/README.html" target="_blank">XSDDoc</a> demo)
+      </li>
+    </ul>
+  </td>  
+</tr>
+
+<tr class="row1" valign="top">
+  <td class="brdr4">
+    <code>integrations/ant/make.bat</code>
+  </td>
+  <td class="brdr4">
+    <ul class="mrg0">
+      <li>Windows command file to run Ant</li>
+    </ul>
+  </td>  
+</tr>
+
+<tr class="row1" valign="top">
+  <td class="brdr5">
+    <code>integrations/ant/make.sh</code>
+  </td>
+  <td class="brdr5">
+    <ul class="mrg0">
+      <li>Linux shell script to run Ant</li>
+    </ul>
+  </td>  
+</tr>
+
+<!-- INTEGRATIONS | MAVEN -->
+
+<tr class="row2" valign="top">
+  <td class="brdr2">
+    <code>integrations/maven/</code>
+  </td>
+  <td class="brdr2">
+    Maven plugin for DocFlex/XML.
+    For more details, see:
+    <code><a href="integrations/maven/index.html" target="_blank">{docflex-xml}/integrations/maven/index.html</a></code>
+  </td>  
+</tr>
+
+<!-- INTEGRATIONS | XMLSPY -->
+
+<tr class="row1" valign="top">
+  <td class="brdr2">
+    <code>integrations/XMLSpy/</code>
+  </td>
+  <td class="brdr2">
+    Contains files related to
+    <a href="doc/index.html?docflex-xml/integrations/XMLSpy.html" target="_blank">XMLSpy Integration</a>.
+    For more details, see:
+    <code><a href="integrations/XMLSpy/README.html" target="_blank">{docflex-xml}/integrations/XMLSpy/README.html</a></code>
+  </td>  
+</tr>
+
+<!-- INTEGRATIONS | OXYGEN XML -->
+
+<tr class="row2" valign="top">
+  <td class="brdr2">
+    <code>integrations/OxygenXML/</code>
+  </td>
+  <td class="brdr2">
+    Contains files related to
+    <a href="doc/index.html?docflex-xml/integrations/OxygenXML.html" target="_blank">OxygenXML Integration</a>.
+    For more details, see:
+    <code><a href="integrations/OxygenXML/README.html" target="_blank">{docflex-xml}/integrations/OxygenXML/README.html</a></code>
+  </td>  
+</tr>
+
+</table>
+
+<h2>
+  <a name="requirements"></a>
+  Technical Requirements
+</h2>
+
+DocFlex/XML requires
+Java<sup><font size=-2>TM</font></sup> 2 Runtime Environment (JDK or JRE) 
+version 7.x, 6.x, 5.x or 1.4.x installed on your system.
+(<a href="http://www.oracle.com/technetwork/java/" target="_blank">Java 7</a> may be preferable as it is the fastest!)
+<p>
+You can freely download Java from the Java Technology web-site:
+<a href="http://www.oracle.com/technetwork/java/" target="_blank">http://www.oracle.com/technetwork/java/</a>
+(formerly <a href="http://java.sun.com/" target="_blank">http://java.sun.com</a>).
+<p>
+DocFlex/XML is a pure Java application. 
+The Template Designer GUI is implemented entirely using Swing. 
+Therefore, everything is supposed to work on any operating system 
+where Java2 Runtime Environment can be installed.
+<p>
+Specifically, the software includes both <b>MS Windows</b> BAT files and <b>Linux</b> 
+shell script files to run DocFlex/XML immediately on those operating systems.
+See <a href="#windows_installation">Windows Installation</a> and 
+<a href="#linux_installation">Linux Installation</a> respectively.
+<p>
+We have been also reported that DocFlex/XML worked successfully under <b>Mac OS X</b>.
+<p>
+To parse XML files, DTDs and XML Schemas, DocFlex/XML uses 
+<a href="http://xerces.apache.org/xerces2-j/" target="_blank">Apache Xerces2 Java Parser</a> version 2.9.1.
+In the case of any questions concerning this library, please refer to the Apache Xerces home page:
+<a href="http://xerces.apache.org" target="_blank">http://xerces.apache.org</a>.
+<p>
+To generate XML schema documentation (for big and middle sized XML schemas) using 
+<a href="#running_xsddoc">XSDDoc</a> template set,
+you may need a powerful enough computer (e.g. with Intel Pentium 4 or AMD Athlon processor)
+and at least 512 MB RAM memory.
+
+<h2>
+  <a name="processing_modes"></a>
+  Licensing / Processing Modes
+</h2>
+
+Depending on your <a href="#docflex-xml-sdk">DocFlex/XML SDK</a> license, 
+the Template Designer and Generator may work in three different modes:
+<i><a href="#limited_mode">limited</a></i>,
+<i><a href="#full_mode">full</a></i> or
+<i><a href="#trial_mode">trial</a></i>.
+
+<h3>
+  <a name="limited_mode"></a>
+  Limited Mode
+</h3>
+
+The Limited Mode is covered by the
+<a href="http://www.filigris.com/buy/licensing_pricing.php#limited_free_license" target="_blank">Limited Free License</a>.
+It is activated by default when no other licenses have been found. This mode allows you:
+<ul>
+<li>
+  To run the Template Designer in demo mode. You will be able to investigate any functionality,
+  but unable to save any created/modified templates. 
+</li>
+<li>
+  To run <a href="#running_xmldoc">XMLDoc</a> without limitations.
+</li>
+<li>
+  To run <a href="templates/XSDDoc/README.html" target="_blank">XSDDoc</a>
+  (XML Schema Documentation Generator) in limited mode.
+  <p>
+  <table cellspacing="0" cellpadding="0">
+    <tr valign="top">
+      <td><b>Note:</b>&nbsp;&nbsp;</td>
+      <td>
+        If you have a <a href="http://www.filigris.com/buy/licensing_pricing.php#templates.cta" target="_blank">license</a> 
+        for "<a href="templates/XSDDoc/README.html" target="_blank">XSDDoc</a>" template application,
+        you will be able to run it also in full mode even without a special license for
+        <a href="#docflex-xml-sdk">DocFlex/XML SDK</a> itself.
+      </td>
+    </tr>
+  </table>
+  </p>
+</li>
+<li>
+  To use all output generators (HTML, RTF, TXT) without limitations.
+</li>
+</ul>
+
+<h3>
+  <a name="full_mode"></a>
+  Full Mode
+</h3>
+
+The Full Mode is activated in the presence of a 
+<a href="http://www.filigris.com/buy/licensing_pricing.php#commercial_license" target="_blank">Commercial</a> or
+<a href="http://www.filigris.com/buy/licensing_pricing.php#academic_license" target="_blank">Academic</a>
+License for <a href="#docflex-xml-sdk">DocFlex/XML SDK</a>. This mode allows you:
+<ul>
+<li>
+  To use the Template Designer without limitation to create/modify templates. 
+</li>
+<li>
+  To execute <a href="http://www.filigris.com/buy/licensing_pricing.php#templates.custom" target="_blank">custom templates</a>
+  created/modified under 
+  <a href="http://www.filigris.com/buy/licensing_pricing.php#commercial_license" target="_blank">Commercial</a>,
+  <a href="http://www.filigris.com/buy/licensing_pricing.php#academic_license" target="_blank">Academic</a> or
+  <a href="http://www.filigris.com/buy/licensing_pricing.php#trial_license" target="_blank">Trial</a> Licenses.
+</li>
+<li>
+  To run <a href="#running_xmldoc">XMLDoc</a> without limitations.
+</li>
+<li>
+  To run <a href="#running_xsddoc">XSDDoc</a>
+  (XML Schema Documentation Generator) in limited mode (with some features disabled).
+  <p>
+  <table cellspacing="0" cellpadding="0">
+    <tr valign="top">
+      <td><b>Note:</b>&nbsp;&nbsp;</td>
+      <td>
+        To use <a href="templates/XSDDoc/README.html" target="_blank">XSDDoc</a> without limitations, a separate
+        <a href="http://www.filigris.com/buy/licensing_pricing.php#templates.cta" target="_blank">license</a>
+        for it is required.
+      </td>
+    </tr>
+  </table>
+  <p>
+</li>
+<li>
+  To use all output generators (HTML, RTF, TXT) without limitations.
+</li>
+</ul>
+
+<h3>
+  <a name="trial_mode"></a>
+  Trial Mode
+</h3>
+
+The Trial Mode is activated in the presence of a
+<a href="http://www.filigris.com/buy/licensing_pricing.php#trial_license" target="_blank">Trial License</a>
+for <a href="#docflex-xml-sdk">DocFlex/XML SDK</a>. In this mode, the software will work the same as in the
+<a href="#full_edition.full_mode">full mode</a> except the following limitations:
+<ul>
+<li>
+  You may use DocFlex/XML working in the trial mode only during the limited period of time (<b>30 days</b>) provided by your
+  <a href="http://www.filigris.com/buy/licensing_pricing.php#trial_license" target="_blank">Trial License</a>.
+  <p>
+</li>
+<li>
+  Any output documents generated in trial mode will be specifically 
+  <a href="http://www.filigris.com/buy/licensing_pricing.php#trial_license.output" target="_blank">distorted</a>.
+  Such documents may be used only for evaluation of this software.
+  Any other usage is prohibited!
+  <p>
+</li>
+<li>
+  Any templates created or modified (the last time) in trial mode will not work with the reduced edition 
+  <a href="http://www.filigris.com/products/docflex_xml/#docflex-xml-re" target="_blank">DocFlex/XML RE</a>,
+  which includes only the template interpreter / output generators.
+  <p>
+  However, you may use or further modify your trial templates once you have installed a
+  <a href="http://www.filigris.com/buy/licensing_pricing.php#commercial_license" target="_blank">Commercial</a> or
+  <a href="http://www.filigris.com/buy/licensing_pricing.php#academic_license" target="_blank">Academic</a> License
+  for <a href="#docflex-xml-sdk">DocFlex/XML SDK</a>.
+  <p>
+  In addition,
+  the <a href="http://www.filigris.com/buy/licensing_pricing.php#commercial_license" target="_blank">Commercial License</a>
+  will allow you to clear your templates created/modified in trial mode from the limitation
+  on execution by the reduced edition. To do this, you should resave the templates with the Template Designer
+  after installing the new license. 
+  <p>
+  You can use <code><b>update_templates.bat</b></code> to upgrade all your templates at once in batch mode. 
+  For more details, see the Template Designer command line options 
+  (you can use also <code>'-?'</code> argument in <code>designer.bat</code>).
+</li>
+</ul>
+
+<h2>
+  <a name="installation"></a>
+  Installation
+</h2>
+
+<h3>
+  <a name="windows_installation"></a>
+  Windows Installation
+</h3>
+
+To install DocFlex/XML on Windows, please follow these steps:
+
+<ol>
+  <li>
+    Unzip the downloaded archive.
+    <p>
+  </li>
+  <li>
+    Edit <b><code>*.bat</code></b> files in DocFlex/XML root directory 
+    to specify the <b><code>JAVA_HOME</code></b> variable according to the location of 
+    Java 7, Java 6, Java 5 or Java 1.4.x installed on your system.
+    <p>
+  </li>
+  <li>
+    If you want to run those files from a different location, 
+    set also the <b><code>DFH</code></b> variable to the <b>absolute</b> pathname
+    of the DocFlex/XML installation directory (e.g. <code>set&nbsp;DFH=C:\docflex-xml-1.9.0</code>).
+    <p>
+  </li>
+  <li>
+    Copy the DocFlex/XML license file <b><code>'docflex-xml.license'</code></b>, which you receive by e-mail,
+    to <b><code>lib</code></b> directory. This file should be always near the <code>docflex-xml.jar</code> file!
+  </li>
+</ol>
+
+Now, everything must be ready.
+You can start <code>designer.bat</code> to launch Template Designer
+or <code>generator.bat</code> to run the template applications or samples.
+
+<h3>
+  <a name="linux_installation"></a>
+  Linux Installation
+</h3>
+
+To install DocFlex/XML on Linux, please follow these steps:
+
+<ol>
+  <li>
+    Unzip the downloaded archive.
+    <p>
+  </li>
+  <li>
+    Edit <b><code>*.sh</code></b> shell script files contained in <b><code>linux</code></b>
+    subdirectory to specify the <code><b>JAVA_HOME</b></code> variable according to the location of
+    Java 7, Java 6, Java 5 or Java 1.4.x  installed on your system.
+    <p>
+    For each shell script file, edit its "Permission" properties to allow it to be executed by Linux.
+    <p>
+  </li>
+  <li>
+    Copy the DocFlex/XML license file <b><code>'docflex-xml.license'</code></b>, which you receive by e-mail,
+    to <b><code>lib</code></b> directory. This file should be always near the <code>docflex-xml.jar</code> file!
+  </li>
+</ol>
+
+Now, everything must be ready.
+Just run <code>designer.sh</code> or <code>generator.sh</code> !
+
+<h2>
+  <a name="running_xmldoc"></a>
+  Running XMLDoc
+</h2>
+
+To generate XML File documentation in RTF output format, please do the following:
+
+<ol>
+  <li>
+    Run <b><code>generator.bat</code></b>. You will see the generator dialog.
+  </li>
+  <li>
+    In "Template" field, select <b><code>XMLDoc.tpl</code></b> template.
+  </li>
+  <li>
+    In "XML File(s)" field, specify one or many XML files that you want to document.
+    <p class="note">
+      Each XML file can be specified either by local path name or by URL.
+      In the case of a URL, the generator will try to download such a file directly from the Internet.
+      When multiple XML files are specified, make sure that each pathname or URL is enclosed in double quotes.
+    </p>
+  </li>
+  <li>
+    In "Output format" field, select <b>RTF</b> format.
+  </li>
+  <li>
+    Click &lt;Run&gt; button to start generator.
+  </li>
+</ol>
+
+See also: <a href="doc/index.html?docflex-xml/samples/xmldoc/index.html" target="_blank">Documentation | XMLDoc</a>
+
+<h2>
+  <a name="running_xsddoc"></a>
+  Running XSDDoc
+</h2>
+
+For all details, please see:
+<a href="templates/XSDDoc/README.html#running_xsddoc" target="_blank"><code>{docflex-xml}/templates/XSDDoc/README.html</code> | Running XSDDoc</a>,
+<a href="doc/index.html?docflex-xml/xsddoc/overview.html" target="_blank">Documentation | XSDDoc</a>
+
+<h2>
+  <a name="running_samples"></a>
+  Running Demo Samples
+</h2>
+
+All provided samples are fully described in the documentation
+(see <a href="doc/index.html?docflex-xml/samples/index.html" target="_blank">Documentation | Samples</a>).
+To run a sample, you just need to:
+<ol>
+  <li>Start template designer (run <code>designer.bat</code>)</li>
+  <li>Load a sample template</li>
+  <li>Invoke generator dialog</li>
+  <li>Choose the appropriate XML file(s)</li>
+  <li>Click &lt;Run&gt; button</li>
+</ol>
+Please note, some of the sample templates can process only corresponding XML files.
+This table shows which XML files should be used with which template:
+<p>
+<table cellspacing="0" cellpadding="0" border="0" class="brdr1">
+<tr class="row1">
+  <th class="brdr2">Sample</th>
+  <th class="brdr2">XML File</td>
+  <th class="brdr2">Template</td>
+</tr>
+
+<tr class="row2">
+<td class="brdr2">
+  <i>Sales Report</i>
+</td>
+<td class="brdr2">
+  <code>samples/sales/sales.xml</code>
+</td>
+<td class="brdr2">
+  <code>samples/sales/sales.tpl</code>
+</td>
+</tr>
+
+<tr class="row2">
+<td class="brdr2">
+  <i>Alternative to XSLT</i>
+</td>
+<td class="brdr2">
+  <code>samples/personal/personal.xml</code>
+</td>
+<td class="brdr2">
+  <code>samples/personal/personal.tpl</code>
+</td>
+</tr>
+
+<tr class="row2">
+<td class="brdr2">
+  <i>XML Schema of Human Evolution</i>
+</td>
+<td class="brdr2">
+  <code>samples/HumanEvolution/HumanEvolution.xsd</code>
+</td>
+<td class="brdr2">
+  Run with both <code>templates/XSDDoc/FramedDoc.tpl</code> (HTML output)
+  and <code>templates/XSDDoc/PlainDoc.tpl</code> (RTF output).
+  This will look fun!
+</td>
+</tr>
+
+</table>
+
+<h2>
+  <a name="getting_help"></a>
+  Getting Help
+</h2>
+
+The most up-to-date information about DocFlex/XML can be found on the product home page:
+<a href="http://www.filigris.com/products/docflex_xml/" target="_blank">www.filigris.com | DocFlex/XML</a>.
+<p>
+We are always happy to hear any questions, suggestions, comments, etc.
+about this software.<br>
+Please, e-mail us to: <a href="mailto:support@docflex.com">support@docflex.com</a> or
+<a href="mailto:contact@filigris.com">contact@filigris.com</a>
+
+<h2>
+  <a name="change_log"></a>
+  Change Log
+</h2>
+
+Please see: <a href="CHANGES.html" target="_blank"><code>{docflex-xml}/CHANGES.html</code></a>
+<p>
+
+<hr>
+<span style="font-family: Verdana, helvetica; font-size: 13px">
+Copyright&copy; 2004-2013 Filigris Works, Leonid Rudy Softwareprodukte. All rights reserved.
+</span>
+
+</body>
+</html>

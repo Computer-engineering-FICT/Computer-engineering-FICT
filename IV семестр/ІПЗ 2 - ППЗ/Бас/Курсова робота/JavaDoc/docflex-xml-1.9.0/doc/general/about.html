@@ -1,0 +1,497 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0014)about:internet -->
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel=stylesheet type="text/css" href="../styles.css">
+<title>About DocFlex Technology</title>
+</head>
+
+<body>
+
+<h1>
+  About DocFlex Technology
+</h1>
+
+<!-- TABLE OF CONTENTS -->
+<ol>
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#templates">What are Templates?</a></li>
+  <li><a href="#data_sources">Data Sources</a></li>
+  <li><a href="#data_processing">How Data Processed</a></li>
+  <li><a href="#generated_output">Generated Output</a></li>
+  <li><a href="#sdk">DocFlex SDK</a>
+    <ul>
+       <li><a href="#api">DocFlex API</a></li>
+       <li><a href="#template_designer">Template Designer</a></li>
+       <li><a href="#generator">Generator</a></li>
+    </ul>
+  </li>
+</ol>
+<!-- END TABLE OF CONTENTS -->
+
+<h2>
+  <a name="introduction"></a>
+  1.&nbsp;&nbsp;Introduction
+</h2>
+
+DocFlex is a new technology for rapid development of template-based documentation/report
+generators built into Java&#153; applications.
+<p class="mrg8">
+It is based on an idea that most of the data a typical application operate have a tree or network
+structure and generally can be represented in the form similar to Document Object Model
+(<a href="http://www.w3.org/DOM/" target="_blank">DOM</a>) of XML files.
+(In fact, that's why XML is widely used to export/import those data and exchange between applications.)
+<p class="mrg8">
+Following that idea, it is possible to imagine that if we had some abstract interface that
+represents most of the practically used data sources in a from similar to
+<a href="http://www.w3.org/DOM/" target="_blank">DOM</a>, we could process such data
+using a single tool, which is based only on the concepts of XML (possibly with a few
+enhancements) and employs available standards and approaches developed around it.
+<p class="mrg8">
+DocFlex technology was devised as an implementation of that idea for the task of
+representing the application data in some human-readable form, i.e. generating various
+reports and documentation.
+<p class="mrg8">
+Another idea related to that task and sought to achieve in DocFlex Technology is a
+universal approach for specifying formatting of the output documents and generating a common
+network of hyperlinks interconnecting them.
+<p class="mrg8">
+The natural way to achieve all those goals would be to introduce a new programming medium
+in the form of a <i>scripting language</i> or <i>templates</i>.
+<p class="mrg8">
+A scripting language is typically something intended for manual coding, compiling and running
+with an interpreter. Normally, this approach provides powerful expressive capabilities however
+in expense of a rather laborious way of using them. In addition, in the case of XML, 
+such a scripting language already exists.
+It is <a href="http://www.w3.org/TR/xsl/" target="_blank">XSL</a>,
+which is an elaborated programming language (the second generation now).
+XSL probably represents almost all what could be achieved in that way.
+Yet, it has lots of limitations.
+<p class="mrg8">
+The templates may be thought as a less flexible approach rather than scripts,
+but exactly this makes them easier to create using some specialized <i>visual designer tool</i>.
+<p class="mrg8">
+That last approach was chosen as a base for DocFlex Technology. Actually, the DocFlex templates
+represent a mixture of both approaches, since small scripts called
+<a href="data_processing_features.html#fq_expr"><i>FlexQuery expressions</i></a>
+can be used to dynamically calculate some properties of more rigid (but visually expressible)
+constructions called
+<a href="templates_designer_features.html#template_components"><i>template components</i></a>.
+
+<h2>
+  <a name="templates"></a>
+  2.&nbsp; What are Templates?
+</h2>
+
+The DocFlex templates are actually programs. 
+The idea behind the template approach is the following.
+<p class="mrg8">
+If you consider how almost any Java library that generates something 
+(and not only generates -- for instance, powers a GUI system) works, 
+you will notice that, basically, it may be described like the following:
+<ol>
+  <li>
+    First, we need to create a certain object representation of some controlling structure 
+    (using special classes and methods of that library). 
+  </li>
+  <li>
+    Further, we call an interpreter included in that library and pass to it that controlling structure 
+    along with some data source we want to process, e.g. some data file, some interface or whatsoever. 
+    (Actually, such an interpreter may be started just by calling some member method of the root object 
+    representing that controlling structure. For instance, in case of a GUI system, this
+    may be as simple as <code>dlg.show()</code>).
+  </li>
+  <li>
+    Finally, the interpreter processes that controlling structure and produces from 
+    the data source some useful output (or shows a GUI).
+  </li>
+</ol>
+What the actual programming is all about here, when using such a system, is the first step. 
+We need to encode the creation of that controlling structure!
+(And this may be a piece of work indeed...)
+<p class="mrg8">
+Now, let's imagine that such a controlling structure is serialized to a file
+(and, therefore, can be created from it).
+What is that file, then? One may call it a &ldquo;template&rdquo;!
+<p class="mrg8">
+But if that is a template, why not to create and edit it using some template designer GUI? 
+That approach has a number of advantages:
+<ul>
+  <li class="mrg8">
+    A designer GUI can visualize everything. 
+    Now, rather than coding abstract method calls, we can visually construct the controlling structure
+    using the notions of things that we expect to see in the generated output.
+  </li>
+  <li class="mrg8">
+    Since probably every modern document format in its core is based on the same obvious concepts 
+    like flows of text with specified fonts and colors, paragraphs with specified margins, borders and 
+    other properties, tables, bulleted/numbered lists, images and so on, most of such things can 
+    be defined in some universal format-independent way, which can be encoded in the form of template components.
+  </li>
+  <li class="mrg8">
+    Such template components can be visualized in the template designer GUI. This allows easy
+    manipulation with them (creating/defining, modifying, moving, coping and so on). 
+    Doing the same by calling various Java methods and modifying Java code each time we need
+    to change something would be a lot more cumbersome!
+  </li>
+  <li class="mrg8">
+    On other hand, the template interpreter will render those template components
+    with the suitable features of the particular destination output format (such as HTML or RTF).
+    So, we can be relieved from learning and programming lots of very complicated
+    (and sometimes poorly documented) things specific to a particular format.
+    Instead, we can more concentrate on our primary application task.
+  </li>
+  <li class="mrg8">
+    The template designer (to a large degree) ensures that the result controlling structure 
+    (the template) is valid. That is, it won't hang when interpreted and will produce some output anyway.
+  </li>
+</ul>
+
+DocFlex templates are exactly an implementation of that idea!
+<p class="mrg8">
+The following screenshot shows a template open in the 
+<a href="#template_designer">Template Designer</a> (click to enlarge):
+
+<blockquote>
+  <a href="http://www.filigris.com/products/docflex/images/template.html" target="_blank"><img src="images/template_s.png" title="&ldquo;class.tpl&rdquo; template" border="0"></a>
+</blockquote>
+
+<h2>
+  <a name="data_sources"></a>
+  <a name="dsm"></a>
+  <a name="dsm_driver"></a>
+  3.&nbsp; Data Sources
+</h2>
+
+DocFlex core connects to one or several data sources provided by a Java application using special 
+drivers written with the <a href="#api">DocFlex API</a>.
+<p class="mrg8">
+Any such driver represents a particular data source in the form structurally similar to
+<a href="http://www.w3.org/DOM" target="_blank">W3C DOM</a> and understandable
+for DocFlex core. Such a representation is called <b>Data Source Model</b> (or <b>DSM</b>)
+and any driver supporting it -- <b>DSM Driver</b>. Such a driver provides the DSM data via special
+<a name="dsm_interface"></a><b>DSM Interface</b> which it should implement.
+<p class="mrg8">
+<a name="dsm_element"></a>
+<a name="dsm_attribute"></a>
+Any DSM may be considered as a virtual XML document. It contains elements (called <b>DSM elements</b>)
+and attributes (called <b>DSM attributes</b>).
+However, unlike elements/attributes in XML files, DSM elements and attributes
+are not real things. Actually, they are instances of specific interfaces implemented by
+the DSM Driver, which makes them capable to dynamically provide a lot more information
+from the underlying data source (rather than an ordinary XML document).
+<p class="mrg8">
+<a name="dsm_type"></a>
+All possible data sources processed by the same DSM Driver are described by a certain <b>DSM Type</b>
+(which may be considered as an equivalent of XML DTD).
+The DSM driver should provide the data structure and type information
+associated with this DSM Type via special <a name="dsm_type_interface"></a><b>DSM Type Interface</b>.
+<p class="mrg8">
+<table cellspacing="0" cellpadding="0">
+  <tr valign="top">
+    <td><b>Note:</b>&nbsp;&nbsp;</td>
+    <td>
+      Actually, some DSM Driver implementations may process different DSM Types. For instance,
+      <a href="http://www.filigris.com/products/docflex_xml/" target="_blank">DocFlex/XML</a> includes the <i>XML Model Driver</i>,
+      which works with the data from XML files. That driver can be initialized
+      from different DTDs (or XML Schemas) passed as initialization parameters so as
+      to represent each time a different DSM Type associated with the given DTD (or XML Schemas).
+    </td>
+  </tr>
+</table>
+<p class="mrg8">
+In fact, all existing applications of the DocFlex Technology (such as
+<a href="http://www.filigris.com/products/docflex_xml/" target="_blank">DocFlex/XML</a>,
+<a href="http://www.filigris.com/products/docflex_javadoc/" target="_blank">DocFlex/Javadoc</a> and
+<a href="http://www.filigris.com/products/docflex_together/" target="_blank">DocFlex/Together</a>)
+represent little more than the DocFlex core plus one or more specific DSM drivers.
+
+<h2>
+  <a name="data_processing"></a>
+  4.&nbsp; How Data Processed
+</h2>
+
+Data processing scheme implemented in DocFlex in many ways is similar to that used in
+<a href="http://www.w3.org/TR/xslt" target="_blank">XSL Transformations</a>.
+In brief, it can be described as the following.
+<p class="mrg8">
+DocFlex templates are built of nested components called
+<a href="template_components.html#sections">sections</a>.
+Most important of them are
+<a href="template_components.html#element_iterator">Element Iterators</a> and
+<a href="template_components.html#area_section">Area Sections</a>.
+An Element Iterator performs iterations by a set of elements which it produces from the
+<a href="template_components.html#context_element">context element</a>
+received from the iterator's parent. The set of iterated elements is generated according to the
+<a href="element_iterator_details.html#element_location_rule">Location Rules</a>,
+which are settings based on a subset of <b>XPath</b> specification
+(however, with some important extensions that allow traversing element references).
+During the iterations, each iterated element is selected as a context element and
+the iterator's content is repeated for it.
+<a href="template_components.html#area_section">Area Sections</a>
+do not perform iterations. Instead, they are programmed to generate some output from the context element.
+The template interpretation starts from the template's root section block. The root element of the processed
+XML document becomes the first context element.
+<p class="mrg8">
+It can be seen, that
+<a href="template_components.html#element_iterator">Element Iterators</a>
+produce the same effect as <code class="nowrap"><b>&lt;xsl:template&gt;</b></code> /
+<code class="nowrap"><b>&lt;xsl:apply-templates&gt;</b></code>
+directives and DocFlex templates themselves are analogues of XSLT-scripts.
+<p class="mrg8">
+However, it should be noted that DocFlex is not directly based on XSL and does not use any
+XSLT processor internally. Instead, this is a completely new attempt to merge
+into a single tool:
+
+<ul>
+  <li>
+    The ability to work with both XML files and any data sources provided by Java applications
+    in some universal way based on notions of XML and accompanying standards.
+  </li>
+  <li>
+    The capabilities of data retrieval and processing comparable with those of XSLT (and beyond).
+  </li>
+  <li>
+    The ability to process data from multiple independent data sources (both XML files and provided by
+    a Java application) and to generate by them single output.
+  </li>
+  <li>
+    The simplicity of designing and generating the professionally formatted hypertext or plain output documents.
+  </li>
+</ul>
+
+For further information, see
+<a href="data_processing_features.html">Data Processing</a>
+and <a href="templates_designer_features.html">Templates/Template&nbsp;Designer</a>
+features, where you can find many details about DocFlex templates and data processing capabilities.
+<p class="mrg8">
+See also <a href="http://www.filigris.com/products/docflex_xml/samples/xslt_alt/" target="_blank" class="nowrap">DocFlex/XML | Samples | Alternative to XSLT</a>,
+which demonstrate how DocFlex can be used as an alternative to XSL Transformations.
+
+<h2>
+  <a name="generated_output"></a>
+  5.&nbsp; Generated Output
+</h2>
+
+There are two types of output that can be generated by DocFlex:
+<ol>
+  <li>Single file documents</li>
+  <li>Framed multi-file documentation</li>
+</ol>
+
+For those output types there are two types of templates: <i>document template</i> and <i>frameset template</i>.
+<p class="mrg8">
+<a name="document_template"></a>
+Each interpretation of a <b>document template</b> normally results in generation of a single output document.
+Document templates also are the places where all the output formatting specified.
+<p class="mrg8">
+The DocFlex architecture was devised so that to allow designing document templates independently
+on a particular destination format. The specific format is selected just at the moment of starting the generation.
+All instructions and settings specified in a document templates will be rendered with appropriate features
+of the selected output format. For more information about formatting techniques supported in DocFlex,
+see <a href="formatting_features.html">Formatting Features</a>.
+<p class="mrg8">
+Each document template is associated with a particular <a href="#dsm_type">DSM Type</a>.
+This DSM Type is the source of information about the data the template is intended to manipulate.
+That information is used during the template design.
+<p class="mrg8">
+When the template is interpreted by the <a href="#generator">generator</a>,
+an output document produced by it normally contains data from a single <a href="#dsm">DSM</a>
+for whose type the template was designed.
+<p class="mrg8">
+However, DocFlex provides a way for designing document templates whose output can contain data from
+several <a href="#dsm">DSM</a>s and even of different <a href="#dsm_type">DSM Types</a>.
+This can be achieved by calling from the main template the subordinate ones (or <i>subtemplates</i>).
+<p class="mrg8">
+Each subtemplate is just yet another document template and designed the same way as the main one.
+When interpreted alone it may also produce a single document. But when called from another document template
+(a master) it becomes the subtemplate and can be specified to produce not a separate document but
+a fragment of the main document generated by the master.
+<p class="mrg8">
+Since each document template can be assigned with its own <a href="#dsm">DSM</a>
+the resulting document will contain data from the multiple <a href="#dsm">DSM</a>s.
+Which particular <a href="#dsm">DSM</a> is passed to the subtemplate during a call
+is specified when defining the subtemplate call within the master template. It is also possible
+to generate hyperlinks between the document's parts produced by different <a href="#dsm">DSM</a>s.
+See <a href="template_components.html#call_template">Call Template</a>
+for more detail.
+<p class="mrg8">
+<a name="frameset_template"></a>
+<b>Frameset templates</b> are entirely based on calls of subtemplates. This time, each subtemplate
+call generates a separate subordinate document. A frameset template itself generates a special frameset
+document which contains no actual data, but instead, specifies the frame windows where subordinate documents
+are displayed.
+<p class="mrg8">
+A typical example of framed documentation is the output produced by
+<a href="http://java.sun.com/j2se/javadoc/" target="_blank">Java 2 SDK Javadoc (Standard Doclet)</a>.
+DocFlex can do just the same
+(see <a href="http://www.filigris.com/products/docflex_javadoc/examples/" target="_blank">DocFlex/Javadoc | Examples</a>),
+but now you can design the
+<a href="data_processing_features.html#framed_doc">frameset structure</a>
+by yourself and specify what exactly is loaded in the frame windows.
+<p class="mrg8">
+Currently, the frameset templates can generate output only in HTML format.
+
+<h2>
+  <a name="sdk"></a>
+  6.&nbsp; DocFlex SDK
+</h2>
+
+DocFlex SDK (Software Development Kit) is an implementation of <a href="#top">DocFlex Technology</a>
+and represents a tool for development of template-based documentation/report generators built into Java applications.
+<p class="mrg8">
+From the external view DocFlex SDK consists of three main components:
+<ol>
+  <li><a href="#api">DocFlex API</a>
+  <li><a href="#template_designer">DocFlex Template Designer</a>
+  <li><a href="#generator">DocFlex Generator</a>
+</ol>
+
+<h3>
+  <a name="api"></a>
+  DocFlex API
+</h3>
+
+Provides Java-programming interfaces for integration of the DocFlex core with
+the particular Java application. These interfaces allow
+
+<ul>
+  <li class="mrg8">
+     Developing the <a href="#dsm_driver">DSM Drivers</a>, which represent the application's
+     data in the <a href="http://www.w3.org/DOM" target="_blank">DOM</a>-similar form
+     understandable for DocFlex core.
+     <p class="mrg8">
+     Besides delivering the data (via <a href="#dsm_interface">DSM Interface</a>)
+     and providing the data structure and type information
+     (via <a href="#dsm_type_interface">DSM Type Interface</a>), a DSM Driver may also supply
+     <ul>
+       <li class="mrg8">
+         The <b>graphic images</b>, which may represent some data elements in a specific graphical form
+         (for instance, diagrams, screenshots etc.) to be inserted into the generated documentation.
+         The <a href="#dsm_driver">DSM Driver</a> may also provide <b>imagemaps</b>
+         for such images to generate hyperlink within them.
+       </li>
+       <li class="mrg8">
+         The <b>small</b> and <b>big icons</b> representing the data elements, which may be useful for generation
+         of various summaries and references in more illustrative form.
+       </li>
+       <li class="mrg8">
+         The additional <b>utility functions</b> which can be called within the
+         <a href="data_processing_features.html#fq_expr">FlexQuery expressions</a>
+         in templates to allow access to some specific data and functionality supported by the application.
+       </li>
+     </ul>
+  </li>
+  <li class="mrg8">
+    Launching the <a href="#template_designer">DocFlex Template Designer</a>
+    from the Java application.
+  </li>
+  <li class="mrg8">
+    Launch the <a href="#generator">DocFlex Generator</a> from the Java application
+    with the ability to track the generation progress and show it (by the application itself in the preferred way)
+    as well as to cancel the generation at any moment.
+  </li>
+</ul>
+
+<h3>
+  <a name="template_designer"></a>
+  DocFlex Template Designer
+</h3>
+
+Represents a high quality <i>Graphic User Interface</i> that allows creating and
+designing DocFlex templates.
+
+<blockquote>
+<a href="http://www.filigris.com/products/docflex/images/designer.html" target="_blank"><img src="images/designer_s.png" title="DocFlex Template Designer" border="0"></a>
+</blockquote>
+
+This is a ready to use component.
+<p class="mrg8">
+The Template Designer checks all registered <a href="#dsm_driver">DSM Drivers</a>
+and collects the list of all available <a href="#dsm_type">DSM Types</a> supported by them.
+<p class="mrg8">
+Using the DSM Type information provided by a particular driver
+(via <a href="#dsm_interface">DSM Interface</a>),
+the Template Designer allows to design a template for a selected DSM Type.
+
+<h3>
+  <a name="generator"></a>
+  DocFlex Generator
+</h3>
+
+This is another DocFlex SDK component, which represents an engine that produces the output documents.
+<p class="mrg8">
+Actually, the DocFlex Generator comprises a set of components because it is designed as
+some abstract generator plus a number of extensions for each supported output format. Each extension,
+in effect, represents a separate generator.
+<p class="mrg8">
+The Java application should start some of those generators and provide it with a specified template
+and a <a href="#dsm_driver">DSM Driver</a> initialized to supply the application's data.
+The template should be designed for the <a href="#dsm_type">DSM Type</a> supported by this driver.
+Then, the generator connects to the <a href="#dsm">DSM</a> provided by the driver and
+by interpreting the instructions from the templates generates an output document.
+<p class="mrg8">
+This is a simple scheme which involves one template and one data source.
+<p class="mrg8">
+Actually, such a generation may be much more complicated.
+The application may register multiple <a href="#dsm_driver">DSM Drivers</a>
+able to dynamically initialize connections to different <a href="#dsm">DSM</a>s according
+to the parameters they receive from the generator.
+<p class="mrg8">
+Then, the generator is started as previously with a some initial template (called <i>main</i> template)
+and an initial <a href="#dsm">DSM</a>. But now, the main template may call from itself
+another templates (subtemplates). Those subtemplates may be designed for absolutely different
+<a href="#dsm_type">DSM Types</a> (for instance, the main template may work with a specific
+application's internal data source, whereas subtemplates may be designed to take their data from some
+external XML files).
+<p class="mrg8">
+When processing such a call, the generator looks for a registered
+<a href="#dsm_driver">DSM Driver</a> appropriate to the called subtemplate's DSM Type and
+initializes it with the parameters specified in the call (for instance, a particular XML file name).
+Then, the subtemplate is processed so it takes its data from the new <a href="#dsm">DSM</a>
+initialized for it (e.g. the external XML file).
+<p class="mrg8">
+As the processing of the subtemplate finished, the generator returns to the main template and
+continues processing it again. In the mean time, during all those changes, the generated output will
+remain the same. So, the result document will contain data both as directly from the application itself
+as from some external data sources (e.g. XML files).
+<p class="mrg8">
+Multiple <a href="#dsm_driver">DSM Drivers</a> may be used also when a Java application,
+though being a single unit, may operate its data using very different interfaces (sometimes based on different
+notions and directly incompatible with each other). Anyway, there may be some indirect connections between the data
+provided by those interfaces and, correspondingly, a desire to generate some single documentation by those data.
+<p class="mrg8">
+DocFlex Technology may allow to handle such a task. For example, when developing
+<a href="http://www.filigris.com/products/docflex_together/" target="_blank">DocFlex/Together</a>,
+we have successfully integrated two absolutely different interfaces: RWI and UIBuilder (both provided
+by Together OpenAPI), so to make possible generating a single documentation from the data supplied
+by both of them (see
+<a href="http://www.filigris.com/products/docflex_together/examples/index.php#ui_doc" target="_blank">DocFlex/Together | Examples | User Interface Documentation</a>).
+<p class="mrg8">
+The user interface for launching the generator should be implemented by the particular Java application.
+Below, you can see a screenshot of the generator dialog invoked from the
+<a href="http://www.filigris.com/products/docflex_xml/" target="_blank">DocFlex/XML</a>:
+
+<blockquote>
+  <img src="images/generator.png" title="DocFlex Generator for XML file data sources">
+</blockquote>
+
+And this is how the dialog looks, when the generator is running:
+
+<blockquote>
+  <img src="images/generator_running.png" title="Running the generator">
+</blockquote>
+
+<p>
+<hr>
+<span class="impr">Copyright&copy; 2003-2009 Filigris Works, Leonid Rudy Softwareprodukte. All rights reserved.<br>
+To contact us, please visit
+<a href="http://www.filigris.com" target="_blank">www.filigris.com</a> or e-mail to: <a href="mailto:contact@filigris.com">contact@filigris.com</a>
+</span>
+</p>
+
+</body>
+
+</html>

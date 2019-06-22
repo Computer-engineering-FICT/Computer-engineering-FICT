@@ -1,0 +1,824 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> <html lang="ru" > <head> <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> <base target="_top"> <title>Tasks</title> <style type="text/css">
+/* default css */
+table {
+font-size: 1em;
+line-height: inherit;
+}
+tr {
+text-align: left;
+}
+div, address, ol, ul, li, option, select {
+margin-top: 0px;
+margin-bottom: 0px;
+}
+p {
+margin: 0px;
+}
+body {
+margin: 6px;
+padding: 0px;
+font-family: Verdana, sans-serif;
+font-size: 10pt;
+background-color: #ffffff;
+}
+img {
+-moz-force-broken-image-icon: 1;
+}
+@media screen {
+html.pageview {
+background-color: #f3f3f3 !important;
+}
+body {
+min-height: 1100px;
+counter-reset: __goog_page__;
+}
+* html body {
+height: 1100px;
+}
+.pageview body {
+border-top: 1px solid #ccc;
+border-left: 1px solid #ccc;
+border-right: 2px solid #bbb;
+border-bottom: 2px solid #bbb;
+width: 648px !important;
+margin: 15px auto 25px;
+padding: 40px 50px;
+}
+/* IE6 */
+* html {
+overflow-y: scroll;
+}
+* html.pageview body {
+overflow-x: auto;
+}
+/* Prevent repaint errors when scrolling in Safari. This "Star-7" css hack
+targets Safari 3.1, but not WebKit nightlies and presumably Safari 4.
+That's OK because this bug is fixed in WebKit nightlies/Safari 4 :-). */
+html*#wys_frame::before {
+content: '\A0';
+position: fixed;
+overflow: hidden;
+width: 0;
+height: 0;
+top: 0;
+left: 0;
+}
+.writely-callout-data {
+display: none;
+*display: inline-block;
+*width: 0;
+*height: 0;
+*overflow: hidden;
+}
+.writely-footnote-marker {
+background-image: url('Tasks_files/footnote.gif');
+background-color: transparent;
+background-repeat: no-repeat;
+width: 7px;
+overflow: hidden;
+height: 16px;
+vertical-align: top;
+-moz-user-select: none;
+}
+.editor .writely-footnote-marker {
+cursor: move;
+}
+.writely-footnote-marker-highlight {
+background-position: -15px 0;
+-moz-user-select: text;
+}
+.writely-footnote-hide-selection ::-moz-selection, .writely-footnote-hide-selection::-moz-selection {
+background: transparent;
+}
+.writely-footnote-hide-selection ::selection, .writely-footnote-hide-selection::selection {
+background: transparent;
+}
+.writely-footnote-hide-selection {
+cursor: move;
+}
+.editor .writely-comment-yellow {
+background-color: #FF9;
+background-position: -240px 0;
+}
+.editor .writely-comment-yellow-hover {
+background-color: #FF0;
+background-position: -224px 0;
+}
+.editor .writely-comment-blue {
+background-color: #C0D3FF;
+background-position: -16px 0;
+}
+.editor .writely-comment-blue-hover {
+background-color: #6292FE;
+background-position: 0 0;
+}
+.editor .writely-comment-orange {
+background-color: #FFDEAD;
+background-position: -80px 0;
+}
+.editor .writely-comment-orange-hover {
+background-color: #F90;
+background-position: -64px 0;
+}
+.editor .writely-comment-green {
+background-color: #99FBB3;
+background-position: -48px 0;
+}
+.editor .writely-comment-green-hover {
+background-color: #00F442;
+background-position: -32px 0;
+}
+.editor .writely-comment-cyan {
+background-color: #CFF;
+background-position: -208px 0;
+}
+.editor .writely-comment-cyan-hover {
+background-color: #0FF;
+background-position: -192px 0;
+}
+.editor .writely-comment-purple {
+background-color: #EBCCFF;
+background-position: -144px 0;
+}
+.editor .writely-comment-purple-hover {
+background-color: #90F;
+background-position: -128px 0;
+}
+.editor .writely-comment-magenta {
+background-color: #FCF;
+background-position: -112px 0;
+}
+.editor .writely-comment-magenta-hover {
+background-color: #F0F;
+background-position: -96px 0;
+}
+.editor .writely-comment-red {
+background-color: #FFCACA;
+background-position: -176px 0;
+}
+.editor .writely-comment-red-hover {
+background-color: #FF7A7A;
+background-position: -160px 0;
+}
+.editor .writely-comment-marker {
+background-image: url('Tasks_files/markeric.gif');
+background-color: transparent;
+padding-right: 11px;
+background-repeat: no-repeat;
+width: 16px;
+height: 16px;
+-moz-user-select: none;
+}
+.editor .writely-comment-hidden {
+padding: 0;
+background: none;
+}
+.editor .writely-comment-marker-hidden {
+background: none;
+padding: 0;
+width: 0;
+}
+.editor .writely-comment-none {
+opacity: .2;
+filter:progid:DXImageTransform.Microsoft.Alpha(opacity=20);
+-moz-opacity: .2;
+}
+.editor .writely-comment-none-hover {
+opacity: .2;
+filter:progid:DXImageTransform.Microsoft.Alpha(opacity=20);
+-moz-opacity: .2;
+}
+.br_fix br:not(:-moz-last-node):not(:-moz-first-node) {
+position:relative;
+left: -1ex
+}
+.br_fix br+br {
+position: static !important
+}
+}
+h6 { font-size: 8pt }
+h5 { font-size: 8pt }
+h4 { font-size: 10pt }
+h3 { font-size: 12pt }
+h2 { font-size: 14pt }
+h1 { font-size: 18pt }
+blockquote {padding: 10px; border: 1px #DDD dashed }
+a img {border: 0}
+.pb {
+border-width: 0;
+page-break-after: always;
+/* We don't want this to be resizeable, so enforce a width and height
+using !important */
+height: 1px !important;
+width: 100% !important;
+}
+.editor .pb {
+border-top: 1px dashed #C0C0C0;
+border-bottom: 1px dashed #C0C0C0;
+}
+div.google_header, div.google_footer {
+position: relative;
+margin-top: 1em;
+margin-bottom: 1em;
+}
+/* Table of contents */
+.editor div.writely-toc {
+background-color: #f3f3f3;
+border: 1px solid #ccc;
+}
+.writely-toc > ol {
+padding-left: 3em;
+font-weight: bold;
+}
+ol.writely-toc-subheading {
+padding-left: 1em;
+font-weight: normal;
+}
+/* IE6 only */
+* html writely-toc ol {
+list-style-position: inside;
+}
+.writely-toc-none {
+list-style-type: none;
+}
+.writely-toc-decimal {
+list-style-type: decimal;
+}
+.writely-toc-upper-alpha {
+list-style-type: upper-alpha;
+}
+.writely-toc-lower-alpha {
+list-style-type: lower-alpha;
+}
+.writely-toc-upper-roman {
+list-style-type: upper-roman;
+}
+.writely-toc-lower-roman {
+list-style-type: lower-roman;
+}
+.writely-toc-disc {
+list-style-type: disc;
+}
+/* Ordered lists converted to numbered lists can preserve ordered types, and
+vice versa. This is confusing, so disallow it */
+ul[type="i"], ul[type="I"], ul[type="1"], ul[type="a"], ul[type="A"] {
+list-style-type: disc;
+}
+ol[type="disc"], ol[type="circle"], ol[type="square"] {
+list-style-type: decimal;
+}
+/* end default css */
+/* custom css */
+/* end custom css */
+/* ui edited css */
+body {
+font-family: Times New Roman;
+font-size: 12.0pt;
+line-height: normal;
+background-color: #ffffff;
+}
+/* end ui edited css */
+/* editor CSS */
+.editor a:visited {color: #551A8B}
+.editor table.zeroBorder {border: 1px dotted gray}
+.editor table.zeroBorder td {border: 1px dotted gray}
+.editor table.zeroBorder th {border: 1px dotted gray}
+.editor div.google_header, .editor div.google_footer {
+border: 2px #DDDDDD dashed;
+position: static;
+width: 100%;
+min-height: 2em;
+}
+.editor .misspell {background-color: yellow}
+.editor .writely-comment {
+font-size: 9pt;
+line-height: 1.4;
+padding: 1px;
+border: 1px dashed #C0C0C0
+}
+/* end editor CSS */
+</style> <style>
+body {
+margin: 0px;
+}
+#doc-contents {
+margin: 6px;
+}
+#google-view-footer {
+clear: both;
+border-top: thin solid;
+padding-top: 0.3em;
+padding-bottom: 0.3em;
+}
+a.google-small-link:link, a.google-small-link:visited {
+color:#112ABB;
+font-family:Arial,Sans-serif;
+font-size:11px !important;
+}
+body, p, div, td {
+direction: inherit;
+}
+@media print {
+#google-view-footer {
+display: none;
+}
+}
+</style> <script>
+function viewOnLoad() {
+if (document.location.href.indexOf('spi=1') != -1) {
+if (navigator.userAgent.toLowerCase().indexOf('msie') != -1) {
+window.print();
+} else {
+window.setTimeout(window.print, 10);
+}
+}
+if (document.location.href.indexOf('hgd=1') != -1) {
+var footer = document.getElementById("google-view-footer");
+if (footer) {
+footer.style.display = 'none';
+}
+}
+}
+</script> </head> <body> <div id="doc-contents">
+<p class="western" style="margin-bottom: 0in;" align="center">
+<font size="3"><b><font face="Verdana, sans-serif">Завдання
+до лабораторних
+робіт з курсу
+</font></b></font>
+</p>
+<p class="western" style="margin-bottom: 0in;" align="center">
+<font size="3"><b><font face="Verdana, sans-serif">«Програмна
+інженерія»</font></b></font></p>
+<p class="western" style="margin-bottom: 0in;" align="center">
+<font size="3"><br></font>
+</p>
+<p class="western" style="margin-bottom: 0in;" align="center">
+<font size="3"><b><font face="Verdana, sans-serif">Загальні
+положення </font></b></font>
+</p>
+<p class="western" style="margin-bottom: 0in;" align="justify">
+<font size="3"><br></font>
+</p>
+<p class="western" style="margin-bottom: 0in;" align="justify">
+<font size="3" face="Verdana, sans-serif">Курс
+складається
+з 7 лабораторних
+робіт, що об’єднані
+загальною
+тематикою і
+є етапами побудови
+програмного
+проекту. Результатом
+останньої
+роботи є повністю
+функціональний
+програмний
+продукт.</font></p>
+<p class="western" style="margin-bottom: 0in;" align="justify">
+<font size="3"><br></font>
+</p>
+<p class="western" style="margin-bottom: 0in;" align="justify">
+<font size="3"><font face="Verdana, sans-serif">Загальне
+завдання –
+побудова програми
+візуалізації
+табличних даних
+у вигляді діаграми.
+</font></font>
+</p>
+<p class="western" style="margin-bottom: 0in;" align="justify">
+<font size="3"><br></font>
+</p>
+<p class="western" style="margin-bottom: 0in;" align="justify">
+<font size="3"><font face="Verdana, sans-serif">В
+якості вхідних
+даних виступає
+таблиця, що
+знаходиться
+у CSV-файлі.
+В залежності
+від варіантів,
+що наведені
+нижче, кожна
+з строк таблиці
+є описом елементу
+діаграми –
+точки з можливими
+додатковими
+атрибутами.
+</font></font>
+</p>
+<p class="western" style="margin-bottom: 0in;" align="justify">
+<font size="3"><br></font>
+</p>
+<p class="western" style="margin-bottom: 0in;" align="justify">
+<font size="3" face="Verdana, sans-serif">Програма
+візуалізації
+має містити
+наступну
+функціональність:</font></p>
+<ul>
+<li><p class="western" style="margin-bottom: 0in;" align="justify">
+<font size="3"><font face="Verdana, sans-serif">можливість
+завантаження/збереження
+даних у табличний
+формі в форматі
+CSV</font></font></p>
+</li><li><p class="western" style="margin-bottom: 0in;" align="justify">
+<font size="3"><font face="Verdana, sans-serif">синтаксичний
+розбір і верифікація
+формату CSV
+з відбудовою
+внутрішньої
+моделі даних,
+в разі помилок
+– формування
+виключення
+(Exception)</font></font></p>
+</li><li><p class="western" style="margin-bottom: 0in;" align="justify">
+<font size="3"><font face="Verdana, sans-serif">інтерфейс
+користувача
+(на основі
+компонентів
+бібліотеки
+SWING), який
+містить дві
+основні області
+– табличну і
+графічну, а
+також допоміжні
+компоненти
+– меню, панелі,
+кнопки, діалоги,
+тощо. Таблична
+область містить
+дані, що завантажені
+з CSV-файлу,
+а графічна –
+їй інтерпретацію
+у вигляді діаграми
+згідно варіанту
+(наведеному
+нижче)</font></font></p>
+</li><li><p class="western" style="margin-bottom: 0in;" align="justify">
+<font size="3" face="Verdana, sans-serif">можливість
+редагування
+даних (модифікація
+елемента,
+вставка/видалення
+елемента) в
+одній області
+(табличній або
+графічній
+згідно варіанту
+нижче) з синхронною
+зміною іншої
+області</font></p>
+</li><li><p class="western" style="margin-bottom: 0in;" align="justify">
+<font size="3"><font face="Verdana, sans-serif">можливість
+збереження
+результату
+графічної
+інтерпретації
+– діаграми у
+вигляді файлу
+формату JPEG.</font></font></p>
+</li></ul>
+<p class="western" style="margin-left: 0.38in; margin-bottom: 0in;" align="justify">
+<font size="3"><br></font>
+</p>
+<p class="western" style="margin-left: 0.38in; margin-bottom: 0in;" align="justify">
+<font size="3" face="Verdana, sans-serif">Вимоги
+до реалізації:</font></p>
+<ul>
+<li><p class="western" style="margin-bottom: 0in;" align="justify">
+<font size="3"><font face="Verdana, sans-serif">мова
+програмування
+Java з використанням
+бібліотеки
+SWING</font></font></p>
+</li><li><p class="western" style="margin-bottom: 0in;" align="justify">
+<font size="3" face="Verdana, sans-serif">заборонено
+використовувати
+спеціалізовані
+компоненти
+для побудови
+діаграм</font></p>
+</li><li><p class="western" style="margin-bottom: 0in;" align="justify">
+<font size="3" face="Verdana, sans-serif">інтерфейс
+користувача
+має забезпечувати
+доступ до всієї
+функціональності
+програми; </font>
+</p>
+</li><li><p class="western" style="margin-bottom: 0in;" align="justify">
+<font size="3"><font face="Verdana, sans-serif">проект
+має бути повністю
+задокументований
+за допомогою
+JavaDoc</font></font></p>
+</li><li><p class="western" style="margin-bottom: 0in;" align="justify">
+<font size="3"><font face="Verdana, sans-serif">проект
+має повністю
+відповідати
+правилам CheckStyle</font></font></p>
+</li><li><p class="western" style="margin-bottom: 0in;" align="justify">
+<font size="3" face="Verdana, sans-serif">обґрунтована
+насиченість
+інтерфейсу
+елементами
+позитивно
+впливає на
+оцінку</font></p>
+</li><li><p class="western" style="margin-bottom: 0in;" align="justify">
+<font size="3"><font face="Verdana, sans-serif">можливість
+роботи програми
+з більше ніж
+з однією серією
+даних (в одному
+чи різних
+CSV-файлах)
+позитивно
+впливає на
+оцінку</font></font></p>
+</li></ul>
+<p class="western" style="margin-left: 0.38in; margin-bottom: 0in; page-break-before: always;" align="justify">
+<font size="3"><br></font>
+</p>
+<p class="western" style="margin-bottom: 0in;" align="center">
+<font size="3"><b><font face="Verdana, sans-serif">Варіанти
+діаграм</font></b></font></p>
+<p class="western" style="margin-bottom: 0in;" align="center">
+<br>
+</p>
+<table border="1" bordercolor="#000000" cellpadding="8" cellspacing="0" width="696">
+<col width="28">
+<col width="109">
+<col width="384">
+<col width="109">
+<tbody><tr valign="top">
+<td width="28">
+<p class="western" align="center">№</p>
+</td>
+<td width="109">
+<p class="western" align="center"><font size="3"><b><font face="Verdana, sans-serif">Назва
+діаграми</font></b></font></p>
+</td>
+<td width="384">
+<p class="western" align="center"><font size="3"><b><font face="Verdana, sans-serif">Вхідні
+дані (елемент
+таблиці)</font></b></font></p>
+</td>
+<td width="109">
+<p class="western" align="center"><font size="3" face="Verdana, sans-serif"><b>Приклад
+результату</b></font></p>
+</td>
+</tr>
+<tr valign="top">
+<td width="28" height="55">
+<p class="western" align="center"><font face="Verdana, sans-serif"><font size="2"><b>1</b></font></font></p>
+</td>
+<td width="109">
+<p class="western" align="center"><font size="3" face="Verdana, sans-serif">Лінійна</font></p>
+</td>
+<td width="384">
+<p class="western"><font size="3"><font face="Verdana, sans-serif">X-Координата,
+Y-Координата
+(довжина серії
+дорівнює кількості
+точок)</font></font></p>
+</td>
+<td width="109">
+<p class="western" align="center"><img src="Tasks_files/File0000.gif" name="Object1" align="bottom" width="1" height="1">
+<img src="Tasks_files/File0000.gif" name="Object2" align="bottom" width="1" height="1"><img src="Tasks_files/File0000.jpg" name="graphics1" align="bottom" border="0" width="92" height="83"></p>
+</td>
+</tr>
+<tr valign="top">
+<td width="28">
+<p class="western" align="center"><font face="Verdana, sans-serif"><font size="2"><b>2</b></font></font></p>
+</td>
+<td width="109">
+<p class="western" align="center"><font size="3"><font face="Verdana, sans-serif">Пузиркова
+</font></font>
+</p>
+</td>
+<td width="384">
+<p class="western"><font size="3"><font face="Verdana, sans-serif">X-Координата,
+Y-Координата,
+радіус (довжина
+серії дорівнює
+кількості
+пузирів)</font></font></p>
+</td>
+<td width="109">
+<p class="western" align="center"><img src="Tasks_files/File0001.jpg" name="graphics2" align="bottom" border="0" width="92" height="85"></p>
+</td>
+</tr>
+<tr valign="top">
+<td width="28">
+<p class="western" align="center"><font face="Verdana, sans-serif"><font size="2"><b>3</b></font></font></p>
+</td>
+<td width="109">
+<p class="western" align="center"><font size="3" face="Verdana, sans-serif">Стовпчикова</font></p>
+</td>
+<td width="384">
+<p class="western"><font size="3" face="Verdana, sans-serif">Значення
+(довжина серії
+дорівнює кількості
+стовпчиків)</font></p>
+</td>
+<td width="109">
+<p class="western" align="center"><img src="Tasks_files/File0002.jpg" name="graphics3" align="bottom" border="0" width="90" height="83"></p>
+</td>
+</tr>
+<tr valign="top">
+<td width="28">
+<p class="western" align="center"><font face="Verdana, sans-serif"><font size="2"><b>4</b></font></font></p>
+</td>
+<td width="109">
+<p class="western" align="center"><font size="3" face="Verdana, sans-serif">Точкова
+з мітками</font></p>
+</td>
+<td width="384">
+<p class="western"><font size="3"><font face="Verdana, sans-serif">X-Координата,
+Y-Координата,
+мітка (довжина
+серії дорівнює
+кількості
+точок)</font></font></p>
+</td>
+<td width="109">
+<p class="western" align="center"><img src="Tasks_files/File0003.jpg" name="graphics4" align="bottom" border="0" width="90" height="85"></p>
+</td>
+</tr>
+<tr valign="top">
+<td width="28">
+<p class="western" align="center"><font face="Verdana, sans-serif"><font size="2"><b>5</b></font></font></p>
+</td>
+<td width="109">
+<p class="western" align="center"><font size="3" face="Verdana, sans-serif">Кругова</font></p>
+</td>
+<td width="384">
+<p class="western"><font size="3" face="Verdana, sans-serif">Значення
+(довжина серії
+дорівнює кількості
+секторів)</font></p>
+</td>
+<td width="109">
+<p class="western" align="center"><img src="Tasks_files/File0004.jpg" name="graphics5" align="bottom" border="0" width="88" height="83"></p>
+</td>
+</tr>
+<tr valign="top">
+<td width="28">
+<p class="western" align="center"><font face="Verdana, sans-serif"><font size="2"><b>6</b></font></font></p>
+</td>
+<td width="109">
+<p class="western" align="center"><font size="3"><font face="Verdana, sans-serif">Пелюсткова
+</font></font>
+</p>
+</td>
+<td width="384">
+<p class="western"><font size="3" face="Verdana, sans-serif">Значення
+(довжина серії
+дорівнює кількості
+осей)</font></p>
+</td>
+<td width="109">
+<p class="western" align="center"><img src="Tasks_files/File0005.jpg" name="graphics6" align="bottom" border="0" width="93" height="83"></p>
+</td>
+</tr>
+<tr valign="top">
+<td width="28">
+<p class="western" align="center"><font face="Verdana, sans-serif"><font size="2"><b>7</b></font></font></p>
+</td>
+<td width="109">
+<p class="western" align="center"><font size="3" face="Verdana, sans-serif">Біржова</font></p>
+</td>
+<td width="384">
+<p class="western"><font size="3"><font face="Verdana, sans-serif">Найвищий
+курс, нижчий
+курс, курс
+закриття (довжина
+серії дорівнює
+кількості
+позначок)</font></font></p>
+</td>
+<td width="109">
+<p class="western" align="center"><img src="Tasks_files/File0006.jpg" name="graphics7" align="bottom" border="0" width="88" height="83"></p>
+</td>
+</tr>
+<tr valign="top">
+<td width="28">
+<p class="western" align="center"><font face="Verdana, sans-serif"><font size="2"><b>8</b></font></font></p>
+</td>
+<td width="109">
+<p class="western" align="center"><font size="3" face="Verdana, sans-serif">Кільцева</font></p>
+</td>
+<td width="384">
+<p class="western"><font face="Verdana, sans-serif"><font size="2"><font size="3">Значення
+(довжина серії
+дорівнює кількості
+секторів)</font></font></font></p>
+</td>
+<td width="109">
+<p class="western" align="center"><img src="Tasks_files/File0007.jpg" name="graphics8" align="bottom" border="0" width="90" height="88"></p>
+</td>
+</tr>
+</tbody></table>
+<p class="western" style="margin-bottom: 0in;" align="center">
+<br>
+</p>
+<p class="western" style="margin-bottom: 0in;" align="center">
+<font size="3" face="Verdana, sans-serif"><b>Види
+редагування</b></font></p>
+<p class="western" style="margin-bottom: 0in;" align="center">
+<font size="3"><br></font>
+</p>
+<p class="western" style="margin-left: 0.5in; margin-bottom: 0in;">
+<font size="3"><font face="Verdana, sans-serif"><b>G</b>.	Редагування
+за допомогою
+миші в графічній
+області з
+синхронізацією
+табличної
+області. <i>Наприклад:
+виділити мишею
+точку на графіку
+і за допомогою
+перемістити
+її (натисканням
+миші чи за допомогою
+</i><i>drag’n’drop)
+– відповідно
+таблична частина
+має змінити
+координати
+для цієї точки.</i></font></font></p>
+<p class="western" style="margin-left: 0.5in; margin-bottom: 0in;">
+<font size="3"><br></font>
+</p>
+<p class="western" style="margin-left: 0.5in; margin-bottom: 0in;">
+<font size="3"><font face="Verdana, sans-serif"><b>T</b>.	Редагування
+табличної
+області з синхронною
+модифікацією
+графічної
+області. <i>Наприклад:
+при редагуванні
+значення стовпчика
+в таблиці відповідний
+стовпчик діаграми
+виділяється
+кольором, введені
+значення впливають
+на розмір стовпчика
+миттєво.</i></font></font></p>
+<br> <br clear="all" /> </div> <div id="google-view-footer"> <div id="maybecanedit" style="float:right"><a class="google-small-link" id="editpermissionlink" href="http://docs.google.com/Edit?tab=edit&dr=true&docid=dd7n8kjz_86c4979bfp" title="Изменить данную страницу"> Изменить эту страницу (при наличии разрешения)</a> <span style="color:#676767;">|</span> <input id="report-abuse-button" type="button" value="Сообщение об оскорблении" onclick="reportAbuse();"></div> <div style="float:left"> <a title="Подробнее о Документах Google" class="google-small-link" href="http://docs.google.com/"> Документы Google: веб-редактор текста, презентаций и таблиц.</a> </div> <p> &nbsp; </div> <script><!--
+    viewOnLoad();
+    
+    
+    var urchinPage = "/View";
+
+    
+    function getXHR() {
+      if (typeof XMLHttpRequest != "undefined") {
+        return new XMLHttpRequest();
+      }
+      try { return new ActiveXObject("Msxml2.XMLHTTP.6.0") } catch(e) {}
+      try { return new ActiveXObject("Msxml2.XMLHTTP.3.0") } catch(e) {}
+      try { return new ActiveXObject("Msxml2.XMLHTTP") } catch(e) {}
+      try { return new ActiveXObject("Microsoft.XMLHTTP") } catch(e) {}
+      return null;
+    }
+
+    function reportAbuse() {
+      var req = getXHR();
+      if (req) {
+        
+          var docid = 'dd7n8kjz_86c4979bfp';
+          var posttoken = '';
+        
+        req.onreadystatechange = function() {
+          try {
+            if (req.readyState == 4 && req.status == 200) {
+              var button = document.getElementById("report-abuse-button");
+              button.value = 'Благодарим вас!';
+              button.disabled = true;
+            }
+          } catch (ex) {
+            
+          }
+        }
+        try {
+          req.open('POST', 'MiscCommands', true);
+          req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+          req.send('command=report_abuse&abuseDoc=' + encodeURIComponent(docid) +
+                   '&POST_TOKEN=' + encodeURIComponent(posttoken));
+        } catch (ex) {
+          
+        }
+      }
+    }
+  --></script> </body> </html> 
+<!-- This document saved from http://docs.google.com/Doc?id=dd7n8kjz_86c4979bfp -->

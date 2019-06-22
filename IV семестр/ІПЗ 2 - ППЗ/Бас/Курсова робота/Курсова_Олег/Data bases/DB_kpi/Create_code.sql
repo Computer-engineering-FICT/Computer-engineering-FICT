@@ -1,0 +1,258 @@
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Profile` (
+  `idProfile` INT(11) NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(45) NOT NULL,
+  `Surname` VARCHAR(45) NOT NULL,
+  `Birthday` DATE NOT NULL,
+  `ProfileCat_idProfileCat` INT(11) NOT NULL,
+  `Inquiry_idInquiry` INT(11) NOT NULL,
+  PRIMARY KEY (`idProfile`),
+  INDEX `fk_Profile_ProfileCat1_idx` (`ProfileCat_idProfileCat` ASC),
+  INDEX `fk_Profile_Inquiry1_idx` (`Inquiry_idInquiry` ASC),
+  CONSTRAINT `fk_Profile_ProfileCat1`
+    FOREIGN KEY (`ProfileCat_idProfileCat`)
+    REFERENCES `mydb`.`ProfileCat` (`idProfileCat`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Profile_Inquiry1`
+    FOREIGN KEY (`Inquiry_idInquiry`)
+    REFERENCES `mydb`.`Inquiry` (`idInquiry`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Message` (
+  `idMessage` INT(11) NOT NULL AUTO_INCREMENT,
+  `Text` VARCHAR(45) NOT NULL,
+  `Theme` VARCHAR(20) NULL DEFAULT NULL,
+  `Date` DATE NOT NULL,
+  `Profile_idProfile` INT(11) NOT NULL,
+  PRIMARY KEY (`idMessage`),
+  INDEX `fk_Message_Profile1_idx` (`Profile_idProfile` ASC),
+  CONSTRAINT `fk_Message_Profile1`
+    FOREIGN KEY (`Profile_idProfile`)
+    REFERENCES `mydb`.`Profile` (`idProfile`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`ProfileCat` (
+  `idProfileCat` INT(11) NOT NULL AUTO_INCREMENT,
+  `Comment` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idProfileCat`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Sending` (
+  `idSending` INT(11) NOT NULL AUTO_INCREMENT,
+  `Message_idMessage` INT(11) NOT NULL,
+  `Group_idGroup` INT(11) NOT NULL,
+  PRIMARY KEY (`idSending`),
+  INDEX `fk_Sending_Message1_idx` (`Message_idMessage` ASC),
+  INDEX `fk_Sending_Group1_idx` (`Group_idGroup` ASC),
+  CONSTRAINT `fk_Sending_Message1`
+    FOREIGN KEY (`Message_idMessage`)
+    REFERENCES `mydb`.`Message` (`idMessage`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Sending_Group1`
+    FOREIGN KEY (`Group_idGroup`)
+    REFERENCES `mydb`.`Group` (`idGroup`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Position` (
+  `idPosition` INT(11) NOT NULL AUTO_INCREMENT,
+  `Rate` INT(11) NOT NULL,
+  `Com` VARCHAR(45) NOT NULL,
+  `Profile_idProfile` INT(11) NOT NULL,
+  `Division_idDivision` INT(11) NOT NULL,
+  PRIMARY KEY (`idPosition`),
+  INDEX `fk_Position_Profile_idx` (`Profile_idProfile` ASC),
+  INDEX `fk_Position_Division1_idx` (`Division_idDivision` ASC),
+  CONSTRAINT `fk_Position_Profile`
+    FOREIGN KEY (`Profile_idProfile`)
+    REFERENCES `mydb`.`Profile` (`idProfile`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Position_Division1`
+    FOREIGN KEY (`Division_idDivision`)
+    REFERENCES `mydb`.`Division` (`idDivision`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Division` (
+  `idDivision` INT(11) NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idDivision`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Group` (
+  `idGroup` INT(11) NOT NULL AUTO_INCREMENT,
+  `Cipher` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idGroup`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Student` (
+  `idStudent` INT(11) NOT NULL AUTO_INCREMENT,
+  `Course` INT(11) NOT NULL,
+  `Comment` VARCHAR(45) NULL DEFAULT NULL,
+  `BookNum` INT(11) NOT NULL,
+  `Group_idGroup` INT(11) NOT NULL,
+  `Profile_idProfile` INT(11) NOT NULL,
+  PRIMARY KEY (`idStudent`),
+  INDEX `fk_Student_Group1_idx` (`Group_idGroup` ASC),
+  INDEX `fk_Student_Profile1_idx` (`Profile_idProfile` ASC),
+  CONSTRAINT `fk_Student_Group1`
+    FOREIGN KEY (`Group_idGroup`)
+    REFERENCES `mydb`.`Group` (`idGroup`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Student_Profile1`
+    FOREIGN KEY (`Profile_idProfile`)
+    REFERENCES `mydb`.`Profile` (`idProfile`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Abscence` (
+  `idAbscence` INT(11) NOT NULL AUTO_INCREMENT,
+  `Group_idGroup` INT(11) NOT NULL,
+  `Class_idClass` INT(11) NOT NULL,
+  PRIMARY KEY (`idAbscence`),
+  INDEX `fk_Abscence_Group1_idx` (`Group_idGroup` ASC),
+  INDEX `fk_Abscence_Class1_idx` (`Class_idClass` ASC),
+  CONSTRAINT `fk_Abscence_Group1`
+    FOREIGN KEY (`Group_idGroup`)
+    REFERENCES `mydb`.`Group` (`idGroup`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Abscence_Class1`
+    FOREIGN KEY (`Class_idClass`)
+    REFERENCES `mydb`.`Class` (`idClass`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Class` (
+  `idClass` INT(11) NOT NULL AUTO_INCREMENT,
+  `Pair` INT(11) NOT NULL,
+  `Aud` INT(11) NOT NULL,
+  `Date` DATE NOT NULL,
+  `Profile_idProfile` INT(11) NOT NULL,
+  `Subject_idSubject` INT(11) NOT NULL,
+  PRIMARY KEY (`idClass`),
+  INDEX `fk_Class_Profile1_idx` (`Profile_idProfile` ASC),
+  INDEX `fk_Class_Subject1_idx` (`Subject_idSubject` ASC),
+  CONSTRAINT `fk_Class_Profile1`
+    FOREIGN KEY (`Profile_idProfile`)
+    REFERENCES `mydb`.`Profile` (`idProfile`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Class_Subject1`
+    FOREIGN KEY (`Subject_idSubject`)
+    REFERENCES `mydb`.`Subject` (`idSubject`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Inquiry` (
+  `idInquiry` INT(11) NOT NULL AUTO_INCREMENT,
+  `Date` DATE NOT NULL,
+  `Type_idType` INT(11) NOT NULL,
+  `Action_idAction` INT(11) NOT NULL,
+  PRIMARY KEY (`idInquiry`),
+  INDEX `fk_Inquiry_Type1_idx` (`Type_idType` ASC),
+  INDEX `fk_Inquiry_Action1_idx` (`Action_idAction` ASC),
+  CONSTRAINT `fk_Inquiry_Type1`
+    FOREIGN KEY (`Type_idType`)
+    REFERENCES `mydb`.`Type` (`idType`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Inquiry_Action1`
+    FOREIGN KEY (`Action_idAction`)
+    REFERENCES `mydb`.`Action` (`idAction`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Action` (
+  `idAction` INT(11) NOT NULL AUTO_INCREMENT,
+  `Date` DATE NOT NULL,
+  `State_idState` INT(11) NOT NULL,
+  `Profile_idProfile` INT(11) NOT NULL,
+  PRIMARY KEY (`idAction`),
+  INDEX `fk_Action_State1_idx` (`State_idState` ASC),
+  INDEX `fk_Action_Profile1_idx` (`Profile_idProfile` ASC),
+  CONSTRAINT `fk_Action_State1`
+    FOREIGN KEY (`State_idState`)
+    REFERENCES `mydb`.`State` (`idState`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Action_Profile1`
+    FOREIGN KEY (`Profile_idProfile`)
+    REFERENCES `mydb`.`Profile` (`idProfile`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Type` (
+  `idType` INT(11) NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(45) NOT NULL,
+  `Comment` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idType`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`State` (
+  `idState` INT(11) NOT NULL AUTO_INCREMENT,
+  `Comment` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idState`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Subject` (
+  `idSubject` INT(11) NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(45) NULL DEFAULT NULL,
+  `Comment` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`idSubject`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

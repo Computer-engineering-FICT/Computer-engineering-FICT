@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - informationdb@localhost" uuid="3461672b-4efc-4ad8-aca7-0cf7e7d60208">
+    <database-info product="MySQL" version="5.6.21-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="informationdb"/>
+    <table name="actions" schema="" catalog="informationdb" type="TABLE">
+      <column name="action_type_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="artifact_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="dossier_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="employee_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="date" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <foreign-key name="to_action_type_id" columns="action_type_id" ref-table="artif_action_types" ref-schema="" ref-catalog="informationdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="to_artifact_id" columns="artifact_id" ref-table="artifacts" ref-schema="" ref-catalog="informationdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="to_dossier_id" columns="dossier_id" ref-table="dossiers" ref-schema="" ref-catalog="informationdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="to_employee_id" columns="employee_id" ref-table="employees" ref-schema="" ref-catalog="informationdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="action_type_id_idx" unique="false" columns="action_type_id"/>
+      <index name="artifact_d_idx" unique="false" columns="artifact_id"/>
+      <index name="dossier_id_idx" unique="false" columns="dossier_id"/>
+      <index name="employee_id_idx" unique="false" columns="employee_id"/>
+    </table>
+    <table name="artif_action_types" schema="" catalog="informationdb" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="to_action_type_id" table="actions" schema="" catalog="informationdb" columns="action_type_id"/>
+    </table>
+    <table name="artifact_types" schema="" catalog="informationdb" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="group_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="group_id" columns="group_id" ref-table="groups" ref-schema="" ref-catalog="informationdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="artifact_to_type" table="artifacts" schema="" catalog="informationdb" columns="artifact_type_id"/>
+      <exported-key name="artifact_type" table="fields" schema="" catalog="informationdb" columns="artifact_type_id"/>
+      <index name="group_id_idx" unique="false" columns="group_id"/>
+    </table>
+    <table name="artifacts" schema="" catalog="informationdb" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="artifact_type_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="artifact_to_type" columns="artifact_type_id" ref-table="artifact_types" ref-schema="" ref-catalog="informationdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="to_artifact_id" table="actions" schema="" catalog="informationdb" columns="artifact_id"/>
+      <exported-key name="artifact_id" table="field_values" schema="" catalog="informationdb" columns="artifact_id"/>
+      <index name="artifact_to_type_idx" unique="false" columns="artifact_type_id"/>
+    </table>
+    <table name="dossier_action_types" schema="" catalog="informationdb" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="to_action_type_table" table="dossiers_log" schema="" catalog="informationdb" columns="action_type"/>
+    </table>
+    <table name="dossiers" schema="" catalog="informationdb" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="to_dossier_id" table="actions" schema="" catalog="informationdb" columns="dossier_id"/>
+      <exported-key name="to_dossier_table" table="dossiers_log" schema="" catalog="informationdb" columns="dossier_id"/>
+    </table>
+    <table name="dossiers_log" schema="" catalog="informationdb" type="TABLE">
+      <column name="dossier_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="action_type" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="employee_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="date" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <foreign-key name="to_action_type_table" columns="action_type" ref-table="dossier_action_types" ref-schema="" ref-catalog="informationdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="to_dossier_table" columns="dossier_id" ref-table="dossiers" ref-schema="" ref-catalog="informationdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="to_employee_table" columns="employee_id" ref-table="employees" ref-schema="" ref-catalog="informationdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="to_action_type_idx" unique="false" columns="action_type"/>
+      <index name="to_dossier_table" unique="false" columns="dossier_id"/>
+      <index name="to_employee_idx" unique="false" columns="employee_id"/>
+    </table>
+    <table name="empl_groups_actions" schema="" catalog="informationdb" type="TABLE">
+      <column name="group_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="action_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <foreign-key name="to_type_id" columns="group_id" ref-table="employee_group" ref-schema="" ref-catalog="informationdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="type_to_id" columns="action_id" ref-table="group_actions" ref-schema="" ref-catalog="informationdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="to_type_id_idx" unique="false" columns="group_id"/>
+      <index name="type_to_id_idx" unique="false" columns="action_id"/>
+    </table>
+    <table name="employee_group" schema="" catalog="informationdb" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="to_type_id" table="empl_groups_actions" schema="" catalog="informationdb" columns="group_id"/>
+      <exported-key name="to_empl_type" table="employees" schema="" catalog="informationdb" columns="empl_group_id"/>
+    </table>
+    <table name="employees" schema="" catalog="informationdb" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="first_name" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_name" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="empl_group_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="to_empl_type" columns="empl_group_id" ref-table="employee_group" ref-schema="" ref-catalog="informationdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="to_employee_id" table="actions" schema="" catalog="informationdb" columns="employee_id"/>
+      <exported-key name="to_employee_table" table="dossiers_log" schema="" catalog="informationdb" columns="employee_id"/>
+      <exported-key name="to_employee" table="login_data" schema="" catalog="informationdb" columns="employee_id"/>
+      <index name="to_empl_type_idx" unique="false" columns="empl_group_id"/>
+    </table>
+    <table name="field_values" schema="" catalog="informationdb" type="TABLE">
+      <column name="artifact_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="value" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="field_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <foreign-key name="artifact_id" columns="artifact_id" ref-table="artifacts" ref-schema="" ref-catalog="informationdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="field_id" columns="field_id" ref-table="fields" ref-schema="" ref-catalog="informationdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="artifact_id_idx" unique="false" columns="artifact_id"/>
+      <index name="field_id_idx" unique="false" columns="field_id"/>
+    </table>
+    <table name="fields" schema="" catalog="informationdb" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="is_required" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="artifact_type_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="artifact_type" columns="artifact_type_id" ref-table="artifact_types" ref-schema="" ref-catalog="informationdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="field_id" table="field_values" schema="" catalog="informationdb" columns="field_id"/>
+      <index name="artifact_type_idx" unique="false" columns="artifact_type_id"/>
+    </table>
+    <table name="group_actions" schema="" catalog="informationdb" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="class_name" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="type_to_id" table="empl_groups_actions" schema="" catalog="informationdb" columns="action_id"/>
+    </table>
+    <table name="groups" schema="" catalog="informationdb" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="group_id" table="artifact_types" schema="" catalog="informationdb" columns="group_id"/>
+    </table>
+    <table name="login_data" schema="" catalog="informationdb" type="TABLE">
+      <column name="employee_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="login" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <foreign-key name="to_employee" columns="employee_id" ref-table="employees" ref-schema="" ref-catalog="informationdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="to_employee" unique="false" columns="employee_id"/>
+    </table>
+  </data-source>
+  <data-source name="MySQL - test_informationdb@localhost" uuid="a0fb975e-817e-478f-9896-ca796a6d197a">
+    <database-info product="MySQL" version="5.6.21-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="test_informationdb"/>
+    <table name="actions" schema="" catalog="test_informationdb" type="TABLE">
+      <column name="action_type_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="artifact_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="dossier_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="employee_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="date" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="to_action_type_id" columns="action_type_id" ref-table="artif_action_types" ref-schema="" ref-catalog="test_informationdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="to_artifact_id" columns="artifact_id" ref-table="artifacts" ref-schema="" ref-catalog="test_informationdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="to_dossier_id" columns="dossier_id" ref-table="dossiers" ref-schema="" ref-catalog="test_informationdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="to_employee_id" columns="employee_id" ref-table="employees" ref-schema="" ref-catalog="test_informationdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="action_type_id_idx" unique="false" columns="action_type_id"/>
+      <index name="artifact_d_idx" unique="false" columns="artifact_id"/>
+      <index name="dossier_id_idx" unique="false" columns="dossier_id"/>
+      <index name="employee_id_idx" unique="false" columns="employee_id"/>
+    </table>
+    <table name="artif_action_types" schema="" catalog="test_informationdb" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="to_action_type_id" table="actions" schema="" catalog="test_informationdb" columns="action_type_id"/>
+    </table>
+    <table name="artifact_types" schema="" catalog="test_informationdb" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="group_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="group_id" columns="group_id" ref-table="groups" ref-schema="" ref-catalog="test_informationdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="artifact_to_type" table="artifacts" schema="" catalog="test_informationdb" columns="artifact_type_id"/>
+      <exported-key name="artifact_type" table="fields" schema="" catalog="test_informationdb" columns="artifact_type_id"/>
+      <index name="group_id_idx" unique="false" columns="group_id"/>
+    </table>
+    <table name="artifacts" schema="" catalog="test_informationdb" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="artifact_type_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="artifact_to_type" columns="artifact_type_id" ref-table="artifact_types" ref-schema="" ref-catalog="test_informationdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="to_artifact_id" table="actions" schema="" catalog="test_informationdb" columns="artifact_id"/>
+      <exported-key name="artifact_id" table="field_values" schema="" catalog="test_informationdb" columns="artifact_id"/>
+      <index name="artifact_to_type_idx" unique="false" columns="artifact_type_id"/>
+    </table>
+    <table name="dossier_action_types" schema="" catalog="test_informationdb" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="to_action_type_table" table="dossiers_log" schema="" catalog="test_informationdb" columns="action_type"/>
+    </table>
+    <table name="dossiers" schema="" catalog="test_informationdb" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="to_dossier_id" table="actions" schema="" catalog="test_informationdb" columns="dossier_id"/>
+      <exported-key name="to_dossier_table" table="dossiers_log" schema="" catalog="test_informationdb" columns="dossier_id"/>
+    </table>
+    <table name="dossiers_log" schema="" catalog="test_informationdb" type="TABLE">
+      <column name="dossier_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="action_type" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="employee_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="date" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="to_action_type_table" columns="action_type" ref-table="dossier_action_types" ref-schema="" ref-catalog="test_informationdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="to_dossier_table" columns="dossier_id" ref-table="dossiers" ref-schema="" ref-catalog="test_informationdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="to_employee_table" columns="employee_id" ref-table="employees" ref-schema="" ref-catalog="test_informationdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="to_action_type_idx" unique="false" columns="action_type"/>
+      <index name="to_dossier_table" unique="false" columns="dossier_id"/>
+      <index name="to_employee_idx" unique="false" columns="employee_id"/>
+    </table>
+    <table name="empl_groups_actions" schema="" catalog="test_informationdb" type="TABLE">
+      <column name="group_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="action_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="group_id,action_id"/>
+      <foreign-key name="to_type_id" columns="group_id" ref-table="employee_group" ref-schema="" ref-catalog="test_informationdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="type_to_id" columns="action_id" ref-table="group_actions" ref-schema="" ref-catalog="test_informationdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="to_type_id_idx" unique="false" columns="group_id"/>
+      <index name="type_to_id_idx" unique="false" columns="action_id"/>
+    </table>
+    <table name="employee_group" schema="" catalog="test_informationdb" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="to_type_id" table="empl_groups_actions" schema="" catalog="test_informationdb" columns="group_id"/>
+      <exported-key name="to_empl_type" table="employees" schema="" catalog="test_informationdb" columns="empl_group_id"/>
+    </table>
+    <table name="employees" schema="" catalog="test_informationdb" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="first_name" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_name" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="empl_group_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="to_empl_type" columns="empl_group_id" ref-table="employee_group" ref-schema="" ref-catalog="test_informationdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="to_employee_id" table="actions" schema="" catalog="test_informationdb" columns="employee_id"/>
+      <exported-key name="to_employee_table" table="dossiers_log" schema="" catalog="test_informationdb" columns="employee_id"/>
+      <exported-key name="to_employee" table="login_data" schema="" catalog="test_informationdb" columns="employee_id"/>
+      <index name="to_empl_type_idx" unique="false" columns="empl_group_id"/>
+    </table>
+    <table name="field_values" schema="" catalog="test_informationdb" type="TABLE">
+      <column name="artifact_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="value" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="field_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="artifact_id" columns="artifact_id" ref-table="artifacts" ref-schema="" ref-catalog="test_informationdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="field_id" columns="field_id" ref-table="fields" ref-schema="" ref-catalog="test_informationdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="artifact_id_idx" unique="false" columns="artifact_id"/>
+      <index name="field_id_idx" unique="false" columns="field_id"/>
+    </table>
+    <table name="fields" schema="" catalog="test_informationdb" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="is_required" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="artifact_type_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="artifact_type" columns="artifact_type_id" ref-table="artifact_types" ref-schema="" ref-catalog="test_informationdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="field_id" table="field_values" schema="" catalog="test_informationdb" columns="field_id"/>
+      <index name="artifact_type_idx" unique="false" columns="artifact_type_id"/>
+    </table>
+    <table name="group_actions" schema="" catalog="test_informationdb" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="class_name" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="type_to_id" table="empl_groups_actions" schema="" catalog="test_informationdb" columns="action_id"/>
+    </table>
+    <table name="groups" schema="" catalog="test_informationdb" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="group_id" table="artifact_types" schema="" catalog="test_informationdb" columns="group_id"/>
+    </table>
+    <table name="login_data" schema="" catalog="test_informationdb" type="TABLE">
+      <column name="employee_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="login" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <foreign-key name="to_employee" columns="employee_id" ref-table="employees" ref-schema="" ref-catalog="test_informationdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="to_employee" unique="false" columns="employee_id"/>
+    </table>
+  </data-source>
+</component>

@@ -1,0 +1,32 @@
+<!-- sonnet.dtd                                        -->
+
+<!-- sonnet is the root of the document                -->
+<!ELEMENT sonnet  (author,title?,lines)>
+<!-- the default sonnet type is "Shakespearean"        -->
+<!ATTLIST sonnet  type (Shakespearean | Petrarchan)  
+                       "Shakespearean">
+
+<!-- author contains information about the author      -->
+<!ELEMENT author  (lastName,firstName,nationality,
+                   yearOfBirth?,yearOfDeath?)>
+
+<!-- lastName, firstName, nationality, yearOfBirth,
+     and yearOfDeath are all elements inside author. -->
+
+<!ELEMENT lastName (#PCDATA)>
+<!ELEMENT firstName (#PCDATA)>
+<!ELEMENT nationality (#PCDATA)>
+<!ELEMENT yearOfBirth (#PCDATA)>
+<!ELEMENT yearOfDeath (#PCDATA)>
+
+<!-- The title of the sonnet                           -->
+<!ELEMENT title (#PCDATA)>
+
+<!-- The lines element contains the 14 lines of the    
+     sonnet.                                           -->
+<!ELEMENT lines (line,line,line,line,
+                 line,line,line,line,
+                 line,line,line,line,
+                 line,line)>
+
+<!ELEMENT line (#PCDATA)>
