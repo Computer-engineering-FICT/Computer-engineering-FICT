@@ -1,0 +1,423 @@
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 1
+
+
+
+
+
+       MCS-51 Family Macro Assembler   A S E M - 5 1   V 1.3
+       =====================================================
+
+
+
+	Source File:	lab5_vova.asm
+	Object File:	lab5_vova.hex
+	List File:	lab5_vova.lst
+
+
+
+ Line  I  Addr  Code            Source
+
+    1:				;
+    2:				; Computer architecture
+    3:				; Lab5
+    4:				;
+    5:				; Task:
+    6:				;    F = 4*(X1 + X2) - X1/X2
+    7:				;    1 div
+    8:				;    X1 - TF, X2 - TF, F - CF
+    9:				;    X1 < X2
+   10:				;
+   11:
+   12:					Convert_To_CF MACRO ADR
+   13:					MOV A, ADR
+   14:					CPL A
+   15:					ADD A, #1
+   16:					MOV ADR, A
+   17:					ENDM
+   18:
+   19:					Convert_To_TF MACRO ADR
+   20:						Convert_To_CF ADR
+   21:					ENDM
+   22:
+   23:		N      002A		X1 		   EQU 042;0C1h
+   24:		N      0064		X2		   EQU 064h;0E4h
+   25:
+   26:		N      0028		Adr_F	   EQU 28h
+   27:
+   28:				; For adding
+   29:		N      0027		Adr_Rez_Add 	EQU 27h
+   30:				; For division
+   31:		N      0000		Bit_s1_X1  		EQU 0h
+   32:		N      0010		Bit_s1_X2  		EQU 10h
+   33:		N      0020		Bit_s1_Rez_Div  EQU 20h
+   34:		N      0030		Sign_div   		EQU 30h
+   35:		N      0020		Adr_s_X1   		EQU 20h
+   36:		N      0021		Adr_X1 	   		EQU 21h
+   37:		N      0020		Adr_s_X2   		EQU 20h
+   38:		N      0023		Adr_X2	   		EQU 23h
+   39:		N      0024		Adr_s_Rez_Div  	EQU 24h
+   40:		N      0025		Adr_Rez_Div    	EQU 25h
+   41:
+   42:		N      00E0		Acc0	   		EQU 0E0h
+   43:
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 2
+
+
+
+ Line  I  Addr  Code            Source
+
+   44:
+   45:	  0000	78 00			MOV R0, #0h
+   46:	  0002	74 2A			MOV A, #X1
+   47:	  0004	F2			MOVX @R0, A
+   48:	  0005	08			INC R0
+   49:	  0006	74 64			MOV A, #X2
+   50:	  0008	F2			MOVX @R0, A
+   51:
+   52:	  0009	78 00			MOV R0, #0h
+   53:	  000B	E2			MOVX A, @R0
+   54:	  000C	F5 21			MOV Adr_X1, A
+   55:	  000E	08			INC R0
+   56:	  000F	E2			MOVX A, @R0
+   57:	  0010	F5 23			MOV Adr_X2, A
+   58:
+   59:
+   60:
+   61:
+   62:	  0012	11 B5			ACALL Adding
+   63:	  0014	85 27 90		MOV P1, Adr_Rez_Add
+   64:	  0017	11 36			ACALL Division
+   65:	  0019	85 25 90		MOV P1, Adr_Rez_Div
+   66:	  001C	E5 27			MOV A, Adr_Rez_Add
+   67:	  001E	95 25			SUBB A, Adr_Rez_Div
+   68:	  0020	F5 28			MOV Adr_F, A
+   69:	  0022	85 28 90		MOV P1, Adr_F
+   70:
+   71:	  0025	78 10			MOV R0, #10h
+   72:	  0027	E5 27			MOV A, Adr_Rez_Add
+   73:	  0029	F2			MOVX @R0, A
+   74:	  002A	08			INC R0
+   75:	  002B	E5 25			MOV A, Adr_Rez_Div
+   76:	  002D	F2			MOVX @R0, A
+   77:	  002E	08			INC R0
+   78:	  002F	E5 28			MOV A, Adr_F
+   79:	  0031	F2			MOVX @R0, A
+   80:	  0032	08			INC R0
+   81:	  0033	02 00 F8		JMP Ended
+   82:
+   83:
+   84:	  0036			Division:
+   85:	  0036	C0 23			PUSH Adr_X2
+   86:	  0038	C0 21			PUSH Adr_X1
+   87:	  003A	75 25 01		MOV Adr_Rez_Div, #1h
+   88:
+   89:	  003D	30 0F 04		JNB 0Fh, X1_positive
+   90:	  0040	D2 30			SETB Sign_div
+   91:	  0042	C2 0F			CLR 0Fh
+   92:	  0044			X1_positive:
+   93:
+   94:	  0044	30 1F 0C		JNB 1Fh, X2_positive
+   95:	  0047	20 30 05		JB Sign_div, sign_plus
+   96:	  004A	D2 30			SETB Sign_div
+   97:	  004C	02 00 51		JMP label0
+   98:	  004F			sign_plus:
+   99:	  004F	C2 30			CLR Sign_div
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 3
+
+
+
+ Line  I  Addr  Code            Source
+
+  100:	  0051			label0:
+  101:	  0051	C2 1F			CLR 1Fh
+  102:	  0053			X2_positive:
+  103:
+  104:
+  105:	  0053	C3			CLR C
+  106:	  0054	20 00 11		JB Bit_s1_X1, X1_1
+  107:
+  108:				; X1 := X1 - X2
+  109:
+  110:	  0057	E5 21			MOV A, Adr_X1
+  111:	  0059	95 23			SUBB A, Adr_X2
+  112:	  005B	F5 21			MOV Adr_X1, A
+  113:
+  114:
+  115:	  005D	E5 20			MOV A, Adr_s_X1
+  116:	  005F	95 20			SUBB A, Adr_s_X2
+  117:	  0061	54 01			ANL A, #00000001b
+  118:	  0063	F5 20			MOV Adr_s_X1, A
+  119:
+  120:	  0065	02 00 76		JMP shifting
+  121:
+  122:	  0068			X1_1:
+  123:				; X1 := X1 + X2
+  124:	  0068	E5 21			MOV A, Adr_X1
+  125:	  006A	25 23			ADD A, Adr_X2
+  126:	  006C	F5 21			MOV Adr_X1, A
+  127:
+  128:
+  129:	  006E	E5 20			MOV A, Adr_s_X1
+  130:	  0070	25 20			ADD A, Adr_s_X2
+  131:	  0072	54 01			ANL A, #00000001b
+  132:	  0074	F5 20			MOV Adr_s_X1, A
+  133:
+  134:
+  135:	  0076			shifting:
+  136:	  0076	C3			CLR C
+  137:				; X1 := l(X1).0
+  138:	  0077	E5 21			MOV A, Adr_X1
+  139:	  0079	33			RLC A
+  140:	  007A	C2 E0			CLR Acc0
+  141:	  007C	F5 21			MOV Adr_X1, A
+  142:
+  143:	  007E	40 07			JC c1
+  144:	  0080	C2 00			CLR Bit_s1_X1
+  145:	  0082	C2 D1			CLR PSW.1
+  146:	  0084	02 00 8B		JMP label1
+  147:	  0087			c1:
+  148:	  0087	D2 00		    SETB Bit_s1_X1
+  149:	  0089	D2 D1			SETB PSW.1
+  150:	  008B			label1:
+  151:
+  152:				; REZ := l(REZ).NOT RGX[1]
+  153:	  008B	B3			CPL C
+  154:	  008C	E5 25			MOV A, Adr_Rez_Div
+  155:	  008E	33			RLC A
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 4
+
+
+
+ Line  I  Addr  Code            Source
+
+  156:	  008F	20 D1 05		JB PSW.1, c0
+  157:	  0092	D2 E0			SETB Acc0
+  158:	  0094	02 00 99		JMP label2
+  159:	  0097			c0:
+  160:	  0097	C2 E0		    CLR Acc0
+  161:	  0099			label2:
+  162:	  0099	F5 25			MOV Adr_Rez_Div, A
+  163:
+  164:
+  165:	  009B	E5 24			MOV A, Adr_s_Rez_Div
+  166:	  009D	33			RLC A
+  167:	  009E	53 24 01		ANL Adr_s_Rez_Div, #00000001b
+  168:	  00A1	F5 24			MOV Adr_s_Rez_Div, A
+  169:
+  170:
+  171:	  00A3	30 20 AD		JNB Bit_s1_Rez_Div, X2_positive
+  172:
+  173:	  00A6	D0 21			POP Adr_X1
+  174:	  00A8	D0 23			POP Adr_X2
+  175:	  00AA	30 30 07		JNB Sign_div, end_div
+  176:					Convert_To_CF Adr_Rez_Div
+  177+ 1  00AD	E5 25			MOV A, Adr_Rez_Div
+  178+ 1  00AF	F4			CPL A
+  179+ 1  00B0	24 01			ADD A, #1
+  180+ 1  00B2	F5 25			MOV Adr_Rez_Div, A
+  181:	  00B4			end_div:
+  182:	  00B4	22			RET
+  183:
+  184:	  00B5			Adding:
+  185:	  00B5	C0 23			PUSH Adr_X2
+  186:	  00B7	C0 21			PUSH Adr_X1
+  187:	  00B9	30 0F 09		JNB 0Fh, X1_positiv
+  188:	  00BC	C2 0F			CLR 0Fh
+  189:					Convert_To_CF Adr_X1
+  190+ 1  00BE	E5 21			MOV A, Adr_X1
+  191+ 1  00C0	F4			CPL A
+  192+ 1  00C1	24 01			ADD A, #1
+  193+ 1  00C3	F5 21			MOV Adr_X1, A
+  194:	  00C5			X1_positiv:
+  195:	  00C5	30 1F 09		JNB 1Fh, X2_positiv
+  196:	  00C8	C2 1F			CLR 1Fh
+  197:					Convert_To_CF Adr_X2
+  198+ 1  00CA	E5 23			MOV A, Adr_X2
+  199+ 1  00CC	F4			CPL A
+  200+ 1  00CD	24 01			ADD A, #1
+  201+ 1  00CF	F5 23			MOV Adr_X2, A
+  202:
+  203:	  00D1			X2_positiv:
+  204:
+  205:	  00D1	E5 21			MOV A, Adr_X1
+  206:	  00D3	25 23			ADD A, Adr_X2
+  207:	  00D5	F5 27			MOV Adr_Rez_Add, A
+  208:
+  209:	  00D7	30 3F 09		JNB 3Fh, plus
+  210:					Convert_To_TF Adr_Rez_Add
+  211+ 1					Convert_To_CF Adr_Rez_Add
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 5
+
+
+
+ Line  I  Addr  Code            Source
+
+  212+ 2  00DA	E5 27			MOV A, Adr_Rez_Add
+  213+ 2  00DC	F4			CPL A
+  214+ 2  00DD	24 01			ADD A, #1
+  215+ 2  00DF	F5 27			MOV Adr_Rez_Add, A
+  216:	  00E1	D2 D1			SETB PSW.1
+  217:	  00E3			plus:
+  218:	  00E3	C3			CLR C
+  219:	  00E4	33			RLC A
+  220:	  00E5	C3			CLR C
+  221:	  00E6	33			RLC A
+  222:	  00E7	F5 27			MOV Adr_Rez_Add, A
+  223:
+  224:	  00E9	30 D1 07		JNB PSW.1, end_add
+  225:					Convert_To_CF Adr_Rez_Add
+  226+ 1  00EC	E5 27			MOV A, Adr_Rez_Add
+  227+ 1  00EE	F4			CPL A
+  228+ 1  00EF	24 01			ADD A, #1
+  229+ 1  00F1	F5 27			MOV Adr_Rez_Add, A
+  230:	  00F3			end_add:
+  231:
+  232:	  00F3	D0 21			POP Adr_X1
+  233:	  00F5	D0 23			POP Adr_X2
+  234:	  00F7	22			RET
+  235:
+  236:	  00F8			Ended:
+  237:	  00F8	00			NOP
+  238:					END
+
+
+
+
+
+                     register banks used:  ---
+
+                     no errors
+
+
+
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 6
+
+
+
+
+
+	       L I S T   O F   S Y M B O L S
+	       =============================
+
+
+SYMBOL				  TYPE     VALUE	LINE
+------------------------------------------------------------
+??ASEM_51			  NUMBER    8051
+??VERSION			  NUMBER    0130
+AC				  BIT	      D6
+ACC				  DATA	      E0
+ACC0				  NUMBER    00E0	  42
+ADDING				  CODE	    00B5	 184
+ADR_F				  NUMBER    0028	  26
+ADR_REZ_ADD			  NUMBER    0027	  29
+ADR_REZ_DIV			  NUMBER    0025	  40
+ADR_S_REZ_DIV			  NUMBER    0024	  39
+ADR_S_X1			  NUMBER    0020	  35
+ADR_S_X2			  NUMBER    0020	  37
+ADR_X1				  NUMBER    0021	  36
+ADR_X2				  NUMBER    0023	  38
+B				  DATA	      F0
+BIT_S1_REZ_DIV			  NUMBER    0020	  33
+BIT_S1_X1			  NUMBER    0000	  31
+BIT_S1_X2			  NUMBER    0010	  32
+C0				  CODE	    0097	 159
+C1				  CODE	    0087	 147
+CONVERT_TO_CF			  MACRO	        	  12
+CONVERT_TO_TF			  MACRO	        	  19
+CY				  BIT	      D7
+DIVISION			  CODE	    0036	  84
+DPH				  DATA	      83
+DPL				  DATA	      82
+EA				  BIT	      AF
+ENDED				  CODE	    00F8	 236
+END_ADD				  CODE	    00F3	 230
+END_DIV				  CODE	    00B4	 181
+ES				  BIT	      AC
+ET0				  BIT	      A9
+ET1				  BIT	      AB
+EX0				  BIT	      A8
+EX1				  BIT	      AA
+EXTI0				  CODE	    0003
+EXTI1				  CODE	    0013
+F0				  BIT	      D5
+IE				  DATA	      A8
+IE0				  BIT	      89
+IE1				  BIT	      8B
+INT0				  BIT	      B2
+INT1				  BIT	      B3
+IP				  DATA	      B8
+IT0				  BIT	      88
+IT1				  BIT	      8A
+LABEL0				  CODE	    0051	 100
+LABEL1				  CODE	    008B	 150
+LABEL2				  CODE	    0099	 161
+OV				  BIT	      D2
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 7
+
+
+
+SYMBOL				  TYPE     VALUE	LINE
+------------------------------------------------------------
+P				  BIT	      D0
+P0				  DATA	      80
+P1				  DATA	      90
+P2				  DATA	      A0
+P3				  DATA	      B0
+PCON				  DATA	      87
+PLUS				  CODE	    00E3	 217
+PS				  BIT	      BC
+PSW				  DATA	      D0
+PT0				  BIT	      B9
+PT1				  BIT	      BB
+PX0				  BIT	      B8
+PX1				  BIT	      BA
+RB8				  BIT	      9A
+RD				  BIT	      B7
+REN				  BIT	      9C
+RESET				  CODE	    0000
+RI				  BIT	      98
+RS0				  BIT	      D3
+RS1				  BIT	      D4
+RXD				  BIT	      B0
+SBUF				  DATA	      99
+SCON				  DATA	      98
+SHIFTING			  CODE	    0076	 135
+SIGN_DIV			  NUMBER    0030	  34
+SIGN_PLUS			  CODE	    004F	  98
+SINT				  CODE	    0023
+SM0				  BIT	      9F
+SM1				  BIT	      9E
+SM2				  BIT	      9D
+SP				  DATA	      81
+T0				  BIT	      B4
+T1				  BIT	      B5
+TB8				  BIT	      9B
+TCON				  DATA	      88
+TF0				  BIT	      8D
+TF1				  BIT	      8F
+TH0				  DATA	      8C
+TH1				  DATA	      8D
+TI				  BIT	      99
+TIMER0				  CODE	    000B
+TIMER1				  CODE	    001B
+TL0				  DATA	      8A
+TL1				  DATA	      8B
+TMOD				  DATA	      89
+TR0				  BIT	      8C
+TR1				  BIT	      8E
+TXD				  BIT	      B1
+WR				  BIT	      B6
+X1				  NUMBER    002A	  23
+X1_1				  CODE	    0068	 122
+X1_POSITIV			  CODE	    00C5	 194
+X1_POSITIVE			  CODE	    0044	  92
+X2				  NUMBER    0064	  24
+X2_POSITIV			  CODE	    00D1	 203
+X2_POSITIVE			  CODE	    0053	 102

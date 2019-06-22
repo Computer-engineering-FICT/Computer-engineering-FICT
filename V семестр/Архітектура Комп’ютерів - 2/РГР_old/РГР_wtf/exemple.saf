@@ -1,0 +1,83 @@
+# Copyright (C) 1991-2009 Altera Corporation
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, Altera MegaCore Function License 
+# Agreement, or other applicable license agreement, including, 
+# without limitation, that your use is for the sole purpose of 
+# programming logic devices manufactured by Altera and sold by 
+# Altera or its authorized distributors.  Please refer to the 
+# applicable agreement for further details.
+
+# Signal Activity File Name: "E:/LabuQuartus/Exemple/exemple.saf"
+# Created On: "12/20/2011 22:22:54"
+# Created By: "Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition"
+# This file was created by the Quartus(R) II Simulator with glitch filtering enabled.
+
+FORMAT_VERSION 1;
+
+DEFINE_FLAG TOGGLE_RATE_FROM_SIMULATION 0x1;
+DEFINE_FLAG STATIC_PROBABILITY_FROM_SIMULATION 0x2;
+DEFINE_FLAG TOGGLE_RATE_FROM_USER 0x4;
+DEFINE_FLAG STATIC_PROBABILITY_FROM_USER 0x8;
+DEFINE_FLAG TOGGLE_RATE_FROM_USER_DEFAULT 0x10;
+DEFINE_FLAG STATIC_PROBABILITY_FROM_USER_DEFAULT 0x20;
+DEFINE_FLAG TOGGLE_RATE_FROM_VECTORLESS_ESTIMATION 0x40;
+DEFINE_FLAG STATIC_PROBABILITY_FROM_VECTORLESS_ESTIMATION 0x80;
+DEFINE_FLAG TOGGLE_RATE_ASSUMED_ZERO 0x100;
+DEFINE_FLAG TOGGLE_RATE_CLIPPED_TO_MAX 0x200;
+
+BEGIN_OUTPUT_SIGNAL_INFO;
+
+# Output Signal Information Line Format Description:
+
+# <one or more spaces><partial output signal name><spaces>[<flags mask><spaces><toggle rate><spaces><static probability>]<;>
+
+ clk 0x3 9.9e+007 0.5;
+ clk4 0x3 1.2e+007 0.48;
+ clkALY 0x3 6e+007 0.24;
+ clkBMY 0x3 6.3e+007 0.251384;
+ clk~clkctrl 0x3 9.9e+007 0.499101;
+ Flag_ALY[0] 0x3 0 0;
+ Flag_ALY[1] 0x3 0 0;
+ Flag_ALY[2] 0x3 0 0;
+ Flag_ALY[3] 0x3 0 0;
+ flags[0] 0x3 0 0;
+ flags[1] 0x3 0 0;
+ flags[2] 0x3 0 0;
+ flags[3] 0x3 0 0;
+ MuxYpr:inst;
+  lpm_mux:lpm_mux_component;
+   mux_lmc:auto_generated;
+    result_node[0]~0 0x3 6e+007 0.24;
+ MuxYpr:inst3;
+  lpm_mux:lpm_mux_component;
+   mux_lmc:auto_generated;
+    result_node[0]~1 0x3 6.3e+007 0.256717;
+ MuxYpr2:inst4;
+  lpm_mux:lpm_mux_component;
+   mux_omc:auto_generated;
+    result_node[0]~6 0x3 0 0;
+    result_node[1]~4 0x3 0 0;
+    result_node[2]~2 0x3 0 0;
+    result_node[3]~0 0x3 0 0;
+ inst9 0x3 0 0;
+ inst10 0x3 0 0;
+ inst10~feeder 0x3 0 0;
+ inst11 0x3 0 0;
+ inst11~feeder 0x3 0 0;
+ inst12 0x3 0 0;
+ inst13 0x3 0 0;
+ inst14 0x3 0 0;
+ inst14~clkctrl 0x3 0 0;
+ X_exit 0x3 0 0;
+
+END_OUTPUT_SIGNAL_INFO;
+
+TOGGLE_PERCENTAGE 22.5806;
+
+PERCENTAGE_OF_TIME_SIGNALS_IN_UNKNOWN_STATE 33.9494;
+

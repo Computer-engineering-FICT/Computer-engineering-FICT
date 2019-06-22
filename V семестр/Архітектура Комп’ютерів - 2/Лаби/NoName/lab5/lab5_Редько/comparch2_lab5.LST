@@ -1,0 +1,285 @@
+A51 MACRO ASSEMBLER  COMPARCH2_LAB5                                                       12/10/2012 22:18:53 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02a
+OBJECT MODULE PLACED IN comparch2_lab5.OBJ
+ASSEMBLER INVOKED BY: E:\Program Files (x86)\Keil\C51\BIN\A51.EXE comparch2_lab5.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     
+                       2     
+                       3     
+                       4     
+                       5     
+                       6     
+                       7     
+                       8     
+                       9     
+                      10     
+                      11     
+                      12     
+                      13     
+                      14     
+                      15             Convert_To_CF MACRO ADR
+                      16             MOV A, ADR
+                      17             CPL A
+                      18             ADD A, #1
+                      19             MOV ADR, A
+                      20             ENDM
+                      21     
+                      22             Convert_To_TF MACRO ADR
+                      23                     Convert_To_CF ADR
+                      24             ENDM
+                      25     
+  002A                26             X1                 EQU 042 
+  0064                27             X2                 EQU 064h 
+                      28     
+  0028                29             Adr_F      EQU 28h
+                      30     
+                      31     
+  0027                32             Adr_Rez_Sub     EQU 27h 
+                      33     
+  0000                34             Bit_s1_X1               EQU 0h
+  0010                35             Bit_s1_X2               EQU 10h
+  0020                36             Bit_s1_Rez_Div  EQU 20h
+  0030                37             Sign_div                EQU 30h
+  0020                38             Adr_s_X1                EQU 20h
+  0021                39             Adr_X1                  EQU 21h 
+  0020                40             Adr_s_X2                EQU 20h
+  0023                41             Adr_X2                  EQU 23h 
+  0024                42             Adr_s_Rez_Div   EQU 24h
+  0025                43             Adr_Rez_Div     EQU 25h
+                      44     
+  00E0                45             Acc0                    EQU 0E0h
+                      46             
+                      47             
+0000 7800             48             MOV R0, #0h
+0002 742A             49             MOV A, #X1
+0004 F2               50             MOVX @R0, A
+0005 08               51             INC R0
+0006 7464             52             MOV A, #X2
+0008 F2               53             MOVX @R0, A
+                      54     
+0009 7800             55             MOV R0, #0h
+000B E2               56             MOVX A, @R0
+000C F521             57             MOV Adr_X1, A
+000E 08               58             INC R0
+A51 MACRO ASSEMBLER  COMPARCH2_LAB5                                                       12/10/2012 22:18:53 PAGE     2
+
+000F E2               59             MOVX A, @R0
+0010 F523             60             MOV Adr_X2, A
+                      61             
+                      62     
+                      63             
+                      64             
+0012 11B0             65             ACALL Subtraction
+0014 852790           66             MOV P1, Adr_Rez_Sub
+0017 1135             67             ACALL Division
+0019 852590           68             MOV P1, Adr_Rez_Div
+001C E525             69             MOV A, Adr_Rez_Div
+001E 2527             70             ADD A, Adr_Rez_Sub
+0020 F528             71             MOV Adr_F, A
+0022 852890           72             MOV P1, Adr_F
+                      73     
+0025 7810             74             MOV R0, #10h
+0027 E527             75             MOV A, Adr_Rez_Sub
+0029 F2               76             MOVX @R0, A
+002A 08               77             INC R0
+002B E525             78             MOV A, Adr_Rez_Div
+002D F2               79             MOVX @R0, A
+002E 08               80             INC R0
+002F E528             81             MOV A, Adr_F
+0031 F2               82             MOVX @R0, A
+0032 08               83             INC R0
+0033 01F3             84             JMP Ended
+                      85     
+                      86     
+0035                  87     Division:
+0035 C023             88             PUSH Adr_X2
+0037 C021             89             PUSH Adr_X1
+0039 752501           90             MOV Adr_Rez_Div, #1h
+                      91     
+003C 300F04           92             JNB 0Fh, X1_positive
+003F D230             93             SETB Sign_div
+0041 C20F             94             CLR 0Fh
+0043                  95     X1_positive:
+                      96     
+0043 301F0B           97             JNB 1Fh, X2_positive
+0046 203004           98             JB Sign_div, sign_plus
+0049 D230             99             SETB Sign_div
+004B 8002            100             JMP label0
+004D                 101     sign_plus:
+004D C230            102             CLR Sign_div
+004F                 103     label0:
+004F C21F            104             CLR 1Fh
+0051                 105     X2_positive:
+                     106             
+                     107     
+0051 C3              108             CLR C
+0052 200010          109             JB Bit_s1_X1, X1_1
+                     110     
+                     111     
+                     112             
+0055 E521            113             MOV A, Adr_X1
+0057 9523            114             SUBB A, Adr_X2
+0059 F521            115             MOV Adr_X1, A
+                     116     
+                     117             
+005B E520            118             MOV A, Adr_s_X1
+005D 9520            119             SUBB A, Adr_s_X2
+005F 5401            120             ANL A, #00000001b
+0061 F520            121             MOV Adr_s_X1, A
+                     122     
+0063 800E            123             JMP shifting
+                     124     
+A51 MACRO ASSEMBLER  COMPARCH2_LAB5                                                       12/10/2012 22:18:53 PAGE     3
+
+0065                 125     X1_1:
+                     126     
+0065 E521            127             MOV A, Adr_X1
+0067 2523            128             ADD A, Adr_X2
+0069 F521            129             MOV Adr_X1, A
+                     130     
+                     131             
+006B E520            132             MOV A, Adr_s_X1
+006D 2520            133             ADD A, Adr_s_X2
+006F 5401            134             ANL A, #00000001b
+0071 F520            135             MOV Adr_s_X1, A
+                     136             
+                     137     
+0073                 138     shifting:       
+0073 C3              139             CLR C
+                     140     
+0074 E521            141             MOV A, Adr_X1
+0076 33              142             RLC A
+0077 C2E0            143             CLR Acc0
+0079 F521            144             MOV Adr_X1, A
+                     145             
+007B 4006            146             JC c1
+007D C200            147             CLR Bit_s1_X1
+007F C2D1            148             CLR PSW.1
+0081 8004            149             JMP label1
+0083                 150     c1:
+0083 D200            151         SETB Bit_s1_X1
+0085 D2D1            152             SETB PSW.1
+0087                 153     label1:
+                     154     
+                     155     ; REZ := l(REZ).NOT RGX[1]
+0087 B3              156             CPL C
+0088 E525            157             MOV A, Adr_Rez_Div
+008A 33              158             RLC A
+008B 20D104          159             JB PSW.1, c0
+008E D2E0            160             SETB Acc0
+0090 8002            161             JMP label2
+0092                 162     c0:
+0092 C2E0            163         CLR Acc0
+0094                 164     label2:
+0094 F525            165             MOV Adr_Rez_Div, A
+                     166     
+                     167             
+0096 E524            168             MOV A, Adr_s_Rez_Div
+0098 33              169             RLC A
+0099 532401          170             ANL Adr_s_Rez_Div, #00000001b
+009C F524            171             MOV Adr_s_Rez_Div, A
+                     172     
+                     173     
+009E 3020B0          174             JNB Bit_s1_Rez_Div, X2_positive
+                     175             
+00A1 D021            176             POP Adr_X1
+00A3 D023            177             POP Adr_X2
+00A5 303007          178             JNB Sign_div, end_div
+                     179             Convert_To_CF Adr_Rez_Div
+00AF                 184     end_div:
+00AF 22              185             RET
+                     186     
+00B0                 187     Subtraction:
+00B0 C023            188             PUSH Adr_X2
+00B2 C021            189             PUSH Adr_X1
+00B4 300F09          190             JNB 0Fh, X1_positiv
+00B7 C20F            191             CLR 0Fh
+                     192             Convert_To_CF Adr_X1    
+00C0                 197     X1_positiv:
+00C0 301F09          198             JNB 1Fh, X2_positiv
+A51 MACRO ASSEMBLER  COMPARCH2_LAB5                                                       12/10/2012 22:18:53 PAGE     4
+
+00C3 C21F            199             CLR 1Fh
+                     200             Convert_To_CF Adr_X2
+                     205             
+00CC                 206     X2_positiv:
+                     207     
+00CC E521            208             MOV A, Adr_X1
+00CE 9523            209             SUBB A, Adr_X2
+00D0 F527            210             MOV Adr_Rez_Sub, A
+                     211     
+00D2 303F09          212             JNB 3Fh, plus
+                     213             Convert_To_TF Adr_Rez_Sub
+                     214+1                   Convert_To_CF Adr_Rez_Sub
+00DC D2D1            219             SETB PSW.1
+00DE                 220     plus:
+00DE C3              221             CLR C
+00DF 13              222             RRC A
+00E0 C3              223             CLR C
+00E1 13              224             RRC A
+00E2 F527            225             MOV Adr_Rez_Sub, A
+                     226     
+00E4 30D107          227             JNB PSW.1, end_sub
+                     228             Convert_To_CF Adr_Rez_Sub
+00EE                 233     end_sub:
+                     234     
+00EE D021            235             POP Adr_X1
+00F0 D023            236             POP Adr_X2
+00F2 22              237             RET     
+                     238     
+00F3                 239     Ended:
+00F3 00              240             NOP
+                     241             END
+A51 MACRO ASSEMBLER  COMPARCH2_LAB5                                                       12/10/2012 22:18:53 PAGE     5
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ACC0 . . . . . . .  N NUMB   00E0H   A   
+ADR_F. . . . . . .  N NUMB   0028H   A   
+ADR_REZ_DIV. . . .  N NUMB   0025H   A   
+ADR_REZ_SUB. . . .  N NUMB   0027H   A   
+ADR_S_REZ_DIV. . .  N NUMB   0024H   A   
+ADR_S_X1 . . . . .  N NUMB   0020H   A   
+ADR_S_X2 . . . . .  N NUMB   0020H   A   
+ADR_X1 . . . . . .  N NUMB   0021H   A   
+ADR_X2 . . . . . .  N NUMB   0023H   A   
+BIT_S1_REZ_DIV . .  N NUMB   0020H   A   
+BIT_S1_X1. . . . .  N NUMB   0000H   A   
+BIT_S1_X2. . . . .  N NUMB   0010H   A   
+C0 . . . . . . . .  C ADDR   0092H   A   
+C1 . . . . . . . .  C ADDR   0083H   A   
+DIVISION . . . . .  C ADDR   0035H   A   
+ENDED. . . . . . .  C ADDR   00F3H   A   
+END_DIV. . . . . .  C ADDR   00AFH   A   
+END_SUB. . . . . .  C ADDR   00EEH   A   
+LABEL0 . . . . . .  C ADDR   004FH   A   
+LABEL1 . . . . . .  C ADDR   0087H   A   
+LABEL2 . . . . . .  C ADDR   0094H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+PLUS . . . . . . .  C ADDR   00DEH   A   
+PSW. . . . . . . .  D ADDR   00D0H   A   
+SHIFTING . . . . .  C ADDR   0073H   A   
+SIGN_DIV . . . . .  N NUMB   0030H   A   
+SIGN_PLUS. . . . .  C ADDR   004DH   A   
+SUBTRACTION. . . .  C ADDR   00B0H   A   
+X1 . . . . . . . .  N NUMB   002AH   A   
+X1_1 . . . . . . .  C ADDR   0065H   A   
+X1_POSITIV . . . .  C ADDR   00C0H   A   
+X1_POSITIVE. . . .  C ADDR   0043H   A   
+X2 . . . . . . . .  N NUMB   0064H   A   
+X2_POSITIV . . . .  C ADDR   00CCH   A   
+X2_POSITIVE. . . .  C ADDR   0051H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

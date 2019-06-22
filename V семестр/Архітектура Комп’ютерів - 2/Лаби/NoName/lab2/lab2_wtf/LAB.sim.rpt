@@ -1,0 +1,541 @@
+Simulator report for LAB
+Tue Dec 13 20:40:38 2011
+Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Simulator Summary
+  3. Simulator Settings
+  4. Simulation Waveforms
+  5. |LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ALTSYNCRAM
+  6. Coverage Summary
+  7. Complete 1/0-Value Coverage
+  8. Missing 1-Value Coverage
+  9. Missing 0-Value Coverage
+ 10. Simulator INI Usage
+ 11. Simulator Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------+
+; Simulator Summary                          ;
++-----------------------------+--------------+
+; Type                        ; Value        ;
++-----------------------------+--------------+
+; Simulation Start Time       ; 0 ps         ;
+; Simulation End Time         ; 10.0 us      ;
+; Simulation Netlist Size     ; 215 nodes    ;
+; Simulation Coverage         ;      80.32 % ;
+; Total Number of Transitions ; 6985         ;
+; Simulation Breakpoints      ; 0            ;
+; Family                      ; Cyclone II   ;
+; Device                      ; EP2C35F672C6 ;
++-----------------------------+--------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Simulator Settings                                                                                                      ;
++--------------------------------------------------------------------------------------------+------------+---------------+
+; Option                                                                                     ; Setting    ; Default Value ;
++--------------------------------------------------------------------------------------------+------------+---------------+
+; Simulation mode                                                                            ; Timing     ; Timing        ;
+; Start time                                                                                 ; 0 ns       ; 0 ns          ;
+; Simulation results format                                                                  ; CVWF       ;               ;
+; Add pins automatically to simulation output waveforms                                      ; On         ; On            ;
+; Check outputs                                                                              ; Off        ; Off           ;
+; Report simulation coverage                                                                 ; On         ; On            ;
+; Display complete 1/0 value coverage report                                                 ; On         ; On            ;
+; Display missing 1-value coverage report                                                    ; On         ; On            ;
+; Display missing 0-value coverage report                                                    ; On         ; On            ;
+; Detect setup and hold time violations                                                      ; Off        ; Off           ;
+; Detect glitches                                                                            ; Off        ; Off           ;
+; Disable timing delays in Timing Simulation                                                 ; Off        ; Off           ;
+; Generate Signal Activity File                                                              ; Off        ; Off           ;
+; Generate VCD File for PowerPlay Power Analyzer                                             ; Off        ; Off           ;
+; Group bus channels in simulation results                                                   ; Off        ; Off           ;
+; Preserve fewer signal transitions to reduce memory requirements                            ; On         ; On            ;
+; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE ; INPUT_EDGE    ;
+; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off        ; Off           ;
+; Overwrite Waveform Inputs With Simulation Outputs                                          ; Off        ;               ;
+; Perform Glitch Filtering in Timing Simulation                                              ; Auto       ; Auto          ;
++--------------------------------------------------------------------------------------------+------------+---------------+
+
+
++----------------------+
+; Simulation Waveforms ;
++----------------------+
+Waveform report data cannot be output to ASCII.
+Please use Quartus II to view the waveform report data.
+
+
++-------------------------------------------------------------------------------------------+
+; |LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ALTSYNCRAM ;
++-------------------------------------------------------------------------------------------+
+Please refer to fitter text-based report (*.fit.rpt) to view logical memory report content in ASCII.
+
+
++--------------------------------------------------------------------+
+; Coverage Summary                                                   ;
++-----------------------------------------------------+--------------+
+; Type                                                ; Value        ;
++-----------------------------------------------------+--------------+
+; Total coverage as a percentage                      ;      80.32 % ;
+; Total nodes checked                                 ; 215          ;
+; Total output ports checked                          ; 249          ;
+; Total output ports with complete 1/0-value coverage ; 200          ;
+; Total output ports with no 1/0-value coverage       ; 20           ;
+; Total output ports with no 1-value coverage         ; 21           ;
+; Total output ports with no 0-value coverage         ; 48           ;
++-----------------------------------------------------+--------------+
+
+
+The following table displays output ports that toggle between 1 and 0 during simulation.
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Complete 1/0-Value Coverage                                                                                                                                                                                           ;
++------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------+------------------+
+; Node Name                                                                                      ; Output Port Name                                                                                  ; Output Port Type ;
++------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------+------------------+
+; |LAB|CTR:inst37|lpm_counter:lpm_counter_component|cntr_h8j:auto_generated|counter_reg_bit1a[3] ; |LAB|CTR:inst37|lpm_counter:lpm_counter_component|cntr_h8j:auto_generated|safe_q[3]               ; regout           ;
+; |LAB|CTR:inst37|lpm_counter:lpm_counter_component|cntr_h8j:auto_generated|counter_reg_bit1a[2] ; |LAB|CTR:inst37|lpm_counter:lpm_counter_component|cntr_h8j:auto_generated|safe_q[2]               ; regout           ;
+; |LAB|CTR:inst37|lpm_counter:lpm_counter_component|cntr_h8j:auto_generated|counter_reg_bit1a[1] ; |LAB|CTR:inst37|lpm_counter:lpm_counter_component|cntr_h8j:auto_generated|safe_q[1]               ; regout           ;
+; |LAB|CTR:inst37|lpm_counter:lpm_counter_component|cntr_h8j:auto_generated|counter_reg_bit1a[0] ; |LAB|CTR:inst37|lpm_counter:lpm_counter_component|cntr_h8j:auto_generated|safe_q[0]               ; regout           ;
+; |LAB|RA:inst10|lpm_ff:lpm_ff_component|dffs[2]                                                 ; |LAB|RA:inst10|lpm_ff:lpm_ff_component|dffs[2]                                                    ; regout           ;
+; |LAB|RA:inst10|lpm_ff:lpm_ff_component|dffs[1]                                                 ; |LAB|RA:inst10|lpm_ff:lpm_ff_component|dffs[1]                                                    ; regout           ;
+; |LAB|RA:inst10|lpm_ff:lpm_ff_component|dffs[0]                                                 ; |LAB|RA:inst10|lpm_ff:lpm_ff_component|dffs[0]                                                    ; regout           ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[14]                                                 ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[14]                                                    ; regout           ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[13]                                                 ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[13]                                                    ; regout           ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[12]                                                 ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[12]                                                    ; regout           ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[11]                                                 ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[11]                                                    ; regout           ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[10]                                                 ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[10]                                                    ; regout           ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[9]                                                  ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[9]                                                     ; regout           ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[8]                                                  ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[8]                                                     ; regout           ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[7]                                                  ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[7]                                                     ; regout           ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[6]                                                  ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[6]                                                     ; regout           ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[5]                                                  ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[5]                                                     ; regout           ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[4]                                                  ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[4]                                                     ; regout           ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[3]                                                  ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[3]                                                     ; regout           ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[2]                                                  ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[2]                                                     ; regout           ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[1]                                                  ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[1]                                                     ; regout           ;
+; |LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0    ; |LAB|RMK:inst11|lpm_ff:lpm_ff_component|dffs[0]                                                   ; portadataout0    ;
+; |LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0    ; |LAB|RMK:inst11|lpm_ff:lpm_ff_component|dffs[1]                                                   ; portadataout1    ;
+; |LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0    ; |LAB|RMK:inst11|lpm_ff:lpm_ff_component|dffs[2]                                                   ; portadataout2    ;
+; |LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0    ; |LAB|RMK:inst11|lpm_ff:lpm_ff_component|dffs[4]                                                   ; portadataout4    ;
+; |LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0    ; |LAB|RMK:inst11|lpm_ff:lpm_ff_component|dffs[5]                                                   ; portadataout5    ;
+; |LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0    ; |LAB|RMK:inst11|lpm_ff:lpm_ff_component|dffs[6]                                                   ; portadataout6    ;
+; |LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0    ; |LAB|RMK:inst11|lpm_ff:lpm_ff_component|dffs[7]                                                   ; portadataout7    ;
+; |LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0    ; |LAB|RMK:inst11|lpm_ff:lpm_ff_component|dffs[8]                                                   ; portadataout8    ;
+; |LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0    ; |LAB|RMK:inst11|lpm_ff:lpm_ff_component|dffs[9]                                                   ; portadataout9    ;
+; |LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0    ; |LAB|RMK:inst11|lpm_ff:lpm_ff_component|dffs[10]                                                  ; portadataout10   ;
+; |LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0    ; |LAB|RMK:inst11|lpm_ff:lpm_ff_component|dffs[11]                                                  ; portadataout11   ;
+; |LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0    ; |LAB|RMK:inst11|lpm_ff:lpm_ff_component|dffs[12]                                                  ; portadataout12   ;
+; |LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0    ; |LAB|RMK:inst11|lpm_ff:lpm_ff_component|dffs[13]                                                  ; portadataout13   ;
+; |LAB|CTR:inst37|lpm_counter:lpm_counter_component|cntr_h8j:auto_generated|counter_comb_bita0   ; |LAB|CTR:inst37|lpm_counter:lpm_counter_component|cntr_h8j:auto_generated|counter_comb_bita0      ; combout          ;
+; |LAB|CTR:inst37|lpm_counter:lpm_counter_component|cntr_h8j:auto_generated|counter_comb_bita0   ; |LAB|CTR:inst37|lpm_counter:lpm_counter_component|cntr_h8j:auto_generated|counter_comb_bita0~COUT ; cout             ;
+; |LAB|CTR:inst37|lpm_counter:lpm_counter_component|cntr_h8j:auto_generated|counter_comb_bita1   ; |LAB|CTR:inst37|lpm_counter:lpm_counter_component|cntr_h8j:auto_generated|counter_comb_bita1      ; combout          ;
+; |LAB|CTR:inst37|lpm_counter:lpm_counter_component|cntr_h8j:auto_generated|counter_comb_bita1   ; |LAB|CTR:inst37|lpm_counter:lpm_counter_component|cntr_h8j:auto_generated|counter_comb_bita1~COUT ; cout             ;
+; |LAB|CTR:inst37|lpm_counter:lpm_counter_component|cntr_h8j:auto_generated|counter_comb_bita2   ; |LAB|CTR:inst37|lpm_counter:lpm_counter_component|cntr_h8j:auto_generated|counter_comb_bita2      ; combout          ;
+; |LAB|CTR:inst37|lpm_counter:lpm_counter_component|cntr_h8j:auto_generated|counter_comb_bita2   ; |LAB|CTR:inst37|lpm_counter:lpm_counter_component|cntr_h8j:auto_generated|counter_comb_bita2~COUT ; cout             ;
+; |LAB|CTR:inst37|lpm_counter:lpm_counter_component|cntr_h8j:auto_generated|counter_comb_bita3   ; |LAB|CTR:inst37|lpm_counter:lpm_counter_component|cntr_h8j:auto_generated|counter_comb_bita3      ; combout          ;
+; |LAB|RA:inst10|lpm_ff:lpm_ff_component|dffs[0]~5                                               ; |LAB|RA:inst10|lpm_ff:lpm_ff_component|dffs[0]~5                                                  ; cout             ;
+; |LAB|RA:inst10|lpm_ff:lpm_ff_component|dffs[0]~6                                               ; |LAB|RA:inst10|lpm_ff:lpm_ff_component|dffs[0]~6                                                  ; combout          ;
+; |LAB|RA:inst10|lpm_ff:lpm_ff_component|dffs[0]~6                                               ; |LAB|RA:inst10|lpm_ff:lpm_ff_component|dffs[0]~7                                                  ; cout             ;
+; |LAB|RA:inst10|lpm_ff:lpm_ff_component|dffs[1]~8                                               ; |LAB|RA:inst10|lpm_ff:lpm_ff_component|dffs[1]~8                                                  ; combout          ;
+; |LAB|RA:inst10|lpm_ff:lpm_ff_component|dffs[1]~8                                               ; |LAB|RA:inst10|lpm_ff:lpm_ff_component|dffs[1]~9                                                  ; cout             ;
+; |LAB|RA:inst10|lpm_ff:lpm_ff_component|dffs[2]~10                                              ; |LAB|RA:inst10|lpm_ff:lpm_ff_component|dffs[2]~10                                                 ; combout          ;
+; |LAB|RA:inst10|lpm_ff:lpm_ff_component|dffs[2]~10                                              ; |LAB|RA:inst10|lpm_ff:lpm_ff_component|dffs[2]~11                                                 ; cout             ;
+; |LAB|RA:inst10|lpm_ff:lpm_ff_component|dffs[3]~12                                              ; |LAB|RA:inst10|lpm_ff:lpm_ff_component|dffs[3]~12                                                 ; combout          ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[0]~16                                               ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[0]~16                                                  ; combout          ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[1]~18                                               ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[1]~18                                                  ; combout          ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[1]~18                                               ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[1]~19                                                  ; cout             ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[2]~20                                               ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[2]~20                                                  ; combout          ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[2]~20                                               ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[2]~21                                                  ; cout             ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[3]~22                                               ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[3]~22                                                  ; combout          ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[3]~22                                               ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[3]~23                                                  ; cout             ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[4]~24                                               ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[4]~24                                                  ; combout          ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[4]~24                                               ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[4]~25                                                  ; cout             ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[5]~26                                               ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[5]~26                                                  ; combout          ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[5]~26                                               ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[5]~27                                                  ; cout             ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[6]~28                                               ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[6]~28                                                  ; combout          ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[6]~28                                               ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[6]~29                                                  ; cout             ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[7]~30                                               ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[7]~30                                                  ; combout          ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[7]~30                                               ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[7]~31                                                  ; cout             ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[8]~32                                               ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[8]~32                                                  ; combout          ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[8]~32                                               ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[8]~33                                                  ; cout             ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[9]~34                                               ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[9]~34                                                  ; combout          ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[9]~34                                               ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[9]~35                                                  ; cout             ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[10]~36                                              ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[10]~36                                                 ; combout          ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[10]~36                                              ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[10]~37                                                 ; cout             ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[11]~38                                              ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[11]~38                                                 ; combout          ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[11]~38                                              ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[11]~39                                                 ; cout             ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[12]~40                                              ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[12]~40                                                 ; combout          ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[12]~40                                              ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[12]~41                                                 ; cout             ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[13]~42                                              ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[13]~42                                                 ; combout          ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[13]~42                                              ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[13]~43                                                 ; cout             ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[14]~44                                              ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[14]~44                                                 ; combout          ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[14]~44                                              ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[14]~45                                                 ; cout             ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[15]~46                                              ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[15]~46                                                 ; combout          ;
+; |LAB|RG2:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[7]                                     ; |LAB|RG2:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[7]                                        ; regout           ;
+; |LAB|RG2:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[6]                                     ; |LAB|RG2:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[6]                                        ; regout           ;
+; |LAB|RG2:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[5]                                     ; |LAB|RG2:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[5]                                        ; regout           ;
+; |LAB|RG2:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[4]                                     ; |LAB|RG2:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[4]                                        ; regout           ;
+; |LAB|RG2:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[3]                                     ; |LAB|RG2:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[3]                                        ; regout           ;
+; |LAB|RG2:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[2]                                     ; |LAB|RG2:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[2]                                        ; regout           ;
+; |LAB|RG2:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[1]                                     ; |LAB|RG2:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[1]                                        ; regout           ;
+; |LAB|RG2:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[0]                                     ; |LAB|RG2:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[0]                                        ; regout           ;
+; |LAB|inst33~0                                                                                  ; |LAB|inst33~0                                                                                     ; combout          ;
+; |LAB|inst33~1                                                                                  ; |LAB|inst33~1                                                                                     ; combout          ;
+; |LAB|inst33~2                                                                                  ; |LAB|inst33~2                                                                                     ; combout          ;
+; |LAB|inst33~3                                                                                  ; |LAB|inst33~3                                                                                     ; combout          ;
+; |LAB|inst33~4                                                                                  ; |LAB|inst33~4                                                                                     ; combout          ;
+; |LAB|inst5~0                                                                                   ; |LAB|inst5~0                                                                                      ; combout          ;
+; |LAB|inst5~1                                                                                   ; |LAB|inst5~1                                                                                      ; combout          ;
+; |LAB|inst5                                                                                     ; |LAB|inst5                                                                                        ; combout          ;
+; |LAB|RGCLK:inst13|lpm_shiftreg:lpm_shiftreg_component|dffs[4]                                  ; |LAB|RGCLK:inst13|lpm_shiftreg:lpm_shiftreg_component|dffs[4]                                     ; regout           ;
+; |LAB|RGCLK:inst13|lpm_shiftreg:lpm_shiftreg_component|dffs[3]                                  ; |LAB|RGCLK:inst13|lpm_shiftreg:lpm_shiftreg_component|dffs[3]                                     ; regout           ;
+; |LAB|RGCLK:inst13|lpm_shiftreg:lpm_shiftreg_component|dffs[2]                                  ; |LAB|RGCLK:inst13|lpm_shiftreg:lpm_shiftreg_component|dffs[2]                                     ; regout           ;
+; |LAB|RGCLK:inst13|lpm_shiftreg:lpm_shiftreg_component|dffs[1]                                  ; |LAB|RGCLK:inst13|lpm_shiftreg:lpm_shiftreg_component|dffs[1]                                     ; regout           ;
+; |LAB|RGCLK:inst13|lpm_shiftreg:lpm_shiftreg_component|dffs[0]                                  ; |LAB|RGCLK:inst13|lpm_shiftreg:lpm_shiftreg_component|dffs[0]                                     ; regout           ;
+; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|dffs[14]                                    ; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|dffs[14]                                       ; regout           ;
+; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|dffs[13]                                    ; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|dffs[13]                                       ; regout           ;
+; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|dffs[12]                                    ; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|dffs[12]                                       ; regout           ;
+; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|dffs[11]                                    ; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|dffs[11]                                       ; regout           ;
+; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|dffs[10]                                    ; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|dffs[10]                                       ; regout           ;
+; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|dffs[9]                                     ; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|dffs[9]                                        ; regout           ;
+; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|dffs[8]                                     ; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|dffs[8]                                        ; regout           ;
+; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|dffs[7]                                     ; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|dffs[7]                                        ; regout           ;
+; |LAB|RG2:inst2|lpm_shiftreg:lpm_shiftreg_component|_~0                                         ; |LAB|RG2:inst2|lpm_shiftreg:lpm_shiftreg_component|_~0                                            ; combout          ;
+; |LAB|RG2:inst2|lpm_shiftreg:lpm_shiftreg_component|_~1                                         ; |LAB|RG2:inst2|lpm_shiftreg:lpm_shiftreg_component|_~1                                            ; combout          ;
+; |LAB|RG2:inst2|lpm_shiftreg:lpm_shiftreg_component|_~2                                         ; |LAB|RG2:inst2|lpm_shiftreg:lpm_shiftreg_component|_~2                                            ; combout          ;
+; |LAB|RG2:inst2|lpm_shiftreg:lpm_shiftreg_component|_~3                                         ; |LAB|RG2:inst2|lpm_shiftreg:lpm_shiftreg_component|_~3                                            ; combout          ;
+; |LAB|RG2:inst2|lpm_shiftreg:lpm_shiftreg_component|_~4                                         ; |LAB|RG2:inst2|lpm_shiftreg:lpm_shiftreg_component|_~4                                            ; combout          ;
+; |LAB|RG2:inst2|lpm_shiftreg:lpm_shiftreg_component|_~5                                         ; |LAB|RG2:inst2|lpm_shiftreg:lpm_shiftreg_component|_~5                                            ; combout          ;
+; |LAB|RG2:inst2|lpm_shiftreg:lpm_shiftreg_component|_~6                                         ; |LAB|RG2:inst2|lpm_shiftreg:lpm_shiftreg_component|_~6                                            ; combout          ;
+; |LAB|RG2:inst2|lpm_shiftreg:lpm_shiftreg_component|_~7                                         ; |LAB|RG2:inst2|lpm_shiftreg:lpm_shiftreg_component|_~7                                            ; combout          ;
+; |LAB|MUX_CTR:inst38|lpm_mux:lpm_mux_component|mux_lmc:auto_generated|result_node[0]~0          ; |LAB|MUX_CTR:inst38|lpm_mux:lpm_mux_component|mux_lmc:auto_generated|result_node[0]~0             ; combout          ;
+; |LAB|MUX_X:inst23|lpm_mux:lpm_mux_component|mux_pmc:auto_generated|result_node[0]~0            ; |LAB|MUX_X:inst23|lpm_mux:lpm_mux_component|mux_pmc:auto_generated|result_node[0]~0               ; combout          ;
+; |LAB|MUX_X:inst23|lpm_mux:lpm_mux_component|mux_pmc:auto_generated|result_node[0]~1            ; |LAB|MUX_X:inst23|lpm_mux:lpm_mux_component|mux_pmc:auto_generated|result_node[0]~1               ; combout          ;
+; |LAB|inst39~0                                                                                  ; |LAB|inst39~0                                                                                     ; combout          ;
+; |LAB|RGCLK:inst13|lpm_shiftreg:lpm_shiftreg_component|_~0                                      ; |LAB|RGCLK:inst13|lpm_shiftreg:lpm_shiftreg_component|_~0                                         ; combout          ;
+; |LAB|RGCLK:inst13|lpm_shiftreg:lpm_shiftreg_component|_~1                                      ; |LAB|RGCLK:inst13|lpm_shiftreg:lpm_shiftreg_component|_~1                                         ; combout          ;
+; |LAB|RGCLK:inst13|lpm_shiftreg:lpm_shiftreg_component|_~2                                      ; |LAB|RGCLK:inst13|lpm_shiftreg:lpm_shiftreg_component|_~2                                         ; combout          ;
+; |LAB|RGCLK:inst13|lpm_shiftreg:lpm_shiftreg_component|_~3                                      ; |LAB|RGCLK:inst13|lpm_shiftreg:lpm_shiftreg_component|_~3                                         ; combout          ;
+; |LAB|RGCLK:inst13|lpm_shiftreg:lpm_shiftreg_component|_~4                                      ; |LAB|RGCLK:inst13|lpm_shiftreg:lpm_shiftreg_component|_~4                                         ; combout          ;
+; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|_~0                                         ; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|_~0                                            ; combout          ;
+; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|_~1                                         ; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|_~1                                            ; combout          ;
+; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|_~2                                         ; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|_~2                                            ; combout          ;
+; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|_~3                                         ; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|_~3                                            ; combout          ;
+; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|_~4                                         ; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|_~4                                            ; combout          ;
+; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|_~5                                         ; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|_~5                                            ; combout          ;
+; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|_~6                                         ; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|_~6                                            ; combout          ;
+; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|_~7                                         ; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|_~7                                            ; combout          ;
+; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|_~8                                         ; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|_~8                                            ; combout          ;
+; |LAB|inst6                                                                                     ; |LAB|inst6                                                                                        ; combout          ;
+; |LAB|inst42                                                                                    ; |LAB|inst42                                                                                       ; combout          ;
+; |LAB|inst35                                                                                    ; |LAB|inst35                                                                                       ; combout          ;
+; |LAB|X1                                                                                        ; |LAB|X1                                                                                           ; padio            ;
+; |LAB|RG2[7]                                                                                    ; |LAB|RG2[7]                                                                                       ; padio            ;
+; |LAB|RG2[6]                                                                                    ; |LAB|RG2[6]                                                                                       ; padio            ;
+; |LAB|RG2[5]                                                                                    ; |LAB|RG2[5]                                                                                       ; padio            ;
+; |LAB|RG2[4]                                                                                    ; |LAB|RG2[4]                                                                                       ; padio            ;
+; |LAB|RG2[3]                                                                                    ; |LAB|RG2[3]                                                                                       ; padio            ;
+; |LAB|RG2[2]                                                                                    ; |LAB|RG2[2]                                                                                       ; padio            ;
+; |LAB|RG2[1]                                                                                    ; |LAB|RG2[1]                                                                                       ; padio            ;
+; |LAB|RG2[0]                                                                                    ; |LAB|RG2[0]                                                                                       ; padio            ;
+; |LAB|RMK[13]                                                                                   ; |LAB|RMK[13]                                                                                      ; padio            ;
+; |LAB|RMK[12]                                                                                   ; |LAB|RMK[12]                                                                                      ; padio            ;
+; |LAB|RMK[11]                                                                                   ; |LAB|RMK[11]                                                                                      ; padio            ;
+; |LAB|RMK[10]                                                                                   ; |LAB|RMK[10]                                                                                      ; padio            ;
+; |LAB|RMK[9]                                                                                    ; |LAB|RMK[9]                                                                                       ; padio            ;
+; |LAB|RMK[8]                                                                                    ; |LAB|RMK[8]                                                                                       ; padio            ;
+; |LAB|RMK[7]                                                                                    ; |LAB|RMK[7]                                                                                       ; padio            ;
+; |LAB|RMK[6]                                                                                    ; |LAB|RMK[6]                                                                                       ; padio            ;
+; |LAB|RMK[5]                                                                                    ; |LAB|RMK[5]                                                                                       ; padio            ;
+; |LAB|RMK[4]                                                                                    ; |LAB|RMK[4]                                                                                       ; padio            ;
+; |LAB|RMK[2]                                                                                    ; |LAB|RMK[2]                                                                                       ; padio            ;
+; |LAB|RMK[1]                                                                                    ; |LAB|RMK[1]                                                                                       ; padio            ;
+; |LAB|RMK[0]                                                                                    ; |LAB|RMK[0]                                                                                       ; padio            ;
+; |LAB|B4                                                                                        ; |LAB|B4                                                                                           ; padio            ;
+; |LAB|CTR[3]                                                                                    ; |LAB|CTR[3]                                                                                       ; padio            ;
+; |LAB|CTR[2]                                                                                    ; |LAB|CTR[2]                                                                                       ; padio            ;
+; |LAB|CTR[1]                                                                                    ; |LAB|CTR[1]                                                                                       ; padio            ;
+; |LAB|CTR[0]                                                                                    ; |LAB|CTR[0]                                                                                       ; padio            ;
+; |LAB|RA[2]                                                                                     ; |LAB|RA[2]                                                                                        ; padio            ;
+; |LAB|RA[1]                                                                                     ; |LAB|RA[1]                                                                                        ; padio            ;
+; |LAB|RA[0]                                                                                     ; |LAB|RA[0]                                                                                        ; padio            ;
+; |LAB|X2                                                                                        ; |LAB|X2                                                                                           ; padio            ;
+; |LAB|CLOCK[4]                                                                                  ; |LAB|CLOCK[4]                                                                                     ; padio            ;
+; |LAB|CLOCK[3]                                                                                  ; |LAB|CLOCK[3]                                                                                     ; padio            ;
+; |LAB|CLOCK[2]                                                                                  ; |LAB|CLOCK[2]                                                                                     ; padio            ;
+; |LAB|CLOCK[1]                                                                                  ; |LAB|CLOCK[1]                                                                                     ; padio            ;
+; |LAB|CLOCK[0]                                                                                  ; |LAB|CLOCK[0]                                                                                     ; padio            ;
+; |LAB|RG1[14]                                                                                   ; |LAB|RG1[14]                                                                                      ; padio            ;
+; |LAB|RG1[13]                                                                                   ; |LAB|RG1[13]                                                                                      ; padio            ;
+; |LAB|RG1[12]                                                                                   ; |LAB|RG1[12]                                                                                      ; padio            ;
+; |LAB|RG1[11]                                                                                   ; |LAB|RG1[11]                                                                                      ; padio            ;
+; |LAB|RG1[10]                                                                                   ; |LAB|RG1[10]                                                                                      ; padio            ;
+; |LAB|RG1[9]                                                                                    ; |LAB|RG1[9]                                                                                       ; padio            ;
+; |LAB|RG1[8]                                                                                    ; |LAB|RG1[8]                                                                                       ; padio            ;
+; |LAB|RG1[7]                                                                                    ; |LAB|RG1[7]                                                                                       ; padio            ;
+; |LAB|RG1[6]                                                                                    ; |LAB|RG1[6]                                                                                       ; padio            ;
+; |LAB|RG1[5]                                                                                    ; |LAB|RG1[5]                                                                                       ; padio            ;
+; |LAB|RG1[4]                                                                                    ; |LAB|RG1[4]                                                                                       ; padio            ;
+; |LAB|RG1[3]                                                                                    ; |LAB|RG1[3]                                                                                       ; padio            ;
+; |LAB|RG1[2]                                                                                    ; |LAB|RG1[2]                                                                                       ; padio            ;
+; |LAB|RG1[1]                                                                                    ; |LAB|RG1[1]                                                                                       ; padio            ;
+; |LAB|RG3[14]                                                                                   ; |LAB|RG3[14]                                                                                      ; padio            ;
+; |LAB|RG3[13]                                                                                   ; |LAB|RG3[13]                                                                                      ; padio            ;
+; |LAB|RG3[12]                                                                                   ; |LAB|RG3[12]                                                                                      ; padio            ;
+; |LAB|RG3[11]                                                                                   ; |LAB|RG3[11]                                                                                      ; padio            ;
+; |LAB|RG3[10]                                                                                   ; |LAB|RG3[10]                                                                                      ; padio            ;
+; |LAB|RG3[9]                                                                                    ; |LAB|RG3[9]                                                                                       ; padio            ;
+; |LAB|RG3[8]                                                                                    ; |LAB|RG3[8]                                                                                       ; padio            ;
+; |LAB|RG3[7]                                                                                    ; |LAB|RG3[7]                                                                                       ; padio            ;
+; |LAB|CLK                                                                                       ; |LAB|CLK~corein                                                                                   ; combout          ;
+; |LAB|RGCLK:inst13|lpm_shiftreg:lpm_shiftreg_component|dffs[4]~clkctrl                          ; |LAB|RGCLK:inst13|lpm_shiftreg:lpm_shiftreg_component|dffs[4]~clkctrl                             ; outclk           ;
+; |LAB|RMK:inst11|lpm_ff:lpm_ff_component|dffs[6]~clkctrl                                        ; |LAB|RMK:inst11|lpm_ff:lpm_ff_component|dffs[6]~clkctrl                                           ; outclk           ;
+; |LAB|inst6~clkctrl                                                                             ; |LAB|inst6~clkctrl                                                                                ; outclk           ;
+; |LAB|inst35~clkctrl                                                                            ; |LAB|inst35~clkctrl                                                                               ; outclk           ;
++------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------+------------------+
+
+
+The following table displays output ports that do not toggle to 1 during simulation.
++------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Missing 1-Value Coverage                                                                                                                                         ;
++---------------------------------------------------------------------------------------------+-------------------------------------------------+------------------+
+; Node Name                                                                                   ; Output Port Name                                ; Output Port Type ;
++---------------------------------------------------------------------------------------------+-------------------------------------------------+------------------+
+; |LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0 ; |LAB|RMK:inst11|lpm_ff:lpm_ff_component|dffs[3] ; portadataout3    ;
+; |LAB|~GND                                                                                   ; |LAB|~GND                                       ; combout          ;
+; |LAB|RMK[3]                                                                                 ; |LAB|RMK[3]                                     ; padio            ;
+; |LAB|RG3[15]                                                                                ; |LAB|RG3[15]                                    ; padio            ;
+; |LAB|dataRG2[7]                                                                             ; |LAB|dataRG2[7]~corein                          ; combout          ;
+; |LAB|dataRG2[6]                                                                             ; |LAB|dataRG2[6]~corein                          ; combout          ;
+; |LAB|dataRG2[5]                                                                             ; |LAB|dataRG2[5]~corein                          ; combout          ;
+; |LAB|dataRG2[4]                                                                             ; |LAB|dataRG2[4]~corein                          ; combout          ;
+; |LAB|dataRG2[3]                                                                             ; |LAB|dataRG2[3]~corein                          ; combout          ;
+; |LAB|dataRG2[2]                                                                             ; |LAB|dataRG2[2]~corein                          ; combout          ;
+; |LAB|dataRG2[1]                                                                             ; |LAB|dataRG2[1]~corein                          ; combout          ;
+; |LAB|dataRG2[0]                                                                             ; |LAB|dataRG2[0]~corein                          ; combout          ;
+; |LAB|loadC                                                                                  ; |LAB|loadC~corein                               ; combout          ;
+; |LAB|dataRG3[14]                                                                            ; |LAB|dataRG3[14]~corein                         ; combout          ;
+; |LAB|dataRG3[13]                                                                            ; |LAB|dataRG3[13]~corein                         ; combout          ;
+; |LAB|dataRG3[12]                                                                            ; |LAB|dataRG3[12]~corein                         ; combout          ;
+; |LAB|dataRG3[11]                                                                            ; |LAB|dataRG3[11]~corein                         ; combout          ;
+; |LAB|dataRG3[10]                                                                            ; |LAB|dataRG3[10]~corein                         ; combout          ;
+; |LAB|dataRG3[9]                                                                             ; |LAB|dataRG3[9]~corein                          ; combout          ;
+; |LAB|dataRG3[8]                                                                             ; |LAB|dataRG3[8]~corein                          ; combout          ;
+; |LAB|dataRG3[7]                                                                             ; |LAB|dataRG3[7]~corein                          ; combout          ;
++---------------------------------------------------------------------------------------------+-------------------------------------------------+------------------+
+
+
+The following table displays output ports that do not toggle to 0 during simulation.
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Missing 0-Value Coverage                                                                                                                                                    ;
++---------------------------------------------------------------------------------------------+------------------------------------------------------------+------------------+
+; Node Name                                                                                   ; Output Port Name                                           ; Output Port Type ;
++---------------------------------------------------------------------------------------------+------------------------------------------------------------+------------------+
+; |LAB|RA:inst10|lpm_ff:lpm_ff_component|dffs[3]                                              ; |LAB|RA:inst10|lpm_ff:lpm_ff_component|dffs[3]             ; regout           ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[15]                                              ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[15]             ; regout           ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[0]                                               ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[0]              ; regout           ;
+; |LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0 ; |LAB|RMK:inst11|lpm_ff:lpm_ff_component|dffs[3]            ; portadataout3    ;
+; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[0]~16                                            ; |LAB|RG1:inst|lpm_ff:lpm_ff_component|dffs[0]~17           ; cout             ;
+; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|dffs[6]                                  ; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|dffs[6] ; regout           ;
+; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|dffs[5]                                  ; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|dffs[5] ; regout           ;
+; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|dffs[4]                                  ; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|dffs[4] ; regout           ;
+; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|dffs[3]                                  ; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|dffs[3] ; regout           ;
+; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|dffs[2]                                  ; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|dffs[2] ; regout           ;
+; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|dffs[1]                                  ; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|dffs[1] ; regout           ;
+; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|dffs[0]                                  ; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|dffs[0] ; regout           ;
+; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|_~9                                      ; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|_~9     ; combout          ;
+; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|_~10                                     ; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|_~10    ; combout          ;
+; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|_~11                                     ; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|_~11    ; combout          ;
+; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|_~12                                     ; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|_~12    ; combout          ;
+; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|_~13                                     ; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|_~13    ; combout          ;
+; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|_~14                                     ; |LAB|RG3:inst1|lpm_shiftreg:lpm_shiftreg_component|_~14    ; combout          ;
+; |LAB|~GND                                                                                   ; |LAB|~GND                                                  ; combout          ;
+; |LAB|RMK[3]                                                                                 ; |LAB|RMK[3]                                                ; padio            ;
+; |LAB|RA[3]                                                                                  ; |LAB|RA[3]                                                 ; padio            ;
+; |LAB|RG1[15]                                                                                ; |LAB|RG1[15]                                               ; padio            ;
+; |LAB|RG1[0]                                                                                 ; |LAB|RG1[0]                                                ; padio            ;
+; |LAB|RG3[15]                                                                                ; |LAB|RG3[15]                                               ; padio            ;
+; |LAB|RG3[6]                                                                                 ; |LAB|RG3[6]                                                ; padio            ;
+; |LAB|RG3[5]                                                                                 ; |LAB|RG3[5]                                                ; padio            ;
+; |LAB|RG3[4]                                                                                 ; |LAB|RG3[4]                                                ; padio            ;
+; |LAB|RG3[3]                                                                                 ; |LAB|RG3[3]                                                ; padio            ;
+; |LAB|RG3[2]                                                                                 ; |LAB|RG3[2]                                                ; padio            ;
+; |LAB|RG3[1]                                                                                 ; |LAB|RG3[1]                                                ; padio            ;
+; |LAB|RG3[0]                                                                                 ; |LAB|RG3[0]                                                ; padio            ;
+; |LAB|SELECT_ADRESS                                                                          ; |LAB|SELECT_ADRESS~corein                                  ; combout          ;
+; |LAB|dataRG2[7]                                                                             ; |LAB|dataRG2[7]~corein                                     ; combout          ;
+; |LAB|dataRG2[6]                                                                             ; |LAB|dataRG2[6]~corein                                     ; combout          ;
+; |LAB|dataRG2[5]                                                                             ; |LAB|dataRG2[5]~corein                                     ; combout          ;
+; |LAB|dataRG2[4]                                                                             ; |LAB|dataRG2[4]~corein                                     ; combout          ;
+; |LAB|dataRG2[3]                                                                             ; |LAB|dataRG2[3]~corein                                     ; combout          ;
+; |LAB|dataRG2[2]                                                                             ; |LAB|dataRG2[2]~corein                                     ; combout          ;
+; |LAB|dataRG2[1]                                                                             ; |LAB|dataRG2[1]~corein                                     ; combout          ;
+; |LAB|dataRG2[0]                                                                             ; |LAB|dataRG2[0]~corein                                     ; combout          ;
+; |LAB|dataRG3[14]                                                                            ; |LAB|dataRG3[14]~corein                                    ; combout          ;
+; |LAB|dataRG3[13]                                                                            ; |LAB|dataRG3[13]~corein                                    ; combout          ;
+; |LAB|dataRG3[12]                                                                            ; |LAB|dataRG3[12]~corein                                    ; combout          ;
+; |LAB|dataRG3[11]                                                                            ; |LAB|dataRG3[11]~corein                                    ; combout          ;
+; |LAB|dataRG3[10]                                                                            ; |LAB|dataRG3[10]~corein                                    ; combout          ;
+; |LAB|dataRG3[9]                                                                             ; |LAB|dataRG3[9]~corein                                     ; combout          ;
+; |LAB|dataRG3[8]                                                                             ; |LAB|dataRG3[8]~corein                                     ; combout          ;
+; |LAB|dataRG3[7]                                                                             ; |LAB|dataRG3[7]~corein                                     ; combout          ;
++---------------------------------------------------------------------------------------------+------------------------------------------------------------+------------------+
+
+
++---------------------+
+; Simulator INI Usage ;
++--------+------------+
+; Option ; Usage      ;
++--------+------------+
+
+
++--------------------+
+; Simulator Messages ;
++--------------------+
+Info: *******************************************************************
+Info: Running Quartus II Simulator
+    Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+    Info: Processing started: Tue Dec 13 20:40:35 2011
+Info: Command: quartus_sim --read_settings_files=on --write_settings_files=off LAB -c LAB
+Info: Using vector source file "D:/LAB2/LAB.vwf"
+Info: Option to preserve fewer signal transitions to reduce memory requirements is enabled
+    Info: Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
+Warning: Found clock high time violation at 194.29 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS0"
+Warning: Found clock high time violation at 194.29 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS1"
+Warning: Found clock high time violation at 194.29 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS2"
+Warning: Found clock high time violation at 194.29 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS3"
+Warning: Found clock high time violation at 294.47 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS0"
+Warning: Found clock high time violation at 294.47 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS1"
+Warning: Found clock high time violation at 294.47 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS2"
+Warning: Found clock high time violation at 294.47 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS3"
+Warning: Found clock high time violation at 394.2 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS0"
+Warning: Found clock high time violation at 394.2 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS1"
+Warning: Found clock high time violation at 394.2 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS2"
+Warning: Found clock high time violation at 394.2 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS3"
+Warning: Found clock high time violation at 994.59 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS0"
+Warning: Found clock high time violation at 994.59 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS1"
+Warning: Found clock high time violation at 994.59 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS2"
+Warning: Found clock high time violation at 994.59 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS3"
+Warning: Found clock high time violation at 1094.21 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS0"
+Warning: Found clock high time violation at 1094.21 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS1"
+Warning: Found clock high time violation at 1094.21 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS2"
+Warning: Found clock high time violation at 1094.21 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS3"
+Warning: Found clock high time violation at 1194.2 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS0"
+Warning: Found clock high time violation at 1194.2 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS1"
+Warning: Found clock high time violation at 1194.2 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS2"
+Warning: Found clock high time violation at 1194.2 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS3"
+Warning: Found clock high time violation at 1794.59 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS0"
+Warning: Found clock high time violation at 1794.59 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS1"
+Warning: Found clock high time violation at 1794.59 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS2"
+Warning: Found clock high time violation at 1794.59 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS3"
+Warning: Found clock high time violation at 1894.21 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS0"
+Warning: Found clock high time violation at 1894.21 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS1"
+Warning: Found clock high time violation at 1894.21 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS2"
+Warning: Found clock high time violation at 1894.21 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS3"
+Warning: Found clock high time violation at 1994.2 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS0"
+Warning: Found clock high time violation at 1994.2 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS1"
+Warning: Found clock high time violation at 1994.2 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS2"
+Warning: Found clock high time violation at 1994.2 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS3"
+Warning: Found clock high time violation at 2594.59 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS0"
+Warning: Found clock high time violation at 2594.59 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS1"
+Warning: Found clock high time violation at 2594.59 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS2"
+Warning: Found clock high time violation at 2594.59 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS3"
+Warning: Found clock high time violation at 2694.21 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS0"
+Warning: Found clock high time violation at 2694.21 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS1"
+Warning: Found clock high time violation at 2694.21 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS2"
+Warning: Found clock high time violation at 2694.21 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS3"
+Warning: Found clock high time violation at 2794.2 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS0"
+Warning: Found clock high time violation at 2794.2 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS1"
+Warning: Found clock high time violation at 2794.2 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS2"
+Warning: Found clock high time violation at 2794.2 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS3"
+Warning: Found clock high time violation at 3394.59 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS0"
+Warning: Found clock high time violation at 3394.59 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS1"
+Warning: Found clock high time violation at 3394.59 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS2"
+Warning: Found clock high time violation at 3394.59 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS3"
+Warning: Found clock high time violation at 3494.21 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS0"
+Warning: Found clock high time violation at 3494.21 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS1"
+Warning: Found clock high time violation at 3494.21 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS2"
+Warning: Found clock high time violation at 3494.21 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS3"
+Warning: Found clock high time violation at 3594.2 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS0"
+Warning: Found clock high time violation at 3594.2 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS1"
+Warning: Found clock high time violation at 3594.2 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS2"
+Warning: Found clock high time violation at 3594.2 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS3"
+Warning: Found clock high time violation at 4194.59 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS0"
+Warning: Found clock high time violation at 4194.59 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS1"
+Warning: Found clock high time violation at 4194.59 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS2"
+Warning: Found clock high time violation at 4194.59 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS3"
+Warning: Found clock high time violation at 4294.21 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS0"
+Warning: Found clock high time violation at 4294.21 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS1"
+Warning: Found clock high time violation at 4294.21 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS2"
+Warning: Found clock high time violation at 4294.21 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS3"
+Warning: Found clock high time violation at 4394.2 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS0"
+Warning: Found clock high time violation at 4394.2 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS1"
+Warning: Found clock high time violation at 4394.2 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS2"
+Warning: Found clock high time violation at 4394.2 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS3"
+Warning: Found clock high time violation at 4994.59 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS0"
+Warning: Found clock high time violation at 4994.59 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS1"
+Warning: Found clock high time violation at 4994.59 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS2"
+Warning: Found clock high time violation at 4994.59 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS3"
+Warning: Found clock high time violation at 5094.21 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS0"
+Warning: Found clock high time violation at 5094.21 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS1"
+Warning: Found clock high time violation at 5094.21 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS2"
+Warning: Found clock high time violation at 5094.21 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS3"
+Warning: Found clock high time violation at 5194.2 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS0"
+Warning: Found clock high time violation at 5194.2 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS1"
+Warning: Found clock high time violation at 5194.2 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS2"
+Warning: Found clock high time violation at 5194.2 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS3"
+Warning: Found clock high time violation at 5794.59 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS0"
+Warning: Found clock high time violation at 5794.59 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS1"
+Warning: Found clock high time violation at 5794.59 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS2"
+Warning: Found clock high time violation at 5794.59 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS3"
+Warning: Found clock high time violation at 5894.21 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS0"
+Warning: Found clock high time violation at 5894.21 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS1"
+Warning: Found clock high time violation at 5894.21 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS2"
+Warning: Found clock high time violation at 5894.21 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS3"
+Warning: Found clock high time violation at 5994.2 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS0"
+Warning: Found clock high time violation at 5994.2 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS1"
+Warning: Found clock high time violation at 5994.2 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS2"
+Warning: Found clock high time violation at 5994.2 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS3"
+Warning: Found clock high time violation at 6594.59 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS0"
+Warning: Found clock high time violation at 6594.59 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS1"
+Warning: Found clock high time violation at 6594.59 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS2"
+Warning: Found clock high time violation at 6594.59 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS3"
+Warning: Found clock high time violation at 6694.21 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS0"
+Warning: Found clock high time violation at 6694.21 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS1"
+Warning: Found clock high time violation at 6694.21 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS2"
+Warning: Found clock high time violation at 6694.21 ns on register "|LAB|ROM:inst12|altsyncram:altsyncram_component|altsyncram_lg71:auto_generated|ram_block1a0~_SIM_24PORT_A_ADDRESS3"
+Info: Simulation partitioned into 1 sub-simulations
+Info: Simulation coverage is      80.32 %
+Info: Number of transitions in simulation is 6985
+Info: Quartus II Simulator was successful. 0 errors, 104 warnings
+    Info: Peak virtual memory: 154 megabytes
+    Info: Processing ended: Tue Dec 13 20:40:38 2011
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:01
+
+

@@ -1,0 +1,355 @@
+Simulator report for SQRT
+Fri Dec 20 06:53:36 2013
+Quartus II Version 9.1 Build 222 10/21/2009 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Simulator Summary
+  3. Simulator Settings
+  4. Simulation Waveforms
+  5. |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|ALTSYNCRAM
+  6. Coverage Summary
+  7. Complete 1/0-Value Coverage
+  8. Missing 1-Value Coverage
+  9. Missing 0-Value Coverage
+ 10. Simulator INI Usage
+ 11. Simulator Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2009 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------+
+; Simulator Summary                          ;
++-----------------------------+--------------+
+; Type                        ; Value        ;
++-----------------------------+--------------+
+; Simulation Start Time       ; 0 ps         ;
+; Simulation End Time         ; 2.8 us       ;
+; Simulation Netlist Size     ; 148 nodes    ;
+; Simulation Coverage         ;      90.91 % ;
+; Total Number of Transitions ; 9104         ;
+; Simulation Breakpoints      ; 0            ;
+; Family                      ; Cyclone II   ;
+; Device                      ; EP2C35F672C6 ;
++-----------------------------+--------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Simulator Settings                                                                                                      ;
++--------------------------------------------------------------------------------------------+------------+---------------+
+; Option                                                                                     ; Setting    ; Default Value ;
++--------------------------------------------------------------------------------------------+------------+---------------+
+; Simulation mode                                                                            ; Timing     ; Timing        ;
+; Start time                                                                                 ; 0 ns       ; 0 ns          ;
+; Simulation results format                                                                  ; CVWF       ;               ;
+; Vector input source                                                                        ; SQRT.vwf   ;               ;
+; Add pins automatically to simulation output waveforms                                      ; On         ; On            ;
+; Check outputs                                                                              ; Off        ; Off           ;
+; Report simulation coverage                                                                 ; On         ; On            ;
+; Display complete 1/0 value coverage report                                                 ; On         ; On            ;
+; Display missing 1-value coverage report                                                    ; On         ; On            ;
+; Display missing 0-value coverage report                                                    ; On         ; On            ;
+; Detect setup and hold time violations                                                      ; Off        ; Off           ;
+; Detect glitches                                                                            ; Off        ; Off           ;
+; Disable timing delays in Timing Simulation                                                 ; Off        ; Off           ;
+; Generate Signal Activity File                                                              ; Off        ; Off           ;
+; Generate VCD File for PowerPlay Power Analyzer                                             ; Off        ; Off           ;
+; Group bus channels in simulation results                                                   ; Off        ; Off           ;
+; Preserve fewer signal transitions to reduce memory requirements                            ; On         ; On            ;
+; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE ; INPUT_EDGE    ;
+; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off        ; Off           ;
+; Overwrite Waveform Inputs With Simulation Outputs                                          ; Off        ;               ;
+; Perform Glitch Filtering in Timing Simulation                                              ; Auto       ; Auto          ;
++--------------------------------------------------------------------------------------------+------------+---------------+
+
+
++----------------------+
+; Simulation Waveforms ;
++----------------------+
+Waveform report data cannot be output to ASCII.
+Please use Quartus II to view the waveform report data.
+
+
++----------------------------------------------------------------------------------------------------+
+; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|ALTSYNCRAM ;
++----------------------------------------------------------------------------------------------------+
+Please refer to fitter text-based report (*.fit.rpt) to view logical memory report content in ASCII.
+
+
++--------------------------------------------------------------------+
+; Coverage Summary                                                   ;
++-----------------------------------------------------+--------------+
+; Type                                                ; Value        ;
++-----------------------------------------------------+--------------+
+; Total coverage as a percentage                      ;      90.91 % ;
+; Total nodes checked                                 ; 148          ;
+; Total output ports checked                          ; 176          ;
+; Total output ports with complete 1/0-value coverage ; 160          ;
+; Total output ports with no 1/0-value coverage       ; 10           ;
+; Total output ports with no 1-value coverage         ; 11           ;
+; Total output ports with no 0-value coverage         ; 15           ;
++-----------------------------------------------------+--------------+
+
+
+The following table displays output ports that toggle between 1 and 0 during simulation.
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Complete 1/0-Value Coverage                                                                                                                                                                                                                 ;
++-----------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+------------------+
+; Node Name                                                                                                 ; Output Port Name                                                                                             ; Output Port Type ;
++-----------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+------------------+
+; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|ram_block1a0      ; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|q_a[0]               ; portadataout0    ;
+; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|ram_block1a0      ; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|q_a[2]               ; portadataout2    ;
+; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|ram_block1a0      ; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|q_a[4]               ; portadataout4    ;
+; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|ram_block1a0      ; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|q_a[5]               ; portadataout5    ;
+; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|ram_block1a0      ; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|q_a[6]               ; portadataout6    ;
+; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|ram_block1a0      ; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|q_a[7]               ; portadataout7    ;
+; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|ram_block1a0      ; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|q_a[8]               ; portadataout8    ;
+; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|ram_block1a0      ; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|q_a[9]               ; portadataout9    ;
+; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|ram_block1a0      ; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|q_a[10]              ; portadataout10   ;
+; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|ram_block1a0      ; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|q_a[11]              ; portadataout11   ;
+; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|ram_block1a0      ; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|q_a[12]              ; portadataout12   ;
+; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|ram_block1a0      ; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|q_a[13]              ; portadataout13   ;
+; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|ram_block1a0      ; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|q_a[14]              ; portadataout14   ;
+; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|ram_block1a0      ; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|q_a[15]              ; portadataout15   ;
+; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|ram_block1a0      ; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|q_a[16]              ; portadataout16   ;
+; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|ram_block1a0      ; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|q_a[17]              ; portadataout17   ;
+; |SQRT|ALP:inst1|ShiftReg10:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[9]                              ; |SQRT|ALP:inst1|ShiftReg10:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[9]                                 ; regout           ;
+; |SQRT|ALP:inst1|ShiftReg10:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[8]                              ; |SQRT|ALP:inst1|ShiftReg10:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[8]                                 ; regout           ;
+; |SQRT|ALP:inst1|ShiftReg10:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[7]                              ; |SQRT|ALP:inst1|ShiftReg10:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[7]                                 ; regout           ;
+; |SQRT|ALP:inst1|ShiftReg10:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[6]                              ; |SQRT|ALP:inst1|ShiftReg10:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[6]                                 ; regout           ;
+; |SQRT|ALP:inst1|ShiftReg10:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[5]                              ; |SQRT|ALP:inst1|ShiftReg10:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[5]                                 ; regout           ;
+; |SQRT|ALP:inst1|ShiftReg10:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[4]                              ; |SQRT|ALP:inst1|ShiftReg10:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[4]                                 ; regout           ;
+; |SQRT|ALP:inst1|ShiftReg10:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[3]                              ; |SQRT|ALP:inst1|ShiftReg10:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[3]                                 ; regout           ;
+; |SQRT|ALP:inst1|ShiftReg10:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[2]                              ; |SQRT|ALP:inst1|ShiftReg10:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[2]                                 ; regout           ;
+; |SQRT|ALP:inst1|ShiftReg10:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[1]                              ; |SQRT|ALP:inst1|ShiftReg10:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[1]                                 ; regout           ;
+; |SQRT|ALP:inst1|ShiftReg10:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[0]                              ; |SQRT|ALP:inst1|ShiftReg10:inst3|lpm_shiftreg:lpm_shiftreg_component|dffs[0]                                 ; regout           ;
+; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[0]~1      ; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[0]~1         ; cout             ;
+; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[1]~2      ; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[1]~2         ; combout          ;
+; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[1]~2      ; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[1]~3         ; cout             ;
+; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[2]~4      ; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[2]~4         ; combout          ;
+; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[2]~4      ; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[2]~5         ; cout             ;
+; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[3]~6      ; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[3]~6         ; combout          ;
+; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[3]~6      ; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[3]~7         ; cout             ;
+; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[4]~8      ; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[4]~8         ; combout          ;
+; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[4]~8      ; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[4]~9         ; cout             ;
+; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[5]~10     ; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[5]~10        ; combout          ;
+; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[5]~10     ; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[5]~11        ; cout             ;
+; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[6]~12     ; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[6]~12        ; combout          ;
+; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[6]~12     ; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[6]~13        ; cout             ;
+; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[7]~14     ; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[7]~14        ; combout          ;
+; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[7]~14     ; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[7]~15        ; cout             ;
+; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[8]~16     ; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[8]~16        ; combout          ;
+; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[8]~16     ; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[8]~17        ; cout             ;
+; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[9]~18     ; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|result[9]~18        ; combout          ;
+; |SQRT|BMU:inst|Beta3:inst4|lpm_counter:lpm_counter_component|cntr_s8j:auto_generated|counter_reg_bit1a[3] ; |SQRT|BMU:inst|Beta3:inst4|lpm_counter:lpm_counter_component|cntr_s8j:auto_generated|safe_q[3]               ; regout           ;
+; |SQRT|ALP:inst1|ShiftReg8:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[7]                               ; |SQRT|ALP:inst1|ShiftReg8:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[7]                                  ; regout           ;
+; |SQRT|BMU:inst|Beta3:inst4|lpm_counter:lpm_counter_component|cntr_s8j:auto_generated|counter_reg_bit1a[2] ; |SQRT|BMU:inst|Beta3:inst4|lpm_counter:lpm_counter_component|cntr_s8j:auto_generated|safe_q[2]               ; regout           ;
+; |SQRT|BMU:inst|Beta3:inst4|lpm_counter:lpm_counter_component|cntr_s8j:auto_generated|counter_reg_bit1a[1] ; |SQRT|BMU:inst|Beta3:inst4|lpm_counter:lpm_counter_component|cntr_s8j:auto_generated|safe_q[1]               ; regout           ;
+; |SQRT|BMU:inst|Beta3:inst4|lpm_counter:lpm_counter_component|cntr_s8j:auto_generated|counter_reg_bit1a[0] ; |SQRT|BMU:inst|Beta3:inst4|lpm_counter:lpm_counter_component|cntr_s8j:auto_generated|safe_q[0]               ; regout           ;
+; |SQRT|BMU:inst|Beta3:inst4|lpm_counter:lpm_counter_component|cntr_s8j:auto_generated|counter_comb_bita0   ; |SQRT|BMU:inst|Beta3:inst4|lpm_counter:lpm_counter_component|cntr_s8j:auto_generated|counter_comb_bita0      ; combout          ;
+; |SQRT|BMU:inst|Beta3:inst4|lpm_counter:lpm_counter_component|cntr_s8j:auto_generated|counter_comb_bita0   ; |SQRT|BMU:inst|Beta3:inst4|lpm_counter:lpm_counter_component|cntr_s8j:auto_generated|counter_comb_bita0~COUT ; cout             ;
+; |SQRT|BMU:inst|Beta3:inst4|lpm_counter:lpm_counter_component|cntr_s8j:auto_generated|counter_comb_bita1   ; |SQRT|BMU:inst|Beta3:inst4|lpm_counter:lpm_counter_component|cntr_s8j:auto_generated|counter_comb_bita1      ; combout          ;
+; |SQRT|BMU:inst|Beta3:inst4|lpm_counter:lpm_counter_component|cntr_s8j:auto_generated|counter_comb_bita1   ; |SQRT|BMU:inst|Beta3:inst4|lpm_counter:lpm_counter_component|cntr_s8j:auto_generated|counter_comb_bita1~COUT ; cout             ;
+; |SQRT|BMU:inst|Beta3:inst4|lpm_counter:lpm_counter_component|cntr_s8j:auto_generated|counter_comb_bita2   ; |SQRT|BMU:inst|Beta3:inst4|lpm_counter:lpm_counter_component|cntr_s8j:auto_generated|counter_comb_bita2      ; combout          ;
+; |SQRT|BMU:inst|Beta3:inst4|lpm_counter:lpm_counter_component|cntr_s8j:auto_generated|counter_comb_bita2   ; |SQRT|BMU:inst|Beta3:inst4|lpm_counter:lpm_counter_component|cntr_s8j:auto_generated|counter_comb_bita2~COUT ; cout             ;
+; |SQRT|BMU:inst|Beta3:inst4|lpm_counter:lpm_counter_component|cntr_s8j:auto_generated|counter_comb_bita3   ; |SQRT|BMU:inst|Beta3:inst4|lpm_counter:lpm_counter_component|cntr_s8j:auto_generated|counter_comb_bita3      ; combout          ;
+; |SQRT|ALP:inst1|ShiftReg8:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[6]                               ; |SQRT|ALP:inst1|ShiftReg8:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[6]                                  ; regout           ;
+; |SQRT|ALP:inst1|ShiftReg8:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[5]                               ; |SQRT|ALP:inst1|ShiftReg8:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[5]                                  ; regout           ;
+; |SQRT|ALP:inst1|ShiftReg8:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[4]                               ; |SQRT|ALP:inst1|ShiftReg8:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[4]                                  ; regout           ;
+; |SQRT|ALP:inst1|ShiftReg8:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[3]                               ; |SQRT|ALP:inst1|ShiftReg8:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[3]                                  ; regout           ;
+; |SQRT|ALP:inst1|ShiftReg8:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[2]                               ; |SQRT|ALP:inst1|ShiftReg8:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[2]                                  ; regout           ;
+; |SQRT|ALP:inst1|ShiftReg8:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[1]                               ; |SQRT|ALP:inst1|ShiftReg8:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[1]                                  ; regout           ;
+; |SQRT|BMU:inst|inst20                                                                                     ; |SQRT|BMU:inst|inst20                                                                                        ; regout           ;
+; |SQRT|BMU:inst|Error:inst22|lpm_xor:lpm_xor_component|xor_cascade[0][17]~0                                ; |SQRT|BMU:inst|Error:inst22|lpm_xor:lpm_xor_component|xor_cascade[0][17]~0                                   ; combout          ;
+; |SQRT|BMU:inst|Error:inst22|lpm_xor:lpm_xor_component|xor_cascade[0][17]~1                                ; |SQRT|BMU:inst|Error:inst22|lpm_xor:lpm_xor_component|xor_cascade[0][17]~1                                   ; combout          ;
+; |SQRT|BMU:inst|Error:inst22|lpm_xor:lpm_xor_component|xor_cascade[0][17]~2                                ; |SQRT|BMU:inst|Error:inst22|lpm_xor:lpm_xor_component|xor_cascade[0][17]~2                                   ; combout          ;
+; |SQRT|BMU:inst|Error:inst22|lpm_xor:lpm_xor_component|xor_cascade[0][17]~3                                ; |SQRT|BMU:inst|Error:inst22|lpm_xor:lpm_xor_component|xor_cascade[0][17]~3                                   ; combout          ;
+; |SQRT|BMU:inst|Error:inst22|lpm_xor:lpm_xor_component|xor_cascade[0][17]~4                                ; |SQRT|BMU:inst|Error:inst22|lpm_xor:lpm_xor_component|xor_cascade[0][17]~4                                   ; combout          ;
+; |SQRT|BMU:inst|inst21                                                                                     ; |SQRT|BMU:inst|inst21                                                                                        ; combout          ;
+; |SQRT|ALP:inst1|ShiftReg8:inst4|lpm_shiftreg:lpm_shiftreg_component|dffs[5]                               ; |SQRT|ALP:inst1|ShiftReg8:inst4|lpm_shiftreg:lpm_shiftreg_component|dffs[5]                                  ; regout           ;
+; |SQRT|ALP:inst1|ShiftReg8:inst4|lpm_shiftreg:lpm_shiftreg_component|dffs[4]                               ; |SQRT|ALP:inst1|ShiftReg8:inst4|lpm_shiftreg:lpm_shiftreg_component|dffs[4]                                  ; regout           ;
+; |SQRT|ALP:inst1|ShiftReg8:inst4|lpm_shiftreg:lpm_shiftreg_component|dffs[3]                               ; |SQRT|ALP:inst1|ShiftReg8:inst4|lpm_shiftreg:lpm_shiftreg_component|dffs[3]                                  ; regout           ;
+; |SQRT|ALP:inst1|ShiftReg8:inst4|lpm_shiftreg:lpm_shiftreg_component|dffs[2]                               ; |SQRT|ALP:inst1|ShiftReg8:inst4|lpm_shiftreg:lpm_shiftreg_component|dffs[2]                                  ; regout           ;
+; |SQRT|ALP:inst1|ShiftReg8:inst4|lpm_shiftreg:lpm_shiftreg_component|dffs[1]                               ; |SQRT|ALP:inst1|ShiftReg8:inst4|lpm_shiftreg:lpm_shiftreg_component|dffs[1]                                  ; regout           ;
+; |SQRT|ALP:inst1|ShiftReg8:inst4|lpm_shiftreg:lpm_shiftreg_component|dffs[0]                               ; |SQRT|ALP:inst1|ShiftReg8:inst4|lpm_shiftreg:lpm_shiftreg_component|dffs[0]                                  ; regout           ;
+; |SQRT|BMU:inst|Error:inst22|lpm_xor:lpm_xor_component|xor_cascade[0][17]                                  ; |SQRT|BMU:inst|Error:inst22|lpm_xor:lpm_xor_component|xor_cascade[0][17]                                     ; combout          ;
+; |SQRT|BMU:inst|RAMC:inst15|lpm_ff:lpm_ff_component|dffs[0]                                                ; |SQRT|BMU:inst|RAMC:inst15|lpm_ff:lpm_ff_component|dffs[0]                                                   ; regout           ;
+; |SQRT|BMU:inst|RAMC:inst15|lpm_ff:lpm_ff_component|dffs[1]                                                ; |SQRT|BMU:inst|RAMC:inst15|lpm_ff:lpm_ff_component|dffs[1]                                                   ; regout           ;
+; |SQRT|BMU:inst|RAMC:inst15|lpm_ff:lpm_ff_component|dffs[2]                                                ; |SQRT|BMU:inst|RAMC:inst15|lpm_ff:lpm_ff_component|dffs[2]                                                   ; regout           ;
+; |SQRT|BMU:inst|RAMC:inst15|lpm_ff:lpm_ff_component|dffs[3]                                                ; |SQRT|BMU:inst|RAMC:inst15|lpm_ff:lpm_ff_component|dffs[3]                                                   ; regout           ;
+; |SQRT|BMU:inst|RAMC:inst15|lpm_ff:lpm_ff_component|dffs[4]                                                ; |SQRT|BMU:inst|RAMC:inst15|lpm_ff:lpm_ff_component|dffs[4]                                                   ; regout           ;
+; |SQRT|BMU:inst|RAMC:inst15|lpm_ff:lpm_ff_component|dffs[5]                                                ; |SQRT|BMU:inst|RAMC:inst15|lpm_ff:lpm_ff_component|dffs[5]                                                   ; regout           ;
+; |SQRT|BMU:inst|Beta2:inst3|lpm_ff:lpm_ff_component|dffs[5]                                                ; |SQRT|BMU:inst|Beta2:inst3|lpm_ff:lpm_ff_component|dffs[5]                                                   ; regout           ;
+; |SQRT|BMU:inst|Beta2:inst3|lpm_ff:lpm_ff_component|dffs[1]                                                ; |SQRT|BMU:inst|Beta2:inst3|lpm_ff:lpm_ff_component|dffs[1]                                                   ; regout           ;
+; |SQRT|ALP:inst1|ShiftReg8:inst4|lpm_shiftreg:lpm_shiftreg_component|dffs[6]~1                             ; |SQRT|ALP:inst1|ShiftReg8:inst4|lpm_shiftreg:lpm_shiftreg_component|dffs[6]~1                                ; combout          ;
+; |SQRT|ALP:inst1|ShiftReg8:inst4|lpm_shiftreg:lpm_shiftreg_component|dffs[5]~2                             ; |SQRT|ALP:inst1|ShiftReg8:inst4|lpm_shiftreg:lpm_shiftreg_component|dffs[5]~2                                ; combout          ;
+; |SQRT|ALP:inst1|ShiftReg8:inst4|lpm_shiftreg:lpm_shiftreg_component|dffs[4]~3                             ; |SQRT|ALP:inst1|ShiftReg8:inst4|lpm_shiftreg:lpm_shiftreg_component|dffs[4]~3                                ; combout          ;
+; |SQRT|ALP:inst1|ShiftReg8:inst4|lpm_shiftreg:lpm_shiftreg_component|dffs[3]~4                             ; |SQRT|ALP:inst1|ShiftReg8:inst4|lpm_shiftreg:lpm_shiftreg_component|dffs[3]~4                                ; combout          ;
+; |SQRT|ALP:inst1|ShiftReg8:inst4|lpm_shiftreg:lpm_shiftreg_component|dffs[2]~5                             ; |SQRT|ALP:inst1|ShiftReg8:inst4|lpm_shiftreg:lpm_shiftreg_component|dffs[2]~5                                ; combout          ;
+; |SQRT|ALP:inst1|ShiftReg8:inst4|lpm_shiftreg:lpm_shiftreg_component|dffs[1]~6                             ; |SQRT|ALP:inst1|ShiftReg8:inst4|lpm_shiftreg:lpm_shiftreg_component|dffs[1]~6                                ; combout          ;
+; |SQRT|ALP:inst1|ShiftReg8:inst4|lpm_shiftreg:lpm_shiftreg_component|dffs[0]~7                             ; |SQRT|ALP:inst1|ShiftReg8:inst4|lpm_shiftreg:lpm_shiftreg_component|dffs[0]~7                                ; combout          ;
+; |SQRT|BMU:inst|Beta1:inst|lpm_ff:lpm_ff_component|dffs[1]                                                 ; |SQRT|BMU:inst|Beta1:inst|lpm_ff:lpm_ff_component|dffs[1]                                                    ; regout           ;
+; |SQRT|BMU:inst|Beta1:inst|lpm_ff:lpm_ff_component|dffs[0]                                                 ; |SQRT|BMU:inst|Beta1:inst|lpm_ff:lpm_ff_component|dffs[0]                                                    ; regout           ;
+; |SQRT|BMU:inst|Mux_Adr:inst14|lpm_mux:lpm_mux_component|mux_qmc:auto_generated|result_node[0]~0           ; |SQRT|BMU:inst|Mux_Adr:inst14|lpm_mux:lpm_mux_component|mux_qmc:auto_generated|result_node[0]~0              ; combout          ;
+; |SQRT|BMU:inst|Beta1:inst|lpm_ff:lpm_ff_component|dffs[2]                                                 ; |SQRT|BMU:inst|Beta1:inst|lpm_ff:lpm_ff_component|dffs[2]                                                    ; regout           ;
+; |SQRT|BMU:inst|Mux_Adr:inst14|lpm_mux:lpm_mux_component|mux_qmc:auto_generated|result_node[1]~1           ; |SQRT|BMU:inst|Mux_Adr:inst14|lpm_mux:lpm_mux_component|mux_qmc:auto_generated|result_node[1]~1              ; combout          ;
+; |SQRT|BMU:inst|Beta1:inst|lpm_ff:lpm_ff_component|dffs[3]                                                 ; |SQRT|BMU:inst|Beta1:inst|lpm_ff:lpm_ff_component|dffs[3]                                                    ; regout           ;
+; |SQRT|BMU:inst|Mux_Adr:inst14|lpm_mux:lpm_mux_component|mux_qmc:auto_generated|result_node[2]~2           ; |SQRT|BMU:inst|Mux_Adr:inst14|lpm_mux:lpm_mux_component|mux_qmc:auto_generated|result_node[2]~2              ; combout          ;
+; |SQRT|BMU:inst|Beta1:inst|lpm_ff:lpm_ff_component|dffs[4]                                                 ; |SQRT|BMU:inst|Beta1:inst|lpm_ff:lpm_ff_component|dffs[4]                                                    ; regout           ;
+; |SQRT|BMU:inst|Mux_Adr:inst14|lpm_mux:lpm_mux_component|mux_qmc:auto_generated|result_node[3]             ; |SQRT|BMU:inst|Mux_Adr:inst14|lpm_mux:lpm_mux_component|mux_qmc:auto_generated|result_node[3]                ; combout          ;
+; |SQRT|BMU:inst|Beta1:inst|lpm_ff:lpm_ff_component|dffs[5]                                                 ; |SQRT|BMU:inst|Beta1:inst|lpm_ff:lpm_ff_component|dffs[5]                                                    ; regout           ;
+; |SQRT|BMU:inst|Mux_Adr:inst14|lpm_mux:lpm_mux_component|mux_qmc:auto_generated|result_node[4]             ; |SQRT|BMU:inst|Mux_Adr:inst14|lpm_mux:lpm_mux_component|mux_qmc:auto_generated|result_node[4]                ; combout          ;
+; |SQRT|BMU:inst|Beta1:inst|lpm_ff:lpm_ff_component|dffs[6]                                                 ; |SQRT|BMU:inst|Beta1:inst|lpm_ff:lpm_ff_component|dffs[6]                                                    ; regout           ;
+; |SQRT|BMU:inst|Mux_Adr:inst14|lpm_mux:lpm_mux_component|mux_qmc:auto_generated|result_node[5]~3           ; |SQRT|BMU:inst|Mux_Adr:inst14|lpm_mux:lpm_mux_component|mux_qmc:auto_generated|result_node[5]~3              ; combout          ;
+; |SQRT|ALP:inst1|inst16                                                                                    ; |SQRT|ALP:inst1|inst16                                                                                       ; combout          ;
+; |SQRT|ALP:inst1|inst15                                                                                    ; |SQRT|ALP:inst1|inst15                                                                                       ; combout          ;
+; |SQRT|ALP:inst1|inst14                                                                                    ; |SQRT|ALP:inst1|inst14                                                                                       ; combout          ;
+; |SQRT|ALP:inst1|inst13                                                                                    ; |SQRT|ALP:inst1|inst13                                                                                       ; combout          ;
+; |SQRT|ALP:inst1|inst12                                                                                    ; |SQRT|ALP:inst1|inst12                                                                                       ; combout          ;
+; |SQRT|ALP:inst1|inst11                                                                                    ; |SQRT|ALP:inst1|inst11                                                                                       ; combout          ;
+; |SQRT|ALP:inst1|inst8                                                                                     ; |SQRT|ALP:inst1|inst8                                                                                        ; combout          ;
+; |SQRT|ALP:inst1|inst7                                                                                     ; |SQRT|ALP:inst1|inst7                                                                                        ; combout          ;
+; |SQRT|BMU:inst|Beta2:inst3|lpm_ff:lpm_ff_component|dffs[2]                                                ; |SQRT|BMU:inst|Beta2:inst3|lpm_ff:lpm_ff_component|dffs[2]                                                   ; regout           ;
+; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|op_1~0           ; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|op_1~0              ; combout          ;
+; |SQRT|BMU:inst|Beta2:inst3|lpm_ff:lpm_ff_component|dffs[3]                                                ; |SQRT|BMU:inst|Beta2:inst3|lpm_ff:lpm_ff_component|dffs[3]                                                   ; regout           ;
+; |SQRT|ALP:inst1|inst10                                                                                    ; |SQRT|ALP:inst1|inst10                                                                                       ; combout          ;
+; |SQRT|BMU:inst|inst17                                                                                     ; |SQRT|BMU:inst|inst17                                                                                        ; combout          ;
+; |SQRT|BMU:inst|inst11                                                                                     ; |SQRT|BMU:inst|inst11                                                                                        ; combout          ;
+; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|op_1~1           ; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|op_1~1              ; combout          ;
+; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|op_1~2           ; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|op_1~2              ; combout          ;
+; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|op_1~3           ; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|op_1~3              ; combout          ;
+; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|op_1~4           ; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|op_1~4              ; combout          ;
+; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|op_1~5           ; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|op_1~5              ; combout          ;
+; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|op_1~6           ; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|op_1~6              ; combout          ;
+; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|op_1~7           ; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|op_1~7              ; combout          ;
+; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|op_1~8           ; |SQRT|ALP:inst1|SM_10:inst1|lpm_add_sub:lpm_add_sub_component|add_sub_llh:auto_generated|op_1~8              ; combout          ;
+; |SQRT|ALP:inst1|ShiftReg10:inst3|lpm_shiftreg:lpm_shiftreg_component|_~0                                  ; |SQRT|ALP:inst1|ShiftReg10:inst3|lpm_shiftreg:lpm_shiftreg_component|_~0                                     ; combout          ;
+; |SQRT|BMU:inst|inst9                                                                                      ; |SQRT|BMU:inst|inst9                                                                                         ; regout           ;
+; |SQRT|BMU:inst|Beta3:inst4|lpm_counter:lpm_counter_component|cntr_s8j:auto_generated|_~0                  ; |SQRT|BMU:inst|Beta3:inst4|lpm_counter:lpm_counter_component|cntr_s8j:auto_generated|_~0                     ; combout          ;
+; |SQRT|BMU:inst|Beta2:inst3|lpm_ff:lpm_ff_component|dffs[4]                                                ; |SQRT|BMU:inst|Beta2:inst3|lpm_ff:lpm_ff_component|dffs[4]                                                   ; regout           ;
+; |SQRT|ALP:inst1|ShiftReg8:inst2|lpm_shiftreg:lpm_shiftreg_component|_~0                                   ; |SQRT|ALP:inst1|ShiftReg8:inst2|lpm_shiftreg:lpm_shiftreg_component|_~0                                      ; combout          ;
+; |SQRT|ALP:inst1|inst17                                                                                    ; |SQRT|ALP:inst1|inst17                                                                                       ; combout          ;
+; |SQRT|ALP:inst1|ShiftReg8:inst2|lpm_shiftreg:lpm_shiftreg_component|_~1                                   ; |SQRT|ALP:inst1|ShiftReg8:inst2|lpm_shiftreg:lpm_shiftreg_component|_~1                                      ; combout          ;
+; |SQRT|ALP:inst1|ShiftReg8:inst2|lpm_shiftreg:lpm_shiftreg_component|_~2                                   ; |SQRT|ALP:inst1|ShiftReg8:inst2|lpm_shiftreg:lpm_shiftreg_component|_~2                                      ; combout          ;
+; |SQRT|ALP:inst1|ShiftReg8:inst2|lpm_shiftreg:lpm_shiftreg_component|_~3                                   ; |SQRT|ALP:inst1|ShiftReg8:inst2|lpm_shiftreg:lpm_shiftreg_component|_~3                                      ; combout          ;
+; |SQRT|ALP:inst1|ShiftReg8:inst2|lpm_shiftreg:lpm_shiftreg_component|_~4                                   ; |SQRT|ALP:inst1|ShiftReg8:inst2|lpm_shiftreg:lpm_shiftreg_component|_~4                                      ; combout          ;
+; |SQRT|ALP:inst1|ShiftReg8:inst2|lpm_shiftreg:lpm_shiftreg_component|_~5                                   ; |SQRT|ALP:inst1|ShiftReg8:inst2|lpm_shiftreg:lpm_shiftreg_component|_~5                                      ; combout          ;
+; |SQRT|ALP:inst1|ShiftReg8:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[0]                               ; |SQRT|ALP:inst1|ShiftReg8:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[0]                                  ; regout           ;
+; |SQRT|ALP:inst1|ShiftReg8:inst2|lpm_shiftreg:lpm_shiftreg_component|_~6                                   ; |SQRT|ALP:inst1|ShiftReg8:inst2|lpm_shiftreg:lpm_shiftreg_component|_~6                                      ; combout          ;
+; |SQRT|ALP:inst1|ShiftReg8:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[0]~0                             ; |SQRT|ALP:inst1|ShiftReg8:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[0]~0                                ; combout          ;
+; |SQRT|BMU:inst|inst9~0                                                                                    ; |SQRT|BMU:inst|inst9~0                                                                                       ; combout          ;
+; |SQRT|Error                                                                                               ; |SQRT|Error                                                                                                  ; padio            ;
+; |SQRT|RA[5]                                                                                               ; |SQRT|RA[5]                                                                                                  ; padio            ;
+; |SQRT|RA[4]                                                                                               ; |SQRT|RA[4]                                                                                                  ; padio            ;
+; |SQRT|RA[3]                                                                                               ; |SQRT|RA[3]                                                                                                  ; padio            ;
+; |SQRT|RA[2]                                                                                               ; |SQRT|RA[2]                                                                                                  ; padio            ;
+; |SQRT|RA[1]                                                                                               ; |SQRT|RA[1]                                                                                                  ; padio            ;
+; |SQRT|RA[0]                                                                                               ; |SQRT|RA[0]                                                                                                  ; padio            ;
+; |SQRT|CLK                                                                                                 ; |SQRT|CLK~corein                                                                                             ; combout          ;
+; |SQRT|CLK~clkctrl                                                                                         ; |SQRT|CLK~clkctrl                                                                                            ; outclk           ;
+; |SQRT|BMU:inst|inst17~clkctrl                                                                             ; |SQRT|BMU:inst|inst17~clkctrl                                                                                ; outclk           ;
+; |SQRT|BMU:inst|inst11~clkctrl                                                                             ; |SQRT|BMU:inst|inst11~clkctrl                                                                                ; outclk           ;
+; |SQRT|BMU:inst|Beta1:inst|lpm_ff:lpm_ff_component|dffs[5]~feeder                                          ; |SQRT|BMU:inst|Beta1:inst|lpm_ff:lpm_ff_component|dffs[5]~feeder                                             ; combout          ;
+; |SQRT|BMU:inst|Beta2:inst3|lpm_ff:lpm_ff_component|dffs[1]~feeder                                         ; |SQRT|BMU:inst|Beta2:inst3|lpm_ff:lpm_ff_component|dffs[1]~feeder                                            ; combout          ;
+; |SQRT|BMU:inst|Beta2:inst3|lpm_ff:lpm_ff_component|dffs[2]~feeder                                         ; |SQRT|BMU:inst|Beta2:inst3|lpm_ff:lpm_ff_component|dffs[2]~feeder                                            ; combout          ;
+; |SQRT|BMU:inst|Beta2:inst3|lpm_ff:lpm_ff_component|dffs[4]~feeder                                         ; |SQRT|BMU:inst|Beta2:inst3|lpm_ff:lpm_ff_component|dffs[4]~feeder                                            ; combout          ;
+; |SQRT|BMU:inst|Beta2:inst3|lpm_ff:lpm_ff_component|dffs[5]~feeder                                         ; |SQRT|BMU:inst|Beta2:inst3|lpm_ff:lpm_ff_component|dffs[5]~feeder                                            ; combout          ;
+; |SQRT|BMU:inst|Beta1:inst|lpm_ff:lpm_ff_component|dffs[0]~feeder                                          ; |SQRT|BMU:inst|Beta1:inst|lpm_ff:lpm_ff_component|dffs[0]~feeder                                             ; combout          ;
+; |SQRT|BMU:inst|Beta1:inst|lpm_ff:lpm_ff_component|dffs[1]~feeder                                          ; |SQRT|BMU:inst|Beta1:inst|lpm_ff:lpm_ff_component|dffs[1]~feeder                                             ; combout          ;
+; |SQRT|BMU:inst|Beta1:inst|lpm_ff:lpm_ff_component|dffs[2]~feeder                                          ; |SQRT|BMU:inst|Beta1:inst|lpm_ff:lpm_ff_component|dffs[2]~feeder                                             ; combout          ;
++-----------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+------------------+
+
+
+The following table displays output ports that do not toggle to 1 during simulation.
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Missing 1-Value Coverage                                                                                                                                                                                                 ;
++------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+------------------+
+; Node Name                                                                                            ; Output Port Name                                                                               ; Output Port Type ;
++------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+------------------+
+; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|ram_block1a0 ; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|q_a[1] ; portadataout1    ;
+; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|ram_block1a0 ; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|q_a[3] ; portadataout3    ;
+; |SQRT|Start                                                                                          ; |SQRT|Start~corein                                                                             ; combout          ;
+; |SQRT|RC[7]                                                                                          ; |SQRT|RC[7]~corein                                                                             ; combout          ;
+; |SQRT|RC[6]                                                                                          ; |SQRT|RC[6]~corein                                                                             ; combout          ;
+; |SQRT|RC[5]                                                                                          ; |SQRT|RC[5]~corein                                                                             ; combout          ;
+; |SQRT|RC[4]                                                                                          ; |SQRT|RC[4]~corein                                                                             ; combout          ;
+; |SQRT|RC[3]                                                                                          ; |SQRT|RC[3]~corein                                                                             ; combout          ;
+; |SQRT|RC[2]                                                                                          ; |SQRT|RC[2]~corein                                                                             ; combout          ;
+; |SQRT|RC[1]                                                                                          ; |SQRT|RC[1]~corein                                                                             ; combout          ;
+; |SQRT|RC[0]                                                                                          ; |SQRT|RC[0]~corein                                                                             ; combout          ;
++------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+------------------+
+
+
+The following table displays output ports that do not toggle to 0 during simulation.
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Missing 0-Value Coverage                                                                                                                                                                                                 ;
++------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+------------------+
+; Node Name                                                                                            ; Output Port Name                                                                               ; Output Port Type ;
++------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+------------------+
+; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|ram_block1a0 ; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|q_a[1] ; portadataout1    ;
+; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|ram_block1a0 ; |SQRT|BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|q_a[3] ; portadataout3    ;
+; |SQRT|ALP:inst1|ShiftReg8:inst4|lpm_shiftreg:lpm_shiftreg_component|dffs[7]                          ; |SQRT|ALP:inst1|ShiftReg8:inst4|lpm_shiftreg:lpm_shiftreg_component|dffs[7]                    ; regout           ;
+; |SQRT|ALP:inst1|ShiftReg8:inst4|lpm_shiftreg:lpm_shiftreg_component|dffs[6]                          ; |SQRT|ALP:inst1|ShiftReg8:inst4|lpm_shiftreg:lpm_shiftreg_component|dffs[6]                    ; regout           ;
+; |SQRT|ALP:inst1|ShiftReg8:inst4|lpm_shiftreg:lpm_shiftreg_component|dffs[7]~0                        ; |SQRT|ALP:inst1|ShiftReg8:inst4|lpm_shiftreg:lpm_shiftreg_component|dffs[7]~0                  ; combout          ;
+; |SQRT|RA[7]                                                                                          ; |SQRT|RA[7]                                                                                    ; padio            ;
+; |SQRT|RA[6]                                                                                          ; |SQRT|RA[6]                                                                                    ; padio            ;
+; |SQRT|RC[7]                                                                                          ; |SQRT|RC[7]~corein                                                                             ; combout          ;
+; |SQRT|RC[6]                                                                                          ; |SQRT|RC[6]~corein                                                                             ; combout          ;
+; |SQRT|RC[5]                                                                                          ; |SQRT|RC[5]~corein                                                                             ; combout          ;
+; |SQRT|RC[4]                                                                                          ; |SQRT|RC[4]~corein                                                                             ; combout          ;
+; |SQRT|RC[3]                                                                                          ; |SQRT|RC[3]~corein                                                                             ; combout          ;
+; |SQRT|RC[2]                                                                                          ; |SQRT|RC[2]~corein                                                                             ; combout          ;
+; |SQRT|RC[1]                                                                                          ; |SQRT|RC[1]~corein                                                                             ; combout          ;
+; |SQRT|RC[0]                                                                                          ; |SQRT|RC[0]~corein                                                                             ; combout          ;
++------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+------------------+
+
+
++---------------------+
+; Simulator INI Usage ;
++--------+------------+
+; Option ; Usage      ;
++--------+------------+
+
+
++--------------------+
+; Simulator Messages ;
++--------------------+
+Info: *******************************************************************
+Info: Running Quartus II Simulator
+    Info: Version 9.1 Build 222 10/21/2009 SJ Full Version
+    Info: Processing started: Fri Dec 20 06:53:35 2013
+Info: Command: quartus_sim --read_settings_files=on --write_settings_files=off SQRT -c SQRT
+Info: Using vector source file "D:/Quartus WorkSpace/Lab 5/SQRT.vwf"
+Info: Option to preserve fewer signal transitions to reduce memory requirements is enabled
+    Info: Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
+Info: Simulation partitioned into 1 sub-simulations
+Info: Simulation coverage is      90.91 %
+Info: Number of transitions in simulation is 9104
+Info: Quartus II Simulator was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 158 megabytes
+    Info: Processing ended: Fri Dec 20 06:53:36 2013
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:00
+
+

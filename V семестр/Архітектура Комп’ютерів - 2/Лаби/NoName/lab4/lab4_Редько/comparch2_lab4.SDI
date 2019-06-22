@@ -1,0 +1,136 @@
+,,,;
+,,,; Task:
+,,,;     Z5.Z4.Z3.Z2.Z1.Z0 = X2.X1.X0 * Y2.Y1.Y0
+,,,;     1 mul, 24
+,,,;     X: CF, Y: TF, Z: TF
+,,,
+,,,        Xhigh                   EQU 7Fh
+,,,        Xmean                   EQU 0FFh
+,,,        Xlow                    EQU 0FFh
+,,,        Yhigh                   EQU 0FFh
+,,,        Ymean                   EQU 0FFh
+,,,        Ylow                    EQU 0FFh
+,,,
+,,,        Adr_Xhigh               EQU 20h
+,,,        Adr_Xmean               EQU 21h
+,,,        Adr_Xlow                EQU 22h
+,,,        Adr_Yhigh               EQU 23h
+,,,        Adr_Ymean               EQU 24h
+,,,        Adr_Ylow                EQU 25h
+,,,        Adr_Zhigh_high  EQU 28h
+,,,        Adr_Zmean_high  EQU 29h
+,,,        Adr_Zlow_high   EQU 2Ah
+,,,        Adr_Zhigh_low   EQU 2Bh
+,,,        Adr_Zmean_low   EQU 2Ch
+,,,        Adr_Zlow_low    EQU 2Dh
+,,,
+,,,        Size                    EQU 24
+,,,
+,,,; load operands
+0000,75 20 7F,,        MOV Adr_Xhigh, #Xhigh
+0003,75 21 FF,,        MOV Adr_Xmean, #Xmean
+0006,75 22 FF,,        MOV Adr_Xlow, #Xlow
+0009,75 23 FF,,        MOV Adr_Yhigh, #Yhigh
+000C,75 24 FF,,        MOV Adr_Ymean, #Ymean
+000F,75 25 FF,,        MOV Adr_Ylow, #Ylow
+,,,
+,,,
+0012,30 07 24,,        JNB 7h, X_positive
+,,,; convert to true form
+0015,E5 22,,        MOV A, Adr_Xlow
+0017,F4,,        CPL A
+0018,F5 22,,        MOV Adr_Xlow, A
+001A,E5 21,,        MOV A, Adr_Xmean
+001C,F4,,        CPL A
+001D,F5 21,,        MOV Adr_Xmean, A
+001F,E5 20,,        MOV A, Adr_Xhigh
+0021,F4,,        CPL A
+0022,F5 20,,        MOV Adr_Xhigh, A
+,,,
+0024,C3,,        CLR C
+0025,E5 22,,        MOV A, Adr_Xlow
+0027,34 01,,        ADDC A, #1
+0029,F5 22,,        MOV Adr_Xlow, A
+002B,E5 21,,        MOV A, Adr_Xmean
+002D,34 00,,        ADDC A, #0
+002F,F5 21,,        MOV Adr_Xmean, A
+0031,E5 20,,        MOV A, Adr_Xhigh
+0033,34 00,,        ADDC A, #0
+0035,F5 20,,        MOV Adr_Xhigh, A
+,,,
+0037,D2 07,,        SETB 7h
+,,,
+0039,,X_positive,X_positive:
+,,,
+,,,; analyse sign
+0039,E5 20,,        MOV A, Adr_Xhigh
+003B,65 23,,        XRL A, Adr_Yhigh
+003D,30 E7 02,,        JNB ACC.7, nosign
+,,,; save sign
+0040,D2 D1,,        SETB PSW.1
+,,,
+0042,,nosign,nosign:
+0042,C2 07,,        CLR 7h
+0044,C2 1F,,        CLR 1Fh
+,,,
+0046,78 18,,        MOV R0, #Size
+0048,,loop,loop:
+,,,; shift X to the right
+0048,C3,,        CLR C
+0049,E5 20,,        MOV A, Adr_Xhigh
+004B,13,,        RRC A
+004C,F5 20,,        MOV Adr_Xhigh, A
+004E,E5 21,,        MOV A, Adr_Xmean
+0050,13,,        RRC A
+0051,F5 21,,        MOV Adr_Xmean, A
+0053,E5 22,,        MOV A, Adr_Xlow
+0055,13,,        RRC A
+0056,F5 22,,        MOV Adr_Xlow, A
+,,,
+0058,50 13,,        JNC C0
+,,,
+,,,; add X and Z
+005A,C3,,        CLR C
+005B,E5 25,,        MOV A, Adr_Ylow
+005D,35 2A,,    ADDC A, Adr_Zlow_high
+005F,F5 2A,,        MOV Adr_Zlow_high, A
+0061,E5 24,,        MOV A, Adr_Ymean
+0063,35 29,,        ADDC A, Adr_Zmean_high
+0065,F5 29,,        MOV Adr_Zmean_high, A
+0067,E5 23,,        MOV A, Adr_Yhigh
+0069,35 28,,        ADDC A, Adr_Zhigh_high
+006B,F5 28,,        MOV Adr_Zhigh_high, A
+,,,
+006D,,C0,C0:
+,,,; shift Z to the right
+006D,C3,,        CLR C
+006E,E5 28,,        MOV A, Adr_Zhigh_high
+0070,13,,        RRC A
+0071,F5 28,,        MOV Adr_Zhigh_high, A
+0073,E5 29,,        MOV A, Adr_Zmean_high
+0075,13,,        RRC A
+0076,F5 29,,        MOV Adr_Zmean_high, A
+0078,E5 2A,,        MOV A, Adr_Zlow_high
+007A,13,,        RRC A
+007B,F5 2A,,        MOV Adr_Zlow_high, A
+,,,
+007D,E5 2B,,        MOV A, Adr_Zhigh_low
+007F,13,,        RRC A
+0080,F5 2B,,        MOV Adr_Zhigh_low, A
+0082,E5 2C,,        MOV A, Adr_Zmean_low
+0084,13,,        RRC A
+0085,F5 2C,,        MOV Adr_Zmean_low, A
+0087,E5 2D,,        MOV A, Adr_Zlow_low
+0089,13,,        RRC A
+008A,F5 2D,,        MOV Adr_Zlow_low, A
+,,,
+,,,
+008C,D8 BA,,        DJNZ R0, loop
+,,,
+008E,30 D1 02,,        JNB PSW.1, nosign_z
+,,,
+0091,D2 47,,        SETB 47h
+,,,
+0093,,nosign_z,nosign_z:
+0093,00,,        NOP
+000E,,,        END

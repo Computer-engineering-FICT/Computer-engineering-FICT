@@ -1,0 +1,183 @@
+SEL RB0
+CLR C
+
+; read x
+
+MOVD A, P4
+SWAP A
+MOV R3, A
+MOVD A, P4
+ORL A, R3
+MOV R3, A
+
+MOVD A, P4
+SWAP A
+MOV R4, A
+MOVD A, P4
+ORL A, R4
+MOV R4, A
+
+MOVD A, P4
+SWAP A
+MOV R5, A
+MOVD A, P4
+ORL A, R5
+MOV R5, A
+MOV R6, #24
+
+; read y
+
+SEL RB1
+MOVD A, P5
+SWAP A
+MOV R0, A
+MOVD A, P5
+ORL A, R0
+MOV R0, A
+
+MOVD A, P5
+SWAP A
+MOV R1, A
+MOVD A, P5
+ORL A, R1
+MOV R1, A
+
+MOVD A, P5
+SWAP A
+MOV R2, A
+MOVD A, P5
+ORL A, R2
+MOV R2, A
+
+; y to DK
+
+MOV A, R0
+JB7 Y_DK
+JMP AFTER_Y_DK
+
+Y_DK:
+	ANL A, #1111111b
+	MOV R0, A
+	SEL RB0
+	MOV A, #10000000b
+	XRL A, R7
+	MOV R7, A
+
+; main loop
+AFTER_Y_DK:
+
+; check y[last]
+
+SEL RB1
+MOV A, R0
+JB7 SUM
+JMP AFTER_SUM
+
+; z = z + x
+SUM:
+	SEL RB0
+	CLR C
+	MOV A, R2
+	ADD A, R5
+	MOV R2, A
+	MOV A, R1
+	ADDC A, R4
+	MOV R1, A	
+	MOV A, R0
+	ADDC A, R3
+	MOV R0, A
+
+; z = z * 2
+AFTER_SUM:
+SEL RB0
+CLR C
+MOV A, R2
+RLC A
+MOV R2, A
+MOV A, R1
+RLC A
+MOV R1, A
+MOV A, R0
+RLC A
+MOV R0, A
+
+; y = y * 2
+SEL RB1
+CLR C
+MOV A, R2
+RLC A
+MOV R2, A
+MOV A, R1
+RLC A
+MOV R1, A
+MOV A, R0
+RLC A
+MOV R0, A
+
+SEL RB0
+DJNZ R6, AFTER_Y_DK
+
+; z = z / 2
+SEL RB0
+CLR C
+MOV A, R0
+RRC A
+MOV R0, A
+MOV A, R1
+RRC A
+MOV R1, A
+MOV A, R2
+RRC A
+MOV R2, A
+
+MOV A, R7
+JB7 Z_DK
+JMP AFTER_Z_DK
+
+; z to DK
+Z_DK:
+	MOV A, R0
+	CPL A
+	MOV R0, A
+	MOV A, R1
+	CPL A
+	MOV R1, A
+	MOV A, R2
+	CPL A
+	MOV R2, A
+
+	SEL RB1
+	MOV A, R0
+	CPL A
+	MOV R0, A
+	MOV A, R1
+	CPL A
+	MOV R1, A
+	MOV A, R2
+	CPL A
+	MOV R2, A
+
+	CLR C
+	MOV A, R2
+	ADDC A, #1
+	MOV R2, A
+	MOV A, R1
+	ADDC A, #0
+	MOV R1, A
+	MOV A, R0
+	ADDC A, #0
+	MOV R0, A
+
+	SEL RB0
+	MOV A, R2
+	ADDC A, #0
+	MOV R2, A
+	MOV A, R1
+	ADDC A, #0
+	MOV R1, A
+	MOV A, R0
+	ADDC A, #0
+	MOV R0, A
+
+AFTER_Z_DK:
+END

@@ -1,0 +1,80 @@
+,,,;/*
+,,,; * Computer architecture
+,,,; * Lab5
+,,,; * Date: 10.12.12
+,,,; *
+,,,; * Task:
+,,,; *    F = X2/X1 + (X2 + X1)/2
+,,,; *    X1 - CF, X2 - TF, F - TF
+,,,; */
+,,,
+000C,,,        Convert_To_CF MACRO ADR
+,,,        MOV A, ADR
+000C,,,        CPL A
+0ADD,,,        ADD A, #1
+,,,        MOV ADR, A
+000E,,,        ENDM
+,,,
+000C,,,        Convert_To_TF MACRO ADR
+000C,,,                Convert_To_CF ADR
+000E,,,        ENDM
+,,,
+,,,        X1                 EQU 81
+,,,        X2                 EQU 09
+,,,
+,,,        Adr_F      EQU 28h
+,,,
+,,,;// For addition
+,,,        Adr_Rez_Add     EQU 27h
+,,,;// For division
+,,,        Sign_div                EQU 30h
+,,,        Adr_s_X1                EQU 20h
+,,,        Adr_X1                  EQU 21h
+,,,        Adr_s_X2                EQU 20h
+,,,        Adr_X2                  EQU 23h
+,,,        Adr_s_Rez_Div   EQU 24h
+,,,        Adr_Rez_Div     EQU 25h
+,,,
+,,,        Acc0                    EQU 0E0h
+,,,
+,,,
+0000,78 00,,        MOV R0, #0h
+0002,74 51,,        MOV A, #X1
+0004,F2,,        MOVX @R0, A
+0005,08,,        INC R0
+0006,74 09,,        MOV A, #X2
+0008,F2,,        MOVX @R0, A
+,,,
+0009,78 00,,        MOV R0, #0h
+000B,E2,,        MOVX A, @R0
+000C,F5 21,,        MOV Adr_X1, A
+000E,08,,        INC R0
+000F,E2,,        MOVX A, @R0
+0010,F5 23,,        MOV Adr_X2, A
+,,,
+0012,11 26,,        ACALL Division
+0014,E5 25,,        MOV A, Adr_Rez_Div
+0016,F5 28,,        MOV Adr_F, A
+,,,
+0018,78 10,,        MOV R0, #10h
+001A,08,,        INC R0
+001B,E5 25,,        MOV A, Adr_Rez_Div
+001D,F2,,        MOVX @R0, A
+001E,08,,        INC R0
+001F,E5 28,,        MOV A, Adr_F
+0021,F2,,        MOVX @R0, A
+0022,08,,        INC R0
+0023,02 00 99,,        JMP Ended
+,,,
+,,,
+0026,,Division,Division:
+0026,C0 23,,        PUSH Adr_X2
+0028,C0 21,,        PUSH Adr_X1
+,,,
+002A,30 1F 04,,        JNB 1Fh, X2_positive
+002D,D2 30,,        SETB Sign_div
+002F,C2 1F,,        CLR 1Fh
+0031,,X2_positive,X2_positive:
+,,,
+0031,30 0F 13,,        JNB 0Fh, X1_positive
+000C,,,        Convert_to_TF Adr_X1

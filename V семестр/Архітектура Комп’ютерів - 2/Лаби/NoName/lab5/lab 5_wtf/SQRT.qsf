@@ -1,0 +1,76 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 1991-2009 Altera Corporation
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, Altera MegaCore Function License 
+# Agreement, or other applicable license agreement, including, 
+# without limitation, that your use is for the sole purpose of 
+# programming logic devices manufactured by Altera and sold by 
+# Altera or its authorized distributors.  Please refer to the 
+# applicable agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus II 64-Bit
+# Version 9.1 Build 222 10/21/2009 SJ Full Version
+# Date created = 02:17:09  December 05, 2013
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		SQRT_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus II software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "Cyclone II"
+set_global_assignment -name DEVICE EP2C35F672C6
+set_global_assignment -name TOP_LEVEL_ENTITY SQRT
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 9.1
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "02:17:09  DECEMBER 05, 2013"
+set_global_assignment -name LAST_QUARTUS_VERSION 9.1
+set_global_assignment -name USE_GENERATED_PHYSICAL_CONSTRAINTS OFF -section_id eda_blast_fpga
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name BDF_FILE SQRT.bdf
+set_global_assignment -name BDF_FILE BMU.bdf
+set_global_assignment -name QIP_FILE SM_10.qip
+set_global_assignment -name BDF_FILE ALP.bdf
+set_global_assignment -name QIP_FILE CTR.qip
+set_global_assignment -name QIP_FILE ShiftReg8.qip
+set_global_assignment -name QIP_FILE ShiftReg10.qip
+set_global_assignment -name QIP_FILE Inv8.qip
+set_global_assignment -name QIP_FILE Mux8.qip
+set_global_assignment -name BDF_FILE TestReg.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE TestReg.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE SQRT.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE ALP.vwf
+set_global_assignment -name QIP_FILE Beta1.qip
+set_global_assignment -name QIP_FILE Beta2.qip
+set_global_assignment -name QIP_FILE Beta3.qip
+set_global_assignment -name QIP_FILE ROM.qip
+set_global_assignment -name QIP_FILE Mux4.qip
+set_global_assignment -name QIP_FILE StartAdr.qip
+set_global_assignment -name QIP_FILE Mux_Adr.qip
+set_global_assignment -name QIP_FILE RAMC.qip
+set_global_assignment -name QIP_FILE Error.qip
+set_global_assignment -name VECTOR_WAVEFORM_FILE BMU.vwf
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE SQRT.vwf
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
+set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

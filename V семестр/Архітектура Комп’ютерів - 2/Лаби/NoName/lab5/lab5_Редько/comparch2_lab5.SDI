@@ -1,0 +1,154 @@
+,,,/*
+,,, * Computer architecture
+,,, * Lab5
+,,, * Variant: 103D = 01100111B
+,,, * Author: Redko Alexander, IO-01
+,,, * Data: 31.10.12
+,,, *
+,,, * Task:
+,,, *    F = (X1 - X2)/4 + X1/X2
+,,, *    1 div
+,,, *    X1 - TF, X2 - TF, F - CF
+,,, *    X1 < X2
+,,, */
+,,,
+000C,,,        Convert_To_CF MACRO ADR
+,,,        MOV A, ADR
+000C,,,        CPL A
+0ADD,,,        ADD A, #1
+,,,        MOV ADR, A
+000E,,,        ENDM
+,,,
+000C,,,        Convert_To_TF MACRO ADR
+000C,,,                Convert_To_CF ADR
+000E,,,        ENDM
+,,,
+,,,        X1                 EQU 041h//0C1h
+,,,        X2                 EQU 064h//0E4h
+,,,
+,,,        Adr_F      EQU 28h
+,,,
+,,,// For subtraction
+,,,        Adr_Rez_Sub     EQU 27h
+,,,// For division
+,,,        Bit_s1_X1               EQU 0h
+,,,        Bit_s1_X2               EQU 10h
+,,,        Bit_s1_Rez_Div  EQU 20h
+,,,        Sign_div                EQU 30h
+,,,        Adr_s_X1                EQU 20h
+,,,        Adr_X1                  EQU 21h
+,,,        Adr_s_X2                EQU 20h
+,,,        Adr_X2                  EQU 23h
+,,,        Adr_s_Rez_Div   EQU 24h
+,,,        Adr_Rez_Div     EQU 25h
+,,,
+,,,        Acc0                    EQU 0E0h
+,,,
+0000,75 21 00,,        MOV Adr_X1, #X1
+0003,75 23 00,,        MOV Adr_X2, #X2
+,,,
+,,,
+0006,11 9B,,        ACALL Subtraction
+0008,85 27 90,,        MOV P1, Adr_Rez_Sub
+000B,11 1C,,        ACALL Division
+000D,85 25 90,,        MOV P1, Adr_Rez_Div
+0010,E5 25,,        MOV A, Adr_Rez_Div
+0012,25 27,,        ADD A, Adr_Rez_Sub
+0014,F5 28,,        MOV Adr_F, A
+0016,85 28 90,,        MOV P1, Adr_F
+0019,02 00 DE,,        JMP Ended
+,,,
+,,,
+001C,,Division,Division:
+001C,C0 23,,        PUSH Adr_X2
+001E,C0 21,,        PUSH Adr_X1
+0020,75 25 01,,        MOV Adr_Rez_Div, #1h
+,,,
+0023,30 0F 04,,        JNB 0Fh, X1_positive
+0026,D2 30,,        SETB Sign_div
+0028,C2 0F,,        CLR 0Fh
+002A,,X1_positive,X1_positive:
+,,,
+002A,30 1F 0C,,        JNB 1Fh, X2_positive
+002D,20 30 05,,        JB Sign_div, sign_plus
+0030,D2 30,,        SETB Sign_div
+0032,02 00 37,,        JMP label0
+0035,,sign_plus,sign_plus:
+0035,C2 30,,        CLR Sign_div
+0037,,label0,label0:
+0037,C2 1F,,        CLR 1Fh
+0039,,X2_positive,X2_positive:
+,,,
+,,,
+0039,C3,,        CLR C
+003A,20 00 11,,        JB Bit_s1_X1, X1_1
+,,,
+,,,// X1 := X1 - X2
+,,,
+003D,E5 21,,        MOV A, Adr_X1
+003F,95 23,,        SUBB A, Adr_X2
+0041,F5 21,,        MOV Adr_X1, A
+,,,
+,,,
+0043,E5 20,,        MOV A, Adr_s_X1
+0045,95 20,,        SUBB A, Adr_s_X2
+0047,54 01,,        ANL A, #00000001b
+0049,F5 20,,        MOV Adr_s_X1, A
+,,,
+004B,02 00 5C,,        JMP shifting
+,,,
+004E,,X1_1,X1_1:
+,,,// X1 := X1 + X2
+004E,E5 21,,        MOV A, Adr_X1
+0050,25 23,,        ADD A, Adr_X2
+0052,F5 21,,        MOV Adr_X1, A
+,,,
+,,,
+0054,E5 20,,        MOV A, Adr_s_X1
+0056,25 20,,        ADD A, Adr_s_X2
+0058,54 01,,        ANL A, #00000001b
+005A,F5 20,,        MOV Adr_s_X1, A
+,,,
+,,,
+005C,,shifting,shifting:
+005C,C3,,        CLR C
+,,,// X1 := l(X1).0
+005D,E5 21,,        MOV A, Adr_X1
+005F,33,,        RLC A
+0060,C2 E0,,        CLR Acc0
+0062,F5 21,,        MOV Adr_X1, A
+,,,
+0064,40 07,,        JC c1
+0066,C2 00,,        CLR Bit_s1_X1
+0068,C2 D1,,        CLR PSW.1
+006A,02 00 71,,        JMP label1
+006D,,c1,c1:
+006D,D2 00,,    SETB Bit_s1_X1
+006F,D2 D1,,        SETB PSW.1
+0071,,label1,label1:
+,,,
+,,,; REZ := l(REZ).NOT RGX[1]
+0071,B3,,        CPL C
+0072,E5 25,,        MOV A, Adr_Rez_Div
+0074,33,,        RLC A
+0075,20 D1 05,,        JB PSW.1, c0
+0078,D2 E0,,        SETB Acc0
+007A,02 00 7F,,        JMP label2
+007D,,c0,c0:
+007D,C2 E0,,    CLR Acc0
+007F,,label2,label2:
+007F,F5 25,,        MOV Adr_Rez_Div, A
+,,,
+,,,
+0081,E5 24,,        MOV A, Adr_s_Rez_Div
+0083,33,,        RLC A
+0084,53 24 01,,        ANL Adr_s_Rez_Div, #00000001b
+0087,F5 24,,        MOV Adr_s_Rez_Div, A
+,,,
+,,,
+0089,30 20 AD,,        JNB Bit_s1_Rez_Div, X2_positive
+,,,
+008C,D0 21,,        POP Adr_X1
+008E,D0 23,,        POP Adr_X2
+0090,30 30 07,,        JNB Sign_div, end_div
+000C,,,        Convert_To_CF Adr_Rez_Div

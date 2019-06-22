@@ -1,0 +1,173 @@
+,,,
+,,, ; Task:
+,,, ;   F = (X1 - X2)/4 + X1/X2
+,,, ;    1 div
+,,, ;    X1 - TF, X2 - TF, F - CF
+,,, ;    X1 < X2
+,,, ;
+,,,
+000C,,,        Convert_To_CF MACRO ADR
+,,,        MOV A, ADR
+000C,,,        CPL A
+0ADD,,,        ADD A, #1
+,,,        MOV ADR, A
+000E,,,        ENDM
+,,,
+000C,,,        Convert_To_TF MACRO ADR
+000C,,,                Convert_To_CF ADR
+000E,,,        ENDM
+,,,
+,,,        X1                 EQU 050  ; 0C1h
+,,,        X2                 EQU 0100 ;0E4h
+,,,
+,,,        Adr_F      EQU 28h
+,,,
+,,, ; For subtraction
+,,,        Adr_Rez_Sub     EQU 27h
+,,, ; For division
+,,,        Bit_s1_X1               EQU 0h
+,,,        Bit_s1_X2               EQU 10h
+,,,        Bit_s1_Rez_Div  EQU 20h
+,,,        Sign_div                EQU 30h
+,,,        Adr_s_X1                EQU 20h
+,,,        Adr_X1                  EQU 21h
+,,,        Adr_s_X2                EQU 20h
+,,,        Adr_X2                  EQU 23h
+,,,        Adr_s_Rez_Div   EQU 24h
+,,,        Adr_Rez_Div     EQU 25h
+,,,
+,,,        Acc0                    EQU 0E0h
+,,,
+,,,
+0000,78 00,,        MOV R0, #0h
+0002,74 32,,        MOV A, #X1
+0004,F2,,        MOVX @R0, A
+0005,08,,        INC R0
+0006,74 64,,        MOV A, #X2
+0008,F2,,        MOVX @R0, A
+,,,
+0009,78 00,,        MOV R0, #0h
+000B,E2,,        MOVX A, @R0
+000C,F5 21,,        MOV Adr_X1, A
+000E,08,,        INC R0
+000F,E2,,        MOVX A, @R0
+0010,F5 23,,        MOV Adr_X2, A
+,,,
+,,,
+,,,
+,,,
+0012,11 B5,,        ACALL Subtraction
+0014,85 27 90,,        MOV P1, Adr_Rez_Sub
+0017,11 36,,        ACALL Division
+0019,85 25 90,,        MOV P1, Adr_Rez_Div
+001C,E5 25,,        MOV A, Adr_Rez_Div
+001E,25 27,,        ADD A, Adr_Rez_Sub
+0020,F5 28,,        MOV Adr_F, A
+0022,85 28 90,,        MOV P1, Adr_F
+,,,
+0025,78 10,,        MOV R0, #10h
+0027,E5 27,,        MOV A, Adr_Rez_Sub
+0029,F2,,        MOVX @R0, A
+002A,08,,        INC R0
+002B,E5 25,,        MOV A, Adr_Rez_Div
+002D,F2,,        MOVX @R0, A
+002E,08,,        INC R0
+002F,E5 28,,        MOV A, Adr_F
+0031,F2,,        MOVX @R0, A
+0032,08,,        INC R0
+0033,02 00 F8,,        JMP Ended
+,,,
+,,,
+0036,,Division,Division:
+0036,C0 23,,        PUSH Adr_X2
+0038,C0 21,,        PUSH Adr_X1
+003A,75 25 01,,        MOV Adr_Rez_Div, #1h
+,,,
+003D,30 0F 04,,        JNB 0Fh, X1_positive
+0040,D2 30,,        SETB Sign_div
+0042,C2 0F,,        CLR 0Fh
+0044,,X1_positive,X1_positive:
+,,,
+0044,30 1F 0C,,        JNB 1Fh, X2_positive
+0047,20 30 05,,        JB Sign_div, sign_plus
+004A,D2 30,,        SETB Sign_div
+004C,02 00 51,,        JMP label0
+004F,,sign_plus,sign_plus:
+004F,C2 30,,        CLR Sign_div
+0051,,label0,label0:
+0051,C2 1F,,        CLR 1Fh
+0053,,X2_positive,X2_positive:
+,,,
+,,,
+0053,C3,,        CLR C
+0054,20 00 11,,        JB Bit_s1_X1, X1_1
+,,,
+,,, ; X1 := X1 - X2
+,,,
+0057,E5 21,,        MOV A, Adr_X1
+0059,95 23,,        SUBB A, Adr_X2
+005B,F5 21,,        MOV Adr_X1, A
+,,,
+,,,
+005D,E5 20,,        MOV A, Adr_s_X1
+005F,95 20,,        SUBB A, Adr_s_X2
+0061,54 01,,        ANL A, #00000001b
+0063,F5 20,,        MOV Adr_s_X1, A
+,,,
+0065,02 00 76,,        JMP shifting
+,,,
+0068,,X1_1,X1_1:
+,,, ; X1 := X1 + X2
+0068,E5 21,,        MOV A, Adr_X1
+006A,25 23,,        ADD A, Adr_X2
+006C,F5 21,,        MOV Adr_X1, A
+,,,
+,,,
+006E,E5 20,,        MOV A, Adr_s_X1
+0070,25 20,,        ADD A, Adr_s_X2
+0072,54 01,,        ANL A, #00000001b
+0074,F5 20,,        MOV Adr_s_X1, A
+,,,
+,,,
+0076,,shifting,shifting:
+0076,C3,,        CLR C
+,,, ; X1 := l(X1).0
+0077,E5 21,,        MOV A, Adr_X1
+0079,33,,        RLC A
+007A,C2 E0,,        CLR Acc0
+007C,F5 21,,        MOV Adr_X1, A
+,,,
+007E,40 07,,        JC c1
+0080,C2 00,,        CLR Bit_s1_X1
+0082,C2 D1,,        CLR PSW.1
+0084,02 00 8B,,        JMP label1
+0087,,c1,c1:
+0087,D2 00,,    SETB Bit_s1_X1
+0089,D2 D1,,        SETB PSW.1
+008B,,label1,label1:
+,,,
+,,, ; REZ := l(REZ).NOT RGX[1]
+008B,B3,,        CPL C
+008C,E5 25,,        MOV A, Adr_Rez_Div
+008E,33,,        RLC A
+008F,20 D1 05,,        JB PSW.1, c0
+0092,D2 E0,,        SETB Acc0
+0094,02 00 99,,        JMP label2
+0097,,c0,c0:
+0097,C2 E0,,    CLR Acc0
+0099,,label2,label2:
+0099,F5 25,,        MOV Adr_Rez_Div, A
+,,,
+,,,
+009B,E5 24,,        MOV A, Adr_s_Rez_Div
+009D,33,,        RLC A
+009E,53 24 01,,        ANL Adr_s_Rez_Div, #00000001b
+00A1,F5 24,,        MOV Adr_s_Rez_Div, A
+,,,
+,,,
+00A3,30 20 AD,,        JNB Bit_s1_Rez_Div, X2_positive
+,,,
+00A6,D0 21,,        POP Adr_X1
+00A8,D0 23,,        POP Adr_X2
+00AA,30 30 07,,        JNB Sign_div, end_div
+000C,,,        Convert_To_CF Adr_Rez_Div

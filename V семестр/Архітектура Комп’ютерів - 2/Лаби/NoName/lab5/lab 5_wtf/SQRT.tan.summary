@@ -1,0 +1,66 @@
+--------------------------------------------------------------------------------------
+Timing Analyzer Summary
+--------------------------------------------------------------------------------------
+
+Type           : Worst-case tsu
+Slack          : N/A
+Required Time  : None
+Actual Time    : 4.904 ns
+From           : RC[2]
+To             : ALP:inst1|ShiftReg8:inst2|lpm_shiftreg:lpm_shiftreg_component|dffs[2]
+From Clock     : --
+To Clock       : CLK
+Failed Paths   : 0
+
+Type           : Worst-case tco
+Slack          : N/A
+Required Time  : None
+Actual Time    : 13.564 ns
+From           : BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|ram_block1a0~porta_address_reg5
+To             : Error
+From Clock     : CLK
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Worst-case th
+Slack          : N/A
+Required Time  : None
+Actual Time    : 3.938 ns
+From           : Start
+To             : BMU:inst|RAMC:inst15|lpm_ff:lpm_ff_component|dffs[5]
+From Clock     : --
+To Clock       : CLK
+Failed Paths   : 0
+
+Type           : Clock Setup: 'CLK'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 111.06 MHz ( period = 9.004 ns )
+From           : BMU:inst|ROM:inst6|altsyncram:altsyncram_component|altsyncram_9t71:auto_generated|ram_block1a0~porta_address_reg5
+To             : BMU:inst|Beta3:inst4|lpm_counter:lpm_counter_component|cntr_s8j:auto_generated|safe_q[1]
+From Clock     : CLK
+To Clock       : CLK
+Failed Paths   : 0
+
+Type           : Clock Hold: 'CLK'
+Slack          : Not operational: Clock Skew > Data Delay
+Required Time  : None
+Actual Time    : N/A
+From           : BMU:inst|Beta1:inst|lpm_ff:lpm_ff_component|dffs[1]
+To             : BMU:inst|RAMC:inst15|lpm_ff:lpm_ff_component|dffs[0]
+From Clock     : CLK
+To Clock       : CLK
+Failed Paths   : 35
+
+Type           : Total number of failed paths
+Slack          : 
+Required Time  : 
+Actual Time    : 
+From           : 
+To             : 
+From Clock     : 
+To Clock       : 
+Failed Paths   : 35
+
+--------------------------------------------------------------------------------------
+
