@@ -1,0 +1,86 @@
+﻿<html>
+<head>
+</head>
+<body>
+<center>
+  <p><font size="+2" face="Arial, Helvetica, sans-serif"><strong>Transputer Model 
+    Aplication</strong></font></p>
+  <p align="left"><font size="+2" face="Arial, Helvetica, sans-serif"><strong> 
+    Transputer Model Aplication </strong></font> предназначена для моделирования 
+    работы мультитранспьютерной системы. </p>
+  <p align="left">Модель каждого транспьютера включает :</p>
+</center>
+<ol>
+  <p>-- номер транспьютера;</p>
+  <p>--<strong> Active</strong> - активный процесс, выполняющийся в данный момент 
+    на транспьютере;</p>
+  <p>-- <strong>Mamory</strong> - сотояние памяти транспьютера, процессы обменивающиеся 
+    данными через ОЗУ транспьютера;</p>
+  <p>-- <strong>High prioity queue</strong> - очередь ждущих процессов с высоким 
+    приоритетом;</p>
+  <p>-- <strong>Low prioity queue</strong> - очередь ждущих процессов с низким 
+    приоритетом;</p>
+  <p>-- <strong>Waiting for I/O</strong> - очередь процессов, готовх к передаче 
+    данных, ожидающих освобождения канала, либо готовности второго процесса, участвующего 
+    в передаче.</p>
+</ol>
+<center>
+  <p><img src="images/main.JPG"> </p>
+</center>
+<p align="center"> &nbsp;&nbsp; <strong>Рис. 5 </strong>- Основное окно.</p>
+<p align="left"> &nbsp;&nbsp;&nbsp;&nbsp;В основном окне отображаются все транспьютеры 
+  системы, а также состояние погруженных на них процессов и каналов ввода/вывода. 
+</p>
+<p align="left">&nbsp; </p>
+<p align="center"><strong>Process List</strong> </p>
+<p align="center"><img src="images/PL.JPG" width="485" height="425"> </p>
+<p align="left"> <strong>Рис.6</strong> - Process List Process List - список всех 
+  процессов, где Name - имя процесса, Priority - приоритет процесса, Transputer 
+  - номер транспьютера, на котором будет выполняться процесс. </p>
+<p align="justify">При нажатии на левую верхнюю кнопку <img src="images/addbtn.JPG" width="24" height="20"> 
+  в Process List, появится диалоговое окно создания нового процесса (<strong>Create 
+  new process</strong> ). Все введенные данные в последствии можно будет редактировать 
+  в списке процессов. Кнопка <img src="images/delbtn.JPG" width="22" height="24"> 
+  используется для удаления выбранного процесса, а также его программы. При нажатии 
+  на кнопку <img src="images/progbtn.JPG" width="25" height="23"> в окне Program 
+  будет отображена программа выбранного процесса.</p>
+<p align="center"><strong>Chanel List</strong></p>
+<p align="center"><img src="images/CHL_wizrd.JPG" width="484" height="423"></p>
+<p align="center"><strong>Рис.7</strong> - Chanel List Chanel List - список всех 
+  определенных каналов, где имя канала между Process 1 и Process 2. Route -маршрут, 
+  который пользователь может определить на свое усмотрение. </p>
+<p align="justify">В программе предусмотрены также маршруты по умолчанию, при 
+  нажатии на кнопку <img src="images/defroute.JPG" width="22" height="22">- для 
+  всех каналов будут созданы маршруты по умолчанию, за исключением тех каналов, 
+  в которых и так прописан ликвидный маршрут. Кнопка <img src="images/remdefroute.JPG" width="26" height="22"> 
+  используется для удаления всех маршрутов по умолчанию. </p>
+<p align="center"> <strong>Program</strong> </p>
+<p align="justify">Для каждого процесса определяется своя программа. Программа 
+  состоит из так называемых блоков. В каждом блоке может быть - n-e количество 
+  тактов счета и n-e количество тактов передачи. При этом, в блоке определяется 
+  канал по которому будет осуществляться передача, а также и направление (in/out). 
+  Блоки с с нулевым временем счета и передачи не допустимы. </p>
+<p align="center"><img src="images/prog.JPG" width="380" height="190"></p>
+<p align="center"><strong>Рис.7</strong> - Program. </p>
+<p align="center"><strong>Process State</strong> </p>
+<p align="center"><img src="images/PST.JPG" width="457" height="200"></p>
+<p align="center"><strong>Рис.7</strong> - Process State. </p>
+<p align="justify"> В окне Process State отображается информация о каждом из процессов: 
+  - имя процесса; - процессор на котором он выполняется; - Текущее состояние; 
+  - Блок, до которого дошла программа; - Количество невыполненных тактов</p>
+<p align="center"> <strong>Topology Properties</strong></p>
+<p align="justify"> В программе предусмотрены 4 топологии Simple topology - самый 
+  простой случай, соединены между собой 2 транспьютера. Ring topology - "кольцо", 
+  каждый транспьютер соединен с 2-мя соседними. Torus topology - тор размером 
+  n*m. Any to any topology - топология предусматривает, что транспьютеры соединены 
+  по топологи Ring и один из оставшихся 2-х свободных каналов транспьютера через 
+  сеть коммутаторов доступен всем остальным. </p>
+<p align="center"><img src="images/TPLG.JPG" width="456" height="318"></p>
+<p align="center">Рис. 8 - Topology Properties </p>
+<p align="justify"> Для использования виртуального канало поле Use Virtual Chanels 
+  должно быть установлено в &quot;1&quot;, для оключения виртуальных каналов - 
+  &quot;0&quot; . Остальные значения не допустимы.</p>
+</body>
+</html>
+
+
