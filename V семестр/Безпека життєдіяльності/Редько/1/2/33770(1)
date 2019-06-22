@@ -1,0 +1,44 @@
+var y5_sLinkHead = 'http://an.yandex.ru/count/P7TQ8mFrQYm40000ZhJQWCW4XPe-29QZ2V-5aR-jspK1auy8U0C0';
+var y5_iDirectCounter = 0;
+var y5_iDirectAdsCounter = 0;
+
+function yandex_direct_print() {
+ if (window.y5_isTransform)
+  y5_getYandexDirect();
+}
+
+function y5_getYandexDirect() {
+ var aAds = [  ['<div class="ad-link"><a href="http://an.yandex.ru/count/P7TQ8pieT_440000ZhJQWCW4XPe-29K2cm5kGoi1YBDW4r46YPR39fXWdQRLBGMSdvu6bgC9_uMQa1eLagRuMn2Aflqt2wMMR46HlwtRDG6FjMyleGAViR7gLGoJZmYP0eki0UPKGeoGSGAWa09JUmm0" target="_blank">Альтернативная медицина</a></div><div>Энергобиокапли уникальный метод комплексного устранения многих заболеваний</div> <span class="url">www.energovoda.ru</span>','=ay5719K2cm5kGucMmoQOO9oVdWQQa1eLagRuMn2TfjKj1O-rRo-X0f-niUfL39a2e902Kq5v1W00','0'],
+  ['<div class="ad-link"><a href="http://an.yandex.ru/count/P7TQ8vjsTom40000ZhJQWCW4XPe-29K2cm5kGoi1CeYdZm48YQcOgH6OO9sJKwkSdvu6bgC9_uMQg0ZS89AagKSAYgRIkWQbcUD1aR-jspK1Zx_9w389dwbxSN-JZmYP0eklUh8kGeoGSGAWa742Umm0" target="_blank">Всё про грипп</a></div><div>Последние новости о гриппе: заражение, лечение, случаи жизни и профилактика</div> <span class="url">www.medikforum.ru</span>','=3Z5HufK2cm5kGpA9gPYf4PXWd9-U1fge2DmWagIfHmgTarEhZx_9w389dwbxSN-P0g2GSG91UWO0','4'] ];
+ var aLinkHow = [];
+ var aLinkAll = [];
+ var sLinkDirectText = '<em>Я</em>ндекс.Директ';
+ var sLinkDirectUrl = 'http://direct.yandex.ru/?partner';
+ var aDomainList = ['mozdocs.kiev.ua'];
+
+ y5_iDirectCounter++;
+ y5_showYandexDirect(aAds, sLinkDirectText, sLinkDirectUrl, aLinkHow, aLinkAll, aDomainList);
+}
+
+
+function y5_defAdFormat() {
+ var aFormats = ['direct', 'market', 'media', 'compatibility', 'banner_market'];
+ var sAdFormat = (window.yandex_ad_format) ? y5_checkEntry(yandex_ad_format.toString(), aFormats) : aFormats[0];
+ switch (sAdFormat) {
+  case aFormats[0]:
+   y5_getYandexDirect();
+   break;
+  case aFormats[1]:
+   y5_getYandexMarket();
+   break;
+  case aFormats[2]:
+   y5_getMediaBanner();
+   break;
+  case aFormats[4]:
+   y5_getBannerMarket();
+   break;
+  case aFormats[3]:
+   break;
+ }
+}
+y5_defAdFormat();
