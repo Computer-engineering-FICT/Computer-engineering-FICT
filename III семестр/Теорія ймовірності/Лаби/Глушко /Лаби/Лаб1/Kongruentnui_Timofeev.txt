@@ -1,0 +1,25 @@
+package lab1;
+
+
+public class MyRandom {
+	public static byte[] generate(int count){
+		byte[] mas = new byte[count];
+		int a = 9301;
+		int b = 49297;
+		int m = 233280;
+		int x0 = 'e';
+		int x;
+		for (int i = 0; i < mas.length; i++){
+			x = ((x0 * a + b) % m);
+			x0 = x;
+			int bitCount = 0; //количество единиц
+			while (x != 0){ // подсчёт количества единиц
+				if ((x & 1) == 1) bitCount++;
+				x >>>= 1; //старшие разряды заполняются нулями
+			}
+			if (bitCount % 2 == 0) mas[i] = 0;
+			else mas[i] = 1;			
+		}
+		return mas;
+	}
+}

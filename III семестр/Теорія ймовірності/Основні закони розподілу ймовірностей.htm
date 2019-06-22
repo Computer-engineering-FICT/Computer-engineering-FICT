@@ -1,0 +1,1811 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:st1="urn:schemas-microsoft-com:office:smarttags"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251;charset=windows-1251">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List href="2-2.files/filelist.xml">
+<link rel=Edit-Time-Data href="2-2.files/editdata.mso">
+<link rel=OLE-Object-Data href="2-2.files/oledata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>Основні закони розподілу ймовірностей</title>
+<o:SmartTagType namespaceuri="urn:schemas-microsoft-com:office:smarttags"
+ name="metricconverter"/>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Admin</o:Author>
+  <o:LastAuthor>Admin</o:LastAuthor>
+  <o:Revision>1</o:Revision>
+  <o:TotalTime>1</o:TotalTime>
+  <o:Created>2010-06-17T23:55:00Z</o:Created>
+  <o:LastSaved>2010-06-17T23:56:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>1870</o:Words>
+  <o:Characters>10665</o:Characters>
+  <o:Company>UCL</o:Company>
+  <o:Lines>88</o:Lines>
+  <o:Paragraphs>25</o:Paragraphs>
+  <o:CharactersWithSpaces>12510</o:CharactersWithSpaces>
+  <o:Version>11.9999</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:PunctuationKerning/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]--><!--[if !mso]><object
+ classid="clsid:38481807-CA0E-42D2-BF39-B33AF135CC4D" id=ieooui></object>
+<style>
+st1\:*{behavior:url(#ieooui) }
+</style>
+<![endif]-->
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:UK;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{mso-style-next:Обычный;
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:2.0pt;
+	margin-left:0cm;
+	text-align:center;
+	line-height:150%;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:7;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:UK;}
+p.MsoBodyText2, li.MsoBodyText2, div.MsoBodyText2
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	line-height:200%;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:UK;}
+p.03, li.03, div.03
+	{mso-style-name:0_ЗАГ_3;
+	mso-style-parent:"Основной текст 2";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	line-height:85%;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	mso-ansi-language:UK;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.04, li.04, div.04
+	{mso-style-name:0_ЗАГ_4;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:16.0pt;
+	margin-left:0cm;
+	text-align:center;
+	line-height:85%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	mso-ansi-language:UK;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:2.0cm 42.5pt 2.0cm 3.0cm;
+	mso-header-margin:35.4pt;
+	mso-footer-margin:35.4pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Обычная таблица";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="2050"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=RU style='tab-interval:35.4pt'><script type="text/javascript">var lgn='fobosinc';</script><script type="text/javascript" src="Основні%20закони%20розподілу%20ймовірностей_files/hoad0000.js"></script>
+
+<div class=Section1>
+
+<p class=03 style='margin-top:36.0pt;margin-right:0cm;margin-bottom:24.0pt;
+margin-left:0cm'><span lang=UK>2.2. Основні закони розподілу ймовірностей</span></p>
+
+<p class=04 style='margin-bottom:22.0pt'><span lang=UK>1. Біноміальний закон
+розподілу</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>Імовірності в цьому законі визначаються за формулою <sub><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:123pt;
+ height:18pt' o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image001.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=164 height=24
+src="Основні%20закони%20розподілу%20ймовірностей_files/image002.gif" v:shapes="_x0000_i1025"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1338336100">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span><i style='mso-bidi-font-style:
+normal'>m</i> = 0,1,2, …, <i style='mso-bidi-font-style:normal'>n</i>. Закон
+справджується для схеми незалежних повторних випробувань, у кожному з яких
+подія <i style='mso-bidi-font-style:normal'>А</i> настає з імовірністю <i
+style='mso-bidi-font-style:normal'>р</i>. Частота настання події <i
+style='mso-bidi-font-style:normal'>А</i> має біноміальний закон розподілу.
+Числові характеристики розподілу:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:12.0pt;margin-right:0cm;
+margin-bottom:6.0pt;margin-left:0cm;text-align:center'><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1026" type="#_x0000_t75" style='width:114.75pt;height:15.75pt'
+ o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image003.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=153 height=21
+src="Основні%20закони%20розподілу%20ймовірностей_files/image004.gif" v:shapes="_x0000_i1026"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1026"
+  DrawAspect="Content" ObjectID="_1338336101">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=04 style='margin-top:20.0pt'><span lang=UK>2. Закон розподілу Пуассона</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>Дискретна випадкова величина має розподіл Пуассона, якщо вона
+набуває зліченної множини значень <sub><!--[if gte vml 1]><v:shape id="_x0000_i1027"
+ type="#_x0000_t75" style='width:57pt;height:15.75pt' o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image005.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=76 height=21
+src="Основні%20закони%20розподілу%20ймовірностей_files/image006.gif" v:shapes="_x0000_i1027"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1027"
+  DrawAspect="Content" ObjectID="_1338336102">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span>з <span class=SpellE>імовірно-</span><br>
+<span class=SpellE>стями</span> <sub><!--[if gte vml 1]><v:shape id="_x0000_i1028"
+ type="#_x0000_t75" style='width:119.25pt;height:30pt' o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image007.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=159 height=40
+src="Основні%20закони%20розподілу%20ймовірностей_files/image008.gif" v:shapes="_x0000_i1028"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1028"
+  DrawAspect="Content" ObjectID="_1338336103">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span>Цей розподіл описує
+кількість подій, які настають в однакові проміжки часу за умови, що ці події
+відбуваються незалежно одна від одної зі сталою інтенсивністю. Розподіл
+застосовується в задачах статистичного контролю якості, у теорії надійності,
+теорії масового обслуговування. Математичне сподівання і дисперсія в цьому
+розподілі однакові і дорівнюють <i style='mso-bidi-font-style:normal'>а</i>.
+Для цього розподілу складено таблиці щодо різних значень <sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1029" type="#_x0000_t75" style='width:9pt;height:9.75pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image009.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=12 height=13
+src="Основні%20закони%20розподілу%20ймовірностей_files/image010.gif" v:shapes="_x0000_i1029"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1029"
+  DrawAspect="Content" ObjectID="_1338336104">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span>(0,1—20). У таблицях
+для відповідних значень <i style='mso-bidi-font-style:normal'>а</i> наведено
+ймовірності <sub><!--[if gte vml 1]><v:shape id="_x0000_i1030" type="#_x0000_t75"
+ style='width:101.25pt;height:15.75pt' o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image011.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=135 height=21
+src="Основні%20закони%20розподілу%20ймовірностей_files/image012.gif" v:shapes="_x0000_i1030"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1030"
+  DrawAspect="Content" ObjectID="_1338336105">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>Якщо у схемі незалежних повторних випробувань <i
+style='mso-bidi-font-style:normal'>n</i> велике і <i style='mso-bidi-font-style:
+normal'>р</i> або 1 – <i style='mso-bidi-font-style:normal'>р</i> прямують до
+нуля, то біноміальний розподіл апроксимується розподілом Пуассона, коли <sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1031" type="#_x0000_t75" style='width:32.25pt;height:12pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image013.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=43 height=16
+src="Основні%20закони%20розподілу%20ймовірностей_files/image014.gif" v:shapes="_x0000_i1031"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1031"
+  DrawAspect="Content" ObjectID="_1338336106">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=04 style='margin-top:20.0pt'><span lang=UK>3. Геометричний розподіл</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>Закон подається формулою: <sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1032" type="#_x0000_t75" style='width:164.25pt;height:18pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image015.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=219 height=24
+src="Основні%20закони%20розподілу%20ймовірностей_files/image016.gif" v:shapes="_x0000_i1032"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1032"
+  DrawAspect="Content" ObjectID="_1338336107">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>Геометричний закон розподілу має частоту настання події у
+схемі незалежних повторних випробувань, якщо вони проводяться до першого
+настання події. У формулі <i style='mso-bidi-font-style:normal'>р</i> —
+імовірність настання події в кожному випробуванні. Геометричний закон <span
+class=SpellE>розпо-</span><br>
+ділу застосовується у задачах статистичного контролю якості <br>
+і теорії надійності. Числові характеристики розподілу: <sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1033" type="#_x0000_t75" style='width:47.25pt;height:30pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image017.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=63 height=40
+src="Основні%20закони%20розподілу%20ймовірностей_files/image018.gif" v:shapes="_x0000_i1033"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1033"
+  DrawAspect="Content" ObjectID="_1338336108">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1034" type="#_x0000_t75" style='width:57.75pt;height:30pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image019.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=77 height=40
+src="Основні%20закони%20розподілу%20ймовірностей_files/image020.gif" v:shapes="_x0000_i1034"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1034"
+  DrawAspect="Content" ObjectID="_1338336109">
+ </o:OLEObject>
+</xml><![endif]--><b style='mso-bidi-font-weight:normal'><o:p></o:p></b></span></p>
+
+<p class=04 style='margin-top:20.0pt'><span lang=UK>4. Гіпергеометричний
+розподіл</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>Гіпергеометричний розподіл описує ймовірність настання <i
+style='mso-bidi-font-style:normal'>m</i> успішних результатів у <i
+style='mso-bidi-font-style:normal'>n</i> випробуваннях, якщо значення <i
+style='mso-bidi-font-style:normal'>n</i> мале порівняно з обсягом сукупності <i
+style='mso-bidi-font-style:normal'>N</i>:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:10.0pt;margin-right:0cm;
+margin-bottom:10.0pt;margin-left:0cm;text-align:center;line-height:85%'><span
+lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1035" type="#_x0000_t75" style='width:198pt;height:33pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image021.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=264 height=44
+src="Основні%20закони%20розподілу%20ймовірностей_files/image022.gif" v:shapes="_x0000_i1035"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1035"
+  DrawAspect="Content" ObjectID="_1338336110">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><span class=SpellE><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:
+10.0pt;line-height:85%'>Hаприклад</span></span><span lang=UK style='font-size:
+11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'>, імовірність того, що з <i
+style='mso-bidi-font-style:normal'>n</i> деталей, які випадково вибрано з
+партії обсягом <i style='mso-bidi-font-style:normal'>N</i>, <i
+style='mso-bidi-font-style:normal'>m</i> виявляться дефектними, має гіпергеометричний
+закон розподілу (<i style='mso-bidi-font-style:normal'>k</i> — кількість
+дефектних деталей <span style='letter-spacing:-.1pt'>у партії). Цей закон
+розподілу застосовується в задачах <span class=SpellE>статистич-</span><br>
+</span><span class=SpellE>ного</span> контролю якості та в суміжних галузях.
+Числові характеристики розподілу:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:8.0pt;margin-right:0cm;
+margin-bottom:8.0pt;margin-left:0cm;text-align:center'><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1036" type="#_x0000_t75" style='width:158.25pt;height:30pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image023.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=211 height=40
+src="Основні%20закони%20розподілу%20ймовірностей_files/image024.gif" v:shapes="_x0000_i1036"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1036"
+  DrawAspect="Content" ObjectID="_1338336111">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>Зі зменшенням відношення <sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1037" type="#_x0000_t75" style='width:14.25pt;height:27.75pt'
+ o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image025.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=19 height=37
+src="Основні%20закони%20розподілу%20ймовірностей_files/image026.gif" v:shapes="_x0000_i1037"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1037"
+  DrawAspect="Content" ObjectID="_1338336112">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span>гіпергеометричний
+розподіл наближається до біноміального з параметрами <i style='mso-bidi-font-style:
+normal'>n</i> i <sub><!--[if gte vml 1]><v:shape id="_x0000_i1038" type="#_x0000_t75"
+ style='width:35.25pt;height:27.75pt' o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image027.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=47 height=37
+src="Основні%20закони%20розподілу%20ймовірностей_files/image028.gif" v:shapes="_x0000_i1038"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1038"
+  DrawAspect="Content" ObjectID="_1338336113">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span>Дуже часто
+гіпергеометричний розподіл апроксимується розподілом Пуассона, якщо <sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1039" type="#_x0000_t75" style='width:36pt;height:27.75pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image029.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=48 height=37
+src="Основні%20закони%20розподілу%20ймовірностей_files/image030.gif" v:shapes="_x0000_i1039"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1039"
+  DrawAspect="Content" ObjectID="_1338336114">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=04 style='margin-top:30.0pt;margin-right:0cm;margin-bottom:20.0pt;
+margin-left:0cm'><span lang=UK>5. Рівномірний закон розподілу</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>Якщо ймовірність потрапляння випадкової величини на інтервал
+пропорційна до довжини інтервалу і не залежить від розташування інтервалу на
+осі, то вона має <b style='mso-bidi-font-weight:normal'><i style='mso-bidi-font-style:
+normal'>рівномірний закон розподілу</i></b>. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>Щільність рівномірного закону розподілу має вид:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:8.0pt;margin-right:0cm;
+margin-bottom:8.0pt;margin-left:0cm;text-align:center'><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1040" type="#_x0000_t75" style='width:104.25pt;height:54pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image031.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=139 height=72
+src="Основні%20закони%20розподілу%20ймовірностей_files/image032.gif" v:shapes="_x0000_i1040"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1040"
+  DrawAspect="Content" ObjectID="_1338336115">
+ </o:OLEObject>
+</xml><![endif]--></span><span lang=UK style='font-size:10.5pt;mso-bidi-font-size:
+10.0pt'>.</span><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>Функція розподілу рівномірного закону розподілу має вид:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:8.0pt;margin-right:0cm;
+margin-bottom:8.0pt;margin-left:0cm;text-align:center'><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1041" type="#_x0000_t75" style='width:104.25pt;height:54pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image033.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=139 height=72
+src="Основні%20закони%20розподілу%20ймовірностей_files/image034.gif" v:shapes="_x0000_i1041"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1041"
+  DrawAspect="Content" ObjectID="_1338336116">
+ </o:OLEObject>
+</xml><![endif]--></span><span lang=UK style='font-size:10.5pt;mso-bidi-font-size:
+10.0pt'>.</span><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><o:p></o:p></span></p>
+
+<p class=MsoHeading7 style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:15.05pt;line-height:85%;page-break-after:auto'><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'>Математичне
+сподівання та дисперсія рівномірного закону розподілу дорівнюють<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:8.0pt;margin-right:0cm;
+margin-bottom:8.0pt;margin-left:0cm;text-align:center'><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1042" type="#_x0000_t75" style='width:120.75pt;height:30pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image035.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=161 height=40
+src="Основні%20закони%20розподілу%20ймовірностей_files/image036.gif" v:shapes="_x0000_i1042"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1042"
+  DrawAspect="Content" ObjectID="_1338336117">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>Рівномірний закон розподілу легко моделювати. За допомогою
+функціональних перетворень із величин, розподілених рівномірно, можна діставати
+величини з довільним законом розподілу. Графіки щільності ймовірності і функції
+розподілу наведено на рис. 3 і 4.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+12.0pt;mso-line-height-rule:exactly'><span lang=UK style='font-size:11.5pt;
+mso-bidi-font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1043" type="#_x0000_t75" style='width:320.25pt;height:93.75pt'
+ o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image037.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=427 height=125
+src="Основні%20закони%20розподілу%20ймовірностей_files/image038.gif" v:shapes="_x0000_i1043"><![endif]><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Word.Picture.8" ShapeID="_x0000_i1043"
+  DrawAspect="Content" ObjectID="_1338336118">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:10.0pt;text-align:justify;text-indent:
+78.0pt;line-height:10.65pt;mso-line-height-rule:exactly;tab-stops:248.1pt'><!--[if gte vml 1]><v:line
+ id="_x0000_s1028" style='position:absolute;left:0;text-align:left;z-index:3'
+ from="447.05pt,5.1pt" to="447.05pt,48.3pt" o:allowincell="f">
+ <v:stroke dashstyle="1 1"/>
+</v:line><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:3;left:0px;margin-left:595px;margin-top:6px;width:2px;
+height:59px'><img width=2 height=59 src="Основні%20закони%20розподілу%20ймовірностей_files/image039.gif" v:shapes="_x0000_s1028"></span><![endif]><!--[if gte vml 1]><v:line
+ id="_x0000_s1027" style='position:absolute;left:0;text-align:left;z-index:2'
+ from="447.05pt,5.1pt" to="511.85pt,5.1pt" o:allowincell="f" strokeweight="3pt"/><![endif]--><![if !vml]><span
+style='mso-ignore:vglayout;position:absolute;z-index:2;left:0px;margin-left:
+594px;margin-top:4px;width:91px;height:5px'><img width=91 height=5
+src="Основні%20закони%20розподілу%20ймовірностей_files/image040.gif" v:shapes="_x0000_s1027"></span><![endif]><!--[if gte vml 1]><v:line
+ id="_x0000_s1026" style='position:absolute;left:0;text-align:left;flip:y;
+ z-index:1' from="403.85pt,5.1pt" to="447.05pt,48.3pt" o:allowincell="f"
+ strokeweight="3pt"/><![endif]--><![if !vml]><span style='mso-ignore:vglayout;
+position:absolute;z-index:1;left:0px;margin-left:536px;margin-top:4px;
+width:63px;height:63px'><img width=63 height=63 src="Основні%20закони%20розподілу%20ймовірностей_files/image041.gif"
+v:shapes="_x0000_s1026"></span><![endif]><span lang=UK style='font-size:10.5pt;
+mso-bidi-font-size:10.0pt'>Рис. 3<span style='mso-tab-count:1'>                                                </span>Рис.
+4<o:p></o:p></span></p>
+
+<p class=04 style='margin-top:20.0pt;margin-right:0cm;margin-bottom:14.0pt;
+margin-left:0cm'><span lang=UK>6. <span class=SpellE>Показниковий</span> закон
+розподілу</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>Щільність розподілу випадкової величини, розподіленої за <span
+class=SpellE>показниковим</span> законом, задається формулою:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
+margin-bottom:6.0pt;margin-left:0cm;text-align:center'><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1044" type="#_x0000_t75" style='width:125.25pt;height:33pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image042.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=167 height=44
+src="Основні%20закони%20розподілу%20ймовірностей_files/image043.gif" v:shapes="_x0000_i1044"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1044"
+  DrawAspect="Content" ObjectID="_1338336119">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>Функція розподілу <span class=SpellE>показникового</span>
+закону розподілу задається формулою:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
+margin-bottom:6.0pt;margin-left:0cm;text-align:center'><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1045" type="#_x0000_t75" style='width:129.75pt;height:33pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image044.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=173 height=44
+src="Основні%20закони%20розподілу%20ймовірностей_files/image045.gif" v:shapes="_x0000_i1045"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1045"
+  DrawAspect="Content" ObjectID="_1338336120">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>Математичне сподівання та дисперсія величини <i
+style='mso-bidi-font-style:normal'>Х</i>, розподіленої за <span class=SpellE>показниковим</span>
+законом розподілу можна знайти за формулами:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
+margin-bottom:6.0pt;margin-left:0cm;text-align:center'><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1046" type="#_x0000_t75" style='width:83.25pt;height:27.75pt'
+ o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image046.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=111 height=37
+src="Основні%20закони%20розподілу%20ймовірностей_files/image047.gif" v:shapes="_x0000_i1046"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1046"
+  DrawAspect="Content" ObjectID="_1338336121">
+ </o:OLEObject>
+</xml><![endif]-->.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>Графік <span class=SpellE>показникового</span> розподілу
+зображено на рис. 5, а, б.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1047" type="#_x0000_t75" style='width:319.5pt;height:133.5pt'
+ o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image048.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=426 height=178
+src="Основні%20закони%20розподілу%20ймовірностей_files/image049.gif" v:shapes="_x0000_i1047"><![endif]><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Word.Picture.8" ShapeID="_x0000_i1047"
+  DrawAspect="Content" ObjectID="_1338336122">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:8.0pt;margin-right:0cm;
+margin-bottom:10.0pt;margin-left:0cm;text-align:center;line-height:10.65pt;
+mso-line-height-rule:exactly'><span lang=UK style='font-size:10.5pt;mso-bidi-font-size:
+10.0pt'>Рис. 5<o:p></o:p></span></p>
+
+<p class=04 style='margin-bottom:0cm;margin-bottom:.0001pt'><span lang=UK>7.
+Нормальний закон розподілу</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>Нормальний закон розподілу задається щільністю <sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1048" type="#_x0000_t75" style='width:32.25pt;height:15pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image050.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=43 height=20
+src="Основні%20закони%20розподілу%20ймовірностей_files/image051.gif" v:shapes="_x0000_i1048"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1048"
+  DrawAspect="Content" ObjectID="_1338336123">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1049" type="#_x0000_t75" style='width:1in;height:35.25pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image052.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=96 height=47
+src="Основні%20закони%20розподілу%20ймовірностей_files/image053.gif" v:shapes="_x0000_i1049"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1049"
+  DrawAspect="Content" ObjectID="_1338336124">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span>Параметри <sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1050" type="#_x0000_t75" style='width:27.75pt;height:12.75pt'
+ o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image054.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=37 height=17
+src="Основні%20закони%20розподілу%20ймовірностей_files/image055.gif" v:shapes="_x0000_i1050"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1050"
+  DrawAspect="Content" ObjectID="_1338336125">
+ </o:OLEObject>
+</xml><![endif]-->, які входять до виразу щільності розподілу, є відповідно
+математичним сподіванням та середнім квадратичним відхиленням випадкової
+величини. Функція розподілу нормально розподіленої випадкової величини <i
+style='mso-bidi-font-style:normal'>Х</i> має вигляд <o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:10.0pt;margin-right:0cm;
+margin-bottom:10.0pt;margin-left:0cm;text-align:center'><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1051" type="#_x0000_t75" style='width:108.75pt;height:42pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image056.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=145 height=56
+src="Основні%20закони%20розподілу%20ймовірностей_files/image057.gif" v:shapes="_x0000_i1051"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1051"
+  DrawAspect="Content" ObjectID="_1338336126">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>Графіки функцій розподілу і щільності ймовірності наведено
+відповідно на рис. 6 і 7.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+12.0pt;mso-line-height-rule:exactly'><span lang=UK style='font-size:11.5pt;
+mso-bidi-font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1052" type="#_x0000_t75" style='width:322.5pt;height:115.5pt'
+ o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image058.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=430 height=154
+src="Основні%20закони%20розподілу%20ймовірностей_files/image059.gif" v:shapes="_x0000_i1052"><![endif]><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Word.Picture.8" ShapeID="_x0000_i1052"
+  DrawAspect="Content" ObjectID="_1338336127">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:8.0pt;margin-right:0cm;margin-bottom:10.0pt;
+margin-left:0cm;text-align:justify;text-indent:2.0cm;line-height:10.65pt;
+mso-line-height-rule:exactly;tab-stops:219.75pt'><span lang=UK
+style='font-size:10.5pt;mso-bidi-font-size:10.0pt'>Рис. 6 <span
+style='mso-tab-count:1'>                                            </span>Рис.
+7<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>Нормальний закон розподілу широко застосовується в математичній
+статистиці. Головна особливість нормального закону полягає в тому, що він є
+граничним законом, до якого наближаються інші закони розподілу за типових умов.
+<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>Для обчислення ймовірності потрапляння випадкової величи<span
+style='letter-spacing:-.1pt'>ни, розподіленої нормально, на проміжок
+використовується <span class=SpellE>функ-</span><br>
+</span><span class=SpellE>ція</span> Лапласа:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:4.0pt;margin-right:0cm;
+margin-bottom:4.0pt;margin-left:0cm;text-align:center'><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1053" type="#_x0000_t75" style='width:89.25pt;height:36pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image060.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=119 height=48
+src="Основні%20закони%20розподілу%20ймовірностей_files/image061.gif" v:shapes="_x0000_i1053"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1053"
+  DrawAspect="Content" ObjectID="_1338336128">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-bottom:10.0pt;text-align:center'><span
+lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1054" type="#_x0000_t75" style='width:167.25pt;height:29.25pt'
+ o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image062.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=223 height=39
+src="Основні%20закони%20розподілу%20ймовірностей_files/image063.gif" v:shapes="_x0000_i1054"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1054"
+  DrawAspect="Content" ObjectID="_1338336129">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>Часто застосовується також формула:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:10.0pt;text-align:center'><span
+lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1055" type="#_x0000_t75" style='width:107.25pt;height:29.25pt'
+ o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image064.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=143 height=39
+src="Основні%20закони%20розподілу%20ймовірностей_files/image065.gif" v:shapes="_x0000_i1055"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1055"
+  DrawAspect="Content" ObjectID="_1338336130">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:20.0pt;margin-right:0cm;
+margin-bottom:22.0pt;margin-left:0cm;text-align:center'><span lang=EN-US
+style='mso-ansi-language:EN-US'><!--[if gte vml 1]><v:shape id="_x0000_i1056"
+ type="#_x0000_t75" style='width:242.25pt;height:35.25pt' o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image066.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=323 height=47
+src="Основні%20закони%20розподілу%20ймовірностей_files/image067.gif" v:shapes="_x0000_i1056"><![endif]><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Word.Picture.8" ShapeID="_x0000_i1056"
+  DrawAspect="Content" ObjectID="_1338336131">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><b style='mso-bidi-font-weight:normal'><span lang=UK style='font-size:
+11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'>Задача&nbsp;23</span></b><span
+lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'>.&nbsp;У
+цеху є 5 верстатів. Імовірність того, що верстат працює, дорівнює 0,8. Знайти
+ймовірність того, що працюватимуть не менш як 3 верстати.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><b style='mso-bidi-font-weight:normal'><i style='mso-bidi-font-style:normal'><span
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%;mso-ansi-language:
+RU'><o:p>&nbsp;</o:p></span></i></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><b style='mso-bidi-font-weight:normal'><i style='mso-bidi-font-style:normal'><span
+lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'>Розв’язання.</span></i></b><span
+lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'>
+Імовірність того, що працює будь-який верстат, дорівнює 0,8. Тому справджується
+біноміальний закон розподілу: <sub><!--[if gte vml 1]><v:shape id="_x0000_i1057"
+ type="#_x0000_t75" style='width:189pt;height:18pt' o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image068.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=252 height=24
+src="Основні%20закони%20розподілу%20ймовірностей_files/image069.gif" v:shapes="_x0000_i1057"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1057"
+  DrawAspect="Content" ObjectID="_1338336132">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:14.0pt;margin-right:0cm;
+margin-bottom:14.0pt;margin-left:0cm;text-align:center'><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1058" type="#_x0000_t75" style='width:186pt;height:15pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image070.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=248 height=20
+src="Основні%20закони%20розподілу%20ймовірностей_files/image071.gif" v:shapes="_x0000_i1058"><![endif]><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1058"
+  DrawAspect="Content" ObjectID="_1338336133">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>Зазначені ймовірності знайдемо за наведеною щойно формулою.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:12.0pt;margin-right:0cm;
+margin-bottom:12.0pt;margin-left:0cm;text-align:center'><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1059" type="#_x0000_t75" style='width:203.25pt;height:33pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image072.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=271 height=44
+src="Основні%20закони%20розподілу%20ймовірностей_files/image073.gif" v:shapes="_x0000_i1059"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1059"
+  DrawAspect="Content" ObjectID="_1338336134">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><b style='mso-bidi-font-weight:normal'><span lang=UK style='font-size:
+11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'>Задача</span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:11.5pt;
+mso-bidi-font-size:10.0pt;line-height:85%;mso-ansi-language:EN-US'>&nbsp;</span></b><b
+style='mso-bidi-font-weight:normal'><span lang=UK style='font-size:11.5pt;
+mso-bidi-font-size:10.0pt;line-height:85%'>24</span></b><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'>.</span><span
+lang=EN-US style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%;
+mso-ansi-language:EN-US'>&nbsp;</span><span lang=UK style='font-size:11.5pt;
+mso-bidi-font-size:10.0pt;line-height:85%'>Визначити ймовірність потрапляння за
+контрольні межі не менш ніж 2 деталей із проби з 5 деталей, якщо автомат, із
+продукції якого беруться проби, обробляє 2 деталі за 1 хв. і за зміну у його продукції
+виявляється 38 деталей, які виходять за контрольні межі. Застосувати для
+розв’язування задачі закон розподілу Пуассона.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><b style='mso-bidi-font-weight:normal'><i style='mso-bidi-font-style:normal'><span
+lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'><o:p>&nbsp;</o:p></span></i></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><b style='mso-bidi-font-weight:normal'><i style='mso-bidi-font-style:normal'><span
+lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%;
+letter-spacing:-.4pt'>Розв’язання</span></i></b><span lang=UK style='font-size:
+11.5pt;mso-bidi-font-size:10.0pt;line-height:85%;letter-spacing:-.4pt'>.
+Застосуємо формулу розподілу Пуассона: <sub><!--[if gte vml 1]><v:shape id="_x0000_i1060"
+ type="#_x0000_t75" style='width:53.25pt;height:15.75pt' o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image074.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=71 height=21
+src="Основні%20закони%20розподілу%20ймовірностей_files/image075.gif" v:shapes="_x0000_i1060"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1060"
+  DrawAspect="Content" ObjectID="_1338336135">
+ </o:OLEObject>
+</xml><![endif]--></span><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:
+10.0pt;line-height:85%'><span style='mso-spacerun:yes'> </span><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1061" type="#_x0000_t75" style='width:39.75pt;height:30pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image076.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=53 height=40
+src="Основні%20закони%20розподілу%20ймовірностей_files/image077.gif" v:shapes="_x0000_i1061"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1061"
+  DrawAspect="Content" ObjectID="_1338336137">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span><i style='mso-bidi-font-style:
+normal'>m</i> = 0,1,…. Знайдемо &#955; — середню кількість <span class=SpellE>бракова</span></span><span
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%;mso-ansi-language:
+RU'>-<br>
+</span><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>них деталей, які виготовляються за 1 хв. Якщо тривалість зміни<span
+style='letter-spacing:-.1pt'> 480 <span class=SpellE>хв</span>,</span> то <sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1062" type="#_x0000_t75" style='width:69.75pt;height:27.75pt'
+ o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image078.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=93 height=37
+src="Основні%20закони%20розподілу%20ймовірностей_files/image079.gif" v:shapes="_x0000_i1062"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1062"
+  DrawAspect="Content" ObjectID="_1338336138">
+ </o:OLEObject>
+</xml><![endif]-->Пробу з 5 деталей виготовляють за <sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1063" type="#_x0000_t75" style='width:48pt;height:27.75pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image080.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=64 height=37
+src="Основні%20закони%20розподілу%20ймовірностей_files/image081.gif" v:shapes="_x0000_i1063"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1063"
+  DrawAspect="Content" ObjectID="_1338336139">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span><span class=SpellE>хв</span>,
+<sub><!--[if gte vml 1]><v:shape id="_x0000_i1064" type="#_x0000_t75" style='width:87pt;
+ height:14.25pt' o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image082.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=116 height=19
+src="Основні%20закони%20розподілу%20ймовірностей_files/image083.gif" v:shapes="_x0000_i1064"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1064"
+  DrawAspect="Content" ObjectID="_1338336140">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span>Знайдемо шукану
+ймовірність:<span style='letter-spacing:-.1pt'> </span><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1065" type="#_x0000_t75" style='width:129pt;height:30pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image084.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=172 height=40
+src="Основні%20закони%20розподілу%20ймовірностей_files/image085.gif" v:shapes="_x0000_i1065"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1065"
+  DrawAspect="Content" ObjectID="_1338336141">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span>Значення ймовірності
+знайдемо в таблицях при <sub><!--[if gte vml 1]><v:shape id="_x0000_i1066"
+ type="#_x0000_t75" style='width:36pt;height:14.25pt' o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image086.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=48 height=19
+src="Основні%20закони%20розподілу%20ймовірностей_files/image087.gif" v:shapes="_x0000_i1066"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1066"
+  DrawAspect="Content" ObjectID="_1338336142">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span>і <sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1067" type="#_x0000_t75" style='width:30pt;height:12.75pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image088.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=40 height=17
+src="Основні%20закони%20розподілу%20ймовірностей_files/image089.gif" v:shapes="_x0000_i1067"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1067"
+  DrawAspect="Content" ObjectID="_1338336143">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><b style='mso-bidi-font-weight:normal'><span lang=UK style='font-size:
+11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'>Задача</span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:11.5pt;
+mso-bidi-font-size:10.0pt;line-height:85%;mso-ansi-language:EN-US'>&nbsp;</span></b><b
+style='mso-bidi-font-weight:normal'><span lang=UK style='font-size:11.5pt;
+mso-bidi-font-size:10.0pt;line-height:85%'>25</span></b><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'>.</span><span
+lang=EN-US style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%;
+mso-ansi-language:EN-US'>&nbsp;</span><span lang=UK style='font-size:11.5pt;
+mso-bidi-font-size:10.0pt;line-height:85%'>Постачальник поставляє замовникові
+партії деталей обсягом 10&nbsp;000 шт. кожна. Замовник вважає бажаним бра</span><span
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%;mso-ansi-language:
+RU'>-<br>
+</span><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>кувати партії, в яких 2&nbsp;% браку з імовірністю не менш як
+0,98. Постачальник хотів би, щоб при цьому партії з 0,5&nbsp;% браку <span
+class=SpellE>прий-</span><br>
+мались би з ймовірністю не менш ніж 0,93. Визначити обсяг вибірки <i
+style='mso-bidi-font-style:normal'>n</i> і кількість бракованих деталей, за
+якої партія бракується. Скористатися для розв’язування задачі розподілом
+Пуассона.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+14.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:normal'><i
+style='mso-bidi-font-style:normal'><span lang=UK style='font-size:11.5pt;
+mso-bidi-font-size:10.0pt'><o:p>&nbsp;</o:p></span></i></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><b style='mso-bidi-font-weight:normal'><i style='mso-bidi-font-style:normal'><span
+lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'>Розв’язання.</span></i></b><span
+lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'>
+Нехай для контролю відібрано <i style='mso-bidi-font-style:normal'>n</i>
+деталей. Якщо в партії 2&nbsp;% бракованих деталей, то параметр <sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1068" type="#_x0000_t75" style='width:48.75pt;height:15.75pt'
+ o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image090.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=65 height=21
+src="Основні%20закони%20розподілу%20ймовірностей_files/image091.gif" v:shapes="_x0000_i1068"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1068"
+  DrawAspect="Content" ObjectID="_1338336144">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span>якщо у партії
+0,5&nbsp;% бракованих деталей, то <sub><!--[if gte vml 1]><v:shape id="_x0000_i1069"
+ type="#_x0000_t75" style='width:54.75pt;height:15.75pt' o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image092.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=73 height=21
+src="Основні%20закони%20розподілу%20ймовірностей_files/image093.gif" v:shapes="_x0000_i1069"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1069"
+  DrawAspect="Content" ObjectID="_1338336145">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span>При конкретному
+значенні <i style='mso-bidi-font-style:normal'>n</i> маємо деяке значення <sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1070" type="#_x0000_t75" style='width:14.25pt;height:15.75pt'
+ o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image094.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=19 height=21
+src="Основні%20закони%20розподілу%20ймовірностей_files/image095.gif" v:shapes="_x0000_i1070"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1070"
+  DrawAspect="Content" ObjectID="_1338336146">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span>Відшукуємо за
+таблицями значення <i style='mso-bidi-font-style:normal'>С</i>, при якому <sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1071" type="#_x0000_t75" style='width:75.75pt;height:30pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image096.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=101 height=40
+src="Основні%20закони%20розподілу%20ймовірностей_files/image097.gif" v:shapes="_x0000_i1071"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1071"
+  DrawAspect="Content" ObjectID="_1338336147">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span>Перевіряємо, чи буде
+при знайденому значенні <i style='mso-bidi-font-style:normal'>С</i> партія, в
+якій 0,5&nbsp;% бракованих деталей, прийматися з імовірністю не менш як 0,93.
+Для цього шукаємо <sub><!--[if gte vml 1]><v:shape id="_x0000_i1072" type="#_x0000_t75"
+ style='width:83.25pt;height:30pt' o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image098.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=111 height=40
+src="Основні%20закони%20розподілу%20ймовірностей_files/image099.gif" v:shapes="_x0000_i1072"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1072"
+  DrawAspect="Content" ObjectID="_1338336148">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span>— імовірність
+відхилення партії. Віднявши від одиниці цю ймовірність, дістанемо ймовірність
+прийняття партії, в якій 0,5&nbsp;% бракованих деталей. Якщо вона не менш як
+0,93, то значення <i style='mso-bidi-font-style:normal'>n</i> i <i
+style='mso-bidi-font-style:normal'>C</i> забезпечують виконання умов задачі.
+Розв’язуючи задачу, бажано, щоб <i style='mso-bidi-font-style:normal'>n</i>
+було якомога меншим. Тому послідовно розглядаємо значення <i style='mso-bidi-font-style:
+normal'>n</i> i вибираємо серед них найменше.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>Нехай <i style='mso-bidi-font-style:normal'>n</i> = 600, тоді <sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1073" type="#_x0000_t75" style='width:66.75pt;height:15.75pt'
+ o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image100.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=89 height=21
+src="Основні%20закони%20розподілу%20ймовірностей_files/image101.gif" v:shapes="_x0000_i1073"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1073"
+  DrawAspect="Content" ObjectID="_1338336149">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span>Згідно з таблицями при
+<sub><!--[if gte vml 1]><v:shape id="_x0000_i1074" type="#_x0000_t75" style='width:32.25pt;
+ height:15.75pt' o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image102.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=43 height=21
+src="Основні%20закони%20розподілу%20ймовірностей_files/image103.gif" v:shapes="_x0000_i1074"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1074"
+  DrawAspect="Content" ObjectID="_1338336150">
+ </o:OLEObject>
+</xml><![endif]-->, <i style='mso-bidi-font-style:normal'>С</i> = 6, <sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1075" type="#_x0000_t75" style='width:116.25pt;height:15.75pt'
+ o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image104.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=155 height=21
+src="Основні%20закони%20розподілу%20ймовірностей_files/image105.gif" v:shapes="_x0000_i1075"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1075"
+  DrawAspect="Content" ObjectID="_1338336151">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span>При <sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1076" type="#_x0000_t75" style='width:29.25pt;height:15.75pt'
+ o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image106.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=39 height=21
+src="Основні%20закони%20розподілу%20ймовірностей_files/image107.gif" v:shapes="_x0000_i1076"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1076"
+  DrawAspect="Content" ObjectID="_1338336152">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1077" type="#_x0000_t75" style='width:50.25pt;height:15.75pt'
+ o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image108.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=67 height=21
+src="Основні%20закони%20розподілу%20ймовірностей_files/image109.gif" v:shapes="_x0000_i1077"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1077"
+  DrawAspect="Content" ObjectID="_1338336153">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span><span
+style='letter-spacing:-.1pt'><sub><!--[if gte vml 1]><v:shape id="_x0000_i1078"
+ type="#_x0000_t75" style='width:53.25pt;height:14.25pt' o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image110.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=71 height=19
+src="Основні%20закони%20розподілу%20ймовірностей_files/image111.gif" v:shapes="_x0000_i1078"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1078"
+  DrawAspect="Content" ObjectID="_1338336154">
+ </o:OLEObject>
+</xml><![endif]-->тобто ймовірність прийняття партії, в якій 0,5&nbsp;% браку, </span><span
+style='letter-spacing:-.2pt'>становить 0,916082, що менше за 0,93. Значення <i
+style='mso-bidi-font-style:normal'>n</i> треба збільшити.<o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>Нехай <i style='mso-bidi-font-style:normal'>n</i> = 800, тоді <sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1079" type="#_x0000_t75" style='width:68.25pt;height:15.75pt'
+ o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image112.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=91 height=21
+src="Основні%20закони%20розподілу%20ймовірностей_files/image113.gif" v:shapes="_x0000_i1079"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1079"
+  DrawAspect="Content" ObjectID="_1338336155">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span>Значення <i
+style='mso-bidi-font-style:normal'>С</i> = 9. В тому разі партія з 0,5&nbsp;%
+браку приймається з імовірністю 0,978637. Отже, значення обсягу вибірки можна
+зменшити. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>Нехай <i style='mso-bidi-font-style:normal'>n</i> = 700, тоді <sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1080" type="#_x0000_t75" style='width:75pt;height:15.75pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image114.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=100 height=21
+src="Основні%20закони%20розподілу%20ймовірностей_files/image115.gif" v:shapes="_x0000_i1080"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1080"
+  DrawAspect="Content" ObjectID="_1338336156">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span>Значення <i
+style='mso-bidi-font-style:normal'>С</i> = 7. В такому разі партія з 0,5&nbsp;%
+браку приймається з імовірністю 0,93471.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>Отже, обсяг вибірки <i style='mso-bidi-font-style:normal'>n</i>
+= 700. В такому разі партія відхиляється, якщо серед вибраних деталей буде не
+менш як 7 бракованих деталей.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+14.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:normal'><span
+lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><b style='mso-bidi-font-weight:normal'><span lang=UK style='font-size:
+11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'>Задача</span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:11.5pt;
+mso-bidi-font-size:10.0pt;line-height:85%;mso-ansi-language:EN-US'>&nbsp;</span></b><b
+style='mso-bidi-font-weight:normal'><span lang=UK style='font-size:11.5pt;
+mso-bidi-font-size:10.0pt;line-height:85%'>26</span></b><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'>.</span><span
+lang=EN-US style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%;
+mso-ansi-language:EN-US'>&nbsp;</span><span lang=UK style='font-size:11.5pt;
+mso-bidi-font-size:10.0pt;line-height:85%'>При виготовленні довільного виробу
+інструмент з імовірністю <i style='mso-bidi-font-style:normal'>р</i> = 0,2 може
+бути пошкодженим і потребуватиме заміни. Знайти математичне сподівання і
+дисперсію кількості виробів, які будуть виготовлені цим інструментом.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><b style='mso-bidi-font-weight:normal'><i style='mso-bidi-font-style:normal'><span
+lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'>Розв’язання.</span></i></b><span
+lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'>
+Нехай випадкова величина <i style='mso-bidi-font-style:normal'>Х</i> —
+кількість деталей, виготовлених до заміни цим інструментом. Ця випадкова величина
+може набувати значень 0, 1, 2, …. Побудуємо закон розподілу цієї величини. Вона
+набуває значення, що дорівнює нулю, якщо при виготовленні першого виробу
+інструмент буде пошкоджено; <sub><!--[if gte vml 1]><v:shape id="_x0000_i1081"
+ type="#_x0000_t75" style='width:86.25pt;height:15.75pt' o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image116.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=115 height=21
+src="Основні%20закони%20розподілу%20ймовірностей_files/image117.gif" v:shapes="_x0000_i1081"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1081"
+  DrawAspect="Content" ObjectID="_1338336157">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span>Якщо інструмент буде пошкоджено
+при виготовленні другого виробу, то <i style='mso-bidi-font-style:normal'>Х</i>
+= 1; <sub><!--[if gte vml 1]><v:shape id="_x0000_i1082" type="#_x0000_t75"
+ style='width:87.75pt;height:15.75pt' o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image118.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=117 height=21
+src="Основні%20закони%20розподілу%20ймовірностей_files/image119.gif" v:shapes="_x0000_i1082"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1082"
+  DrawAspect="Content" ObjectID="_1338336158">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span>Аналогічно <sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1083" type="#_x0000_t75" style='width:93pt;height:18pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image120.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=124 height=24
+src="Основні%20закони%20розподілу%20ймовірностей_files/image121.gif" v:shapes="_x0000_i1083"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1083"
+  DrawAspect="Content" ObjectID="_1338336159">
+ </o:OLEObject>
+</xml><![endif]--><!--[if gte vml 1]><v:shape id="_x0000_i1084" type="#_x0000_t75"
+ style='width:8.25pt;height:15pt' o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image122.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=11 height=20
+src="Основні%20закони%20розподілу%20ймовірностей_files/image123.gif" v:shapes="_x0000_i1084"><![endif]><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1084"
+  DrawAspect="Content" ObjectID="_1338336160">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1085" type="#_x0000_t75" style='width:87.75pt;height:18pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image124.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=117 height=24
+src="Основні%20закони%20розподілу%20ймовірностей_files/image125.gif" v:shapes="_x0000_i1085"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1085"
+  DrawAspect="Content" ObjectID="_1338336161">
+ </o:OLEObject>
+</xml><![endif]-->…, <sub><!--[if gte vml 1]><v:shape id="_x0000_i1086" type="#_x0000_t75"
+ style='width:50.25pt;height:15.75pt' o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image126.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=67 height=21
+src="Основні%20закони%20розподілу%20ймовірностей_files/image127.gif" v:shapes="_x0000_i1086"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1086"
+  DrawAspect="Content" ObjectID="_1338336162">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span><span
+style='letter-spacing:-.1pt'><sub><!--[if gte vml 1]><v:shape id="_x0000_i1087"
+ type="#_x0000_t75" style='width:60pt;height:18pt' o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image128.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=80 height=24
+src="Основні%20закони%20розподілу%20ймовірностей_files/image129.gif" v:shapes="_x0000_i1087"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1087"
+  DrawAspect="Content" ObjectID="_1338336163">
+ </o:OLEObject>
+</xml><![endif]-->. Для обчислення математичного сподівання і <span
+class=SpellE>диспер-</span><br>
+</span><span class=SpellE>сії</span> зіставимо здобутий закон розподілу з
+геометричним законом розподілу <sub><!--[if gte vml 1]><v:shape id="_x0000_i1088"
+ type="#_x0000_t75" style='width:2in;height:18pt' o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image130.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=192 height=24
+src="Основні%20закони%20розподілу%20ймовірностей_files/image131.gif" v:shapes="_x0000_i1088"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1088"
+  DrawAspect="Content" ObjectID="_1338336164">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span>Очевидно, що <sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1089" type="#_x0000_t75" style='width:45.75pt;height:12.75pt'
+ o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image132.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=61 height=17
+src="Основні%20закони%20розподілу%20ймовірностей_files/image133.gif" v:shapes="_x0000_i1089"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1089"
+  DrawAspect="Content" ObjectID="_1338336165">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span>Скориставшись
+властивостями математичного сподівання та <span class=SpellE>дис-</span><br>
+<span class=SpellE>персії</span>, дістанемо:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
+margin-bottom:6.0pt;margin-left:0cm;text-align:center'><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1090" type="#_x0000_t75" style='width:186pt;height:30pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image134.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=248 height=40
+src="Основні%20закони%20розподілу%20ймовірностей_files/image135.gif" v:shapes="_x0000_i1090"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1090"
+  DrawAspect="Content" ObjectID="_1338336166">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'><span
+lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1091" type="#_x0000_t75" style='width:144.75pt;height:30pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image136.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=193 height=40
+src="Основні%20закони%20розподілу%20ймовірностей_files/image137.gif" v:shapes="_x0000_i1091"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1091"
+  DrawAspect="Content" ObjectID="_1338336167">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><b style='mso-bidi-font-weight:normal'><span lang=UK style='font-size:
+11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'>Задача</span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:11.5pt;
+mso-bidi-font-size:10.0pt;line-height:85%;mso-ansi-language:EN-US'>&nbsp;</span></b><b
+style='mso-bidi-font-weight:normal'><span lang=UK style='font-size:11.5pt;
+mso-bidi-font-size:10.0pt;line-height:85%'>27</span></b><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'>.</span><span
+lang=EN-US style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%;
+mso-ansi-language:EN-US'>&nbsp;</span><span lang=UK style='font-size:11.5pt;
+mso-bidi-font-size:10.0pt;line-height:85%'>Партія містить 200 виробів, серед
+яких 25 бракованих. Для перевірки якості з партії відібрали 10 виробів. Якщо
+при цьому кількість бракованих виробів не перевищує одиниці, то партія
+приймається. Знайти ймовірність того, що партію буде прийнято. Визначити цю
+саму ймовірність, якщо апроксимувати гіпергеометричний розподіл біноміальним
+розподілом і законом розподілу Пуассона.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><b style='mso-bidi-font-weight:normal'><i style='mso-bidi-font-style:normal'><span
+lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'><o:p>&nbsp;</o:p></span></i></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><b style='mso-bidi-font-weight:normal'><i style='mso-bidi-font-style:normal'><span
+lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'>Розв’язання.</span></i></b><span
+lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'>
+Застосуємо формулу гіпергеометричного закону розподілу. Партію буде прийнято,
+якщо кількість бракованих серед дібраних 10 дорівнюватиме нулю або одиниці.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
+margin-bottom:6.0pt;margin-left:0cm;text-align:center'><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1092" type="#_x0000_t75" style='width:252pt;height:33pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image138.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=336 height=44
+src="Основні%20закони%20розподілу%20ймовірностей_files/image139.gif" v:shapes="_x0000_i1092"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1092"
+  DrawAspect="Content" ObjectID="_1338336168">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>Обчислимо цю саму ймовірність за допомогою формули біноміального
+закону розподілу, <sub><!--[if gte vml 1]><v:shape id="_x0000_i1093" type="#_x0000_t75"
+ style='width:60pt;height:27.75pt' o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image140.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=80 height=37
+src="Основні%20закони%20розподілу%20ймовірностей_files/image141.gif" v:shapes="_x0000_i1093"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1093"
+  DrawAspect="Content" ObjectID="_1338336169">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
+margin-bottom:6.0pt;margin-left:0cm;text-align:center'><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1094" type="#_x0000_t75" style='width:266.25pt;height:30.75pt'
+ o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image142.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=355 height=41
+src="Основні%20закони%20розподілу%20ймовірностей_files/image143.gif" v:shapes="_x0000_i1094"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1094"
+  DrawAspect="Content" ObjectID="_1338336170">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>Обчислимо, нарешті, цю саму ймовірність за допомогою закону розподілу
+Пуассона:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
+margin-bottom:6.0pt;margin-left:0cm;text-align:center'><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1095" type="#_x0000_t75" style='width:92.25pt;height:27.75pt'
+ o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image144.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=123 height=37
+src="Основні%20закони%20розподілу%20ймовірностей_files/image145.gif" v:shapes="_x0000_i1095"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1095"
+  DrawAspect="Content" ObjectID="_1338336171">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1096" type="#_x0000_t75" style='width:255pt;height:17.25pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image146.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=340 height=23
+src="Основні%20закони%20розподілу%20ймовірностей_files/image147.gif" v:shapes="_x0000_i1096"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1096"
+  DrawAspect="Content" ObjectID="_1338336172">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>Як бачимо, похибки обчислення в разі апроксимації гіпергеометричного
+розподілу порівняно невеликі.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><b style='mso-bidi-font-weight:normal'><span lang=UK style='font-size:
+11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><b style='mso-bidi-font-weight:normal'><span lang=UK style='font-size:
+11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'>Задача</span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:11.5pt;
+mso-bidi-font-size:10.0pt;line-height:85%;mso-ansi-language:EN-US'>&nbsp;</span></b><b
+style='mso-bidi-font-weight:normal'><span lang=UK style='font-size:11.5pt;
+mso-bidi-font-size:10.0pt;line-height:85%'>28.</span></b><span lang=EN-US
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%;mso-ansi-language:
+EN-US'>&nbsp;</span><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:
+10.0pt;line-height:85%'>Випадкова величина <i style='mso-bidi-font-style:normal'>Х</i>
+розподілена рівномірно. Знайти щільність її розподілу, якщо <sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1097" type="#_x0000_t75" style='width:117pt;height:15.75pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image148.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=156 height=21
+src="Основні%20закони%20розподілу%20ймовірностей_files/image149.gif" v:shapes="_x0000_i1097"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1097"
+  DrawAspect="Content" ObjectID="_1338336173">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><b style='mso-bidi-font-weight:normal'><i style='mso-bidi-font-style:normal'><span
+lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'><o:p>&nbsp;</o:p></span></i></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><b style='mso-bidi-font-weight:normal'><i style='mso-bidi-font-style:normal'><span
+lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'>Розв’язання.
+</span></i></b><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>Щільність рівномірного розподілу <sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1098" type="#_x0000_t75" style='width:57.75pt;height:27.75pt'
+ o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image150.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=77 height=37
+src="Основні%20закони%20розподілу%20ймовірностей_files/image151.gif" v:shapes="_x0000_i1098"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1098"
+  DrawAspect="Content" ObjectID="_1338336174">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span>Отже, потрібно
+визначити область зміни випадкової величини. Складаємо систему рівнянь:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
+margin-bottom:6.0pt;margin-left:0cm;text-align:center'><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1099" type="#_x0000_t75" style='width:74.25pt;height:63pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image152.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=99 height=84
+src="Основні%20закони%20розподілу%20ймовірностей_files/image153.gif" v:shapes="_x0000_i1099"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1099"
+  DrawAspect="Content" ObjectID="_1338336175">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1100" type="#_x0000_t75" style='width:57pt;height:57.75pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image154.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=76 height=77
+src="Основні%20закони%20розподілу%20ймовірностей_files/image155.gif" v:shapes="_x0000_i1100"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1100"
+  DrawAspect="Content" ObjectID="_1338336176">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1101" type="#_x0000_t75" style='width:74.25pt;height:33pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image156.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=99 height=44
+src="Основні%20закони%20розподілу%20ймовірностей_files/image157.gif" v:shapes="_x0000_i1101"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1101"
+  DrawAspect="Content" ObjectID="_1338336177">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1102" type="#_x0000_t75" style='width:60.75pt;height:14.25pt'
+ o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image158.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=81 height=19
+src="Основні%20закони%20розподілу%20ймовірностей_files/image159.gif" v:shapes="_x0000_i1102"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1102"
+  DrawAspect="Content" ObjectID="_1338336178">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'><span
+lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1103" type="#_x0000_t75" style='width:143.25pt;height:47.25pt'
+ o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image160.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=191 height=63
+src="Основні%20закони%20розподілу%20ймовірностей_files/image161.gif" v:shapes="_x0000_i1103"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1103"
+  DrawAspect="Content" ObjectID="_1338336179">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><b style='mso-bidi-font-weight:normal'><span lang=UK style='font-size:
+11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'>Задача</span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:11.5pt;
+mso-bidi-font-size:10.0pt;line-height:85%;mso-ansi-language:EN-US'>&nbsp;</span></b><b
+style='mso-bidi-font-weight:normal'><span lang=UK style='font-size:11.5pt;
+mso-bidi-font-size:10.0pt;line-height:85%'>29</span></b><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'>.</span><span
+lang=EN-US style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%;
+mso-ansi-language:EN-US'>&nbsp;</span><span lang=UK style='font-size:11.5pt;
+mso-bidi-font-size:10.0pt;line-height:85%'>Випадкова величина розподілена <span
+class=SpellE>показниково</span> з <span style='letter-spacing:-.1pt'>параметром
+<i style='mso-bidi-font-style:normal'>а</i>. При якому значенні параметра
+ймовірність <span class=SpellE>потрап-</span><br>
+</span><span class=SpellE>ляння</span> випадкової величини на відрізок <sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1104" type="#_x0000_t75" style='width:24.75pt;height:15.75pt'
+ o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image162.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=33 height=21
+src="Основні%20закони%20розподілу%20ймовірностей_files/image163.gif" v:shapes="_x0000_i1104"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1104"
+  DrawAspect="Content" ObjectID="_1338336180">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span>буде найбільшою?<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><b style='mso-bidi-font-weight:normal'><i style='mso-bidi-font-style:normal'><span
+lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'><o:p>&nbsp;</o:p></span></i></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><b style='mso-bidi-font-weight:normal'><i style='mso-bidi-font-style:normal'><span
+lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'>Розв’язання.
+</span></i></b><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>Нехай параметр <i style='mso-bidi-font-style:normal'>а</i> —
+неперервна й диференційована величина. Знайдемо ймовірність потрапляння
+випадкової величини на відрізок і дослідимо здобуту функцію на екстремум:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
+margin-bottom:6.0pt;margin-left:0cm;text-align:center'><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1105" type="#_x0000_t75" style='width:165pt;height:30pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image164.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=220 height=40
+src="Основні%20закони%20розподілу%20ймовірностей_files/image165.gif" v:shapes="_x0000_i1105"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1105"
+  DrawAspect="Content" ObjectID="_1338336181">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1106" type="#_x0000_t75" style='width:80.25pt;height:17.25pt'
+ o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image166.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=107 height=23
+src="Основні%20закони%20розподілу%20ймовірностей_files/image167.gif" v:shapes="_x0000_i1106"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1106"
+  DrawAspect="Content" ObjectID="_1338336182">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1107" type="#_x0000_t75" style='width:254.25pt;height:17.25pt'
+ o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image168.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=339 height=23
+src="Основні%20закони%20розподілу%20ймовірностей_files/image169.gif" v:shapes="_x0000_i1107"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1107"
+  DrawAspect="Content" ObjectID="_1338336183">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1108" type="#_x0000_t75" style='width:148.5pt;height:28.5pt'
+ o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image170.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=198 height=38
+src="Основні%20закони%20розподілу%20ймовірностей_files/image171.gif" v:shapes="_x0000_i1108"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1108"
+  DrawAspect="Content" ObjectID="_1338336184">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>Покажемо, що при даному значенні <i style='mso-bidi-font-style:
+normal'>а</i> досягається максимум <sub><!--[if gte vml 1]><v:shape id="_x0000_i1109"
+ type="#_x0000_t75" style='width:23.25pt;height:15.75pt' o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image172.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=31 height=21
+src="Основні%20закони%20розподілу%20ймовірностей_files/image173.gif" v:shapes="_x0000_i1109"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1109"
+  DrawAspect="Content" ObjectID="_1338336185">
+ </o:OLEObject>
+</xml><![endif]-->. Знайдемо другу похідну:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:6.0pt;text-align:center'><span
+lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1110" type="#_x0000_t75" style='width:105.75pt;height:17.25pt'
+ o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image174.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=141 height=23
+src="Основні%20закони%20розподілу%20ймовірностей_files/image175.gif" v:shapes="_x0000_i1110"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1110"
+  DrawAspect="Content" ObjectID="_1338336186">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span><o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1111" type="#_x0000_t75" style='width:201.75pt;height:39pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image176.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=269 height=52
+src="Основні%20закони%20розподілу%20ймовірностей_files/image177.gif" v:shapes="_x0000_i1111"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1111"
+  DrawAspect="Content" ObjectID="_1338336187">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1112" type="#_x0000_t75" style='width:309pt;height:50.25pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image178.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=412 height=67
+src="Основні%20закони%20розподілу%20ймовірностей_files/image179.gif" v:shapes="_x0000_i1112"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1112"
+  DrawAspect="Content" ObjectID="_1338336188">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt'><span
+lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1113" type="#_x0000_t75" style='width:81.75pt;height:50.25pt'
+ o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image180.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=109 height=67
+src="Основні%20закони%20розподілу%20ймовірностей_files/image181.gif" v:shapes="_x0000_i1113"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1113"
+  DrawAspect="Content" ObjectID="_1338336189">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span>оскільки <sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1114" type="#_x0000_t75" style='width:27pt;height:15pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image182.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=36 height=20
+src="Основні%20закони%20розподілу%20ймовірностей_files/image183.gif" v:shapes="_x0000_i1114"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1114"
+  DrawAspect="Content" ObjectID="_1338336190">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span>Друга похідна у критичній
+точці від’ємна, тому <sub><!--[if gte vml 1]><v:shape id="_x0000_i1115" type="#_x0000_t75"
+ style='width:23.25pt;height:15.75pt' o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image184.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=31 height=21
+src="Основні%20закони%20розподілу%20ймовірностей_files/image173.gif" v:shapes="_x0000_i1115"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1115"
+  DrawAspect="Content" ObjectID="_1338336191">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span>в ній досягає
+максимуму.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+10.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:normal'><span
+lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><b style='mso-bidi-font-weight:normal'><span lang=UK style='font-size:
+11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'>Задача</span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:11.5pt;
+mso-bidi-font-size:10.0pt;line-height:85%;mso-ansi-language:EN-US'>&nbsp;</span></b><b
+style='mso-bidi-font-weight:normal'><span lang=UK style='font-size:11.5pt;
+mso-bidi-font-size:10.0pt;line-height:85%'>29.</span></b><span lang=EN-US
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%;mso-ansi-language:
+EN-US'>&nbsp;</span><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:
+10.0pt;line-height:85%'>Висунуто гіпотезу про те, що відхилення розміру деталі
+від номіналу є випадковою нормально розподіленою величиною з <sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1116" type="#_x0000_t75" style='width:86.25pt;height:12.75pt'
+ o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image185.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=115 height=17
+src="Основні%20закони%20розподілу%20ймовірностей_files/image186.gif" v:shapes="_x0000_i1116"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1116"
+  DrawAspect="Content" ObjectID="_1338336193">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span>мкм<sup>2</sup>. Чи
+відповідає заданій гіпотезі те, що в перевірених 6 деталей відхилення належало
+проміжку <!--[if gte vml 1]><v:shape id="_x0000_i1117" type="#_x0000_t75"
+ style='width:26.25pt;height:15pt' o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image187.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=35 height=20
+src="Основні%20закони%20розподілу%20ймовірностей_files/image188.gif" v:shapes="_x0000_i1117"><![endif]><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1117"
+  DrawAspect="Content" ObjectID="_1338336194">
+ </o:OLEObject>
+</xml><![endif]-->? Рівень значущості &#945; = 0,0005.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+8.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:normal'><span
+lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><b style='mso-bidi-font-weight:normal'><i style='mso-bidi-font-style:normal'><span
+lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'>Розв’язання.</span></i></b><span
+lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'>
+Розглянемо подію <i style='mso-bidi-font-style:normal'>А</i> — «відхилення в 6
+деталей належить проміжку </span><span style='font-size:11.5pt;mso-bidi-font-size:
+10.0pt;line-height:85%;mso-ansi-language:RU'>[5; 13)</span><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'>». Обчислимо
+ймовірність цієї події і зіставимо її з рівнем значущості </span><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%;font-family:
+Symbol;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman";
+mso-char-type:symbol;mso-symbol-font-family:Symbol'><span style='mso-char-type:
+symbol;mso-symbol-font-family:Symbol'>a</span></span><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'>. Якщо
+ймовірність буде меншою за </span><span lang=UK style='font-size:11.5pt;
+mso-bidi-font-size:10.0pt;line-height:85%;font-family:Symbol;mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman";mso-char-type:symbol;
+mso-symbol-font-family:Symbol'><span style='mso-char-type:symbol;mso-symbol-font-family:
+Symbol'>a</span></span><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:
+10.0pt;line-height:85%'>, то результат випробування не відповідатиме висунутій
+гіпотезі. Імовірність події <i style='mso-bidi-font-style:normal'>А</i>
+знайдемо за теоремою множення ймовірностей:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
+margin-bottom:6.0pt;margin-left:0cm;text-align:center'><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1118" type="#_x0000_t75" style='width:48pt;height:17.25pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image189.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=64 height=23
+src="Основні%20закони%20розподілу%20ймовірностей_files/image190.gif" v:shapes="_x0000_i1118"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1118"
+  DrawAspect="Content" ObjectID="_1338336195">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span>де <sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1119" type="#_x0000_t75" style='width:81.75pt;height:15.75pt'
+ o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image191.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=109 height=21
+src="Основні%20закони%20розподілу%20ймовірностей_files/image192.gif" v:shapes="_x0000_i1119"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1119"
+  DrawAspect="Content" ObjectID="_1338336196">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>Обчислимо цю ймовірність:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:8.0pt;margin-right:0cm;
+margin-bottom:8.0pt;margin-left:0cm;text-align:center'><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1120" type="#_x0000_t75" style='width:228pt;height:43.5pt' o:ole=""
+ fillcolor="window">
+ <v:imagedata src="2-2.files/image193.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=304 height=58
+src="Основні%20закони%20розподілу%20ймовірностей_files/image194.gif" v:shapes="_x0000_i1120"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1120"
+  DrawAspect="Content" ObjectID="_1338336197">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><span lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;
+line-height:85%'>Тоді <sub><!--[if gte vml 1]><v:shape id="_x0000_i1121"
+ type="#_x0000_t75" style='width:143.25pt;height:17.25pt' o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image195.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=191 height=23
+src="Основні%20закони%20розподілу%20ймовірностей_files/image196.gif" v:shapes="_x0000_i1121"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1121"
+  DrawAspect="Content" ObjectID="_1338336198">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span>Імовірність події <i
+style='mso-bidi-font-style:normal'>А</i> менша від рівня значущості. Отже,
+гіпотеза про закон розподілу не відповідає значенням випадкової величини у
+випробуваннях.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><b style='mso-bidi-font-weight:normal'><span lang=UK style='font-size:
+11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'>Задача</span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:11.5pt;
+mso-bidi-font-size:10.0pt;line-height:85%;mso-ansi-language:EN-US'>&nbsp;</span></b><b
+style='mso-bidi-font-weight:normal'><span lang=UK style='font-size:11.5pt;
+mso-bidi-font-size:10.0pt;line-height:85%'>30</span></b><span lang=UK
+style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'>.</span><span
+lang=EN-US style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%;
+mso-ansi-language:EN-US'>&nbsp;</span><span lang=UK style='font-size:11.5pt;
+mso-bidi-font-size:10.0pt;line-height:85%'>Похибка спостереження <i
+style='mso-bidi-font-style:normal'>Х</i> при вимірюванні довжини розподілена
+нормально з <sub><!--[if gte vml 1]><v:shape id="_x0000_i1122" type="#_x0000_t75"
+ style='width:98.25pt;height:12.75pt' o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image197.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=131 height=17
+src="Основні%20закони%20розподілу%20ймовірностей_files/image198.gif" v:shapes="_x0000_i1122"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1122"
+  DrawAspect="Content" ObjectID="_1338336199">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span>Знайти ймовірність
+того, що виміряне значення відхилиться від істинного більш ніж на <st1:metricconverter
+ProductID="10 мм" w:st="on">10 мм</st1:metricconverter>.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><b style='mso-bidi-font-weight:normal'><i style='mso-bidi-font-style:normal'><span
+lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'><o:p>&nbsp;</o:p></span></i></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:15.05pt;line-height:
+85%'><b style='mso-bidi-font-weight:normal'><i style='mso-bidi-font-style:normal'><span
+lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'>Розв’язання.</span></i></b><span
+lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt;line-height:85%'>
+Згідно з умовою потрібно знайти <sub><!--[if gte vml 1]><v:shape id="_x0000_i1123"
+ type="#_x0000_t75" style='width:51.75pt;height:15.75pt' o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image199.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=69 height=21
+src="Основні%20закони%20розподілу%20ймовірностей_files/image200.gif" v:shapes="_x0000_i1123"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1123"
+  DrawAspect="Content" ObjectID="_1338336200">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'> </span>Виразимо цю
+ймовірність через ймовірність протилежної події:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:6.0pt;text-align:center'><span
+lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1124" type="#_x0000_t75" style='width:282.75pt;height:30.75pt'
+ o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image201.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=377 height=41
+src="Основні%20закони%20розподілу%20ймовірностей_files/image202.gif" v:shapes="_x0000_i1124"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1124"
+  DrawAspect="Content" ObjectID="_1338336201">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'><span
+lang=UK style='font-size:11.5pt;mso-bidi-font-size:10.0pt'><sub><!--[if gte vml 1]><v:shape
+ id="_x0000_i1125" type="#_x0000_t75" style='width:291.75pt;height:30.75pt'
+ o:ole="" fillcolor="window">
+ <v:imagedata src="2-2.files/image203.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=389 height=41
+src="Основні%20закони%20розподілу%20ймовірностей_files/image204.gif" v:shapes="_x0000_i1125"><![endif]></sub><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1125"
+  DrawAspect="Content" ObjectID="_1338336202">
+ </o:OLEObject>
+</xml><![endif]--><o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=UK><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+</body>
+
+</html>
+
+<!-- This document saved from http://fobosinc.ho.com.ua/TB/2-2.htm -->

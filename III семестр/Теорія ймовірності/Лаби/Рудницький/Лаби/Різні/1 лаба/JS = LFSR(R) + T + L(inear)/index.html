@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>lold</title>
+	<script src="LFSR.js"></script>
+	<script src="T.js"></script>
+	<script src="TESTS.js"></script>
+	<style>
+		body {word-wrap: break-word;}
+	</style>
+</head>
+<body>
+<script type="text/javascript">
+var NS = 6, NC = 12, polynoms = {
+	6: [1,0,0,0,0,1,1],
+	7: [1,0,0,0,1,0,0,1],
+	8: [1,0,0,0,1,1,1,0,1],
+	9: [1,0,0,0,0,1,0,0,0,1],
+	10: [1,0,0,0,0,0,0,1,0,0,1],
+	11: [1,0,0,0,0,0,0,0,1,0,0,1],
+	12: [1,0,0,0,0,0,1,0,1,0,0,1,1],
+	13: [1,0,0,0,0,0,0,0,0,1,1,0,1,1],
+	14: [1,0,0,0,1,0,0,0,1,0,0,0,0,1,1],
+	15: [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1],
+	16: [1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,1,1],
+	17: [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1]
+}, initstates = {
+	6: [1,0,0,0,0,1],
+	7: [1,0,0,0,1,0,1],
+	8: [1,0,0,0,1,1,0,1],
+	9: [1,0,0,0,0,1,0,0,1],
+	10: [1,0,0,0,0,0,0,0,0,1],
+	11: [1,0,0,0,0,0,0,1,0,0,1],
+	12: [1,0,0,0,0,0,0,1,0,0,1,1],
+	13: [1,0,0,0,0,0,0,0,1,1,0,1,1],
+	14: [1,0,0,0,0,0,0,1,0,0,0,0,1,1],
+	15: [1,0,0,0,0,0,0,0,0,0,0,0,0,1,1],
+	16: [1,0,0,0,1,0,0,0,0,0,0,0,1,0,1,1],
+	17: [1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1]
+}, NUM = 20000, LEN = 5;
+
+/*
+for(var i = 0; i < NC; ++i)
+{
+	initstates[NS + i] = [];
+	for(var m = 0; m < NS + i; m++)
+		this.initstates[NS + i].push(Math.random() > 0.5 ? 1 : 0);
+}
+*/
+/*
+var generator = new T(polynoms, initstates, NC, NS), seq = [];
+for(var i = 0; i < NUM; i++)
+	seq.push(generator.next());
+
+document.write('Sequence: ' + seq.join(', '));
+document.write('<br /><br />');
+
+document.write('Frequency test: ' + TESTS.freq(seq));
+document.write('<br /><br />');
+
+document.write('Differential test: ' + TESTS.diff(seq));
+document.write('<br /><br />');
+
+document.write('Rank test: LEN = ' + LEN);
+var rank = TESTS.rank(seq, LEN);
+for(var v in rank)
+	document.write('<br />' + v + ' | ' + rank[v]);
+document.write('<br /><br />');
+*/
+
+var seq = [1,0,1,0,1,1,1];
+var comp = TESTS.comp(seq);
+document.write('Complexity test: L = ' + comp.L + '; polynom = ' + comp.polynom.join(''));
+document.write('<br /><br />');
+</script>
+</body>
+</html>
