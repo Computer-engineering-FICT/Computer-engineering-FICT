@@ -1,0 +1,605 @@
+Turbo Assembler	 Version 3.1	    01/09/10 00:11:26	    Page 1
+receiver.ASM
+
+
+
+      1					 .386
+      2
+      3		  =03F8			 com1 equ 3f8h
+      4		  =02F8			 com2 equ 2f8h
+      5
+      6					 base equ com1
+      7
+      8					 print_text macro text
+      9						 push ax
+     10						 mov ah, 09h
+     11						 mov dx, offset	text
+     12						 int 21h
+     13						 pop ax
+     14					 endm
+     15
+     16					 get_input_symbol macro	symbol
+     17						 xor ax, ax
+     18						 mov ah, 1
+     19						 int 21h
+     20						 mov symbol, al
+     21					 endm
+     22
+     23					 assume	cs:code, ds:data, ss:stk
+     24
+     25	    0000			 data segment use16
+     26
+     27	    0000  4C 61	62 6F 72 61 74+		 program_text db 'Laboratory Work 1. COM port',	0dh, 0ah, '$'
+     28		  6F 72	79 20 57 6F 72+
+     29		  6B 20	31 2E 20 43 4F+
+     30		  4D 20	70 6F 72 74 0D+
+     31		  0A 24
+     32	    001E  5A 61	6B 68 6F 7A 68+		 author_text db	'Zakhozhyy Ihor, group IO-73', 0dh, 0ah, '$'
+     33		  79 79	20 49 68 6F 72+
+     34		  2C 20	67 72 6F 75 70+
+     35		  20 49	4F 2D 37 33 0D+
+     36		  0A 24
+     37	    003C  50 72	65 73 73 20 3C+		 press_enter_text db 'Press <Enter> to set ready signal	or <Esc> to exit...', 0dh,  +
+     38		  45 6E	74 65 72 3E 20+	 0ah, '$'
+     39		  74 6F	20 73 65 74 20+
+     40		  72 65	61 64 79 20 73+
+     41		  69 67	6E 61 6C 20 6F+
+     42		  72 20	3C 45 73 63 3E+
+     43		  20 74	6F 20 65 78 69+
+     44		  74 2E	2E 2E 0D 0A 24
+     45	    0074  52 65	61 64 79 20 73+		 send_ready_text db 'Ready signal was set.', 0dh, 0ah, '$'
+     46		  69 67	6E 61 6C 20 77+
+     47		  61 73	20 73 65 74 2E+
+     48		  0D 0A	24
+     49	    008C  43 68	6F 6F 73 65 20+		 choose_speed_text db 'Choose speed:', 0dh, 0ah, '$'
+     50		  73 70	65 65 64 3A 0D+
+     51		  0A 24
+     52	    009C  3C 41	3E 20 31 31 30+		 speed1_text db	'<A> 110 baud',	0dh, 0ah, '$'
+     53		  20 62	61 75 64 0D 0A+
+     54		  24
+     55	    00AB  3C 42	3E 20 31 35 30+	     speed2_text db '<B> 150 baud', 0dh, 0ah, '$'
+     56		  20 62	61 75 64 0D 0A+
+     57		  24
+Turbo Assembler	 Version 3.1	    01/09/10 00:11:26	    Page 2
+receiver.ASM
+
+
+
+     58	    00BA  3C 43	3E 20 33 30 30+	     speed3_text db '<C> 300 baud', 0dh, 0ah, '$'
+     59		  20 62	61 75 64 0D 0A+
+     60		  24
+     61	    00C9  3C 44	3E 20 36 30 30+	     speed4_text db '<D> 600 baud', 0dh, 0ah, '$'
+     62		  20 62	61 75 64 0D 0A+
+     63		  24
+     64	    00D8  3C 45	3E 20 31 32 30+	     speed5_text db '<E> 1200 baud', 0dh, 0ah, '$'
+     65		  30 20	62 61 75 64 0D+
+     66		  0A 24
+     67	    00E8  3C 46	3E 20 32 34 30+	     speed6_text db '<F> 2400 baud', 0dh, 0ah, '$'
+     68		  30 20	62 61 75 64 0D+
+     69		  0A 24
+     70	    00F8  3C 47	3E 20 34 38 30+	     speed7_text db '<G> 4800 baud', 0dh, 0ah, '$'
+     71		  30 20	62 61 75 64 0D+
+     72		  0A 24
+     73	    0108  3C 48	3E 20 39 36 30+	     speed8_text db '<H> 9600 baud', 0dh, 0ah, '$'
+     74		  30 20	62 61 75 64 0D+
+     75		  0A 24
+     76	    0118  3C 49	3E 20 31 34 34+	     speed9_text db '<I> 14400 baud', 0dh, 0ah,	'$'
+     77		  30 30	20 62 61 75 64+
+     78		  0D 0A	24
+     79	    0129  3C 4A	3E 20 31 39 32+	     speed10_text db '<J> 19200	baud', 0dh, 0ah, '$'
+     80		  30 30	20 62 61 75 64+
+     81		  0D 0A	24
+     82	    013A  3C 4B	3E 20 33 38 34+	     speed11_text db '<K> 38400	baud', 0dh, 0ah, '$'
+     83		  30 30	20 62 61 75 64+
+     84		  0D 0A	24
+     85	    014B  3C 4C	3E 20 35 37 36+	     speed12_text db '<L> 57600	baud', 0dh, 0ah, '$'
+     86		  30 30	20 62 61 75 64+
+     87		  0D 0A	24
+     88	    015C  3C 4D	3E 20 31 31 35+	     speed13_text db '<M> 115200 baud',	0dh, 0ah, '$'
+     89		  32 30	30 20 62 61 75+
+     90		  64 0D	0A 24
+     91	    016E  04 03	01 00 00 00 00+		 speedh	db 4, 3, 1, 0, 0, 0, 0,	0, 0, 0, 0, 0, 0
+     92		  00 00	00 00 00 00
+     93	    017B  17 00	80 C0 60 30 18+		 speedl	db 17h,	0, 80h,	0c0h, 60h, 30h,	18h, 0ch, 8, 6,	3, 2, 1
+     94		  0C 08	06 03 02 01
+     95	    0188  43 68	6F 6F 73 65 20+		 stop_bit_text db 'Choose the count of stop bits:', 0dh, 0ah, '$'
+     96		  74 68	65 20 63 6F 75+
+     97		  6E 74	20 6F 66 20 73+
+     98		  74 6F	70 20 62 69 74+
+     99		  73 3A	0D 0A 24
+    100	    01A9  3C 41	3E 20 31 0D 0A+		 stop_bit1_text	db '<A>	1', 0dh, 0ah, '$'
+    101		  24
+    102	    01B1  3C 42	3E 20 32 0D 0A+		 stop_bit2_text	db '<B>	2', 0dh, 0ah, '$'
+    103		  24
+    104	    01B9  4D 65	73 73 61 67 65+		 message_text db 'Message:', 0dh, 0ah, '$'
+    105		  3A 0D	0A 24
+    106	    01C4  42 72	65 61 6B 20 6F+		 break_text db 'Break on line was received.', 0dh, 0ah,	'$'
+    107		  6E 20	6C 69 6E 65 20+
+    108		  77 61	73 20 72 65 63+
+    109		  65 69	76 65 64 2E 0D+
+    110		  0A 24
+    111	    01E2  0D 0A	24			 new_line db 0dh, 0ah, '$'
+    112	    01E5  ??				 buf db	?
+    113	    01E6  ??				 speed_lb db ?
+    114	    01E7  ??				 speed_hb db ?
+Turbo Assembler	 Version 3.1	    01/09/10 00:11:26	    Page 3
+receiver.ASM
+
+
+
+    115	    01E8  ??				 stop_bits db ?
+    116
+    117	    01E9			 data ends
+    118
+    119	    0000			 stk segment stack use16
+    120
+    121	    0000  64*(??)			 stck db 100 dup(?)
+    122
+    123	    0064			 stk ends
+    124
+    125	    0000			 code segment use16
+    126
+    127	    0000				 begin:
+    128	    0000  B8 0000s				 mov ax, data
+    129	    0003  8E D8					 mov ds, ax
+    130	    0005  8E C0					 mov es, ax
+    131	    0007  B4 03					 mov ah, 3h
+    132	    0009  CD 10					 int 10h
+    133
+    134							 print_text program_text
+1   135	    000B  50				 push ax
+1   136	    000C  B4 09				 mov ah, 09h
+1   137	    000E  BA 0000r			 mov dx, offset	program_text
+1   138	    0011  CD 21				 int 21h
+1   139	    0013  58				 pop ax
+    140							 print_text author_text
+1   141	    0014  50				 push ax
+1   142	    0015  B4 09				 mov ah, 09h
+1   143	    0017  BA 001Er			 mov dx, offset	author_text
+1   144	    001A  CD 21				 int 21h
+1   145	    001C  58				 pop ax
+    146
+    147							 ;Initializing port
+    148	    001D  E8 0008				 call initialize_port
+    149
+    150							 ;Receiving of message
+    151	    0020  E8 017E				 call receive_message
+    152
+    153	    0023				 exit:
+    154	    0023  B8 4C00				 mov ax, 4c00h
+    155	    0026  CD 21					 int 21h
+    156
+    157	    0028			 initialize_port proc
+    158
+    159							 ;Dialog to set	ready signal
+    160							 print_text press_enter_text
+1   161	    0028  50				 push ax
+1   162	    0029  B4 09				 mov ah, 09h
+1   163	    002B  BA 003Cr			 mov dx, offset	press_enter_text
+1   164	    002E  CD 21				 int 21h
+1   165	    0030  58				 pop ax
+    166	    0031				 ready_dialog:
+    167							 get_input_symbol buf
+1   168	    0031  33 C0				 xor ax, ax
+1   169	    0033  B4 01				 mov ah, 1
+1   170	    0035  CD 21				 int 21h
+1   171	    0037  A2 01E5r			 mov buf, al
+Turbo Assembler	 Version 3.1	    01/09/10 00:11:26	    Page 4
+receiver.ASM
+
+
+
+    172	    003A  80 3E	01E5r 1B			 cmp buf, 1bh
+    173	    003F  74 E2					 jz exit
+    174	    0041  80 3E	01E5r 0D			 cmp buf, 0dh
+    175	    0046  75 E9					 jnz ready_dialog
+    176							 ;Set signal
+    177	    0048  BA 03FC				 mov dx, base+4
+    178	    004B  B0 01					 mov al, 1
+    179	    004D  EE					 out dx, al
+    180							 print_text send_ready_text
+1   181	    004E  50				 push ax
+1   182	    004F  B4 09				 mov ah, 09h
+1   183	    0051  BA 0074r			 mov dx, offset	send_ready_text
+1   184	    0054  CD 21				 int 21h
+1   185	    0056  58				 pop ax
+    186
+    187							 ;Dialog to choose speed
+    188							 print_text choose_speed_text
+1   189	    0057  50				 push ax
+1   190	    0058  B4 09				 mov ah, 09h
+1   191	    005A  BA 008Cr			 mov dx, offset	choose_speed_text
+1   192	    005D  CD 21				 int 21h
+1   193	    005F  58				 pop ax
+    194							 print_text speed1_text
+1   195	    0060  50				 push ax
+1   196	    0061  B4 09				 mov ah, 09h
+1   197	    0063  BA 009Cr			 mov dx, offset	speed1_text
+1   198	    0066  CD 21				 int 21h
+1   199	    0068  58				 pop ax
+    200							 print_text speed2_text
+1   201	    0069  50				 push ax
+1   202	    006A  B4 09				 mov ah, 09h
+1   203	    006C  BA 00ABr			 mov dx, offset	speed2_text
+1   204	    006F  CD 21				 int 21h
+1   205	    0071  58				 pop ax
+    206							 print_text speed3_text
+1   207	    0072  50				 push ax
+1   208	    0073  B4 09				 mov ah, 09h
+1   209	    0075  BA 00BAr			 mov dx, offset	speed3_text
+1   210	    0078  CD 21				 int 21h
+1   211	    007A  58				 pop ax
+    212							 print_text speed4_text
+1   213	    007B  50				 push ax
+1   214	    007C  B4 09				 mov ah, 09h
+1   215	    007E  BA 00C9r			 mov dx, offset	speed4_text
+1   216	    0081  CD 21				 int 21h
+1   217	    0083  58				 pop ax
+    218							 print_text speed5_text
+1   219	    0084  50				 push ax
+1   220	    0085  B4 09				 mov ah, 09h
+1   221	    0087  BA 00D8r			 mov dx, offset	speed5_text
+1   222	    008A  CD 21				 int 21h
+1   223	    008C  58				 pop ax
+    224							 print_text speed6_text
+1   225	    008D  50				 push ax
+1   226	    008E  B4 09				 mov ah, 09h
+1   227	    0090  BA 00E8r			 mov dx, offset	speed6_text
+1   228	    0093  CD 21				 int 21h
+Turbo Assembler	 Version 3.1	    01/09/10 00:11:26	    Page 5
+receiver.ASM
+
+
+
+1   229	    0095  58				 pop ax
+    230							 print_text speed7_text
+1   231	    0096  50				 push ax
+1   232	    0097  B4 09				 mov ah, 09h
+1   233	    0099  BA 00F8r			 mov dx, offset	speed7_text
+1   234	    009C  CD 21				 int 21h
+1   235	    009E  58				 pop ax
+    236							 print_text speed8_text
+1   237	    009F  50				 push ax
+1   238	    00A0  B4 09				 mov ah, 09h
+1   239	    00A2  BA 0108r			 mov dx, offset	speed8_text
+1   240	    00A5  CD 21				 int 21h
+1   241	    00A7  58				 pop ax
+    242							 print_text speed9_text
+1   243	    00A8  50				 push ax
+1   244	    00A9  B4 09				 mov ah, 09h
+1   245	    00AB  BA 0118r			 mov dx, offset	speed9_text
+1   246	    00AE  CD 21				 int 21h
+1   247	    00B0  58				 pop ax
+    248							 print_text speed10_text
+1   249	    00B1  50				 push ax
+1   250	    00B2  B4 09				 mov ah, 09h
+1   251	    00B4  BA 0129r			 mov dx, offset	speed10_text
+1   252	    00B7  CD 21				 int 21h
+1   253	    00B9  58				 pop ax
+    254							 print_text speed11_text
+1   255	    00BA  50				 push ax
+1   256	    00BB  B4 09				 mov ah, 09h
+1   257	    00BD  BA 013Ar			 mov dx, offset	speed11_text
+1   258	    00C0  CD 21				 int 21h
+1   259	    00C2  58				 pop ax
+    260							 print_text speed12_text
+1   261	    00C3  50				 push ax
+1   262	    00C4  B4 09				 mov ah, 09h
+1   263	    00C6  BA 014Br			 mov dx, offset	speed12_text
+1   264	    00C9  CD 21				 int 21h
+1   265	    00CB  58				 pop ax
+    266							 print_text speed13_text
+1   267	    00CC  50				 push ax
+1   268	    00CD  B4 09				 mov ah, 09h
+1   269	    00CF  BA 015Cr			 mov dx, offset	speed13_text
+1   270	    00D2  CD 21				 int 21h
+1   271	    00D4  58				 pop ax
+    272	    00D5				 speed_dialog:
+    273							 get_input_symbol buf
+1   274	    00D5  33 C0				 xor ax, ax
+1   275	    00D7  B4 01				 mov ah, 1
+1   276	    00D9  CD 21				 int 21h
+1   277	    00DB  A2 01E5r			 mov buf, al
+    278							 print_text new_line
+1   279	    00DE  50				 push ax
+1   280	    00DF  B4 09				 mov ah, 09h
+1   281	    00E1  BA 01E2r			 mov dx, offset	new_line
+1   282	    00E4  CD 21				 int 21h
+1   283	    00E6  58				 pop ax
+    284	    00E7  B0 41					 mov al, 41h
+    285	    00E9  B9 000D				 mov cx, 13
+Turbo Assembler	 Version 3.1	    01/09/10 00:11:26	    Page 6
+receiver.ASM
+
+
+
+    286	    00EC  33 DB					 xor bx, bx
+    287	    00EE				 next_speed1:
+    288	    00EE  38 06	01E5r				 cmp buf, al
+    289	    00F2  74 1D	90 90				 jz set_speed
+    290	    00F6  FE C0					 inc al
+    291	    00F8  43					 inc bx
+    292	    00F9  E2 F3					 loop next_speed1
+    293	    00FB  B0 61					 mov al, 61h
+    294	    00FD  B9 000D				 mov cx, 13
+    295	    0100  33 DB					 xor bx, bx
+    296	    0102				 next_speed2:
+    297	    0102  38 06	01E5r				 cmp buf, al
+    298	    0106  74 09	90 90				 jz set_speed
+    299	    010A  FE C0					 inc al
+    300	    010C  43					 inc bx
+    301	    010D  E2 F3					 loop next_speed2
+    302	    010F  EB C4					 jmp speed_dialog
+    303	    0111				 set_speed:
+    304	    0111  8A 87	016Er				 mov al, speedh[bx]
+    305	    0115  A2 01E7r				 mov speed_hb, al
+    306	    0118  8A 87	017Br				 mov al, speedl[bx]
+    307	    011C  A2 01E6r				 mov speed_lb, al
+    308
+    309							 ;Dialog to choose count of stop bits
+    310							 print_text stop_bit_text
+1   311	    011F  50				 push ax
+1   312	    0120  B4 09				 mov ah, 09h
+1   313	    0122  BA 0188r			 mov dx, offset	stop_bit_text
+1   314	    0125  CD 21				 int 21h
+1   315	    0127  58				 pop ax
+    316							 print_text stop_bit1_text
+1   317	    0128  50				 push ax
+1   318	    0129  B4 09				 mov ah, 09h
+1   319	    012B  BA 01A9r			 mov dx, offset	stop_bit1_text
+1   320	    012E  CD 21				 int 21h
+1   321	    0130  58				 pop ax
+    322							 print_text stop_bit2_text
+1   323	    0131  50				 push ax
+1   324	    0132  B4 09				 mov ah, 09h
+1   325	    0134  BA 01B1r			 mov dx, offset	stop_bit2_text
+1   326	    0137  CD 21				 int 21h
+1   327	    0139  58				 pop ax
+    328	    013A				 stop_bit_dialog:
+    329							 get_input_symbol buf
+1   330	    013A  33 C0				 xor ax, ax
+1   331	    013C  B4 01				 mov ah, 1
+1   332	    013E  CD 21				 int 21h
+1   333	    0140  A2 01E5r			 mov buf, al
+    334							 print_text new_line
+1   335	    0143  50				 push ax
+1   336	    0144  B4 09				 mov ah, 09h
+1   337	    0146  BA 01E2r			 mov dx, offset	new_line
+1   338	    0149  CD 21				 int 21h
+1   339	    014B  58				 pop ax
+    340	    014C  80 3E	01E5r 41			 cmp buf, 41h
+    341	    0151  74 1F	90 90				 jz stop_bit1
+    342	    0155  80 3E	01E5r 42			 cmp buf, 42h
+Turbo Assembler	 Version 3.1	    01/09/10 00:11:26	    Page 7
+receiver.ASM
+
+
+
+    343	    015A  74 1E	90 90				 jz stop_bit2
+    344	    015E  80 3E	01E5r 61			 cmp buf, 61h
+    345	    0163  74 0D	90 90				 jz stop_bit1
+    346	    0167  80 3E	01E5r 62			 cmp buf, 62h
+    347	    016C  74 0C	90 90				 jz stop_bit2
+    348	    0170  EB C8					 jmp stop_bit_dialog
+    349	    0172				 stop_bit1:
+    350	    0172  C6 06	01E8r 03			 mov stop_bits,	3
+    351	    0177  EB 06	90				 jmp customizing
+    352	    017A				 stop_bit2:
+    353	    017A  C6 06	01E8r 07			 mov stop_bits,	7
+    354
+    355							 ;Customizing port
+    356	    017F				 customizing:
+    357							 ;Set 7	bit to set divisor of frequency
+    358	    017F  BA 03FB				 mov dx, base+3
+    359	    0182  B0 80					 mov al, 80h
+    360	    0184  EE					 out dx, al
+    361							 ;Set low byte of divisor
+    362	    0185  BA 03F8				 mov dx, base
+    363	    0188  A0 01E6r				 mov al, speed_lb
+    364	    018B  EE					 out dx, al
+    365							 ;Set high byte	of divisor
+    366	    018C  BA 03F9				 mov dx, base+1
+    367	    018F  A0 01E7r				 mov al, speed_hb
+    368	    0192  EE					 out dx, al
+    369							 ;Set the count	of stop	bits
+    370	    0193  BA 03FB				 mov dx, base+3
+    371	    0196  A0 01E8r				 mov al, stop_bits
+    372	    0199  EE					 out dx, al
+    373							 ;Ban the interruptions
+    374	    019A  BA 03F9				 mov dx, base+1
+    375	    019D  33 C0					 xor ax, ax
+    376	    019F  EE					 out dx, al
+    377
+    378	    01A0  C3					 ret
+    379
+    380	    01A1			 initialize_port endp
+    381
+    382	    01A1			 receive_message proc
+    383
+    384						 print_text message_text
+1   385	    01A1  50				 push ax
+1   386	    01A2  B4 09				 mov ah, 09h
+1   387	    01A4  BA 01B9r			 mov dx, offset	message_text
+1   388	    01A7  CD 21				 int 21h
+1   389	    01A9  58				 pop ax
+    390
+    391	    01AA				 received_test:
+    392							 ;Break	test
+    393	    01AA  BA 03FD				 mov dx, base+5
+    394	    01AD  EC					 in al,	dx
+    395	    01AE  0F BA	E0 04				 bt ax,	4
+    396	    01B2  72 5D	90 90				 jc break_received
+    397
+    398							 ;Coming byte test
+    399	    01B6  BA 03FD				 mov dx, base+5
+Turbo Assembler	 Version 3.1	    01/09/10 00:11:26	    Page 8
+receiver.ASM
+
+
+
+    400	    01B9  EC					 in al,	dx
+    401	    01BA  0F BA	E0 00				 bt ax,	0
+    402	    01BE  73 EA					 jnc received_test
+    403
+    404							 ;Get incoming byte
+    405	    01C0  BA 03F8				 mov dx, base
+    406	    01C3  EC					 in al,	dx
+    407	    01C4  A2 01E5r				 mov buf, al
+    408
+    409							 ;Sending echo byte
+    410	    01C7  BA 03F8				 mov dx, base
+    411	    01CA  EE					 out dx, al
+    412	    01CB				 echo_send_wait:
+    413							 ;Going	out byte test
+    414	    01CB  BA 03FD				 mov dx, base+5
+    415	    01CE  EC					 in al,	dx
+    416	    01CF  0F BA	E0 05				 bt ax,	5
+    417	    01D3  73 F6					 jnc echo_send_wait
+    418
+    419	    01D5				 echo_received_wait:
+    420							 ;Break	test
+    421	    01D5  BA 03FD				 mov dx, base+5
+    422	    01D8  EC					 in al,	dx
+    423	    01D9  0F BA	E0 04				 bt ax,	4
+    424	    01DD  72 32	90 90				 jc break_received
+    425
+    426							 ;Coming byte test
+    427	    01E1  BA 03FD				 mov dx, base+5
+    428	    01E4  EC					 in al,	dx
+    429	    01E5  0F BA	E0 00				 bt ax,	0
+    430	    01E9  73 EA					 jnc echo_received_wait
+    431
+    432							 ;Correct byte test
+    433	    01EB  BA 03F8				 mov dx, base
+    434	    01EE  EC					 in al,	dx
+    435	    01EF  3C 01					 cmp al, 1
+    436	    01F1  75 B7					 jne received_test
+    437
+    438							 ;New line test
+    439	    01F3  80 3E	01E5r 0D			 cmp buf, 0dh
+    440	    01F8  75 0D	90 90				 jnz print_symbol
+    441							 print_text new_line
+1   442	    01FC  50				 push ax
+1   443	    01FD  B4 09				 mov ah, 09h
+1   444	    01FF  BA 01E2r			 mov dx, offset	new_line
+1   445	    0202  CD 21				 int 21h
+1   446	    0204  58				 pop ax
+    447	    0205  EB A3					 jmp received_test
+    448
+    449	    0207				 print_symbol:
+    450							 ;Show byte on the screen
+    451	    0207  8A 16	01E5r				 mov dl, buf
+    452	    020B  B4 02					 mov ah, 2
+    453	    020D  CD 21					 int 21h
+    454	    020F  EB 99					 jmp received_test
+    455
+    456	    0211				 break_received:
+Turbo Assembler	 Version 3.1	    01/09/10 00:11:26	    Page 9
+receiver.ASM
+
+
+
+    457							 print_text new_line
+1   458	    0211  50				 push ax
+1   459	    0212  B4 09				 mov ah, 09h
+1   460	    0214  BA 01E2r			 mov dx, offset	new_line
+1   461	    0217  CD 21				 int 21h
+1   462	    0219  58				 pop ax
+    463							 print_text break_text
+1   464	    021A  50				 push ax
+1   465	    021B  B4 09				 mov ah, 09h
+1   466	    021D  BA 01C4r			 mov dx, offset	break_text
+1   467	    0220  CD 21				 int 21h
+1   468	    0222  58				 pop ax
+    469	    0223  C3					 ret
+    470
+    471	    0224			 receive_message endp
+    472
+    473	    0224			 code ends
+    474
+    475					 end begin
+Turbo Assembler	 Version 3.1	    01/09/10 00:11:26	    Page 10
+Symbol Table
+
+
+
+
+Symbol Name			  Type	 Value
+
+??DATE				  Text	 "01/09/10"
+??FILENAME			  Text	 "receiver"
+??TIME				  Text	 "00:11:26"
+??VERSION			  Number 030A
+@CPU				  Text	 0F0FH
+@CURSEG				  Text	 CODE
+@FILENAME			  Text	 RECEIVER
+@WORDSIZE			  Text	 2
+AUTHOR_TEXT			  Byte	 DATA:001E
+BASE				  Alias	 COM1
+BEGIN				  Near	 CODE:0000
+BREAK_RECEIVED			  Near	 CODE:0211
+BREAK_TEXT			  Byte	 DATA:01C4
+BUF				  Byte	 DATA:01E5
+CHOOSE_SPEED_TEXT		  Byte	 DATA:008C
+COM1				  Number 03F8
+COM2				  Number 02F8
+CUSTOMIZING			  Near	 CODE:017F
+ECHO_RECEIVED_WAIT		  Near	 CODE:01D5
+ECHO_SEND_WAIT			  Near	 CODE:01CB
+EXIT				  Near	 CODE:0023
+INITIALIZE_PORT			  Near	 CODE:0028
+MESSAGE_TEXT			  Byte	 DATA:01B9
+NEW_LINE			  Byte	 DATA:01E2
+NEXT_SPEED1			  Near	 CODE:00EE
+NEXT_SPEED2			  Near	 CODE:0102
+PRESS_ENTER_TEXT		  Byte	 DATA:003C
+PRINT_SYMBOL			  Near	 CODE:0207
+PROGRAM_TEXT			  Byte	 DATA:0000
+READY_DIALOG			  Near	 CODE:0031
+RECEIVED_TEST			  Near	 CODE:01AA
+RECEIVE_MESSAGE			  Near	 CODE:01A1
+SEND_READY_TEXT			  Byte	 DATA:0074
+SET_SPEED			  Near	 CODE:0111
+SPEED10_TEXT			  Byte	 DATA:0129
+SPEED11_TEXT			  Byte	 DATA:013A
+SPEED12_TEXT			  Byte	 DATA:014B
+SPEED13_TEXT			  Byte	 DATA:015C
+SPEED1_TEXT			  Byte	 DATA:009C
+SPEED2_TEXT			  Byte	 DATA:00AB
+SPEED3_TEXT			  Byte	 DATA:00BA
+SPEED4_TEXT			  Byte	 DATA:00C9
+SPEED5_TEXT			  Byte	 DATA:00D8
+SPEED6_TEXT			  Byte	 DATA:00E8
+SPEED7_TEXT			  Byte	 DATA:00F8
+SPEED8_TEXT			  Byte	 DATA:0108
+SPEED9_TEXT			  Byte	 DATA:0118
+SPEEDH				  Byte	 DATA:016E
+SPEEDL				  Byte	 DATA:017B
+SPEED_DIALOG			  Near	 CODE:00D5
+SPEED_HB			  Byte	 DATA:01E7
+SPEED_LB			  Byte	 DATA:01E6
+STCK				  Byte	 STK:0000
+STOP_BIT1			  Near	 CODE:0172
+Turbo Assembler	 Version 3.1	    01/09/10 00:11:26	    Page 11
+Symbol Table
+
+
+
+STOP_BIT1_TEXT			  Byte	 DATA:01A9
+STOP_BIT2			  Near	 CODE:017A
+STOP_BIT2_TEXT			  Byte	 DATA:01B1
+STOP_BITS			  Byte	 DATA:01E8
+STOP_BIT_DIALOG			  Near	 CODE:013A
+STOP_BIT_TEXT			  Byte	 DATA:0188
+
+Macro Name
+
+GET_INPUT_SYMBOL
+PRINT_TEXT
+
+Groups & Segments		  Bit Size Align  Combine Class
+
+CODE				  16  0224 Para	  none
+DATA				  16  01E9 Para	  none
+STK				  16  0064 Para	  Stack
+

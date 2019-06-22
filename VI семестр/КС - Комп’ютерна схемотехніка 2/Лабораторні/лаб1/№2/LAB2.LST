@@ -1,0 +1,691 @@
+Turbo Assembler	 Version 3.1	    01/09/10 00:04:04	    Page 1
+LAB2.ASM
+
+
+
+      1					 .386
+      2
+      3					 print_text macro text
+      4						 push ax
+      5						 mov ah, 09h
+      6						 mov dx, offset	text
+      7						 int 21h
+      8						 pop ax
+      9					 endm
+     10
+     11					 get_input_symbol macro	symbol
+     12						 xor ax, ax
+     13						 mov ah, 1
+     14						 int 21h
+     15						 mov symbol, al
+     16					 endm
+     17
+     18					 assume	cs:code, ds:data, ss:stk
+     19
+     20	    0000			 data segment use16
+     21
+     22	    0000  4C 61	62 6F 72 61 74+		 lab_text db 'Laboratory Work #2. Variant #13',	0dh, 0ah, '$'
+     23		  6F 72	79 20 57 6F 72+
+     24		  6B 20	23 32 2E 20 56+
+     25		  61 72	69 61 6E 74 20+
+     26		  23 31	33 0D 0A 24
+     27	    0022  5A 61	6B 68 6F 7A 68+		 author_text db	'Zakhozhyy Ihor, group IO-73', 0dh, 0ah, '$'
+     28		  79 79	20 49 68 6F 72+
+     29		  2C 20	67 72 6F 75 70+
+     30		  20 49	4F 2D 37 33 0D+
+     31		  0A 24
+     32	    0040  50 72	65 73 73 20 61+		 exit_text db 'Press any key to	exit...', 0dh, 0ah, '$'
+     33		  6E 79	20 6B 65 79 20+
+     34		  74 6F	20 65 78 69 74+
+     35		  2E 2E	2E 0D 0A 24
+     36	    005B  50 6C	65 61 73 65 2C+		 input_time_text db 'Please, input new time:', 0dh, 0ah, '$'
+     37		  20 69	6E 70 75 74 20+
+     38		  6E 65	77 20 74 69 6D+
+     39		  65 3A	0D 0A 24
+     40	    0075  48 6F	75 72 73 20 3E+		 input_hours_text db 'Hours > ', '$'
+     41		  20 24
+     42	    007E  4D 69	6E 75 74 65 73+		 input_minutes_text db 'Minutes	> ', '$'
+     43		  20 3E	20 24
+     44	    0089  53 65	63 6F 6E 64 73+		 input_seconds_text db 'Seconds	> ', '$'
+     45		  20 3E	20 24
+     46	    0094  49 6E	63 6F 72 72 65+		 incorrect_input_text db 'Incorrect input! Please, try again:',	0dh, 0ah, '$'
+     47		  63 74	20 69 6E 70 75+
+     48		  74 21	20 50 6C 65 61+
+     49		  73 65	2C 20 74 72 79+
+     50		  20 61	67 61 69 6E 3A+
+     51		  0D 0A	24
+     52	    00BA  54 68	65 20 72 65 61+		 set_real_time_text db 'The real time was set.', 0dh, 0ah, '$'
+     53		  6C 20	74 69 6D 65 20+
+     54		  77 61	73 20 73 65 74+
+     55		  2E 0D	0A 24
+     56	    00D3  45 72	72 6F 72 21 20+		 error_read_rtc_text db	'Error!	It is not possible to read the real time.', 0dh,    +
+     57		  49 74	20 69 73 20 6E+	 0ah, '$'
+Turbo Assembler	 Version 3.1	    01/09/10 00:04:04	    Page 2
+LAB2.ASM
+
+
+
+     58		  6F 74	20 70 6F 73 73+
+     59		  69 62	6C 65 20 74 6F+
+     60		  20 72	65 61 64 20 74+
+     61		  68 65	20 72 65 61 6C+
+     62		  20 74	69 6D 65 2E 0D+
+     63		  0A 24
+     64	    0106  54 68	65 20 73 79 73+		 set_system_time_text db 'The system time was set.', 0dh, 0ah, '$'
+     65		  74 65	6D 20 74 69 6D+
+     66		  65 20	77 61 73 20 73+
+     67		  65 74	2E 0D 0A 24
+     68	    0121  50 72	65 73 73 20 61+		 show_time_text	db 'Press any key to show the system time and the real time...',    +
+     69		  6E 79	20 6B 65 79 20+	 0dh, 0ah, '$'
+     70		  74 6F	20 73 68 6F 77+
+     71		  20 74	68 65 20 73 79+
+     72		  73 74	65 6D 20 74 69+
+     73		  6D 65	20 61 6E 64 20+
+     74		  74 68	65 20 72 65 61+
+     75		  6C 20	74 69 6D 65 2E+
+     76		  2E 2E	0D 0A 24
+     77	    015E  0D 0A	24			 new_line db 0dh, 0ah, '$'
+     78	    0161  03*(??)			 buf db	3 dup(?)
+     79	    0164  ????????			 st_divisor dd ?
+     80	    0168  ??				 h db ?
+     81	    0169  ??				 m db ?
+     82	    016A  ??				 s db ?
+     83	    016B  54 68	65 20 72 65 61+		 rtc_message db	'The real time	 :  :  ', 0dh, 0ah
+     84		  6C 20	74 69 6D 65 20+
+     85		  20 20	3A 20 20 3A 20+
+     86		  20 0D	0A
+     87	    0183  24				 rtc_messageend	db '$'
+     88	    0184  54 68	65 20 73 79 73+		 st_message db 'The system time		   teaks', 0dh,	0ah
+     89		  74 65	6D 20 74 69 6D+
+     90		  65 20	20 20 20 20 20+
+     91		  20 20	20 20 20 20 74+
+     92		  65 61	6B 73 0D 0A
+     93	    01A6  24				 st_messageend db '$'
+     94
+     95	    01A7			 data ends
+     96
+     97	    0000			 stk segment use16 stack
+     98
+     99	    0000  64*(??)			 stck db 100 dup(?)
+    100
+    101	    0064			 stk ends
+    102
+    103	    0000			 code segment use16
+    104
+    105	    0000				 begin:
+    106	    0000  B8 0000s				 mov ax, data
+    107	    0003  8E D8					 mov ds, ax
+    108	    0005  B8 0003				 mov ax, 3h
+    109	    0008  CD 10					 int 10h
+    110							 print_text lab_text
+1   111	    000A  50				 push ax
+1   112	    000B  B4 09				 mov ah, 09h
+1   113	    000D  BA 0000r			 mov dx, offset	lab_text
+1   114	    0010  CD 21				 int 21h
+Turbo Assembler	 Version 3.1	    01/09/10 00:04:04	    Page 3
+LAB2.ASM
+
+
+
+1   115	    0012  58				 pop ax
+    116							 print_text author_text
+1   117	    0013  50				 push ax
+1   118	    0014  B4 09				 mov ah, 09h
+1   119	    0016  BA 0022r			 mov dx, offset	author_text
+1   120	    0019  CD 21				 int 21h
+1   121	    001B  58				 pop ax
+    122
+    123	    001C  E8 000E				 call input_time
+    124	    001F  E8 019E				 call set_real_time
+    125	    0022  E8 01BE				 call set_system_time
+    126	    0025  E8 0232				 call show_time
+    127
+    128	    0028  B8 4C00				 mov ax, 4c00h
+    129	    002B  CD 21					 int 21h
+    130
+    131	    002D			 input_time proc
+    132
+    133							 print_text input_time_text
+1   134	    002D  50				 push ax
+1   135	    002E  B4 09				 mov ah, 09h
+1   136	    0030  BA 005Br			 mov dx, offset	input_time_text
+1   137	    0033  CD 21				 int 21h
+1   138	    0035  58				 pop ax
+    139
+    140	    0036				 hours_input:
+    141							 print_text input_hours_text
+1   142	    0036  50				 push ax
+1   143	    0037  B4 09				 mov ah, 09h
+1   144	    0039  BA 0075r			 mov dx, offset	input_hours_text
+1   145	    003C  CD 21				 int 21h
+1   146	    003E  58				 pop ax
+    147	    003F  33 F6					 xor si, si
+    148	    0041				 hours_get_symbol:
+    149							 get_input_symbol buf[si]
+1   150	    0041  33 C0				 xor ax, ax
+1   151	    0043  B4 01				 mov ah, 1
+1   152	    0045  CD 21				 int 21h
+1   153	    0047  88 84	0161r			 mov buf[si], al
+    154	    004B  80 BC	0161r 0D			 cmp buf[si], 0dh
+    155	    0050  74 1C	90 90				 jz hours_check
+    156	    0054  46					 inc si
+    157	    0055  83 FE	03				 cmp si, 3
+    158	    0058  7C E7					 jl hours_get_symbol
+    159							 print_text new_line
+1   160	    005A  50				 push ax
+1   161	    005B  B4 09				 mov ah, 09h
+1   162	    005D  BA 015Er			 mov dx, offset	new_line
+1   163	    0060  CD 21				 int 21h
+1   164	    0062  58				 pop ax
+    165	    0063				 incorrect_hours_input:
+    166							 print_text incorrect_input_text
+1   167	    0063  50				 push ax
+1   168	    0064  B4 09				 mov ah, 09h
+1   169	    0066  BA 0094r			 mov dx, offset	incorrect_input_text
+1   170	    0069  CD 21				 int 21h
+1   171	    006B  58				 pop ax
+Turbo Assembler	 Version 3.1	    01/09/10 00:04:04	    Page 4
+LAB2.ASM
+
+
+
+    172	    006C  EB C8					 jmp hours_input
+    173	    006E				 hours_check:
+    174							 print_text new_line
+1   175	    006E  50				 push ax
+1   176	    006F  B4 09				 mov ah, 09h
+1   177	    0071  BA 015Er			 mov dx, offset	new_line
+1   178	    0074  CD 21				 int 21h
+1   179	    0076  58				 pop ax
+    180	    0077  8B CE					 mov cx, si
+    181	    0079  BF 0161r				 lea di, buf
+    182	    007C				 hours_check_symbol:
+    183	    007C  80 3D	30				 cmp byte ptr [di], 30h
+    184	    007F  7C E2					 jl incorrect_hours_input
+    185	    0081  80 3D	39				 cmp byte ptr[di], 39h
+    186	    0084  7F DD					 jg incorrect_hours_input
+    187	    0086  47					 inc di
+    188	    0087  E2 F3					 loop hours_check_symbol
+    189	    0089  33 C0					 xor ax, ax
+    190	    008B  83 FE	02				 cmp si, 2
+    191	    008E  74 0D	90 90				 jz hours_two_digits
+    192	    0092  A0 0161r				 mov al, buf
+    193	    0095  2C 30					 sub al, 30h
+    194	    0097  A2 0168r				 mov h,	al
+    195	    009A  EB 1D	90				 jmp minutes_input
+    196	    009D				 hours_two_digits:
+    197	    009D  A0 0161r				 mov al, buf
+    198	    00A0  2C 30					 sub al, 30h
+    199	    00A2  B3 0A					 mov bl, 0ah
+    200	    00A4  F6 E3					 mul bl
+    201	    00A6  33 DB					 xor bx, bx
+    202	    00A8  8A 1E	0162r				 mov bl, buf+1
+    203	    00AC  80 EB	30				 sub bl, 30h
+    204	    00AF  03 C3					 add ax, bx
+    205	    00B1  3D 0018				 cmp ax, 18h
+    206	    00B4  7F AD					 jg incorrect_hours_input
+    207	    00B6  A2 0168r				 mov h,	al
+    208
+    209	    00B9				 minutes_input:
+    210							 print_text input_minutes_text
+1   211	    00B9  50				 push ax
+1   212	    00BA  B4 09				 mov ah, 09h
+1   213	    00BC  BA 007Er			 mov dx, offset	input_minutes_text
+1   214	    00BF  CD 21				 int 21h
+1   215	    00C1  58				 pop ax
+    216	    00C2  33 F6					 xor si, si
+    217	    00C4				 minutes_get_symbol:
+    218							 get_input_symbol buf[si]
+1   219	    00C4  33 C0				 xor ax, ax
+1   220	    00C6  B4 01				 mov ah, 1
+1   221	    00C8  CD 21				 int 21h
+1   222	    00CA  88 84	0161r			 mov buf[si], al
+    223	    00CE  80 BC	0161r 0D			 cmp buf[si], 0dh
+    224	    00D3  74 1C	90 90				 jz minutes_check
+    225	    00D7  46					 inc si
+    226	    00D8  83 FE	03				 cmp si, 3
+    227	    00DB  7C E7					 jl minutes_get_symbol
+    228							 print_text new_line
+Turbo Assembler	 Version 3.1	    01/09/10 00:04:04	    Page 5
+LAB2.ASM
+
+
+
+1   229	    00DD  50				 push ax
+1   230	    00DE  B4 09				 mov ah, 09h
+1   231	    00E0  BA 015Er			 mov dx, offset	new_line
+1   232	    00E3  CD 21				 int 21h
+1   233	    00E5  58				 pop ax
+    234	    00E6				 incorrect_minutes_input:
+    235							 print_text incorrect_input_text
+1   236	    00E6  50				 push ax
+1   237	    00E7  B4 09				 mov ah, 09h
+1   238	    00E9  BA 0094r			 mov dx, offset	incorrect_input_text
+1   239	    00EC  CD 21				 int 21h
+1   240	    00EE  58				 pop ax
+    241	    00EF  EB C8					 jmp minutes_input
+    242	    00F1				 minutes_check:
+    243							 print_text new_line
+1   244	    00F1  50				 push ax
+1   245	    00F2  B4 09				 mov ah, 09h
+1   246	    00F4  BA 015Er			 mov dx, offset	new_line
+1   247	    00F7  CD 21				 int 21h
+1   248	    00F9  58				 pop ax
+    249	    00FA  8B CE					 mov cx, si
+    250	    00FC  BF 0161r				 lea di, buf
+    251	    00FF				 minutes_check_symbol:
+    252	    00FF  80 3D	30				 cmp byte ptr [di], 30h
+    253	    0102  7C E2					 jl incorrect_minutes_input
+    254	    0104  80 3D	39				 cmp byte ptr [di], 39h
+    255	    0107  7F DD					 jg incorrect_minutes_input
+    256	    0109  47					 inc di
+    257	    010A  E2 F3					 loop minutes_check_symbol
+    258	    010C  33 C0					 xor ax, ax
+    259	    010E  83 FE	02				 cmp si, 2
+    260	    0111  74 0D	90 90				 jz minutes_two_digits
+    261	    0115  A0 0161r				 mov al, buf
+    262	    0118  2C 30					 sub al, 30h
+    263	    011A  A2 0169r				 mov m,	al
+    264	    011D  EB 1D	90				 jmp seconds_input
+    265	    0120				 minutes_two_digits:
+    266	    0120  A0 0161r				 mov al, buf
+    267	    0123  2C 30					 sub al, 30h
+    268	    0125  B3 0A					 mov bl, 0ah
+    269	    0127  F6 E3					 mul bl
+    270	    0129  33 DB					 xor bx, bx
+    271	    012B  8A 1E	0162r				 mov bl, buf+1
+    272	    012F  80 EB	30				 sub bl, 30h
+    273	    0132  03 C3					 add ax, bx
+    274	    0134  3D 003B				 cmp ax, 3bh
+    275	    0137  7F AD					 jg incorrect_minutes_input
+    276	    0139  A2 0169r				 mov m,	al
+    277
+    278	    013C				 seconds_input:
+    279							 print_text input_seconds_text
+1   280	    013C  50				 push ax
+1   281	    013D  B4 09				 mov ah, 09h
+1   282	    013F  BA 0089r			 mov dx, offset	input_seconds_text
+1   283	    0142  CD 21				 int 21h
+1   284	    0144  58				 pop ax
+    285	    0145  33 F6					 xor si, si
+Turbo Assembler	 Version 3.1	    01/09/10 00:04:04	    Page 6
+LAB2.ASM
+
+
+
+    286	    0147				 seconds_get_symbol:
+    287							 get_input_symbol buf[si]
+1   288	    0147  33 C0				 xor ax, ax
+1   289	    0149  B4 01				 mov ah, 1
+1   290	    014B  CD 21				 int 21h
+1   291	    014D  88 84	0161r			 mov buf[si], al
+    292	    0151  80 BC	0161r 0D			 cmp buf[si], 0dh
+    293	    0156  74 1C	90 90				 jz seconds_check
+    294	    015A  46					 inc si
+    295	    015B  83 FE	03				 cmp si, 3
+    296	    015E  7C E7					 jl seconds_get_symbol
+    297							 print_text new_line
+1   298	    0160  50				 push ax
+1   299	    0161  B4 09				 mov ah, 09h
+1   300	    0163  BA 015Er			 mov dx, offset	new_line
+1   301	    0166  CD 21				 int 21h
+1   302	    0168  58				 pop ax
+    303	    0169				 incorrect_seconds_input:
+    304							 print_text incorrect_input_text
+1   305	    0169  50				 push ax
+1   306	    016A  B4 09				 mov ah, 09h
+1   307	    016C  BA 0094r			 mov dx, offset	incorrect_input_text
+1   308	    016F  CD 21				 int 21h
+1   309	    0171  58				 pop ax
+    310	    0172  EB C8					 jmp seconds_input
+    311	    0174				 seconds_check:
+    312							 print_text new_line
+1   313	    0174  50				 push ax
+1   314	    0175  B4 09				 mov ah, 09h
+1   315	    0177  BA 015Er			 mov dx, offset	new_line
+1   316	    017A  CD 21				 int 21h
+1   317	    017C  58				 pop ax
+    318	    017D  8B CE					 mov cx, si
+    319	    017F  BF 0161r				 lea di, buf
+    320	    0182				 seconds_check_symbol:
+    321	    0182  80 3D	30				 cmp byte ptr [di], 30h
+    322	    0185  7C E2					 jl incorrect_seconds_input
+    323	    0187  80 3D	39				 cmp byte ptr [di], 39h
+    324	    018A  7F DD					 jg incorrect_seconds_input
+    325	    018C  47					 inc di
+    326	    018D  E2 F3					 loop seconds_check_symbol
+    327	    018F  33 C0					 xor ax, ax
+    328	    0191  83 FE	02				 cmp si, 2
+    329	    0194  74 0D	90 90				 jz seconds_two_digits
+    330	    0198  A0 0161r				 mov al, buf
+    331	    019B  2C 30					 sub al, 30h
+    332	    019D  A2 016Ar				 mov s,	al
+    333	    01A0  EB 1D	90				 jmp input_end
+    334	    01A3				 seconds_two_digits:
+    335	    01A3  A0 0161r				 mov al, buf
+    336	    01A6  2C 30					 sub al, 30h
+    337	    01A8  B3 0A					 mov bl, 0ah
+    338	    01AA  F6 E3					 mul bl
+    339	    01AC  33 DB					 xor bx, bx
+    340	    01AE  8A 1E	0162r				 mov bl, buf+1
+    341	    01B2  80 EB	30				 sub bl, 30h
+    342	    01B5  03 C3					 add ax, bx
+Turbo Assembler	 Version 3.1	    01/09/10 00:04:04	    Page 7
+LAB2.ASM
+
+
+
+    343	    01B7  3D 003B				 cmp ax, 3bh
+    344	    01BA  7F AD					 jg incorrect_seconds_input
+    345	    01BC  A2 016Ar				 mov s,	al
+    346	    01BF				 input_end:
+    347	    01BF  C3					 ret
+    348
+    349	    01C0			 input_time endp
+    350
+    351	    01C0			 set_real_time proc
+    352
+    353	    01C0  8A 2E	0168r				 mov ch, h
+    354	    01C4  8A 0E	0169r				 mov cl, m
+    355	    01C8  8A 36	016Ar				 mov dh, s
+    356	    01CC  B4 03					 mov ah, 3
+    357	    01CE  CD 1A					 int 1ah
+    358							 print_text set_real_time_text
+1   359	    01D0  50				 push ax
+1   360	    01D1  B4 09				 mov ah, 09h
+1   361	    01D3  BA 00BAr			 mov dx, offset	set_real_time_text
+1   362	    01D6  CD 21				 int 21h
+1   363	    01D8  58				 pop ax
+    364							 print_text new_line
+1   365	    01D9  50				 push ax
+1   366	    01DA  B4 09				 mov ah, 09h
+1   367	    01DC  BA 015Er			 mov dx, offset	new_line
+1   368	    01DF  CD 21				 int 21h
+1   369	    01E1  58				 pop ax
+    370	    01E2  C3					 ret
+    371
+    372	    01E3			 set_real_time endp
+    373
+    374	    01E3			 set_system_time proc
+    375
+    376	    01E3  B4 02					 mov ah, 2
+    377	    01E5  CD 1A					 int 1ah
+    378	    01E7  72 55	90 90				 jc error_read_rtc
+    379	    01EB  66| 33 DB				 xor ebx, ebx
+    380	    01EE  66| 33 C0				 xor eax, eax
+    381	    01F1  8A C6					 mov al, dh
+    382	    01F3  66| 03 D8				 add ebx, eax
+    383	    01F6  66| 33 C0				 xor eax, eax
+    384	    01F9  8A C1					 mov al, cl
+    385	    01FB  B2 3C					 mov dl, 60
+    386	    01FD  F6 E2					 mul dl
+    387	    01FF  66| 03 D8				 add ebx, eax
+    388	    0202  66| 33 C0				 xor eax, eax
+    389	    0205  8A C5					 mov al, ch
+    390	    0207  B2 3C					 mov dl, 60
+    391	    0209  F6 E2					 mul dl
+    392	    020B  BA 003C				 mov dx, 60
+    393	    020E  F7 E2					 mul dx
+    394	    0210  66| C1 E2 10				 shl edx, 16
+    395	    0214  66| 03 D0				 add edx, eax
+    396	    0217  66| 03 DA				 add ebx, edx
+    397	    021A  66| 8B C3				 mov eax, ebx
+    398	    021D  66| BA 00000012			 mov edx, 18
+    399	    0223  66| F7 E2				 mul edx
+Turbo Assembler	 Version 3.1	    01/09/10 00:04:04	    Page 8
+LAB2.ASM
+
+
+
+    400	    0226  8B D0					 mov dx, ax
+    401	    0228  66| C1 E8 10				 shr eax, 16
+    402	    022C  8B C8					 mov cx, ax
+    403	    022E  B4 01					 mov ah, 1
+    404	    0230  CD 1A					 int 1ah
+    405							 print_text set_system_time_text
+1   406	    0232  50				 push ax
+1   407	    0233  B4 09				 mov ah, 09h
+1   408	    0235  BA 0106r			 mov dx, offset	set_system_time_text
+1   409	    0238  CD 21				 int 21h
+1   410	    023A  58				 pop ax
+    411	    023B  EB 0A	90				 jmp end_set_st
+    412	    023E				 error_read_rtc:
+    413							 print_text error_read_rtc_text
+1   414	    023E  50				 push ax
+1   415	    023F  B4 09				 mov ah, 09h
+1   416	    0241  BA 00D3r			 mov dx, offset	error_read_rtc_text
+1   417	    0244  CD 21				 int 21h
+1   418	    0246  58				 pop ax
+    419	    0247				 end_set_st:
+    420							 print_text show_time_text
+1   421	    0247  50				 push ax
+1   422	    0248  B4 09				 mov ah, 09h
+1   423	    024A  BA 0121r			 mov dx, offset	show_time_text
+1   424	    024D  CD 21				 int 21h
+1   425	    024F  58				 pop ax
+    426							 get_input_symbol buf
+1   427	    0250  33 C0				 xor ax, ax
+1   428	    0252  B4 01				 mov ah, 1
+1   429	    0254  CD 21				 int 21h
+1   430	    0256  A2 0161r			 mov buf, al
+    431	    0259  C3					 ret
+    432
+    433	    025A			 set_system_time endp
+    434
+    435	    025A			 show_time proc
+    436
+    437	    025A  B8 0003				 mov ax, 3h
+    438	    025D  CD 10					 int 10h
+    439	    025F				 label1:
+    440	    025F  B4 02					 mov ah, 02h
+    441	    0261  B7 00					 mov bh, 0
+    442	    0263  B2 00					 mov dl, 0
+    443	    0265  B6 00					 mov dh, 0
+    444	    0267  CD 10					 int 10h
+    445	    0269  B4 02					 mov ah, 02h
+    446	    026B  CD 1A					 int 1ah
+    447	    026D  8A C5					 mov al, ch
+    448	    026F  BE 000F				 mov si, 0fh
+    449	    0272  E8 0062				 call rtc_symbol
+    450	    0275  8A C1					 mov al, cl
+    451	    0277  BE 0012				 mov si, 12h
+    452	    027A  E8 005A				 call rtc_symbol
+    453	    027D  8A C6					 mov al, dh
+    454	    027F  BE 0015				 mov si, 15h
+    455	    0282  E8 0052				 call rtc_symbol
+    456	    0285  B4 00					 mov ah, 0
+Turbo Assembler	 Version 3.1	    01/09/10 00:04:04	    Page 9
+LAB2.ASM
+
+
+
+    457	    0287  CD 1A					 int 1ah
+    458	    0289  8B D9					 mov bx, cx
+    459	    028B  66| C1 E3 10				 shl ebx, 16
+    460	    028F  8B DA					 mov bx, dx
+    461	    0291  BE 0010				 mov si, 10h
+    462	    0294  E8 0056				 call st_symbol
+    463	    0297  B4 86					 mov ah, 86h
+    464	    0299  B9 0000				 mov cx, 0
+    465	    029C  BA 2710				 mov dx, 10000
+    466	    029F  CD 15					 int 15h
+    467							 print_text lab_text
+1   468	    02A1  50				 push ax
+1   469	    02A2  B4 09				 mov ah, 09h
+1   470	    02A4  BA 0000r			 mov dx, offset	lab_text
+1   471	    02A7  CD 21				 int 21h
+1   472	    02A9  58				 pop ax
+    473							 print_text author_text
+1   474	    02AA  50				 push ax
+1   475	    02AB  B4 09				 mov ah, 09h
+1   476	    02AD  BA 0022r			 mov dx, offset	author_text
+1   477	    02B0  CD 21				 int 21h
+1   478	    02B2  58				 pop ax
+    479							 print_text rtc_message
+1   480	    02B3  50				 push ax
+1   481	    02B4  B4 09				 mov ah, 09h
+1   482	    02B6  BA 016Br			 mov dx, offset	rtc_message
+1   483	    02B9  CD 21				 int 21h
+1   484	    02BB  58				 pop ax
+    485							 print_text st_message
+1   486	    02BC  50				 push ax
+1   487	    02BD  B4 09				 mov ah, 09h
+1   488	    02BF  BA 0184r			 mov dx, offset	st_message
+1   489	    02C2  CD 21				 int 21h
+1   490	    02C4  58				 pop ax
+    491							 print_text exit_text
+1   492	    02C5  50				 push ax
+1   493	    02C6  B4 09				 mov ah, 09h
+1   494	    02C8  BA 0040r			 mov dx, offset	exit_text
+1   495	    02CB  CD 21				 int 21h
+1   496	    02CD  58				 pop ax
+    497	    02CE  CD 21					 int 21h
+    498	    02D0  B4 01					 mov ah, 1
+    499	    02D2  CD 16					 int 16h
+    500	    02D4  74 89					 jz label1
+    501	    02D6  C3					 ret
+    502
+    503	    02D7			 show_time endp
+    504
+    505	    02D7			 rtc_symbol proc
+    506
+    507	    02D7  51					 push cx
+    508	    02D8  B9 0002				 mov cx, 2
+    509	    02DB				 loop1:
+    510	    02DB  B7 10					 mov bh, 10h
+    511	    02DD  B4 00					 mov ah, 00h
+    512	    02DF  F6 F7					 div bh
+    513	    02E1  80 C4	30				 add ah, 30h
+Turbo Assembler	 Version 3.1	    01/09/10 00:04:04	    Page 10
+LAB2.ASM
+
+
+
+    514	    02E4  88 A4	016Br				 mov byte ptr ds:[offset rtc_message + si], ah
+    515	    02E8  4E					 dec si
+    516	    02E9  E2 F0					 loop loop1
+    517	    02EB  59					 pop cx
+    518	    02EC  C3					 ret
+    519
+    520	    02ED			 rtc_symbol endp
+    521
+    522	    02ED			 st_symbol proc
+    523
+    524	    02ED  66| C7 06 0164r     +			 mov dword ptr st_divisor, 1000000000
+    525		  3B9ACA00
+    526	    02F6  51					 push cx
+    527	    02F7  B9 000A				 mov cx, 10
+    528	    02FA				 loop2:
+    529	    02FA  66| 8B C3				 mov eax, ebx
+    530	    02FD  66| 33 D2				 xor edx, edx
+    531	    0300  66| 53				 push ebx
+    532	    0302  66| 8B 1E 0164r			 mov ebx, dword	ptr st_divisor
+    533	    0307  66| F7 F3				 div ebx
+    534	    030A  66| 5B				 pop ebx
+    535	    030C  04 30					 add al, 30h
+    536	    030E  88 84	0184r				 mov byte ptr ds:[offset st_message + si], al
+    537	    0312  66| 8B DA				 mov ebx, edx
+    538	    0315  66| 53				 push ebx
+    539	    0317  66| BB 0000000A			 mov ebx, 10
+    540	    031D  66| 33 D2				 xor edx, edx
+    541	    0320  66| A1 0164r				 mov eax, dword	ptr st_divisor
+    542	    0324  66| F7 F3				 div ebx
+    543	    0327  66| A3 0164r				 mov dword ptr st_divisor, eax
+    544	    032B  66| 5B				 pop ebx
+    545	    032D  46					 inc si
+    546	    032E  E2 CA					 loop loop2
+    547	    0330  59					 pop cx
+    548	    0331  C3					 ret
+    549
+    550	    0332			 st_symbol endp
+    551
+    552	    0332			 code ends
+    553
+    554					 end begin
+Turbo Assembler	 Version 3.1	    01/09/10 00:04:04	    Page 11
+Symbol Table
+
+
+
+
+Symbol Name			  Type	 Value
+
+??DATE				  Text	 "01/09/10"
+??FILENAME			  Text	 "LAB2	  "
+??TIME				  Text	 "00:04:04"
+??VERSION			  Number 030A
+@CPU				  Text	 0F0FH
+@CURSEG				  Text	 CODE
+@FILENAME			  Text	 LAB2
+@WORDSIZE			  Text	 2
+AUTHOR_TEXT			  Byte	 DATA:0022
+BEGIN				  Near	 CODE:0000
+BUF				  Byte	 DATA:0161
+END_SET_ST			  Near	 CODE:0247
+ERROR_READ_RTC			  Near	 CODE:023E
+ERROR_READ_RTC_TEXT		  Byte	 DATA:00D3
+EXIT_TEXT			  Byte	 DATA:0040
+H				  Byte	 DATA:0168
+HOURS_CHECK			  Near	 CODE:006E
+HOURS_CHECK_SYMBOL		  Near	 CODE:007C
+HOURS_GET_SYMBOL		  Near	 CODE:0041
+HOURS_INPUT			  Near	 CODE:0036
+HOURS_TWO_DIGITS		  Near	 CODE:009D
+INCORRECT_HOURS_INPUT		  Near	 CODE:0063
+INCORRECT_INPUT_TEXT		  Byte	 DATA:0094
+INCORRECT_MINUTES_INPUT		  Near	 CODE:00E6
+INCORRECT_SECONDS_INPUT		  Near	 CODE:0169
+INPUT_END			  Near	 CODE:01BF
+INPUT_HOURS_TEXT		  Byte	 DATA:0075
+INPUT_MINUTES_TEXT		  Byte	 DATA:007E
+INPUT_SECONDS_TEXT		  Byte	 DATA:0089
+INPUT_TIME			  Near	 CODE:002D
+INPUT_TIME_TEXT			  Byte	 DATA:005B
+LABEL1				  Near	 CODE:025F
+LAB_TEXT			  Byte	 DATA:0000
+LOOP1				  Near	 CODE:02DB
+LOOP2				  Near	 CODE:02FA
+M				  Byte	 DATA:0169
+MINUTES_CHECK			  Near	 CODE:00F1
+MINUTES_CHECK_SYMBOL		  Near	 CODE:00FF
+MINUTES_GET_SYMBOL		  Near	 CODE:00C4
+MINUTES_INPUT			  Near	 CODE:00B9
+MINUTES_TWO_DIGITS		  Near	 CODE:0120
+NEW_LINE			  Byte	 DATA:015E
+RTC_MESSAGE			  Byte	 DATA:016B
+RTC_MESSAGEEND			  Byte	 DATA:0183
+RTC_SYMBOL			  Near	 CODE:02D7
+S				  Byte	 DATA:016A
+SECONDS_CHECK			  Near	 CODE:0174
+SECONDS_CHECK_SYMBOL		  Near	 CODE:0182
+SECONDS_GET_SYMBOL		  Near	 CODE:0147
+SECONDS_INPUT			  Near	 CODE:013C
+SECONDS_TWO_DIGITS		  Near	 CODE:01A3
+SET_REAL_TIME			  Near	 CODE:01C0
+SET_REAL_TIME_TEXT		  Byte	 DATA:00BA
+SET_SYSTEM_TIME			  Near	 CODE:01E3
+Turbo Assembler	 Version 3.1	    01/09/10 00:04:04	    Page 12
+Symbol Table
+
+
+
+SET_SYSTEM_TIME_TEXT		  Byte	 DATA:0106
+SHOW_TIME			  Near	 CODE:025A
+SHOW_TIME_TEXT			  Byte	 DATA:0121
+STCK				  Byte	 STK:0000
+ST_DIVISOR			  Dword	 DATA:0164
+ST_MESSAGE			  Byte	 DATA:0184
+ST_MESSAGEEND			  Byte	 DATA:01A6
+ST_SYMBOL			  Near	 CODE:02ED
+
+Macro Name
+
+GET_INPUT_SYMBOL
+PRINT_TEXT
+
+Groups & Segments		  Bit Size Align  Combine Class
+
+CODE				  16  0332 Para	  none
+DATA				  16  01A7 Para	  none
+STK				  16  0064 Para	  Stack
+

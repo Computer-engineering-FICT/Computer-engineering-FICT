@@ -1,0 +1,519 @@
+Turbo Assembler	 Version 3.1	    24/02/10 03:53:59	    Page 1
+sender.ASM
+
+
+
+      1					 ;com порт
+      2					 ;передатчик (DTR,DCD ввод с клавиатуры, вариант - Б )
+      3					 ;выполнил Шумыло С.В.
+      4
+      5					 .386
+      6					 ASSUME	CS:CODE, DS:DATA
+      7
+      8	    0000			 DATA SEGMENT use16
+      9		  =03F8			   comport equ 3F8h ;com1
+     10					   ;comport equ	2FBh	       ;com2
+     11	    0000  04 03	01 00 00 00 00+	   hipart db 4,3,1,0,0,0,0,0,0,0,0,0,0
+     12		  00 00	00 00 00 00
+     13	    000D  17 00	80 C0 60 30 18+	   lopart db 17h,0,80h,0c0h,60h,30h,18h,0ch,8,6,3,2,1
+     14		  0C 08	06 03 02 01
+     15	    001A  03 07			   stpbt db 3,7
+     16
+     17	    001C  3D 3D	20 54 68 65 20+		 startmen db  "== The transmitter. Program start. ==",0DH,0AH,"$"
+     18		  74 72	61 6E 73 6D 69+
+     19		  74 74	65 72 2E 20 50+
+     20		  72 6F	67 72 61 6D 20+
+     21		  73 74	61 72 74 2E 20+
+     22		  3D 3D	0D 0A 24
+     23	    0044  31 2E	20 54 68 65 20+		 msg1 db "1. The signal	of readiness is	established.",0DH,0AH,"$"
+     24		  73 69	67 6E 61 6C 20+
+     25		  6F 66	20 72 65 61 64+
+     26		  69 6E	65 73 73 20 69+
+     27		  73 20	65 73 74 61 62+
+     28		  6C 69	73 68 65 64 2E+
+     29		  0D 0A	24
+     30	    0071  32 2E	20 57 61 69 74+		 msg2 db "2. Wait for a	signal of the receiver...",0DH,0AH,"$"
+     31		  20 66	6F 72 20 61 20+
+     32		  73 69	67 6E 61 6C 20+
+     33		  6F 66	20 74 68 65 20+
+     34		  72 65	63 65 69 76 65+
+     35		  72 2E	2E 2E 0D 0A 24
+     36	    009B  4F 75	74 20 4D 65 73+		 msg3 db "Out Message:	","$"
+     37		  73 61	67 65 3A 20 20+
+     38		  24
+     39	    00AA  43 68	6F 6F 73 65 20+		 setspeedmsg db	"Choose	speed of transfer: ",0DH,0AH
+     40		  73 70	65 65 64 20 6F+
+     41		  66 20	74 72 61 6E 73+
+     42		  66 65	72 3A 20 0D 0A
+     43	    00C6  20 20	61 20 2D 20 20+			 db "  a -    110 Baud",0DH,0AH
+     44		  20 20	31 31 30 20 42+
+     45		  61 75	64 0D 0A
+     46	    00D9  20 20	62 20 2D 20 20+			 db "  b -    150 Baud",0DH,0AH
+     47		  20 20	31 35 30 20 42+
+     48		  61 75	64 0D 0A
+     49	    00EC  20 20	63 20 2D 20 20+			 db "  c -    300 Baud",0DH,0AH
+     50		  20 20	33 30 30 20 42+
+     51		  61 75	64 0D 0A
+     52	    00FF  20 20	64 20 2D 20 20+			 db "  d -    600 Baud",0DH,0AH
+     53		  20 20	36 30 30 20 42+
+     54		  61 75	64 0D 0A
+     55	    0112  20 20	65 20 2D 20 20+			 db "  e -   1200 Baud",0DH,0AH
+     56		  20 31	32 30 30 20 42+
+     57		  61 75	64 0D 0A
+Turbo Assembler	 Version 3.1	    24/02/10 03:53:59	    Page 2
+sender.ASM
+
+
+
+     58	    0125  20 20	66 20 2D 20 20+			 db "  f -   2400 Baud",0DH,0AH
+     59		  20 32	34 30 30 20 42+
+     60		  61 75	64 0D 0A
+     61	    0138  20 20	67 20 2D 20 20+			 db "  g -   4800 Baud",0DH,0AH
+     62		  20 34	38 30 30 20 42+
+     63		  61 75	64 0D 0A
+     64	    014B  20 20	68 20 2D 20 20+			 db "  h -   9600 Baud",0DH,0AH
+     65		  20 39	36 30 30 20 42+
+     66		  61 75	64 0D 0A
+     67	    015E  20 20	69 20 2D 20 20+			 db "  i -  19200 Baud",0DH,0AH
+     68		  31 39	32 30 30 20 42+
+     69		  61 75	64 0D 0A
+     70	    0171  20 20	6B 20 2D 20 20+			 db "  k -  38400 Baud",0DH,0AH
+     71		  33 38	34 30 30 20 42+
+     72		  61 75	64 0D 0A
+     73	    0184  20 20	6C 20 2D 20 20+			 db "  l -  57600 Baud",0DH,0AH
+     74		  35 37	36 30 30 20 42+
+     75		  61 75	64 0D 0A
+     76	    0197  20 20	6D 20 2D 20 31+			 db "  m - 115200 Baud",0DH,0AH,"$"
+     77		  31 35	32 30 30 20 42+
+     78		  61 75	64 0D 0A 24
+     79	    01AB  0D 0A	43 68 6F 6F 73+	   setstopbmsg db 0DH,0AH,"Choose number of stops - bits (1 or 2).",0DH,0AH,"$"
+     80		  65 20	6E 75 6D 62 65+
+     81		  72 20	6F 66 20 73 74+
+     82		  6F 70	73 20 2D 20 62+
+     83		  69 74	73 20 28 31 20+
+     84		  6F 72	20 32 29 2E 0D+
+     85		  0A 24
+     86	    01D7  0D 0A	41 74 74 65 6E+	   errorsynchmsg db 0DH,0AH,"Attention!	A mistake of synchronization.",0DH,0AH,"$"
+     87		  74 69	6F 6E 21 20 41+
+     88		  20 6D	69 73 74 61 6B+
+     89		  65 20	6F 66 20 73 79+
+     90		  6E 63	68 72 6F 6E 69+
+     91		  7A 61	74 69 6F 6E 2E+
+     92		  0D 0A	24
+     93	    0204  0D 0A	24		   newline db 0DH,0AH,"$"
+     94
+     95	    0207  2D 3E	20 0D 0A 24	   cprmt  db '-> ',0dh,0ah,'$'
+     96	    020D  ??			   reshight db ?   ;старшие
+     97	    020E  ??			   reslow db ?	  ;младшие
+     98	    020F  ??			   cstp	db ?   ;стоп-биты
+     99
+    100					 ;----------------------------------------------------------
+    101					 ;макрос вывода	текста на экран
+    102						 display macro string
+*Warning* sender.ASM(43) Reserved word used as symbol: DISPLAY
+    103					       push ax
+    104					       push dx
+    105					       lea dx, string
+    106					       mov ah,9
+    107					       int 21h
+    108					       pop dx
+    109					       pop ax
+    110					   endm
+    111	    0210			 DATA ENDS
+    112
+    113	    0000			 CODE SEGMENT use16
+Turbo Assembler	 Version 3.1	    24/02/10 03:53:59	    Page 3
+sender.ASM
+
+
+
+    114					 ;-------------------------------------------------------------------------------
+    115	    0000			 SignalProc proc
+    116					       ;установка DTR, 1 бит, смещением	4
+    117	    0000  BA 03FC		       mov dx,comport+4
+    118	    0003  B0 01			       mov al,1
+    119	    0005  EE			       out dx,al
+    120					       display msg1
+1   121	    0006  50			       push ax
+1   122	    0007  52			       push dx
+1   123	    0008  BA 0044r		       lea dx, msg1
+1   124	    000B  B4 09			       mov ah,9
+1   125	    000D  CD 21			       int 21h
+1   126	    000F  5A			       pop dx
+1   127	    0010  58			       pop ax
+    128					       display newline
+1   129	    0011  50			       push ax
+1   130	    0012  52			       push dx
+1   131	    0013  BA 0204r		       lea dx, newline
+1   132	    0016  B4 09			       mov ah,9
+1   133	    0018  CD 21			       int 21h
+1   134	    001A  5A			       pop dx
+1   135	    001B  58			       pop ax
+    136					       display msg2
+1   137	    001C  50			       push ax
+1   138	    001D  52			       push dx
+1   139	    001E  BA 0071r		       lea dx, msg2
+1   140	    0021  B4 09			       mov ah,9
+1   141	    0023  CD 21			       int 21h
+1   142	    0025  5A			       pop dx
+1   143	    0026  58			       pop ax
+    144					       ;ожидаем	готовности DCD,	7 бит, смещение	6
+    145	    0027			 waitdcd:
+    146	    0027  BA 03FE		       mov dx, comport+6
+    147	    002A  EC			       in al, dx
+    148	    002B  0F BA	E0 07		       bt ax, 7
+    149	    002F  73 F6			       jnc waitdcd
+    150
+    151	    0031  C3			       ret
+    152	    0032			 SignalProc endp
+    153					 ;-------------------------------------------------------------------------------
+    154					 ;процедура установки условий протокола
+    155	    0032			 ProtocolSetingsProc proc
+    156					       display setspeedmsg
+1   157	    0032  50			       push ax
+1   158	    0033  52			       push dx
+1   159	    0034  BA 00AAr		       lea dx, setspeedmsg
+1   160	    0037  B4 09			       mov ah,9
+1   161	    0039  CD 21			       int 21h
+1   162	    003B  5A			       pop dx
+1   163	    003C  58			       pop ax
+    164	    003D			 correctSpeed: ;проверка на корректный ввод делителя
+    165					       display cprmt
+1   166	    003D  50			       push ax
+1   167	    003E  52			       push dx
+1   168	    003F  BA 0207r		       lea dx, cprmt
+1   169	    0042  B4 09			       mov ah,9
+1   170	    0044  CD 21			       int 21h
+Turbo Assembler	 Version 3.1	    24/02/10 03:53:59	    Page 4
+sender.ASM
+
+
+
+1   171	    0046  5A			       pop dx
+1   172	    0047  58			       pop ax
+    173	    0048  B4 01			       mov ah,1
+    174	    004A  CD 21			       int 21h
+    175	    004C  3C 61			       cmp al,'a'
+    176	    004E  72 ED			       jb correctSpeed
+    177	    0050  3C 6D			       cmp al,'m'
+    178	    0052  77 E9			       ja correctSpeed
+    179
+    180	    0054  32 E4			       xor ah,ah
+    181	    0056  2C 61			       sub al,'a'
+    182	    0058  BE 0000r		       lea si, hipart
+    183	    005B  03 F0			       add si,ax ;получили указатель на	старшие	разряды
+    184	    005D  50			       push ax	 ;сохранили позицию выбора в стеке
+    185	    005E  AC			       lodsb	 ;сами разряды
+    186	    005F  A2 020Dr		       mov reshight,al
+    187	    0062  58			       pop ax
+    188	    0063  BE 000Dr		       lea si, lopart
+    189	    0066  03 F0			       add si,ax
+    190	    0068  AC			       lodsb
+    191	    0069  A2 020Er		       mov reslow,al
+    192
+    193					  display setstopbmsg
+1   194	    006C  50			       push ax
+1   195	    006D  52			       push dx
+1   196	    006E  BA 01ABr		       lea dx, setstopbmsg
+1   197	    0071  B4 09			       mov ah,9
+1   198	    0073  CD 21			       int 21h
+1   199	    0075  5A			       pop dx
+1   200	    0076  58			       pop ax
+    201	    0077			 correctStopB: ;проверка на корректный ввод количества стоп битов
+    202					       display cprmt
+1   203	    0077  50			       push ax
+1   204	    0078  52			       push dx
+1   205	    0079  BA 0207r		       lea dx, cprmt
+1   206	    007C  B4 09			       mov ah,9
+1   207	    007E  CD 21			       int 21h
+1   208	    0080  5A			       pop dx
+1   209	    0081  58			       pop ax
+    210	    0082  B4 01			       mov ah,1
+    211	    0084  CD 21			       int 21h
+    212	    0086  3C 31			       cmp al,'1'
+    213	    0088  72 ED			       jb correctStopB
+    214	    008A  3C 32			       cmp al,'2'
+    215	    008C  77 E9			       ja correctStopB
+    216
+    217	    008E  32 E4			       xor ah,ah
+    218	    0090  2C 31			       sub al,'1'
+    219	    0092  BE 001Ar		       lea si, stpbt
+    220	    0095  03 F0			       add si, ax
+    221	    0097  AC			       lodsb
+    222	    0098  A2 020Fr		       mov cstp,al
+    223
+    224						   ;инициализируем параметры
+    225					       ;установка 7 разряда, для загрузки делителя частоты тактового генератора
+    226	    009B  B0 80			       mov al,80h
+    227	    009D  BA 03FB		       mov dx,comport+3
+Turbo Assembler	 Version 3.1	    24/02/10 03:53:59	    Page 5
+sender.ASM
+
+
+
+    228	    00A0  EE			       out dx,al
+    229					       ;разряды	делителя частоты
+    230	    00A1  A0 020Er		       mov al,reslow
+    231	    00A4  BA 03F8		       mov dx,comport
+    232	    00A7  EE			       out dx,al
+    233	    00A8  42			       inc dx
+    234	    00A9  A0 020Dr		       mov al,reshight
+    235	    00AC  EE			       out dx,al
+    236					       ;стоп-биты
+    237	    00AD  A0 020Fr		       mov al,cstp
+    238	    00B0  BA 03FB		       mov dx,comport+3
+    239	    00B3  EE			       out dx,al
+    240
+    241	    00B4  33 C0			       xor ax,ax
+    242	    00B6  BA 03F9		       mov dx,comport+1
+    243	    00B9  EE			       out dx,al
+    244	    00BA  C3			       ret
+    245
+    246	    00BB			 ProtocolSetingsProc endp
+    247					 ;-------------------------------------------------------------------------------
+    248					 ;процедура пересылки данных
+    249	    00BB			 DataSendProc proc
+    250	    00BB  E8 0090		       call checkSpeed
+    251					       display newline
+1   252	    00BE  50			       push ax
+1   253	    00BF  52			       push dx
+1   254	    00C0  BA 0204r		       lea dx, newline
+1   255	    00C3  B4 09			       mov ah,9
+1   256	    00C5  CD 21			       int 21h
+1   257	    00C7  5A			       pop dx
+1   258	    00C8  58			       pop ax
+    259						   display msg3
+1   260	    00C9  50			       push ax
+1   261	    00CA  52			       push dx
+1   262	    00CB  BA 009Br		       lea dx, msg3
+1   263	    00CE  B4 09			       mov ah,9
+1   264	    00D0  CD 21			       int 21h
+1   265	    00D2  5A			       pop dx
+1   266	    00D3  58			       pop ax
+    267	    00D4			 send:
+    268	    00D4  E8 0028		       call getCharacter
+    269	    00D7  3C 00			       cmp al, 0
+    270	    00D9  74 17	90 90		       jz endsend
+    271
+    272	    00DD  BA 03F8		       mov dx,comport
+    273	    00E0  EE			       out dx,al
+    274
+    275	    00E1  50			       push ax	  ;сохранили для проверки эхоплексом
+    276	    00E2			 waitsend:	 ;ждём пока байт уйдёт
+    277	    00E2  BA 03FD		       mov dx,comport+5
+    278	    00E5  EC			       in al,dx
+    279	    00E6  0F BA	E0 05		       bt ax,5
+    280	    00EA  73 F6			       jnc waitsend
+    281
+    282					       ;проверка эхоплексом
+    283	    00EC  58			       pop ax
+    284	    00ED  E8 002F			   call	checkSended
+Turbo Assembler	 Version 3.1	    24/02/10 03:53:59	    Page 6
+sender.ASM
+
+
+
+    285
+    286	    00F0  EB E2			       jmp send
+    287
+    288	    00F2			 endsend: ;данных больше нет
+    289	    00F2  BA 03FB		       mov dx,comport+3	 ;newlineeak
+    290	    00F5  B0 40			       mov al,40h
+    291	    00F7  EE			       out dx,al
+    292
+    293	    00F8  33 C0			       xor ax,ax
+    294	    00FA  B4 01			       mov ah,1
+    295	    00FC  CD 21			       int 21h
+    296	    00FE  C3			       ret
+    297	    00FF			 DataSendProc endp
+    298					 ;-------------------------------------------------------------------------------
+    299					 ;процедура проверки знака
+    300	    00FF			 getCharacter proc
+    301	    00FF  33 C0			     xor ax,ax
+    302	    0101  B4 01			     mov ah, 1
+    303	    0103  CD 21			     int 21h
+    304	    0105  3C 0D					 cmp al, 0dh
+    305	    0107  75 0D	90 90				 jnz print_symbol
+    306							 display newline
+1   307	    010B  50			       push ax
+1   308	    010C  52			       push dx
+1   309	    010D  BA 0204r		       lea dx, newline
+1   310	    0110  B4 09			       mov ah,9
+1   311	    0112  CD 21			       int 21h
+1   312	    0114  5A			       pop dx
+1   313	    0115  58			       pop ax
+    314
+    315	    0116			 print_symbol:
+    316	    0116  3C 1B				 cmp al, 27
+    317	    0118  75 04	90 90		     jnz next
+    318	    011C  33 C0			     xor ax, ax
+    319	    011E			     next:
+    320	    011E  C3			     ret
+    321	    011F			 getCharacter endp
+    322					 ;-------------------------------------------------------------------------------
+    323					 ;процедура проверки эхоплексом
+    324	    011F			 checkSended proc
+    325
+    326	    011F			   waitB:
+    327	    011F  BA 03FD		       mov dx,comport+5	 ;ожидаем прихода байта 
+    328	    0122  EC			       in al,dx
+    329	    0123  0F BA	E0 00		       bt ax,0
+    330	    0127  73 F6			       jnc waitB
+    331
+    332	    0129  BA 03F8		       mov dx,comport	 ;получаем байт
+    333	    012C  EC			       in al,dx
+    334
+    335	    012D  8A D0			       mov dl, al
+    336	    012F  58			       pop ax
+    337	    0130  3A C2			       cmp al, dl
+    338	    0132  50			       push ax
+    339	    0133  74 0B	90 90		       jz incorrect
+    340	    0137  B0 01			       mov al, 01 ;корректныe данные
+    341	    0139  BA 03F8		       mov dx,comport
+Turbo Assembler	 Version 3.1	    24/02/10 03:53:59	    Page 7
+sender.ASM
+
+
+
+    342	    013C  EE			       out dx,al
+    343	    013D  EB 0E	90		       jmp retl
+    344
+    345	    0140			   incorrect:
+    346	    0140  FE C0			       inc al	  ;ошибка в данных
+    347	    0142  BA 03F8		       mov dx,comport
+    348	    0145  EE			       out dx,al
+    349
+    350	    0146  58			       pop ax
+    351	    0147  BA 03F8		       mov dx,comport
+    352	    014A  EE			       out dx,al
+    353	    014B  EB D2			       jmp waitB
+    354	    014D			   retl:
+    355	    014D  C3			     ret
+    356	    014E			 checkSended endp
+    357					 ;-------------------------------------------------------------------------------
+    358					 ; процедура проыерки скоростей	при синхроницазии
+    359	    014E			 checkSpeed proc
+    360	    014E  BA 03FD		       mov dx,comport+5
+    361	    0151  EC			       in al,dx
+    362	    0152  0F BA	E0 03		       bt ax,3
+    363	    0156  73 15	90 90		       jnc valid
+    364					       display errorsynchmsg
+1   365	    015A  50			       push ax
+1   366	    015B  52			       push dx
+1   367	    015C  BA 01D7r		       lea dx, errorsynchmsg
+1   368	    015F  B4 09			       mov ah,9
+1   369	    0161  CD 21			       int 21h
+1   370	    0163  5A			       pop dx
+1   371	    0164  58			       pop ax
+    372	    0165  E8 FF97		       call getCharacter
+    373	    0168  B8 4C00		       mov	 ax, 4c00h
+    374	    016B  CD 21				     int 21h
+    375	    016D			   valid:
+    376	    016D  C3			       ret
+    377	    016E			 checkSpeed endp
+    378					 ;-------------------------------------------------------------------------------
+    379	    016E			 main:
+    380	    016E  B8 0000s			 MOV	 AX, DATA
+    381	    0171  8E D8				 MOV	 DS, AX
+    382
+    383					 ;start	messages
+    384						 display startmen
+1   385	    0173  50			       push ax
+1   386	    0174  52			       push dx
+1   387	    0175  BA 001Cr		       lea dx, startmen
+1   388	    0178  B4 09			       mov ah,9
+1   389	    017A  CD 21			       int 21h
+1   390	    017C  5A			       pop dx
+1   391	    017D  58			       pop ax
+    392						 display newline
+1   393	    017E  50			       push ax
+1   394	    017F  52			       push dx
+1   395	    0180  BA 0204r		       lea dx, newline
+1   396	    0183  B4 09			       mov ah,9
+1   397	    0185  CD 21			       int 21h
+1   398	    0187  5A			       pop dx
+Turbo Assembler	 Version 3.1	    24/02/10 03:53:59	    Page 8
+sender.ASM
+
+
+
+1   399	    0188  58			       pop ax
+    400
+    401	    0189  E8 FE74			 call SignalProc
+    402	    018C  E8 FEA3			 call ProtocolSetingsProc
+    403	    018F  E8 FF29			 call DataSendProc
+    404
+    405
+    406	    0192  B8 4C00			 MOV	 AX, 4C00H
+    407	    0195  CD 21				 INT	 21H
+    408	    0197  C3			 ret
+    409	    0198			 CODE ENDS
+    410
+    411					 END main
+Turbo Assembler	 Version 3.1	    24/02/10 03:53:59	    Page 9
+Symbol Table
+
+
+
+
+Symbol Name			  Type	 Value
+
+??DATE				  Text	 "24/02/10"
+??FILENAME			  Text	 "sender  "
+??TIME				  Text	 "03:53:59"
+??VERSION			  Number 030A
+@CPU				  Text	 0F0FH
+@CURSEG				  Text	 CODE
+@FILENAME			  Text	 SENDER
+@WORDSIZE			  Text	 2
+CHECKSENDED			  Near	 CODE:011F
+CHECKSPEED			  Near	 CODE:014E
+COMPORT				  Number 03F8
+CORRECTSPEED			  Near	 CODE:003D
+CORRECTSTOPB			  Near	 CODE:0077
+CPRMT				  Byte	 DATA:0207
+CSTP				  Byte	 DATA:020F
+DATASENDPROC			  Near	 CODE:00BB
+ENDSEND				  Near	 CODE:00F2
+ERRORSYNCHMSG			  Byte	 DATA:01D7
+GETCHARACTER			  Near	 CODE:00FF
+HIPART				  Byte	 DATA:0000
+INCORRECT			  Near	 CODE:0140
+LOPART				  Byte	 DATA:000D
+MAIN				  Near	 CODE:016E
+MSG1				  Byte	 DATA:0044
+MSG2				  Byte	 DATA:0071
+MSG3				  Byte	 DATA:009B
+NEWLINE				  Byte	 DATA:0204
+NEXT				  Near	 CODE:011E
+PRINT_SYMBOL			  Near	 CODE:0116
+PROTOCOLSETINGSPROC		  Near	 CODE:0032
+RESHIGHT			  Byte	 DATA:020D
+RESLOW				  Byte	 DATA:020E
+RETL				  Near	 CODE:014D
+SEND				  Near	 CODE:00D4
+SETSPEEDMSG			  Byte	 DATA:00AA
+SETSTOPBMSG			  Byte	 DATA:01AB
+SIGNALPROC			  Near	 CODE:0000
+STARTMEN			  Byte	 DATA:001C
+STPBT				  Byte	 DATA:001A
+VALID				  Near	 CODE:016D
+WAITB				  Near	 CODE:011F
+WAITDCD				  Near	 CODE:0027
+WAITSEND			  Near	 CODE:00E2
+
+Macro Name
+
+DISPLAY
+
+Groups & Segments		  Bit Size Align  Combine Class
+
+CODE				  16  0198 Para	  none
+DATA				  16  0210 Para	  none
+Turbo Assembler	 Version 3.1	    24/02/10 03:53:59	    Page 10
+Error Summary
+
+
+
+*Warning* sender.ASM(43) Reserved word used as symbol: DISPLAY
+

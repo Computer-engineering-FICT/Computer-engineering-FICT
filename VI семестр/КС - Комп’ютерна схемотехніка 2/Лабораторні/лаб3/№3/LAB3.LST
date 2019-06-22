@@ -1,0 +1,367 @@
+Turbo Assembler	 Version 3.1	    03/09/10 09:21:34	    Page 1
+LAB3.ASM
+
+
+
+      1					 .386
+      2
+      3		  =004F			 track equ 79
+      4		  =0200			 sector_size equ 512
+      5
+      6					 print_text macro text
+      7						 push ax
+      8						 mov ah, 09h
+      9						 mov dx, offset	text
+     10						 int 21h
+     11						 pop ax
+     12					 endm
+     13
+     14					 get_input_symbol macro	symbol
+     15						 xor ax, ax
+     16						 mov ah, 1
+     17						 int 21h
+     18						 mov symbol, al
+     19					 endm
+     20
+     21					 assume	cs:code, ds:data, ss:stk
+     22
+     23	    0000			 data segment use16
+     24
+     25	    0000  0D 0A	24			 new_line db 0dh, 0ah, '$'
+     26	    0003  4C 61	62 6F 72 61 74+		 lab_text db 'Laboratory Work #3. Variant #21',	0dh, 0ah, '$'
+     27		  6F 72	79 20 57 6F 72+
+     28		  6B 20	23 33 2E 20 56+
+     29		  61 72	69 61 6E 74 20+
+     30		  23 32	31 0D 0A 24
+     31	    0025  5A 61	6B 68 6F 7A 68+		 author_text db	'Zakhozhyy Ihor, group IO-73', 0dh, 0ah, '$'
+     32		  79 79	20 49 68 6F 72+
+     33		  2C 20	67 72 6F 75 70+
+     34		  20 49	4F 2D 37 33 0D+
+     35		  0A 24
+     36	    0043  50 6C	65 61 73 65 2C+		 input_file_name_text db 'Please, input	the name of the	file:',	0dh, 0ah, '$'
+     37		  20 69	6E 70 75 74 20+
+     38		  74 68	65 20 6E 61 6D+
+     39		  65 20	6F 66 20 74 68+
+     40		  65 20	66 69 6C 65 3A+
+     41		  0D 0A	24
+     42	    0069  3E 24				 active_line_text db '>', '$'
+     43	    006B  55 6E	61 62 6C 65 20+		 incorrect_file_name_text db 'Unable to	open the file!', 0dh, 0ah, '$'
+     44		  74 6F	20 6F 70 65 6E+
+     45		  20 74	68 65 20 66 69+
+     46		  6C 65	21 0D 0A 24
+     47	    0086  53 6F	6D 65 20 65 72+		 error_text db 'Some error has occured!	The program is closing.', 0dh, 0ah, '$'
+     48		  72 6F	72 20 68 61 73+
+     49		  20 6F	63 63 75 72 65+
+     50		  64 21	20 54 68 65 20+
+     51		  70 72	6F 67 72 61 6D+
+     52		  20 69	73 20 63 6C 6F+
+     53		  73 69	6E 67 2E 0D 0A+
+     54		  24
+     55	    00B8  54 68	65 20 66 69 6C+		 file_written_text db 'The file	was writted to 79 cylinder successfully.', 0dh,	0ah,+
+     56		  65 20	77 61 73 20 77+	 '$'
+     57		  72 69	74 74 65 64 20+
+Turbo Assembler	 Version 3.1	    03/09/10 09:21:34	    Page 2
+LAB3.ASM
+
+
+
+     58		  74 6F	20 37 39 20 63+
+     59		  79 6C	69 6E 64 65 72+
+     60		  20 73	75 63 63 65 73+
+     61		  73 66	75 6C 6C 79 2E+
+     62		  0D 0A	24
+     63	    00EC  54 68	65 20 63 6F 6E+		 file_output_text db 'The content of file:', 0dh, 0ah, '$'
+     64		  74 65	6E 74 20 6F 66+
+     65		  20 66	69 6C 65 3A 0D+
+     66		  0A 24
+     67	    0103  0D 0A	50 72 65 73 73+		 exit_text db 0dh, 0ah,	'Press any button to exit...', 0dh, 0ah, '$'
+     68		  20 61	6E 79 20 62 75+
+     69		  74 74	6F 6E 20 74 6F+
+     70		  20 65	78 69 74 2E 2E+
+     71		  2E 0D	0A 24
+     72	    0123  20 2D	20 73 79 73 74+		 status_byte_text db ' - system	status', 0dh, 0ah, '$'
+     73		  65 6D	20 73 74 61 74+
+     74		  75 73	0D 0A 24
+     75	    0136  0100*(??)			 file_name db 256 dup(?)
+     76	    0236  ??				 buf db	?
+     77	    0237  0200*(??) 24			 file_buf db sector_size dup(?), '$'
+     78	    0438  00				 file_sectors_count db 0
+     79	    0439  ????				 file dw ?
+     80	    043B  ??				 sector	db ?
+     81	    043C  ????				 read_bytes dw ?
+     82
+     83	    043E			 data ends
+     84
+     85	    0000			 stk segment use16 stack
+     86
+     87	    0000  64*(??)			 stck db 100 dup(?)
+     88
+     89	    0064			 stk ends
+     90
+     91	    0000			 code segment use16
+     92
+     93	    0000				 begin:
+     94	    0000  B8 0000s				 mov ax, data
+     95	    0003  8E D8					 mov ds, ax
+     96	    0005  8E C0					 mov es, ax
+     97							 print_text lab_text
+1    98	    0007  50				 push ax
+1    99	    0008  B4 09				 mov ah, 09h
+1   100	    000A  BA 0003r			 mov dx, offset	lab_text
+1   101	    000D  CD 21				 int 21h
+1   102	    000F  58				 pop ax
+    103							 print_text author_text
+1   104	    0010  50				 push ax
+1   105	    0011  B4 09				 mov ah, 09h
+1   106	    0013  BA 0025r			 mov dx, offset	author_text
+1   107	    0016  CD 21				 int 21h
+1   108	    0018  58				 pop ax
+    109	    0019  E8 0029				 call get_file_name
+    110	    001C  E8 0071				 call write_file
+    111	    001F  E8 00E5				 call read_file
+    112	    0022  EB 0A	90				 jmp exit
+    113	    0025				 error_label:
+    114							 print_text error_text
+Turbo Assembler	 Version 3.1	    03/09/10 09:21:34	    Page 3
+LAB3.ASM
+
+
+
+1   115	    0025  50				 push ax
+1   116	    0026  B4 09				 mov ah, 09h
+1   117	    0028  BA 0086r			 mov dx, offset	error_text
+1   118	    002B  CD 21				 int 21h
+1   119	    002D  58				 pop ax
+    120	    002E				 exit:
+    121							 print_text exit_text
+1   122	    002E  50				 push ax
+1   123	    002F  B4 09				 mov ah, 09h
+1   124	    0031  BA 0103r			 mov dx, offset	exit_text
+1   125	    0034  CD 21				 int 21h
+1   126	    0036  58				 pop ax
+    127							 get_input_symbol buf
+1   128	    0037  33 C0				 xor ax, ax
+1   129	    0039  B4 01				 mov ah, 1
+1   130	    003B  CD 21				 int 21h
+1   131	    003D  A2 0236r			 mov buf, al
+    132	    0040  B8 4C00				 mov ax, 4c00h
+    133	    0043  CD 21					 int 21h
+    134
+    135	    0045			 proc get_file_name
+    136
+    137							 print_text input_file_name_text
+1   138	    0045  50				 push ax
+1   139	    0046  B4 09				 mov ah, 09h
+1   140	    0048  BA 0043r			 mov dx, offset	input_file_name_text
+1   141	    004B  CD 21				 int 21h
+1   142	    004D  58				 pop ax
+    143							 print_text active_line_text
+1   144	    004E  50				 push ax
+1   145	    004F  B4 09				 mov ah, 09h
+1   146	    0051  BA 0069r			 mov dx, offset	active_line_text
+1   147	    0054  CD 21				 int 21h
+1   148	    0056  58				 pop ax
+    149	    0057  33 F6					 xor si, si
+    150	    0059				 input_symbol:
+    151							 get_input_symbol buf
+1   152	    0059  33 C0				 xor ax, ax
+1   153	    005B  B4 01				 mov ah, 1
+1   154	    005D  CD 21				 int 21h
+1   155	    005F  A2 0236r			 mov buf, al
+    156	    0062  80 3E	0236r 08			 cmp buf, 08h
+    157	    0067  75 05	90 90				 jnz check_enter
+    158	    006B  4E					 dec si
+    159	    006C  EB EB					 jmp input_symbol
+    160	    006E				 check_enter:
+    161	    006E  80 3E	0236r 0D			 cmp buf, 0dh
+    162	    0073  74 0C	90 90				 jz end_input
+    163	    0077  A0 0236r				 mov al, buf
+    164	    007A  88 84	0136r				 mov byte ptr file_name[si], al
+    165	    007E  46					 inc si
+    166	    007F  EB D8					 jmp input_symbol
+    167	    0081				 end_input:
+    168	    0081  C6 84	0136r 24			 mov byte ptr file_name[si], '$'
+    169							 print_text new_line
+1   170	    0086  50				 push ax
+1   171	    0087  B4 09				 mov ah, 09h
+Turbo Assembler	 Version 3.1	    03/09/10 09:21:34	    Page 4
+LAB3.ASM
+
+
+
+1   172	    0089  BA 0000r			 mov dx, offset	new_line
+1   173	    008C  CD 21				 int 21h
+1   174	    008E  58				 pop ax
+    175	    008F  C3					 ret
+    176
+    177	    0090			 endp get_file_name
+    178
+    179	    0090			 proc write_file
+    180
+    181	    0090  B4 3D					 mov ah, 3dh
+    182	    0092  B0 01					 mov al, 1
+    183	    0094  BA 0136r				 lea dx, file_name
+    184	    0097  32 C9					 xor cl, cl
+    185	    0099  CD 21					 int 21h
+    186	    009B  73 0E	90 90				 jnc read_input_file
+    187							 print_text incorrect_file_name_text
+1   188	    009F  50				 push ax
+1   189	    00A0  B4 09				 mov ah, 09h
+1   190	    00A2  BA 006Br			 mov dx, offset	incorrect_file_name_text
+1   191	    00A5  CD 21				 int 21h
+1   192	    00A7  58				 pop ax
+    193	    00A8  E9 FF7A				 jmp error_label
+    194	    00AB				 read_input_file:
+    195	    00AB  A3 0439r				 mov file, ax
+    196	    00AE  B0 00					 mov al, 0
+    197	    00B0  A2 043Br				 mov sector, al
+    198	    00B3				 read_next_label:
+    199	    00B3  B4 3F					 mov ah, 3fh
+    200	    00B5  8B 1E	0439r				 mov bx, file
+    201	    00B9  B9 0200				 mov cx, sector_size
+    202	    00BC  BA 0237r				 lea dx, file_buf
+    203	    00BF  CD 21					 int 21h
+    204	    00C1  A3 043Cr				 mov read_bytes, ax
+    205	    00C4  B4 03					 mov ah, 3
+    206	    00C6  B0 01					 mov al, 1
+    207	    00C8  B5 4F					 mov ch, track
+    208	    00CA  8A 0E	043Br				 mov cl, sector
+    209	    00CE  B6 00					 mov dh, 0
+    210	    00D0  B2 00					 mov dl, 0
+    211	    00D2  BB 0237r				 lea bx, file_buf
+    212	    00D5  CD 13					 int 13h
+    213	    00D7  80 C4	30				 add ah, 30h
+    214	    00DA  88 26	0123r				 mov status_byte_text, ah
+    215							 print_text status_byte_text
+1   216	    00DE  50				 push ax
+1   217	    00DF  B4 09				 mov ah, 09h
+1   218	    00E1  BA 0123r			 mov dx, offset	status_byte_text
+1   219	    00E4  CD 21				 int 21h
+1   220	    00E6  58				 pop ax
+    221	    00E7  46					 inc si
+    222	    00E8  A0 043Br				 mov al, sector
+    223	    00EB  FE C0					 inc al
+    224	    00ED  A2 043Br				 mov sector, al
+    225	    00F0  A1 043Cr				 mov ax, read_bytes
+    226	    00F3  3D 0200				 cmp ax, sector_size
+    227	    00F6  74 BB					 je read_next_label
+    228	    00F8  8B C6					 mov ax, si
+Turbo Assembler	 Version 3.1	    03/09/10 09:21:34	    Page 5
+LAB3.ASM
+
+
+
+    229	    00FA  A2 0438r				 mov file_sectors_count, al
+    230							 print_text file_written_text
+1   231	    00FD  50				 push ax
+1   232	    00FE  B4 09				 mov ah, 09h
+1   233	    0100  BA 00B8r			 mov dx, offset	file_written_text
+1   234	    0103  CD 21				 int 21h
+1   235	    0105  58				 pop ax
+    236	    0106  C3					 ret
+    237
+    238	    0107			 endp write_file
+    239
+    240	    0107			 proc read_file
+    241
+    242							 print_text file_output_text
+1   243	    0107  50				 push ax
+1   244	    0108  B4 09				 mov ah, 09h
+1   245	    010A  BA 00ECr			 mov dx, offset	file_output_text
+1   246	    010D  CD 21				 int 21h
+1   247	    010F  58				 pop ax
+    248	    0110  B0 00					 mov al, 0
+    249	    0112  A2 043Br				 mov sector, al
+    250	    0115  32 E4					 xor ah, ah
+    251	    0117  A0 0438r				 mov al, file_sectors_count
+    252	    011A  8B F0					 mov si, ax
+    253	    011C				 repeat_label:
+    254	    011C  BB 0237r				 lea bx, file_buf
+    255	    011F  B4 02					 mov ah, 2
+    256	    0121  B0 01					 mov al, 1
+    257	    0123  B5 4F					 mov ch, track
+    258	    0125  8A 0E	043Br				 mov cl, sector
+    259	    0129  B6 00					 mov dh, 0
+    260	    012B  B2 00					 mov dl, 0
+    261	    012D  CD 13					 int 13h
+    262	    012F  0F 84	FEF2				 jz error_label
+    263							 print_text file_buf
+1   264	    0133  50				 push ax
+1   265	    0134  B4 09				 mov ah, 09h
+1   266	    0136  BA 0237r			 mov dx, offset	file_buf
+1   267	    0139  CD 21				 int 21h
+1   268	    013B  58				 pop ax
+    269	    013C  A0 043Br				 mov al, sector
+    270	    013F  FE C0					 inc al
+    271	    0141  A2 043Br				 mov sector, al
+    272	    0144  4E					 dec si
+    273	    0145  83 FE	00				 cmp si, 0
+    274	    0148  75 D2					 jne repeat_label
+    275	    014A  C3					 ret
+    276
+    277	    014B			 endp read_file
+    278
+    279	    014B			 code ends
+    280
+    281					 end begin
+Turbo Assembler	 Version 3.1	    03/09/10 09:21:34	    Page 6
+Symbol Table
+
+
+
+
+Symbol Name			  Type	 Value
+
+??DATE				  Text	 "03/09/10"
+??FILENAME			  Text	 "LAB3	  "
+??TIME				  Text	 "09:21:34"
+??VERSION			  Number 030A
+@CPU				  Text	 0F0FH
+@CURSEG				  Text	 CODE
+@FILENAME			  Text	 LAB3
+@WORDSIZE			  Text	 2
+ACTIVE_LINE_TEXT		  Byte	 DATA:0069
+AUTHOR_TEXT			  Byte	 DATA:0025
+BEGIN				  Near	 CODE:0000
+BUF				  Byte	 DATA:0236
+CHECK_ENTER			  Near	 CODE:006E
+END_INPUT			  Near	 CODE:0081
+ERROR_LABEL			  Near	 CODE:0025
+ERROR_TEXT			  Byte	 DATA:0086
+EXIT				  Near	 CODE:002E
+EXIT_TEXT			  Byte	 DATA:0103
+FILE				  Word	 DATA:0439
+FILE_BUF			  Byte	 DATA:0237
+FILE_NAME			  Byte	 DATA:0136
+FILE_OUTPUT_TEXT		  Byte	 DATA:00EC
+FILE_SECTORS_COUNT		  Byte	 DATA:0438
+FILE_WRITTEN_TEXT		  Byte	 DATA:00B8
+GET_FILE_NAME			  Near	 CODE:0045
+INCORRECT_FILE_NAME_TEXT	  Byte	 DATA:006B
+INPUT_FILE_NAME_TEXT		  Byte	 DATA:0043
+INPUT_SYMBOL			  Near	 CODE:0059
+LAB_TEXT			  Byte	 DATA:0003
+NEW_LINE			  Byte	 DATA:0000
+READ_BYTES			  Word	 DATA:043C
+READ_FILE			  Near	 CODE:0107
+READ_INPUT_FILE			  Near	 CODE:00AB
+READ_NEXT_LABEL			  Near	 CODE:00B3
+REPEAT_LABEL			  Near	 CODE:011C
+SECTOR				  Byte	 DATA:043B
+SECTOR_SIZE			  Number 0200
+STATUS_BYTE_TEXT		  Byte	 DATA:0123
+STCK				  Byte	 STK:0000
+TRACK				  Number 004F
+WRITE_FILE			  Near	 CODE:0090
+
+Macro Name
+
+GET_INPUT_SYMBOL
+PRINT_TEXT
+
+Groups & Segments		  Bit Size Align  Combine Class
+
+CODE				  16  014B Para	  none
+DATA				  16  043E Para	  none
+STK				  16  0064 Para	  Stack
+
