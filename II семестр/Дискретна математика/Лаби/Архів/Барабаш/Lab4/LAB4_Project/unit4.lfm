@@ -1,0 +1,82 @@
+object Inp2Form: TInp2Form
+  Left = -4
+  Height = 696
+  Top = 121
+  Width = 1024
+  Caption = 'Ввід даних по варіанту 2'
+  ClientHeight = 696
+  ClientWidth = 1024
+  OnActivate = FormActivate
+  LCLVersion = '1.0.12.0'
+  object InfoPanel: TPanel
+    Left = 19
+    Height = 23
+    Top = 657
+    Width = 886
+    BevelOuter = bvLowered
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Color = clBlue
+    Font.Height = -13
+    Font.Name = 'Arial Narrow'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 0
+  end
+  object ExitButton: TButton
+    Left = 903
+    Height = 25
+    Top = 657
+    Width = 75
+    Caption = 'Вихід'
+    OnClick = ExitButtonClick
+    TabOrder = 1
+  end
+  object IMatrixGrid: TStringGrid
+    Left = 613
+    Height = 404
+    Top = 24
+    Width = 406
+    ColCount = 21
+    DefaultColWidth = 40
+    DefaultRowHeight = 18
+    ExtendedSelect = False
+    RowCount = 21
+    ScrollBars = ssAutoHorizontal
+    TabOrder = 2
+    OnSelection = IMatrixGridSelection
+  end
+  object GraphImage: TImage
+    Left = 0
+    Height = 600
+    Top = 24
+    Width = 600
+  end
+  object SaveButton: TButton
+    Left = 618
+    Height = 25
+    Top = 528
+    Width = 140
+    Caption = 'Зберегти граф'
+    OnClick = SaveButtonClick
+    TabOrder = 3
+  end
+  object LoadButton: TButton
+    Left = 618
+    Height = 25
+    Top = 565
+    Width = 140
+    Caption = 'Завантажити граф'
+    OnClick = LoadButtonClick
+    TabOrder = 4
+  end
+  object ClearButton: TButton
+    Left = 618
+    Height = 25
+    Top = 599
+    Width = 140
+    Caption = 'Очистити'
+    OnClick = ClearButtonClick
+    TabOrder = 5
+  end
+end

@@ -1,0 +1,147 @@
+object MainForm: TMainForm
+  Left = 504
+  Height = 409
+  Top = 322
+  Width = 654
+  Caption = 'Лабораторна робота №2'
+  ClientHeight = 389
+  ClientWidth = 654
+  Menu = MainMenu
+  OnActivate = FormActivate
+  OnCreate = FormCreate
+  LCLVersion = '1.2.6.0'
+  object Label1: TLabel
+    Left = 171
+    Height = 15
+    Top = 253
+    Width = 209
+    Caption = 'ВВЕДІТЬ НОМЕР ЗАЛІКОВОЇ КНИЖКИ'
+    ParentColor = False
+  end
+  object InfoPanel: TPanel
+    Left = 14
+    Height = 23
+    Top = 351
+    Width = 620
+    BevelOuter = bvLowered
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Color = clBlue
+    Font.Height = -13
+    Font.Name = 'Arial Narrow'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 0
+  end
+  object ZalikEdit: TEdit
+    Left = 215
+    Height = 23
+    Top = 286
+    Width = 94
+    OnKeyDown = ZalikEditKeyDown
+    TabOrder = 1
+  end
+  object ZalikButton: TButton
+    Left = 321
+    Height = 25
+    Top = 284
+    Width = 39
+    Caption = 'ВВІД'
+    OnClick = ZalikButtonClick
+    TabOrder = 2
+  end
+  object Label2: TLabel
+    Left = 243
+    Height = 15
+    Top = 93
+    Width = 140
+    Caption = 'Лабораторна робота  №2'
+    ParentColor = False
+  end
+  object Label3: TLabel
+    Left = 25
+    Height = 15
+    Top = 125
+    Width = 455
+    Caption = 'Тема: «Бінарні відношення та їх основні властивості, операції над відношеннями».'
+    ParentColor = False
+    OnClick = Label3Click
+  end
+  object Label4: TLabel
+    Left = 25
+    Height = 15
+    Top = 151
+    Width = 622
+    Caption = 'Мета: вивчити основні властивості бінарних відношень та оволодіти операціями над бінарними відношеннями. '
+    ParentColor = False
+  end
+  object Label5: TLabel
+    Left = 25
+    Height = 15
+    Top = 175
+    Width = 475
+    Caption = 'Завдання: написати програму для виконання операцій над бінарними відношеннями.'
+    ParentColor = False
+  end
+  object Label6: TLabel
+    Left = 60
+    Height = 20
+    Top = 5
+    Width = 505
+    Caption = 'Національний технічний університет України "Київський політехнічний інститут"'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -15
+    Font.Name = 'Arial Narrow'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label7: TLabel
+    Left = 198
+    Height = 20
+    Top = 28
+    Width = 219
+    Caption = 'Кафедра обчислювальної техніки'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Arial Narrow'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label8: TLabel
+    Left = 243
+    Height = 16
+    Top = 54
+    Width = 131
+    Caption = '"Дискретна математика"'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -13
+    Font.Name = 'Arial Narrow'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object MainMenu: TMainMenu
+    left = 29
+    top = 278
+    object MenuInputItem: TMenuItem
+      Caption = 'Ввід даних'
+      OnClick = MenuInputItemClick
+    end
+    object MenuOperItem: TMenuItem
+      Caption = 'Операції'
+      OnClick = MenuOperItemClick
+    end
+    object MenuExitItem: TMenuItem
+      Caption = 'Вихід'
+      OnClick = MenuExitItemClick
+    end
+  end
+end

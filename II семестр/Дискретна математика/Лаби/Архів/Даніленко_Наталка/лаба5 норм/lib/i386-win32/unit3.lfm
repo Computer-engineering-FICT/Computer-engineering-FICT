@@ -1,0 +1,103 @@
+object Inp1Form: TInp1Form
+  Left = 243
+  Height = 699
+  Top = 28
+  Width = 1024
+  BorderStyle = bsToolWindow
+  Caption = 'Ввід даних по варіанту 5'
+  ClientHeight = 0
+  ClientWidth = 0
+  OnActivate = FormActivate
+  OnCreate = FormCreate
+  OnShow = FormShow
+  LCLVersion = '1.4.0.4'
+  object InfoPanel: TPanel
+    Left = 19
+    Height = 23
+    Top = 667
+    Width = 886
+    BevelOuter = bvLowered
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Color = clBlue
+    Font.Height = -13
+    Font.Name = 'Arial Narrow'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 0
+    OnClick = InfoPanelClick
+  end
+  object ExitButton: TButton
+    Left = 913
+    Height = 25
+    Top = 665
+    Width = 95
+    Caption = 'Вихід'
+    OnClick = ExitButtonClick
+    TabOrder = 1
+  end
+  object IMatrixGrid: TStringGrid
+    Left = 8
+    Height = 213
+    Top = 32
+    Width = 372
+    Align = alCustom
+    ColCount = 20
+    DefaultColWidth = 40
+    DefaultRowHeight = 18
+    RowCount = 20
+    TabOrder = 2
+    OnButtonClick = IMatrixGridButtonClick
+    OnSelection = IMatrixGridSelection
+  end
+  object GraphImage: TImage
+    Left = 416
+    Height = 600
+    Top = 32
+    Width = 600
+  end
+  object ClearButton: TButton
+    Left = 232
+    Height = 25
+    Top = 280
+    Width = 147
+    Caption = 'Очистити'
+    OnClick = ClearButtonClick
+    TabOrder = 3
+  end
+  object PaintGraph: TButton
+    Left = 232
+    Height = 25
+    Top = 250
+    Width = 145
+    Caption = 'Розфарбувати граф'
+    OnClick = PaintGraphClick
+    TabOrder = 4
+  end
+  object Label1: TLabel
+    Left = 8
+    Height = 15
+    Top = 8
+    Width = 119
+    Caption = 'Матриця суміжності :'
+    ParentColor = False
+  end
+  object RandomEnter: TRadioButton
+    Left = 8
+    Height = 19
+    Top = 256
+    Width = 100
+    Caption = 'Випадкові дані'
+    OnChange = RandomEnterChange
+    TabOrder = 5
+  end
+  object HandEnter: TRadioButton
+    Left = 8
+    Height = 19
+    Top = 280
+    Width = 106
+    Caption = 'Ручне введення'
+    OnChange = HandEnterChange
+    TabOrder = 6
+  end
+end

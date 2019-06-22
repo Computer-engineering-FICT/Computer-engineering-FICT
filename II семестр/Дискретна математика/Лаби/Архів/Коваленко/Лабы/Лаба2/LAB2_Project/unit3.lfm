@@ -1,0 +1,169 @@
+object OperForm: TOperForm
+  Left = 256
+  Height = 702
+  Top = 150
+  Width = 1154
+  Caption = 'Матриці відношень R і S'
+  ClientHeight = 702
+  ClientWidth = 1154
+  OnCreate = FormCreate
+  LCLVersion = '1.2.6.0'
+  object SGrid: TStringGrid
+    Left = 8
+    Height = 192
+    Top = 24
+    Width = 528
+    ColCount = 20
+    DefaultColWidth = 72
+    DefaultRowHeight = 24
+    RowCount = 20
+    TabOrder = 0
+    OnClick = SGridClick
+    OnSelectCell = SGridSelectCell
+  end
+  object Upload: TButton
+    Left = 240
+    Height = 25
+    Top = 232
+    Width = 128
+    Caption = 'Завантажити А та Б'
+    OnClick = UploadClick
+    TabOrder = 1
+  end
+  object CreateS: TButton
+    Left = 472
+    Height = 25
+    Top = 232
+    Width = 128
+    Caption = 'Відношення S'
+    OnClick = CreateSClick
+    TabOrder = 2
+  end
+  object CreateR: TButton
+    Left = 696
+    Height = 25
+    Top = 232
+    Width = 128
+    Caption = 'Відношення R'
+    OnClick = CreateRClick
+    TabOrder = 3
+  end
+  object ExitLab: TButton
+    Left = 992
+    Height = 25
+    Top = 656
+    Width = 75
+    Caption = 'Вихід'
+    OnClick = ExitLabClick
+    TabOrder = 4
+  end
+  object info: TPanel
+    Left = 192
+    Height = 50
+    Top = 256
+    Width = 648
+    Caption = 'Лабораторна робота 2'
+    TabOrder = 5
+    OnClick = infoClick
+  end
+  object RGrid: TStringGrid
+    Left = 560
+    Height = 192
+    Top = 24
+    Width = 528
+    ColCount = 20
+    DefaultColWidth = 72
+    DefaultRowHeight = 24
+    RowCount = 20
+    TabOrder = 6
+    OnClick = RGridClick
+    OnSelectCell = RGridSelectCell
+  end
+  object Label1: TLabel
+    Left = 231
+    Height = 15
+    Top = 5
+    Width = 76
+    Caption = 'Відношення S'
+    ParentColor = False
+    OnClick = Label1Click
+  end
+  object Label2: TLabel
+    Left = 785
+    Height = 15
+    Top = 5
+    Width = 77
+    Caption = 'Відношення R'
+    ParentColor = False
+  end
+  object Result: TStringGrid
+    Left = 208
+    Height = 248
+    Top = 336
+    Width = 859
+    ColCount = 19
+    DefaultRowHeight = 24
+    RowCount = 19
+    TabOrder = 7
+  end
+  object Label3: TLabel
+    Left = 72
+    Height = 15
+    Top = 352
+    Width = 48
+    Caption = 'Операції'
+    ParentColor = False
+  end
+  object union: TButton
+    Left = 16
+    Height = 25
+    Top = 376
+    Width = 171
+    Caption = 'Об''єднання'
+    OnClick = unionClick
+    TabOrder = 8
+  end
+  object multi: TButton
+    Left = 16
+    Height = 25
+    Top = 408
+    Width = 171
+    Caption = 'Декартовий добуток'
+    OnClick = multiClick
+    TabOrder = 9
+  end
+  object inverse: TButton
+    Left = 16
+    Height = 25
+    Top = 440
+    Width = 171
+    Caption = 'Обернене відношення'
+    OnClick = inverseClick
+    TabOrder = 10
+  end
+  object inmulti: TButton
+    Left = 16
+    Height = 25
+    Top = 472
+    Width = 171
+    Caption = 'Обернений Декартовий доб.'
+    OnClick = inmultiClick
+    TabOrder = 11
+  end
+  object info2: TPanel
+    Left = 26
+    Height = 56
+    Top = 592
+    Width = 1032
+    Caption = 'Результат операції'
+    TabOrder = 12
+  end
+  object Label4: TLabel
+    Left = 560
+    Height = 15
+    Top = 312
+    Width = 113
+    Caption = 'Результати операцій'
+    ParentColor = False
+  end
+end

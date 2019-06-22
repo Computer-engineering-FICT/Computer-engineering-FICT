@@ -1,0 +1,195 @@
+object Inp5Form: TInp5Form
+  Left = 195
+  Height = 478
+  Top = 277
+  Width = 938
+  BorderStyle = bsToolWindow
+  Caption = 'Ввід даних по варіанту 5'
+  ClientHeight = 478
+  ClientWidth = 938
+  OnActivate = FormActivate
+  OnCreate = FormCreate
+  LCLVersion = '1.0.12.0'
+  object ExitButton: TButton
+    Left = 851
+    Height = 34
+    Top = 425
+    Width = 75
+    Caption = 'Вихід'
+    OnClick = ExitButtonClick
+    TabOrder = 0
+  end
+  object InfoPanel: TPanel
+    Left = 29
+    Height = 31
+    Top = 428
+    Width = 818
+    BevelOuter = bvLowered
+    TabOrder = 1
+  end
+  object NZK_Label: TLabel
+    Left = 181
+    Height = 16
+    Top = 47
+    Width = 24
+    Caption = 'NZK'
+    ParentColor = False
+  end
+  object Label1: TLabel
+    Left = 29
+    Height = 16
+    Top = 47
+    Width = 140
+    Caption = 'Номер залікової книжки:'
+    ParentColor = False
+  end
+  object ComLenLabel: TLabel
+    Left = 29
+    Height = 16
+    Top = 108
+    Width = 139
+    Caption = 'Кількість  букв у векторі :'
+    ParentColor = False
+    OnClick = ComLenLabelClick
+  end
+  object Start1_Label: TLabel
+    Left = 471
+    Height = 16
+    Top = 135
+    Width = 33
+    Caption = '(а...,я)'
+    ParentColor = False
+  end
+  object Label3: TLabel
+    Left = 29
+    Height = 16
+    Top = 135
+    Width = 435
+    Caption = 'Початковий  двійковий вектор для варіанта 3та кінцевий вектор для варіанта 4:'
+    ParentColor = False
+  end
+  object Label4: TLabel
+    Left = 29
+    Height = 16
+    Top = 222
+    Width = 356
+    Caption = 'Введіть m-кількість двікових векторів, які необхідно згенерувати:'
+    ParentColor = False
+  end
+  object m_Edit: TEdit
+    Left = 79
+    Height = 23
+    Top = 245
+    Width = 62
+    TabOrder = 2
+  end
+  object s_Button: TButton
+    Left = 29
+    Height = 25
+    Top = 245
+    Width = 34
+    Caption = 'Ввід'
+    OnClick = s_ButtonClick
+    TabOrder = 3
+  end
+  object Label6: TLabel
+    Left = 29
+    Height = 16
+    Top = 171
+    Width = 434
+    Caption = 'Кінцевий двійковий вектор для варіанта 3 та початковий вектор для варіанта 4:'
+    ParentColor = False
+  end
+  object Start2_Label: TLabel
+    Left = 471
+    Height = 16
+    Top = 171
+    Width = 36
+    Caption = '(я,...,а)'
+    ParentColor = False
+  end
+  object SaveParamButton: TButton
+    Left = 29
+    Height = 25
+    Top = 344
+    Width = 147
+    Caption = 'Зберегти параметри'
+    OnClick = SaveParamButtonClick
+    TabOrder = 4
+  end
+  object LoadParamButton: TButton
+    Left = 29
+    Height = 25
+    Top = 385
+    Width = 147
+    Caption = 'Завантажити параметри'
+    OnClick = LoadParamButtonClick
+    TabOrder = 5
+  end
+  object NVarLabel: TLabel
+    Left = 29
+    Height = 21
+    Top = 17
+    Width = 50
+    Alignment = taCenter
+    Caption = 'Варіант'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Arial Narrow'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label7: TLabel
+    Left = 29
+    Height = 16
+    Top = 75
+    Width = 205
+    Caption = 'Введіть прізвище, ім''я та по батькові:'
+    ParentColor = False
+  end
+  object FIOEdit: TEdit
+    Left = 250
+    Height = 23
+    Top = 68
+    Width = 430
+    TabOrder = 6
+    Text = 'Іванов Іван Іванович'
+  end
+  object FIOButton: TButton
+    Left = 681
+    Height = 25
+    Top = 68
+    Width = 45
+    Caption = 'Ввід'
+    OnClick = FIOButtonClick
+    TabOrder = 7
+  end
+  object LenLabel: TLabel
+    Left = 181
+    Height = 16
+    Top = 108
+    Width = 7
+    Caption = '1'
+    ParentColor = False
+  end
+  object b_Button: TButton
+    Left = 29
+    Height = 25
+    Top = 296
+    Width = 95
+    Caption = 'Згенерувати'
+    OnClick = b_ButtonClick
+    TabOrder = 8
+  end
+  object b_Label: TLabel
+    Left = 147
+    Height = 16
+    Top = 305
+    Width = 7
+    Caption = '1'
+    ParentColor = False
+  end
+end

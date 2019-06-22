@@ -1,0 +1,146 @@
+object OperForm: TOperForm
+  Left = 6
+  Height = 631
+  Top = 77
+  Width = 1149
+  Caption = 'Пошук найкоротших шляхів у графі. Агоритм Дейкстри'
+  ClientHeight = 631
+  ClientWidth = 1149
+  Color = clWindow
+  LCLVersion = '1.2.6.0'
+  object ExitButton: TButton
+    Left = 1064
+    Height = 25
+    Top = 591
+    Width = 75
+    Caption = 'Вихід'
+    Font.Height = -13
+    Font.Style = [fsBold]
+    OnClick = ExitButtonClick
+    ParentFont = False
+    TabOrder = 0
+  end
+  object GraphImage: TImage
+    Left = 19
+    Height = 600
+    Top = 16
+    Width = 600
+    Proportional = True
+  end
+  object Input: TButton
+    Left = 808
+    Height = 25
+    Top = 16
+    Width = 160
+    Caption = 'Завантажити з файлу'
+    Default = True
+    Font.Height = -13
+    Font.Style = [fsBold]
+    OnClick = InputClick
+    ParentFont = False
+    TabOrder = 1
+  end
+  object AllDis: TButton
+    Left = 625
+    Height = 25
+    Top = 336
+    Width = 514
+    Caption = 'Знайти всі відстані від початкової вершини'
+    Enabled = False
+    Font.Height = -13
+    Font.Style = [fsBold]
+    OnClick = AllDisClick
+    ParentFont = False
+    TabOrder = 2
+  end
+  object MatrixGrid: TStringGrid
+    Left = 624
+    Height = 240
+    Top = 56
+    Width = 515
+    ColCount = 16
+    DefaultColWidth = 40
+    RowCount = 16
+    TabOrder = 3
+  end
+  object beginof: TEdit
+    Left = 824
+    Height = 23
+    Top = 304
+    Width = 80
+    OnChange = beginofChange
+    TabOrder = 4
+  end
+  object Label1: TLabel
+    Left = 624
+    Height = 25
+    Top = 392
+    Width = 84
+    Caption = 'Результат'
+    Font.Height = -19
+    ParentColor = False
+    ParentFont = False
+  end
+  object StringGrid1: TStringGrid
+    Left = 624
+    Height = 200
+    Top = 416
+    Width = 360
+    ColCount = 1
+    DefaultColWidth = 340
+    FixedCols = 0
+    FixedRows = 0
+    Flat = True
+    RowCount = 20
+    TabOrder = 5
+  end
+  object endof: TEdit
+    Left = 1016
+    Height = 23
+    Top = 304
+    Width = 80
+    OnChange = endofChange
+    TabOrder = 6
+  end
+  object CertaindDis: TButton
+    Left = 625
+    Height = 25
+    Top = 368
+    Width = 514
+    Caption = 'Знайти відстань між початковою та кінцевою вершиною'
+    Enabled = False
+    Font.Height = -13
+    Font.Style = [fsBold]
+    OnClick = CertaindDisClick
+    ParentFont = False
+    TabOrder = 7
+  end
+  object Label2: TLabel
+    Left = 704
+    Height = 15
+    Top = 307
+    Width = 115
+    Caption = 'Початкова вершина:'
+    ParentColor = False
+  end
+  object Label3: TLabel
+    Left = 912
+    Height = 15
+    Top = 307
+    Width = 98
+    Caption = 'Кінцева вершина:'
+    ParentColor = False
+  end
+  object Clear: TButton
+    Left = 987
+    Height = 25
+    Top = 416
+    Width = 152
+    Caption = 'Очистити результат'
+    Font.Height = -13
+    Font.Style = [fsBold]
+    OnClick = ClearClick
+    ParentFont = False
+    TabOrder = 8
+  end
+end

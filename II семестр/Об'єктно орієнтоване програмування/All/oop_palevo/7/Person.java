@@ -1,0 +1,102 @@
+import java.util.Comparator;
+import java.util.Date;
+
+/**
+ * Base class describing a person.
+ * Contains properties for surname, name and birthdate. Contains 2 sample comparators.
+ * @author Glushko Olga
+ *
+ */
+public class Person {
+	protected String name;
+	protected String surname;
+	private Date birthdate; // leave this private only for example
+
+	public Person() {
+	}
+
+	public Person(String surname, String name) {
+		this.surname = surname;
+		this.name = name;
+	}
+
+	/**
+	 * @return value of <code>name</code> property.
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * Sets the value of <code>name</code> property.
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * @return the surname
+	 */
+	public String getSurname() {
+		return surname;
+	}
+
+	/**
+	 * Sets the value of <code>surname</code> property.
+	 * @param surname the surname to set
+	 */
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	/**
+	 * @return the birth date
+	 */
+	public Date getBirthdate() {
+		return birthdate;
+	}
+
+	/**
+	 * @param birthdate to set
+	 */
+	public void setBirthdate(Date birthdate) {
+		this.birthdate = birthdate;
+	}
+
+	/**
+	 * Sample <code>Comparator</code> implementation that compares two persons alphabetically by their surnames and names
+	 * @author Hlushko Olga
+	 *
+	 */
+	public class AlphabeticalComparator implements Comparator<Person> {
+
+		@Override
+		public int compare(Person a1, Person a2) {
+			int result;
+			result = a1.getSurname().compareTo(a2.getSurname());
+			if (result != 0)
+				return result;
+			return a1.getName().compareTo(a2.getName());
+		}
+	}
+
+	/**
+	 * Another <code>Comparator</code> implementation that compares two persons by age and then alphabetically.
+	 * @author Hlushko Olga
+	 *
+	 */
+	public class AgeComparator implements Comparator<Person> {
+
+		@Override
+		public int compare(Person a1, Person a2) {
+			int result = -a1.getBirthdate().compareTo(a2.getBirthdate());
+			if (result != 0)
+				return result;
+			result = a1.getSurname().compareTo(a2.getSurname());
+			if (result != 0)
+				return result;
+			return a1.getName().compareTo(a2.getName());
+		}
+	}
+}

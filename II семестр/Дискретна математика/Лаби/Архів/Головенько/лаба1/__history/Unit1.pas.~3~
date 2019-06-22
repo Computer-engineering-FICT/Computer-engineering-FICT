@@ -1,0 +1,58 @@
+unit Unit1;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, StdCtrls, Grids;
+
+type
+  TForm1 = class(TForm)
+    RadioButton1: TRadioButton;
+    RadioButton2: TRadioButton;
+    StringGrid1: TStringGrid;
+    StringGrid3: TStringGrid;
+    StringGrid4: TStringGrid;
+    StringGrid2: TStringGrid;
+    RadioButton3: TRadioButton;
+    Panel1: TPanel;
+    Button1: TButton;
+    Button2: TButton;
+    Button3: TButton;
+    Button4: TButton;
+    Button5: TButton;
+    Label1: TLabel;
+    Image1: TImage;
+    procedure StringGrid2Click(Sender: TObject);
+    procedure RadioButton3Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.RadioButton3Click(Sender: TObject);
+var
+ b:char;
+x,y:integer;
+begin
+randomize;
+ for b:='à' to 'ÿ' do
+ begin
+  repeat
+   x:=random(6)+1;
+   y:=random(6)+1;
+  until (stringgrid1.Cells[x,y]='');
+  stringgrid1.Cells[x,y] :=b;
+ end;
+
+end;
+
+

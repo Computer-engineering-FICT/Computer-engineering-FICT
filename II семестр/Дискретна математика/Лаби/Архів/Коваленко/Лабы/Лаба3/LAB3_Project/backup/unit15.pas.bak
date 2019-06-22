@@ -1,0 +1,185 @@
+unit Unit15;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
+  StdCtrls, Grids,Math;
+const
+  Col=20;
+  Rick=1000;
+type
+
+  { TOperForm }
+
+  TOperForm = class(TForm)
+    Button1: TButton;
+    Button2: TButton;
+    ExitButton: TButton;
+    InfoPanel: TPanel;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    n6: TLabel;
+    n5: TLabel;
+    n4: TLabel;
+    n3: TLabel;
+    n2: TLabel;
+    n1: TLabel;
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure ExitButtonClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+  private
+    { private declarations }
+  public
+    { public declarations }
+  end;
+  type
+    ArrStr=array[1..Col] of string;
+    ArrStr1=array[1..Rick] of string;
+    ArrInt=array[1..Col] of integer;
+
+var
+  OperForm: TOperForm;
+  m,n:Integer;
+  Arr1, Arr2, Arr3, Arr4, city : ArrStr; // створюються 5 масивів типу String
+  Arr5:ArrStr1;                         // створ. Один масив типу Integer
+  IntArr:ArrInt;
+
+implementation
+
+{$R *.lfm}
+
+{ TOperForm }
+
+procedure TOperForm.ExitButtonClick(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TOperForm.FormCreate(Sender: TObject);
+begin
+  n1.Caption:='';         //процедура очищення всіх елементів Label
+  n2.Caption:='';
+  n3.Caption:='';
+  n4.Caption:='';
+  n5.Caption:='';
+  n6.Caption:='';
+end;
+
+procedure TOperForm.Button1Click(Sender: TObject);
+var F:Text;
+  str:String;
+  i,k,l : integer;
+begin
+  AssignFile(F,'DATA\P9.txt');         //загрузка даних
+  Reset(F);
+  Readln(F,str);
+  n2.Caption:=str;
+  m:=StrToInt(str);                    //кількість векторів – змінна m
+  Readln(F,str);
+  n1.Caption:=str;
+  n:=StrToInt(str);                   //кількість міст – змінна n
+  for i:=1 to (n*2+2) do
+  Begin
+    Readln(F,str);
+    Arr1[i]:=str;              //записуються в масив всі міста та їхні індекси
+  end;
+  CloseFile(F);
+  k:=1;
+  l:=2;
+  for i:=1 to (n*2+2) do
+  Begin
+    n3.Caption:=n3.Caption+' '+ Arr1[k];      // вивід всіх обраних міст
+    n4.Caption:=n4.Caption+' '+ Arr1[l];     // вивід початкового вектора
+    k:=k+2;
+    l:=l+2;
+  end;
+  InfoPanel.Caption:='Загрузка виконана';
+end;
+
+procedure TOperForm.Button2Click(Sender: TObject);
+var
+  index,p: Integer;
+  i,q,j,c,v: Integer;
+  a:array[1..100]of byte;
+  s:String;
+begin
+index:=1;
+p:=0;
+for i:=1 to (n) do
+Begin
+  Arr3[i]:=Arr1[index];   // створення масиву лише з назвами міст
+  index:=index+2;
+  p:=p+1;
+end;
+
+// generating Gray's code
+Arr5[1]:='00';                        //початкова послідовність чисел
+Arr5[2]:='01';
+Arr5[3]:='11';
+Arr5[4]:='10';
+i:=1;
+while (i<n) do
+begin
+inc(i);
+for j:=1 to trunc(power(2,i)) do
+begin
+ Arr5[j]:=IntToStr(StrToInt(Arr5[j]) shl 1);
+ Arr5[trunc(power(2,i+1))+1-j]:=IntToStr(StrToInt(Arr5[j]) xor 1);
+end;
+end;
+
+q:=Length(Arr5);                   // довжина отриманого масиву множини
+
+for i:=1 to q do             //перевід з десяткової в двйкому систему числення
+if (Arr5[i]<>'') then
+begin
+     c:=0;
+     repeat
+     inc(c);
+     a[c]:=StrToInt(Arr5[i]) mod 2;
+     Arr5[i]:=IntToStr(StrToInt(Arr5[i]) div 2);
+     until Arr5[i]='0' ;
+     Arr5[i]:='';
+     for j:=c downto 1 do
+     Arr5[i]:=Arr5[i]+IntToStr(a[j]);
+end;
+
+v:=1;
+for i:=1 to q do                  //підбирання підмножин за заданою кількістю
+if (Arr5[i]<>'0') then
+Begin
+if (Length(Arr5[i])=n) then
+   begin
+   Arr4[v]:=Arr5[i];
+   v:=v+1;
+   end;
+end;
+
+for i:=1 to m do
+n5.Caption:=n5.Caption+'('+Arr4[i]+'), ';     //вивід  підмножин
+
+// relation
+for i:=1 to v-1 do    //формування відношення між підмножиною та назвою міста
+begin
+s:=Arr4[i];
+city[i]:='';
+     for j:=1 to n do
+     begin
+     if (s[j]='1') then
+     city[i]:=city[i]+Arr3[j]+'  ';
+     end;
+end;
+
+for i:=1 to m do
+n6.Caption:=n6.Caption+'('+city[i]+'), ';  //вивід назв міст підмножин
+InfoPanel.Caption:='Код Грея сформовано';
+end;
+  end.

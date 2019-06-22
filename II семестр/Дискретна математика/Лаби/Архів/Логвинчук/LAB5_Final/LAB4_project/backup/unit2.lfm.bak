@@ -1,0 +1,70 @@
+object OperForm: TOperForm
+  Left = 201
+  Height = 648
+  Top = 48
+  Width = 1133
+  Caption = 'OperForm'
+  ClientHeight = 648
+  ClientWidth = 1133
+  LCLVersion = '1.2.6.0'
+  object InfoPanel: TPanel
+    Left = 8
+    Height = 23
+    Top = 616
+    Width = 539
+    BevelOuter = bvLowered
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Color = clBlue
+    Font.Height = -13
+    Font.Name = 'Arial Narrow'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 0
+  end
+  object ExitButton: TButton
+    Left = 552
+    Height = 25
+    Top = 614
+    Width = 75
+    Caption = 'Вихід'
+    OnClick = ExitButtonClick
+    TabOrder = 1
+  end
+  object GraphImage: TImage
+    Left = 8
+    Height = 600
+    Top = 8
+    Width = 600
+  end
+  object IMatrixGrid: TStringGrid
+    Left = 688
+    Height = 352
+    Top = 8
+    Width = 379
+    Align = alCustom
+    ColCount = 20
+    DefaultColWidth = 40
+    DefaultRowHeight = 18
+    RowCount = 20
+    TabOrder = 2
+  end
+  object LoadButton: TButton
+    Left = 688
+    Height = 48
+    Top = 376
+    Width = 168
+    Caption = 'Завантажити граф'
+    OnClick = LoadButtonClick
+    TabOrder = 3
+  end
+  object Painting: TButton
+    Left = 872
+    Height = 49
+    Top = 376
+    Width = 152
+    Caption = 'Розфарбувати граф'
+    OnClick = PaintingClick
+    TabOrder = 4
+  end
+end

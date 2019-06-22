@@ -1,0 +1,152 @@
+object OperForm: TOperForm
+  Left = 325
+  Height = 706
+  Top = 155
+  Width = 1366
+  AutoSize = True
+  Caption = 'Матриці відношень R і S'
+  ClientHeight = 706
+  ClientWidth = 1366
+  LCLVersion = '1.2.0.3'
+  object ExitButton: TButton
+    Left = 1194
+    Height = 34
+    Top = 611
+    Width = 75
+    Caption = 'Вихід'
+    OnClick = ExitButtonClick
+    TabOrder = 0
+  end
+  object AListBox: TListBox
+    Left = 39
+    Height = 524
+    Top = 48
+    Width = 131
+    ItemHeight = 0
+    TabOrder = 1
+  end
+  object BListBox: TListBox
+    Left = 190
+    Height = 523
+    Top = 48
+    Width = 131
+    ItemHeight = 0
+    TabOrder = 2
+  end
+  object ALoadButton: TButton
+    Left = 108
+    Height = 25
+    Top = 611
+    Width = 144
+    Caption = 'Завантажити множини'
+    OnClick = ALoadButtonClick
+    TabOrder = 3
+  end
+  object Result_StringGrid: TStringGrid
+    Left = 338
+    Height = 168
+    Top = 228
+    Width = 100
+    DefaultColWidth = 60
+    TabOrder = 4
+    Visible = False
+  end
+  object Button1: TButton
+    Left = 349
+    Height = 25
+    Top = 470
+    Width = 75
+    Caption = 'R U S '
+    OnClick = Button1Click
+    TabOrder = 5
+  end
+  object R_StringGrid: TStringGrid
+    Left = 338
+    Height = 168
+    Top = 48
+    Width = 267
+    DefaultColWidth = 60
+    TabOrder = 6
+    Visible = False
+  end
+  object S_StringGrid: TStringGrid
+    Left = 795
+    Height = 168
+    Top = 48
+    Width = 100
+    DefaultColWidth = 60
+    TabOrder = 7
+    Visible = False
+  end
+  object Button2: TButton
+    Left = 439
+    Height = 25
+    Top = 438
+    Width = 75
+    Caption = 'R^-1'
+    OnClick = Button2Click
+    TabOrder = 8
+  end
+  object Button3: TButton
+    Left = 349
+    Height = 25
+    Top = 438
+    Width = 75
+    Caption = 'S X R'
+    OnClick = Button3Click
+    TabOrder = 9
+  end
+  object RXS: TMemo
+    Left = 574
+    Height = 168
+    Top = 438
+    Width = 416
+    Lines.Strings = (
+      'RXS'
+    )
+    ScrollBars = ssAutoBoth
+    TabOrder = 10
+  end
+  object Button4: TButton
+    Left = 439
+    Height = 25
+    Top = 470
+    Width = 75
+    Caption = 'S X R^-1'
+    OnClick = Button4Click
+    TabOrder = 11
+  end
+  object Label1: TLabel
+    Left = 70
+    Height = 15
+    Top = 578
+    Width = 65
+    Caption = 'Множина А'
+    ParentColor = False
+    OnClick = Label1Click
+  end
+  object Label2: TLabel
+    Left = 223
+    Height = 15
+    Top = 578
+    Width = 64
+    Caption = 'Множина В'
+    ParentColor = False
+  end
+  object Label3: TLabel
+    Left = 349
+    Height = 15
+    Top = 14
+    Width = 46
+    Caption = 'a мати b'
+    ParentColor = False
+  end
+  object Label4: TLabel
+    Left = 795
+    Height = 15
+    Top = 21
+    Width = 55
+    Caption = 'a сестра b'
+    ParentColor = False
+  end
+end

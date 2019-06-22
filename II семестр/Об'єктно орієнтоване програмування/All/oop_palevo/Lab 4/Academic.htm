@@ -1,0 +1,218 @@
+import java.util.Date;
+
+/**
+ * Sample class that describes an university teacher.
+ * Contains 7 properties of three types (String, int and Date).
+ * Contains 3 constructors. Has getters and setters for all properties.
+ * Has 4 methods for comparison by different sets of properties. 
+ * @author Gloushko Olga
+ *
+ */
+public class Academic {
+	private String name;
+	private String surname;
+	private Date birthdate;
+	private int experience;
+	private String facultee;
+	private String cathedra;
+	private String position;
+
+
+	/**
+	 * A simplest constructor without parameters
+	 */
+	public Academic() {
+		experience = 0;
+	}
+	
+	/**
+	 * Simple constructor with 2 parameters.
+	 * Leaves other fields blank.
+	 * @param surname value for <code>surname</code> property
+	 * @param name value for <code>name</code> property
+	 */
+	public Academic(String surname, String name) {
+		this.surname = surname;
+		this.name = name;
+		experience = 0;
+	}
+	
+	/**
+	 * Constructor that initializes most of object's properties.
+	 * @param surname value for <code>surname</code> property
+	 * @param name value for <code>name</code> property
+	 * @param facultee value for <code>facultee</code> property
+	 * @param cathedra value for <code>cathedra</code> property
+	 * @param position value for <code>position</code> property
+	 */
+	public Academic(String surname, String name, String facultee, String cathedra, String position) {
+		this.surname = surname;
+		this.name = name;
+		this.facultee = facultee;
+		this.cathedra = cathedra;
+		this.position = position;
+	}
+
+	/**
+	 * @return value of <code>name</code> property.
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * Sets the value of <code>name</code> property.
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * @return the surname
+	 */
+	public String getSurname() {
+		return surname;
+	}
+
+	/**
+	 * Sets the value of <code>surname</code> property.
+	 * @param surname the surname to set
+	 */
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	/**
+	 * @return the birth date
+	 */
+	public Date getBirthdate() {
+		return birthdate;
+	}
+
+	/**
+	 * @param birthdate to set
+	 */
+	public void setBirthdate(Date birthdate) {
+		this.birthdate = birthdate;
+	}
+
+	/**
+	 * @return the experience
+	 */
+	public int getExperience() {
+		return experience;
+	}
+
+	/**
+	 * @param experience the experience to set
+	 */
+	public void setExperience(int experience) {
+		this.experience = experience;
+	}
+
+	/**
+	 * @return value of <code>facultee</code> property
+	 */
+	public String getFacultee() {
+		return facultee;
+	}
+
+	/**
+	 * @param facultee facultee name to set
+	 */
+	public void setFacultee(String facultee) {
+		this.facultee = facultee;
+	}
+
+	/**
+	 * @return the cathedra name
+	 */
+	public String getCathedra() {
+		return cathedra;
+	}
+
+	/**
+	 * @param cathedra cathedra name to set
+	 */
+	public void setCathedra(String cathedra) {
+		this.cathedra = cathedra;
+	}
+
+	/**
+	 * @return the position
+	 */
+	public String getPosition() {
+		return position;
+	}
+
+	/**
+	 * @param position the position to set
+	 */
+	public void setPosition(String position) {
+		this.position = position;
+	}
+	
+	/**
+	 * Compares two objects using "natural" order.
+	 * Natural order means comparison by facultee, cathedra, surname, name
+	 * and birthdate
+	 * @param academic another academic to compare to
+	 * @return 0 if this object equals to, 1 if greater than, and -1 if less than <code>academic</code> object supplied as parameter 
+	 */
+	public int compareTo(Academic academic) {
+		int result;
+		result = facultee.compareTo(academic.getFacultee());
+		if (result != 0)
+			return result;
+		result = cathedra.compareTo(academic.getCathedra());
+		if (result != 0)
+			return result;
+		result = surname.compareTo(academic.getSurname());
+		if (result != 0)
+			return result;
+		result = name.compareTo(academic.getName());
+		if (result != 0)
+			return result;
+		return birthdate.compareTo(academic.getBirthdate());
+	}
+	
+	/**
+	 * Compares objects alphabetically.
+	 * This means comparison by surname and name.
+	 * @param academic another academic to compare to
+	 * @return 0 if this object equals to, 1 if greater than, and -1 if less than <code>academic</code> object supplied as parameter 
+	 */
+	public int compareAlphabetically(Academic academic) {
+		int result;
+		result = surname.compareTo(academic.getSurname());
+		if (result != 0)
+			return result;
+		return name.compareTo(academic.getName());
+	}
+	
+	/**
+	 * Compares two academics by their age, surname and name.
+	 * @param academic another academic to compare to
+	 * @return 0 if this object equals to, 1 if greater than, and -1 if less than <code>academic</code> object supplied as parameter 
+	 */
+	public int compareByAge(Academic academic) {
+		int result = -birthdate.compareTo(academic.getBirthdate());
+		if (result != 0)
+			return result;
+		return compareAlphabetically(academic);
+	}
+
+	/**
+	 * Compares two academics by their position, surname and name.
+	 * @param academic another academic to compare to
+	 * @return 0 if this object equals to, 1 if greater than, and -1 if less than <code>academic</code> object supplied as parameter 
+	 */
+	public int compareByPosition(Academic academic) {
+		int result = position.compareTo(academic.getPosition());
+		if (result != 0)
+			return result;
+		return compareAlphabetically(academic);
+	}
+
+}

@@ -1,0 +1,119 @@
+object ActionForm: TActionForm
+  Left = 77
+  Height = 421
+  Top = 197
+  Width = 1180
+  Caption = 'Что можем делать с отношениями'
+  ClientHeight = 421
+  ClientWidth = 1180
+  OnCreate = FormCreate
+  LCLVersion = '1.2.0.3'
+  object RezGrid: TStringGrid
+    Left = 192
+    Height = 204
+    Top = 40
+    Width = 804
+    ColCount = 10
+    DefaultColWidth = 80
+    RowCount = 10
+    TabOrder = 0
+    Cells = (
+      17
+      0
+      0
+      'Результат'
+      1
+      9
+      '1'
+      2
+      9
+      '2'
+      3
+      9
+      '3'
+      4
+      9
+      '4'
+      5
+      9
+      '5'
+      6
+      9
+      '6'
+      7
+      9
+      '7'
+      8
+      9
+      '8'
+      9
+      1
+      '1'
+      9
+      2
+      '2'
+      9
+      3
+      '3'
+      9
+      4
+      '4'
+      9
+      5
+      '5'
+      9
+      6
+      '6'
+      9
+      7
+      '7'
+      9
+      8
+      '8'
+    )
+  end
+  object Obedinenie: TButton
+    Left = 272
+    Height = 33
+    Top = 256
+    Width = 152
+    Caption = 'S объединить с R'
+    OnClick = ObedinenieClick
+    TabOrder = 1
+  end
+  object Obratnoe: TButton
+    Left = 760
+    Height = 33
+    Top = 256
+    Width = 152
+    Caption = 'Обратное отношение R'
+    OnClick = ObratnoeClick
+    TabOrder = 2
+  end
+  object Dekartovo: TButton
+    Left = 272
+    Height = 33
+    Top = 312
+    Width = 152
+    Caption = 'Декартово S и R'
+    OnClick = DekartovoClick
+    TabOrder = 3
+  end
+  object Button4: TButton
+    Left = 760
+    Height = 33
+    Top = 312
+    Width = 152
+    Caption = 'Декартово S и обратное R'
+    OnClick = Button4Click
+    TabOrder = 4
+  end
+  object ResultPanel: TLabel
+    Left = 16
+    Height = 15
+    Top = 371
+    Width = 278
+    Caption = 'Здесь будут отображены декартовы произведения'
+    ParentColor = False
+  end
+end

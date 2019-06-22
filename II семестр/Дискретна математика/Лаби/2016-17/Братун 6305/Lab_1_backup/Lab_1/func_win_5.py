@@ -1,0 +1,67 @@
+import  func
+from tkinter import *
+from tkinter import messagebox
+
+Z = set()
+def see_dont_simplified_D(event):
+    with open(r"Set D(don`t simplified).txt", "r") as f:
+        p = f.read()
+        top = Toplevel(height=500, width=100, relief = GROOVE)
+        top.title("See set D(don`t simplified) into file")
+        tex = Text(top,width=180, height=20,font="Verdana 12",wrap=WORD)
+        tex.insert(END,p)
+        tex.pack(fill=BOTH,expand=True)
+
+def see_simplified_D(event):
+    with open(r"Set D(simplified).txt", "r") as f:
+        p = f.read()
+        top = Toplevel(height=500, width=100, relief = GROOVE)
+        top.title("See set D(simplified) into file")
+        tex = Text(top,width=180, height=20,font="Verdana 12",wrap=WORD)
+        tex.insert(END,p)
+        tex.pack(fill=BOTH,expand=True)
+
+def see_calc_about_my_func_C(event):
+    with open(r"Set Z(calc about my func).txt", "r") as f:
+        p = f.read()
+        top = Toplevel(height=500, width=100, relief = GROOVE)
+        top.title("See set Z(calc about my func) into file")
+        tex = Text(top,width=180, height=20,font="Verdana 12",wrap=WORD)
+        tex.insert(END,p)
+        tex.pack(fill=BOTH,expand=True)
+
+def step(event):
+    global Z
+    Z = func.A - func.C
+    printed = 'Z = ' + str(Z)
+    top = Toplevel(height=500, width=100, relief = GROOVE)
+    top.title("Calculated and see set Z about Python func")
+    tex = Text(top,width=180, height=20,font="Verdana 12",wrap=WORD)
+    tex.insert(END,printed)
+    tex.pack(fill=BOTH,expand=True)
+    with open(r"Set Z(calc about Python func).txt", "w") as f:
+        f.write('Z = ' + str(Z))
+        msg = messagebox.showinfo('Save set Z', 'Set Z was saved')
+
+def comparison_D_sets(event):
+    f1 = open(r"Set D(don`t simplified).txt", "r")
+    p1 = f1.read()
+    f2 = open(r"Set D(simplified).txt", "r")
+    p2 = f2.read()
+    if p1 == p2:
+        msg = messagebox.showinfo('Comparison D sets', 'Sets identical')
+    else:
+        msg = messagebox.showinfo('Comparison D sets', 'Sets unidentical')
+
+
+def comparison_Z_sets(event):
+    f1 = open(r"Set Z(calc about my func).txt", "r")
+    p1 = f1.read()
+    f2 = open(r"Set Z(calc about Python func).txt", "r")
+    p2 = f2.read()
+    if p1 == p2:
+        msg = messagebox.showinfo('Comparison Z sets', 'Sets identical')
+    else:
+        msg = messagebox.showinfo('Comparison Z sets', 'Sets unidentical')
+
+

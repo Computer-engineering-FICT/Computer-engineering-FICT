@@ -1,0 +1,250 @@
+object OperForm: TOperForm
+  Left = 273
+  Height = 451
+  Top = 202
+  Width = 985
+  Caption = 'Матриці відношень R і S'
+  ClientHeight = 451
+  ClientWidth = 985
+  Color = clWindow
+  LCLVersion = '1.2.6.0'
+  object IP: TPanel
+    Left = 32
+    Height = 25
+    Top = 407
+    Width = 864
+    BevelOuter = bvLowered
+    TabOrder = 0
+  end
+  object ALoadButton: TButton
+    Left = 512
+    Height = 25
+    Top = 240
+    Width = 168
+    Caption = 'Завантажити А та В'
+    OnClick = ALoadButtonClick
+    TabOrder = 1
+  end
+  object Button2: TButton
+    Left = 688
+    Height = 25
+    Top = 304
+    Width = 176
+    Caption = 'Встановити відношення'
+    OnClick = SOper
+    TabOrder = 2
+  end
+  object R_StringGrid: TStringGrid
+    Left = 32
+    Height = 160
+    Top = 48
+    Width = 464
+    BorderStyle = bsNone
+    DefaultColWidth = 90
+    DefaultRowHeight = 25
+    Flat = True
+    TabOrder = 3
+    OnSelectCell = R_StringGridSelectCell
+  end
+  object S_StringGrid: TStringGrid
+    Left = 512
+    Height = 160
+    Top = 48
+    Width = 464
+    BorderStyle = bsNone
+    DefaultColWidth = 90
+    DefaultRowHeight = 25
+    Flat = True
+    TabOrder = 4
+    OnSelectCell = R_StringGridSelectCell
+  end
+  object ClearLists: TButton
+    Left = 512
+    Height = 25
+    Top = 272
+    Width = 352
+    Caption = 'Очистити А, В та відношення'
+    OnClick = ResetSa
+    TabOrder = 5
+  end
+  object DekMultiply: TButton
+    Left = 512
+    Height = 25
+    Top = 336
+    Width = 168
+    Caption = 'S × R'
+    Font.Height = -13
+    OnClick = SxR
+    ParentFont = False
+    TabOrder = 6
+  end
+  object Button5: TButton
+    Left = 688
+    Height = 25
+    Top = 304
+    Width = 176
+    Caption = 'R   '
+    Font.Height = -13
+    OnClick = minusR
+    ParentFont = False
+    TabOrder = 7
+  end
+  object Button6: TButton
+    Left = 688
+    Height = 25
+    Top = 336
+    Width = 176
+    Caption = 'S × R  '
+    Font.Height = -13
+    OnClick = SxmR
+    ParentFont = False
+    TabOrder = 8
+  end
+  object UniteSandR: TButton
+    Left = 512
+    Height = 25
+    Top = 304
+    Width = 168
+    Caption = 'S ∪ R'
+    Font.Height = -13
+    OnClick = SpR
+    ParentFont = False
+    TabOrder = 9
+  end
+  object SC: TStringGrid
+    Left = 32
+    Height = 160
+    Top = 240
+    Width = 464
+    BorderStyle = bsNone
+    DefaultColWidth = 92
+    DefaultRowHeight = 25
+    Flat = True
+    TabOrder = 10
+  end
+  object sch: TStringGrid
+    Left = 1176
+    Height = 344
+    Top = 88
+    Width = 608
+    TabOrder = 11
+    Visible = False
+  end
+  object Label3: TLabel
+    Left = 32
+    Height = 21
+    Top = 21
+    Width = 98
+    BorderSpacing.Left = 5
+    BorderSpacing.Top = 5
+    BorderSpacing.Right = 5
+    BorderSpacing.Bottom = 5
+    Caption = 'A свекруха B'
+    Font.Height = -16
+    Font.Style = [fsBold, fsItalic]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label4: TLabel
+    Left = 512
+    Height = 21
+    Top = 21
+    Width = 89
+    BorderSpacing.Left = 5
+    BorderSpacing.Top = 5
+    BorderSpacing.Right = 5
+    BorderSpacing.Bottom = 5
+    Caption = 'A батько B'
+    Font.Height = -16
+    Font.Style = [fsBold, fsItalic]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label5: TLabel
+    AnchorSideTop.Control = R_StringGrid
+    Left = 32
+    Height = 21
+    Top = 216
+    Width = 167
+    Anchors = []
+    BorderSpacing.Left = 145
+    BorderSpacing.Top = 135
+    BorderSpacing.Right = 5
+    BorderSpacing.Bottom = 5
+    Caption = 'Результат операцій'
+    Font.Height = -16
+    Font.Style = [fsBold, fsItalic]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label6: TLabel
+    AnchorSideTop.Control = R_StringGrid
+    Left = 512
+    Height = 21
+    Top = 216
+    Width = 68
+    Anchors = []
+    BorderSpacing.Left = 145
+    BorderSpacing.Top = 135
+    BorderSpacing.Right = 5
+    BorderSpacing.Bottom = 5
+    Caption = 'Операції'
+    Font.Height = -16
+    Font.Style = [fsBold, fsItalic]
+    ParentColor = False
+    ParentFont = False
+  end
+  object StaticText: TStaticText
+    Left = 778
+    Height = 16
+    Top = 307
+    Width = 10
+    Caption = '-1'
+    Color = clBtnFace
+    Font.Color = clBlack
+    Font.Height = -9
+    ParentFont = False
+    ParentColor = False
+    TabOrder = 12
+    Transparent = False
+  end
+  object StaticText1: TStaticText
+    Left = 791
+    Height = 16
+    Top = 338
+    Width = 10
+    Caption = '-1'
+    Color = clBtnFace
+    Font.Color = clBlack
+    Font.Height = -9
+    ParentFont = False
+    ParentColor = False
+    TabOrder = 13
+    Transparent = False
+  end
+  object ExitButton1: TButton
+    Left = 901
+    Height = 27
+    Top = 408
+    Width = 75
+    BorderSpacing.Left = 5
+    BorderSpacing.Top = 5
+    BorderSpacing.Right = 5
+    BorderSpacing.Bottom = 5
+    Caption = 'Вихід'
+    Font.Color = clWindowText
+    Font.Style = [fsBold]
+    OnClick = ExitButtonClick
+    ParentFont = False
+    TabOrder = 14
+  end
+  object Vst: TButton
+    Left = 688
+    Height = 25
+    Top = 240
+    Width = 176
+    Caption = 'Встановити відношення'
+    OnClick = SOper
+    TabOrder = 15
+  end
+end

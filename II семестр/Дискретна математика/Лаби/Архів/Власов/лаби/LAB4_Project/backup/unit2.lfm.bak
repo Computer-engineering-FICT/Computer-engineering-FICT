@@ -1,0 +1,135 @@
+object OperForm: TOperForm
+  Left = 246
+  Height = 626
+  Top = 42
+  Width = 1069
+  Caption = 'OperForm'
+  ClientHeight = 626
+  ClientWidth = 1069
+  LCLVersion = '1.0.14.0'
+  object ExitButton: TButton
+    Left = 848
+    Height = 25
+    Top = 640
+    Width = 75
+    Caption = 'Вихід'
+    OnClick = ExitButtonClick
+    TabOrder = 0
+  end
+  object GraphImage: TImage
+    Left = 19
+    Height = 600
+    Top = 16
+    Width = 600
+    Proportional = True
+  end
+  object Input: TButton
+    Left = 744
+    Height = 41
+    Top = 8
+    Width = 208
+    Caption = 'Fill info about the graf'
+    Default = True
+    Font.Height = -19
+    OnClick = InputClick
+    ParentFont = False
+    TabOrder = 1
+  end
+  object AllDis: TButton
+    Left = 632
+    Height = 40
+    Top = 304
+    Width = 171
+    Caption = 'Find all the distances'
+    Enabled = False
+    Font.Height = -15
+    OnClick = AllDisClick
+    ParentFont = False
+    TabOrder = 2
+  end
+  object MatrixGrid: TStringGrid
+    Left = 624
+    Height = 240
+    Top = 56
+    Width = 440
+    ColCount = 16
+    DefaultColWidth = 40
+    RowCount = 16
+    TabOrder = 3
+  end
+  object beginof: TEdit
+    Left = 968
+    Height = 23
+    Top = 312
+    Width = 80
+    OnChange = beginofChange
+    TabOrder = 4
+  end
+  object Label1: TLabel
+    Left = 792
+    Height = 26
+    Top = 408
+    Width = 84
+    Caption = 'The result'
+    Font.Height = -19
+    ParentColor = False
+    ParentFont = False
+  end
+  object StringGrid1: TStringGrid
+    Left = 712
+    Height = 180
+    Top = 440
+    Width = 240
+    ColCount = 1
+    DefaultColWidth = 220
+    FixedCols = 0
+    FixedRows = 0
+    RowCount = 20
+    TabOrder = 5
+  end
+  object endof: TEdit
+    Left = 968
+    Height = 23
+    Top = 369
+    Width = 80
+    OnChange = endofChange
+    TabOrder = 6
+  end
+  object CertaindDis: TButton
+    Left = 632
+    Height = 40
+    Top = 352
+    Width = 171
+    Caption = 'Find the certain distance'
+    Enabled = False
+    Font.Height = -15
+    OnClick = CertaindDisClick
+    ParentFont = False
+    TabOrder = 7
+  end
+  object Label2: TLabel
+    Left = 896
+    Height = 16
+    Top = 319
+    Width = 56
+    Caption = 'First node '
+    ParentColor = False
+  end
+  object Label3: TLabel
+    Left = 896
+    Height = 16
+    Top = 376
+    Width = 52
+    Caption = 'Last node'
+    ParentColor = False
+  end
+  object Clear: TButton
+    Left = 973
+    Height = 25
+    Top = 512
+    Width = 75
+    Caption = 'Clear result'
+    OnClick = ClearClick
+    TabOrder = 8
+  end
+end

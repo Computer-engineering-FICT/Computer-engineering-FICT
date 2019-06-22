@@ -1,0 +1,122 @@
+object OperForm: TOperForm
+  Left = 373
+  Height = 546
+  Top = 107
+  Width = 1093
+  Caption = 'Побудова матриці інциентності на основі матриці сумжності'
+  ClientHeight = 546
+  ClientWidth = 1093
+  LCLVersion = '1.2.6.0'
+  object InfoPanel: TPanel
+    Left = 224
+    Height = 23
+    Top = 504
+    Width = 539
+    BevelOuter = bvLowered
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Color = clBlue
+    Font.Height = -13
+    Font.Name = 'Arial Narrow'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 0
+  end
+  object ExitButton: TButton
+    Left = 768
+    Height = 25
+    Top = 502
+    Width = 75
+    Caption = 'Вихід'
+    OnClick = ExitButtonClick
+    TabOrder = 1
+  end
+  object SumGrid: TStringGrid
+    Left = 16
+    Height = 343
+    Top = 64
+    Width = 512
+    ColCount = 17
+    DefaultColWidth = 30
+    DefaultRowHeight = 20
+    RowCount = 17
+    ScrollBars = ssNone
+    TabOrder = 2
+  end
+  object Load: TButton
+    Left = 152
+    Height = 49
+    Top = 424
+    Width = 248
+    Caption = 'Завантажити матрицю суміжності'
+    OnClick = LoadClick
+    TabOrder = 3
+  end
+  object Transform: TButton
+    Left = 720
+    Height = 49
+    Top = 424
+    Width = 235
+    Caption = 'Побудувати матрицю інцидентності'
+    OnClick = TransformClick
+    TabOrder = 4
+  end
+  object IncGrid: TStringGrid
+    Left = 560
+    Height = 343
+    Top = 64
+    Width = 512
+    ColCount = 17
+    DefaultColWidth = 30
+    DefaultRowHeight = 20
+    RowCount = 17
+    ScrollBars = ssNone
+    TabOrder = 5
+  end
+  object Label1: TLabel
+    Left = 192
+    Height = 23
+    Top = 26
+    Width = 158
+    Caption = 'Матриця суміжності'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -19
+    Font.Name = 'Arial Narrow'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 752
+    Height = 23
+    Top = 24
+    Width = 182
+    Caption = 'Матриця інцидентності'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -19
+    Font.Name = 'Arial Narrow'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Left = 864
+    Height = 30
+    Top = 497
+    Width = 197
+    Alignment = taCenter
+    Caption = 'Логвинчук А.І. ІО-41 @ НТУУ "КПІ" '#13#10'2015'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -12
+    Font.Name = 'Arial'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+end

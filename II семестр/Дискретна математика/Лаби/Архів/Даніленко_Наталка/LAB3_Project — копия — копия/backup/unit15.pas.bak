@@ -1,0 +1,178 @@
+unit Unit15;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
+StdCtrls, Grids;
+
+type
+TArray = Array [1..100] of String;
+TByte = Array [1..100] of Byte;
+Tstring = Array [1..2] of String;
+
+{ TOperForm }
+
+TOperForm = class(TForm)
+Button1: TButton;
+Button2: TButton;
+Edit1: TEdit;
+Edit2: TEdit;
+ExitButton: TButton;
+InfoPanel: TPanel;
+Label1: TLabel;
+Label2: TLabel;
+Panel1: TPanel;
+StringGrid1: TStringGrid;
+StringGrid2: TStringGrid;
+procedure Button1Click(Sender: TObject);
+procedure Button2Click(Sender: TObject);
+procedure Edit1Change(Sender: TObject);
+procedure ExitButtonClick(Sender: TObject);
+procedure CreateAB;
+procedure FormCreate(Sender: TObject);
+private
+{ private declarations }
+public
+{ public declarations }
+end;
+
+var
+OperForm: TOperForm;
+n:Tstring;
+A:TArray;
+B:TByte;
+lengthA,lengthB:integer;
+
+implementation
+
+{$R *.lfm}
+
+{ TOperForm }
+
+procedure TOperForm.ExitButtonClick(Sender: TObject);
+var i:integer;
+begin
+InfoPanel.Caption:='';
+Edit1.Text:='';
+Edit2.Text:='';
+with StringGrid1 do
+for i:=0 to ColCount-1 do
+    Cols[i].Clear;
+with StringGrid2 do
+for i:=0 to ColCount-1 do
+    Cols[i].Clear;
+Close;
+end;
+
+procedure TOperForm.CreateAB;
+var i,j:integer;
+str:string;
+f:textfile;
+begin
+assignFile(f, 'DATA\P9.txt');
+reset(f);
+Readln(f, Str);
+n[1]:=Str;
+Readln(f, Str);
+n[2]:=Str;
+i:=1;
+j:=1;
+lengthA:=0;
+lengthB:=0;
+while not (EOF(f)) do
+begin
+Readln(f, Str);
+if (pos('1',Str)=1) or (pos('0',Str)=1)
+then if pos('1',Str)=1
+then begin B[i]:=1; Inc(i); Inc(lengthB) end
+else begin B[i]:=0; Inc(i); Inc(lengthB) end
+else begin A[j]:=Str; Inc(j); Inc(lengthA) end;
+end;
+closefile(f);
+
+end;
+
+procedure TOperForm.FormCreate(Sender: TObject);
+begin
+
+end;
+
+procedure TOperForm.Edit1Change(Sender: TObject);
+begin
+
+end;
+
+procedure TOperForm.Button1Click(Sender: TObject);
+var i:integer;
+begin
+CreateAB;
+StringGrid1.Cells[0,0]:='Мн. імен';
+StringGrid1.Cells[0,1]:='Поч. число';
+For i:=1 to lengthA do
+StringGrid1.Cells[i,0]:=A[i];
+For i:=1 to lengthB do
+StringGrid1.Cells[i,1]:=inttostr(B[i]);
+Edit1.Text:=n[2];
+Edit2.Text:=n[1];
+InfoPanel.Caption:='Ви ввели початкові параметри';
+end;
+
+procedure TOperForm.Button2Click(Sender: TObject);
+var i,m,k,j,n:integer;
+    B1:array[1..100] of byte;
+    G1:array[1..100] of byte;
+    G2:array[1..100] of byte;
+begin
+  m:=StrToInt(Edit2.Text);
+  StringGrid2.Cells[0,0]:='№п.п';
+
+ { for i:=1 to m do
+  StringGrid2.Cells[0,i]:=inttostr(i);
+
+  for k:=0 to m-1 do begin
+
+  For i:=1 to lengthB-1 do
+  G1[i]:=B[i];
+
+  for i:=1 to lengthB-1 do
+  begin
+  G2[i+1]:=B[i+1] xor G1[i];
+  G2[1]:=B[1];
+  end;
+
+  For i:=1 to lengthB do
+  StringGrid2.Cells[i,k+1]:=inttostr(G2[i]);
+
+  For i:=1 to lengthB do
+  B1[i]:=B[i];
+
+  for n:=lengthB downto 1 do
+  if B1[n]=1 then
+     B1[n]:=0
+  else begin
+  B1[n]:=1; break;
+  end;
+
+  For i:=1 to lengthB do
+  B[i]:=B1[i];
+
+  end; }
+
+  for n:=lengthB downto 1 do
+  if B[n]=1 then
+  B[n]:=0
+  else begin
+  B[n]:=1; break;
+   end;
+  For i:=1 to lengthB do
+  StringGrid2.Cells[i,0]:=inttostr(B[i]);
+
+  InfoPanel.Caption:='Генерація коду Грея завершена';
+end;
+
+
+end.
+

@@ -1,0 +1,71 @@
+object OperForm: TOperForm
+  Left = 86
+  Height = 626
+  Top = 55
+  Width = 1068
+  Caption = 'Розфарбування графа за модифікованим евристичним алгоритмом'
+  ClientHeight = 626
+  ClientWidth = 1068
+  Color = clWhite
+  LCLVersion = '1.2.6.0'
+  object ExitButton: TButton
+    Left = 983
+    Height = 25
+    Top = 383
+    Width = 75
+    Anchors = [akLeft]
+    Caption = 'Вихід'
+    Font.Style = [fsBold]
+    OnClick = ExitButtonClick
+    ParentFont = False
+    TabOrder = 0
+  end
+  object Download: TButton
+    Left = 648
+    Height = 24
+    Top = 384
+    Width = 144
+    Anchors = [akLeft]
+    Caption = 'Завантажити дані'
+    Font.Style = [fsBold]
+    OnClick = DownloadClick
+    ParentFont = False
+    TabOrder = 1
+  end
+  object ResultGrid: TStringGrid
+    Left = 648
+    Height = 359
+    Top = 16
+    Width = 410
+    Anchors = [akLeft]
+    DefaultColWidth = 30
+    TabOrder = 2
+  end
+  object Painting: TButton
+    Left = 800
+    Height = 24
+    Top = 384
+    Width = 144
+    Anchors = [akLeft]
+    Caption = 'Розфарбувати граф'
+    Font.Style = [fsBold]
+    OnClick = PaintingClick
+    ParentFont = False
+    TabOrder = 3
+  end
+  object GrImage: TImage
+    Left = 32
+    Height = 600
+    Top = 16
+    Width = 600
+    Anchors = [akLeft]
+  end
+  object Label1: TLabel
+    Left = 652
+    Height = 105
+    Top = 417
+    Width = 398
+    Caption = 'Перше число: номер вершини;'#13#10#13#10'Друге число: відносний ступінь – це ступінь нерозфарбованих вершин '#13#10'у нерозфарбованому підграфі даного графа;'#13#10#13#10'Третє число: Двокроковий відносний ступінь – сума відносних ступенів '#13#10'суміжних вершин у нерозфарбованому підграфі.'
+    ParentColor = False
+  end
+end

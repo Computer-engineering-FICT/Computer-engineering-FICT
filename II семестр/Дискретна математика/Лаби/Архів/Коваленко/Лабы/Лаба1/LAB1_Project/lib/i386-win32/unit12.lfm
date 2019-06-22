@@ -1,0 +1,174 @@
+object OperForm: TOperForm
+  Left = 268
+  Height = 760
+  Top = 62
+  Width = 983
+  Caption = 'Виконання операцій над множинами А і В'
+  ClientHeight = 760
+  ClientWidth = 983
+  Color = 8904327
+  OnCreate = FormCreate
+  LCLVersion = '1.2.6.0'
+  object ExitBtn: TButton
+    Left = 915
+    Height = 25
+    Top = 728
+    Width = 75
+    Caption = 'Вихід'
+    OnClick = ExitBtnClick
+    TabOrder = 0
+  end
+  object InfoPanel: TPanel
+    Left = 6
+    Height = 30
+    Top = 728
+    Width = 898
+    BevelOuter = bvLowered
+    Caption = 'Ця панель призначена для відображення  поточних повідомлень'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlue
+    Font.Height = -16
+    Font.Name = 'Arial Narrow'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 1
+  end
+  object StringGrid1: TStringGrid
+    Left = 8
+    Height = 296
+    Top = 80
+    Width = 384
+    ColCount = 16
+    DefaultColWidth = 32
+    DefaultRowHeight = 12
+    FixedCols = 0
+    FixedRows = 0
+    RowCount = 22
+    TabOrder = 2
+  end
+  object StringGrid2: TStringGrid
+    Left = 592
+    Height = 296
+    Top = 80
+    Width = 384
+    ColCount = 16
+    DefaultColWidth = 32
+    DefaultRowHeight = 12
+    FixedCols = 0
+    FixedRows = 0
+    RowCount = 22
+    TabOrder = 3
+  end
+  object StringGrid3: TStringGrid
+    Left = 8
+    Height = 296
+    Top = 424
+    Width = 968
+    ColCount = 16
+    DefaultColWidth = 59
+    DefaultRowHeight = 13
+    FixedCols = 0
+    FixedRows = 0
+    RowCount = 22
+    TabOrder = 4
+  end
+  object Button1: TButton
+    Left = 8
+    Height = 25
+    Top = 48
+    Width = 120
+    Caption = 'Очистити A'
+    OnClick = Button1Click
+    TabOrder = 5
+  end
+  object Button2: TButton
+    Left = 856
+    Height = 25
+    Top = 48
+    Width = 120
+    Caption = 'Очистити B'
+    OnClick = Button2Click
+    TabOrder = 6
+  end
+  object Button3: TButton
+    Left = 424
+    Height = 25
+    Top = 392
+    Width = 120
+    Caption = 'Очистити C'
+    OnClick = Button3Click
+    TabOrder = 7
+  end
+  object Button4: TButton
+    Left = 424
+    Height = 25
+    Top = 46
+    Width = 120
+    Caption = 'Завантажити A та B'
+    OnClick = Button4Click
+    TabOrder = 8
+  end
+  object Button5: TButton
+    Left = 424
+    Height = 25
+    Top = 104
+    Width = 120
+    Caption = 'Об''єднання'
+    OnClick = Button5Click
+    TabOrder = 9
+  end
+  object Label1: TLabel
+    Left = 408
+    Height = 15
+    Top = 80
+    Width = 157
+    Caption = 'Перелік можливих операцій'
+    ParentColor = False
+  end
+  object Button6: TButton
+    Left = 424
+    Height = 25
+    Top = 136
+    Width = 120
+    Caption = 'Перетин'
+    OnClick = Button6Click
+    TabOrder = 10
+  end
+  object Button7: TButton
+    Left = 424
+    Height = 25
+    Top = 168
+    Width = 120
+    Caption = 'Різниця'
+    OnClick = Button7Click
+    TabOrder = 11
+  end
+  object Button8: TButton
+    Left = 424
+    Height = 25
+    Top = 200
+    Width = 120
+    Caption = 'Симетрична різниця'
+    OnClick = Button8Click
+    TabOrder = 12
+  end
+  object Button9: TButton
+    Left = 424
+    Height = 25
+    Top = 232
+    Width = 120
+    Caption = 'Доповнення'
+    OnClick = Button9Click
+    TabOrder = 13
+  end
+  object Label2: TLabel
+    Left = 696
+    Height = 15
+    Top = 56
+    Width = 129
+    Caption = 'Універсальна множина'
+    ParentColor = False
+    Visible = False
+  end
+end

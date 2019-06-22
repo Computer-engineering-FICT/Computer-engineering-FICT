@@ -1,0 +1,399 @@
+object Inp9Form: TInp9Form
+  Left = 339
+  Height = 661
+  Top = 29
+  Width = 768
+  BorderStyle = bsToolWindow
+  Caption = 'Ввід даних по варіанту 9'
+  ClientHeight = 661
+  ClientWidth = 768
+  OnActivate = FormActivate
+  OnCreate = FormCreate
+  LCLVersion = '1.0.12.0'
+  object ExitButton: TButton
+    Left = 677
+    Height = 34
+    Top = 592
+    Width = 75
+    Caption = 'Вихід'
+    OnClick = ExitButtonClick
+    TabOrder = 0
+  end
+  object InfoPanel: TPanel
+    Left = 16
+    Height = 31
+    Top = 595
+    Width = 648
+    BevelOuter = bvLowered
+    TabOrder = 1
+  end
+  object NZK_Label: TLabel
+    Left = 664
+    Height = 16
+    Top = 96
+    Width = 24
+    Caption = 'NZK'
+    ParentColor = False
+  end
+  object Label1: TLabel
+    Left = 496
+    Height = 16
+    Top = 96
+    Width = 140
+    Caption = 'Номер залікової книжки:'
+    ParentColor = False
+  end
+  object ComLenLabel: TLabel
+    Left = 496
+    Height = 16
+    Top = 120
+    Width = 139
+    Caption = 'Кількість імен  у векторі :'
+    ParentColor = False
+    OnClick = ComLenLabelClick
+  end
+  object Label4: TLabel
+    Left = 528
+    Height = 31
+    Top = 382
+    Width = 162
+    Caption = 'Введіть m-кількість векторів, '#13#10'які необхідно згенерувати:'
+    ParentColor = False
+  end
+  object m_Edit: TEdit
+    Left = 624
+    Height = 23
+    Top = 422
+    Width = 62
+    TabOrder = 2
+  end
+  object s_Button: TButton
+    Left = 512
+    Height = 25
+    Top = 422
+    Width = 104
+    Caption = 'Ввід'
+    OnClick = s_ButtonClick
+    TabOrder = 3
+  end
+  object SaveParamButton: TButton
+    Left = 512
+    Height = 25
+    Top = 478
+    Width = 181
+    Caption = 'Зберегти параметри'
+    OnClick = SaveParamButtonClick
+    TabOrder = 4
+  end
+  object LoadParamButton: TButton
+    Left = 512
+    Height = 25
+    Top = 502
+    Width = 181
+    Caption = 'Завантажити параметри'
+    OnClick = LoadParamButtonClick
+    TabOrder = 5
+  end
+  object NVarLabel: TLabel
+    Left = 10
+    Height = 21
+    Top = 22
+    Width = 50
+    Alignment = taCenter
+    Caption = 'Варіант'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Arial Narrow'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object LenLabel: TLabel
+    Left = 664
+    Height = 16
+    Top = 120
+    Width = 7
+    Caption = '1'
+    ParentColor = False
+  end
+  object a_Button: TButton
+    Left = 512
+    Height = 25
+    Top = 454
+    Width = 181
+    Caption = 'Створити поч. послідовність'
+    OnClick = a_ButtonClick
+    TabOrder = 6
+  end
+  object NamesListBox: TListBox
+    Left = 10
+    Height = 454
+    Top = 104
+    Width = 126
+    Items.Strings = (
+      'Агнеса'
+      'Агнія'
+      'Ада'
+      'Адам'
+      'Аза'
+      'Алевтина'
+      'Аліна'
+      'Аліса'
+      'Алла'
+      'Альберт'
+      'Альбіна'
+      'Альфред'
+      'Анастасія'
+      'Анатолій'
+      'Ангеліна'
+      'Андрій'
+      'Анжела'
+      'Антоніна'
+      'Антот'
+      'Анфіса'
+      'Аристарх'
+      'Аркадій '
+      'Арнольд'
+      'Арсеній'
+      'Артем'
+      'Артур'
+      'Архип'
+      'Белла'
+      'Бенедикт'
+      'Берта'
+      'Богдан'
+      'Богдана'
+      'Борис'
+      'Боян'
+      'Броніслав'
+      'Вадим'
+      'Валентин'
+      'Валентина'
+      'Валерій'
+      'Ванда'
+      'Варвара'
+      'Варфоломій'
+      'Василіса'
+      'Василь'
+      'Венера'
+      'Веніамін'
+      'Вера'
+      'Вероніка'
+      'Вікентій'
+      'Віктор'
+      'Вікторія'
+      'Віолета'
+      'Віталій'
+      'Віталіна'
+      'Владислав'
+      'Володимир'
+      'врора'
+      'В''ячеслав'
+      'Галина'
+      'Ганна'
+      'Геннадій'
+      'Генрієта'
+      'Георгій'
+      'Глорія'
+      'Григорій'
+      'Давид'
+      'Данило'
+      'Дарина'
+      'Денис'
+      'Джульєтта'
+      'Діана'
+      'Дмитро'
+      'Едуард'
+      'Елеонора'
+      'Ельвіра'
+      'Ельдар'
+      'Ельза'
+      'Емма'
+      'Єва'
+      'Євгеній'
+      'Євгенія'
+      'Євдоким'
+      'Євдокія'
+      'Єлизавета'
+      'Жанна'
+      'Захар'
+      'Зіновій'
+      'Зоя'
+      'Йосип'
+      'Іван'
+      'Ігнатій'
+      'Ігор'
+      'Ілля'
+      'Інга'
+      'Кий'
+      'Кирило'
+      'Клим'
+      'Кондрат'
+      'Костянтин'
+      'Кузьма'
+      'Лев'
+      'Леонард'
+      'Леонід'
+      'Леонтій'
+      'Любомир'
+      'Макар'
+      'Максим'
+      'Матвей'
+      'Мафусаїл'
+      'Микита'
+      'Микола'
+      'Мирон'
+      'Мирослав'
+      'Митрофан'
+      'Михайло'
+      'Модест'
+      'Мойсей'
+      'Мстислав'
+      'Назар'
+      'Натан'
+      'Наум'
+      'Олег'
+      'Олександр'
+      'Олексій'
+      'Олесь'
+      'Омелян'
+      'Опанас'
+      'Орест'
+      'Павло'
+      'Петро'
+      'Пилип'
+      'Порфирій'
+      'Прокофій'
+      'Прохор'
+      'Роберт'
+      'Родіон'
+      'Роман'
+      'Ростислав'
+      'Руслан'
+      'Савелій'
+      'Самсон'
+      'Святослав'
+      'Семен'
+      'Сергій'
+      'Станіслав'
+      'Степан'
+      'Тарас'
+      'Тимофій'
+      'Тихон'
+      'Трохим'
+      'Федір'
+      'Федот'
+      'Фелікс'
+      'Фома'
+      'Юрій'
+      'Юхим'
+      'Явір'
+      'Яків'
+      'Ян'
+      'Ярема'
+      'Яромир'
+      'Ярополк'
+      'Ярослав'
+      'Ясногор '
+    )
+    ItemHeight = 15
+    OnClick = NamesListBoxClick
+    Sorted = True
+    TabOrder = 7
+  end
+  object StartListBox: TListBox
+    Left = 162
+    Height = 454
+    Top = 104
+    Width = 108
+    ItemHeight = 0
+    Sorted = True
+    TabOrder = 8
+  end
+  object Label2: TLabel
+    Left = 10
+    Height = 16
+    Top = 72
+    Width = 70
+    Alignment = taCenter
+    Caption = 'Список імен'
+    ParentColor = False
+  end
+  object Label5: TLabel
+    Left = 162
+    Height = 31
+    Top = 64
+    Width = 77
+    Caption = 'Стартова'#13#10'послідовність'
+    ParentColor = False
+    OnClick = Label5Click
+  end
+  object aListBox: TListBox
+    Left = 298
+    Height = 454
+    Top = 104
+    Width = 100
+    ItemHeight = 0
+    TabOrder = 9
+  end
+  object Label3: TLabel
+    Left = 298
+    Height = 31
+    Top = 64
+    Width = 77
+    Caption = 'Початкова'#13#10'послідоаність'
+    ParentColor = False
+  end
+  object Memo1: TMemo
+    Left = 496
+    Height = 222
+    Top = 144
+    Width = 256
+    Lines.Strings = (
+      '                         Інструкція'
+      ''
+      '1. Клікаючи мишкою по списку імен, '
+      'набрати стартову послідовність імен.'
+      '2. Натиснувши на кнопку "Створити поч. '
+      'послідовність", сформувати початкову '
+      'послідовність.'
+      '3. Клікаючи по елементах початкового '
+      'вектора задати початковий вектор.'
+      '4. Ввести кількість векторів, заданих для '
+      'генерації.'
+      '5. Натиснути кнопку "Ввід".'
+      '6. Для збереження даних натиснути кнопку '
+      '"Зберегти параметри".'
+    )
+    OnChange = Memo1Change
+    TabOrder = 10
+  end
+  object ClearButton: TButton
+    Left = 512
+    Height = 25
+    Top = 533
+    Width = 181
+    Caption = 'Очистити'
+    OnClick = ClearButtonClick
+    TabOrder = 11
+  end
+  object BinListBox: TListBox
+    Left = 424
+    Height = 454
+    Top = 104
+    Width = 56
+    ItemHeight = 0
+    OnClick = BinListBoxClick
+    TabOrder = 12
+  end
+  object Label6: TLabel
+    Left = 424
+    Height = 31
+    Top = 64
+    Width = 38
+    Caption = 'Поч.'#13#10'вектор'
+    ParentColor = False
+  end
+end

@@ -1,0 +1,67 @@
+object OperForm: TOperForm
+  Left = -62
+  Height = 653
+  Top = 46
+  Width = 1129
+  Caption = 'OperForm'
+  ClientHeight = 653
+  ClientWidth = 1129
+  LCLVersion = '1.0.14.0'
+  object InfoPanel: TPanel
+    Left = 80
+    Height = 23
+    Top = 648
+    Width = 539
+    BevelOuter = bvLowered
+    Caption = 'модифікований евристичний алгоритм розфарбування'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Color = clBlue
+    Font.Height = -13
+    Font.Name = 'Arial Narrow'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 0
+  end
+  object ExitButton: TButton
+    Left = 632
+    Height = 25
+    Top = 648
+    Width = 75
+    Caption = 'Вихід'
+    OnClick = ExitButtonClick
+    TabOrder = 1
+  end
+  object Download: TButton
+    Left = 664
+    Height = 52
+    Top = 448
+    Width = 143
+    Caption = 'Завантажити дані'
+    OnClick = DownloadClick
+    TabOrder = 2
+  end
+  object ResultGrid: TStringGrid
+    Left = 632
+    Height = 359
+    Top = -48
+    Width = 634
+    DefaultColWidth = 30
+    TabOrder = 3
+  end
+  object Painting: TButton
+    Left = 664
+    Height = 52
+    Top = 512
+    Width = 143
+    Caption = 'Розфарбувати граф'
+    OnClick = PaintingClick
+    TabOrder = 4
+  end
+  object GrImage: TImage
+    Left = 32
+    Height = 600
+    Top = 16
+    Width = 600
+  end
+end

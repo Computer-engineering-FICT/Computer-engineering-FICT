@@ -1,0 +1,162 @@
+object MainForm: TMainForm
+  Left = 586
+  Height = 350
+  Top = 268
+  Width = 553
+  Caption = 'Лабораторна робота №1'
+  ClientHeight = 330
+  ClientWidth = 553
+  Menu = MainMenu
+  OnActivate = FormActivate
+  OnCreate = FormCreate
+  LCLVersion = '1.0.12.0'
+  object Label1: TLabel
+    Left = 125
+    Height = 16
+    Top = 231
+    Width = 210
+    Caption = 'ВВЕДІТЬ НОМЕР ЗАЛІКОВОЇ КНИЖКИ'
+    ParentColor = False
+  end
+  object ZalikEdit: TEdit
+    Left = 172
+    Height = 23
+    Top = 254
+    Width = 94
+    OnKeyDown = ZalikEditKeyDown
+    TabOrder = 0
+  end
+  object ZalikButton: TButton
+    Left = 273
+    Height = 25
+    Top = 254
+    Width = 39
+    Caption = 'ВВІД'
+    OnClick = ZalikButtonClick
+    TabOrder = 1
+  end
+  object InfoPanel: TPanel
+    Left = 4
+    Height = 23
+    Top = 295
+    Width = 539
+    BevelOuter = bvLowered
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Color = clBlue
+    Font.Height = -13
+    Font.Name = 'Arial Narrow'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 2
+  end
+  object Label2: TLabel
+    Left = 194
+    Height = 16
+    Top = 90
+    Width = 141
+    Caption = 'Лабораторна робота  №1'
+    ParentColor = False
+  end
+  object Label3: TLabel
+    Left = 25
+    Height = 16
+    Top = 114
+    Width = 433
+    Caption = 'Тема: «Множини:  основні властивості та операції над ними, діаграми Венна».'
+    ParentColor = False
+  end
+  object Label4: TLabel
+    Left = 22
+    Height = 16
+    Top = 135
+    Width = 518
+    Caption = 'Мета: Вивчити основні аксіоми, закони і теореми теорії множин, навчитися  застосовувати їх '
+    ParentColor = False
+  end
+  object Label5: TLabel
+    Left = 22
+    Height = 16
+    Top = 153
+    Width = 513
+    Caption = 'на практиці.  Виконати наступні операції над множинами: доповнення множин; об’єднання, '
+    ParentColor = False
+  end
+  object Label6: TLabel
+    Left = 23
+    Height = 16
+    Top = 169
+    Width = 215
+    Caption = 'перетин, різниця, симетрична різниця '
+    ParentColor = False
+  end
+  object Label7: TLabel
+    Left = 23
+    Height = 16
+    Top = 190
+    Width = 435
+    Caption = 'Завдання: Написати програму для виконання даних операцій над множинами.'
+    ParentColor = False
+  end
+  object Label8: TLabel
+    Left = 22
+    Height = 21
+    Top = 10
+    Width = 506
+    Caption = 'Національний технічний університет України "Київський політехнічний інститут"'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -15
+    Font.Name = 'Arial Narrow'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label9: TLabel
+    Left = 157
+    Height = 21
+    Top = 39
+    Width = 220
+    Caption = 'Кафедра обчислювальної техніки'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Arial Narrow'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label10: TLabel
+    Left = 203
+    Height = 17
+    Top = 64
+    Width = 132
+    Caption = '"Дискретна математика"'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -13
+    Font.Name = 'Arial Narrow'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object MainMenu: TMainMenu
+    left = 24
+    top = 238
+    object MenuItem2: TMenuItem
+      Caption = 'Ввід даних'
+      OnClick = MenuItem2Click
+    end
+    object MenuItem1: TMenuItem
+      Caption = 'Операції'
+      OnClick = MenuItem1Click
+    end
+    object MenuItem3: TMenuItem
+      Caption = 'Вихід'
+      OnClick = MenuItem3Click
+    end
+  end
+end

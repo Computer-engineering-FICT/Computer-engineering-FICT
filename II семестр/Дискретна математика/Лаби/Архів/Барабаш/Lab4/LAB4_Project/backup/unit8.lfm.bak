@@ -1,0 +1,108 @@
+object Inp5Form: TInp5Form
+  Left = 414
+  Height = 693
+  Top = 71
+  Width = 1025
+  Caption = 'Ввід даних по варіанту 5-8'
+  ClientHeight = 693
+  ClientWidth = 1025
+  OnActivate = FormActivate
+  OnCreate = FormCreate
+  OnShow = FormShow
+  LCLVersion = '1.0.14.0'
+  object InfoPanel: TPanel
+    Left = 19
+    Height = 23
+    Top = 657
+    Width = 886
+    BevelOuter = bvLowered
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Color = clBlue
+    Font.Height = -13
+    Font.Name = 'Arial Narrow'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 0
+  end
+  object ExitButton: TButton
+    Left = 903
+    Height = 25
+    Top = 657
+    Width = 75
+    Caption = 'Вихід'
+    OnClick = ExitButtonClick
+    TabOrder = 1
+  end
+  object IMatrixGrid: TStringGrid
+    Left = 623
+    Height = 403
+    Top = 27
+    Width = 385
+    ColCount = 21
+    DefaultColWidth = 40
+    DefaultRowHeight = 18
+    RowCount = 21
+    ScrollBars = ssHorizontal
+    TabOrder = 2
+    OnSelection = IMatrixGridSelection
+  end
+  object GraphImage: TImage
+    Left = 19
+    Height = 600
+    Top = 32
+    Width = 600
+  end
+  object SaveButton: TButton
+    Left = 628
+    Height = 25
+    Top = 541
+    Width = 123
+    Caption = 'Зберегти граф'
+    OnClick = SaveButtonClick
+    TabOrder = 3
+  end
+  object LoadButton: TButton
+    Left = 628
+    Height = 25
+    Top = 571
+    Width = 125
+    Caption = 'Завантажити граф'
+    OnClick = LoadButtonClick
+    TabOrder = 4
+  end
+  object ClearButton: TButton
+    Left = 628
+    Height = 25
+    Top = 597
+    Width = 123
+    Caption = 'Очистити'
+    OnClick = ClearButtonClick
+    TabOrder = 5
+  end
+  object EdgeEdit: TEdit
+    Left = 740
+    Height = 23
+    Top = 443
+    Width = 80
+    TabOrder = 6
+    Text = '1'
+  end
+  object Label1: TLabel
+    Left = 635
+    Height = 16
+    Top = 450
+    Width = 89
+    Caption = 'Ввід ваги ребра:'
+    ParentColor = False
+  end
+  object EdgeButton: TButton
+    Left = 830
+    Height = 25
+    Top = 443
+    Width = 75
+    Caption = 'Ввід'
+    OnClick = EdgeButtonClick
+    TabOrder = 7
+  end
+end

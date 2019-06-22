@@ -1,0 +1,46 @@
+object OperForm: TOperForm
+  Left = 458
+  Height = 821
+  Top = 123
+  Width = 1083
+  Caption = 'Матриці відношень R і S'
+  ClientHeight = 821
+  ClientWidth = 1083
+  LCLVersion = '1.0.12.0'
+  object ExitButton: TButton
+    Left = 968
+    Height = 34
+    Top = 764
+    Width = 75
+    Caption = 'Вихід'
+    OnClick = ExitButtonClick
+    TabOrder = 0
+  end
+  object InfoPanel: TPanel
+    Left = 26
+    Height = 31
+    Top = 764
+    Width = 935
+    BevelOuter = bvLowered
+    TabOrder = 1
+  end
+  object Memo1: TMemo
+    Left = 211
+    Height = 204
+    Top = 70
+    Width = 662
+    Lines.Strings = (
+      'Інструкція до лаборатоної роботи №2'
+      '1. Видалити з вікна цей візуальний компонент типу TMemo, який містить інструкцію.'
+      '2. Розмістити в полі форми OperForm два візуальні компоненти типу TStringGrid для відображення сформованих '
+      'відношень R та S.'
+      '3. Написати процедури формування несуперечливих, для вашого варіанту лабораторної роботи, відношень R та S.'
+      '4. Вважати, що одне ім''я, в рамках даної роботи, може мати тільки одна людина.'
+      '5. При кліканні мишкою на довільному елементі матриці відношення R, в полі візуального компонента InfoPamel '
+      'відображати характер відношення між відповідними елементами множин A та B в матриці S.'
+      '6. Забезпечити можливість автоматиної перевірки суперечливості сформованих відношень R та S.'
+      '7. Дані про множини А і В знаходяться у файлах A.TXT та B.TXT, що розміщуються в папці YourApplication\DATA\'
+    )
+    TabOrder = 2
+  end
+end

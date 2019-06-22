@@ -1,0 +1,204 @@
+object Inp3Form: TInp3Form
+  Left = 18
+  Height = 630
+  Top = 61
+  Width = 1208
+  Caption = 'Ввід даних по варіанту 5'
+  ClientHeight = 630
+  ClientWidth = 1208
+  OnActivate = FormActivate
+  OnCreate = FormCreate
+  OnShow = FormShow
+  LCLVersion = '1.2.0.3'
+  Visible = True
+  object GraphImage: TImage
+    Left = 14
+    Height = 600
+    Top = 8
+    Width = 600
+  end
+  object ExitButton: TButton
+    Left = 935
+    Height = 25
+    Top = 574
+    Width = 75
+    Caption = 'Вихід'
+    OnClick = ExitButtonClick
+    TabOrder = 0
+  end
+  object IMatrixGrid: TStringGrid
+    Left = 624
+    Height = 229
+    Top = 84
+    Width = 389
+    ColCount = 11
+    DefaultColWidth = 35
+    DefaultRowHeight = 18
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goSmoothScroll]
+    RowCount = 11
+    ScrollBars = ssHorizontal
+    TabOrder = 1
+    OnSelection = IMatrixGridSelection
+  end
+  object SaveButton: TButton
+    Left = 624
+    Height = 25
+    Top = 542
+    Width = 123
+    Caption = 'Зберегти граф'
+    OnClick = SaveButtonClick
+    TabOrder = 2
+  end
+  object LoadButton: TButton
+    Left = 752
+    Height = 25
+    Top = 542
+    Width = 125
+    Caption = 'Завантажити граф'
+    OnClick = LoadButtonClick
+    TabOrder = 3
+  end
+  object ClearButton: TButton
+    Left = 887
+    Height = 25
+    Top = 542
+    Width = 123
+    Caption = 'Очистити'
+    OnClick = ClearButtonClick
+    TabOrder = 4
+  end
+  object Label2: TLabel
+    Left = 624
+    Height = 15
+    Top = 52
+    Width = 115
+    Caption = 'Матриця ваги ребер '
+    ParentColor = False
+  end
+  object EdgeEdit1: TEdit
+    Left = 752
+    Height = 23
+    Top = 8
+    Width = 40
+    OnChange = EdgeEdit1Change
+    TabOrder = 5
+    Text = '10'
+  end
+  object Label4: TLabel
+    Left = 624
+    Height = 15
+    Top = 8
+    Width = 124
+    Caption = 'Ввести кількість вузлів'
+    ParentColor = False
+    OnClick = Label4Click
+  end
+  object HandEnter: TRadioButton
+    Left = 759
+    Height = 19
+    Top = 49
+    Width = 106
+    Caption = 'Ручне введення'
+    Checked = True
+    OnChange = HandEnterChange
+    TabOrder = 6
+    TabStop = True
+  end
+  object RandomEnter: TRadioButton
+    Left = 872
+    Height = 19
+    Top = 49
+    Width = 100
+    Caption = 'Випадкові дані'
+    OnChange = RandomEnterChange
+    OnClick = RandomEnterClick
+    TabOrder = 7
+  end
+  object EdgeEnter: TButton
+    Left = 807
+    Height = 25
+    Top = 8
+    Width = 75
+    Caption = 'Ввід'
+    OnClick = EdgeEnterClick
+    TabOrder = 8
+  end
+  object PaintGraph: TButton
+    Left = 887
+    Height = 25
+    Top = 8
+    Width = 126
+    Caption = 'Вивести граф'
+    OnClick = PaintGraphClick
+    TabOrder = 9
+  end
+  object Algoritm: TButton
+    Left = 624
+    Height = 25
+    Top = 414
+    Width = 389
+    Caption = 'Накоротший шлях із вершини А у вершину В '
+    Color = 8421440
+    OnClick = AlgoritmClick
+    TabOrder = 10
+  end
+  object AEdge: TEdit
+    Left = 667
+    Height = 23
+    Top = 349
+    Width = 31
+    OnChange = EdgeEdit1Change
+    TabOrder = 11
+    Text = '10'
+  end
+  object BEdge: TEdit
+    Left = 667
+    Height = 23
+    Top = 379
+    Width = 31
+    OnChange = EdgeEdit1Change
+    TabOrder = 12
+    Text = '10'
+  end
+  object InfoPanel: TPanel
+    Left = 627
+    Height = 61
+    Top = 574
+    Width = 306
+    TabOrder = 13
+  end
+  object Label1: TLabel
+    Left = 630
+    Height = 15
+    Top = 324
+    Width = 295
+    Caption = 'Ввести початкову веришину А та кінцеву вершину В :'
+    ParentColor = False
+  end
+  object Label3: TLabel
+    Left = 644
+    Height = 15
+    Top = 349
+    Width = 14
+    Caption = 'А :'
+    ParentColor = False
+  end
+  object Label5: TLabel
+    Left = 644
+    Height = 15
+    Top = 379
+    Width = 13
+    Caption = 'В :'
+    ParentColor = False
+  end
+  object Result: TMemo
+    Left = 628
+    Height = 68
+    Top = 454
+    Width = 387
+    Lines.Strings = (
+      'Memo1'
+    )
+    TabOrder = 14
+  end
+end

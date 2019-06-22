@@ -1,0 +1,651 @@
+object OperForm: TOperForm
+  Left = 62
+  Height = 504
+  Top = 122
+  Width = 750
+  Caption = 'Виконання операцій над множинами А і В'
+  ClientHeight = 504
+  ClientWidth = 750
+  Color = clWhite
+  LCLVersion = '1.2.6.0'
+  object Infopanel: TStaticText
+    Left = 272
+    Height = 20
+    Top = 472
+    Width = 400
+    Alignment = taCenter
+    Color = clBlack
+    Font.Color = clNavy
+    Font.Quality = fqCleartype
+    Font.Style = [fsBold]
+    ParentFont = False
+    ParentColor = False
+    TabOrder = 16
+  end
+  object Agrid: TStringGrid
+    Left = 16
+    Height = 180
+    Top = 40
+    Width = 246
+    BorderStyle = bsNone
+    ColCount = 11
+    DefaultColWidth = 22
+    DefaultRowHeight = 22
+    FixedColor = 14731719
+    Flat = True
+    RowCount = 8
+    TabOrder = 0
+    Cells = (
+      18
+      0
+      0
+      'A'
+      0
+      1
+      '00'
+      0
+      2
+      '10'
+      0
+      3
+      '20'
+      0
+      4
+      '30'
+      0
+      5
+      '40'
+      0
+      6
+      '50'
+      0
+      7
+      '60'
+      1
+      0
+      '0'
+      2
+      0
+      '1'
+      3
+      0
+      '2'
+      4
+      0
+      '3'
+      5
+      0
+      '4'
+      6
+      0
+      '5'
+      7
+      0
+      '6'
+      8
+      0
+      '7'
+      9
+      0
+      '8'
+      10
+      0
+      '9'
+    )
+  end
+  object Label1: TLabel
+    Left = 16
+    Height = 17
+    Top = 14
+    Width = 75
+    Caption = 'Множина A'
+    Color = clWhite
+    Font.Height = 18
+    Font.Pitch = fpFixed
+    Font.Quality = fqCleartype
+    Font.Style = [fsBold]
+    Layout = tlCenter
+    ParentColor = False
+    ParentFont = False
+    Transparent = False
+  end
+  object BGrid: TStringGrid
+    Left = 272
+    Height = 184
+    Top = 40
+    Width = 248
+    BorderStyle = bsNone
+    ColCount = 11
+    DefaultColWidth = 22
+    FixedColor = 14731719
+    Flat = True
+    RowCount = 8
+    TabOrder = 1
+    Cells = (
+      18
+      0
+      0
+      'B'
+      0
+      1
+      '00'
+      0
+      2
+      '10'
+      0
+      3
+      '20'
+      0
+      4
+      '30'
+      0
+      5
+      '40'
+      0
+      6
+      '50'
+      0
+      7
+      '60'
+      1
+      0
+      '0'
+      2
+      0
+      '1'
+      3
+      0
+      '2'
+      4
+      0
+      '3'
+      5
+      0
+      '4'
+      6
+      0
+      '5'
+      7
+      0
+      '6'
+      8
+      0
+      '7'
+      9
+      0
+      '8'
+      10
+      0
+      '9'
+    )
+  end
+  object Label2: TLabel
+    Left = 272
+    Height = 17
+    Top = 14
+    Width = 74
+    Caption = 'Множина В'
+    Color = clWhite
+    Font.Height = 18
+    Font.Pitch = fpFixed
+    Font.Quality = fqCleartype
+    Font.Style = [fsBold]
+    Layout = tlCenter
+    ParentColor = False
+    ParentFont = False
+    Transparent = False
+  end
+  object CGrid: TStringGrid
+    Left = 16
+    Height = 184
+    Top = 288
+    Width = 248
+    BorderStyle = bsNone
+    ColCount = 11
+    DefaultColWidth = 22
+    FixedColor = 14731719
+    Flat = True
+    RowCount = 8
+    TabOrder = 2
+    Cells = (
+      18
+      0
+      0
+      'C'
+      0
+      1
+      '00'
+      0
+      2
+      '10'
+      0
+      3
+      '20'
+      0
+      4
+      '30'
+      0
+      5
+      '40'
+      0
+      6
+      '50'
+      0
+      7
+      '60'
+      1
+      0
+      '0'
+      2
+      0
+      '1'
+      3
+      0
+      '2'
+      4
+      0
+      '3'
+      5
+      0
+      '4'
+      6
+      0
+      '5'
+      7
+      0
+      '6'
+      8
+      0
+      '7'
+      9
+      0
+      '8'
+      10
+      0
+      '9'
+    )
+  end
+  object Label3: TLabel
+    Left = 14
+    Height = 17
+    Top = 264
+    Width = 61
+    Caption = 'Результат'
+    Color = clWhite
+    Font.Height = 18
+    Font.Pitch = fpFixed
+    Font.Quality = fqCleartype
+    Font.Style = [fsBold]
+    Layout = tlCenter
+    ParentColor = False
+    ParentFont = False
+    Transparent = False
+  end
+  object ComplementA: TButton
+    Left = 528
+    Height = 25
+    Top = 32
+    Width = 208
+    Caption = 'Доповнити множину А'
+    OnClick = ComplementAClick
+    TabOrder = 3
+  end
+  object Union: TButton
+    Left = 528
+    Height = 25
+    Top = 96
+    Width = 208
+    Caption = 'Виконати об’єднання множин A і B'
+    OnClick = UnionClick
+    TabOrder = 4
+  end
+  object Intersection: TButton
+    Left = 528
+    Height = 25
+    Top = 128
+    Width = 208
+    Caption = 'Виконати перетин множин A і В'
+    OnClick = IntersectionClick
+    TabOrder = 5
+  end
+  object MinusAB: TButton
+    Left = 528
+    Height = 25
+    Top = 160
+    Width = 208
+    Caption = 'Знайти різницю множин А та В'
+    OnClick = MinusABClick
+    TabOrder = 6
+  end
+  object SymMinus: TButton
+    Left = 528
+    Height = 25
+    Top = 224
+    Width = 208
+    Caption = 'Cиметрична різниця множин А та В'
+    OnClick = SymMinusClick
+    TabOrder = 7
+  end
+  object aClear: TButton
+    Left = 16
+    Height = 25
+    Top = 224
+    Width = 240
+    Caption = 'Очистити'
+    OnClick = aClearClick
+    TabOrder = 8
+  end
+  object aLoadFile: TButton
+    Left = 120
+    Height = 25
+    Top = 8
+    Width = 136
+    Caption = 'Завантажити з файлу'
+    OnClick = aLoadFileClick
+    TabOrder = 9
+  end
+  object bClear: TButton
+    Left = 272
+    Height = 25
+    Top = 224
+    Width = 240
+    Caption = 'Очистити'
+    OnClick = bClearClick
+    TabOrder = 10
+  end
+  object bLoadFile: TButton
+    Left = 378
+    Height = 25
+    Top = 8
+    Width = 134
+    Caption = 'Завантажити з файлу'
+    OnClick = bLoadFileClick
+    TabOrder = 11
+  end
+  object cClear: TButton
+    Left = 14
+    Height = 25
+    Top = 472
+    Width = 242
+    Caption = 'Очистити'
+    OnClick = cClearClick
+    TabOrder = 12
+  end
+  object ExitBtn: TButton
+    Left = 669
+    Height = 25
+    Top = 472
+    Width = 75
+    Caption = 'Вихід'
+    OnClick = ExitBtnClick
+    TabOrder = 13
+  end
+  object ComplementB: TButton
+    Left = 528
+    Height = 25
+    Top = 64
+    Width = 208
+    Caption = 'Доповнити множину В'
+    OnClick = ComplementBClick
+    TabOrder = 14
+  end
+  object MinusBA: TButton
+    Left = 528
+    Height = 25
+    Top = 192
+    Width = 208
+    Caption = 'Знайти різницю множин B та A'
+    OnClick = MinusBAClick
+    TabOrder = 15
+  end
+  object Img: TImage
+    Left = 272
+    Height = 208
+    Top = 264
+    Width = 472
+  end
+  object UkrGrid: TStringGrid
+    Left = 776
+    Height = 158
+    Top = 40
+    Width = 304
+    AlternateColor = clWhite
+    ColCount = 11
+    DefaultColWidth = 30
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -13
+    Font.Name = '@Arial Unicode MS'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    RowCount = 8
+    ScrollBars = ssNone
+    TabOrder = 17
+    TitleFont.CharSet = RUSSIAN_CHARSET
+    TitleFont.Height = -13
+    TitleFont.Name = '@Arial Unicode MS'
+    TitleFont.Pitch = fpVariable
+    TitleFont.Quality = fqDraft
+    Visible = False
+    Cells = (
+      67
+      1
+      1
+      'А'
+      1
+      2
+      'И'
+      1
+      3
+      'Р'
+      1
+      4
+      'Ь'
+      1
+      5
+      'е'
+      1
+      6
+      'м'
+      1
+      7
+      'ц'
+      2
+      1
+      'Б'
+      2
+      2
+      'І'
+      2
+      3
+      'С'
+      2
+      4
+      'Ю'
+      2
+      5
+      'є'
+      2
+      6
+      'н'
+      2
+      7
+      'ч'
+      3
+      1
+      'В'
+      3
+      2
+      'Ї'
+      3
+      3
+      'Т'
+      3
+      4
+      'Я'
+      3
+      5
+      'ж'
+      3
+      6
+      'о'
+      3
+      7
+      'ш'
+      4
+      1
+      'Г'
+      4
+      2
+      'Й'
+      4
+      3
+      'У'
+      4
+      4
+      ''''
+      4
+      5
+      'з'
+      4
+      6
+      'п'
+      4
+      7
+      'щ'
+      5
+      1
+      'Ґ'
+      5
+      2
+      'К'
+      5
+      3
+      'Ф'
+      5
+      4
+      'а'
+      5
+      5
+      'и'
+      5
+      6
+      'р'
+      5
+      7
+      'ь'
+      6
+      1
+      'Д'
+      6
+      2
+      'Л'
+      6
+      3
+      'Х'
+      6
+      4
+      'б'
+      6
+      5
+      'і'
+      6
+      6
+      'с'
+      6
+      7
+      'ю'
+      7
+      1
+      'Е'
+      7
+      2
+      'М'
+      7
+      3
+      'Ц'
+      7
+      4
+      'в'
+      7
+      5
+      'ї'
+      7
+      6
+      'т'
+      7
+      7
+      'я'
+      8
+      1
+      'Є'
+      8
+      2
+      'Н'
+      8
+      3
+      'Ч'
+      8
+      4
+      'г'
+      8
+      5
+      'й'
+      8
+      6
+      'у'
+      9
+      1
+      'Ж'
+      9
+      2
+      'О'
+      9
+      3
+      'Ш'
+      9
+      4
+      'ґ'
+      9
+      5
+      'к'
+      9
+      6
+      'ф'
+      10
+      1
+      'З'
+      10
+      2
+      'П'
+      10
+      3
+      'Щ'
+      10
+      4
+      'д'
+      10
+      5
+      'л'
+      10
+      6
+      'х'
+    )
+  end
+  object Label4: TLabel
+    Left = 608
+    Height = 17
+    Top = 11
+    Width = 56
+    Caption = 'Операції'
+    Color = clWhite
+    Font.Height = 18
+    Font.Pitch = fpFixed
+    Font.Quality = fqCleartype
+    Font.Style = [fsBold]
+    Layout = tlCenter
+    ParentColor = False
+    ParentFont = False
+    Transparent = False
+  end
+end

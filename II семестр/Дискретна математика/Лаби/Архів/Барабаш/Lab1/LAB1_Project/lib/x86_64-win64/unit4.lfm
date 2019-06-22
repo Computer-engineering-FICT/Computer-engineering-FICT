@@ -1,0 +1,458 @@
+object Inp2Form: TInp2Form
+  Left = 872
+  Height = 600
+  Top = 212
+  Width = 800
+  Caption = 'Ввід даних Варіант 2. Літури англійського алфавіту'
+  ClientHeight = 600
+  ClientWidth = 800
+  OnCreate = FormCreate
+  LCLVersion = '1.0.12.0'
+  object EngGrid: TStringGrid
+    Left = 33
+    Height = 136
+    Top = 104
+    Width = 304
+    AlternateColor = clWhite
+    ColCount = 10
+    DefaultColWidth = 30
+    FixedCols = 0
+    FixedRows = 0
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -13
+    Font.Name = '@Arial Unicode MS'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    RowCount = 6
+    ScrollBars = ssNone
+    TabOrder = 0
+    TitleFont.CharSet = RUSSIAN_CHARSET
+    TitleFont.Height = -13
+    TitleFont.Name = '@Arial Unicode MS'
+    TitleFont.Pitch = fpVariable
+    TitleFont.Quality = fqDraft
+    OnSelectCell = EngGridSelectCell
+    Cells = (
+      52
+      0
+      0
+      'A'
+      0
+      1
+      'K'
+      0
+      2
+      'U'
+      0
+      3
+      'e'
+      0
+      4
+      'o'
+      0
+      5
+      'y'
+      1
+      0
+      'B'
+      1
+      1
+      'L'
+      1
+      2
+      'V'
+      1
+      3
+      'f'
+      1
+      4
+      'p'
+      1
+      5
+      'z'
+      2
+      0
+      'C'
+      2
+      1
+      'M'
+      2
+      2
+      'W'
+      2
+      3
+      'g'
+      2
+      4
+      'q'
+      3
+      0
+      'D'
+      3
+      1
+      'N'
+      3
+      2
+      'X'
+      3
+      3
+      'h'
+      3
+      4
+      'r'
+      4
+      0
+      'E'
+      4
+      1
+      'O'
+      4
+      2
+      'Y'
+      4
+      3
+      'i'
+      4
+      4
+      's'
+      5
+      0
+      'F'
+      5
+      1
+      'P'
+      5
+      2
+      'Z'
+      5
+      3
+      'j'
+      5
+      4
+      't'
+      6
+      0
+      'G'
+      6
+      1
+      'Q'
+      6
+      2
+      'a'
+      6
+      3
+      'k'
+      6
+      4
+      'u'
+      7
+      0
+      'H'
+      7
+      1
+      'R'
+      7
+      2
+      'b'
+      7
+      3
+      'l'
+      7
+      4
+      'v'
+      8
+      0
+      'I'
+      8
+      1
+      'S'
+      8
+      2
+      'c'
+      8
+      3
+      'm'
+      8
+      4
+      'w'
+      9
+      0
+      'J'
+      9
+      1
+      'T'
+      9
+      2
+      'd'
+      9
+      3
+      'n'
+      9
+      4
+      'x'
+    )
+  end
+  object AGrid: TStringGrid
+    Left = 21
+    Height = 158
+    Top = 367
+    Width = 334
+    ColCount = 11
+    DefaultColWidth = 30
+    DefaultRowHeight = 22
+    RowCount = 7
+    ScrollBars = ssNone
+    TabOrder = 1
+    Cells = (
+      17
+      0
+      0
+      'А'
+      0
+      1
+      '00'
+      0
+      2
+      '10'
+      0
+      3
+      '20'
+      0
+      4
+      '30'
+      0
+      5
+      '40'
+      0
+      6
+      '50'
+      1
+      0
+      '0'
+      2
+      0
+      '1'
+      3
+      0
+      '2'
+      4
+      0
+      '3'
+      5
+      0
+      '4'
+      6
+      0
+      '5'
+      7
+      0
+      '6'
+      8
+      0
+      '7'
+      9
+      0
+      '8'
+      10
+      0
+      '9'
+    )
+  end
+  object BGrid: TStringGrid
+    Left = 375
+    Height = 158
+    Top = 367
+    Width = 334
+    ColCount = 11
+    DefaultColWidth = 30
+    DefaultRowHeight = 22
+    RowCount = 7
+    ScrollBars = ssNone
+    TabOrder = 2
+    Cells = (
+      17
+      0
+      0
+      'В'
+      0
+      1
+      '00'
+      0
+      2
+      '10'
+      0
+      3
+      '20'
+      0
+      4
+      '30'
+      0
+      5
+      '40'
+      0
+      6
+      '50'
+      1
+      0
+      '0'
+      2
+      0
+      '1'
+      3
+      0
+      '2'
+      4
+      0
+      '3'
+      5
+      0
+      '4'
+      6
+      0
+      '5'
+      7
+      0
+      '6'
+      8
+      0
+      '7'
+      9
+      0
+      '8'
+      10
+      0
+      '9'
+    )
+  end
+  object InfoPanel: TPanel
+    Left = 21
+    Height = 30
+    Top = 552
+    Width = 651
+    BevelOuter = bvLowered
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlue
+    Font.Height = -16
+    Font.Name = 'Arial Narrow'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 3
+  end
+  object ExitBtn: TButton
+    Left = 696
+    Height = 25
+    Top = 557
+    Width = 75
+    Caption = 'Вихід'
+    OnClick = ExitBtnClick
+    TabOrder = 4
+  end
+  object Label1: TLabel
+    Left = 188
+    Height = 16
+    Top = 14
+    Width = 253
+    Caption = '1. Вибрати множину А або В для формування'
+    ParentColor = False
+  end
+  object Label2: TLabel
+    Left = 188
+    Height = 16
+    Top = 39
+    Width = 291
+    Caption = '2. Клікаючи по таблиці, вибрати елементи множини'
+    ParentColor = False
+  end
+  object Panel1: TPanel
+    Left = 371
+    Height = 116
+    Top = 104
+    Width = 160
+    Caption = 'Panel1'
+    ClientHeight = 116
+    ClientWidth = 160
+    TabOrder = 5
+    object ASaveButton: TButton
+      Left = 4
+      Height = 25
+      Top = 9
+      Width = 147
+      Caption = 'Зберегти множину А'
+      OnClick = ASaveButtonClick
+      TabOrder = 0
+    end
+    object ALoadButton: TButton
+      Left = 4
+      Height = 25
+      Top = 45
+      Width = 149
+      Caption = 'Завантажити множину А'
+      OnClick = ALoadButtonClick
+      TabOrder = 1
+    end
+    object AClearButton: TButton
+      Left = 4
+      Height = 25
+      Top = 81
+      Width = 147
+      Caption = 'Очистити множину A'
+      OnClick = AClearButtonClick
+      TabOrder = 2
+    end
+  end
+  object Panel2: TPanel
+    Left = 539
+    Height = 120
+    Top = 100
+    Width = 170
+    Caption = 'Panel2'
+    ClientHeight = 120
+    ClientWidth = 170
+    TabOrder = 6
+    object BSaveButton: TButton
+      Left = 6
+      Height = 25
+      Top = 13
+      Width = 153
+      Caption = 'Зберегти множину B'
+      OnClick = BSaveButtonClick
+      TabOrder = 0
+    end
+    object BLoadButton: TButton
+      Left = 6
+      Height = 25
+      Top = 49
+      Width = 153
+      Caption = 'Завантажити множину B'
+      OnClick = BLoadButtonClick
+      TabOrder = 1
+    end
+    object BClearButton: TButton
+      Left = 6
+      Height = 25
+      Top = 85
+      Width = 153
+      Caption = 'Очистити множину B'
+      OnClick = BClearButtonClick
+      TabOrder = 2
+    end
+  end
+  object ARadioButton: TRadioButton
+    Left = 21
+    Height = 19
+    Top = 298
+    Width = 157
+    Caption = 'Формування множини А'
+    TabOrder = 7
+  end
+  object BRadioButton: TRadioButton
+    Left = 375
+    Height = 19
+    Top = 308
+    Width = 156
+    Caption = 'Формування множини В'
+    TabOrder = 8
+  end
+end

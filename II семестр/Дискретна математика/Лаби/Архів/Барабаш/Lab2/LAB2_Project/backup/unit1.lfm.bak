@@ -1,0 +1,102 @@
+object MainForm: TMainForm
+  Left = 604
+  Height = 409
+  Top = 244
+  Width = 654
+  Caption = 'Лабораторна робота №2'
+  ClientHeight = 389
+  ClientWidth = 654
+  Menu = MainMenu
+  OnActivate = FormActivate
+  OnCreate = FormCreate
+  LCLVersion = '1.0.12.0'
+  object Label1: TLabel
+    Left = 191
+    Height = 16
+    Top = 175
+    Width = 210
+    Caption = 'ВВЕДІТЬ НОМЕР ЗАЛІКОВОЇ КНИЖКИ'
+    ParentColor = False
+  end
+  object InfoPanel: TPanel
+    Left = 14
+    Height = 23
+    Top = 351
+    Width = 620
+    BevelOuter = bvLowered
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Color = clBlue
+    Font.Height = -13
+    Font.Name = 'Arial Narrow'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 0
+  end
+  object ZalikEdit: TEdit
+    Left = 208
+    Height = 23
+    Top = 213
+    Width = 94
+    OnKeyDown = ZalikEditKeyDown
+    TabOrder = 1
+  end
+  object ZalikButton: TButton
+    Left = 305
+    Height = 25
+    Top = 213
+    Width = 39
+    Caption = 'ВВІД'
+    OnClick = ZalikButtonClick
+    TabOrder = 2
+  end
+  object Label2: TLabel
+    Left = 203
+    Height = 16
+    Top = 17
+    Width = 141
+    Caption = 'Лабораторна робота  №2'
+    ParentColor = False
+  end
+  object Label3: TLabel
+    Left = 11
+    Height = 16
+    Top = 44
+    Width = 456
+    Caption = 'Тема: «Бінарні відношення та їх основні властивості, операції над відношеннями».'
+    ParentColor = False
+    OnClick = Label3Click
+  end
+  object Label4: TLabel
+    Left = 11
+    Height = 16
+    Top = 75
+    Width = 623
+    Caption = 'Мета: вивчити основні властивості бінарних відношень та оволодіти операціями над бінарними відношеннями. '
+    ParentColor = False
+  end
+  object Label5: TLabel
+    Left = 11
+    Height = 16
+    Top = 107
+    Width = 476
+    Caption = 'Завдання: написати програму для виконання операцій над бінарними відношеннями.'
+    ParentColor = False
+  end
+  object MainMenu: TMainMenu
+    left = 29
+    top = 278
+    object MenuInputItem: TMenuItem
+      Caption = 'Ввід даних'
+      OnClick = MenuInputItemClick
+    end
+    object MenuOperItem: TMenuItem
+      Caption = 'Операції'
+      OnClick = MenuOperItemClick
+    end
+    object MenuExitItem: TMenuItem
+      Caption = 'Вихід'
+      OnClick = MenuExitItemClick
+    end
+  end
+end

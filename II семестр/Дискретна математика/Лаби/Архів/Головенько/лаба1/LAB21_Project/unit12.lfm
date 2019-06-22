@@ -1,0 +1,406 @@
+object OperForm: TOperForm
+  Left = 91
+  Height = 606
+  Top = 55
+  Width = 1064
+  AutoSize = True
+  Caption = 'Виконання операцій над множинами А і В'
+  ClientHeight = 606
+  ClientWidth = 1064
+  OnCreate = FormCreate
+  LCLVersion = '1.2.0.3'
+  object ExitBtn: TButton
+    Left = 915
+    Height = 25
+    Top = 552
+    Width = 75
+    Caption = 'Вихід'
+    OnClick = ExitBtnClick
+    TabOrder = 0
+  end
+  object InfoPanel: TPanel
+    Left = 8
+    Height = 30
+    Top = 552
+    Width = 898
+    BevelOuter = bvLowered
+    Caption = 'Ця панель призначена для відображення  поточних повідомлень'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlue
+    Font.Height = -16
+    Font.Name = 'Arial Narrow'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 1
+  end
+  object AGrid: TStringGrid
+    Left = 24
+    Height = 180
+    Top = 367
+    Width = 334
+    ColCount = 11
+    DefaultColWidth = 30
+    DefaultRowHeight = 22
+    RowCount = 8
+    ScrollBars = ssNone
+    TabOrder = 2
+    Cells = (
+      18
+      0
+      0
+      'А'
+      0
+      1
+      '00'
+      0
+      2
+      '10'
+      0
+      3
+      '20'
+      0
+      4
+      '30'
+      0
+      5
+      '40'
+      0
+      6
+      '50'
+      0
+      7
+      '60'
+      1
+      0
+      '0'
+      2
+      0
+      '1'
+      3
+      0
+      '2'
+      4
+      0
+      '3'
+      5
+      0
+      '4'
+      6
+      0
+      '5'
+      7
+      0
+      '6'
+      8
+      0
+      '7'
+      9
+      0
+      '8'
+      10
+      0
+      '9'
+    )
+  end
+  object BGrid: TStringGrid
+    Left = 400
+    Height = 181
+    Top = 368
+    Width = 334
+    ColCount = 11
+    DefaultColWidth = 30
+    DefaultRowHeight = 22
+    RowCount = 8
+    ScrollBars = ssNone
+    TabOrder = 3
+    Cells = (
+      18
+      0
+      0
+      'В'
+      0
+      1
+      '00'
+      0
+      2
+      '10'
+      0
+      3
+      '20'
+      0
+      4
+      '30'
+      0
+      5
+      '40'
+      0
+      6
+      '50'
+      0
+      7
+      '60'
+      1
+      0
+      '0'
+      2
+      0
+      '1'
+      3
+      0
+      '2'
+      4
+      0
+      '3'
+      5
+      0
+      '4'
+      6
+      0
+      '5'
+      7
+      0
+      '6'
+      8
+      0
+      '7'
+      9
+      0
+      '8'
+      10
+      0
+      '9'
+    )
+  end
+  object Button1: TButton
+    Left = 207
+    Height = 7
+    Top = 70
+    Width = 2
+    Caption = 'Button1'
+    TabOrder = 4
+  end
+  object LoadA: TButton
+    Left = 32
+    Height = 27
+    Top = 40
+    Width = 124
+    Caption = 'Завантажити А'
+    OnClick = LoadAClick
+    TabOrder = 5
+  end
+  object LoadB: TButton
+    Left = 200
+    Height = 27
+    Top = 40
+    Width = 124
+    Caption = 'Завантажити В'
+    OnClick = LoadBClick
+    TabOrder = 6
+  end
+  object ClearA: TButton
+    Left = 32
+    Height = 27
+    Top = 88
+    Width = 124
+    Caption = 'Очистити А'
+    OnClick = ClearAClick
+    TabOrder = 7
+  end
+  object ClearB: TButton
+    Left = 200
+    Height = 27
+    Top = 88
+    Width = 124
+    Caption = 'Очистити В'
+    OnClick = ClearBClick
+    TabOrder = 8
+  end
+  object CGrid: TStringGrid
+    Left = 360
+    Height = 181
+    Top = 96
+    Width = 334
+    ColCount = 11
+    DefaultColWidth = 30
+    DefaultRowHeight = 22
+    RowCount = 8
+    ScrollBars = ssNone
+    TabOrder = 9
+    ColWidths = (
+      35
+      30
+      30
+      30
+      30
+      30
+      30
+      30
+      30
+      30
+      30
+    )
+    Cells = (
+      18
+      0
+      0
+      'С'
+      0
+      1
+      '00'
+      0
+      2
+      '10'
+      0
+      3
+      '20'
+      0
+      4
+      '30'
+      0
+      5
+      '40'
+      0
+      6
+      '50'
+      0
+      7
+      '60'
+      1
+      0
+      '0'
+      2
+      0
+      '1'
+      3
+      0
+      '2'
+      4
+      0
+      '3'
+      5
+      0
+      '4'
+      6
+      0
+      '5'
+      7
+      0
+      '6'
+      8
+      0
+      '7'
+      9
+      0
+      '8'
+      10
+      0
+      '9'
+    )
+  end
+  object ClearC: TButton
+    Left = 104
+    Height = 28
+    Top = 128
+    Width = 136
+    Caption = 'Очистити С'
+    OnClick = ClearCClick
+    TabOrder = 10
+  end
+  object CombinationAB: TButton
+    Left = 32
+    Height = 28
+    Top = 168
+    Width = 124
+    Caption = 'Об''єднання'
+    OnClick = CombinationABClick
+    TabOrder = 11
+  end
+  object Intersection: TButton
+    Left = 200
+    Height = 28
+    Top = 168
+    Width = 124
+    Caption = 'Перетин'
+    OnClick = IntersectionClick
+    TabOrder = 12
+  end
+  object RiznycaAmB: TButton
+    Left = 32
+    Height = 25
+    Top = 216
+    Width = 124
+    Caption = 'Різниця A-B'
+    OnClick = RiznycaAmBClick
+    TabOrder = 13
+  end
+  object RiznycaBmA: TButton
+    Left = 200
+    Height = 25
+    Top = 216
+    Width = 124
+    Caption = 'Різниця B-A'
+    OnClick = RiznycaBmAClick
+    TabOrder = 14
+  end
+  object SymetrRiznyca: TButton
+    Left = 96
+    Height = 25
+    Top = 256
+    Width = 155
+    Caption = 'Симетрична різниця'
+    OnClick = SymetrRiznycaClick
+    TabOrder = 15
+  end
+  object DoptoA: TButton
+    Left = 32
+    Height = 29
+    Top = 288
+    Width = 124
+    Caption = 'Доповнення до А'
+    OnClick = DoptoAClick
+    TabOrder = 16
+  end
+  object DoptoB: TButton
+    Left = 200
+    Height = 29
+    Top = 288
+    Width = 124
+    Caption = 'Доповнення до В'
+    OnClick = DoptoBClick
+    TabOrder = 17
+  end
+  object Label1: TLabel
+    Left = 456
+    Height = 15
+    Top = 70
+    Width = 137
+    Caption = 'Результуюча множина С'
+    ParentColor = False
+    OnClick = Label1Click
+  end
+  object Label2: TLabel
+    Left = 152
+    Height = 15
+    Top = 339
+    Width = 65
+    Caption = 'Множина А'
+    ParentColor = False
+  end
+  object Label3: TLabel
+    Left = 536
+    Height = 15
+    Top = 339
+    Width = 64
+    Caption = 'Множина В'
+    ParentColor = False
+  end
+  object Image1: TImage
+    Left = 720
+    Height = 274
+    Top = 56
+    Width = 304
+    OnClick = Image1Click
+    Visible = False
+  end
+end

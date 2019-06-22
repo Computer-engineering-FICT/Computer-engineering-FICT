@@ -1,0 +1,455 @@
+object InpForm: TInpForm
+  Left = 567
+  Height = 768
+  Top = 153
+  Width = 741
+  Caption = 'Формування множин А і В'
+  ClientHeight = 768
+  ClientWidth = 741
+  OnCreate = FormCreate
+  LCLVersion = '1.2.6.0'
+  object MPanel: TPanel
+    Left = 7
+    Height = 655
+    Top = 10
+    Width = 143
+    Caption = 'MPanel'
+    ClientHeight = 655
+    ClientWidth = 143
+    TabOrder = 0
+    object MTitleLabel: TLabel
+      Left = 19
+      Height = 20
+      Top = 7
+      Width = 97
+      Caption = 'Чоловічі імена'
+      Font.CharSet = RUSSIAN_CHARSET
+      Font.Height = -16
+      Font.Name = 'Arial Narrow'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+  end
+  object MListBox: TListBox
+    Left = 17
+    Height = 608
+    Top = 42
+    Width = 126
+    Items.Strings = (
+      'Анатолій'
+      'Андрій'
+      'Антот'
+      'Аркадій '
+      'Артур'
+      'Адам'
+      'Альберт'
+      'Альфред'
+      'Аристарх'
+      'Арнольд'
+      'Арсеній'
+      'Артем'
+      'Архип'
+      'Бенедикт'
+      'Богдан'
+      'Борис'
+      'Броніслав'
+      'Боян'
+      'В''ячеслав'
+      'Вадим'
+      'Валентин'
+      'Валерій'
+      'Варфоломій'
+      'Василь'
+      'Веніамін'
+      'Вікентій'
+      'Віктор'
+      'Вікторія'
+      'Віталій'
+      'Владислав'
+      'Володимир'
+      'Геннадій'
+      'Генрієта'
+      'Георгій'
+      'Григорій'
+      'Давид'
+      'Данило'
+      'Денис'
+      'Дмитро'
+      'Едуард'
+      'Ельдар'
+      'Євгеній'
+      'Євдоким'
+      'Захар'
+      'Зіновій'
+      'Іван'
+      'Ігнатій'
+      'Ігор'
+      'Ілля'
+      'Йосип'
+      'Кирило'
+      'Кий'
+      'Клим'
+      'Кондрат'
+      'Костянтин'
+      'Кузьма'
+      'Лев'
+      'Леонард'
+      'Леонід'
+      'Леонтій'
+      'Любомир'
+      'Макар'
+      'Максим'
+      'Матвей'
+      'Мафусаїл'
+      'Микита'
+      'Микола'
+      'Мирон'
+      'Мирослав'
+      'Митрофан'
+      'Михайло'
+      'Модест'
+      'Мойсей'
+      'Мстислав'
+      'Назар'
+      'Натан'
+      'Наум'
+      'Олег'
+      'Олександр'
+      'Олексій'
+      'Олесь'
+      'Омелян'
+      'Опанас'
+      'Орест'
+      'Павло'
+      'Петро'
+      'Пилип'
+      'Порфирій'
+      'Прокофій'
+      'Прохор'
+      'Роберт'
+      'Родіон'
+      'Роман'
+      'Ростислав'
+      'Руслан'
+      'Савелій'
+      'Самсон'
+      'Святослав'
+      'Семен'
+      'Сергій'
+      'Станіслав'
+      'Степан'
+      'Тарас'
+      'Тимофій'
+      'Тихон'
+      'Трохим'
+      'Федір'
+      'Федот'
+      'Фелікс'
+      'Фома'
+      'Юрій'
+      'Юхим'
+      'Явір'
+      'Яків'
+      'Ян'
+      'Ярема'
+      'Яромир'
+      'Ярослав'
+      'Ярополк'
+      'Ясногор '
+    )
+    ItemHeight = 15
+    OnClick = MListBoxClick
+    TabOrder = 1
+  end
+  object WPanel: TPanel
+    Left = 150
+    Height = 655
+    Top = 10
+    Width = 143
+    Caption = 'WPanel'
+    ClientHeight = 655
+    ClientWidth = 143
+    TabOrder = 2
+    object WTitleLabel: TLabel
+      Left = 19
+      Height = 20
+      Top = 7
+      Width = 84
+      Caption = 'Жіночі імена'
+      Font.CharSet = RUSSIAN_CHARSET
+      Font.Height = -16
+      Font.Name = 'Arial Narrow'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object WListBox: TListBox
+      Left = 9
+      Height = 608
+      Top = 29
+      Width = 126
+      Items.Strings = (
+        'Аврора'
+        'Агнеса'
+        'Агнія'
+        'Ада'
+        'Аза'
+        'Алевтина'
+        'Аліна'
+        'Аліса'
+        'Алла'
+        'Альбіна'
+        'Анастасія'
+        'Ангеліна'
+        'Анжела'
+        'Антоніна'
+        'Анфіса'
+        'Белла'
+        'Берта'
+        'Богдана'
+        'Валентина'
+        'Ванда'
+        'Варвара'
+        'Василіса'
+        'Венера'
+        'Вера'
+        'Вероніка'
+        'Віолета'
+        'Віталіна'
+        'Галина'
+        'Ганна'
+        'Глорія'
+        'Дарина'
+        'Джульєтта'
+        'Діана'
+        'Елеонора'
+        'Ельвіра'
+        'Ельза'
+        'Емма'
+        'Єва'
+        'Євгенія'
+        'Євдокія'
+        'Єлизавета'
+        'Жанна'
+        'Зоя'
+        'Інга'
+        'Інна'
+        'Ірина'
+        'Ія'
+        'Карина'
+        'Катерина'
+        'Клавдія'
+        'Клара'
+        'Ксенія'
+        'Лада'
+        'Лайма'
+        'Лариса'
+        'Леся'
+        'Лідія'
+        'Лілія'
+        'Людмила'
+        'Майя'
+        'Маргарита'
+        'Марина'
+        'Марія'
+        'Марта'
+        'Марфа'
+        'Меланія'
+        'Муза'
+        'Надія'
+        'Наталя'
+        'Неллі'
+        'Ніла'
+        'Ніна'
+        'Нонна'
+        'Нора'
+        'Одарка'
+        'Оксана'
+        'Олександра'
+        'Олена'
+        'Олеся'
+        'Ольга'
+        'Орися'
+        'Парасковія'
+        'Пелагея'
+        'Поліна'
+        'Раїса'
+        'Рената'
+        'Римма'
+        'Роксана'
+        'Роксолана'
+        'Руслана'
+        'Світлана'
+        'Святослава'
+        'Серафіма'
+        'Сесілія'
+        'Сніжана'
+        'Софія'
+        'Стефанія'
+        'Сусанна'
+        'Таїсія'
+        'Тамара'
+        'Тереза'
+        'Тетяна'
+        'Уляна'
+        'Фаїна'
+        'Флора'
+        'Христина'
+        'Юлія'
+        'Юстина'
+        'Яна'
+        'Ярина'
+        ''
+        ''
+        #9#9
+        ''
+        ''
+        ''
+        ''
+        ''
+        ''
+        ''
+        ''
+        ''
+        ''
+        #9#9
+        ''
+        ''
+        ''
+        ''
+        ''
+        ''
+      )
+      ItemHeight = 15
+      OnClick = WListBoxClick
+      TabOrder = 0
+    end
+  end
+  object InfoPanel: TPanel
+    Left = 17
+    Height = 31
+    Top = 705
+    Width = 577
+    BevelOuter = bvLowered
+    TabOrder = 3
+  end
+  object ExitButton: TButton
+    Left = 601
+    Height = 34
+    Top = 705
+    Width = 75
+    Caption = 'Вихід'
+    OnClick = ExitButtonClick
+    TabOrder = 4
+  end
+  object APanel: TPanel
+    Left = 342
+    Height = 625
+    Top = 62
+    Width = 181
+    ClientHeight = 625
+    ClientWidth = 181
+    TabOrder = 5
+    OnClick = APanelClick
+    object AListBox: TListBox
+      Left = 22
+      Height = 524
+      Top = 6
+      Width = 131
+      ItemHeight = 0
+      TabOrder = 0
+    end
+    object ALoadButton: TButton
+      Left = 15
+      Height = 25
+      Top = 538
+      Width = 144
+      Caption = 'Завантажити множину А'
+      OnClick = ALoadButtonClick
+      TabOrder = 1
+    end
+    object AClearButton: TButton
+      Left = 15
+      Height = 25
+      Top = 563
+      Width = 144
+      Caption = 'Очистити множину А'
+      OnClick = AClearButtonClick
+      TabOrder = 2
+    end
+    object ASaveButton: TButton
+      Left = 15
+      Height = 25
+      Top = 589
+      Width = 144
+      Caption = 'Зберегти множину А'
+      OnClick = ASaveButtonClick
+      TabOrder = 3
+    end
+  end
+  object BPanel: TPanel
+    Left = 523
+    Height = 625
+    Top = 62
+    Width = 170
+    ClientHeight = 625
+    ClientWidth = 170
+    TabOrder = 6
+    object BListBox: TListBox
+      Left = 19
+      Height = 523
+      Top = 7
+      Width = 131
+      ItemHeight = 0
+      TabOrder = 0
+    end
+    object BLoadButton: TButton
+      Left = 6
+      Height = 25
+      Top = 538
+      Width = 144
+      Caption = 'Завантажити множину B'
+      OnClick = BLoadButtonClick
+      TabOrder = 1
+    end
+    object BClearButton: TButton
+      Left = 6
+      Height = 25
+      Top = 563
+      Width = 144
+      Caption = 'Очистити множину B'
+      OnClick = BClearButtonClick
+      TabOrder = 2
+    end
+    object BSaveButton: TButton
+      Left = 6
+      Height = 25
+      Top = 589
+      Width = 144
+      Caption = 'Зберегти множину B'
+      OnClick = BSaveButtonClick
+      TabOrder = 3
+    end
+  end
+  object ARadioButton: TRadioButton
+    Left = 342
+    Height = 19
+    Top = 32
+    Width = 157
+    Caption = 'Формування множини А'
+    TabOrder = 7
+  end
+  object BRadioButton: TRadioButton
+    Left = 549
+    Height = 19
+    Top = 32
+    Width = 156
+    Caption = 'Формування множини B'
+    TabOrder = 8
+  end
+end

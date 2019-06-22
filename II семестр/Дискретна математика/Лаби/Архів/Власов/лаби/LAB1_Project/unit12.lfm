@@ -1,0 +1,76 @@
+object OperForm: TOperForm
+  Left = 21
+  Height = 768
+  Top = 171
+  Width = 1024
+  Caption = 'Виконання операцій над множинами А і В'
+  ClientHeight = 768
+  ClientWidth = 1024
+  LCLVersion = '0.9.30.4'
+  object ExitBtn: TButton
+    Left = 915
+    Height = 25
+    Top = 728
+    Width = 75
+    Caption = 'Вихід'
+    OnClick = ExitBtnClick
+    TabOrder = 0
+  end
+  object InfoPanel: TPanel
+    Left = 6
+    Height = 30
+    Top = 728
+    Width = 898
+    BevelOuter = bvLowered
+    Caption = 'Ця панель призначена для відображення  поточних повідомлень'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlue
+    Font.Height = -16
+    Font.Name = 'Arial Narrow'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 1
+  end
+  object Memo1: TMemo
+    Left = 160
+    Height = 268
+    Top = 176
+    Width = 773
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Arial Narrow'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Lines.Strings = (
+      'Інструкція по виконанню лабораторної роботи'
+      '1. Видалити цей компонент Memo.'
+      '2. В полі даної форми OperForn розмістити два компоненти типу TStringGrid для відображення елементів множин А і В.'
+      '3. Передбачити завантаження елементів множин А і В з:'
+      'а) відповідних масисвів AVArr та BVArr, де V-номер вашого варінта лабораторної роботи.'
+      'б) відповідних файлів AV.TXT та BV.TXT, де  V-номер вашого варінта лабораторної роботи. '
+      '4. В полі форми також розмістити візуальний компонент типу TStringGrid для відображення елементів множини, яка є '
+      'результатом виконання операцій над множинами А і В.'
+      '5. Для виконання кожної з операцій передбачити відповідну кнопку.'
+      '6. Передбачити очистку відображення множин А і В, так і відображення рузультатів операцій.'
+      '7. На інформаційній панелі відображати поточний стан виконання операцій над множинами.'
+    )
+    OnChange = Memo1Change
+    ParentFont = False
+    TabOrder = 2
+  end
+  object StringGrid1: TStringGrid
+    Left = 95
+    Height = 178
+    Top = 474
+    Width = 405
+    TabOrder = 3
+  end
+  object StringGrid2: TStringGrid
+    Left = 610
+    Height = 157
+    Top = 480
+    Width = 287
+    TabOrder = 4
+  end
+end

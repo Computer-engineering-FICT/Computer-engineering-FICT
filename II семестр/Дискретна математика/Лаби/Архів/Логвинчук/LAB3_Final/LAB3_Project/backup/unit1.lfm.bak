@@ -1,0 +1,102 @@
+object Form1: TForm1
+  Left = 406
+  Height = 485
+  Top = 120
+  Width = 742
+  Caption = 'DM Lab3'
+  ClientHeight = 485
+  ClientWidth = 742
+  LCLVersion = '1.2.6.0'
+  object NameInput: TEdit
+    Left = 256
+    Height = 23
+    Top = 16
+    Width = 256
+    TabOrder = 0
+    Text = 'Прізвище Ім’я'
+  end
+  object LoadData: TButton
+    Left = 48
+    Height = 42
+    Top = 112
+    Width = 147
+    Caption = 'Завантажити дані'
+    OnClick = LoadDataClick
+    TabOrder = 1
+  end
+  object ResultGrid: TStringGrid
+    Left = 224
+    Height = 302
+    Top = 112
+    Width = 321
+    ColCount = 16
+    DefaultColWidth = 20
+    DefaultRowHeight = 20
+    FixedCols = 0
+    FixedRows = 0
+    RowCount = 15
+    ScrollBars = ssNone
+    TabOrder = 2
+  end
+  object SetGrid: TStringGrid
+    Left = 225
+    Height = 21
+    Top = 64
+    Width = 321
+    ColCount = 16
+    DefaultColWidth = 20
+    DefaultRowHeight = 20
+    FixedCols = 0
+    FixedRows = 0
+    RowCount = 1
+    ScrollBars = ssNone
+    TabOrder = 3
+  end
+  object GenerateSubSets: TButton
+    Left = 48
+    Height = 42
+    Top = 160
+    Width = 147
+    Caption = 'Згенерувати підмножини'
+    OnClick = GenerateSubSetsClick
+    TabOrder = 4
+  end
+  object Label1: TLabel
+    Left = 560
+    Height = 20
+    Top = 112
+    Width = 141
+    Caption = 'Елементів у множині:'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Arial Narrow'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object SubsCount: TSpinEdit
+    Left = 648
+    Height = 23
+    Top = 160
+    Width = 50
+    Alignment = taCenter
+    TabOrder = 5
+  end
+  object Label2: TLabel
+    Left = 560
+    Height = 20
+    Top = 160
+    Width = 76
+    Caption = 'Підмножин:'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Arial Narrow'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+end
