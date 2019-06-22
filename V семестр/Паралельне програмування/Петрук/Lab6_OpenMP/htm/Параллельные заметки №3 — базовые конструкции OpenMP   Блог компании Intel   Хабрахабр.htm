@@ -1,0 +1,1196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	
+	<title>Параллельные заметки №3 — базовые конструкции OpenMP / Блог компании Intel / Хабрахабр</title>
+	
+	
+		<link href="http://habrahabr.ru/css/1319098746/all.css" rel="stylesheet" media="all" />
+	
+	
+
+<!-- ie9 -->
+    <meta name="application-name" content="Хабрахабр" /> 
+    <meta name="msapplication-tooltip" content="Хабрахабр" /> 
+    <meta name="msapplication-starturl" content="http://habrahabr.ru/" /> 
+
+    <meta name="msapplication-task" content="name=посты;action-uri=http://habrahabr.ru/;icon-uri=http://habrahabr.ru/favicon.ico"/>
+    <meta name="msapplication-task" content="name=q&a;action-uri=http://habrahabr.ru/qa/;icon-uri=http://habrahabr.ru/favicon.ico"/>
+    <meta name="msapplication-task" content="name=блоги;action-uri=http://habrahabr.ru/bloglist/;icon-uri=http://habrahabr.ru/favicon.ico"/>
+    <meta name="msapplication-task" content="name=люди;action-uri=http://habrahabr.ru/people/;icon-uri=http://habrahabr.ru/favicon.ico"/>
+    <meta name="msapplication-task" content="name=компании;action-uri=http://habrahabr.ru/companies/;icon-uri=http://habrahabr.ru/favicon.ico"/>
+<!-- /ie9 -->
+
+	
+	<link rel="shortcut icon" href="http://habrahabr.ru/i/favicon.ico" />
+	<link rel="image_src" href="http://habrahabr.ru/i/logo.gif" />
+	
+	
+	<link title="" type="application/rss+xml" rel="alternate" href=""/>
+
+	<!--[if IE 6]><link rel="stylesheet" href="http://habrahabr.ru/css/1319098746/ie6.css" media="all" /><![endif]-->
+	<!--[if IE 7]><link rel="stylesheet" href="http://habrahabr.ru/css/1319098746/ie7.css" media="all" /><![endif]-->
+	<!--[if IE ]><link rel="stylesheet" href="http://habrahabr.ru/css/1319098746/ie.css" media="all" /><![endif]-->
+	
+	
+	<link href="http://habrahabr.ru/css/1319098746/karma.css" rel="stylesheet" media="all" />
+	<link href="http://habrahabr.ru/css/1319098746/profile.css" rel="stylesheet" media="all" />
+	<link href="http://habrahabr.ru/css/1319098746/corpoadmin.css" rel="stylesheet" media="all" />
+
+	<link rel="help" href="http://habrahabr.ru/info/help/"/>
+	<link rel="search" href="http://habrahabr.ru/search/"/>
+	<link rel="home" href="http://habrahabr.ru/"/>
+	<script type="text/javascript" src="http://habrahabr.ru/js/1319098746/mootools-1.2-core-yc.js"></script>
+  <!--<script type="text/javascript" src="http://habrahabr.ru/js/1319098746/mootools-core-1.3.2-full-compat-yc.js"></script>//-->
+  
+	<script type="text/javascript" src="http://habrahabr.ru/js/1319098746/system.js"></script>
+	<script type="text/javascript" src="http://habrahabr.ru/js/1319098746/tm/init.js"></script>
+	<script type="text/javascript" src="http://habrahabr.ru/js/1319098746/common.js"></script>
+	<script type="text/javascript" src="http://habrahabr.ru/js/1319098746/global.js"></script>
+	
+	<!--script type="text/javascript" src="http://habrahabr.ru/js/1319098746/old-stuff-v-1.js"></script-->
+	<script type="text/javascript" src="http://habrahabr.ru/js/1319098746/all.js"></script>
+	
+		
+
+	<script type="text/javascript" src="http://habrahabr.ru/js/1319098746/tm/validation.js"></script>
+	<script type="text/javascript" src="http://habrahabr.ru/js/1319098746/tm/xmlhandler.js"></script>
+	<script type="text/javascript" src="http://habrahabr.ru/js/1319098746/tm/controls/control.js"></script>
+	<script type="text/javascript" src="http://habrahabr.ru/js/1319098746/tm/forms/favourites_add.js"></script>
+	<script type="text/javascript" src="http://habrahabr.ru/js/1319098746/tm/controls/button.js"></script>
+	<script type="text/javascript" src="http://habrahabr.ru/js/1319098746/tm/form.js"></script>
+	<script type="text/javascript" src="http://habrahabr.ru/js/1319098746/autosuggest.js"></script>
+	<script type="text/javascript" src="http://habrahabr.ru/js/1319098746/highlight.js"></script>
+	
+
+	
+	
+	
+	
+	<script type="text/javascript">
+	/*<![CDATA[*/
+	var ya = document.createElement('script');
+		ya.src = 'http://an.yandex.ru/system/context.js';
+	/* ]]>*/
+	</script>
+	<script type="text/javascript">
+	/*<![CDATA[*/
+	var ga = document.createElement('script');
+		ga.setAttribute('async', 'true');
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	/* ]]>*/
+	</script>
+	
+	<script type="text/javascript">
+	/*<![CDATA[*/
+		var temp=temp||{};
+		window.temp=temp;
+		temp.base = (window.base_full_url = 'http://habrahabr.ru/');
+		temp.base_short = 'habrahabr.ru';
+		hljs.initHighlightingOnLoad();
+	/* ]]>*/
+	</script> 
+	
+	<script type="text/javascript" src="http://habrahabr.ru/js/1319098746/commentForm.js"></script>
+	<script type="text/javascript" src="http://habrahabr.ru/js/1319098746/voting.js"></script>
+	<script type="text/javascript" src="http://habrahabr.ru/js/1319098746/friending.js"></script>
+	<script type="text/javascript" src="http://habrahabr.ru/js/1319098746/swfobject.js"></script>
+	
+	<script type="text/javascript" src="http://habrahabr.ru/js/1319098746/habraWYG.js"></script>
+	<script type="text/javascript" src="http://habrahabr.ru/js/1319098746/profile-actions.js"></script>
+
+		
+</head>
+
+<body id="main-page" class="company guest" lang="ru">
+		
+
+
+
+<div class="header">
+	
+		<dl class="panel-personal">
+	<dt><!-- Мы впишем сюда твой %username% --></dt>
+	<dd><a href="http://habrahabr.ru/login/">войти</a> <a href="http://habrahabr.ru/register/">зарегистрироваться</a></dd>
+</dl>
+	
+	 
+	<div class="panel-tools">
+		 
+		<form class="panel-search js-autosuggest-holder " action="http://habrahabr.ru/search/" method="get" accept-charset="utf-8">
+			<p>
+				<label class="panel-search-label" for="search">
+					<input id="search" class="in-text js-autosuggest-field " title="поиск по сайту" type="text" name="q" value=""/> 
+					<span>поиск по сайту</span>
+				</label>
+				<input class="in-submit" type="submit" id="do" value="" title="Enter!" />
+			</p>
+			<div class="js-autosuggest-output-container"><div class="js-autosuggest-output hidden"></div></div>
+		</form>
+	</div>
+	<a class="logo " href="http://habrahabr.ru/" title="На главную страницу"></a>
+	
+
+	<ul class="panel-nav-top">
+	
+		
+		
+		
+			<li><a href="http://habrahabr.ru/">Посты</a></li>
+		
+	
+		
+		
+		
+			<li><a href="http://habrahabr.ru/qa/">Q&amp;A</a></li>
+		
+	
+		
+		
+		
+			<li><a href="http://habrahabr.ru/bloglist/">Блоги</a></li>
+		
+	
+		
+		
+		
+			<li><a href="http://habrahabr.ru/events/">События</a></li>
+		
+	
+		
+			
+			
+				<li class="current"><a href="http://habrahabr.ru/companies/">Компании</a></li>
+			
+		
+		
+		
+	
+	
+	
+	
+	<li style="margin-bottom: 0"><div class="banner_special">
+  <script>
+  // <!--
+  var mb_login = "habr_special_135_35";
+  var mb_options = "options=T";
+  var mb_random = Math.round(Math.random() * 100000);
+  document.write('<iframe src="http://pink.habralab.ru/cgi-bin/iframe/'+mb_login+'?'+mb_random+'&'+mb_options+'" width="135" height="35" marginwidth="0" marginheight="0" scrolling="no" frameborder="0"><a href="http://pink.habralab.ru/cgi-bin/href/'+mb_login+'?'+mb_random +'" target="_top"><img src="http://pink.habralab.ru/cgi-bin/banner/'+mb_login+'?'+mb_random +'&'+mb_options+'" alt="" width="135" height="35" border="0" ismap="ismap"></a></iframe>');
+  // -->
+  </script>
+  <noscript>
+  <iframe src="http://pink.habralab.ru/cgi-bin/iframe/habr_special_135_35?options=T" width="135" height="35" marginwidth="0" marginheight="0" scrolling="no" frameborder="0"><a href="http://pink.habralab.ru/cgi-bin/href/habr_special_135_35" target="_top"><img src="http://pink.habralab.ru/cgi-bin/banner/habr_special_135_35?options=T" alt="" width="135" height="35" border="0" ismap="ismap"></a></iframe>
+  </noscript>
+</div></li>
+	</ul>
+
+</div>
+
+
+<div id="wrapper">
+<div id="inner" >
+
+
+	<div id="main-content">
+	  
+	  <script type="text/javascript" src="http://habrahabr.ru/js/1319098746/mootools.slide.js"></script>
+		
+	  
+		
+
+	
+<div class="profile-header company-header">
+	
+	<h1><img class="favicon" src="/media/company/favicon/3/favicon_344.ico" alt="Intel" height="16" width="16" /></h1>
+	
+	<dl class="profile-actions">
+		<dt>
+			
+			<a class="habrauser silentlink" href="http://habrahabr.ru/company/intel/">Intel</a>
+			
+		</dt>
+	</dl>
+	
+	<div id ="company344" class="profile-karma-holder">
+	 	<dl class="habraindex">
+			<dt>хабраиндекс</dt>
+			<dd id="js-companyRating" class="number">390,40</dd>
+		</dl>
+	</div>
+	
+	
+</div>
+<!-- Горизонтальное меню над постами -->
+
+<div class="page-navigation">
+	<table class="page-menu">
+		<tr>
+			
+				
+				
+					<td class="profile" ><div><a href="http://habrahabr.ru/company/intel/" title="">Профиль</a></div></td>
+				
+			
+				
+					<td class="blog current" ><div><a href="http://habrahabr.ru/company/intel/blog/" title="">Блог </a></div></td>
+				
+				
+			
+				
+				
+					<td class="questions" ><div><a href="http://habrahabr.ru/company/intel/questions/" title="">Вопросы (6)</a></div></td>
+				
+			
+				
+				
+					<td class="vacancies" ><div><a href="http://habrahabr.ru/company/intel/vacancies/" title="">Вакансии</a></div></td>
+				
+			
+				
+				
+					<td class="fans" ><div><a href="http://habrahabr.ru/company/intel/fans/" title="">Поклонники</a></div></td>
+				
+			
+		</tr>
+	</table>
+	
+		<div class="page-submenu ">
+			<ul>
+				
+					
+					
+						<li><a href="http://habrahabr.ru/company/intel/blog/" title="">Захабренные</a></li>
+					
+				
+					
+					
+						<li><a href="http://habrahabr.ru/company/intel/blog/new/" title="">Новые</a></li>
+					
+				
+					
+					
+						<li><a href="http://habrahabr.ru/company/intel/blog/unhabred/" title="">Отхабренные</a></li>
+					
+				
+			</ul>
+		</div>
+	
+</div>
+
+<!-- // Горизонтальное меню над постами -->
+	
+
+
+	
+	
+
+
+
+
+	
+
+	
+		<div class="hentry ">
+
+		  
+				
+			
+			
+			<h2 class="entry-title single-entry-title">
+				
+				
+				
+				
+
+				
+
+				
+					
+					
+						<span title="http://habrahabr.ru/company/intel/blog/85273/" class="topic">Параллельные заметки №3 — базовые конструкции OpenMP</span>
+					
+				
+
+				
+				
+				
+
+				
+				
+			</h2>
+
+			
+
+<div class="content">
+	Начнем знакомство непосредственно с использованием технологии OpenMP и рассмотрим в этой заметке некоторые базовые конструкции.<br/>
+<a name="habracut"></a><br/>
+При использовании OpenMP мы добавляем в программу два вида конструкций: функции исполняющей среды OpenMP и специальные директивы #pragma.<br/>
+<br/>
+<h4>Функции</h4><br/>
+Функции OpenMP носят скорее вспомогательный характер, так как реализация параллельности осуществляется за счет использования директив. Однако в ряде случаев они весьма полезны и даже необходимы. Функции можно разделить на три категории: функции исполняющей среды, функции блокировки/синхронизации и функции работы с таймерами. Все эти функции имеют имена, начинающиеся с omp_, и определены в заголовочном файле omp.h. К рассмотрению функций мы вернемся в следующих заметках.<br/>
+<br/>
+<h4>Директивы</h4><br/>
+Конструкция #pragma в языке Си/Си++ используется для задания дополнительных указаний компилятору. С помощью этих конструкций можно указать как осуществлять выравнивание данных в структурах, запретить выдавать определенные предупреждения и так далее. Форма записи:<br/>
+<pre>#pragma директивы</pre><br/>
+Использование специальной ключевой директивы «omp» указывает на то, что команды относятся к OpenMP. Таким образом директивы #pragma для работы с OpenMP имеют следующий формат:<br/>
+<pre>#pragma omp &lt;директива&gt; [раздел [ [,] раздел]...] </pre><br/>
+Как и любые другие директивы pragma, они игнорируются теми компиляторами, которые не поддерживают данную технологию. При этом программа компилируется без ошибок как последовательная. Это особенность позволяет создавать хорошо переносимый код на базе технологии OpenMP. Код содержащий директивы OpenMP может быть скомпилирован Си/Си++ компилятором, который ничего не знает об этой технологии. Код будет выполнятся как последовательный, но это лучше, чем делать две ветки кода или расставлять множество #ifdef.<br/>
+OpenMP поддерживает директивы private, parallel, for, section, sections, single, master, critical, flush, ordered и atomic и ряд других, которые определяют механизмы разделения работы или конструкции синхронизации.<br/>
+<br/>
+<h4>Директива parallel</h4><br/>
+Самой главной можно пожалуй назвать директиву parallel. Она создает параллельный регион для следующего за ней структурированного блока, например:<br/>
+<br/>
+<pre>#pragma omp parallel [другие директивы]
+  структурированный блок</pre><br/>
+Директива parallel указывает, что структурный блок кода должен быть выполнен параллельно в несколько <a href="http://www.viva64.com/terminology/Thread_Parallel_thread_rus.html">потоков</a>. Каждый из созданных потоков выполнит одинаковый код содержащийся в блоке, но не одинаковый набор команд. В разных потоках могут выполняться различные ветви или обрабатываться различные данные, что зависит от таких операторов как if-else или использования директив распределения работы.<br/>
+<br/>
+Чтобы продемонстрировать запуск нескольких потоков, распечатаем в распараллеливаемом блоке текст:<br/>
+<pre>#pragma omp parallel
+{
+  cout &lt;&lt; &quot;OpenMP Test&quot; &lt;&lt; endl;
+}</pre><br/>
+<br/>
+На 4-х ядерной машине мы можем ожидать увидеть следующей вывод<br/>
+<br/>
+<pre>OpenMP Test
+OpenMP Test
+OpenMP Test
+OpenMP Test</pre><br/>
+<br/>
+Но на практике я получил следующий вывод:<br/>
+<br/>
+<pre>OpenMP TestOpenMP Test
+OpenMP Test
+
+OpenMP Test</pre><br/>
+Это объясняется совместным использованием одного ресурса из нескольких потоков. В данном случае мы выводим на одну консоль текст в четырех потоках, которые никак не договариваются между собой о последовательности вывода. Здесь мы наблюдаем возникновение <a href="http://www.viva64.com/terminology/Race_condition_rus.html">состояния гонки</a> (race condition).<br/>
+<br/>
+Состояние гонки — ошибка проектирования или реализации многозадачной системы, при которой работа системы зависит от того, в каком порядке выполняются части кода. Эта разновидность ошибки являются наиболее распространенной при параллельном программировании и весьма коварна. Воспроизведение и локализация этой ошибки часто бывает затруднена в силу непостоянства своего проявления (смотри также термин <a href="http://ru.wikipedia.org/wiki/Гейзенбаг">Гейзенбаг</a>).<br/>
+<br/>
+<h4>Директива for</h4><br/>
+Рассмотренный нами выше пример демонстрирует наличие параллельности, но сам по себе он бессмыслен. Теперь извлечем пользу из параллельности. Пусть нам необходимо извлечь корень из каждого элемента массива и поместить результат в другой массив:<br/>
+<pre>void VSqrt(double *src, double *dst, ptrdiff_t n)
+{
+  for (ptrdiff_t i = 0; i &lt; n; i++)
+    dst[i] = sqrt(src[i]);
+}</pre><br/>
+<br/>
+Если мы напишем:<br/>
+<pre>#pragma omp parallel
+{
+  for (ptrdiff_t i = 0; i &lt; n; i++)
+    dst[i] = sqrt(src[i]);
+}</pre><br/>
+<br/>
+то мы вместо ускорения впустую проделаем массу лишней работы. Мы извлечем корень из всех элементов массива в каждом потоке. Для того, чтобы распараллелить цикл нам необходимо использовать директиву разделения работы «for». Директива #pragma omp for сообщает, что при выполнении цикла for в параллельном регионе итерации цикла должны быть распределены между потоками группы:<br/>
+<pre>#pragma omp parallel
+{
+  #pragma omp for
+  for (ptrdiff_t i = 0; i &lt; n; i++)
+    dst[i] = sqrt(src[i]);
+}</pre><br/>
+Теперь каждый создаваемый поток будет обрабатывать только отданную ему часть массива. Например, если у нас 8000 элементов, то на машине с четырьмя ядрами работа может быть распределена следующим образом. В первом потоке переменная i принимает значения от 0 до 1999. Во втором от 2000 до 3999. В третьем от 4000 до 5999. В четвертом от 6000 до 7999. Теоретически мы получаем ускорение в 4 раза. На практике ускорение будет чуть меньше из-за необходимости создать потоки и дождаться их завершения. В конце параллельного региона выполняется барьерная синхронизация. Иначе говоря, достигнув конца региона, все потоки блокируются до тех пор, пока последний поток не завершит свою работу.<br/>
+<br/>
+Можно использовать сокращенную запись, комбинируя несколько директив в одну управляющую строку. Приведенный выше код будет эквивалентен:<br/>
+<pre>#pragma omp parallel for
+for (ptrdiff_t i = 0; i &lt; n; i++)
+  dst[i] = sqrt(src[i]); </pre><br/>
+<br/>
+<h4>Директивы private и shared</h4><br/>
+Относительно параллельных регионов данные могут быть общими (shared) или частными (private). Частные данные принадлежат потоку и могут быть модифицированы только им. Общие данные доступны всем потокам. В рассматриваемом ранее примере массив представлял общие данные. Если переменная объявлена вне параллельного региона, то по умолчанию она считается общей, а если внутри то частной. Предположим, что для вычисления квадратного корня нам необходимо использовать промежуточную переменную value:<br/>
+<pre>double value;
+#pragma omp parallel for
+for (ptrdiff_t i = 0; i &lt; n; i++)
+{
+  value = sqrt(src[i]);
+  dst[i] = value;
+}</pre><br/>
+В приведенном коде переменная value объявлена вне параллельного региона, задаваемого директивами &quot;#pragma omp parallel for&quot;, а значит является общей (shared). В результате переменная value начнет использоваться всеми потоками одновременно, что приведет к ошибке состояния гонки и на выходе мы получим мусор.<br/>
+<br/>
+Чтобы сделать переменную для каждого потока частной (private) мы можем использовать два способа. Первый — объявить переменную внутри параллельного региона:<br/>
+<pre>#pragma omp parallel for
+for (ptrdiff_t i = 0; i &lt; n; i++)
+{
+  double value;
+  value = sqrt(src[i]);
+  dst[i] = value;
+}</pre><br/>
+Второй — воспользоваться директивой private. Теперь каждый поток будет работать со своей переменной value:<br/>
+<pre>double value;
+#pragma omp parallel for private(value)
+for (ptrdiff_t i = 0; i &lt; n; i++)
+{
+  value = sqrt(src[i]);
+  dst[i] = value;
+}</pre><br/>
+Помимо директивы private, существует директива shared. Но эту директиву обычно не используют, так как и без нее все переменные объявленные вне параллельного региона будут общими. Директиву можно использовать для повышения наглядности кода.<br/>
+<br/>
+Мы рассмотрели только малую часть директив OpenMP и продолжим знакомство с ними в следующих уроках.
+
+	
+
+	
+
+	
+</div>
+
+
+
+
+			
+<ul class="tags" title="Теги к записи">
+	<li ><a href="http://habrahabr.ru/tag/openmp/" rel="tag">openmp</a></li><li >, <a href="http://habrahabr.ru/tag/parallel programming/" rel="tag">parallel programming</a></li><li >, <a href="http://habrahabr.ru/tag/параллельное программирование/" rel="tag">параллельное программирование</a></li>
+</ul>
+
+			
+<div class="entry-info vote_holder" id="infopanel85273">
+
+		<!--  Закруглённые уголки -->
+
+		<div class="corner tl"></div><div class="corner tr"></div>
+
+		<div class="entry-info-wrap">
+			
+			
+				<div class="voting positive  no_auth expired">
+					<div class="can-vote"><a title="Нравится" href="#" class="vote_plus" onclick="return Voter.vote(event, this, 'post', 'plus');"></a></div>
+					<div class="cannot-vote"><span title="Нравится" class="vote_plus"></span></div>
+					<div class="mark"><span title="Всего 31 голос: &uarr;26 и &darr;5">+21</span></div>
+					<div class="can-vote"><a title="Не нравится" href="#" class="vote_minus" onclick="return Voter.vote(event, this, 'post', 'minus');"></a></div>
+					<div class="cannot-vote"><span class="vote_minus"></span></div>
+				</div>
+			
+			<div class="published"><!-- Дата в формате ISO пихается в title -->
+				<span>23 февраля 2010, 09:17</span>
+			</div>
+
+			
+			<div class="fav_added js-to_favs_holder">
+				<a class="js-to_favs_remove"  href="#" style="cursor: default" onclick="return false;"></a>
+			</div>
+			
+			
+			<div class="favs_count" title="Количество пользователей, добавивших пост в избранное">18</div>
+			
+			<div class="twitter">
+				<a href="http://twitter.com/intent/tweet?text=http://habr.ru/p/85273/+Параллельные+заметки+№3+—+базовые+конструкции+OpenMP+%23habr" title="Опубликовать ссылку на пост в Twitter" target="_blank"></a>
+			</div>
+			<div class="vkontakte">
+				<a href="http://vkontakte.ru/share.php?url=http://habrahabr.ru/company/intel/blog/85273/" title="Опубликовать ссылку на пост в ВКонтакте" onclick="window.open(this.href, 'Опубликовать ссылку на пост в Вконтакте', 'width=800,height=300'); return false"></a>
+			</div>
+			<div class="facebook">
+				<a href="http://www.facebook.com/sharer.php?u=http://habrahabr.ru/company/intel/blog/85273/" title="Опубликовать ссылку на пост в Facebook" onclick="window.open(this.href, 'Опубликовать ссылку на пост в Facebook', 'width=800,height=300'); return false"></a>
+			</div>
+			
+			
+			
+
+			
+			
+
+			
+
+			
+			
+				<div class="vcard author full">
+					<a title="Автор текста" href="http://habrahabr.ru/users/Andrey2008/" class="fn nickname url"><span>Andrey2008</span></a>
+				</div>
+			
+			
+
+			
+
+			
+
+
+		</div>
+
+		<div class="corner bl"></div><div class="corner br"></div>
+</div>
+
+
+
+			<script type="text/javascript" src="http://habrahabr.ru/core/viewcount/85273/"></script>
+		</div>
+	
+
+
+
+
+
+
+
+
+	
+		
+		<div id="comments">
+			<h2 class="comments-header">комментарии (<span class="js-comments-count">6</span>)
+			 
+			</h2>
+			
+				<ul class="hentry">
+	
+		<li id="comment_2548261" class="comment_holder vote_holder">
+			
+				<div class="msg-meta">
+					<div class="folding-dot-holder"><div class="folding-dot"></div></div>
+					<ul class="menu info author hcard">
+						<li class="avatar">
+							<a href="http://habrahabr.ru/users/spiff/" title="spiff">
+								<img src="http://habrahabr.ru/i/avatars/stub-user-small.gif" alt="spiff" />
+								<b></b>
+							</a>
+						</li>
+						<li class="fn nickname username">
+							<a href="http://habrahabr.ru/users/spiff/" class="url">spiff</a>,
+						</li>
+						<li class="date">
+							<abbr class="published" title="2010-02-24T07:36:47+03:00">24 февраля 2010, 07:36</abbr>
+						</li>
+						<li class="bookmark">
+							<a href="#comment_2548261" title="Ссылка на комментарий" rel="bookmark">#</a>
+						</li>
+						
+						
+						<li class="down-to-child hidden"><a title="Обратно" onclick="return commentForm.goToChildComment(this);" href="#">&darr;</a></li>
+						<!--<li class="single-tree">
+							<a class="js-serv js-single-tree" href=''>ветка</a>
+							<a class="js-serv js-multiplay-tree" href="#comment_2548261">восстановить</a>
+						</li>-->
+						
+						<li>
+							<ul class="vote voting positive no_auth expired">
+								<li class="mark"><span>+1</span></li>
+								<li class="buttons">
+									<a rev="voter-for-comment:2548261" class="vote_minus vote-for-comment" title="Плохой комментарий"></a>
+									<a rev="voter-for-comment:2548261" class="vote_plus vote-for-comment" title="Хороший комментарий"></a>
+								</li>
+							</ul>
+						</li>
+						
+					</ul>
+
+				</div>
+
+				<div class="entry-content">
+					<div class="entry-content-only">
+					    Хороший, краткий, доступный обзор. Буду ждать продолжения.
+					</div>
+					
+				</div>
+
+				<div id="reply_form_2548261" class="reply_form">
+
+					
+				</div>
+			
+
+			
+			
+			
+
+			
+
+		</li>
+	
+		<li id="comment_2548516" class="comment_holder vote_holder">
+			
+				<div class="msg-meta">
+					<div class="folding-dot-holder"><div class="folding-dot"></div></div>
+					<ul class="menu info author hcard">
+						<li class="avatar">
+							<a href="http://habrahabr.ru/users/sergehog/" title="sergehog">
+								<img src="http://habrahabr.ru/media/thumb/25/56/67/37517/37517_24x24.jpg" alt="sergehog" />
+								<b></b>
+							</a>
+						</li>
+						<li class="fn nickname username">
+							<a href="http://habrahabr.ru/users/sergehog/" class="url">sergehog</a>,
+						</li>
+						<li class="date">
+							<abbr class="published" title="2010-02-24T10:41:58+03:00">24 февраля 2010, 10:41</abbr>
+						</li>
+						<li class="bookmark">
+							<a href="#comment_2548516" title="Ссылка на комментарий" rel="bookmark">#</a>
+						</li>
+						
+						
+						<li class="down-to-child hidden"><a title="Обратно" onclick="return commentForm.goToChildComment(this);" href="#">&darr;</a></li>
+						<!--<li class="single-tree">
+							<a class="js-serv js-single-tree" href=''>ветка</a>
+							<a class="js-serv js-multiplay-tree" href="#comment_2548516">восстановить</a>
+						</li>-->
+						
+						<li>
+							<ul class="vote voting positive no_auth expired">
+								<li class="mark"><span>+1</span></li>
+								<li class="buttons">
+									<a rev="voter-for-comment:2548516" class="vote_minus vote-for-comment" title="Плохой комментарий"></a>
+									<a rev="voter-for-comment:2548516" class="vote_plus vote-for-comment" title="Хороший комментарий"></a>
+								</li>
+							</ul>
+						</li>
+						
+					</ul>
+
+				</div>
+
+				<div class="entry-content">
+					<div class="entry-content-only">
+					    Супер! <br/>
+Каждый раз когда писал громоздкие «for» мечтал о подобной параллелизации. В ближайшее же время опробую.<br/>
+<br/>
+Вот еще какой вопрос знатокам, сложно ли это прикрутить это к gcc или другим компиляторам кроме Visual Studio? 
+					</div>
+					
+				</div>
+
+				<div id="reply_form_2548516" class="reply_form">
+
+					
+				</div>
+			
+
+			
+			
+			
+
+			
+				<ul class="hentry">
+	
+		<li id="comment_2548539" class="comment_holder vote_holder">
+			
+				<div class="msg-meta">
+					<div class="folding-dot-holder"><div class="folding-dot"></div></div>
+					<ul class="menu info author hcard">
+						<li class="avatar">
+							<a href="http://habrahabr.ru/users/spybot/" title="spybot">
+								<img src="http://habrahabr.ru/media/thumb/7c/c9/99/9559/9559_24x24.jpg" alt="spybot" />
+								<b></b>
+							</a>
+						</li>
+						<li class="fn nickname username">
+							<a href="http://habrahabr.ru/users/spybot/" class="url">spybot</a>,
+						</li>
+						<li class="date">
+							<abbr class="published" title="2010-02-24T10:53:23+03:00">24 февраля 2010, 10:53</abbr>
+						</li>
+						<li class="bookmark">
+							<a href="#comment_2548539" title="Ссылка на комментарий" rel="bookmark">#</a>
+						</li>
+						
+						<li class="up-to-parent"><a title="Ответ на" onclick="return commentForm.goToParentComment(this);" href="#comment_2548516">&uarr;</a></li>
+						<li class="down-to-child hidden"><a title="Обратно" onclick="return commentForm.goToChildComment(this);" href="#">&darr;</a></li>
+						<!--<li class="single-tree">
+							<a class="js-serv js-single-tree" href='#comment_2548516'>ветка</a>
+							<a class="js-serv js-multiplay-tree" href="#comment_2548539">восстановить</a>
+						</li>-->
+						
+						<li>
+							<ul class="vote voting positive no_auth expired">
+								<li class="mark"><span>+1</span></li>
+								<li class="buttons">
+									<a rev="voter-for-comment:2548539" class="vote_minus vote-for-comment" title="Плохой комментарий"></a>
+									<a rev="voter-for-comment:2548539" class="vote_plus vote-for-comment" title="Хороший комментарий"></a>
+								</li>
+							</ul>
+						</li>
+						
+					</ul>
+
+				</div>
+
+				<div class="entry-content">
+					<div class="entry-content-only">
+					    GCC поддерживает OpenMP с версии 4.2.
+					</div>
+					
+				</div>
+
+				<div id="reply_form_2548539" class="reply_form">
+
+					
+				</div>
+			
+
+			
+			
+			
+
+			
+
+		</li>
+	
+		<li id="comment_2557011" class="comment_holder vote_holder">
+			
+				<div class="msg-meta">
+					<div class="folding-dot-holder"><div class="folding-dot"></div></div>
+					<ul class="menu info author hcard">
+						<li class="avatar">
+							<a href="http://habrahabr.ru/users/reddot/" title="reddot">
+								<img src="http://habrahabr.ru/media/thumb/be/e5/5e/34208/34208_24x24.jpg" alt="reddot" />
+								<b></b>
+							</a>
+						</li>
+						<li class="fn nickname username">
+							<a href="http://habrahabr.ru/users/reddot/" class="url">reddot</a>,
+						</li>
+						<li class="date">
+							<abbr class="published" title="2010-02-26T12:32:16+03:00">26 февраля 2010, 12:32</abbr>
+						</li>
+						<li class="bookmark">
+							<a href="#comment_2557011" title="Ссылка на комментарий" rel="bookmark">#</a>
+						</li>
+						
+						<li class="up-to-parent"><a title="Ответ на" onclick="return commentForm.goToParentComment(this);" href="#comment_2548516">&uarr;</a></li>
+						<li class="down-to-child hidden"><a title="Обратно" onclick="return commentForm.goToChildComment(this);" href="#">&darr;</a></li>
+						<!--<li class="single-tree">
+							<a class="js-serv js-single-tree" href='#comment_2548516'>ветка</a>
+							<a class="js-serv js-multiplay-tree" href="#comment_2557011">восстановить</a>
+						</li>-->
+						
+						<li>
+							<ul class="vote voting positive no_auth expired">
+								<li class="mark"><span>+1</span></li>
+								<li class="buttons">
+									<a rev="voter-for-comment:2557011" class="vote_minus vote-for-comment" title="Плохой комментарий"></a>
+									<a rev="voter-for-comment:2557011" class="vote_plus vote-for-comment" title="Хороший комментарий"></a>
+								</li>
+							</ul>
+						</li>
+						
+					</ul>
+
+				</div>
+
+				<div class="entry-content">
+					<div class="entry-content-only">
+					    reddot@doone:~/default/samples/openmp$ sudo apt-get install libgomp1<br/>
+reddot@doone:~/default/samples/openmp$ cat hello.c<br/>
+#include &lt;stdio.h&gt;<br/>
+<br/>
+int main()<br/>
+{<br/>
+ #pragma omp parallel<br/>
+ printf(«hello world\n»);<br/>
+ return 0;<br/>
+}<br/>
+<br/>
+reddot@doone:~/default/samples/openmp$ gcc -Wall -Wextra -fopenmp hello.c<br/>
+reddot@doone:~/default/samples/openmp$ ./a.out<br/>
+hello world<br/>
+hello world<br/>
+
+					</div>
+					
+				</div>
+
+				<div id="reply_form_2557011" class="reply_form">
+
+					
+				</div>
+			
+
+			
+			
+			
+
+			
+
+		</li>
+	
+</ul>
+
+			
+
+		</li>
+	
+		<li id="comment_2548650" class="comment_holder vote_holder">
+			
+				<div class="msg-meta">
+					<div class="folding-dot-holder"><div class="folding-dot"></div></div>
+					<ul class="menu info author hcard">
+						<li class="avatar">
+							<a href="http://habrahabr.ru/users/Unforgiven/" title="Unforgiven">
+								<img src="http://habrahabr.ru/media/thumb/04/43/3c/21321/21321_24x24.png" alt="Unforgiven" />
+								<b></b>
+							</a>
+						</li>
+						<li class="fn nickname username">
+							<a href="http://habrahabr.ru/users/Unforgiven/" class="url">Unforgiven</a>,
+						</li>
+						<li class="date">
+							<abbr class="published" title="2010-02-24T11:31:17+03:00">24 февраля 2010, 11:31</abbr>
+						</li>
+						<li class="bookmark">
+							<a href="#comment_2548650" title="Ссылка на комментарий" rel="bookmark">#</a>
+						</li>
+						
+						
+						<li class="down-to-child hidden"><a title="Обратно" onclick="return commentForm.goToChildComment(this);" href="#">&darr;</a></li>
+						<!--<li class="single-tree">
+							<a class="js-serv js-single-tree" href=''>ветка</a>
+							<a class="js-serv js-multiplay-tree" href="#comment_2548650">восстановить</a>
+						</li>-->
+						
+						<li>
+							<ul class="vote voting positive no_auth expired">
+								<li class="mark"><span>+1</span></li>
+								<li class="buttons">
+									<a rev="voter-for-comment:2548650" class="vote_minus vote-for-comment" title="Плохой комментарий"></a>
+									<a rev="voter-for-comment:2548650" class="vote_plus vote-for-comment" title="Хороший комментарий"></a>
+								</li>
+							</ul>
+						</li>
+						
+					</ul>
+
+				</div>
+
+				<div class="entry-content">
+					<div class="entry-content-only">
+					    Есть ли средства отладки (оч желательно — бесплатные), чтобы увидеть сколько потоков запущены, какие переменные в каждом из них, над какими данными выполняются операции и т д...?
+					</div>
+					
+				</div>
+
+				<div id="reply_form_2548650" class="reply_form">
+
+					
+				</div>
+			
+
+			
+			
+			
+
+			
+				<ul class="hentry">
+	
+		<li id="comment_2550055" class="comment_holder vote_holder">
+			
+				<div class="msg-meta">
+					<div class="folding-dot-holder"><div class="folding-dot"></div></div>
+					<ul class="menu info author hcard">
+						<li class="avatar">
+							<a href="http://habrahabr.ru/users/izard/" title="izard">
+								<img src="http://habrahabr.ru/i/avatars/stub-user-small.gif" alt="izard" />
+								<b></b>
+							</a>
+						</li>
+						<li class="fn nickname username">
+							<a href="http://habrahabr.ru/users/izard/" class="url">izard</a>,
+						</li>
+						<li class="date">
+							<abbr class="published" title="2010-02-24T16:42:50+03:00">24 февраля 2010, 16:42</abbr>
+						</li>
+						<li class="bookmark">
+							<a href="#comment_2550055" title="Ссылка на комментарий" rel="bookmark">#</a>
+						</li>
+						
+						<li class="up-to-parent"><a title="Ответ на" onclick="return commentForm.goToParentComment(this);" href="#comment_2548650">&uarr;</a></li>
+						<li class="down-to-child hidden"><a title="Обратно" onclick="return commentForm.goToChildComment(this);" href="#">&darr;</a></li>
+						<!--<li class="single-tree">
+							<a class="js-serv js-single-tree" href='#comment_2548650'>ветка</a>
+							<a class="js-serv js-multiplay-tree" href="#comment_2550055">восстановить</a>
+						</li>-->
+						
+						<li>
+							<ul class="vote voting  no_auth expired">
+								<li class="mark"><span>0</span></li>
+								<li class="buttons">
+									<a rev="voter-for-comment:2550055" class="vote_minus vote-for-comment" title="Плохой комментарий"></a>
+									<a rev="voter-for-comment:2550055" class="vote_plus vote-for-comment" title="Хороший комментарий"></a>
+								</li>
+							</ul>
+						</li>
+						
+					</ul>
+
+				</div>
+
+				<div class="entry-content">
+					<div class="entry-content-only">
+					    Intel Thread profiler — показывает достаточно наглядно, но это не совсем отладчик. Бесплатный первый месяц, потом можно повторить.
+					</div>
+					
+				</div>
+
+				<div id="reply_form_2550055" class="reply_form">
+
+					
+				</div>
+			
+
+			
+			
+			
+
+			
+
+		</li>
+	
+</ul>
+
+			
+
+		</li>
+	
+</ul>
+
+			
+			
+
+			
+
+			
+				<div class="info-text">Только зарегистрированные пользователи могут оставлять комментарии. <a href="http://habrahabr.ru/login/">Войдите</a>, пожалуйста.</div>
+			
+		</div>
+	
+	
+
+
+
+	
+
+	</div>
+
+	<div id="sidebar">
+	   
+
+	  
+	  
+		
+
+		
+  	
+	
+
+	
+
+	<!-- // Widgets -->
+	<div>
+	
+		<div class="company-widget">
+		<div class="company-banner">
+			<a href="http://intel.ly/nJloqR">
+			<img src="http://habrahabr.ru/media/company/widgets/c1/1d/d2/45974.jpg" />
+			</a>
+		</div>
+
+		<div class="announce">
+			
+		</div>
+</div>
+	
+		<div class="company-widget" style="text-align: center">
+		<div class="company-banner">
+			<a href="http://twitter.com/intelrussia">
+			<img src="http://habrahabr.ru/media/company/widgets/08/87/79/42485.png" />
+			</a>
+		</div>
+
+		<div class="announce">
+			<a href="http://twitter.com/intelrussia"><b>Официальный twitter компании Intel в России</b></a>.<br />
+Все самые свежие новости компании, пресс-релизы, конкурсы, отчёты, фотографии и многое другое.
+		</div>
+</div>
+	
+	</div>
+	<!-- // Widgets -->
+
+
+	
+	
+<div class="live help">
+	<div class="bg-bott-r"><div class="bg-bott-l">
+		<div class="side-side">
+			<h3>Блог &darr;</h3>
+			<ul>
+				
+				<li><a href="http://habrahabr.ru/company/intel/blog/130588/">«Слабо загрузить 40 ядер?» или простой конкурс параллельного программирования Acceler8 2011</a> <small>17 октября 2011, 19:26</small></li>
+				
+				<li><a href="http://habrahabr.ru/company/intel/blog/130326/">Разрабатываем игры с Intel: осенняя серия вебинаров</a> <small>13 октября 2011, 14:49</small></li>
+				
+				<li><a href="http://habrahabr.ru/company/intel/blog/130179/">До чего техника дошла</a> <small>11 октября 2011, 16:48</small></li>
+				
+				<li><a href="http://habrahabr.ru/company/intel/blog/128797/">Плоды IDF: Atom Android, SSD 710, будущее</a> <small>20 сентября 2011, 18:18</small></li>
+				
+				<li><a href="http://habrahabr.ru/company/intel/blog/128579/">Ультрабуки: тоньше, мощнее, дешевле</a> <small>16 сентября 2011, 17:02</small></li>
+				
+				<li><a href="http://habrahabr.ru/company/intel/blog/128425/">Itanium Poulson: что нового</a> <small>15 сентября 2011, 13:22</small></li>
+				
+				<li><a href="http://habrahabr.ru/company/intel/blog/128021/">Почему Intel любит конкурсы</a> <small> 9 сентября 2011, 11:34</small></li>
+				
+				<li><a href="http://habrahabr.ru/company/intel/blog/126266/">Кремниевый коктейль</a> <small> 7 сентября 2011, 08:58</small></li>
+				
+				<li><a href="http://habrahabr.ru/company/intel/blog/127491/">ArBB, Cilk+, OpenMP, OpenCL, TBB — День Знаний или День Выборов</a> <small> 1 сентября 2011, 10:52</small></li>
+				
+				<li><a href="http://habrahabr.ru/company/intel/blog/127413/">Снова по плате</a> <small>31 августа 2011, 11:52</small></li>
+				
+			</ul>
+		</div>
+		<br>
+	</div></div><!-- // for bottom rounded corners -->
+
+</div>
+
+	
+<div class="live help">
+	<div class="bg-bott-r"><div class="bg-bott-l">
+		<div class="side-side">
+			<h3>Ссылки &darr;</h3>
+			<ul>
+				
+				<li><a href="http://twitter.com/intelrussia">Twitter: Intel в России</a> <small>twitter.com</small></li>
+				
+				<li><a href="http://twitter.com/intelsoftwareru">Twitter: Intel о софте</a> <small>twitter.com</small></li>
+				
+			</ul>
+		</div>
+		<br>
+	</div></div><!-- // for bottom rounded corners -->
+
+</div>
+
+	
+
+
+	</div>
+
+</div>
+</div>
+
+<div id="footer">
+	<div class="footer-conttent">
+		<div class="bottom_menu">
+			
+			
+			<dl>
+				<dd><a href="http://habrahabr.ru/login/">Войти</a></dd>
+				<dd><a href="http://habrahabr.ru/register/">Регистрация</a></dd>
+			</dl>
+			
+			<dl class="sections">
+				<dt>Разделы</dt>
+				
+				<dd><a href="http://habrahabr.ru/qa/">Q&A</a></dd>
+				<dd><a href="http://habrahabr.ru/events/">События</a></dd>
+				<!--dd><a href="http://habrahabr.ru/links/">Ссылки</a></dd-->
+				<dd><a href="http://habrahabr.ru/job/">Работа</a></dd>
+				<dd><a href="http://habrahabr.ru/bloglist/">Блоги</a></dd>
+				<dd><a href="http://habrahabr.ru/companies/">Компании</a></dd>
+				<dd><a href="http://habrahabr.ru/people/">Люди</a></dd>
+				<dd><a href="http://habrahabr.ru/top/">Лучшие</a></dd>
+			</dl>
+			<dl>
+				<dt>Блоги</dt>
+				<dd><a href="http://habrahabr.ru/">Все</a></dd>
+				<dd><a href="http://habrahabr.ru/blogs/">Тематические</a></dd>
+				<dd><a href="http://habrahabr.ru/corporative/">Корпоративные</a></dd>
+				<!--dd><a href="http://habrahabr.ru/personal/">Личные</a></dd-->
+				<dd><a href="http://habrahabr.ru/sandbox/">Песочница</a></dd>
+			</dl>
+			<dl>
+				<dt>Инфо</dt>
+				<dd><a href="http://habrahabr.ru/info/about/">О сайте</a></dd>
+				<dd><a href="http://habrahabr.ru/info/help/rules/">Правила</a></dd>
+				<dd><a href="http://habrahabr.ru/info/help/">Помощь</a></dd>
+				<dd><a href="http://habrahabr.ru/info/agreement/">Соглашение</a></dd>
+				<dd><a href="http://habrahabr.ru/info/stats/">Статистика</a></dd>
+			</dl>
+			<dl>
+				<dt>Услуги</dt>
+				<dd><a href="http://habrahabr.ru/info/advertising/">Реклама</a></dd>
+				<dd><a href="http://habrahabr.ru/info/advertising/corporate/">Корпоративные пакеты</a></dd>
+				<dd><a href="http://habrahabr.ru/info/advertising/workshops/">Семинары</a></dd>
+			</dl>
+		</div>
+
+		<a class="footer_logo" href="http://thematicmedia.ru/">Тематические Медиа</a>
+		<div id="about">
+			<span style="margin-left:4px;">© 2006&#8211;2011</span> <br/>«<a href="http://www.thematicmedia.ru/">Тематические Медиа</a>»<br/>
+			<div style="margin-top: 10px; margin-left:6px;">
+				Служба поддержки:<br/>
+				<a href="mailto:support@habrahabr.ru" title="адрес службы поддержки пользователей">support@habrahabr.ru</a><br/><br/><br/>
+				<a href="http://m.habrahabr.ru">Мобильная версия</a>
+			</div> 
+		</div>
+		
+	</div>
+	
+</div>
+
+
+
+	
+
+
+	
+
+<script type="text/javascript">
+/*<![CDATA[*/
+var _gaq = _gaq || [];
+_gaq.push(
+    ['_setAccount', 'UA-726094-1'],
+    ['_setDomainName', '.habrahabr.ru'],
+    ["_addOrganic", "mail.ru", "q"],
+    ["_addOrganic","rambler.ru", "words"],
+    ["_addOrganic","nigma.ru", "s"],
+    ["_addOrganic","blogs.yandex.ru", "text"],
+    ["_addOrganic","webalta.ru", "q"],
+    ["_addOrganic","aport.ru", "r"],
+    ["_addOrganic","akavita.by", "z"],
+    ["_addOrganic","meta.ua", "q"],
+    ["_addOrganic","bigmir.net", "q"],
+    ["_addOrganic","tut.by", "query"],
+    ["_addOrganic","all.by", "query"],
+    ["_addOrganic","i.ua", "q"],
+    ["_addOrganic","online.ua", "q"],
+    ["_addOrganic","a.ua", "s"],
+    ["_addOrganic","ukr.net", "search_query"],
+    ["_addOrganic","search.com.ua", "q"],
+    ["_addOrganic","search.ua", "query"],
+    ["_addOrganic","poisk.ru", "text"],
+    ["_addOrganic","km.ru", "sq"],
+    ["_addOrganic","liveinternet.ru", "ask"],
+    ["_addOrganic","gogo.ru", "q"],
+    ["_addOrganic","gde.ru", "keywords"],
+    ["_addOrganic","quintura.ru", "request"],
+    ['_trackPageview']
+);
+document.documentElement.firstChild.appendChild(ga);
+/* ]]>*/
+</script>
+
+
+<!-- YaMetrics -->
+<script type="text/javascript"><!--
+var ya_class = 1;
+var ya_cid = 14199;
+//--></script>
+<script type="text/javascript" src="http://bs.yandex.ru/resource/watch.js"></script>
+<noscript><div style="display:inline;"><img src="http://bs.yandex.ru/watch/14199?cnt-class=1" width="1" height="1" alt="" /></div></noscript>
+
+
+
+
+
+<script>
+var mb_random = Math.round(Math.random() * 100000);
+document.write("<script src='http://pink.habralab.ru/cgi-bin/iframe/Gemius_other?"+mb_random+"&options=FT'></scr"+"ipt>");
+</script>
+
+
+
+
+  <div id="help-tip-text"  class="">
+		<div id="help-tip-text-content"></div>
+		<div id="help-tip-text-arrow"></div>
+	</div>
+	
+</body>
+</html>

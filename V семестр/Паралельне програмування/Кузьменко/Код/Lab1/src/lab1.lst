@@ -1,0 +1,118 @@
+GNAT GPL 2014 (20140331)
+Copyright 1992-2014, Free Software Foundation, Inc.
+
+Compiling: lab1.adb (source file time stamp: 2014-09-09 20:23:14)
+
+     1. -----------------------------------------------------
+     2. --                                                 --
+     3. --    Parallel and distributed computing           --
+     4. --      Lab 1. Routines and packages               --
+     5. --                                                 --
+     6. --                                                 --
+     7. --    F1: 1.24 E = A + C * (MA * MZ) + B           --
+     8. --    F2: 2.14 MC = SORT(MA + MB * MM)             --
+     9. --    F3: 3.18 p = MAX(SORT(MS) + MA* MM)          --
+    10. --                                                 --
+    11. --    Author Kuzmenko Vladimir Z.                  --
+    12. --    Group IO-21                                  --
+    13. --    Date 10.09.2014                              --
+    14. --                                                 --
+    15. -----------------------------------------------------
+    16.
+    17. with Ada.Text_IO, Ada.Integer_Text_IO;
+    18. with data;
+    19. use Ada.Text_IO, Ada.Integer_Text_IO;
+    20.
+    21. procedure Lab1 is
+    22.    package data3 is new data (3);
+    23.    use data3;
+    24.
+    25.    p                      : Integer;
+    26.    A, B, C, E             : Vector;
+    27.    MA, MB, MC, MM, MS, MZ : Matrix;
+    28. begin
+    29.    --------------
+    30.    --Input Data--
+    31.    --------------
+    32.
+    33.    Put_Line ("Input vector A");
+    34.    Vector_Input (A);
+    35.    Vector_Output (A);
+    36.    New_Line;
+    37.
+    38.    Put_Line ("Input vector B");
+    39.    Vector_Input (B);
+    40.    Vector_Output (B);
+    41.    New_Line;
+    42.
+    43.    Put_Line ("Input vector C");
+    44.    Vector_Input (C);
+    45.    Vector_Output (C);
+    46.    New_Line;
+    47.
+    48.    Put_Line ("Input matrix MA");
+    49.    Matrix_Input (MA);
+    50.    Matrix_Output (MA);
+    51.    New_Line;
+    52.
+    53.    Put_Line ("Input matrix MB");
+    54.    Matrix_Input (MB);
+    55.    Matrix_Output (MB);
+    56.    New_Line;
+    57.
+    58.    Put_Line ("Input matrix MM");
+    59.    Matrix_Input (MM);
+    60.    Matrix_Output (MM);
+    61.    New_Line;
+    62.
+    63.    Put_Line ("Input matrix MS");
+    64.    Matrix_Input (MS);
+    65.    Matrix_Output (MS);
+    66.    New_Line;
+    67.
+    68.    Put_Line ("Input matrix MZ");
+    69.    Matrix_Input (MZ);
+    70.    Matrix_Output (MZ);
+    71.    New_Line;
+    72.
+    73.    ---------------
+    74.    --Calculation--
+    75.    ---------------
+    76.    Func1 (A, B, C, MA, MZ, E);
+    77.    Func2 (MA, MB, MM, MC);
+    78.    Func3 (MA, MM, MS, p);
+    79.
+    80.    ---------------
+    81.    --Output data--
+    82.    ---------------
+    83.    Put ("Function 1, vector E");
+    84.    Vector_Output (E);
+    85.    New_Line;
+    86.
+    87.    Put ("Function 2, matrix MC");
+    88.    Matrix_Output (MC);
+    89.    New_Line;
+    90.
+    91.    Put ("Function 3, value p");
+    92.    Put (p);
+    93.    New_Line;
+    94.
+    95.    ----------------------
+    96.    --Use "private" type--
+    97.    ----------------------
+    98.
+    99.    --OK--
+   100.    --appropriation--
+   101.    B := A;
+   102.    Put_Line ("It's ok");
+   103.    --compare--
+   104.    if A = B then
+   105.       Put_Line ("It's ok");
+   106.    end if;
+   107.
+   108.    --error--
+   109.    --B(1):=A(1)+2;
+   110.
+   111. end Lab1;
+
+ 111 lines: No errors

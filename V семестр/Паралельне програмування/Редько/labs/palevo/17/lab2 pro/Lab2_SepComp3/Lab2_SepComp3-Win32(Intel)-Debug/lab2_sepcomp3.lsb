@@ -1,0 +1,177 @@
+Source file: ..\lab2_sepcomp3.adb   Thu Oct 01 01:15:08 2009
+
+    1 ----------------------------------------------------------------
+    2 --              Paralel and distributed computing             --
+    3 --                     Laboratory work #2                     --
+    4 --                   IO-73 Rukavishnikov Gleb                 --
+    5 ----------------------------------------------------------------
+    6 --Variant: 1.12, 2.20, 3.24                                   --
+    7 --F1:  A=B+C-D*e                                              --
+    8 --F2:  MD=MA+MB-MC*MM                                         --
+    9 --F3:  k=min(MA*MB*å)                                         --
+   10 ----------------------------PACK PROGRAM------------------------
+   11 --This program uses StartPack package                         --
+   12 --3rd variant of separate compilation                         --
+   13 ----------------------------------------------------------------
+   14 
+   15 
+   16 generic
+   17       N: integer;
+   18 
+   19 package Vector_F1 is
+   20 
+   21    --N: integer := 3;
+   22 
+   23    type vector is private;
+   24 
+   25    ---e = (a*b) + (c*d);
+   26     procedure Func1(a: out Vector; b, c, d: in Vector; e:in integer);
+   27 
+   28    private
+   29       type Vector is array (1..N) of Integer;
+   30 
+   31       ---Vector operations
+   32       ----Multiplication of vectors a*b
+   33       function VectMult(a, b: Vector) return integer;
+   34 
+   35       ----Processing sum of vectors a+b
+   36       function VectSum(a, b: Vector) return Vector;
+   37 
+   38       ----Descending sort of vector a
+   39       procedure VectSort(a: in out Vector);
+   40 
+   41                 function PlusVect (A, B: in Vector) return Vector;
+   42                 function MinusVect (A, B: in Vector) return Vector;
+   43                 function multiVectNum (A: in Vector; e: in integer) return Vector;
+   44                 function MultiplyStep (A: in Vector; B: in Vector)  return integer;
+   45 end Vector_F1;
+   46 
+   47 
+   48 generic
+   49 package Vector_F1.Matrix_F2 is
+   50    --Types description--
+   51    type Matrix is array (1..N) of Vector;
+   52 
+   53    ---MC = SORT(MA + MB*MD)
+   54    procedure Func2(MA, MB, MC, MM: in Matrix; MD: out Matrix);
+   55 
+   56    ---Matrix operations
+   57    ----Multiplication of matrix a*b
+   58    function MatrixMult(a, b: Matrix) return Matrix;
+   59 
+   60 
+   61    ----Sum of matrix a+b
+   62    function MatrixSum(a, b: Matrix) return Matrix;
+   63 
+   64    ----Discrepancy of matrix a-b
+   65         function MatrixRizn(a, b: Matrix) return Matrix; 
+   66 
+   67         function MultiMatrNum (A: in Matrix; e: in integer) return matrix;
+   68 
+   69    -----Descending sort of strings of matrix m
+   70    procedure MatrixSort(m: in out Matrix);
+   71 
+   72    ----Searching maximum in matrix m
+   73    function MatrixMax(m: Matrix) return integer;
+   74 
+   75         ----Searching minimum in matrix m
+   76         function MatrixMin(m: Matrix) return integer;
+   77 
+   78 end Vector_F1.Matrix_F2;
+   79 
+   80 
+   81 generic
+   82 package Vector_F1.Matrix_F2.FIO is
+   83    --I/O operations
+   84    ---Output for Vector type
+   85    procedure VectOutput(A: Vector);
+   86 
+   87    ---Matrix output
+   88    procedure MatrixOutput(a: Matrix);
+   89 
+   90    ---Vector input
+   91    procedure VectInput(a: in out Vector);
+   92 
+   93    ---Matrix input
+   94    procedure MatrixInput(m: in out Matrix);
+   95 end Vector_F1.Matrix_F2.FIO;
+   96 
+   97 
+   98 generic
+   99 package Vector_F1.Matrix_F2.F3 is
+  100    ---k=min(MA*MB*å)  
+  101     function Func3(MA, MB:in Matrix; E: in integer) return integer;
+  102 
+  103 end Vector_F1.Matrix_F2.F3;
+  104 
+  105 
+  106 with Vector_F1,
+  107      Vector_F1.Matrix_F2,
+  108      Vector_F1.Matrix_F2.F3,
+  109      Vector_F1.Matrix_F2.FIO,
+  110      Ada.Text_IO, Ada.Integer_Text_IO;
+  111 use Ada.Text_IO, Ada.Integer_Text_IO;
+  112 
+  113 procedure Lab2_SepComp3 is
+  114    package Modu is new Vector_F1(3);
+  115    use Modu;
+  116 
+  117    package Modu_F2 is new Modu.Matrix_F2;
+  118    use Modu_F2;
+  119 
+  120    package Modu_F3 is new Modu_F2.F3;
+                 *
+*****Warning: LRM:6.4(11) Function Func3 might end without returning a value,
+*****        Program_Error will be raised if it does
+*****   (In instance of generic F3 in vector_f1-matrix_f2-f3.adb)
+  121    use Modu_F3;
+  122 
+  123    package Modu_IO is new Modu_F2.FIO;
+  124    use Modu_IO;
+  125 
+  126    --Main program variables
+  127    A, B, C, D: Vector;
+  128    MA, MB, MC, MD, MM: Matrix;
+  129    e, p:integer;
+  130 begin
+  131    --Func1
+  132    Put_Line("Func1");
+  133    Put_Line("Input vector B");
+  134    VectInput(B);
+  135    Put_Line("Input vector C");
+  136    VectInput(C);
+  137    Put_Line("Input vector D");
+  138    VectInput(D);
+  139         Put_Line("Input E");
+  140    Ada.Integer_Text_IO.Get(E);
+  141    Func1(A, B, C, D, e);
+  142    Put_Line("Func1 result");
+  143    VectOutput (A);
+  144    New_Line;
+  145 
+  146    --Func2
+  147    Put_Line("Func2");
+  148    Put_Line("Input matrix MA");
+  149    MatrixInput(MA);
+  150    Put_Line("Input matrix MB");
+  151    MatrixInput(MB);
+  152    Put_Line("Input matrix MC");
+  153    MatrixInput(MC);
+  154         Put_Line("Input matrix MM");
+  155    MatrixInput(MM);
+  156    Func2(MA, MB, MC, MD, MM);
+  157    Put_Line("Func2 result");
+  158    MatrixOutput(MM);
+  159 
+  160    --Func3
+  161    Put_Line("Func3");
+  162    Put_Line("Input matrix MA");
+  163    MatrixInput(MA);
+  164         Put_Line("Input matrix MB");
+  165         MatrixInput(MB);
+  166         Put_Line("Input E");
+  167    Ada.Integer_Text_IO.Get(E);
+  168    p := Func3(MA, MB, E);
+  169    Put_Line("Func3 result");
+  170    Ada.Integer_Text_IO.Put(p);
+  171 end Lab2_SepComp3;

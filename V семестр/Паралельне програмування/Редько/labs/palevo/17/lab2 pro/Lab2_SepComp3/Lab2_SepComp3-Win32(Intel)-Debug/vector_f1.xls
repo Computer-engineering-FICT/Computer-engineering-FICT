@@ -1,0 +1,78 @@
+Source file: ..\vector_f1.ads   Thu Oct 01 01:27:13 2009
+
+    1 ----------------------------------------------------------------
+    2 --              Paralel and distributed computing             --
+    3 --                     Laboratory work #2                     --
+    4 --                   IO-73 Rukavishnikov Gleb                 --
+    5 ----------------------------------------------------------------
+    6 --Variant: 1.12, 2.20, 3.24                                   --
+    7 --F1:  A=B+C-D*e                                              --
+    8 --F2:  MD=MA+MB-MC*MM                                         --
+    9 --F3:  k=min(MA*MB*å)                                         --
+   10 -------------------SPECIFICATION OF MAIN PACKAGE----------------
+   11 ----------------------------------------------------------------
+   12 
+   13 generic
+   14       N: integer;
+   15 
+   16 package Vector_F1 is
+   17 
+   18    --N: integer := 3;
+   19 
+   20    type vector is private;
+   21 
+   22    ---e = (a*b) + (c*d);
+   23     procedure Func1(a: out Vector; b, c, d: in Vector; e:in integer);
+   24 
+   25    private
+   26       type Vector is array (1..N) of Integer;
+   27 
+   28       ---Vector operations
+   29       ----Multiplication of vectors a*b
+   30       function VectMult(a, b: Vector) return integer;
+   31 
+   32       ----Processing sum of vectors a+b
+   33       function VectSum(a, b: Vector) return Vector;
+   34 
+   35       ----Descending sort of vector a
+   36       procedure VectSort(a: in out Vector);
+   37 
+   38                 function PlusVect (A, B: in Vector) return Vector;
+   39                 function MinusVect (A, B: in Vector) return Vector;
+   40                 function multiVectNum (A: in Vector; e: in integer) return Vector;
+   41                 function MultiplyStep (A: in Vector; B: in Vector)  return integer;
+   42 end Vector_F1;
+
+NAME                 KIND/FILE            DEF    REFERENCES (* if assigned)
+---------------------------------------------------------------------------
+A                    parameter           38      
+A                    parameter           39      
+A                    parameter           40      
+A                    parameter           41      
+B                    parameter           38      
+B                    parameter           39      
+B                    parameter           41      
+Func1                subprogram          23      
+MinusVect            subprogram          39      
+MultiplyStep         subprogram          41      
+N                    object              14      26 
+PlusVect             subprogram          38      
+VectMult             subprogram          30      
+VectSort             subprogram          36      
+VectSum              subprogram          33      
+Vector               type                26      30 33 36 38 39 40 41 
+Vector_F1            library package     16      42 
+a                    parameter           23      
+a                    parameter           30      
+a                    parameter           33      
+a                    parameter           36      
+b                    parameter           23      
+b                    parameter           30      
+b                    parameter           33      
+c                    parameter           23      
+d                    parameter           23      
+e                    parameter           23      
+e                    parameter           40      
+multiVectNum         subprogram          40      
+vector               type                20      23 
+

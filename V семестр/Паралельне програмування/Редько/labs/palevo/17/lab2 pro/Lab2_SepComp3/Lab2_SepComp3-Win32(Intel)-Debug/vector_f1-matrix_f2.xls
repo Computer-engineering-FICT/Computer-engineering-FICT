@@ -1,0 +1,78 @@
+Source file: ..\vector_f1-matrix_f2.ads   Thu Oct 01 01:27:16 2009
+
+    1 ----------------------------------------------------------------
+    2 --              Paralel and distributed computing             --
+    3 --                     Laboratory work #2                     --
+    4 --                   IO-73 Rukavishnikov Gleb                 --
+    5 ----------------------------------------------------------------
+    6 --Variant: 1.12, 2.20, 3.24                                   --
+    7 --F1:  A=B+C-D*e                                              --
+    8 --F2:  MD=MA+MB-MC*MM                                         --
+    9 --F3:  k=min(MA*MB*å)                                         --
+   10 ----------------------Vector_F1.Matrix_F2-----------------------
+   11 ----------------------------------------------------------------
+   12 generic
+   13 package Vector_F1.Matrix_F2 is
+   14    --Types description--
+   15    type Matrix is array (1..N) of Vector;
+   16 
+   17    ---MC = SORT(MA + MB*MD)
+   18    procedure Func2(MA, MB, MC, MM: in Matrix; MD: out Matrix);
+   19 
+   20    ---Matrix operations
+   21    ----Multiplication of matrix a*b
+   22    function MatrixMult(a, b: Matrix) return Matrix;
+   23 
+   24 
+   25    ----Sum of matrix a+b
+   26    function MatrixSum(a, b: Matrix) return Matrix;
+   27 
+   28    ----Discrepancy of matrix a-b
+   29         function MatrixRizn(a, b: Matrix) return Matrix; 
+   30 
+   31         function MultiMatrNum (A: in Matrix; e: in integer) return matrix;
+   32 
+   33    -----Descending sort of strings of matrix m
+   34    procedure MatrixSort(m: in out Matrix);
+   35 
+   36    ----Searching maximum in matrix m
+   37    function MatrixMax(m: Matrix) return integer;
+   38 
+   39         ----Searching minimum in matrix m
+   40         function MatrixMin(m: Matrix) return integer;
+   41 
+   42 end Vector_F1.Matrix_F2;
+
+NAME                 KIND/FILE            DEF    REFERENCES (* if assigned)
+---------------------------------------------------------------------------
+A                    parameter           31      
+Func2                subprogram          18      
+MA                   parameter           18      
+MB                   parameter           18      
+MC                   parameter           18      
+MD                   parameter           18      
+MM                   parameter           18      
+Matrix               type                15      18 22 26 29 31 34 37 40 
+MatrixMax            subprogram          37      
+MatrixMin            subprogram          40      
+MatrixMult           subprogram          22      
+MatrixRizn           subprogram          29      
+MatrixSort           subprogram          34      
+MatrixSum            subprogram          26      
+Matrix_F2            library package     13      42 
+MultiMatrNum         subprogram          31      
+N                    #1:vector_f1.ads            15 
+Vector               #1:vector_f1.ads            15 
+Vector_F1            #1:vector_f1.ads            13 
+a                    parameter           22      
+a                    parameter           26      
+a                    parameter           29      
+b                    parameter           22      
+b                    parameter           26      
+b                    parameter           29      
+e                    parameter           31      
+m                    parameter           34      
+m                    parameter           37      
+m                    parameter           40      
+
+    File #1 ..\vector_f1.ads

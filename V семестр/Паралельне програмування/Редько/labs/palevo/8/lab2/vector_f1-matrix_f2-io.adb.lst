@@ -1,0 +1,99 @@
+GNAT GPL 2009 (20090519)
+Copyright 1992-2009, Free Software Foundation, Inc.
+
+Compiling: vector_f1-matrix_f2-io.adb (source file time stamp: 2009-09-16 20:49:56)
+
+     1. with Ada.Text_IO, Ada.IO_Exceptions; use Ada.Text_IO;
+     2. with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
+     3.
+     4. package body Vector_F1.Matrix_F2.IO is
+     5.
+     6.    -- Vyvod vektora
+     7.    procedure Vector_Output(V: in Vector) is
+     8.    begin
+     9.       for i in 1..N loop
+    10.          put(" V("); put(i,2); put(")="); put(V(i),3);
+    11.       end loop;
+    12.       new_line;
+    13.    end Vector_Output;
+    14.
+    15.    -- Vvod vektora
+    16.    function Vector_Input return Vector is
+    17.       V: Vector;
+    18.    begin
+    19.       for i in 1..N loop
+    20.          loop
+    21.             begin
+    22.                put(" V("); put(i,2); put(")=");
+    23.                get(V(i)); new_line;
+    24.                exit;
+    25.             exception
+    26.                when Ada.IO_Exceptions.Data_Error =>
+    27.                   put("Error! Data is uncorrect. Try again: ");
+    28.                   Skip_Line;
+    29.             end;
+    30.          end loop;
+    31.       end loop;
+    32.       return V;
+    33.    end Vector_Input;
+    34.
+    35.    -- Vyvod matricy
+    36.    procedure Matrix_Output(M: in Matrix) is
+    37.    begin
+    38.         for i in 1..N loop
+    39.          for j in 1..N loop
+    40.             loop
+    41.                begin
+    42.                   put(" M("); put(i,2); put(","); put(j,2);
+    43.                   put(")="); put(M(i)(j),3);
+    44.                   exit;
+    45.                exception
+    46.                   when Ada.IO_Exceptions.Data_Error =>
+    47.                      put("Error! Data is uncorrect. Try again: ");
+    48.                      Skip_Line;
+    49.                end;
+    50.             end loop;
+    51.          end loop;
+    52.          new_line;
+    53.       end loop;
+    54.    end Matrix_Output;
+    55.
+    56.    -- Vvod matricy
+    57.    function Matrix_Input return Matrix is
+    58.       M: Matrix;
+    59.    begin
+    60.         for i in 1..N loop
+    61.          for j in 1..N loop
+    62.             put(" M("); put(i,2); put(",");
+    63.             put(j,2); put(")="); get(M(i)(j));
+    64.             new_line;
+    65.          end loop;
+    66.          new_line;
+    67.       end loop;
+    68.       return M;
+    69.    end Matrix_Input;
+    70.
+    71. end Vector_F1.Matrix_F2.IO;
+
+Compiling: vector_f1-matrix_f2-io.ads (source file time stamp: 2009-09-16 19:46:06)
+
+     1. generic
+     2.
+     3. package Vector_F1.Matrix_F2.IO is
+     4.
+     5.
+     6.    -- Vvod vektora
+     7.    function Vector_Input return Vector;
+     8.
+     9.    -- Vyvod vektora
+    10.    procedure Vector_Output(V: in Vector);
+    11.
+    12.    -- Vvod matricy
+    13.    function Matrix_Input return Matrix;
+    14.
+    15.    -- Vyvod matricy
+    16.    procedure Matrix_Output(M: in Matrix);
+    17.
+    18. end Vector_F1.Matrix_F2.IO;
+
+ 71 lines: No errors

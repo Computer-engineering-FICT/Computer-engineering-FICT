@@ -1,0 +1,238 @@
+Source file: ..\..\..\..\..\..\public\desktop\ןנמדנאללû\laba1   Tue Sep 27 14:21:54 2011
+
+    1 ----------------------------------
+    2 ----------------------------------
+    3 -- Laba1                                                --
+    4 -- Matviychyk Bogdan                    --
+    5 -- IO - 91                                              --
+    6 -- 27.09.2011                                   --
+    7 ----------------------------------
+    8 -- 1.6   a = (B*C)                              --
+    9 -- 2.19  v  = MAX(MA + MB*MC)   --
+   10 -- 3.12  E = MC*A + MB*B                --
+   11 ----------------------------------
+   12 ----------------------------------
+   13 
+   14 -------------------------------------------------------------------------
+   15 
+   16 with Text_IO,Ada.Integer_Text_IO; use Text_IO,Ada.Integer_Text_IO;
+   17  
+   18         package Lab1 is
+   19 
+   20         N: constant integer:=5;
+   21 
+   22         type TVector is private;
+   23         type TMatrix is private;
+   24 
+   25         procedure VectorInput (v: out TVector);
+   26         procedure MatrixInput (M: out TMatrix);
+   27         procedure VectorOutput (V: in TVector);
+   28         procedure MatrixOutput (M: in TMatrix);
+   29 
+   30         function Func1 (B,C:  in TVector) return integer;
+   31         function Func2 (MA,MB,mC: in TMatrix) return integer;
+   32         procedure Func3 (a,b: in TVector; S: out TVector;MC,MB: in out TMatrix); 
+   33 
+   34         private 
+   35                 type TVector is array (1..n) of integer;
+   36                 type TMatrix is array (1..n) of TVector;        
+   37 
+   38 end Lab1;
+   39 
+   40 -------------------------------------------------------------------------
+   41 package body Lab1 is
+   42         
+   43 --  procedure VectorInput
+   44 -- V[]=1
+   45 procedure VectorInput (v: out TVector) is
+   46         
+   47         i: integer;
+   48 
+   49         begin
+   50                 for I in 1..n loop
+   51                         V(i):=1;
+   52                 end loop;
+   53         end VectorInput;
+   54 
+   55 -- procedure MatrixInput
+   56 -- M[][]=1;
+   57 procedure MatrixInput (M: out TMatrix) is
+   58         
+   59         i,j:integer;
+   60 
+   61         begin
+   62                 for I in 1..n loop
+   63                         for J in 1..n loop
+   64                                 M(I)(J):=1;
+   65                         end loop;
+   66                 end loop;
+   67         end MatrixInput;
+   68 
+   69 --  procedure VectorOutput
+   70 procedure VectorOutput (V: in TVector) is
+   71         I: integer;
+   72         begin
+   73                 for I in 1..n loop
+   74                         put(v(i));
+   75                 end loop;
+   76                 new_line;
+   77         end VectorOutput;
+   78 
+   79 -- procedure MatrixOutput
+   80 procedure MatrixOutput (M: in TMatrix) is
+   81         
+   82         I,J: integer;
+   83 
+   84         begin
+   85                 for I in 1..n loop
+   86                         for J in 1..n loop
+   87                                 put(M(i)(j));
+   88                                 Put (" ");
+   89                         end loop;
+   90                         new_line;
+   91                 end loop;
+   92         end MatrixOutput;
+   93 
+   94 --                              function Func1
+   95 --                              1.6   a = (B*C)
+   96 
+   97 function Func1 (B,C: in TVector)return integer is
+   98         
+   99         a : integer:=0;
+  100         s : Integer:=0;
+  101 
+  102 begin
+  103                 --  a = (B*C)
+  104                 for i in 1..n loop
+  105                         s:=b(i)*c(i);
+  106                         a:=a+s;
+  107                 end loop;
+  108                 return A;
+  109         end Func1;
+  110 
+  111 --                                      function  Func2
+  112 --                                      2.19  v  = MAX(MA + MB*MC)
+  113 
+  114 function  Func2 (MA,MB,mC: in TMatrix) return integer is
+  115         
+  116         m: TMatrix;
+  117         S: tMatrix;
+  118         I,j,k: integer;
+  119 
+  120 begin
+  121                 --  M=MB*MC
+  122                 for i in 1..n loop
+  123                         for j in 1..n loop
+  124                                 m(i)(j):=0;
+  125                                 for k in 1..n loop
+  126                                         M(i)(j):=M(i)(j)+ MB(i)(k) * MC(K)(J);
+  127                                 end loop;
+  128                         end loop;
+  129                 end loop;
+  130                 
+  131                 -- S = M + MA
+  132                 for i in 1..n loop
+  133                         for j in 1..n loop
+  134                                 s(i)(j):=M(i)(j)+mA(i)(j);
+  135                                 end loop;
+  136                         end loop;
+  137                 k:=S(1)(1);
+  138                 
+  139                 -- MAX(S)
+  140                 for i in 1..n loop
+  141                         for j in 1..n-1 loop
+  142                                 if k <S(i)(J) then                                      
+  143                                 k:=     S(i)(j);
+  144                         end if;
+  145                 end loop;
+  146         end loop;
+  147         return k;
+  148 end Func2;
+  149 
+  150 --                                      procedure Func3
+  151 --                                      3.12  E = MC*A + MB*B
+  152 
+  153 procedure Func3 (a,b: in TVector; S: out TVector;MC,MB:in out TMatrix) is
+  154         
+  155         C: tVector;
+  156         D: TVector;
+  157 
+  158         begin           
+  159                 
+  160                 -- C = MC*A
+  161                 for i in 1..n loop
+  162                         C(i):=0;
+  163                         for j in 1..n loop
+  164                                         c(i):=c(i)+ MC(i)(j) * a(j);
+  165                         end loop;
+  166                 end loop;
+  167                 
+  168                 -- D = MB*B
+  169                 for i in 1..n loop
+  170                         D(i):=0;
+  171                         for j in 1..n loop
+  172                                         d(i):=d(i)+ MB(i)(j) * B(j);
+  173                         end loop;
+  174                 end loop;
+  175 
+  176                 -- S = C + D
+  177                 for i in 1..n loop
+  178                         S(i):=D(i)+c(i);
+  179                 end loop;
+  180         end Func3;
+  181 end Lab1;   
+  182 
+  183 ------------------------------------------------------------------------------
+  184 
+  185 with  Text_IO,lab1,Ada.Integer_Text_IO; use  Text_IO,lab1,Ada.Integer_Text_IO;
+  186 
+  187 procedure laba1 is
+  188         
+  189         A,B,C,S,d:TVector;
+  190         MA,MB,MC:TMatrix;
+  191         i:integer;
+  192 
+  193 begin
+  194         
+  195         Put_line ("*********************************************************");
+  196         put_Line ("Laba1");
+  197         put_line ("Matviychyk Bogdan");
+  198         put_line ("IO - 91");
+  199         Put_line ("*********************************************************");
+  200         New_Line;
+  201         New_Line;
+  202 
+  203         -- function Func1
+  204         vectorInput(c);
+  205         vectorInput(B);
+  206         i:=func1(B,C);
+  207         put_Line("func1 (1.6  a = (B*C))");
+  208         put(i);
+  209         New_Line;
+  210         Put_line ("*********************************************************");
+  211         new_line;
+  212 
+  213         -- function  Func2
+  214         MatrixInput(mA);
+  215         matrixInput(MB);
+  216         matrixInput(MC);
+  217         i := func2(MA,MB,mC);
+  218         put_Line("func2 (2.19  v  = MAX(MA + MB*MC))");
+  219         put(i);
+  220         New_Line;
+  221         Put_line ("*********************************************************");
+  222         New_Line;
+  223 
+  224         -- function  Func4
+  225         vectorInput(a);
+  226         vectorInput(B);
+  227         matrixInput(MB);
+  228         matrixInput(MC);
+  229         Func3(a,b,s,mB,MC);
+  230         Put_Line("func3 (3.12  E = MC*A + MB*B)");
+  231         VectorOutput(S);
+  232         New_Line;
+  233         Put_line ("*********************************************************");
+  234 
+  235 end laba1;
+  236 -------------------------------------------------------------------------------

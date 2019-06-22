@@ -1,0 +1,267 @@
+Source file: ..\data.adb   Wed Sep 17 20:51:58 2012
+
+    1 ------------------------------------------------------------------
+    2 --                                                              --
+    3 --              Parallel and Distributed Computing              --
+    4 --                  Laboratory work #2. Tasks                   --
+    5 --                                                              --
+    6 --  File: data.adb                                              --
+    7 --  Task: F1: E = A + B + C + D * (MA * MZ)                     -- 
+    8 --        F2: MD = (MA * MB) * TRANS(MC)                        --
+    9 --        F3: E = (MA * MM) * B + MB * SORT(A)                  --
+   10 --                                                              --
+   11 --  Author: Redko Alexander, group IO-01                        --
+   12 --  Date: 16.09.2012                                            --
+   13 --                                                              --
+   14 ------------------------------------------------------------------
+   15 
+   16 with Ada.Text_IO, Ada.Integer_Text_IO, ada.numerics.discrete_random, Ada.Strings, Ada.Strings.Fixed;
+   17 use Ada.Text_IO, Ada.Integer_Text_IO;
+   18 
+   19 package body Data is
+   20    
+   21    subtype Random_Range is Integer range -20..20;
+   22         package Random_Integer is new Ada.Numerics.Discrete_Random(Random_Range);
+   23         use Random_Integer;
+   24         G : Random_Integer.Generator;
+   25    Random_Item : Random_Range;
+   26 
+   27 
+   28    procedure Input (Way_To_Fill : in Character; Value : Integer; V : out Vector) is
+   29       Number : Integer;
+   30    begin
+   31       case Way_To_Fill is
+   32          when 'r' =>
+   33             Reset(G);
+   34                    for I in Index loop
+   35                         Random_Item := Random(G);
+   36                         V(I):= Random_Item;
+   37                    end loop;
+   38            when 'g' =>
+   39             Put ("Input vector: ");
+   40                 for I in Index loop
+   41                         Get(V(I));
+   42                 end loop;
+   43          when 'a' =>
+   44                         for I in Index loop
+   45                                 V(I) := Value;
+   46                         end loop;
+   47          when others =>
+   48             for I in Index loop
+   49                                 V(I) := 1;
+   50                         end loop;
+   51          end case;         
+   52 
+   53    end Input;
+   54    
+   55 
+   56    procedure Input (Way_To_Fill : in Character; Value : Integer; MA : out Matrix) is
+   57       Number : Integer := 3;
+   58    begin
+   59       case Way_To_Fill is
+   60          when 'r' =>
+   61             Reset(G);
+   62                            for I in Index loop
+   63                for J in Index loop
+   64                                 Random_Item := Random(G);
+   65                                 MA(I)(J) := Random_Item;
+   66                end loop;
+   67                            end loop;
+   68                    when 'g' =>
+   69             Put ("Input matrix: ");
+   70                         for I in Index loop
+   71                                 for J in Index loop
+   72                   Get(MA(I)(J));
+   73                end loop;
+   74                         end loop;
+   75          when 'a' =>
+   76                         for I in Index loop
+   77                for J in Index loop
+   78                                    MA(I)(J) := Value;
+   79                end loop;
+   80                         end loop;
+   81          when others =>
+   82                         for I in Index loop
+   83                for J in Index loop
+   84                                    MA(I)(J) := 0;
+   85                end loop;
+   86                         end loop;
+   87 
+   88       end case;
+   89 
+   90    end Input;
+   91 
+   92 
+   93    procedure Output (V : in Vector; File : File_Type) is
+   94    begin
+   95       for I in Index loop
+   96          Put(File, V(I));
+   97       end loop;
+   98       New_Line(File);
+   99    end Output;
+  100 
+  101    procedure Output (MA : in Matrix; File : File_Type) is
+  102    begin
+  103       for I in Index loop
+  104          for J in Index loop
+  105             Put(File, MA(I)(J));
+  106          end loop;
+  107          New_line(File);
+  108       end loop;
+  109       New_Line(File);
+  110    end Output;
+  111    
+  112 
+  113    procedure Output (V : in Vector) is
+  114    begin
+  115       New_Line;
+  116       for I in Index loop
+  117          Put(Item => V(I), Width => 6);
+  118       end loop;
+  119       New_Line;
+  120    end Output;
+  121 
+  122 
+  123    procedure Output (MA : in Matrix) is
+  124    begin
+  125       New_Line;
+  126       for I in Index loop
+  127          for J in Index loop
+  128             Put(Item => MA(i)(j), Width => 6);
+  129          end loop;
+  130          New_line;
+  131       end loop;
+  132       New_Line;
+  133    end Output;
+  134 
+  135 
+  136    function "*" --Matrix_Matrix_Multiply
+  137       (Left  : Matrix;
+  138        Right : Matrix) return Matrix;
+  139 
+  140 
+  141    function "*" --Vector_Matrix_Multiply
+  142       (Left  : Vector;
+  143       Right : Matrix) return Vector;
+  144 
+  145 
+  146    function "+" --Vector_Vector_Add
+  147      (Left  : Vector;
+  148       Right : Vector) return Vector;
+  149    
+  150    
+  151    procedure Transpose (A : in Matrix; R : out matrix);
+  152    procedure Sort (V : in Vector; A : out Vector);
+  153 
+  154 
+  155    procedure F1 
+  156       (VA, VB, VC, VD : in Vector;
+  157        MA, MZ         : in Matrix;
+  158        VE             : out Vector) is
+  159    begin      
+  160       VE := VA + VB + VC + VD * (MA * MZ); 
+  161    end F1;
+  162 
+  163 
+  164    procedure F2
+  165       (MA, MB, MC : in Matrix;
+  166        MD         : out Matrix) is
+  167        MCT : Matrix;
+  168    begin
+  169       Transpose(MC, MCT);
+  170       MD := (MA * MB) * MCT;
+  171 
+  172    end F2;
+  173    
+  174 
+  175    procedure F3
+  176       (VA, VB     : in Vector;
+  177        MA, MB, MM : in Matrix;
+  178        VE         : out Vector) is
+  179       VS : Vector;
+  180    begin
+  181       Sort(VA, VS);
+  182       VE := VB * (MA * MM) + VS * MB;
+  183    end F3;   
+  184    
+  185 
+  186    function "*"--Matrix_Matrix_Multiply
+  187      (Left  :  Matrix;
+  188       Right :  Matrix) return Matrix
+  189    is
+  190       MR : Matrix;
+  191    begin
+  192       for i in Index loop
+  193                    for J in Index loop
+  194                            MR(I)(J) := 0;
+  195                                 for K in Index loop
+  196                                         MR(I)(J) := MR(I)(J) + Left(I)(K) * Right(K)(J);
+  197                                 end loop;
+  198                         end loop;
+  199       end loop;
+  200       return MR;
+  201    end  "*";
+  202 
+  203 
+  204    function "*"--Vector_Matrix_Multiply
+  205      (Left  : Vector;
+  206       Right : Matrix) return Vector
+  207    is
+  208       R : Vector;
+  209    begin
+  210       for J in Index loop
+  211          R(j) := 0;
+  212          begin
+  213             for K in Index loop
+  214                R(J) := R(J) + Left(K) * Right(K )(J);
+  215             end loop;
+  216          end;
+  217       end loop;
+  218       return R;
+  219    end "*";
+  220    
+  221 
+  222    function "+"--Vector_Vector_Add
+  223      (Left  : Vector;
+  224       Right : Vector) return Vector
+  225    is
+  226       R : Vector;
+  227    begin
+  228       for J in Index loop
+  229          R (J) :=  Left (J) + Right (J);
+  230       end loop;
+  231       return R;
+  232    end "+";
+  233 
+  234 
+  235         procedure Transpose (A : in Matrix; R : out Matrix) is
+  236       begin
+  237          for J in Index loop
+  238             for K in Index loop
+  239                R (J)(K) := A (K)(j);
+  240             end loop;
+  241          end loop;
+  242       end Transpose;
+  243    
+  244 
+  245    procedure Sort (V : in Vector; A : out Vector) is
+  246       Min  : Positive;
+  247       Temp : Integer;
+  248    begin
+  249       A := V;
+  250       for I in A'First..A'Last - 1 loop
+  251          Min := I;
+  252          for J in I + 1..A'Last loop
+  253             if A (Min) > A (J) then
+  254                Min := J;
+  255             end if;
+  256          end loop;
+  257          if Min /= I then
+  258             Temp    := A (I);
+  259             A (I)   := A (Min);
+  260             A (Min) := Temp;
+  261          end if;
+  262       end loop;
+  263    end Sort;
+  264 
+  265 end Data;

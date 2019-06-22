@@ -1,0 +1,134 @@
+Source file: ..\lab2.adb   Wed Sep 17 20:51:58 2012
+
+    1 ------------------------------------------------------------------
+    2 --                                                              --
+    3 --              Parallel and Distributed Computing              --
+    4 --                  Laboratory work #2. Tasks                   --
+    5 --                                                              --
+    6 --  File: lab2.adb                                              --
+    7 --  Task: F1: E = A + B + C + D * (MA * MZ)                     -- 
+    8 --        F2: MD = (MA * MB) * TRANS(MC)                        --
+    9 --        F3: E = (MA * MM) * B + MB * SORT(A)                  --
+   10 --                                                              --
+   11 --  Author: Redko Alexander, group IO-01                        --
+   12 --  Date: 16.09.2012                                            --
+   13 --                                                              --
+   14 ------------------------------------------------------------------
+   15 
+   16 with Ada.Text_IO, Ada.Integer_text_iO, Data;
+   17 use Ada.Text_IO, Ada.Integer_text_iO;
+   18 
+   19 procedure Lab2 is 
+   20    
+   21    N : Natural;
+   22    Fill : Character;
+   23    file1, File2, File3 : File_Type;
+   24 
+   25 begin
+   26   
+   27    Put ("Input N: ");
+   28    Get (Item => N);
+   29    
+   30 
+   31    declare
+   32       
+   33       package Data_N is new Data(N);
+   34       use Data_N;
+   35 
+   36       Value : Integer := 0;
+   37 
+   38       A1, A3, B1, B3, C1, D1, E1, E3 : Vector;
+   39       MA1, MA2, MA3, MB2, MB3, MC2, MD2, MM3, MZ1 : Matrix;
+   40 
+   41    begin
+   42          
+   43       Put ("Enter r (fill random), g (fill manually)"&
+   44          "or a (fill all the elements any number): ");
+   45       Get (Fill);
+   46       if (Fill = 'a') then
+   47          Put ("Enter number: ");
+   48          Get (Value);
+   49       end if;
+   50 
+   51 
+   52       Put_Line ("Inputing data for F1...");
+   53       Input (Fill, Value, A1);
+   54       Input (Fill, Value, B1);
+   55       Input (Fill, Value, C1);
+   56       Input (Fill, Value, D1);
+   57       Input (Fill, Value, MA1);
+   58       Input (Fill, Value, MZ1);
+   59 
+   60       Put_Line ("Inputing data for F2...");
+   61       Input (Fill, Value, MA2);
+   62       Input (Fill, Value, MB2);
+   63       Input (Fill, Value, MC2);
+   64 
+   65       Put_Line ("Inputing data for F3...");
+   66       Input (fill, Value, MA3);
+   67       Input (Fill, Value, MM3);
+   68       Input (Fill, Value, B3);
+   69       Input (Fill, Value, MB3);
+   70       Input (Fill, Value, A3);
+   71       
+   72       declare
+   73          task Task_F1 is
+   74             pragma Priority(7);
+   75          end Task_F1;
+   76 
+   77          task body Task_F1 is
+   78          begin
+   79             delay 0.0;
+   80             Put_line("Started Task_F1");
+   81             F1 (A1, B1, C1, D1, MA1, MZ1, E1);
+   82             Create (File1, Out_File, "f1.txt");
+   83                                 Put_Line (File1, "Result of F1:");
+   84                                 Output (E1, File1);
+   85             Close(File1);
+   86             Put_line ("End Task_F1");
+   87          end Task_F1;
+   88 
+   89          task Task_F2 is 
+   90             pragma Priority(7);
+   91          end Task_F2;
+   92 
+   93          task body Task_F2 is
+   94          begin
+   95             delay 0.0;
+   96             Put_line ("Started Task_F2");
+   97             F2 (MA2, MB2, MC2, MD2);
+   98             Create (File2, Out_File, "f2.txt");
+   99                                 Put_Line (File2, "Result of F2:");
+  100                                 Output (MD2, File2);
+  101             Close(File2);
+  102             Put_line ("End Task_F2");
+  103          end Task_F2;
+  104 
+  105 
+  106          task Task_F3 is 
+  107             pragma Priority(7);
+  108          end Task_F3;
+  109 
+  110          task body Task_F3 is
+  111          begin 
+  112             delay 0.0;
+  113             F3 (A3, B3, MA3, MB3, MM3, E3);
+  114             Create (File3, Out_File, "f3.txt");
+  115                                 Put_Line (File3, "Result of F3:");
+  116                                 Output (E3, File3);
+  117             Close(File3);
+  118             Put_line ("End Task_F3");
+  119          end Task_F3;
+  120          
+  121       begin
+  122          null;
+  123       end;
+  124 
+  125 
+  126       null;
+  127    end;
+  128       
+  129 end Lab2;
+  130    
+  131      
+  132 

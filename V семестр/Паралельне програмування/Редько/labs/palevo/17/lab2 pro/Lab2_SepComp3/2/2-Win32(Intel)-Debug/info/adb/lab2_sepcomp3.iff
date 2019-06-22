@@ -1,0 +1,106 @@
+SOURCE: ..\..\lab2_sepcomp3.adb
+  SRCTIME: 1254246511    Tue Sep 29 20:48:31 2009
+  COMPSW: -eo -e 50 -m n -mr n -gc -ga
+COMPVER: 8.4
+MAXSEV: 10
+SRCDEP: ada.ada
+  SRCDEPTIME: 1184916558    Fri Jul 20 10:29:18 2007
+SRCDEP: ada.text_io.spc
+  SRCDEPTIME: 1184916516    Fri Jul 20 10:28:36 2007
+SRCDEP: ada.io_exceptions.dat
+  SRCDEPTIME: 1184916494    Fri Jul 20 10:28:14 2007
+SRCDEP: ada.integer_text_io.ada
+  SRCDEPTIME: 1184916492    Fri Jul 20 10:28:12 2007
+SRCDEP: ..\..\vector_f1.adb
+  SRCDEPTIME: 1253739248    Wed Sep 23 23:54:08 2009
+SRCDEP: ..\..\vector_f1-matrix_f2.adb
+  SRCDEPTIME: 1253739532    Wed Sep 23 23:58:52 2009
+SRCDEP: ..\..\vector_f1-matrix_f2-f3.adb
+  SRCDEPTIME: 1253739715    Thu Sep 24 00:01:55 2009
+UNIT: Vector_F1
+  UKIND: 9    PKG_GENERIC
+  NEED: Vector_F1
+    NEEDKIND: 8    PKG_BODY
+ENDUNIT
+UNIT: Vector_F1.Matrix_F2
+  UKIND: 9    PKG_GENERIC
+  DEP: Vector_F1
+    DEPKIND: 9    PKG_GENERIC
+    DEPSRC: ..\..\lab2_sepcomp3.adb
+    DEPSRCTIME: 1254246511    Tue Sep 29 20:48:31 2009
+  NEED: Vector_F1.Matrix_F2
+    NEEDKIND: 8    PKG_BODY
+ENDUNIT
+UNIT: Vector_F1.Matrix_F2.FIO
+  UKIND: 9    PKG_GENERIC
+  DEP: Vector_F1.Matrix_F2
+    DEPKIND: 9    PKG_GENERIC
+    DEPSRC: ..\..\lab2_sepcomp3.adb
+    DEPSRCTIME: 1254246511    Tue Sep 29 20:48:31 2009
+  DEP: Vector_F1
+    DEPKIND: 9    PKG_GENERIC
+    DEPSRC: ..\..\lab2_sepcomp3.adb
+    DEPSRCTIME: 1254246511    Tue Sep 29 20:48:31 2009
+  NEED: Vector_F1.Matrix_F2.FIO
+    NEEDKIND: 8    PKG_BODY
+ENDUNIT
+UNIT: Vector_F1.Matrix_F2.F3
+  UKIND: 9    PKG_GENERIC
+  DEP: Vector_F1.Matrix_F2
+    DEPKIND: 9    PKG_GENERIC
+    DEPSRC: ..\..\lab2_sepcomp3.adb
+    DEPSRCTIME: 1254246511    Tue Sep 29 20:48:31 2009
+  DEP: Vector_F1
+    DEPKIND: 9    PKG_GENERIC
+    DEPSRC: ..\..\lab2_sepcomp3.adb
+    DEPSRCTIME: 1254246511    Tue Sep 29 20:48:31 2009
+  NEED: Vector_F1.Matrix_F2.F3
+    NEEDKIND: 8    PKG_BODY
+ENDUNIT
+UNIT: Lab2_SepComp3
+  UKIND: 2    SUBP_BODY
+  DEP: Vector_F1.Matrix_F2.F3
+    DEPKIND: 8    PKG_BODY CODE_DEPENDENCY
+    DEPSRC: ..\..\vector_f1-matrix_f2-f3.adb
+    DEPSRCTIME: 1253739715    Thu Sep 24 00:01:55 2009
+  DEP: Vector_F1.Matrix_F2
+    DEPKIND: 8    PKG_BODY CODE_DEPENDENCY
+    DEPSRC: ..\..\vector_f1-matrix_f2.adb
+    DEPSRCTIME: 1253739532    Wed Sep 23 23:58:52 2009
+  DEP: Vector_F1
+    DEPKIND: 8    PKG_BODY CODE_DEPENDENCY
+    DEPSRC: ..\..\vector_f1.adb
+    DEPSRCTIME: 1253739248    Wed Sep 23 23:54:08 2009
+  DEP: Ada.Integer_Text_IO
+    DEPKIND: 10    PKG_INST
+    DEPSRC: ada.integer_text_io.ada
+    DEPSRCTIME: 1184916492    Fri Jul 20 10:28:12 2007
+  DEP: Ada.Text_IO
+    DEPKIND: 7    PKG_DECL
+    DEPSRC: ada.text_io.spc
+    DEPSRCTIME: 1184916516    Fri Jul 20 10:28:36 2007
+  DEP: Ada
+    DEPKIND: 7    PKG_DECL
+    DEPSRC: ada.ada
+    DEPSRCTIME: 1184916558    Fri Jul 20 10:29:18 2007
+  DEP: Vector_F1.Matrix_F2.FIO
+    DEPKIND: 9    PKG_GENERIC
+    DEPSRC: ..\..\lab2_sepcomp3.adb
+    DEPSRCTIME: 1254246511    Tue Sep 29 20:48:31 2009
+  DEP: Vector_F1.Matrix_F2.F3
+    DEPKIND: 9    PKG_GENERIC
+    DEPSRC: ..\..\lab2_sepcomp3.adb
+    DEPSRCTIME: 1254246511    Tue Sep 29 20:48:31 2009
+  DEP: Vector_F1.Matrix_F2
+    DEPKIND: 9    PKG_GENERIC
+    DEPSRC: ..\..\lab2_sepcomp3.adb
+    DEPSRCTIME: 1254246511    Tue Sep 29 20:48:31 2009
+  DEP: Vector_F1
+    DEPKIND: 9    PKG_GENERIC
+    DEPSRC: ..\..\lab2_sepcomp3.adb
+    DEPSRCTIME: 1254246511    Tue Sep 29 20:48:31 2009
+  NEED: system.rts.Sec_Stack_Pkg
+    NEEDKIND: 7    PKG_DECL
+  FEATURES: 16#20000000100000#(-1,-1,-1,-1,-1,-1)
+  MAINLINKNAME: lab2_sepcomp3
+ENDUNIT

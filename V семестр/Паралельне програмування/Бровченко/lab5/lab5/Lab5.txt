@@ -1,0 +1,28 @@
+#include <omp.h>
+#include "F1.h"
+#include "F2.h"
+#include "F3.h"
+
+const int N = 200;
+
+int main() {
+	cout << "Lab 5 start\n\n";
+	F1 f1 = F1(N);
+	F2 f2 = F2(N);
+	F3 f3 = F3(N);
+	#pragma omp parallel set_num_threads(3)
+	{
+		#pragma omp sections
+		{
+			#pragma omp section{f1.run();}
+			#pragma omp section{f2.run();}
+			#pragma omp section{f3.run();}
+
+		}
+	}
+
+	cout << "\nLab 5 end\n\n";
+	cout << "Press Enter...";
+	string t;
+	getline(cin, t);
+}

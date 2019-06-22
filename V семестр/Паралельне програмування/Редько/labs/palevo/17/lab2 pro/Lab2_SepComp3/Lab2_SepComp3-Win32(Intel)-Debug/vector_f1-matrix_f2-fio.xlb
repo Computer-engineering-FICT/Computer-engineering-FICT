@@ -1,0 +1,114 @@
+Source file: ..\vector_f1-matrix_f2-fio.adb   Thu Oct 01 01:12:19 2009
+
+    1 with Ada.Text_IO; use Ada.Text_IO;
+    2 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
+    3 with Ada.IO_Exceptions; use Ada.IO_Exceptions;
+    4 
+    5 package body Vector_F1.Matrix_F2.FIO is
+    6    --I/O operations
+    7    ---Output for Vector type
+    8    procedure VectOutput(A: Vector) is
+    9    begin
+   10       Ada.Text_IO.Put("(");
+   11                 for i in 1..N loop
+   12                         Ada.Integer_Text_IO.Put(A(i),2);        
+   13                         end loop;
+   14                 Ada.Text_IO.Put(")");
+   15       New_line;
+   16    end VectOutput;
+   17 
+   18    ---Matrix output
+   19    procedure MatrixOutput(a: Matrix) is
+   20    begin
+   21         --for i in 1..n loop
+   22         -- for j in 1..n loop
+   23           --  Put(a(i)(j), 4);
+   24          --end loop;
+   25          --New_Line;
+   26       --end loop;
+   27                         for i in 1..n loop
+   28                                 VectOutput (A(i));
+   29                                 Ada.Text_IO.New_Line;   
+   30                         end loop;
+   31    end MatrixOutput;
+   32 
+   33    ---Vector input
+   34    procedure VectInput(a: in out Vector) is
+   35         begin
+   36                 put ("Enter vector - ");
+   37       put (N,3);
+   38       put (" numbers: ");
+   39       for i in 1..N loop
+   40          loop
+   41             begin
+   42                     Get(a(i));
+   43                     exit;
+   44                     exception
+   45                        when Ada.IO_Exceptions.Data_Error =>
+   46                           Put("Input error. Please, try again:");
+   47                       Skip_Line;
+   48             end;
+   49          end loop;
+   50       end loop;
+   51 
+   52    end VectInput;
+   53 
+   54 
+   55    ---Matrix input
+   56    procedure MatrixInput(m: in out Matrix) is
+   57    begin
+   58                 put ("Enter matrix ");
+   59                 put (N,3);
+   60                 put ("x");
+   61                 put (N,3);
+   62                 put (" : ");
+   63       Put_Line("Input matrix");
+   64       for i in 1..N loop
+   65          VectInput(m(i));
+   66       end loop;
+   67    end;
+   68 
+   69 end Vector_F1.Matrix_F2.FIO;
+
+NAME                 KIND/FILE            DEF    REFERENCES (* if assigned)
+---------------------------------------------------------------------------
+A                    parameter            8      12* 
+Ada                  #1:ada.ada                  1 2 3 
+Data_Error           #3:ada.io_exceptions.dat    45 
+FIO                  lib package body     5      69 
+FIO                  #5:lab2_sepcomp3.adb        3 
+Get                  #2:ada.text_io.spc          42 
+IO_Exceptions        #3:ada.io_exceptions.dat    3 
+Integer_Text_IO      #4:ada.integer_text_io.ada  2 
+Matrix               #5:lab2_sepcomp3.adb        19 56 
+MatrixInput          subprogram body     56      67 
+MatrixInput          #5:lab2_sepcomp3.adb        16 
+MatrixOutput         subprogram body     19      31 
+MatrixOutput         #5:lab2_sepcomp3.adb        12 
+Matrix_F2            #5:lab2_sepcomp3.adb        5 
+N                    #5:lab2_sepcomp3.adb        11 27 37* 39 59* 61* 64 
+New_Line             #2:ada.text_io.spc          15 29 
+Put_Line             #2:ada.text_io.spc          63 
+Skip_Line            #2:ada.text_io.spc          47 
+Text_IO              #2:ada.text_io.spc          1 
+VectInput            subprogram body     34      52 
+VectInput            #5:lab2_sepcomp3.adb        12* 65 
+VectOutput           subprogram body      8      16 
+VectOutput           #5:lab2_sepcomp3.adb        3 28 
+Vector               #5:lab2_sepcomp3.adb        8 34 
+Vector_F1            #5:lab2_sepcomp3.adb        5 
+a                    parameter           19      28* 
+a                    parameter           34      42* 
+i                    object              11      12 
+i                    object              27      28 
+i                    object              39      42 
+i                    object              64      65 
+m                    parameter           56      65* 
+put                  #2:ada.text_io.spc          12 37 59 61 
+put                  #2:ada.text_io.spc          10 14 36 38 46 58 60 62 
+
+    File #1 d:\dist\objectada 8.4\lib\rts\ada.ada
+    File #2 d:\dist\objectada 8.4\lib\rts\ada.text_io.spc
+    File #3 d:\dist\objectada 8.4\lib\rts\ada.io_exceptions.dat
+    File #4 d:\dist\objectada 8.4\lib\rts\ada.integer_text_io.ada
+    File #5 ..\lab2_sepcomp3.adb

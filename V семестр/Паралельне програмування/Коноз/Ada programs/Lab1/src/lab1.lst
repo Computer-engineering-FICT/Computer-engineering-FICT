@@ -1,0 +1,131 @@
+GNAT GPL 2014 (20140331)
+Copyright 1992-2014, Free Software Foundation, Inc.
+
+Compiling: lab1.adb (source file time stamp: 2014-09-16 18:47:14)
+
+     1. with Data, Ada.Text_IO, Ada.Integer_Text_IO;
+     2. use Ada.Text_IO, Ada.Integer_Text_IO;
+     3. -------------Основна програма---------------------------------
+     4. --ПРО Lab1
+     5. --Коноз Андрій Олександрович
+     6. --ІО-21
+     7. --13.09.14
+     8. --F1: E:=A+B+C+D(MA*MZ)
+     9. --F2: MZ:=Min(MA)*MB+Max(MT)*(MX*MZ)
+    10. --F3: d:=Min(A*Trans(MB*MM)+B*Sort(C))
+    11.
+    12. procedure Lab1 is
+    13.    --Розмірність векторів і матриць
+    14.    n : Integer :=3;
+    15.    --Ініціалізація пакету
+    16.    package Lab1Data is new Data(n);
+    17.    use Lab1Data;
+    18.    --Оголошення змінних, які будуть використовуватися в програмі
+    19.    A,B,C,D,E: Vect;
+    20.    MA,MB,MT,MX,MZ,MM,ME,MC: Matrix;
+    21.    y: Integer;
+    22.
+    23. begin
+    24.    --Введення даних для F1
+    25.    Put("All vectors had ");
+    26.    Put(n);
+    27.    Put(" items");
+    28.    New_Line;
+    29.
+    30.    Put("Arguments for F1");
+    31.    Put("Enter vector A");
+    32.    New_Line;
+    33.    readVect(A);
+    34.
+    35.    New_Line;
+    36.    Put("Enter vector B");
+    37.    New_Line;
+    38.    readVect(B);
+    39.
+    40.    New_Line;
+    41.    Put("Enter vector C");
+    42.    New_Line;
+    43.    readVect(C);
+    44.
+    45.    New_Line;
+    46.    Put("Enter vector D");
+    47.    New_Line;
+    48.    readVect(D);
+    49.
+    50.    New_Line;
+    51.    Put("Enter MA");
+    52.    New_Line;
+    53.    readMatr(MA);
+    54.
+    55.    New_Line;
+    56.    Put("Enter MZ");
+    57.    New_Line;
+    58.    readMatr(MZ);
+    59.    --Виконання функції F1
+    60.    F1(A,B,C,D,MA, MZ,E);
+    61.    --Введення даних для F2
+    62.    Put("Arguments for F2");
+    63.    New_Line;
+    64.    Put("Enter MA");
+    65.    New_Line;
+    66.    readMatr(MA);
+    67.
+    68.    New_Line;
+    69.    Put("Enter MB");
+    70.    New_Line;
+    71.    readMatr(MB);
+    72.
+    73.    New_Line;
+    74.    Put("Enter MX");
+    75.    New_Line;
+    76.    readMatr(MX);
+    77.
+    78.    New_Line;
+    79.    Put("Enter MZ");
+    80.    New_Line;
+    81.    readMatr(MZ);
+    82.
+    83.    New_Line;
+    84.    Put("Enter MT");
+    85.    New_Line;
+    86.    readMatr(MT);
+    87.    --Виконання функції F2
+    88.    F2(MA,MB,MT,MX,MZ,ME);
+    89.   --Введення даних для F3
+    90.    Put("Arguments for F3");
+    91.    Put("Enter vector A");
+    92.    New_Line;
+    93.    readVect(A);
+    94.
+    95.    New_Line;
+    96.    Put("Enter vector B");
+    97.    New_Line;
+    98.    readVect(B);
+    99.
+   100.    New_Line;
+   101.    Put("Enter MB");
+   102.    New_Line;
+   103.    readMatr(MB);
+   104.
+   105.    New_Line;
+   106.    Put("Enter MM");
+   107.    New_Line;
+   108.    readMatr(MM);
+   109.
+   110.     New_Line;
+   111.    Put("Enter MC");
+   112.    New_Line;
+   113.    readMatr(MC);
+   114.    --Виконання функції F3
+   115.    F3(A,B,MB, MM,MC,y);
+   116.    --Виведення результатів функцій
+   117.    Put("F1 = ");
+   118.    showVect(E);
+   119.    Put("F2 = ");
+   120.    showMatr(ME);
+   121.    Put("F3 = ");
+   122.    Put(y);
+   123.
+   124. end Lab1;
+
+ 124 lines: No errors

@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<!-- saved from url=(0071)http://msdn.microsoft.com/ru-ru/library/vstudio/ee441265(v=vs.100).aspx -->
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="canonical" href="./Пошаговое руководство. Запуск отладчика MPI-кластера в Visual Studio 2010_files/Пошаговое руководство. Запуск отладчика MPI-кластера в Visual Studio 2010.htm">
+        <title>Пошаговое руководство. Запуск отладчика MPI-кластера в Visual Studio 2010</title>
+
+
+
+<meta name="DCS.dcsuri" content="/ru-ru/library/vstudio/ee441265(d=default,l=ru-ru,v=vs.100).aspx">
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/ru-ru/library/vstudio/ee441265(d=default,l=ru-ru,v=vs.100).aspx">
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/ru-ru/library/vstudio/ee441265(d=default,l=ru-ru,v=vs.100).aspx">
+
+<meta name="MN" content="1C75349A-8:19:43 AM">
+
+<meta name="Search.ShortId" content="ee441265">
+
+<meta name="Ms.Locale" content="ru-ru">
+
+
+
+
+
+
+
+        
+    
+    
+    
+    
+    
+
+    <link rel="stylesheet" type="text/css" href="./Пошаговое руководство. Запуск отладчика MPI-кластера в Visual Studio 2010_files/Combined.css"><script type="text/javascript" async="" src="./Пошаговое руководство. Запуск отладчика MPI-кластера в Visual Studio 2010_files/ms2.js"></script><script class="mtps-injected">try {
+/**/
+"use strict"; 
+(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { 
+	"image": "http://i.msdn.microsoft.com", 
+	"js": "http://i2.msdn.microsoft.com", 
+	"css": "http://i3.msdn.microsoft.com"
+});
+/**/
+} finally { MTPS._injectNextScript_0 && MTPS._injectNextScript_0(); }</script><script class="mtps-injected">try {
+//
+  var literalNormalizedUrl = '/ru-ru/library/vstudio/ee441265(d=default,l=ru-ru,v=vs.100).aspx';
+  var wt_nvr_ru = 'WT_NVR_RU';
+  var wt_fpcdom = '.microsoft.com';
+  var wt_domlist = 'msdn.microsoft.com';
+  var wt_pathlist = '';
+  var wt_paramlist = 'DCSext.mtps_devcenter';
+  var wt_siteid = 'MSDN';
+  var gDomain = 'm.webtrends.com';
+  var gDcsId = 'dcsmgru7m99k7mqmgrhudo0k8_8c6m';
+  var gFpc = 'WT_FPC';
+  if (document.cookie.indexOf(gFpc + "=") == -1) {
+    var wtidJs = document.createElement("script");
+    wtidJs.src = "//" + gDomain + "/" + gDcsId + "/wtid.js";
+    document.getElementsByTagName("head")[0].appendChild(wtidJs);
+  }
+  var detectedLocale = 'ru-ru';
+  var wtsp = '_msdn_';
+  var gTrackEvents = '0';
+/**/
+} finally { MTPS._injectNextScript_1 && MTPS._injectNextScript_1(); }</script><script class="mtps-injected">try {
+/**/
+  var omni_guid = "9d2b06ee-5e85-4532-a151-e9afcc5a425b";
+/**/
+} finally { MTPS._injectNextScript_2 && MTPS._injectNextScript_2(); }</script><script class="mtps-injected" src="./Пошаговое руководство. Запуск отладчика MPI-кластера в Visual Studio 2010_files/Combined.js"></script><script type="text/javascript" src="chrome-extension://bfbmjmiodbnnpllbbbfblcplfjjepjdn/js/injected.js"></script><script class="mtps-injected" src="./Пошаговое руководство. Запуск отладчика MPI-кластера в Visual Studio 2010_files/jquery-1.7.1.min.js"></script><script class="mtps-injected" src="./Пошаговое руководство. Запуск отладчика MPI-кластера в Visual Studio 2010_files/Combined(1).js"></script><script class="mtps-injected">try {
+//
+    var searchWidgetJsUri = 'http://i1.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox&btnid=HeaderSearchButton&brand=MSDN&loc=ru-ru&Refinement=195&watermark=Visual%20Studio&focusOnInit=false&iroot=vstudio';
+  //
+} finally { MTPS._injectNextScript_6 && MTPS._injectNextScript_6(); }</script><script class="mtps-injected" src="./Пошаговое руководство. Запуск отладчика MPI-кластера в Visual Studio 2010_files/Combined(2).js"></script><script src="./Пошаговое руководство. Запуск отладчика MPI-кластера в Visual Studio 2010_files/broker.js"></script><script src="./Пошаговое руководство. Запуск отладчика MPI-кластера в Visual Studio 2010_files/SearchBox.jss" id="mscom.srch.searchBox"></script><link type="text/css" rel="stylesheet" href="./Пошаговое руководство. Запуск отладчика MPI-кластера в Visual Studio 2010_files/PrintView.css" media="print"></head>
+    <body class="library">
+        <div id="page">
+                
+            
+  
+            
+    
+
+
+
+<header class="ux-header">
+  <div class="header-top-bar">
+    <a class="header-top-bar-brand-logo" href="http://msdn.microsoft.com/vstudio" title="Visual Studio"></a>
+
+    <ul class="header-top-bar-links" id="ux-nav-user">
+      <li class="header-top-bar-search-box">
+        
+<form name="HeaderSearchForm" id="HeaderSearchForm" method="get" action="http://social.msdn.microsoft.com/search/ru-ru/">
+  <input type="text" id="HeaderSearchTextBox" name="query" title="Поиск Visual Studio с помощью Bing" class="TextBoxSearch" autocomplete="off" style="color: rgb(170, 170, 170); font-style: italic; ">
+  <input type="hidden" id="RefinementId" name="refinement" title="195" value="195">
+  <input type="submit" id="HeaderSearchButton" title="Поиск Visual Studio с помощью Bing" class="header-search-button" value="">
+  
+<div id="SearchFlyoutContainer" style="display: none; text-align: left; border: 1px solid buttonshadow; position: absolute; z-index: 1000; padding: 2px; background-color: rgb(255, 255, 255); color: rgb(0, 0, 255); font-family: arial; "><div id="SuggestionContainer"><ul style="list-style: none; padding: 4px 2px 0px 1px; cursor: pointer; font-size: 8pt; margin: 1px; "></ul></div><div id="FooterContainer" style="width: 100%; margin: 0px; text-align: right; font-size: 8pt; "><a href="http://msdn.microsoft.com/ru-ru/library/vstudio/ee441265(v=vs.100).aspx#">Закрыть</a></div></div></form>
+      </li>
+
+          <li>
+            <a class="createProfileLink" href="http://social.msdn.microsoft.com/profile/u/edit/?referrer=http%3a%2f%2fmsdn.microsoft.com%2fru-ru%2flibrary%2fvstudio%2fee441265%2528v%3dvs.100%2529.aspx&cancelUrl=http%3a%2f%2fmsdn.microsoft.com%2fru-ru%2flibrary%2fvstudio%2fee441265%2528v%3dvs.100%2529.aspx" title="Create Profile">
+              Create Profile
+            </a>
+          </li>
+
+      <li class="last">
+        <a class="scarabLink" id="idPPScarab" href="http://login.live.com/logout.srf?ct=1351523986&rver=6.0.5276.0&lc=1049&id=254354&ru=http%3a%2f%2fmsdn.microsoft.com%2fru-ru%2flibrary%2fvstudio%2fee441265%2528v%3dvs.100%2529.aspx&mkt=ru-RU" title=" Выход  ">
+          <span id="idPPScarabSIT"> Выход  </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="header-nav-container">
+  <nav class="header-nav">
+    <ul class="header-nav-pri">
+          <li><a href="http://msdn.microsoft.com/vstudio/" title="Главная">Главная</a></li>
+          <li><a href="http://msdn.microsoft.com/library/vstudio/" title="Библиотека">Библиотека</a></li>
+          <li><a href="http://msdn.microsoft.com/vstudio/cc136611" title="Обучение">Обучение</a></li>
+          <li><a href="http://code.msdn.microsoft.com/vstudio/" title="Код">Код</a></li>
+          <li><a href="http://msdn.microsoft.com/ru-ru/vstudio/bb984878" title="Загрузка">Загрузка</a></li>
+          <li><a href="http://visualstudiogallery.msdn.microsoft.com/" title="Галерея">Галерея</a></li>
+          <li><a href="http://msdn.microsoft.com/vstudio/cc136615" title="Поддержка">Поддержка</a></li>
+          <li><a href="http://social.msdn.microsoft.com/Forums/ru-ru/category/visualstudio,vsarch,vsdbg,vstest,vstfs,vsdata,vsappdev,netdevelopment,visualbasic,visualcsharp,visualc,visualfsharp,vslightswitch,parallelcomputing" title="Форумы">Форумы</a></li>
+    </ul>
+  
+  </nav>
+  
+    <div class="header-nav-trial">
+      <a href="http://go.microsoft.com/fwlink/p/?LinkId=240162" title="начните работу бесплатно" class="trialanchor">
+        <span class="trialtext">начните работу бесплатно</span>
+        <span class="trialimage"></span>
+      </a>
+    </div>
+  </div>
+</header>
+
+
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+
+
+<div id="leftNav" class="leftNavResize1">
+
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px; ">
+                <a class="toc_collapsed" href="http://msdn.microsoft.com/ru-ru/library/vstudio/ee441265(v=vs.100).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/ru-ru/library/vstudio/jj159353.aspx" id="jj159081_MSDN.10_ru-ru" title="Средства и языки разработки">Средства и языки разработки</a>
+            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px; ">
+                <a class="toc_collapsed" href="http://msdn.microsoft.com/ru-ru/library/vstudio/ee441265(v=vs.100).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/ru-ru/library/vstudio/dd831853.aspx" id="aa187917_MSDN.10_ru-ru" title="Visual Studio 2012">Visual Studio 2012</a>
+            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px; ">
+                <a class="toc_collapsed" href="http://msdn.microsoft.com/ru-ru/library/vstudio/ee441265(v=vs.100).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/ru-ru/library/vstudio/52f3sw5c(v=vs.100).aspx" id="dd429925_VS.100_ru-ru" title="Visual Studio">Visual Studio</a>
+            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px; ">
+                <a class="toc_collapsed" href="http://msdn.microsoft.com/ru-ru/library/vstudio/ee441265(v=vs.100).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/ru-ru/library/vstudio/h8w79z10(v=vs.100).aspx" id="ee854767_VS.100_ru-ru" title="Разработка приложений в Visual Studio">Разработка приложений в Visual Studio</a>
+            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px; ">
+                <a class="toc_collapsed" href="http://msdn.microsoft.com/ru-ru/library/vstudio/ee441265(v=vs.100).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/ru-ru/library/vstudio/d8k88a0k(v=vs.100).aspx" id="ms303374_VS.100_ru-ru" title="Построение и отладка">Построение и отладка</a>
+            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px; ">
+                <a class="toc_collapsed" href="http://msdn.microsoft.com/ru-ru/library/vstudio/ee441265(v=vs.100).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/ru-ru/library/vstudio/sc65sadd(v=vs.100).aspx" id="ms303602_VS.100_ru-ru" title="Отладка в Visual Studio">Отладка в Visual Studio</a>
+            </div>
+            <div class="toclevel1" data-toclevel="1" style="padding-left: 13px; " data-childrenloaded="true">
+                <a class="toc_expanded" href="http://msdn.microsoft.com/ru-ru/library/vstudio/ee441265(v=vs.100).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/ru-ru/library/vstudio/dd560808(v=vs.100).aspx" id="dd560811_VS.100_ru-ru" title="Отладка приложений MPI в кластере HPC">Отладка приложений MPI в кластере HPC</a>
+            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+                <span class="toc_empty"></span><a href="http://msdn.microsoft.com/ru-ru/library/vstudio/dd560809(v=vs.100).aspx" title="Инструкции. Настройка и запуск отладчика MPI-кластера">Инструкции. Настройка и запуск отладчика MPI-кластера</a>
+            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+                <span class="toc_empty"></span><a href="http://msdn.microsoft.com/ru-ru/library/vstudio/dd560807(v=vs.100).aspx" title="Свойства конфигурации отладчика MPI-кластера">Свойства конфигурации отладчика MPI-кластера</a>
+            </div>
+            <div class="toclevel2 current" data-toclevel="2" style="padding-left: 26px; ">
+                <span class="toc_empty"></span><a href="./Пошаговое руководство. Запуск отладчика MPI-кластера в Visual Studio 2010_files/Пошаговое руководство. Запуск отладчика MPI-кластера в Visual Studio 2010.htm" title="Пошаговое руководство. Запуск отладчика MPI-кластера в Visual Studio 2010">Пошаговое руководство. Запуск отладчика MPI-кластера в Visual Studio 2010</a>
+            </div>
+</div>    
+    
+    
+    
+
+
+<a id="NavigationResize" href="javascript:epx.library.navigationResize.resize()" style="left: 214px; display: inline-block; ">
+    <img class="cl_nav_resize_open" src="./Пошаговое руководство. Запуск отладчика MPI-кластера в Visual Studio 2010_files/ImageSprite.png" title="Развернуть" alt="Развернуть" style="">
+    <img class="cl_nav_resize_close" src="./Пошаговое руководство. Запуск отладчика MPI-кластера в Visual Studio 2010_files/ImageSprite.png" title="Свернуть" alt="Свернуть" style="display: none; ">
+</a>
+
+
+
+</div>
+<div id="content" class="content">
+
+
+
+
+
+    
+
+    
+    
+
+    
+
+    
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">Пошаговое руководство. Запуск отладчика MPI-кластера в Visual Studio 2010</h1>
+  
+  <div class="lw_vs">
+    <div id="curversion">
+      <strong>
+            Visual Studio 2010
+        </strong>
+    </div>
+  <div id="ratingCounterSeperator" class="cl_lw_vs_seperator" style="display: block; "></div><div id="ratingCounter" style="margin: 0px 0px 0px 13px; display: block; ">
+        <span id="rcA" class="ratingText">
+            2 из 2 оценили этот материал как полезный <span id="rateThisPrefix">- </span><a id="rateThisTopic" href="http://msdn.microsoft.com/ru-ru/library/vstudio/ee441265(v=vs.100).aspx#feedback" title="Оценить эту тему">Оценить эту тему</a>
+            
+        </span>
+    </div></div>
+  <div style="clear:both;"></div>
+  
+  <div id="mainSection">
+    <div id="mainBody">
+				<p>В этом пошаговом руководстве описано, как настроить и запустить сеанс отладчика MPI-кластера на локальном компьютере и в кластере Microsoft Windows HPC Server 2008. Руководство также содержит процедуры и пример кода, которые необходимы для создания приложения, использующего интерфейс передачи сообщений (MPI) и API-интерфейс OpenMP (Open Multi-Processing).</p>
+				<p>
+					<strong>Содержание руководства</strong>
+				</p>
+				<ul><li class="unordered">
+						
+							<a href="http://msdn.microsoft.com/ru-ru/library/vstudio/ee441265(v=vs.100).aspx#BKMK_reqs">Требования для использования отладчика MPI-кластера</a>
+						<br><br>
+					</li><li class="unordered">
+						
+							<a href="http://msdn.microsoft.com/ru-ru/library/vstudio/ee441265(v=vs.100).aspx#BKMK_Sample"><span class="goog_qs-tidbit goog_qs-tidbit-0">Создание образца проекта MPI на C++ в Visual Studio 2010</span></a>
+						<br><br>
+					</li><li class="unordered">
+						
+							<a href="http://msdn.microsoft.com/ru-ru/library/vstudio/ee441265(v=vs.100).aspx#BKMK_Debugger"><span class="goog_qs-tidbit goog_qs-tidbit-0">Настройка и запуск отладчика MPI-кластера</span></a>
+						<br><br>
+					</li><li class="unordered">
+						
+							<a href="http://msdn.microsoft.com/ru-ru/library/vstudio/ee441265(v=vs.100).aspx#BKMK_appendix"><span class="goog_qs-tidbit goog_qs-tidbit-0">Приложение. Файлы, развертываемые Visual</span> Studio в дополнение к двоичным файлам приложения (и CRT по запросу)</a>
+						<br><br>
+					</li></ul>
+			<a id="BKMK_reqs"></a><h2 class="heading">Требования для использования отладчика MPI-кластера</h2><div id="sectionSection0" class="section">
+					<ul><li class="unordered">
+							На компьютере разработчика должна быть установлена среда Visual Studio&nbsp;2010 Professional Edition или более высокой версии (с удаленным отладчиком).<br><br>
+						</li><li class="unordered">
+							У пользователя должны быть права администратора кластера.<br><br>
+						</li><li class="unordered">
+							У Visual Studio должен быть доступ ко всем вычислительным узлам, на которых предполагается запускать сеансы отладки. Необходимый доступ обеспечивают сценарии, указанные ниже.<br><br>
+							<ul><li class="unordered">
+									Приложение разрабатывается на головном узле кластера или на выделенном узле входа.<br><br>
+								</li><li class="unordered">
+									Используется кластер, в котором вычислительные узлы подключены к корпоративной сети (топология 2, 4 или 5), а компьютер разработчика присоединен к тому же домену или к домену, для которого настроены отношения доверия с доменом кластера.<br><br>
+								</li></ul>
+						</li><li class="unordered">
+							Для отправки приложения в кластер HPC с клиентского компьютера необходимо установить пакет Microsoft HPC Pack 2008.<br><br>
+						</li><li class="unordered">
+							Для построения MPI-программ с использованием интерфейса передачи сообщений корпорации Майкрософт необходимо, чтобы на компьютере разработчика был установлен пакет Windows HPC Server 2008 SDK.<br><br>
+						</li></ul>
+				</div><a id="BKMK_Sample"></a><h2 class="heading">Создание образца проекта MPI на C++ в Visual Studio 2010</h2><div id="sectionSection1" class="section">
+					<p>Пример кода, приведенный в этом разделе, предназначен для создания параллельного приложения, вычисляющего значение числа пи с использованием моделирования методом Монте-Карло. </p>
+					<p>Этот пример кода выполняет 50 000 000 итераций в каждом процессе MPI. При каждой итерации генерируются случайные числа в интервале [0;1] для определения набора координат <em><span class="math">x</span></em> и <em><span class="math">y</span></em>. Набор координат оценивается для определения того, попадает ли точка в область, ограниченную линией с уравнением <em>x</em><span class="sup">2</span> + <em>y</em><span class="sup">2</span> = <em>1</em>. Если точка попадает в эту область, значение переменной <em>count</em> увеличивается на единицу. Значения <em>count</em> из каждого процесса MPI суммируются, и результат присваивается переменной <em>result</em>. Общее количество точек, попавших в область (<em>result</em>), умножается на четыре и делится на общее количество итераций для получения приблизительного значения числа пи.</p>
+					<p>Приведенная ниже процедура содержит две реализации метода Монте-Карло.</p>
+					<ul><li class="unordered">
+							В первом примере используются интерфейсы MPI и OpenMP. Дополнительные сведения об интерфейсе OpenMP см. по ссылке <a href="http://go.microsoft.com/fwlink/?LinkId=159718" target="_blank">OpenMP in Visual C++</a>.<br><br>
+						</li><li class="unordered">
+							Во втором примере используются интерфейс MPI и библиотека PPL (Parallel Patterns Library). Дополнительные сведения о библиотеке PPL см. по ссылке <a href="http://go.microsoft.com/fwlink/?LinkId=159717" target="_blank">Parallel Patterns Library (PLL)</a>.<br><br>
+						</li></ul>
+					
+						Создание образца проекта
+						<ol class="ordered"><li>
+								
+									<p>Запустите Visual Studio 2010.</p>
+								
+							</li><li>
+								
+									<p>Создайте консольное приложение Win32 на C++ с именем <strong>ParallelPI</strong>. Используйте проект без предкомпилированных заголовков.</p>
+									<ol class="ordered"><li>
+											В меню <strong>Файл</strong> выберите пункт <strong>Создать</strong>, а затем — <strong>Проект</strong>.<br><br>
+										</li><li>
+											В диалоговом окне <strong>Новый проект</strong> щелкните элемент <strong>Установленные шаблоны</strong> и выберите пункт <strong>Visual C++</strong>. (В зависимости от настроек Visual Studio пункт <strong>Visual C++</strong> может находиться под узлом <strong>Другие языки</strong>.)<br><br>
+										</li><li>
+											В списке шаблонов щелкните элемент <strong>Консольное приложение Win32</strong>.<br><br>
+										</li><li>
+											В качестве имени проекта введите  <strong>ParallelPI</strong>.<br><br>
+										</li><li>
+											Нажмите кнопку <strong>OK</strong>. Откроется мастер создания консольного приложения Win32.<br><br>
+										</li><li>
+											Нажмите кнопку <strong>Далее</strong>.<br><br>
+										</li><li>
+											В разделе <strong>Параметры приложения</strong> в группе <strong>Дополнительные параметры</strong> снимите флажок <strong>Предкомпилированный заголовок</strong>.<br><br>
+										</li><li>
+											Нажмите кнопку <strong>Готово</strong>, чтобы закрыть окно мастера и создать проект.<br><br>
+										</li></ol>
+								
+							</li><li>
+								
+									<p>Задайте дополнительные свойства проекта.</p>
+									<ol class="ordered"><li>
+											В <strong>обозревателе решений</strong> щелкните правой кнопкой мыши элемент <strong>Parallel PI</strong> и выберите пункт <strong>Свойства</strong>. Откроется диалоговое окно <strong>Страницы свойств</strong>.<br><br>
+										</li><li>
+											Разверните элемент <strong>Свойства конфигурации</strong> и выберите пункт <strong>Каталоги VC++</strong>.<br><br>
+											В области <strong>Каталоги включения</strong> поместите курсор в начало списка, который отображается в текстовом окне, и укажите местоположение файлов заголовков MS MPI C, после чего введите точку с запятой (;). Пример.<br><br>
+											
+<div class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Копировать в буфер обмена." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_ec947a77-6ad2-45c8-ae13-13ecfc951192');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_ec947a77-6ad2-45c8-ae13-13ecfc951192" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>C:\Program Files\Microsoft HPC Pack&nbsp;2008 SDK\Include;
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+										</li><li>
+											В области <strong>Каталоги библиотек</strong> поместите курсор в начало списка, который отображается в текстовом окне, и укажите местоположение файла библиотеки Microsoft HPC Pack&nbsp;2008 SDK, после чего введите точку с запятой (;).<br><br>
+											Например, если необходимо построить и отладить 32-разрядное приложение, введите следующее:<br><br>
+											
+<div class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Копировать в буфер обмена." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_df74d2cb-d91f-443b-8718-33293bdbcfd0');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_df74d2cb-d91f-443b-8718-33293bdbcfd0" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>C:\Program Files\Microsoft HPC Pack&nbsp;2008 SDK\Lib\i386;
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+											Например, если необходимо построить и отладить 64-разрядное приложение, введите следующее:<br><br>
+											
+<div class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Копировать в буфер обмена." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_b133b003-5bb8-4354-9c3b-0ed59e5588e3');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_b133b003-5bb8-4354-9c3b-0ed59e5588e3" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>C:\Program Files\Microsoft HPC Pack&nbsp;2008 SDK\Lib\amd64;
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+										</li><li>
+											В разделе <strong>Компоновщик</strong> выберите элемент <strong>Ввод</strong>.<br><br>
+											В разделе <strong>Дополнительные зависимости</strong> поместите курсор в начало списка, который отображается в текстовом окне, и введите следующее: <br><br>
+											
+												<code>msmpi.lib;</code>
+											<br><br>
+										</li><li>
+											При использовании примера кода с интерфейсом OpenMP выполните указанные ниже действия. <br><br>
+											Разверните узлы <strong>Свойства конфигурации</strong> и <strong>C/C++</strong> и выберите элемент <strong>Язык</strong>.<br><br>
+											В качестве значения свойства <strong>Поддержка Open MP</strong> выберите <strong>Да (/openmp)</strong>, чтобы включить поддержку интерфейса Open MP компилятором.<br><br>
+										</li><li>
+											Нажмите кнопку <strong>OK</strong>, чтобы закрыть страницы свойств.<br><br>
+										</li></ol>
+								
+							</li><li>
+								
+									<p>В главном исходном файле выделите весь код и удалите его.</p>
+								
+							</li><li>
+								
+									<p>Вставьте в пустой исходный файл один из приведенных ниже примеров кода. В первом примере используются интерфейсы MPI и OpenMP, а во втором — интерфейс MPI и библиотека PPL.</p>
+									<p>В приведенном ниже примере кода используются интерфейсы MPI и OpenMP. Функция <code>ThrowDarts</code> использует параллельный цикл <code>for</code> интерфейса OpenMP для задействования процессоров с несколькими ядрами, если они доступны.</p>
+									
+<div class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Копировать в буфер обмена." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_34d6ee1e-1aaa-40e7-a9e7-1a3c54c20015');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_34d6ee1e-1aaa-40e7-a9e7-1a3c54c20015" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre><span style="color:Green;">// ParallelPI.cpp : Defines the entry point for the MPI application.</span>
+<span style="color:Green;">//</span>
+#include <span style="color:#A31515;">"mpi.h"</span>
+#include <span style="color:#A31515;">"stdio.h"</span>
+#include <span style="color:#A31515;">"stdlib.h"</span>
+#include <span style="color:#A31515;">"limits.h"</span>
+#include <span style="color:#A31515;">"omp.h"</span>
+#include &lt;random&gt;
+
+<span style="color:Blue;">int</span> ThrowDarts(<span style="color:Blue;">int</span> iterations)
+{
+std::tr1::uniform_real&lt;<span style="color:Blue;">double</span>&gt; MyRandom;
+std::tr1::minstd_rand0 MyEngine;
+
+
+<span style="color:Blue;">double</span> RandMax = MyRandom.max();
+<span style="color:Blue;">int</span> count = 0;
+omp_lock_t MyOmpLock;
+
+omp_init_lock(&amp;MyOmpLock);
+<span style="color:Green;">//Compute approximation of pi on each node</span>
+<span style="color:Blue;">#pragma</span> omp parallel for
+<span style="color:Blue;">for</span>(<span style="color:Blue;">int</span> i = 0; i &lt; iterations; ++i)
+{
+<span style="color:Blue;">double</span> x, y;
+x = MyRandom(MyEngine)/RandMax;
+y = MyRandom(MyEngine)/RandMax;
+  
+<span style="color:Blue;">if</span>(x*x + y*y &lt; 1.0)
+{
+omp_set_lock(&amp;MyOmpLock);
+count++;
+omp_unset_lock(&amp;MyOmpLock);
+}
+}
+
+omp_destroy_lock(&amp;MyOmpLock);
+
+<span style="color:Blue;">return</span> count;
+}
+
+<span style="color:Blue;">int</span> main(<span style="color:Blue;">int</span> argc, <span style="color:Blue;">char</span>* argv[])
+{
+<span style="color:Blue;">int</span> rank;
+<span style="color:Blue;">int</span> size;
+<span style="color:Blue;">int</span> iterations;
+<span style="color:Blue;">int</span> count;
+<span style="color:Blue;">int</span> result;
+<span style="color:Blue;">double</span> time;
+MPI_Status s;
+
+MPI_Init(&amp;argc, &amp;argv);
+MPI_Comm_rank(MPI_COMM_WORLD,&amp;rank);
+MPI_Comm_size(MPI_COMM_WORLD,&amp;size);
+
+<span style="color:Blue;">if</span>(rank == 0)
+{
+<span style="color:Green;">//Rank 0 asks the number of iterations from the user.</span>
+iterations = 50000000;
+<span style="color:Blue;">if</span>(argc &gt; 1)
+{
+iterations = atoi(argv[1]);
+}
+printf(<span style="color:#A31515;">"Executing %d iterations.\n"</span>, iterations);
+fflush(stdout);
+}
+<span style="color:Green;">//Broadcast the number of iterations to execute.</span>
+<span style="color:Blue;">if</span>(rank == 0)
+{
+<span style="color:Blue;">for</span>(<span style="color:Blue;">int</span> i = 1; i &lt; size; ++i)
+{
+MPI_Ssend(&amp;iterations, 1, MPI_INT, i, 0, MPI_COMM_WORLD);
+}
+}
+<span style="color:Blue;">else</span>
+{
+MPI_Recv(&amp;iterations, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &amp;s);
+}
+
+<span style="color:Green;">//MPI_Bcast(&amp;iterations, 1, MPI_INT, 0, MPI_COMM_WORLD);</span>
+
+count = ThrowDarts(iterations);
+
+<span style="color:Green;">//Gather and sum results</span>
+<span style="color:Blue;">if</span>(rank != 0)
+{
+MPI_Ssend(&amp;count, 1, MPI_INT, 0, 0, MPI_COMM_WORLD);
+}
+<span style="color:Blue;">else</span>
+{
+<span style="color:Blue;">for</span>(<span style="color:Blue;">int</span> i = 1; i &lt; size; ++i)
+{
+<span style="color:Blue;">int</span> TempCount = 0;
+MPI_Recv(&amp;TempCount, 1, MPI_INT, i, 0, MPI_COMM_WORLD, &amp;s);
+count += TempCount;
+}
+}
+result = count;
+
+<span style="color:Green;">//MPI_Reduce(&amp;count, &amp;result, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);</span>
+
+<span style="color:Blue;">if</span>(rank == 0)
+{
+printf(<span style="color:#A31515;">"The value of PI is approximated to be: %16f"</span>, 4*((<span style="color:Blue;">float</span>)result/(<span style="color:Blue;">float</span>)(iterations*size)));
+}
+    
+MPI_Barrier(MPI_COMM_WORLD);
+
+MPI_Finalize();
+<span style="color:Blue;">return</span> 0;
+}
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+									<p>&nbsp;</p>
+									<p>В приведенном ниже примере кода используются библиотека PPL вместо интерфейса OpenMP и групповые операции MPI вместо операций "точка-точка".</p>
+									<p>&nbsp;</p>
+									
+<div class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Копировать в буфер обмена." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_8699c902-7f69-460d-bb53-47ccfe38e855');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_8699c902-7f69-460d-bb53-47ccfe38e855" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre><span style="color:Green;">// ParallelPI.cpp : Defines the entry point for the MPI application.</span>
+<span style="color:Green;">//</span>
+#include <span style="color:#A31515;">"mpi.h"</span>
+#include <span style="color:#A31515;">"stdio.h"</span>
+#include <span style="color:#A31515;">"stdlib.h"</span>
+#include <span style="color:#A31515;">"limits.h"</span>
+#include &lt;ppl.h&gt;
+#include &lt;random&gt;
+#include &lt;time.h&gt;
+
+<span style="color:Blue;">using</span> <span style="color:Blue;">namespace</span> Concurrency;
+
+<span style="color:Blue;">int</span> ThrowDarts(<span style="color:Blue;">int</span> iterations)
+{
+
+combinable&lt;<span style="color:Blue;">int</span>&gt; count;
+
+<span style="color:Blue;">int</span> result = 0;
+
+
+parallel_for(0, iterations, [&amp;](<span style="color:Blue;">int</span> i){
+
+std::tr1::uniform_real&lt;<span style="color:Blue;">double</span>&gt; MyRandom;
+<span style="color:Blue;">double</span> RandMax = MyRandom.max();
+std::tr1::minstd_rand0 MyEngine;
+<span style="color:Blue;">double</span> x, y;
+
+MyEngine.seed((unsigned <span style="color:Blue;">int</span>)time(NULL));
+
+x = MyRandom(MyEngine)/RandMax;
+y = MyRandom(MyEngine)/RandMax;
+  
+<span style="color:Blue;">if</span>(x*x + y*y &lt; 1.0)
+{
+count.local() += 1;
+}
+});
+
+result = count.combine([](<span style="color:Blue;">int</span> left, <span style="color:Blue;">int</span> right) { <span style="color:Blue;">return</span> left + right; });
+
+<span style="color:Blue;">return</span> result;
+}
+
+<span style="color:Blue;">void</span> main(<span style="color:Blue;">int</span> argc, <span style="color:Blue;">char</span>* argv[])
+{
+<span style="color:Blue;">int</span> rank;
+<span style="color:Blue;">int</span> size;
+<span style="color:Blue;">int</span> iterations;
+<span style="color:Blue;">int</span> count;
+<span style="color:Blue;">int</span> result;
+
+MPI_Init(&amp;argc, &amp;argv);
+MPI_Comm_rank(MPI_COMM_WORLD,&amp;rank);
+MPI_Comm_size(MPI_COMM_WORLD,&amp;size);
+
+<span style="color:Blue;">if</span>(rank == 0)
+{
+<span style="color:Green;">//Rank 0 reads the number of iterations from the command line.</span>
+<span style="color:Green;">//50M iterations is the default.</span>
+iterations = 50000000;
+<span style="color:Blue;">if</span>(argc &gt; 1)
+{
+iterations = atoi(argv[argc-1]);
+}
+printf(<span style="color:#A31515;">"Executing %d iterations on %d nodes.\n"</span>, iterations, size);
+fflush(stdout);
+}
+<span style="color:Green;">//Broadcast the number of iterations to execute.</span>
+MPI_Bcast(&amp;iterations, 1, MPI_INT, 0, MPI_COMM_WORLD);
+
+count = ThrowDarts(iterations);
+
+<span style="color:Green;">//Gather and sum results</span>
+MPI_Reduce(&amp;count, &amp;result, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
+
+<span style="color:Blue;">if</span>(rank == 0)
+{
+printf(<span style="color:#A31515;">"The value of PI is approximated to be: %16f"</span>, 4*((<span style="color:Blue;">double</span>)result/(<span style="color:Blue;">double</span>)(iterations*size)));
+}
+    
+MPI_Barrier(MPI_COMM_WORLD);
+
+MPI_Finalize();
+
+}
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+								
+							</li><li>
+								
+									<p>В меню <strong>Файл</strong> выберите пункт <strong>Сохранить все</strong>.</p>
+								
+							</li><li>
+								
+									<p>В меню <strong>Построение</strong> выберите пункт <strong>Перестроить решение</strong>.</p>
+								
+							</li></ol>
+					
+				</div><a id="BKMK_Debugger"></a><h2 class="heading">Настройка и запуск отладчика MPI-кластера</h2><div id="sectionSection2" class="section">
+					<p>После построения приложения можно настроить и запустить отладчик. В этом разделе описаны три варианта отладки.</p>
+					<ul><li class="unordered">
+							
+								<a href="http://msdn.microsoft.com/ru-ru/library/vstudio/ee441265(v=vs.100).aspx#BKMK_debug1">Отладка одного процесса MPI на локальном компьютере</a>
+							<br><br>
+						</li><li class="unordered">
+							
+								<a href="http://msdn.microsoft.com/ru-ru/library/vstudio/ee441265(v=vs.100).aspx#BKMK_debugMany">Отладка нескольких процессов MPI на локальном компьютере</a>
+							<br><br>
+						</li><li class="unordered">
+							
+								<a href="http://msdn.microsoft.com/ru-ru/library/vstudio/ee441265(v=vs.100).aspx#BKMK_debugCluster">Отладка одного или нескольких процессов MPI в кластере</a>
+							<br><br>
+						</li></ul>
+					<div class="alert"><table><tbody><tr><th><img id="note" alt="Ee441265.note(ru-ru,VS.100).gif" src="./Пошаговое руководство. Запуск отладчика MPI-кластера в Visual Studio 2010_files/IC101471.gif" title="Ee441265.note(ru-ru,VS.100).gif" xmlns="">Замечание. </th></tr><tr><td>
+						Начать работу с отладчиком MPI-кластера без запуска отладки невозможно. Сочетание клавиш Ctrl+F5 (или выбор пункта <strong>Запуск без отладки</strong> в меню <strong>Отладка</strong>) также запускает отладку.<p></p>
+					</td></tr></tbody></table><p></p></div>
+				
+					<a id="BKMK_debug1"></a><h3 class="subHeading">Отладка одного процесса MPI на локальном компьютере</h3><div class="subSection">
+							<p>Для отладки на локальном компьютере с применением только одного процесса MPI используйте тот же процесс, с помощью которого отлаживали бы любое другое приложение. Установите точку останова в необходимом месте программы и нажмите клавишу F5, чтобы запустить отладчик. </p>
+							<p>Программы MPI взаимодействуют по протоколу IP через порты. При первом запуске программы MPI может быть выведено предупреждение брандмауэра, уведомляющее об открытии порта. Ознакомьтесь с сообщением и разберитесь с тем, какие изменения будут внесены в систему. Для продолжения отладки на локальном компьютере необходимо разблокировать брандмауэр.</p>
+						</div>
+					<a id="BKMK_debugMany"></a><h3 class="subHeading">Отладка нескольких процессов MPI на локальном компьютере</h3><div class="subSection">
+							<p>Ниже описано, как запустить локальный сеанс отладки для приложения <strong>ParallelPI</strong>.</p>
+							
+								Запуск отладчика MPI-кластера с четырьмя процессами MPI, запущенными на локальном компьютере
+								<ol class="ordered"><li>
+										
+											<p>В <strong>обозревателе решений</strong> щелкните правой кнопкой мыши элемент <strong>Parallel PI</strong> и выберите пункт <strong>Свойства</strong>. Откроется диалоговое окно <strong>Страницы свойств</strong>. </p>
+										
+									</li><li>
+										
+											<p>Разверните узел <strong>Свойства конфигурации</strong> и выберите элемент <strong>Отладка</strong>.</p>
+										
+									</li><li>
+										
+											<p>В группе <strong>Загружаемый отладчик</strong> выберите элемент <strong>Отладчик MPI-кластера</strong>.</p>
+										
+									</li><li>
+										
+											<p>В раскрывающемся списке <strong>Среда выполнения</strong> выберите элемент <strong>Правка узла Hpc</strong>. Откроется диалоговое окно <strong>Выбор узла</strong>.</p>
+										
+									</li><li>
+										
+											<p>В раскрывающемся списке <strong>Головной узел</strong> выберите элемент <strong>localhost</strong>.</p>
+										
+									</li><li>
+										
+											<p>В поле <strong>Количество процессов</strong> выберите значение <strong>4</strong>.</p>
+										
+									</li><li>
+										
+											<p>Нажмите кнопку <strong>ОК</strong>, чтобы сохранить изменения и закрыть диалоговое окно <strong>Выбор узла</strong>.</p>
+										
+									</li><li>
+										
+											<p>Приложение <strong>ParallelPI</strong> принимает один аргумент, который определяет количество выполняемых итераций. По умолчанию выполняется 50 000 000 итераций. Для локального сеанса отладки уменьшите количество итераций до 5 000, выполнив указанное ниже действие.</p>
+											<p>В поле <strong>Аргументы приложения</strong> введите значение <strong>5000</strong>.</p>
+										
+									</li><li>
+										
+											<p>Нажмите кнопку <strong>ОК</strong>, чтобы сохранить изменения и закрыть окно <strong>Страницы свойств</strong>.</p>
+										
+									</li><li>
+										
+											<p>Установите точку останова в теле параллельного цикла <code>for</code>.</p>
+										
+									</li><li>
+										
+											<p>Нажмите клавишу F5, чтобы запустить отладчик.</p>
+										
+									</li><li>
+										
+											<p>Появятся пять окон консоли: одно окно <strong>cmd.exe</strong> и четыре окна <strong>ParallelPI.exe</strong> (по одному для каждого запущенного процесса). В окне консоли, соответствующем процессу с рангом 0, будут выведены количество итераций и вычисленное приблизительное значение числа пи.</p>
+										
+									</li><li>
+										
+											<p>В меню <strong>Отладка</strong> выберите пункт <strong>Окна</strong>, а затем — <strong>Процессы</strong>.</p>
+										
+									</li><li>
+										
+											<p>Выберите активный процесс для отладки, дважды щелкнув его в окне <strong>Процессы</strong>.</p>
+										
+									</li></ol>
+							
+							<div class="alert"><table><tbody><tr><th><img id="note" alt="Ee441265.note(ru-ru,VS.100).gif" src="./Пошаговое руководство. Запуск отладчика MPI-кластера в Visual Studio 2010_files/IC101471.gif" title="Ee441265.note(ru-ru,VS.100).gif" xmlns="">Замечание. </th></tr><tr><td>
+								По умолчанию при отладке нескольких процессов точка останова влияет на все отлаживаемые процессы. Чтобы избежать прерывания процессов в непредвиденном месте, снимите флажок <strong>Прерывать все процессы при прерывании одного</strong>. (В меню <strong>Сервис</strong> выберите пункт <strong>Настройки</strong>, а затем — <strong>Отладка</strong>). Дополнительные сведения об изменении поведения точки останова см. в разделе <a href="http://msdn.microsoft.com/ru-ru/library/vstudio/7z9se2d8(v=vs.100).aspx">Инструкции. Прерывание выполнения</a>.<p></p>
+							</td></tr></tbody></table><p></p></div>
+						</div>
+					<a id="BKMK_debugCluster"></a><h3 class="subHeading">Отладка одного или нескольких процессов MPI в кластере</h3><div class="subSection">
+							<p>При запуске отладчика MPI в кластере отладчик отправляет приложение в кластер как задание. Среды выполнения Visual C, соответствующие проекту (x86 или x64, отладка или выпуск), должны находиться в рабочем каталоге на вычислительных узлах. Если необходимые среды выполнения отсутствуют на вычислительных узлах, необходимо включить их в развертывание отладчика, указав их с помощью свойства <strong>Дополнительные файлы для развертывания</strong>. Приведенная ниже процедура включает действие по развертыванию отладочной библиотеки DLL OpenMP времени выполнения. По умолчанию библиотека времени выполнения C (CRT) развертывается при запуске отладчика MPI-кластера. Если необходимые библиотеки времени выполнения недоступны, при попытке запустить приложение возникнут ошибки. Если библиотека времени выполнения OpenMP не подключена, точки останова не сработают.</p>
+							
+								Запуск отладчика MPI в кластере
+								<ol class="ordered"><li>
+										
+											<p>В <strong>обозревателе решений</strong> щелкните правой кнопкой мыши элемент <strong>Parallel PI</strong> и выберите пункт <strong>Свойства</strong>. Откроется диалоговое окно <strong>Страницы свойств</strong>. </p>
+										
+									</li><li>
+										
+											<p>Разверните узел <strong>Свойства конфигурации</strong> и выберите элемент <strong>Отладка</strong>.</p>
+										
+									</li><li>
+										
+											<p>В группе <strong>Загружаемый отладчик</strong> выберите элемент <strong>Отладчик MPI-кластера</strong>.</p>
+										
+									</li><li>
+										
+											<p>В раскрывающемся списке <strong>Среда выполнения</strong> выберите элемент <strong>Правка узла Hpc</strong>. Откроется диалоговое окно <strong>Выбор узла</strong>.</p>
+										
+									</li><li>
+										
+											<p>В раскрывающемся списке <strong>Головной узел</strong> выберите имя головного узла кластера, который необходимо использовать.</p>
+											<p>Список головных узлов заполняется с контроллера домена Active Directory. Список содержит только кластеры, входящие в домен пользователя. Если нужный головной узел не отображается, введите имя или адрес IPv4 головного узла в поле свойства.</p>
+										
+									</li><li>
+										
+											<p>В поле <strong>Количество процессов</strong> выберите значение <strong>4</strong>.</p>
+										
+									</li><li>
+										
+											<p>В поле <strong>Назначить процесс для</strong> выберите способ выделения процессов. Можно выделить один процесс на <strong>ядро</strong>, <strong>сокет</strong> или <strong>узел</strong>.</p>
+										
+									</li><li>
+										
+											<p>Нажмите кнопку <strong>ОК</strong>, чтобы сохранить изменения и закрыть диалоговое окно <strong>Выбор узла</strong>.</p>
+										
+									</li><li>
+										
+											<p>В поле <strong>Каталог развертывания</strong> укажите общий каталог на головном узле. Если каталог развертывания не существует и у пользователя имеются права на запись в указанный корневой каталог, то каталог развертывания будет создан автоматически. </p>
+											<p>Общий каталог <strong>CcpSpoolDir</strong> создается при установке пакета HPC Pack 2008 на головном узле. Например, введите следующую строку, где <em>&lt;myHeadNode&gt;</em> — имя используемого кластера:</p>
+											<p>
+												<em>\\&lt;myHeadNode&gt;\CcpSpoolDir\</em>
+											</p>
+										
+									</li><li>
+										
+											<p>В поле <strong>Рабочий каталог</strong> укажите локальный рабочий каталог на каждом вычислительном узле. Например, введите следующую строку, где <em>&lt;myUserName&gt;</em> — ваше имя пользователя: </p>
+											<p>
+												<em>C:\Users\&lt;myUserName&gt;\ParallelPI</em>
+											</p>
+										
+									</li><li>
+										
+											<p>Если используется пример кода с интерфейсом OpenMP, добавьте файл отладочной DLL-библиотеки OpenMP (<strong>Microsoft.VC100.DebugOpenMP\vcomp100d.dll</strong>).</p>
+											<ol class="ordered"><li>
+													В группе <strong>Дополнительные файлы для развертывания</strong> выберите пункт <strong>&lt;Изменить файл…&gt;</strong>. Откроется диалоговое окно <strong>Выбор файла и папки</strong>.<br><br>
+												</li><li>
+													Нажмите кнопку <strong>Добавить файл </strong>, перейдите к файлу <strong>Microsoft.VC100.DebugOpenMP\vcomp100d.dll</strong>, выберите его и нажмите кнопку <strong>Открыть</strong>. <br><br>
+													Например, на компьютерах с архитектурой x86 и 64-разрядной версией системы Windows Server&nbsp;2008 этот файл по умолчанию расположен по следующему пути: <br><br>
+													
+														<strong>C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\redist\Debug_NonRedist\x86\Microsoft.VC100.DebugOpenMP\vcomp100d.dll</strong>
+													<br><br>
+												</li><li>
+													Нажмите кнопку <strong>ОК</strong>, чтобы добавить файл и закрыть диалоговое окно <strong>Выбор файла и папки</strong>.<br><br>
+												</li></ol>
+										
+									</li><li>
+										
+											<p>Нажмите кнопку <strong>ОК</strong>, чтобы сохранить изменения и закрыть окно <strong>Страницы свойств</strong>.</p>
+										
+									</li><li>
+										
+											<p>Установите точку останова в теле параллельного цикла <code>for</code>.</p>
+										
+									</li><li>
+										
+											<p>Нажмите клавишу F5, чтобы запустить отладчик.</p>
+										
+									</li><li>
+										
+											<p>Поскольку задание отправляется в кластер, отобразится окно ввода пароля для подключения к кластеру. Введите пароль и нажмите клавишу ВВОД.</p>
+										
+									</li><li>
+										
+											<p>После запуска отладчика проверьте в окне процессов расположение процессов. Узнайте для каждого процесса вычислительный узел, на котором запущен процесс. Эти сведения содержатся в столбце <strong>Квалификатор транспорта</strong>.</p>
+										
+									</li></ol>
+							
+						</div>
+				</div><a id="BKMK_appendix"></a><h2 class="heading">Приложение. Файлы, развертываемые Visual Studio в дополнение к двоичным файлам приложения (и CRT по запросу)</h2><div id="sectionSection3" class="section">
+					<ul><li class="unordered">
+							DebuggerProxy.dll<br><br>
+						</li><li class="unordered">
+							DebuggerProxy.dll.manifest<br><br>
+						</li><li class="unordered">
+							Delete_from_workdir.bat: скрипт для удаления развернутых файлов<br><br>
+						</li><li class="unordered">
+							Deploy_to_workdir.bat: скрипт для копирования файлов из каталога развертывания в рабочий каталог<br><br>
+						</li><li class="unordered">
+							dbghelp.dll<br><br>
+						</li><li class="unordered">
+							mcee.dll<br><br>
+						</li><li class="unordered">
+							Mpishim.bat: скрипт для запуска удаленного отладчика<br><br>
+						</li><li class="unordered">
+							Mpishim.exe: программа, организующая взаимодействие между интегрированной средой разработки и файлом Msvsmon.exe<br><br>
+						</li><li class="unordered">
+							Msvsmon.exe: удаленный отладчик<br><br>
+						</li><li class="unordered">
+							Msvsmon.exe.config<br><br>
+						</li><li class="unordered">
+							PfxTaskProvider.dll<br><br>
+						</li><li class="unordered">
+							symsrv.dll<br><br>
+						</li><li class="unordered">
+							symsrv.yes<br><br>
+						</li><li class="unordered">
+							vbdebug.dll<br><br>
+						</li><li class="unordered">
+							1049\msdbgui.dll<br><br>
+						</li><li class="unordered">
+							1049\vbdebugui.dll<br><br>
+						</li></ul>
+				</div><h2 class="heading"><span id="seeAlsoNoToggle">См. также</span></h2><div id="seeAlsoSection" class="section"><h4 class="subHeading">Понятия</h4><a href="http://msdn.microsoft.com/ru-ru/library/vstudio/dd560807(v=vs.100).aspx">Свойства конфигурации отладчика MPI-кластера</a><br><a href="http://msdn.microsoft.com/ru-ru/library/vstudio/dd560808(v=vs.100).aspx">Отладка приложений MPI в кластере HPC</a><br><h4 class="subHeading">Другие ресурсы</h4><a href="http://msdn.microsoft.com/ru-ru/library/vstudio/k0k771bt(v=vs.100).aspx">Основы отладки</a><br><a href="http://go.microsoft.com/fwlink/?LinkId=144910" target="_blank">mpiexec Command Reference</a><br><br></div>
+			
+		</div>
+  </div>
+</div>
+    
+
+
+
+
+<div id="contentFeedback">
+    <form method="post" action="http://msdn.microsoft.com/ru-ru/library/vstudio/feedback/add/ee441265(v=vs.100).aspx">
+        <input name="__RequestVerificationToken" type="hidden" value="shfp7q3MPuyNddAa7AuWWrJa3iIpm6Z6cy/cCAJgjE6RwsVC/LRCeT4l9HO3tcgLLHAnUAkAWM1kQ9s5CkE9ArZTO/N+Ia3k4wTiCpKUznA8aIl6mmqOYjzCCFEoPhDEHnQjlgnzb4AuHFOHMIpfzc/3iWE=">
+    <div id="contentFeedbackContainer">
+        <div class="FeedbackTitleContainer">
+            <a name="feedback"></a>
+        Была ли вам полезна эта информация?
+            <input id="rdIsUsefulYes" name="rdIsUseful" type="radio" value="1" onclick="toggleContentFeedback(&#39;Yes&#39;);"><label for="rdIsUsefulYes">Да</label>
+            <input id="rdIsUsefulNo" name="rdIsUseful" type="radio" value="0" onclick="toggleContentFeedback(&#39;No&#39;);"><label for="rdIsUsefulNo">Нет</label>
+        
+        </div>
+        
+            <div id="contentFeedbackQAContainer">
+                
+                    <div id="feedbackListNoContainer" class="FeedbackListContainer">
+                        
+                            <div>
+                                <input id="chkbxNo201" name="chkbxNo" type="checkbox" value="201">
+                                <label for="chkbxNo201">Неточный</label>
+                            </div>
+                        
+                            <div>
+                                <input id="chkbxNo202" name="chkbxNo" type="checkbox" value="202">
+                                <label for="chkbxNo202">Недостаточно подробный</label>
+                            </div>
+                        
+                            <div>
+                                <input id="chkbxNo203" name="chkbxNo" type="checkbox" value="203">
+                                <label for="chkbxNo203">Требуется больше примеров кода</label>
+                            </div>
+                        
+                            <div>
+                                <input id="chkbxNo204" name="chkbxNo" type="checkbox" value="204">
+                                <label for="chkbxNo204">Перевод нуждается в правке</label>
+                            </div>
+                        
+                    </div>
+                
+                <div class="FeedbackTellUsMoreContainer">
+                    <textarea id="feedbackText" name="feedbackText" class="TellUsMoreTextBoxSearchLoaded" onfocus="WatermarkFocus(this, &#39;Сообщите нам дополнительную информацию...&#39;, &#39;TellUsMoreTextBoxSearch&#39;)" onblur="WatermarkBlur(this, &#39;Сообщите нам дополнительную информацию...&#39;, &#39;TellUsMoreTextBoxSearchLoaded&#39;)" onmouseover="TextBoxCharactersCounter(this, document.getElementById(&#39;feedbackTextCounter&#39;), 1500)" onkeydown="TextBoxCharactersCounter(this, document.getElementById(&#39;feedbackTextCounter&#39;), 1500)" onkeyup="TextBoxCharactersCounter(this, document.getElementById(&#39;feedbackTextCounter&#39;), 1500)">Сообщите нам дополнительную информацию...</textarea>
+                </div>
+                <span class="counter">(<span id="feedbackTextCounter">1500</span> символов осталось)</span>
+                <input type="hidden" id="returnUrl" name="returnUrl" value="http://msdn.microsoft.com/ru-ru/library/vstudio/ee441265(v=vs.100).aspx">
+                <input type="submit" id="submit" value="Отправить" title="Щелкните, чтобы отправить отзыв" onclick="WatermarkOnSubmit(document.getElementById(&#39;feedbackText&#39;), &#39;Сообщите нам дополнительную информацию...&#39;, &#39;TellUsMoreTextBoxSearch&#39;)">
+                <div style="clear: both;"></div>
+            </div>  
+        
+    </div>
+    </form>
+</div>
+
+    
+
+
+
+
+</div>
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+
+<footer class="ux-footer">
+  <div class="nav">
+    <div class="footerLinksContainer"> 
+          <ul class="footerLinks">
+            <li class="footerLinksTitle">
+              <a href="http://msdn.microsoft.com/vstudio/" title="Главная">Главная</a>
+            </li>
+
+          </ul>
+          <ul class="footerLinks">
+            <li class="footerLinksTitle">
+              <a href="http://msdn.microsoft.com/library/vstudio/" title="Библиотека">Библиотека</a>
+            </li>
+
+          </ul>
+          <ul class="footerLinks">
+            <li class="footerLinksTitle">
+              <a href="http://msdn.microsoft.com/vstudio/cc136611" title="Обучение">Обучение</a>
+            </li>
+
+          </ul>
+          <ul class="footerLinks">
+            <li class="footerLinksTitle">
+              <a href="http://code.msdn.microsoft.com/vstudio/" title="Код">Код</a>
+            </li>
+
+          </ul>
+          <ul class="footerLinks">
+            <li class="footerLinksTitle">
+              <a href="http://msdn.microsoft.com/ru-ru/vstudio/bb984878" title="Загрузка">Загрузка</a>
+            </li>
+
+          </ul>
+          <ul class="footerLinks">
+            <li class="footerLinksTitle">
+              <a href="http://visualstudiogallery.msdn.microsoft.com/" title="Галерея">Галерея</a>
+            </li>
+
+          </ul>
+          <ul class="footerLinks">
+            <li class="footerLinksTitle">
+              <a href="http://msdn.microsoft.com/vstudio/cc136615" title="Поддержка">Поддержка</a>
+            </li>
+
+          </ul>
+          <ul class="footerLinks">
+            <li class="footerLinksTitle">
+              <a href="http://social.msdn.microsoft.com/Forums/ru-ru/category/visualstudio,vsarch,vsdbg,vstest,vstfs,vsdata,vsappdev,netdevelopment,visualbasic,visualcsharp,visualc,visualfsharp,vslightswitch,parallelcomputing" title="Форумы">Форумы</a>
+            </li>
+
+          </ul>
+    </div>
+    </div>
+  <div class="footerSubLinksContainer">
+    <span class="localePickerLink"><a href="http://msdn.microsoft.com/ru-ru/vstudio/SelectLocale?fromPage=%2flibrary%2fvstudio%2fee441265" title=" Россия (Pусский)"> Россия (Pусский)</a></span>
+    <ul class="footerSubLinks">
+      <li class="subFooterLink">© 2012 Microsoft</li>
+          <li class="subFooterLink">
+            <a href="http://msdn.microsoft.com/cc300389.aspx" title="Условия использования">Условия использования</a>
+          </li>
+          <li class="subFooterLink">
+            <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/ru-ru.mspx" title="Товарные знаки ">Товарные знаки </a>
+          </li>
+          <li class="subFooterLink">
+            <a href="http://go.microsoft.com/fwlink/?LinkId=248681" title="Заявление о конфиденциальности и использовании файлов cookie">Заявление о конфиденциальности и использовании файлов cookie</a>
+          </li>
+          <li class="subFooterLink">
+            <a href="https://lab.msdn.microsoft.com/mailform/contactus.aspx?refurl=http%3a%2f%2fmsdn.microsoft.com%2fru-ru%2fvstudio%2faa718325.aspx&amp;loc=ru-ru" title="Site Feedback">Site Feedback</a>
+          </li>
+      <li>
+        <a class="microsoftlogo" href="http://www.microsoft.com/" title="Microsoft"></a>
+      </li>
+    </ul>
+  </div>
+</footer>
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2012 Microsoft. Все права защищены.</div>
+            </div>
+
+            
+            
+
+        
+            <input id="MtpsDevice" type="hidden" value="Lightweight">
+
+
+<!--[CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]-->        
+            
+            
+            
+            
+            
+        
+
+
+
+<noscript>&lt;div&gt;&lt;img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;amp;WT.js=No" /&gt;&lt;/div&gt;</noscript>
+
+
+
+
+<noscript>
+  &lt;a href="http://www.omniture.com" title="Web Analytics"&gt;
+    &lt;img src="//msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" /&gt;
+  &lt;/a&gt;
+</noscript>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index],elem=document.createElement("script"),elem.className="mtps-injected",elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext,script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }"),parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n\"use strict\"; \r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/ru-ru/library/vstudio/ee441265(d=default,l=ru-ru,v=vs.100).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n  var detectedLocale = \u0027ru-ru\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"9d2b06ee-5e85-4532-a151-e9afcc5a425b\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:webtrendsscript,1:omni_rsid_MSDN;/Areas/Global/Content/Webtrends/resources:0,/Areas/Global/Content/Omniture/resources/MSDN:1&amp;hashKey=2A2EA78286FAF39A313149F2A3E6EE83" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:jquery-ui-1.8.16.custom.min,1:Utilities;/Areas/Epx/Themes/WindowsAzure/Content:0,/Areas/Epx/Content/Scripts:1&amp;hashKey=1862EDE397AF6CEC2DE33E102467E006" },
+	{ txt: "//\n    var searchWidgetJsUri = \u0027http://i1.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox&btnid=HeaderSearchButton&brand=MSDN&loc=ru-ru&Refinement=195&watermark=Visual%20Studio&focusOnInit=false&iroot=vstudio\u0027;\n  //" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:search.2,1:Toc,1:NavigationResize,2:FeedbackCounter,2:Feedback,3:Topic,3:CodeSnippet,3:TopicNotInScope,3:CollapsibleArea,3:VersionSelector,3:SurveyBroker;/Areas/Epx/Themes/VStudio/Content:0,/Areas/Epx/Library/Content:1,/Areas/Epx/Shared/Content:2,/Areas/Epx/Content/Scripts:3&amp;hashKey=A702864C48332457036F2FB379283939" }
+]);
+
+/*]]>*/
+</script>
+<div id="goog_qs_tidbit_box" class="notranslate goog_qs-slideup"><div id="goog_qs-wrapper"><div id="goog_qs-box-toggle" style="background-image: url(chrome-extension://okanipcmceoeemlbjnmnbdibhgpbllgc/images/minimize.png); " title="Зменшити"></div><div id="goog_qs-box-help" style="background-image: url(chrome-extension://okanipcmceoeemlbjnmnbdibhgpbllgc/images/help.png); " title="Відкрити сторінку довідки та параметрів"></div><div id="goog_qs-box-info" style="background-image: url(chrome-extension://okanipcmceoeemlbjnmnbdibhgpbllgc/images/icon16x16.png); "><span class="goog_qs-nowrap">З<img>біги</span> <span class="goog_qs-nowrap">н<img>а</span> <span class="goog_qs-nowrap">с<img>торінці</span> <span class="goog_qs-nowrap">д<img>ля</span> <span class="goog_qs-nowrap">з<img>апита</span> <span class="goog_qs-query"><span class="goog_qs-nowrap">m<img>pi</span> <span class="goog_qs-nowrap">v<img>isual</span> <span class="goog_qs-nowrap">s<img>tudio</span> <span class="goog_qs-nowrap">2<img>010</span></span></div><div id="goog_qs-box-tidbits"><div class="goog_qs-box-tidbit" title="Натисніть, щоб побачити цей текст на сторінці"><span class="goog_qs-nowrap">С<img>оздание</span> <span class="goog_qs-nowrap">о<img>бразца</span> <span class="goog_qs-nowrap">п<img>роекта</span> <em><span class="goog_qs-nowrap">M<img>PI</span></em> <span class="goog_qs-nowrap">н<img>а</span> <span class="goog_qs-nowrap">C<img>++</span> в <em><span class="goog_qs-nowrap">V<img>isual</span> <span class="goog_qs-nowrap">S<img>tudio</span> <span class="goog_qs-nowrap">2<img>010</span></em>; <span class="goog_qs-nowrap">Н<img>астройка</span> и <span class="goog_qs-nowrap">з<img>апуск</span> <span class="goog_qs-nowrap">о<img>тладчика</span> <em><span class="goog_qs-nowrap">M<img>PI</span></em>-кластера; <span class="goog_qs-nowrap">П<img>риложение.</span> <span class="goog_qs-nowrap">Ф<img>айлы,</span> <span class="goog_qs-nowrap">р<img>азвертываемые</span> <span class="goog_qs-nowrap">V<img>isual...</span> <span class="goog_qs-go">»</span></div></div><div id="goog_qs-box-bottom"><div class="goog_qs-more-matches" id="goog_qs-box-more-tidbits"><span class="goog_qs-nowrap">Б<img>ільше</span> <span class="goog_qs-nowrap">з<img>бігів</span> <span class="goog_qs-go">»</span></div><div class="goog_qs-more-matches" id="goog_qs-box-fewer-tidbits" style="display:none"><span class="goog_qs-go">«</span>  <span class="goog_qs-nowrap">М<img>енше</span> <span class="goog_qs-nowrap">з<img>бігів</span></div></div><div style="clear:both"></div></div></div><script src="./Пошаговое руководство. Запуск отладчика MPI-кластера в Visual Studio 2010_files/broker-config.js"></script><div style="display: none; " id="_WEDCSInsertedData"><iframe id="_msnFrame" src="./Пошаговое руководство. Запуск отладчика MPI-кластера в Visual Studio 2010_files/saved_resource.htm" style="z-index:-1;height:1px;width:1px;display:none;visibility:hidden;" onload="javascript:MscomBeacon();"></iframe></div></body><style type="text/css"></style></html>

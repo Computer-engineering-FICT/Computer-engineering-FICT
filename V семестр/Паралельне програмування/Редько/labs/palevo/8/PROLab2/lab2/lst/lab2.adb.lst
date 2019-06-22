@@ -1,0 +1,80 @@
+GNAT 4.3.3
+Copyright 1992-2007, Free Software Foundation, Inc.
+
+Compiling: lab2.adb (source file time stamp: 2009-09-15 20:44:27)
+
+     1. ----------------------------------------------------------------
+     2. --              Paralel and distributed computing             --
+     3. --                     Laboratory work #1                     --
+     4. --                   IO-73 Pustovit Michael                   --
+     5. ----------------------------------------------------------------
+     6. --Variant: 1.27, 2.14, 3.18                                   --
+     7. --F1: e = (A*B) + (C*D);                                      --
+     8. --Func2: MC = SORT(MA + MB*MO);                               --
+     9. --Func3: p = MAX(SORT(MS) + MA*MB).                           --
+    10. ----------------------------PACK PROGRAM------------------------
+    11. --Main Program                                                --
+    12. ----------------------------------------------------------------
+    13.
+    14. with Module,
+    15.      module.F2,
+    16.      module.F2.F3,
+    17.      module.F2.FIO,
+    18.      Ada.Text_IO, Ada.Integer_Text_IO;
+    19. use Ada.Text_IO, Ada.Integer_Text_IO;
+    20.
+    21. procedure Lab2 is
+    22.    package Modu is new Module(3);
+    23.    use Modu;
+    24.
+    25.    package Modu_F2 is new Modu.F2;
+    26.    use Modu_F2;
+    27.
+    28.    package Modu_F3 is new Modu_F2.F3;
+    29.    use Modu_F3;
+    30.
+    31.    package Modu_IO is new Modu_F2.FIO;
+    32.    use Modu_IO;
+    33.
+    34.    --Main program variables
+    35.    A, B, C, D: Vector;
+    36.    MA, MB, MO, MS, MC: Matrix;
+    37.    e, p:integer;
+    38. begin
+    39.    --Func1
+    40.    Put_Line("Func1");
+    41.    Put_Line("Input vector A");
+    42.    VectInput(A);
+    43.    Put_Line("Input vector B");
+    44.    VectInput(B);
+    45.    Put_Line("Input vector C");
+    46.    VectInput(C);
+    47.    Put_Line("Input vector D");
+    48.    VectInput(D);
+    49.    Func1(A, B, C, D, e);
+    50.    Put_Line("Func1 result");
+    51.    Ada.Integer_Text_IO.Put(e);
+    52.    New_Line;
+    53.
+    54.    --Func2
+    55.    Put_Line("Func2");
+    56.    Put_Line("Input matrix MA");
+    57.    MatrixInput(MA);
+    58.    Put_Line("Input matrix MB");
+    59.    MatrixInput(MB);
+    60.    Put_Line("Input matrix MO");
+    61.    MatrixInput(MO);
+    62.    Func2(MA, MB, MO, MC);
+    63.    Put_Line("Func2 result");
+    64.    MatrixOutput(MC);
+    65.
+    66.    --Func3
+    67.    Put_Line("Func3");
+    68.    Put_Line("Input matrix MS");
+    69.    MatrixInput(MS);
+    70.    p := Func3(MS, MA, MB);
+    71.    Put_Line("Func3 result");
+    72.    Ada.Integer_Text_IO.Put(p);
+    73. end Lab2;
+
+ 73 lines: No errors

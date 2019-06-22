@@ -1,0 +1,89 @@
+GNAT 4.3.3
+Copyright 1992-2007, Free Software Foundation, Inc.
+
+Compiling: module-f2-fio.adb (source file time stamp: 2009-09-15 21:49:35)
+
+     1. with Ada.Text_IO; use Ada.Text_IO;
+     2. with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
+     3. with Ada.IO_Exceptions; use Ada.IO_Exceptions;
+     4.
+     5. package body Module.F2.FIO is
+     6.    --I/O operations
+     7.    ---Output for Vector type
+     8.    procedure VectOutput(a: Vector) is
+     9.    begin
+    10.       for i in 1..n loop
+    11.          Put(a(i), 5);
+    12.       end loop;
+    13.       New_line;
+    14.    end VectOutput;
+    15.
+    16.    ---Matrix output
+    17.    procedure MatrixOutput(a: Matrix) is
+    18.    begin
+    19.       for i in 1..n loop
+    20.          for j in 1..n loop
+    21.             Put(a(i)(j), 4);
+    22.          end loop;
+    23.          New_Line;
+    24.       end loop;
+    25.    end MatrixOutput;
+    26.
+    27.    ---Vector input
+    28.    procedure VectInput(a: in out Vector) is
+    29.    begin
+    30.       for i in 1..N loop
+    31.          loop
+    32.             begin
+    33. 	            Get(a(i));
+    34. 	            exit;
+    35. 	            exception
+    36. 	               when Ada.IO_Exceptions.Data_Error =>
+    37. 	                  Put("Input error. Please, try again:");
+    38.                       Skip_Line;
+    39.             end;
+    40.          end loop;
+    41.       end loop;
+    42.
+    43.    end VectInput;
+    44.
+    45.    ---Matrix input
+    46.    procedure MatrixInput(m: in out Matrix) is
+    47.    begin
+    48.       Put_Line("Input matrix");
+    49.       for i in 1..N loop
+    50.          VectInput(m(i));
+    51.       end loop;
+    52.    end;
+    53.
+    54. end Module.F2.FIO;
+
+Compiling: module-f2-fio.ads (source file time stamp: 2009-09-15 22:39:04)
+
+     1. ----------------------------------------------------------------
+     2. --              Paralel and distributed computing             --
+     3. --                     Laboratory work #1                     --
+     4. --                   IO-73 Pustovit Michael                   --
+     5. ----------------------------------------------------------------
+     6. --                  Variant: 1.27, 2.14, 3.18                 --
+     7. ----------------------------------------------------------------
+     8. ---------------------------Module.FIO---------------------------
+     9. ----------------------------------------------------------------
+    10.
+    11. generic
+    12. package Module.F2.FIO is
+    13.    --I/O operations
+    14.    ---Output for Vector type
+    15.    procedure VectOutput(a: Vector);
+    16.
+    17.    ---Matrix output
+    18.    procedure MatrixOutput(a: Matrix);
+    19.
+    20.    ---Vector input
+    21.    procedure VectInput(a: in out Vector);
+    22.
+    23.    ---Matrix input
+    24.    procedure MatrixInput(m: in out Matrix);
+    25. end Module.F2.FIO;
+
+ 54 lines: No errors

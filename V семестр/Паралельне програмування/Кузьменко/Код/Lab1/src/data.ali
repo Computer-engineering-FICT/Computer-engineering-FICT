@@ -1,0 +1,143 @@
+V "GNAT Lib v2014"
+A -gnatl=data.lst
+A -mtune=generic
+A -march=pentiumpro
+P ZX
+
+RN
+RV NO_IO
+RV SPARK_05
+
+U data%b		data.adb		16a9e866 NE OO PK GE
+W ada%s			ada.ads			ada.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+
+U data%s		data.ads		3d4c3f7c BN EE NE OO PK GE IL
+
+D ada.ads		20140406181354 3ffc8e18 ada%s
+D a-except.ads		20140406181356 43d57f8c ada.exceptions%s
+D a-finali.ads		20140406181358 69f99942 ada.finalization%s
+D a-inteio.ads		20140406181358 f64b89a4 ada.integer_text_io%s
+D a-ioexce.ads		20140406181358 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20140406181354 1a984740 ada.streams%s
+D a-tags.ads		20140406181356 dc4d0634 ada.tags%s
+D a-textio.ads		20140406181358 386df5d4 ada.text_io%s
+D a-tiinio.ads		20140406181358 aa04e5d6 ada.text_io.integer_io%s
+D a-unccon.ads		20140406181358 f9eb8f06 ada.unchecked_conversion%s
+D data.ads		20140909205428 3d4c3f7c data%s
+D data.adb		20140908173540 e5c3ab6a data%b
+D interfac.ads		20140406181358 69adb1b9 interfaces%s
+D i-cstrea.ads		20140406181356 febc86ed interfaces.c_streams%s
+D system.ads		20140406181358 5fc8ae56 system%s
+D s-crtl.ads		20140406181356 2c012597 system.crtl%s
+D s-exctab.ads		20140406181354 54135002 system.exception_table%s
+D s-ficobl.ads		20140406181354 078245e4 system.file_control_block%s
+D s-finmas.ads		20140406181356 814daec4 system.finalization_masters%s
+D s-finroo.ads		20140406181358 4ff27390 system.finalization_root%s
+D s-parame.ads		20140406181358 06da98b2 system.parameters%s
+D s-pooglo.ads		20140406181356 542f33d0 system.pool_global%s
+D s-soflin.ads		20140406181358 aa763b52 system.soft_links%s
+D s-stache.ads		20140406181354 a37c21ec system.stack_checking%s
+D s-stalib.ads		20140406181354 fa0a3617 system.standard_library%s
+D s-stoele.ads		20140406181356 2dc34a04 system.storage_elements%s
+D s-stoele.adb		20140406181354 ed88f8fb system.storage_elements%b
+D s-stopoo.ads		20140406181356 b16154c2 system.storage_pools%s
+D s-traent.ads		20140406181354 b5116092 system.traceback_entries%s
+D s-unstyp.ads		20140406181356 510692af system.unsigned_types%s
+D s-wchcon.ads		20140406181358 1b7d22d2 system.wch_con%s
+X 1 ada.ads
+16K9*Ada 19e8 12|8r6 8r19 9r5 9r18
+X 4 a-inteio.ads
+18K13*Integer_Text_IO[9|46] 12|8w23 9r22
+X 8 a-textio.ads
+49K13*Text_IO 471e16 12|8w10 9r9
+242U14*Put 12|44s25
+263U14*Put_Line 12|46s18
+X 9 a-tiinio.ads
+56U14*Get 12|16s13[4|18] 33s16[4|18]
+66U14*Put 12|24s13[4|18] 43s25[4|18]
+X 11 data.ads
+9i4 n{integer} 34r29 35r29 12|15r22 23r22 31r22 32r25 41r22 42r29 55r19 56r22
+. 58r25 72r19 74r22 86r19 96r19 97r22 110r20 112r26 128r19 138r19 139r22
+10k9*data 9z4 34E9 37l5 37e9 12|10b14 166l5 166t9
+12A9*Vector(integer) 16r34 18r34 25r29 25r60 34c9 35r35 12|13r34 21r34 68r45
+. 68r60 70r9 83r24 83r39 84r9 105r26 105r41 106r9 149r29 149r60
+13A9*Matrix(12A9) 20r35 22r35 25r46 28r32 28r47 31r33 35c9 12|29r35 39r35
+. 51r29 51r44 53r10 68r35 93r28 93r43 94r9 125r25 125r40 126r10 135r28 149r46
+. 155r32 155r47 161r33
+16U14*Vector_Input 16<28 12|13b14 18l11 18t23
+16a28 A{12A9} 12|13b28 16m17 16r17
+18U14*Vector_Output 18>29 12|21b14 26l11 26t24
+18a29 A{12A9} 12|21b29 24r17
+20U14*Matrix_Input 20<28 12|29b14 36l11 36t23
+20a28 MA{13A9} 12|29b28 33m20 33r20
+22U14*Matrix_Output 22>29 12|39b14 48l11 48t24
+22a29 MA{13A9} 12|39b29 43r29
+25U14*Func1 25>20 25>22 25>24 25>36 25>39 25<54 12|149b14 152l8 152t13
+25a20 A{12A9} 12|149b20 151r62
+25a22 B{12A9} 12|149b22 151r65
+25a24 C{12A9} 12|149b24 151r59
+25a36 MA{13A9} 12|149b36 151r52
+25a39 MZ{13A9} 12|149b39 151r55
+25a54 E{12A9} 12|149b54 151m7
+28U14*Func2 28>20 28>23 28>26 28<40 12|155b14 158l8 158t13
+28a20 MA{13A9} 12|155b20 157r45
+28a23 MB{13A9} 12|155b23 157r38
+28a26 MM{13A9} 12|155b26 157r41
+28a40 MC{13A9} 12|155b40 157m7
+31U14*Func3 31>20 31>23 31>26 31<41 12|161b14 164l8 164t13
+31a20 MA{13A9} 12|161b20 163r51
+31a23 MM{13A9} 12|161b23 163r54
+31a26 MS{13A9} 12|161b26 163r38
+31i41 p{integer} 12|161b41 163m7
+X 12 data.adb
+15i14 i{integer} 16r19
+23i14 i{integer} 24r19
+31i14 i{integer} 33r23
+32i17 j{integer} 33r26
+41i14 i{integer} 43r32
+42i21 j{integer} 43r35
+51V13 MultMatr{11|13A9} 51b13 51>23 51>26 65l8 65t16 151s43 157s29 163s42
+51a23 ma{11|13A9} 59r21
+51a26 mz{11|13A9} 59r30
+52i7 s{integer} 57m13 59m16 59r19 60r26
+53a7 MT{11|13A9} 60m16 64r14
+55i11 i{integer} 59r24 60r19
+56i14 j{integer} 59r36 60r22
+58i17 k{integer} 59r27 59r33
+68V13 multMatrixOnVector{11|12A9} 68b13 68>32 68>43 80l8 80t26 151s24
+68a32 MA{11|13A9} 75r18
+68a43 A{11|12A9} 75r27
+69i7 s{integer} 73m10 75m13 75r16 77r16
+70a7 R{11|12A9} 77m10 79r14
+72i11 i{integer} 75r21 77r12
+74i14 j{integer} 75r24 75r29
+83V13 AddVec{11|12A9} 83b13 83>20 83>22 90l8 90t14 151s10 151s17
+83a20 B{11|12A9} 87r16
+83a22 C{11|12A9} 87r21
+84a7 K{11|12A9} 87m10 89r14
+86i11 i{integer} 87r12 87r18 87r23
+93V13 AddMatr{11|13A9} 93b13 93>22 93>25 102l8 102t15 157s21 163s21
+93a22 ma{11|13A9} 98r22
+93a25 mb{11|13A9} 98r31
+94a7 m{11|13A9} 98m13 101r14
+96i11 i{integer} 98r15 98r25 98r34
+97i14 j{integer} 98r18 98r28 98r37
+105V13 SortVector{11|12A9} 105b13 105>24 122l8 122t18 129s17
+105a24 A{11|12A9} 106r17
+106a7 M{11|12A9} 113r16 113r21 117r15 118m10 118r16 119m10 121r14
+107i7 buf{integer} 117m10 119r16
+108i7 k{integer} 111m10 113r18 114m16 117r17 118r12
+110i11 i{integer} 111r13 112r20 118r18 119r12
+112i14 j{integer} 113r23 114r19
+125V13 SortMatr{11|13A9} 125b13 125>22 132l8 132t16 157s12 163s29
+125a22 MA{11|13A9} 129r28
+126a7 MT{11|13A9} 129m10 131r14
+128i11 i{integer} 129r13 129r31
+135V13 MaxElMatr{integer} 135b13 135>25 146l8 146t17 163s11
+135a25 MD{11|13A9} 136r18 140r18 141r19
+136i7 m{integer} 140r16 141m16 145r14
+138i11 i{integer} 140r21 141r22
+139i14 j{integer} 140r24 141r25
+

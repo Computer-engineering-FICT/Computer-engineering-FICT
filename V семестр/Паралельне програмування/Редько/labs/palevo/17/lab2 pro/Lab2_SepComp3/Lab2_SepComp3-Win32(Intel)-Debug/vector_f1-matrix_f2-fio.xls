@@ -1,0 +1,49 @@
+Source file: ..\vector_f1-matrix_f2-fio.ads   Thu Oct 01 01:27:17 2009
+
+    1 ----------------------------------------------------------------
+    2 --              Paralel and distributed computing             --
+    3 --                     Laboratory work #2                     --
+    4 --                   IO-73 Rukavishnikov Gleb                 --
+    5 ----------------------------------------------------------------
+    6 --Variant: 1.12, 2.20, 3.24                                   --
+    7 --F1:  A=B+C-D*e                                              --
+    8 --F2:  MD=MA+MB-MC*MM                                         --
+    9 --F3:  k=min(MA*MB*å)                                         --
+   10 ----------------------------------------------------------------
+   11 --------------------Vector_F1.Matrix_F2.FIO---------------------
+   12 ----------------------------------------------------------------
+   13 
+   14 generic
+   15 package Vector_F1.Matrix_F2.FIO is
+   16    --I/O operations
+   17    ---Output for Vector type
+   18    procedure VectOutput(A: Vector);
+   19 
+   20    ---Matrix output
+   21    procedure MatrixOutput(a: Matrix);
+   22 
+   23    ---Vector input
+   24    procedure VectInput(a: in out Vector);
+   25 
+   26    ---Matrix input
+   27    procedure MatrixInput(m: in out Matrix);
+   28 end Vector_F1.Matrix_F2.FIO;
+
+NAME                 KIND/FILE            DEF    REFERENCES (* if assigned)
+---------------------------------------------------------------------------
+A                    parameter           18      
+FIO                  library package     15      28 
+Matrix               #2:vector_f1-matrix_f2.ads  21 27 
+MatrixInput          subprogram          27      
+MatrixOutput         subprogram          21      
+Matrix_F2            #2:vector_f1-matrix_f2.ads  15 
+VectInput            subprogram          24      
+VectOutput           subprogram          18      
+Vector               #1:vector_f1.ads            18 24 
+Vector_F1            #1:vector_f1.ads            15 
+a                    parameter           21      
+a                    parameter           24      
+m                    parameter           27      
+
+    File #1 ..\vector_f1.ads
+    File #2 ..\vector_f1-matrix_f2.ads

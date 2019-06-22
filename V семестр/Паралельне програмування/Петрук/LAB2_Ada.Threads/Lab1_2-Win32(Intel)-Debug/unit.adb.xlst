@@ -1,0 +1,188 @@
+    1	package body Unit is
+    2	---------------------------------------
+    3		procedure VectorIn (x : out Vector) is
+    4		begin								
+    5			for i in 1..N loop
+    6				x(i):=1;		
+    7			end loop;
+    8		end VectorIn;
+    9	---------------------------------------
+   10		procedure VectorOut (x : in Vector ) is
+   11		begin
+   12			for i in 1..N loop
+   13				put(x(i));		
+   14			end loop;				
+   15			New_line;
+   16		end VectorOut;
+   17	---------------------------------------
+   18		procedure MatrixIn (MX : out Matrix) is
+   19		begin
+   20			for i in 1..N loop
+   21				for j in 1..n loop
+   22					MX(i)(j):=1;		
+   23				end loop;
+   24			end loop;
+   25		end MatrixIn;				
+   26	---------------------------------------
+   27		procedure MatrixOut (MX : in Matrix) is
+   28		begin
+   29			for i in 1..N loop
+   30				for j in 1..n loop
+   31					put(MX(i)(j));												
+   32					if (j=n) then
+   33						New_line;
+   34					end if;
+   35				end loop;
+   36			end loop;
+   37			New_line;
+   38		end MatrixOut;
+   39	---------------------------------------
+   40		--Func1:  C:=A-B+D
+   41		procedure Func1 (A : in Vector;
+   42						 b : in Vector;
+   43						 d : in Vector;
+   44						 c : out Vector) is
+   45		begin
+   46			for i in 1..n loop
+   47				c(i) := a(i)-B(i)+D(i);
+   48			end loop;
+   49		end Func1;
+   50	---------------------------------------
+   51			--Func2: MD := MIN(MA)*MB*MC
+   52		procedure Func2 (MA : in Matrix;
+   53						 MB : in Matrix;
+   54						 MC : in Matrix;
+   55						 MD : out Matrix) is
+   56		min:Integer;
+   57		begin
+   58			--MD := (0)
+   59			for i in 1..n loop
+   60				for j in 1..n loop
+   61					MD(i)(j) := 0;
+   62				end loop;
+   63			end loop;
+   64			--MD := MB*MC
+   65			for i in 1..n loop
+   66				for j in 1..n loop
+   67					for k in 1..n loop 
+   68						MD(i)(j) := MD(i)(j)+MB(i)(k)*MC(k)(j);
+   69					end loop;
+   70				end loop;
+   71			end loop;
+   72			--serching	min(MA)
+   73			min := Ma(1)(1);	
+   74			for i in 1..N loop
+   75				for j in 1..n loop
+   76					if MA(i)(j)<min then
+   77	 			    	min := MA(i)(j);
+   78				   	end if;
+   79				end loop;
+   80			end loop;
+   81			-- MD := Min(MA)*MB*MC
+   82	 		for i in 1..N loop
+   83				for j in 1..n loop
+   84					MD(i)(j) := MD(i)(j)*Min;
+   85				end loop;
+   86			end loop;
+   87		end Func2;
+   88	---------------------------------------
+   89		--Func3: D := (A + B)*(MA - MB)
+   90		procedure Func3(A: in Vector;
+   91						B: in Vector;
+   92						MA: in Matrix;
+   93						MB: in Matrix;
+   94						D: out vector) is
+   95		C:Vector;
+   96		MC:Matrix;
+   97		begin
+   98			--C:=A + B
+   99			for i in 1..N loop
+  100				C(i) := A(i) + B(i);
+  101			end loop;
+  102			--MC:=MA - MB
+  103	    	for i in 1..N loop
+  104				for j in 1..n loop
+  105					MC(i)(j) := MA(i)(j) - MB(i)(j);
+  106				end loop;
+  107			end loop;
+  108			--D := (0)
+  109			for i in 1..n loop
+  110				d(i) := 0;
+  111			end loop;
+  112			--D := C * MC
+  113			for i in 1..n loop
+  114				for j in 1..n loop
+  115					D(j):= D(j) + C(j)*MC(j)(i);
+  116				end loop;
+  117			end loop;
+  118		end func3;
+  119	---------------------------------------	
+  120	end Unit;
+
+A                    parameter           90          100 
+A                    parameter           41          47 
+B                    parameter           91          100 
+C                    object              95          100 115 
+D                    parameter           94          110 115 
+Func1                subprogram body     41          49 
+Func1                File 1:unit.ads             18 
+Func2                subprogram body     52          87 
+Func2                File 1:unit.ads             22 
+Func3                subprogram body     90          118 
+Func3                File 1:unit.ads             22 
+MA                   parameter           52          73 76 77 
+MA                   parameter           92          105 
+MB                   parameter           93          105 
+MB                   parameter           53          68 
+MC                   object              96          105 115 
+MC                   parameter           54          68 
+MD                   parameter           55          61 68 84 
+MX                   parameter           18          22 
+MX                   parameter           27          31 
+Matrix               File 1:unit.ads             18 27 52 53 54 55 92 93 
+                                                 96 
+MatrixIn             subprogram body     18          25 
+MatrixIn             File 1:unit.ads             13 
+MatrixOut            subprogram body     27          38 
+MatrixOut            File 1:unit.ads             15 
+New_line             File 3:f110spc.ada          15 33 37 
+Unit                 lib package body     1          120 
+Unit                 File 1:unit.ads             3 
+Vector               File 1:unit.ads             3 10 41 42 43 44 90 91 
+                                                 94 95 
+VectorIn             subprogram body      3          8 
+VectorIn             File 1:unit.ads             6 
+VectorOut            subprogram body     10          16 
+VectorOut            File 1:unit.ads             8 
+b                    parameter           42          47 
+c                    parameter           44          47 
+d                    parameter           43          47 
+i                    object              46          47 
+i                    object              29          31 
+i                    object              65          68 
+i                    object             113          115 
+i                    object             109          110 
+i                    object             103          105 
+i                    object              74          76 77 
+i                    object              12          13 
+i                    object              82          84 
+i                    object              59          61 
+i                    object               5          6 
+i                    object              99          100 
+i                    object              20          22 
+j                    object              21          22 
+j                    object              75          76 77 
+j                    object              66          68 
+j                    object              30          31 32 
+j                    object              83          84 
+j                    object              60          61 
+j                    object             104          105 
+j                    object             114          115 
+k                    object              67          68 
+min                  object              56          73 76 77 84 
+n                    File 1:unit.ads             32 
+put                  File 3:f110spc.ada          13 31 
+x                    parameter           10          13 
+x                    parameter            3          6 
+    File #1 ..\unit.ads
+    File #3 src\f110spc.ada

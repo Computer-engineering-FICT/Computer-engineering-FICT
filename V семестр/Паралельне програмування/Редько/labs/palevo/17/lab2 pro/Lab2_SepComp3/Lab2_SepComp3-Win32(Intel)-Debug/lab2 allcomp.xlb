@@ -1,0 +1,138 @@
+Source file: ..\lab2 allcomp.adb   Thu Oct 01 01:27:21 2009
+
+    1 ----------------------------------------------------------------
+    2 --              Paralel and distributed computing             --
+    3 --                     Laboratory work #2                     --
+    4 --                   IO-73 Rukavishnikov Gleb                 --
+    5 ----------------------------------------------------------------
+    6 --Variant: 1.12, 2.20, 3.24                                   --
+    7 --F1:  A=B+C-D*e                                              --
+    8 --F2:  MD=MA+MB-MC*MM                                         --
+    9 --F3:  k=min(MA*MB*å)                                         --
+   10 ----------------------------PACK PROGRAM------------------------
+   11 --This program uses StartPack package                         --
+   12 --3rd variant of separate compilation                         --
+   13 ----------------------------------------------------------------
+   14 
+   15 with Vector_F1,
+   16      Vector_F1.Matrix_F2,
+   17      Vector_F1.Matrix_F2.F3,
+   18      Vector_F1.Matrix_F2.FIO,
+   19      Ada.Text_IO, Ada.Integer_Text_IO;
+   20 use Ada.Text_IO, Ada.Integer_Text_IO;
+   21 
+   22 procedure Lab2_ALLComp is
+   23    package Modu is new Vector_F1(3);
+   24    use Modu;
+   25 
+   26    package Modu_F2 is new Modu.Matrix_F2;
+   27    use Modu_F2;
+   28 
+   29    package Modu_F3 is new Modu_F2.F3;
+   30    use Modu_F3;
+   31 
+   32    package Modu_IO is new Modu_F2.FIO;
+   33    use Modu_IO;
+   34 
+   35    --Main program variables
+   36    A, B, C, D: Vector;
+   37    MA, MB, MC, MD, MM: Matrix;
+   38    e, p:integer;
+   39 begin
+   40    --Func1
+   41    Put_Line("Func1");
+   42    Put_Line("Input vector B");
+   43    VectInput(B);
+   44    Put_Line("Input vector C");
+   45    VectInput(C);
+   46    Put_Line("Input vector D");
+   47    VectInput(D);
+   48         Put_Line("Input E");
+   49    Ada.Integer_Text_IO.Get(E);
+   50    Func1(A, B, C, D, e);
+   51    Put_Line("Func1 result");
+   52    VectOutput (A);
+   53    New_Line;
+   54 
+   55    --Func2
+   56    Put_Line("Func2");
+   57    Put_Line("Input matrix MA");
+   58    MatrixInput(MA);
+   59    Put_Line("Input matrix MB");
+   60    MatrixInput(MB);
+   61    Put_Line("Input matrix MC");
+   62    MatrixInput(MC);
+   63         Put_Line("Input matrix MM");
+   64    MatrixInput(MM);
+   65    Func2(MA, MB, MC, MD, MM);
+   66    Put_Line("Func2 result");
+   67    MatrixOutput(MM);
+   68 
+   69    --Func3
+   70    Put_Line("Func3");
+   71    Put_Line("Input matrix MA");
+   72    MatrixInput(MA);
+   73         Put_Line("Input matrix MB");
+   74         MatrixInput(MB);
+   75         Put_Line("Input E");
+   76    Ada.Integer_Text_IO.Get(E);
+   77    p := Func3(MA, MB, E);
+   78    Put_Line("Func3 result");
+   79    Ada.Integer_Text_IO.Put(p);
+   80 end Lab2_ALLComp;
+
+NAME                 KIND/FILE            DEF    REFERENCES (* if assigned)
+---------------------------------------------------------------------------
+A                    object              36      50* 52* 
+Ada                  #5:ada.ada                  19 
+B                    object              36      43* 50* 
+C                    object              36      45* 50* 
+D                    object              36      47* 50* 
+F3                   external                        17 29 
+from file 3:vector_f1-matrix_f2-f3.ads
+FIO                  external                        18 32 
+from file 4:vector_f1-matrix_f2-fio.ads
+Func1                #1:vector_f1.ads            50 
+Func2                #2:vector_f1-matrix_f2.ads  65 
+Func3                external                        77 
+from file 3:vector_f1-matrix_f2-f3.ads
+Get                  #6:ada.text_io.spc          49 76 
+Integer_Text_IO      #7:ada.integer_text_io.ada  19 20 
+Lab2_ALLComp         library subp body   22      80 
+MA                   object              37      58* 65* 72* 77* 
+MB                   object              37      60* 65* 74* 77* 
+MC                   object              37      62* 65* 
+MD                   object              37      65* 
+MM                   object              37      64* 65* 67* 
+Matrix               #2:vector_f1-matrix_f2.ads  37 
+MatrixInput          external                        58 60 62 64 72 74 
+from file 4:vector_f1-matrix_f2-fio.ads
+MatrixOutput         external                        67 
+from file 4:vector_f1-matrix_f2-fio.ads
+Matrix_F2            #2:vector_f1-matrix_f2.ads  16 17 18 26 
+Modu                 package             23      24 
+Modu_F2              package             26      27 
+Modu_F3              package             29      30 
+Modu_IO              package             32      33 
+New_Line             #6:ada.text_io.spc          53 
+Put                  #6:ada.text_io.spc          79 
+Put_Line             #6:ada.text_io.spc          41 42 44 46 48 51 56 57 
+                                                 59 61 63 66 70 71 73 75 
+                                                 78 
+Text_IO              #6:ada.text_io.spc          19 20 
+VectInput            external                        43 45 47 
+from file 4:vector_f1-matrix_f2-fio.ads
+VectOutput           external                        52 
+from file 4:vector_f1-matrix_f2-fio.ads
+Vector               #1:vector_f1.ads            36 
+Vector_F1            #1:vector_f1.ads            15 16 17 18 23 
+e                    object              38      49* 50* 76* 77* 
+p                    object              38      77* 79* 
+
+    File #1 ..\vector_f1.ads
+    File #2 ..\vector_f1-matrix_f2.ads
+    File #3 ..\vector_f1-matrix_f2-f3.ads
+    File #4 ..\vector_f1-matrix_f2-fio.ads
+    File #5 d:\dist\objectada 8.4\lib\rts\ada.ada
+    File #6 d:\dist\objectada 8.4\lib\rts\ada.text_io.spc
+    File #7 d:\dist\objectada 8.4\lib\rts\ada.integer_text_io.ada

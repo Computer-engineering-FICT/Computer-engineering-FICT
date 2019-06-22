@@ -1,0 +1,157 @@
+Source file: ..\lab1.ada   Thu Sep 17 05:30:49 2009
+
+    1 -----------------------------
+    2 -- Лаб1 1.11: c=MAX(A)*(A*B)
+    3 --              2.19: v=MAX(MA+MB*MC)
+    4 --              3.23: e=MAX(MA*(B-C))
+    5 -----------------------------
+    6 --              група ІО-73
+    7 --              Сидора Сергій
+    8 -----------------------------
+    9 
+   10 with Ada.Text_IO, Ada.Integer_Text_IO;
+   11 use Ada.Text_IO, Ada.Integer_Text_IO;
+   12 
+   13 -- Основний пакет --
+   14 generic
+   15     N: integer := 3;
+   16 package Lab1Realization is    
+   17     type Vector is array (1..N) of integer;
+   18         type Matrix is array (1..N) of Vector;
+   19         A, B, C, D, F : Vector; 
+   20         procedure F1 (A, B: in Vector; d: out integer);
+   21         procedure F2 (MA, MB, MC: in Matrix; v: out integer);
+   22         procedure F3 (MA: in Matrix; B, C: in Vector; e: out integer);
+   23         procedure ShowVect (V: in Vector);
+   24         procedure ShowMatr (Mat: in Matrix);
+   25         procedure InputVector (V: out vector);
+   26     procedure InputMatrix (M: out matrix);
+   27 end Lab1Realization;
+   28 
+   29 -- Реалізація об'явлених функцій --
+   30 
+   31 package body Lab1Realization is
+   32 
+   33 -- Реалізація першої функції --
+   34 
+   35         procedure F1 (A, B: in Vector; d: out integer) is
+   36                 Max: integer;
+   37                 begin                   
+   38                         Max := A(1);
+   39                         d := 0;
+   40                         for i in 1..N loop                                                      
+   41                 if A(i) > Max then
+   42                                         Max := A(i);
+   43                                 end if;
+   44                                 d := d + A(i)*B(i);
+   45                         end loop;
+   46                         d := d*Max;
+   47                 end F1;
+   48 
+   49 -- Реалізація другої функції --
+   50 
+   51         procedure F2 (MA, MB, MC: in Matrix; v: out integer) is
+   52                 MD: Matrix;
+   53                 Sum: integer;
+   54                 begin
+   55                         for i in 1..N loop
+   56                                 for j in 1..N loop                                      
+   57                                         for k in 1..N loop
+   58                                         Sum := Sum + MB(k)(i)*MC(j)(k);
+   59                                         end loop;                                       
+   60                                         MD(i)(j) := Sum + MA(i)(j);
+   61                                         Sum := 0;                                       
+   62                                 end loop;
+   63                         end loop;
+   64                         v := MD(1)(1);
+   65                         for i in 1..N loop
+   66                                 for j in 1..N loop                                                      
+   67                         if MD(i)(j) > v then
+   68                                                 v := MD(i)(j);
+   69                                         end if;
+   70                                 end loop;                               
+   71                         end loop;                                               
+   72                 end F2;
+   73 
+   74 -- Реалізація третьої функції --
+   75 
+   76         procedure F3 (MA: in Matrix; B, C: in Vector; e: out integer) is
+   77                 A, D: Vector;
+   78                 Sum: integer;
+   79                 begin
+   80                         for i in 1..N loop
+   81                                 A(i) := B(i) - C(i);
+   82                         end loop;                       
+   83                         for i in 1..N loop
+   84                                 Sum := 0;
+   85                                 for j in 1..N loop
+   86                                         Sum := Sum + MA(j)(i)*A(j);
+   87                                 end loop;
+   88                                 D(i) := Sum;
+   89                         end loop;
+   90                         e := D(1);
+   91                         for i in 2..N loop
+   92                                 if D(i) > e then
+   93                                         e := D(i);
+   94                                 end if;
+   95                         end loop;
+   96                 end F3;
+   97 
+   98 -- Процедура виводу вектору на екран монітору --
+   99 
+  100         procedure ShowVect (V: in Vector) is    
+  101                 begin
+  102                         Put("| ");
+  103                         for i in 1..N loop
+  104                                 Put(V(i),3);    
+  105                         end loop;
+  106                         Put("|");
+  107                 end ShowVect;
+  108 
+  109 -- Процедура виводу матриці на екран монітору --
+  110 
+  111         procedure ShowMatr (Mat: in Matrix) is
+  112         begin
+  113                         for i in 1..N loop
+  114                                 ShowVect (Mat(i));
+  115                                 New_Line;       
+  116                         end loop;
+  117                 end ShowMatr;    
+  118 
+  119 -- Процедура вводу вектору з клавіатури --
+  120 
+  121         procedure InputVector (V: out vector) is
+  122                 buf: integer;  
+  123         begin
+  124                 put ("Enter vector - ");
+  125             put (N,3);
+  126             put (" numbers: ");
+  127                 for i in 1..N loop
+  128                         Get(buf); 
+  129                     V(i) := buf;   
+  130                     put ("   ");    
+  131                                 end loop;
+  132         end InputVector;
+  133 
+  134 -- Процедура вводу матриці з клавіатури --
+  135         
+  136         procedure InputMatrix (M: out matrix) is
+  137                 buf: integer;  
+  138         begin
+  139                 put ("Enter matrix ");
+  140             put (N,3);
+  141             put ("x");
+  142             put (N,3);
+  143             put (" : ");
+  144             for i in 1..N loop
+  145                 for j in 1..N loop
+  146                                 Get(buf); 
+  147                         M(i)(j) := buf;   
+  148                         put ("   ");    
+  149                 end loop; 
+  150                 New_Line;   
+  151                         end loop;
+  152                 end InputMatrix;
+  153 
+  154 end Lab1Realization;
+  155                

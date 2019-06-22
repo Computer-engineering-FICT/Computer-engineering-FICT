@@ -1,0 +1,29 @@
+Source file: ..\..\func2.ads   Sun Oct 09 18:43:12 2011
+
+    1 --Водопьянов Дмитрий Вадимович, группа ИО-91
+    2 --Лаб. 1. Подпрограммы. Пакеты
+    3 --F1: C=A-B
+    4 --F2: MC=SORT(TRANS(MA)*MB)
+    5 --F3: D=SORT(A)*(MA+MB)
+    6 WITH ADA.TEXT_IO; USE ADA.TEXT_IO;
+    7 PACKAGE Func IS
+    8 
+    9 --Спецификация пакета
+   10 N : INTEGER := 4;
+   11 I, J, K : INTEGER;
+   12 TYPE Вектор IS private;
+   13 TYPE Матрица IS ARRAY (1..N) OF Вектор; 
+   14 PROCEDURE Edit_N;
+   15 PROCEDURE File_Output(F: IN File_type);  
+   16 PROCEDURE Integer_File_Output(F: IN File_type; Int : IN INTEGER); 
+   17 PROCEDURE Vector_File_Output(F: IN File_type; V : IN Вектор);  
+   18 PROCEDURE Matrix_File_Output(F: IN File_type; M : IN Матрица);
+   19 PROCEDURE set_N (Value: IN INTEGER);    
+   20 PROCEDURE Create_Vector (V : OUT Вектор; Value: IN INTEGER);
+   21 PROCEDURE Create_Matrix (M : OUT Матрица; Value: IN INTEGER); 
+   22 PROCEDURE F1 (A, B : IN Вектор; C : OUT Вектор);
+   23 PROCEDURE F2 (MA, MB : IN Матрица; MC : OUT Матрица);
+   24 PROCEDURE F3 (MA, MB : IN Матрица; A : IN Вектор; D : OUT Вектор);
+   25 PRIVATE 
+   26     TYPE Вектор IS ARRAY (1..N) OF INTEGER;     
+   27 end Func;

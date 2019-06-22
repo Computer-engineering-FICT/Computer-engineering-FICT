@@ -1,0 +1,277 @@
+Source file: ..\lab2_sepcomp3.adb   Thu Oct 01 01:15:08 2009
+
+    1 ----------------------------------------------------------------
+    2 --              Paralel and distributed computing             --
+    3 --                     Laboratory work #2                     --
+    4 --                   IO-73 Rukavishnikov Gleb                 --
+    5 ----------------------------------------------------------------
+    6 --Variant: 1.12, 2.20, 3.24                                   --
+    7 --F1:  A=B+C-D*e                                              --
+    8 --F2:  MD=MA+MB-MC*MM                                         --
+    9 --F3:  k=min(MA*MB*å)                                         --
+   10 ----------------------------PACK PROGRAM------------------------
+   11 --This program uses StartPack package                         --
+   12 --3rd variant of separate compilation                         --
+   13 ----------------------------------------------------------------
+   14 
+   15 
+   16 generic
+   17       N: integer;
+   18 
+   19 package Vector_F1 is
+   20 
+   21    --N: integer := 3;
+   22 
+   23    type vector is private;
+   24 
+   25    ---e = (a*b) + (c*d);
+   26     procedure Func1(a: out Vector; b, c, d: in Vector; e:in integer);
+   27 
+   28    private
+   29       type Vector is array (1..N) of Integer;
+   30 
+   31       ---Vector operations
+   32       ----Multiplication of vectors a*b
+   33       function VectMult(a, b: Vector) return integer;
+   34 
+   35       ----Processing sum of vectors a+b
+   36       function VectSum(a, b: Vector) return Vector;
+   37 
+   38       ----Descending sort of vector a
+   39       procedure VectSort(a: in out Vector);
+   40 
+   41                 function PlusVect (A, B: in Vector) return Vector;
+   42                 function MinusVect (A, B: in Vector) return Vector;
+   43                 function multiVectNum (A: in Vector; e: in integer) return Vector;
+   44                 function MultiplyStep (A: in Vector; B: in Vector)  return integer;
+   45 end Vector_F1;
+   46 
+   47 
+   48 generic
+   49 package Vector_F1.Matrix_F2 is
+   50    --Types description--
+   51    type Matrix is array (1..N) of Vector;
+   52 
+   53    ---MC = SORT(MA + MB*MD)
+   54    procedure Func2(MA, MB, MC, MM: in Matrix; MD: out Matrix);
+   55 
+   56    ---Matrix operations
+   57    ----Multiplication of matrix a*b
+   58    function MatrixMult(a, b: Matrix) return Matrix;
+   59 
+   60 
+   61    ----Sum of matrix a+b
+   62    function MatrixSum(a, b: Matrix) return Matrix;
+   63 
+   64    ----Discrepancy of matrix a-b
+   65         function MatrixRizn(a, b: Matrix) return Matrix; 
+   66 
+   67         function MultiMatrNum (A: in Matrix; e: in integer) return matrix;
+   68 
+   69    -----Descending sort of strings of matrix m
+   70    procedure MatrixSort(m: in out Matrix);
+   71 
+   72    ----Searching maximum in matrix m
+   73    function MatrixMax(m: Matrix) return integer;
+   74 
+   75         ----Searching minimum in matrix m
+   76         function MatrixMin(m: Matrix) return integer;
+   77 
+   78 end Vector_F1.Matrix_F2;
+   79 
+   80 
+   81 generic
+   82 package Vector_F1.Matrix_F2.FIO is
+   83    --I/O operations
+   84    ---Output for Vector type
+   85    procedure VectOutput(A: Vector);
+   86 
+   87    ---Matrix output
+   88    procedure MatrixOutput(a: Matrix);
+   89 
+   90    ---Vector input
+   91    procedure VectInput(a: in out Vector);
+   92 
+   93    ---Matrix input
+   94    procedure MatrixInput(m: in out Matrix);
+   95 end Vector_F1.Matrix_F2.FIO;
+   96 
+   97 
+   98 generic
+   99 package Vector_F1.Matrix_F2.F3 is
+  100    ---k=min(MA*MB*å)  
+  101     function Func3(MA, MB:in Matrix; E: in integer) return integer;
+  102 
+  103 end Vector_F1.Matrix_F2.F3;
+  104 
+  105 
+  106 with Vector_F1,
+  107      Vector_F1.Matrix_F2,
+  108      Vector_F1.Matrix_F2.F3,
+  109      Vector_F1.Matrix_F2.FIO,
+  110      Ada.Text_IO, Ada.Integer_Text_IO;
+  111 use Ada.Text_IO, Ada.Integer_Text_IO;
+  112 
+  113 procedure Lab2_SepComp3 is
+  114    package Modu is new Vector_F1(3);
+  115    use Modu;
+  116 
+  117    package Modu_F2 is new Modu.Matrix_F2;
+  118    use Modu_F2;
+  119 
+  120    package Modu_F3 is new Modu_F2.F3;
+  121    use Modu_F3;
+  122 
+  123    package Modu_IO is new Modu_F2.FIO;
+  124    use Modu_IO;
+  125 
+  126    --Main program variables
+  127    A, B, C, D: Vector;
+  128    MA, MB, MC, MD, MM: Matrix;
+  129    e, p:integer;
+  130 begin
+  131    --Func1
+  132    Put_Line("Func1");
+  133    Put_Line("Input vector B");
+  134    VectInput(B);
+  135    Put_Line("Input vector C");
+  136    VectInput(C);
+  137    Put_Line("Input vector D");
+  138    VectInput(D);
+  139         Put_Line("Input E");
+  140    Ada.Integer_Text_IO.Get(E);
+  141    Func1(A, B, C, D, e);
+  142    Put_Line("Func1 result");
+  143    VectOutput (A);
+  144    New_Line;
+  145 
+  146    --Func2
+  147    Put_Line("Func2");
+  148    Put_Line("Input matrix MA");
+  149    MatrixInput(MA);
+  150    Put_Line("Input matrix MB");
+  151    MatrixInput(MB);
+  152    Put_Line("Input matrix MC");
+  153    MatrixInput(MC);
+  154         Put_Line("Input matrix MM");
+  155    MatrixInput(MM);
+  156    Func2(MA, MB, MC, MD, MM);
+  157    Put_Line("Func2 result");
+  158    MatrixOutput(MM);
+  159 
+  160    --Func3
+  161    Put_Line("Func3");
+  162    Put_Line("Input matrix MA");
+  163    MatrixInput(MA);
+  164         Put_Line("Input matrix MB");
+  165         MatrixInput(MB);
+  166         Put_Line("Input E");
+  167    Ada.Integer_Text_IO.Get(E);
+  168    p := Func3(MA, MB, E);
+  169    Put_Line("Func3 result");
+  170    Ada.Integer_Text_IO.Put(p);
+  171 end Lab2_SepComp3;
+
+NAME                 KIND/FILE            DEF    REFERENCES (* if assigned)
+---------------------------------------------------------------------------
+A                    parameter           41      
+A                    parameter           42      
+A                    parameter           43      
+A                    parameter           44      
+A                    parameter           67      
+A                    parameter           85      
+A                    object             127      141* 143* 
+Ada                  #1:ada.ada                  110 
+B                    parameter           41      
+B                    parameter           42      
+B                    parameter           44      
+B                    object             127      134* 141* 
+C                    object             127      136* 141* 
+D                    object             127      138* 141* 
+E                    parameter          101      
+F3                   library package     99      103 108 120 
+FIO                  library package     82      95 109 123 
+Func1                subprogram          26      141 
+Func2                subprogram          54      156 
+Func3                subprogram         101      168 
+Get                  #2:ada.text_io.spc          140 167 
+Integer_Text_IO      #3:ada.integer_text_io.ada  110 111 
+Lab2_SepComp3        library subp body  113      171 
+MA                   parameter           54      
+MA                   parameter          101      
+MA                   object             128      149* 156* 163* 168* 
+MB                   parameter           54      
+MB                   parameter          101      
+MB                   object             128      151* 156* 165* 168* 
+MC                   parameter           54      
+MC                   object             128      153* 156* 
+MD                   parameter           54      
+MD                   object             128      156* 
+MM                   parameter           54      
+MM                   object             128      155* 156* 158* 
+Matrix               type                51      54 58 62 65 67 70 73 76 
+                                                 88 94 101 128 
+MatrixInput          subprogram          94      149 151 153 155 163 165 
+MatrixMax            subprogram          73      
+MatrixMin            subprogram          76      
+MatrixMult           subprogram          58      
+MatrixOutput         subprogram          88      158 
+MatrixRizn           subprogram          65      
+MatrixSort           subprogram          70      
+MatrixSum            subprogram          62      
+Matrix_F2            library package     49      78 82 99 107 108 109 117 
+MinusVect            subprogram          42      
+Modu                 package            114      115 
+Modu_F2              package            117      118 
+Modu_F3              package            120      121 
+Modu_IO              package            123      124 
+MultiMatrNum         subprogram          67      
+MultiplyStep         subprogram          44      
+N                    object              17      29 51 
+New_Line             #2:ada.text_io.spc          144 
+PlusVect             subprogram          41      
+Put                  #2:ada.text_io.spc          170 
+Put_Line             #2:ada.text_io.spc          132 133 135 137 139 142 
+                                                 147 148 150 152 154 157 
+                                                 161 162 164 166 169 
+Text_IO              #2:ada.text_io.spc          110 111 
+VectInput            subprogram          91      134 136 138 
+VectMult             subprogram          33      
+VectOutput           subprogram          85      143 
+VectSort             subprogram          39      
+VectSum              subprogram          36      
+Vector               type                29      33 36 39 41 42 43 44 
+Vector_F1            library package     19      45 49 82 99 106 107 108 
+                                                 109 114 
+a                    parameter           26      
+a                    parameter           33      
+a                    parameter           36      
+a                    parameter           39      
+a                    parameter           58      
+a                    parameter           62      
+a                    parameter           65      
+a                    parameter           88      
+a                    parameter           91      
+b                    parameter           26      
+b                    parameter           33      
+b                    parameter           36      
+b                    parameter           58      
+b                    parameter           62      
+b                    parameter           65      
+c                    parameter           26      
+d                    parameter           26      
+e                    parameter           26      
+e                    parameter           43      
+e                    parameter           67      
+e                    object             129      140* 141* 167* 168* 
+m                    parameter           70      
+m                    parameter           73      
+m                    parameter           76      
+m                    parameter           94      
+multiVectNum         subprogram          43      
+p                    object             129      168* 170* 
+vector               type                23      26 51 85 91 127 
+
+    File #1 d:\dist\objectada 8.4\lib\rts\ada.ada
+    File #2 d:\dist\objectada 8.4\lib\rts\ada.text_io.spc
+    File #3 d:\dist\objectada 8.4\lib\rts\ada.integer_text_io.ada

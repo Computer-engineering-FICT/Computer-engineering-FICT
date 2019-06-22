@@ -1,0 +1,183 @@
+GNAT GPL 2014 (20140331)
+Copyright 1992-2014, Free Software Foundation, Inc.
+
+Compiling: lab2.adb (source file time stamp: 2014-09-16 18:38:50)
+
+     1. -----------------------------------------------------
+     2. --                                                 --
+     3. --    Parallel and distributed computing           --
+     4. --      Lab 2. Processes in language Ada. Tasks    --
+     5. --                                                 --
+     6. --                                                 --
+     7. --    F1: 1.24 E = A + C * (MA * MZ) + B           --
+     8. --    F2: 2.14 MC = SORT(MA + MB * MM)             --
+     9. --    F3: 3.18 p = MAX(SORT(MS) + MA* MM)          --
+    10. --                                                 --
+    11. --    Author Kuzmenko Vladimir Z.                  --
+    12. --    Group IO-21                                  --
+    13. --    Date 17.09.2014                              --
+    14. --                                                 --
+    15. -----------------------------------------------------
+    16.
+    17.
+    18. with Ada.Text_IO, Ada.Integer_Text_IO,System.Multiprocessors;
+    19. use Ada.Text_IO, Ada.Integer_Text_IO,System.Multiprocessors;
+    20. with data;
+    21.
+    22. procedure Lab2 is
+    23.
+    24.    CPU_1 :  CPU_Range:=0;
+    25.    CPU_2 :  CPU_Range:=1;
+    26.
+    27.
+    28.    package Data3 is new Data(3);
+    29.      use data3;
+    30.
+    31.    ---------------------------
+    32.    --Tasks cpecifications   --
+    33.    ---------------------------
+    34.
+    35.    --task for calculation F1
+    36.    task T1 is
+    37.       pragma Task_Name ("Task 1");
+    38.       pragma Priority(4);
+    39.       pragma Storage_Size(1000);
+    40.       pragma CPU (CPU_1);
+    41.    end T1;
+    42.
+    43.    --task for calculation F2
+    44.    task T2 is
+    45.       pragma Task_Name ("Task 2");
+    46.       pragma Priority (5);
+    47.       pragma Storage_Size(2000);
+    48.       pragma CPU (CPU_2);
+    49.    end T2;
+    50.
+    51.    --task for calculation F3
+    52.    task T3 is
+    53.       pragma Task_Name ("Task 3");
+    54.       pragma Priority (6);
+    55.       pragma Storage_Size(3000);
+    56.       pragma CPU (CPU_1);
+    57.    end T3;
+    58.
+    59.    ---------------------------
+    60.    --Task bodies            --
+    61.    ---------------------------
+    62.
+    63.    task body T1 is
+    64.       A,B,C,E:Vector;
+    65.       MA,MZ:Matrix;
+    66.    begin
+    67.       Put_Line("Task T1 started");
+    68.       --Input Data
+    69.       Put_Line ("Input vector A");
+    70.       Vector_Input (A);
+    71.       Vector_Output (A);
+    72.       New_Line;
+    73.
+    74.       Put_Line ("Input vector B");
+    75.       Vector_Input (B);
+    76.       Vector_Output (B);
+    77.       New_Line;
+    78.
+    79.       Put_Line ("Input vector C");
+    80.       Vector_Input (C);
+    81.       Vector_Output (C);
+    82.       New_Line;
+    83.
+    84.       Put_Line ("Input matrix MA");
+    85.       Matrix_Input (MA);
+    86.       Matrix_Output (MA);
+    87.       New_Line;
+    88.
+    89.       Put_Line ("Input matrix MZ");
+    90.       Matrix_Input (MZ);
+    91.       Matrix_Output (MZ);
+    92.       New_Line;
+    93.
+    94.       delay(5.7);
+    95.
+    96.       --calculation
+    97.
+    98.       Func1 (A, B, C, MA, MZ, E);
+    99.
+   100.       --output data
+   101.       Put ("Function 1, vector E");
+   102.       Vector_Output (E);
+   103.       New_Line;
+   104.
+   105.       Put_Line("Task T1 finished");
+   106.    end T1;
+   107.
+   108.    task body T2 is
+   109.       MA,MB,MC,MM:Matrix;
+   110.    begin
+   111.       Put_Line("Task T2 started");
+   112.       --input data
+   113.       Put_Line ("Input matrix MA");
+   114.       Matrix_Input (MA);
+   115.       Matrix_Output (MA);
+   116.       New_Line;
+   117.
+   118.       Put_Line ("Input matrix MB");
+   119.       Matrix_Input (MB);
+   120.       Matrix_Output (MB);
+   121.       New_Line;
+   122.
+   123.       Put_Line ("Input matrix MM");
+   124.       Matrix_Input (MM);
+   125.       Matrix_Output (MM);
+   126.       New_Line;
+   127.
+   128.       delay(6.7);
+   129.       --calculation
+   130.       Func2 (MA, MB, MM, MC);
+   131.
+   132.       --data output
+   133.       Put ("Function 2, matrix MC");
+   134.       Matrix_Output (MC);
+   135.       New_Line;
+   136.
+   137.
+   138.       Put_Line("Task T2 finished");
+   139.    end T2;
+   140.
+   141.    task body T3 is
+   142.       MS,MA,MM:Matrix;
+   143.       p:Integer;
+   144.    begin
+   145.       Put_Line("Task T3 started");
+   146.
+   147.       --input data
+   148.       Put_Line ("Input matrix MA");
+   149.       Matrix_Input (MA);
+   150.       Matrix_Output (MA);
+   151.       New_Line;
+   152.
+   153.       Put_Line ("Input matrix MM");
+   154.       Matrix_Input (MM);
+   155.       Matrix_Output (MM);
+   156.       New_Line;
+   157.
+   158.       Put_Line ("Input matrix MS");
+   159.       Matrix_Input (MS);
+   160.       Matrix_Output (MS);
+   161.       New_Line;
+   162.
+   163.        delay(7.7);
+   164.       --calculation
+   165.       Func3 (MA, MM, MS, p);
+   166.
+   167.       --output data
+   168.       Put ("Function 3, value p");
+   169.       Put (p);
+   170.       New_Line;
+   171.
+   172.       Put_Line("Task T3 finished");
+   173.    end T3;
+   174. begin
+   175.   null;
+   176. end Lab2;
+
+ 176 lines: No errors

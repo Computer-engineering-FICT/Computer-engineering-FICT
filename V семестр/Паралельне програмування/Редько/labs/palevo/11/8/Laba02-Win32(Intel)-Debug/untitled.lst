@@ -1,0 +1,307 @@
+Source file: ..\..\untitled   Tue Nov 08 10:15:40 2011
+
+    1 ----------------------------------
+    2 ----------------------------------
+    3 -- Laba2                                                
+    4 -- Matviychyk Bogdan                    
+    5 -- IO - 91                                              
+    6 -- 11.10.2011
+    7 ----------------------------------                                      
+    8 -- 1.7   b = (A*SORT(C))
+    9 -- 2.20  MD = MA + MB – MC      
+   10 -- 3.18  p = MAX(SORT(MS) + MA*MB)
+   11 ---------------------------------- 
+   12 ----------------------------------
+   13 
+   14 -------------------------------------------------------------------------
+   15 
+   16 with Text_IO,Ada.Integer_Text_IO; use Text_IO,Ada.Integer_Text_IO;
+   17  
+   18         package Lab2 is
+   19 
+   20         N: constant integer:=10;
+   21 
+   22         type TVector is array (1..n) of integer;
+   23         type TMatrix is array (1..n) of TVector;
+   24 
+   25         procedure VectorInput (v: out TVector);
+   26         procedure MatrixInput (M: out TMatrix);
+   27         procedure VectorOutput (V: in TVector);
+   28         procedure MatrixOutput (M: in TMatrix);
+   29         procedure sortVector (v: in out TVector);
+   30         procedure SortMatrix (MA: in out Tmatrix);
+   31 
+   32         function Func1_7 (B,C:  in TVector) return integer;
+   33         function Func3_18 (MA,MB,mC: in TMatrix) return integer;
+   34         procedure Func2_20 (MA,MC,MB:in TMatrix; MD: out TMAtrix);      
+   35 
+   36 end Lab2;
+   37 
+   38 -------------------------------------------------------------------------
+   39 package body Lab2 is
+   40         
+   41 --  procedure VectorInput
+   42 -- V[]=1
+   43 procedure VectorInput (v: out TVector) is
+   44         
+   45         i: integer;
+   46 
+   47         begin
+   48                 for I in 1..n loop
+   49                         V(i):=1;
+   50                 end loop;
+   51         end VectorInput;
+   52 
+   53 -- procedure MatrixInput
+   54 -- M[][]=1;
+   55 procedure MatrixInput (M: out TMatrix) is
+   56         
+   57         i,j:integer;
+   58 
+   59         begin
+   60                 for I in 1..n loop
+   61                         for J in 1..n loop
+   62                                 M(I)(J):=1;
+   63                         end loop;
+   64                 end loop;
+   65         end MatrixInput;
+   66 
+   67 --  procedure VectorOutput
+   68 procedure VectorOutput (V: in TVector) is
+   69         I: integer;
+   70         begin
+   71                 for I in 1..n loop
+   72                         put(v(i));
+   73                 end loop;
+   74                 new_line;
+   75         end VectorOutput;
+   76 
+   77 -- procedure MatrixOutput
+   78 procedure MatrixOutput (M: in TMatrix) is
+   79         
+   80         I,J: integer;
+   81 
+   82         begin   
+   83                 if n<8 then 
+   84                         for I in 1..n loop
+   85                                 for J in 1..n loop
+   86                                         put(M(i)(j));
+   87                                         Put (" ");
+   88                                 end loop;
+   89                                 new_line;
+   90                         end loop;
+   91         END IF;
+   92         end MatrixOutput;
+   93 
+   94 -- Sort Vector
+   95 procedure sortVector (V: in out TVector) is
+   96         i,j,z: Integer;
+   97         begin
+   98                 for I in 1..n loop
+   99                         for J in 1..n-1 loop                            
+  100                                 if v(j) > V(j+1) then
+  101                                         z:=v(j);
+  102                                         v(j):=v(j+1);
+  103                                         v(j+1):=z;
+  104                                 end if;
+  105                         end loop;
+  106                 end loop;
+  107         end SortVector;
+  108 
+  109  -- Sort Matrix
+  110 procedure sortMatrix (ma: in out TMatrix) is
+  111         i,j,k,z: integer;
+  112 begin
+  113         for I in 1..n loop
+  114                 for J in 1..n-1 loop
+  115                         for k in 1..n-1 loop            
+  116                                 if MA(j)(K) > MA(j)(k) then
+  117                                         z:=MA(j)(k);
+  118                                         MA(j)(K):=MA(J)(K+1);
+  119                                         MA(j)(K+1):=z;
+  120                                 end if;
+  121                         end loop;
+  122                 end loop;
+  123         end loop;
+  124 end sortMatrix;
+  125 
+  126 --                              function Func1
+  127 --                               1.7   b = (A*SORT(C))
+  128 
+  129 function Func1_7 (B,C: in TVector)return integer is
+  130         
+  131         a : integer:=0;
+  132         s : Integer:=0;
+  133 
+  134 begin
+  135                 --  a = (B*C)
+  136                 for i in 1..n loop
+  137                         s:=b(i)*c(i);
+  138                         a:=a+s;
+  139                 end loop;
+  140                 return A;
+  141         end Func1_7;
+  142 
+  143 --                                      function  Func3
+  144 --                                      3.18  p = MAX(SORT(MS) + MA*MB)                                 
+  145 
+  146 function  Func3_18 (MA,MB,mC: in TMatrix) return integer is
+  147         
+  148         m: TMatrix;
+  149         S: tMatrix;
+  150         I,j,k: integer;
+  151 
+  152 begin
+  153                 --  M=MB*MC
+  154                 for i in 1..n loop
+  155                         for j in 1..n loop
+  156                                 m(i)(j):=0;
+  157                                 for k in 1..n loop
+  158                                         M(i)(j):=M(i)(j)+ MB(i)(k) * MC(K)(J);
+  159                                 end loop;
+  160                         end loop;
+  161                 end loop;
+  162                 
+  163                 -- S = M + MA
+  164                 for i in 1..n loop
+  165                         for j in 1..n loop
+  166                                 s(i)(j):=M(i)(j)+mA(i)(j);
+  167                                 end loop;
+  168                         end loop;
+  169                 k:=S(1)(1);
+  170                 
+  171                 -- MAX(S)
+  172                 for i in 1..n loop
+  173                         for j in 1..n-1 loop
+  174                                 if k <S(i)(J) then                                      
+  175                                 k:=     S(i)(j);
+  176                         end if;
+  177                 end loop;
+  178         end loop;
+  179         return k;
+  180 end Func3_18;
+  181 
+  182 --                                      procedure Func2
+  183 --                                      2.20  MD = MA + MB – MC
+  184 
+  185 procedure Func2_20 (MA,MC,MB:in TMatrix; MD: out TMatrix) is
+  186         i,j: integer;
+  187         begin           
+  188                 -- MD = MA + MB – MC
+  189                 for i in 1..n loop 
+  190                         for j in 1..n loop
+  191                                 MD(i)(j) := MA(i)(j) + MB(i)(j) ;
+  192                                 MD(i)(j) := MD(i)(j) - MC(I)(J) ;
+  193                         end loop;
+  194                 end loop;
+  195         end Func2_20;
+  196 end Lab2;   
+  197 
+  198 ------------------------------------------------------------------------------
+  199 
+  200 
+  201 with  Text_IO,lab2,Ada.Integer_Text_IO; use  Text_IO,lab2,Ada.Integer_Text_IO;
+  202 
+  203 procedure laba2 is
+  204         
+  205 -- first -- 1.7   b = (A*SORT(C))
+  206 task First;
+  207 task body First is
+  208         k : integer:=0;
+  209         s : Integer:=0;
+  210         i : integer;
+  211         a,c:TVector;
+  212 begin
+  213         New_Line;
+  214         put_line ("start funk 1 ");
+  215         vectorInput(c);
+  216         vectorInput(a);
+  217         SortVector(c);
+  218         for i in 1..n loop
+  219                 s:=a(i)*c(i);
+  220                 k:=k+s;
+  221         end loop;
+  222         put (k);
+  223         New_Line;
+  224         Put_line ("end funk 1");
+  225         New_Line;
+  226 end First;
+  227 -- end first
+  228 
+  229 -- sekond -- 2.20  MD = MA + MB – MC
+  230 task Sekond;
+  231 task body Sekond is
+  232         i,j: Integer;
+  233         mD,MA,MB,MC: TMatrix;
+  234 begin
+  235         New_Line;
+  236         Put_line ("start funk2 ");
+  237         MAtrixInput(MD);
+  238         MatrixInput(MA);
+  239         matrixInput(MB);
+  240         matrixInput(MC);
+  241         for i in 1..n loop 
+  242                 for j in 1..n loop
+  243                         MD(i)(j) := MA(i)(j) + MB(i)(j) ;
+  244                         MD(i)(j) := MD(i)(j) - MC(I)(J) ;
+  245                 end loop;
+  246         end loop;
+  247         MatrixOutput(mD);
+  248         New_Line;
+  249         put_line("end funk2");
+  250         New_Line;
+  251 end sekond;
+  252 -- end sekond --
+  253 
+  254 -- third -- 3.18  p = MAX(SORT(MS) + MA*MB)
+  255 task third;
+  256 task body third is
+  257         m: TMatrix;
+  258         S: tMatrix;
+  259         I,j,k: integer;
+  260         mA,MB,MC: tMatrix;
+  261 begin
+  262         New_Line;
+  263         Put_line ("start funk3 ");
+  264         MatrixInput(mA);
+  265         matrixInput(MB);
+  266         matrixInput(MC);
+  267         SortMatrix(MA);
+  268                 --  M=MB*MC
+  269                 for i in 1..n loop
+  270                         for j in 1..n loop
+  271                                 m(i)(j):=0;
+  272                                 for k in 1..n loop
+  273                                         M(i)(j):=M(i)(j)+ MB(i)(k) * MC(K)(J);
+  274                                 end loop;
+  275                         end loop;
+  276                 end loop;
+  277                 
+  278                 -- S = M + MA
+  279                 for i in 1..n loop
+  280                         for j in 1..n loop
+  281                                 s(i)(j):=M(i)(j)+mA(i)(j);
+  282                                 end loop;
+  283                         end loop;
+  284                 k:=S(1)(1);
+  285                 
+  286                 -- MAX(S)
+  287                 for i in 1..n loop
+  288                         for j in 1..n-1 loop
+  289                                 if k <S(i)(J) then                                      
+  290                                 k:=     S(i)(j);
+  291                         end if;
+  292                 end loop;
+  293         end loop;
+  294         Put (k);
+  295         New_Line;
+  296         put_line("end funk3");
+  297         New_Line;
+  298 end third;
+  299 -- end third--
+  300 
+  301 begin
+  302         put_Line ("Laba2");
+  303 end laba2;
+  304 
+  305 -------------------------------------------------------------------------------

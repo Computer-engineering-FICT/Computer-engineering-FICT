@@ -1,0 +1,111 @@
+    1	-- Laboratorna robota 1
+    2	-- Petruk Vadim, IO-92
+    3	-- Variant: 1.13  C = A - B + D
+    4	--			2.28  MD = MIN(MA)*MB*MC
+    5	--			3.14  D = (A + B)*(MA - MB)
+    6	---------------------------------------
+    7	with Ada.Integer_Text_IO, Ada.Text_iO, Unit;
+    8	use Ada.Integer_Text_IO, Ada.Text_IO, Unit;
+    9	--------------------------------------- 
+   10	procedure main is
+   11	
+   12	task Task1 is 
+   13		pragma Priority(15);
+   14	end Task1;
+   15	task body Task1 is
+   16	    A:Vector;
+   17		B:Vector;
+   18		C:Vector;
+   19		D:Vector;
+   20		begin     
+   21			VectorIn(A);
+   22			VectorIn(B);
+   23			VectorIn(D);
+   24			Func1(A,B,D,C);
+   25			delay 0.3;
+   26			put_Line("Func1: C:=A-B+D ");
+   27			VectorOut(C);
+   28		end Task1;		
+   29	--------------------------------------
+   30	task Task2 is 
+   31		pragma Priority(3);
+   32	end Task2;
+   33	task body Task2 is
+   34		MA:Matrix;
+   35		MB:Matrix;
+   36		MC:Matrix;
+   37		MD:Matrix;
+   38		begin 
+   39			matrixIn(MA);
+   40			MatrixIn(MB);
+   41			MatrixIn(MC);
+   42			func2(MA,MB,MC,MD);
+   43			delay 0.1;
+   44			put_Line("Func2: MD := MIN(MA)*MB*MC");
+   45			MatrixOut(MD);
+   46		end Task2;				
+   47	--------------------------------------
+   48	task Task3 is 
+   49		pragma Priority(10);
+   50	end Task3;
+   51	task body Task3 is
+   52		A:Vector;
+   53		B:Vector;
+   54		D:Vector;
+   55	    MA:Matrix;
+   56		MB:Matrix;
+   57		MD:Matrix;
+   58		begin 
+   59			VectorIn(A);
+   60			VectorIn(B);
+   61			MatrixIn(MA);
+   62			MatrixIn(MB);
+   63			func3(A,B,MA,MB,D);
+   64			delay 0.2;
+   65			put_Line("Func3: D := (A + B)*(MA - MB)");
+   66			vectorOut(D);
+   67		end Task3;				
+   68	--------------------------------------		
+   69	begin	
+   70		null;
+   71	end Main;
+
+A                    object              16          21 24 
+A                    object              52          59 63 
+Ada                  File 1:f1ada.ada            7 
+B                    object              53          60 63 
+B                    object              17          22 24 
+C                    object              18          24 27 
+D                    object              19          23 24 
+D                    object              54          63 66 
+Func1                File 5:unit.ads             24 
+Integer_Text_IO      File 2:f62ada.ada           7 8 
+MA                   object              34          39 42 
+MA                   object              55          61 63 
+MB                   object              35          40 42 
+MB                   object              56          62 63 
+MC                   object              36          41 42 
+MD                   object              57          
+MD                   object              37          42 45 
+Matrix               File 5:unit.ads             34 35 36 37 55 56 57 
+MatrixIn             File 5:unit.ads             39 40 41 61 62 
+MatrixOut            File 5:unit.ads             45 
+Task1                object              12          
+Task1                task body           15          28 
+Task2                object              30          
+Task2                task body           33          46 
+Task3                object              48          
+Task3                task body           51          67 
+Text_IO              File 3:f110spc.ada          7 8 
+Unit                 File 5:unit.ads             7 8 
+Vector               File 5:unit.ads             16 17 18 19 52 53 54 
+VectorIn             File 5:unit.ads             21 22 23 59 60 
+func2                File 5:unit.ads             42 
+func3                File 5:unit.ads             63 
+main                 library subp body   10          71 
+put_Line             File 3:f110spc.ada          26 44 65 
+vectorOut            File 5:unit.ads             27 66 
+    File #1 src\f1ada.ada
+    File #2 src\f62ada.ada
+    File #3 src\f110spc.ada
+    File #5 ..\unit.ads

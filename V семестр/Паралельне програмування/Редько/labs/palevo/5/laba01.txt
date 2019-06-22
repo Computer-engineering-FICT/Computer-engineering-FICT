@@ -1,0 +1,189 @@
+----------------------------------
+----------------------------------
+-- Laba1
+-- Gurban Miroslav
+-- IO - 91
+-- 1.5   C = SORT(A) - SORT(B)
+-- 2.18  c = MIN(MA*MB)
+-- 3.11  D = SORT(A - M)*TRANS(MC)
+----------------------------------
+----------------------------------
+
+with Text_IO,Ada.Integer_Text_IO; use Text_IO,Ada.Integer_Text_IO; 
+--with Ada; use Ada.Sequential_IO;
+--with Gnat.Io; use Gnat.Io;
+	package Lab1 is
+		
+	N: constant integer:=5;
+--	type TVector is array (1..n) of integer;
+--	type TMatrix is array (1..n) of TVector;
+	type TVector is private;
+	type TMatrix is private;
+	procedure VectorInput (v: out TVector);
+	procedure MatrixInput (M: out TMatrix);
+	procedure VectorOutput (V: in TVector);
+	procedure MatrixOutput (M: in TMatrix);
+	procedure Func1 (A,B,C:  in out TVector);
+	function Func2 (MA,MB: in TMatrix) return integer;
+	procedure Func3 (a,M: in TVector; d: out TVector; MC: in out TMatrix);
+	procedure sortVector (V: in out TVector);
+	private 
+		type TVector is array (1..n) of integer;
+		type TMatrix is array (1..n) of TVector;	
+end Lab1;
+
+package body Lab1 is
+procedure VectorInput (v: out TVector) is
+	i: integer;
+	begin
+		for I in 1..n loop
+			V(i):=1; --get(v(i));
+		end loop;
+	end VectorInput;
+
+procedure MatrixInput (M: out TMatrix) is
+	i,j:integer;
+	begin
+		for I in 1..n loop
+			for J in 1..n loop
+				M(I)(J):=1;
+			end loop;
+		end loop;
+	end MatrixInput;
+
+procedure VectorOutput (V: in TVector) is
+	I: integer;
+	-- S : String ;
+	begin
+		
+		for I in 1..n loop
+			--S : String := Integer'Image(v(i));
+			--put(Integer'Image(v(i)));
+			put(v(i));
+		--	Put(" ");
+		end loop;
+		new_line;
+	end VectorOutput;
+
+procedure MatrixOutput (M: in TMatrix) is
+	I,J: integer;
+	begin
+		for I in 1..n loop
+			for J in 1..n loop
+				--Put (Integer'Image(M(I)(j)));
+				put(M(i)(j));
+				Put (" ");
+			end loop;
+			new_line;
+		end loop;
+	end MatrixOutput;
+
+procedure sortVector (V: in out TVector) is
+	i,j,z: Integer;
+	begin
+		for I in 1..n loop
+			for J in 1..n-1 loop				
+				if v(j) > V(j+1) then
+					z:=v(j);
+					v(j):=v(j+1);
+					v(j+1):=z;
+				end if;
+			end loop;
+		end loop;
+	end SortVector;
+
+-- 1.5   C = SORT(A) - SORT(B)
+procedure Func1 (A,B,C: in out TVector) is
+	begin
+		SortVector (a);
+		SortVector (B);
+		for i in 1..n loop
+			C(i):=A(i)-B(i);
+		end loop;
+	end Func1;
+
+-- 2.18 c  = MIN(MA*MB)
+function  Func2 (MA,MB: in TMatrix) return integer is
+	mC: TMatrix;
+	I,j,k: integer;
+begin
+		--put_line("ok1");
+		for i in 1..n loop
+			for j in 1..n loop
+				--put_line("ok");
+				mC(i)(j):=0;
+				for k in 1..n loop
+					MC(i)(j):=MC(i)(j)+ MA(i)(k) * MB(K)(J);
+				end loop;
+			end loop;
+		end loop;
+		
+		k:=mC(1)(1);
+		for i in 1..n loop
+			for j in 1..n-1 loop
+				if k > MC(i)(J) then
+				k:=	mC(i)(j);
+			end if;
+		end loop;
+	end loop;
+	return k;
+end Func2;
+
+-- 3.11  D = SORT(A - M)*TRANS(MC)
+procedure Func3 (a,M: in TVector; d: out TVector; MC: in out TMatrix) is
+	C: tVector;
+	b: Integer;
+	begin
+		for i in 1..n loop
+			c(i):=a(i)-m(i);
+		end loop;
+		sortVector (c);
+
+		for i in 2..n loop
+			for j in 1..i loop
+				--mC(i)(j)=MC(j)(i);
+		        b := MC(i)(j);
+             	MC(i)(j):=MC(j)(i);
+             	MC(j)(i):=b;
+			end loop;
+		end loop;
+		
+		for i in 1..n loop
+			D(I):=0;
+			for J in 1..n loop
+				d(I):=D(I)+C(J)*MC(J)(I);
+			end loop;
+		end loop;
+	end Func3;
+end Lab1;   
+
+
+
+with  Text_IO,lab1,Ada.Integer_Text_IO; use  Text_IO,lab1,Ada.Integer_Text_IO;
+procedure laba1 is
+	A,B,C,m,d:TVector;
+	MA,MB,MC:TMatrix;
+	i:integer;
+begin
+	vectorInput(a);
+	vectorInput(B);
+	--a(1):=2;
+	func1(a,B,C);
+	put_Line("func1");
+	VectorOutput(c);
+
+	MatrixInput(ma);
+	matrixInput(Mb);
+	i := func2(MA,MB);
+	put_Line("func2");
+	put(i);
+
+	vectorInput(a);
+	vectorInput(M);
+	matrixInput(MC);
+	Func3(a,m,d,MC);
+	Put_Line("func3");
+	VectorOutput(D);
+	
+	--get(v(1));
+end laba1;

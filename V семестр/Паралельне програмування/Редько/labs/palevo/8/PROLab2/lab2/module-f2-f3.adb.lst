@@ -1,0 +1,40 @@
+GNAT 4.3.3
+Copyright 1992-2007, Free Software Foundation, Inc.
+
+Compiling: module-f2-f3.adb (source file time stamp: 2009-09-15 23:07:18)
+
+     1. with Ada.Text_IO; use Ada.Text_IO;
+     2. package body Module.F2.F3 is
+     3.    ---p = MAX(SORT(MS) + MA*MB);
+     4.    function Func3(MS, MA, MB: Matrix) return integer is
+     5.       m: Matrix;
+     6.    begin
+     7.       m := MS;
+     8.       MatrixSort(m);
+     9.       return MatrixMax(MatrixSum(m, MatrixMult(MA, MB)));
+    10. 	   exception
+    11. 	      when Constraint_Error =>
+    12.             Put("Constraint error in Func3");
+    13.             return 0;
+    14.    end Func3;
+    15. end Module.F2.F3;
+
+Compiling: module-f2-f3.ads (source file time stamp: 2009-09-15 22:38:57)
+
+     1. ----------------------------------------------------------------
+     2. --              Paralel and distributed computing             --
+     3. --                     Laboratory work #1                     --
+     4. --                   IO-73 Pustovit Michael                   --
+     5. ----------------------------------------------------------------
+     6. --                  Variant: 1.27, 2.14, 3.18                 --
+     7. ----------------------------------------------------------------
+     8. -----------------------------Module.F3--------------------------
+     9. ----------------------------------------------------------------
+    10.
+    11. generic
+    12. package Module.F2.F3 is
+    13.    ---p = MAX(SORT(MS) + MA*MB);
+    14.    function Func3(MS, MA, MB: Matrix) return integer;
+    15. end Module.F2.F3;
+
+ 15 lines: No errors

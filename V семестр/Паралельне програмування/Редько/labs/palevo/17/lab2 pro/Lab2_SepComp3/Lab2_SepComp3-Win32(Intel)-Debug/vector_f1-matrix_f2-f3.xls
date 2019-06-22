@@ -1,0 +1,34 @@
+Source file: ..\vector_f1-matrix_f2-f3.ads   Thu Oct 01 01:27:19 2009
+
+    1 ----------------------------------------------------------------
+    2 --              Paralel and distributed computing             --
+    3 --                     Laboratory work #2                     --
+    4 --                   IO-73 Rukavishnikov Gleb                 --
+    5 ----------------------------------------------------------------
+    6 --Variant: 1.12, 2.20, 3.24                                   --
+    7 --F1:  A=B+C-D*e                                              --
+    8 --F2:  MD=MA+MB-MC*MM                                         --
+    9 --F3:  k=min(MA*MB*å)                                         --
+   10 --------------------Vector_F1.Matrix_F2.Proc_F3----------------------
+   11 ----------------------------------------------------------------
+   12 
+   13 generic
+   14 package Vector_F1.Matrix_F2.F3 is
+   15    ---k=min(MA*MB*å)  
+   16     function Func3(MA, MB:in Matrix; E: in integer) return integer;
+   17 
+   18 end Vector_F1.Matrix_F2.F3;
+
+NAME                 KIND/FILE            DEF    REFERENCES (* if assigned)
+---------------------------------------------------------------------------
+E                    parameter           16      
+F3                   library package     14      18 
+Func3                subprogram          16      
+MA                   parameter           16      
+MB                   parameter           16      
+Matrix               #2:vector_f1-matrix_f2.ads  16 
+Matrix_F2            #2:vector_f1-matrix_f2.ads  14 
+Vector_F1            #1:vector_f1.ads            14 
+
+    File #1 ..\vector_f1.ads
+    File #2 ..\vector_f1-matrix_f2.ads

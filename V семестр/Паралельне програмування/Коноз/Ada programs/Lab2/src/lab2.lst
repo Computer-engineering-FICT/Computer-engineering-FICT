@@ -1,0 +1,193 @@
+GNAT GPL 2014 (20140331)
+Copyright 1992-2014, Free Software Foundation, Inc.
+
+Compiling: lab2.adb (source file time stamp: 2014-09-19 17:17:54)
+
+     1. with Data, Ada.Text_IO, Ada.Integer_Text_IO;
+     2. use Ada.Text_IO, Ada.Integer_Text_IO;
+     3. with System.Multiprocessors; use System.Multiprocessors;
+     4.
+     5. -------------Основна програма---------------------------------
+     6. --ПРО Lab2
+     7. --Коноз Андрій Олександрович
+     8. --ІО-21
+     9. --19.09.14
+    10. --F1: E:=A+B+C+D(MA*MZ)
+    11. --F2: MZ:=Min(MA)*MB+Max(MT)*(MX*MZ)
+    12. --F3: d:=Min(A*Trans(MB*MM)+B*Sort(MC))
+    13.
+    14. procedure Lab2 is
+    15.    --Розмірність векторів і матриць
+    16.    n : Integer :=3;
+    17.    --Ініціалізація пакету
+    18.    package Lab1Data is new Data(n);
+    19.    use Lab1Data;
+    20.    --задання номерів процесора
+    21.    CPU_1 :  CPU_Range:=0;
+    22.    CPU_2 :  CPU_Range:=1;
+    23.    --Оголошення задачі для виконання функції F1
+    24.    --Задання пріоритету, назви задачі, виділення стеку,
+    25.    -- номер процесору на якому буде відбуватися виконання
+    26.    task T1 is
+    27.       pragma Priority(1);
+    28.       pragma Task_Name ("T1");
+    29.       pragma Storage_Size(1000);
+    30.       pragma CPU (CPU_2);
+    31.    end T1;
+    32.    --Тіло задачі
+    33.    task body T1 is
+    34.
+    35.       A,B,C,D,E: Vect;
+    36.       MA,MZ: Matrix;
+    37.
+    38.    begin
+    39.       --Затримка виконання на 10с
+    40.       delay 10.0;
+    41.       --Введення даних для F1
+    42.
+    43.       Put("Enter vector A for F1");
+    44.       New_Line;
+    45.       readVect(A);
+    46.       New_Line;
+    47.
+    48.       Put("Enter vector B for F1");
+    49.       New_Line;
+    50.       readVect(B);
+    51.       New_Line;
+    52.
+    53.       Put("Enter vector C for F1");
+    54.       New_Line;
+    55.       readVect(C);
+    56.
+    57.       New_Line;
+    58.       Put("Enter vector D for F1");
+    59.       New_Line;
+    60.       readVect(D);
+    61.
+    62.       New_Line;
+    63.       Put("Enter MA for F1");
+    64.       New_Line;
+    65.       readMatr(MA);
+    66.
+    67.       New_Line;
+    68.       Put("Enter MZ for F1");
+    69.       New_Line;
+    70.       readMatr(MZ);
+    71.       --Виконання функції F1
+    72.       F1(A,B,C,D,MA, MZ,E);
+    73.       --Виведення результатів функції
+    74.       Put("F1 = ");
+    75.       showVect(E);
+    76.       New_Line;
+    77.       put("TF1 finifed");
+    78.
+    79.    end T1;
+    80.    --Оголошення задачі для виконання функції F2
+    81.    --Задання пріоритету, назви задачі, виділення стеку,
+    82.    -- номер процесору на якому буде відбуватися виконання
+    83.    task T2 is
+    84.       pragma Priority(5);
+    85.       pragma Task_Name ("T2");
+    86.       pragma Storage_Size(1000);
+    87.       pragma CPU (CPU_1);
+    88.       end T2;
+    89.
+    90.    task body T2 is
+    91.       MA,MB,MT,MX,MZ,ME: Matrix;
+    92.
+    93.    begin
+    94.       --затримка виконання задачі на 5с
+    95.       delay 5.0;
+    96.       --Введення даних для F2
+    97.
+    98.       New_Line;
+    99.       Put("Enter MA for F2");
+   100.       New_Line;
+   101.       readMatr(MA);
+   102.
+   103.       New_Line;
+   104.       Put("Enter MB for F2");
+   105.       New_Line;
+   106.       readMatr(MB);
+   107.
+   108.       New_Line;
+   109.       Put("Enter MX for F2");
+   110.       New_Line;
+   111.       readMatr(MX);
+   112.
+   113.       New_Line;
+   114.       Put("Enter MZ for F2");
+   115.       New_Line;
+   116.       readMatr(MZ);
+   117.
+   118.       New_Line;
+   119.       Put("Enter MT for F2");
+   120.       New_Line;
+   121.       readMatr(MT);
+   122.       --Виконання функції F2
+   123.       F2(MA,MB,MT,MX,MZ,ME);
+   124.       --Виведення результатів функції
+   125.       Put("F2 = ");
+   126.       showMatr(ME);
+   127.       New_Line;
+   128.       Put("TF2 finished");
+   129.
+   130.    end T2;
+   131.    --Оголошення задачі для виконання функції F3
+   132.    --Задання пріоритету, назви задачі, виділення стеку,
+   133.    -- номер процесору на якому буде відбуватися виконання
+   134.    task T3 is
+   135.       pragma Priority(8);
+   136.       pragma Task_Name ("3");
+   137.       pragma Storage_Size(1000);
+   138.       pragma CPU (CPU_1);
+   139.    end T3;
+   140.
+   141.    task body T3 is
+   142.       MB,MM,MC: Matrix;
+   143.       A,B: Vect;
+   144.       y: Integer;
+   145.
+   146.    begin
+   147.       delay 2.0;
+   148.       --Введення даних для F3
+   149.
+   150.       Put("Enter vector A for F3");
+   151.       New_Line;
+   152.       readVect(A);
+   153.
+   154.       New_Line;
+   155.       Put("Enter vector B for F3");
+   156.       New_Line;
+   157.       readVect(B);
+   158.
+   159.       New_Line;
+   160.       Put("Enter MB for F3");
+   161.       New_Line;
+   162.       readMatr(MB);
+   163.
+   164.       New_Line;
+   165.       Put("Enter MM for F3");
+   166.       New_Line;
+   167.       readMatr(MM);
+   168.
+   169.       New_Line;
+   170.       Put("Enter MC for F3");
+   171.       New_Line;
+   172.       readMatr(MC);
+   173.       --Виконання функції F3
+   174.       F3(A,B,MB, MM,MC,y);
+   175.       --Виведення результатів функції
+   176.       Put("F3 = ");
+   177.       Put(y);
+   178.
+   179.       New_Line;
+   180.       put("TF3 finished");
+   181.    end T3;
+   182.
+   183.       begin
+   184.          put("Lab 2");
+   185.       end Lab2;
+   186.
+
+ 186 lines: No errors

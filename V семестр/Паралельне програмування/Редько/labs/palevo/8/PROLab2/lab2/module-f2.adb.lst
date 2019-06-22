@@ -1,0 +1,106 @@
+GNAT 4.3.3
+Copyright 1992-2007, Free Software Foundation, Inc.
+
+Compiling: module-f2.adb (source file time stamp: 2009-09-15 23:09:39)
+
+     1. with Ada.Text_IO; use Ada.Text_IO;
+     2. package body Module.F2 is
+     3.    ---MC = SORT(MA + MB*MD)
+     4.    procedure Func2(MA, MB, MD: in Matrix; MC: out Matrix) is
+     5.    begin
+     6.       MC := MatrixSum(MA, MatrixMult(MB, MD));
+     7.       MatrixSort(MC);
+     8. 	   exception
+     9. 	      when Constraint_Error =>
+    10. 	         Put("Constraint error in Func2");
+    11.     end Func2;
+    12.
+    13.    ---Matrix operations
+    14.    ----Multiplication of matrix a*b
+    15.    function MatrixMult(a, b: Matrix) return Matrix is
+    16.       c: Matrix;
+    17.       sum: Integer;
+    18.    begin
+    19.       for i in 1..N loop
+    20.          for j in 1..N loop
+    21.             sum := 0;
+    22.             for z in 1..n loop
+    23.                sum := sum + a(i)(z) * b(z)(j);
+    24.             end loop;
+    25.             c(i)(j) := sum;
+    26.          end loop;
+    27.       end loop;
+    28.       return c;
+    29.    end MatrixMult;
+    30.
+    31.    ----Sum of matrix a+b
+    32.    function MatrixSum(a, b: Matrix) return Matrix is
+    33.       c: Matrix;
+    34.    begin
+    35.       for i in 1..N loop
+    36.          for j in 1..N loop
+    37.             c(i)(j) := a(i)(j) + b(i)(j);
+    38.          end loop;
+    39.       end loop;
+    40.       return c;
+    41.    end;
+    42.
+    43.    -----Descending sort of strings of matrix m
+    44.    procedure MatrixSort(m: in out Matrix) is
+    45.    begin
+    46.       for i in 1..n loop
+    47.          VectSort(m(i));
+    48.       end loop;
+    49.    end MatrixSort;
+    50.
+    51.    ----Searching maximum in matrix m
+    52.    function MatrixMax(m: Matrix) return integer is
+    53.       max: integer;
+    54.    begin
+    55.       max := m(1)(1);
+    56.       for i in 1..N loop
+    57.          for j in 1..N loop
+    58.             if max < m(i)(j) then
+    59.                max := m(i)(j);
+    60.             end if;
+    61.          end loop;
+    62.       end loop;
+    63.       return max;
+    64.    end;
+    65. end Module.F2;
+
+Compiling: module-f2.ads (source file time stamp: 2009-09-15 22:39:13)
+
+     1. ----------------------------------------------------------------
+     2. --              Paralel and distributed computing             --
+     3. --                     Laboratory work #1                     --
+     4. --                   IO-73 Pustovit Michael                   --
+     5. ----------------------------------------------------------------
+     6. --                  Variant: 1.27, 2.14, 3.18                 --
+     7. ----------------------------------------------------------------
+     8. ----------------------------Module.F2---------------------------
+     9. ----------------------------------------------------------------
+    10. generic
+    11. package Module.F2 is
+    12.    --Types description--
+    13.    type Matrix is array (1..N) of Vector;
+    14.
+    15.    ---MC = SORT(MA + MB*MD)
+    16.    procedure Func2(MA, MB, MD: in Matrix; MC: out Matrix);
+    17.
+    18.    ---Matrix operations
+    19.    ----Multiplication of matrix a*b
+    20.    function MatrixMult(a, b: Matrix) return Matrix;
+    21.
+    22.    ----Sum of matrix a+b
+    23.    function MatrixSum(a, b: Matrix) return Matrix;
+    24.
+    25.    -----Descending sort of strings of matrix m
+    26.    procedure MatrixSort(m: in out Matrix);
+    27.
+    28.    ----Searching maximum in matrix m
+    29.    function MatrixMax(m: Matrix) return integer;
+    30.
+    31. end Module.F2;
+
+ 65 lines: No errors

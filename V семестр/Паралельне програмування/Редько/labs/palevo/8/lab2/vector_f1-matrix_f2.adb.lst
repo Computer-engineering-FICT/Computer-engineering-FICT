@@ -1,0 +1,98 @@
+GNAT GPL 2009 (20090519)
+Copyright 1992-2009, Free Software Foundation, Inc.
+
+Compiling: vector_f1-matrix_f2.adb (source file time stamp: 2009-09-16 21:05:18)
+
+     1. with Ada.Text_IO; use Ada.Text_IO;
+     2. package body Vector_F1.Matrix_F2 is
+     3.
+     4.    -- Proizvedenie matricy na skalyar
+     5.    function Scalar_Matrix_Product(MA: in Matrix; S:
+     6.                          in Integer) return Matrix is
+     7.       MC: Matrix;
+     8.    begin
+     9.       for i in 1..N loop
+    10.            for j in 1..N loop
+    11.             MC(i)(j):=MA(i)(j)*S;
+    12.          end loop;
+    13.       end loop;
+    14.       return MC;
+    15.    end Scalar_Matrix_Product;
+    16.
+    17.    -- Summa matric
+    18.    function Matrix_Sum(MA,MB: Matrix) return Matrix is
+    19.       MC: Matrix;
+    20.    begin
+    21.       for i in 1..N loop
+    22.            for j in 1..N loop
+    23.             MC(i)(j):=MA(i)(j)+MB(i)(j);
+    24.          end loop;
+    25.       end loop;
+    26.       return MC;
+    27.    end Matrix_Sum;
+    28.
+    29.    -- Nahojdenie minimal'nogo elementa matricy
+    30.    function Matrix_Min(A: in Matrix) return Integer is
+    31.       min: Integer;
+    32.    begin
+    33.       min:=A(1)(1);
+    34.       for i in 1..N loop
+    35.          for j in 1..N loop
+    36.             if A(i)(j)<min then
+    37.                min:=A(i)(j);
+    38.             end if;
+    39.          end loop;
+    40.       end loop;
+    41.       return min;
+    42.    end Matrix_Min;
+    43.
+    44.    -- Maksimal'nyi element matricy
+    45.    function Matrix_Max(A: in Matrix) return Integer is
+    46.       max: Integer;
+    47.    begin
+    48.       max:=A(1)(1);
+    49.       for i in 1..N loop
+    50.          for j in 1..N loop
+    51.             if A(i)(j)>max then
+    52.                max:=A(i)(j);
+    53.             end if;
+    54.          end loop;
+    55.       end loop;
+    56.       return max;
+    57.    end Matrix_Max;
+    58.
+    59.    -- Funkciya2
+    60.    function Fun2(MA,MB: Matrix) return Matrix is
+    61.       M: Matrix;
+    62.    begin
+    63.       M:=Matrix_Sum(Scalar_Matrix_Product(MB,Matrix_Min(MA)),
+    64.                     Scalar_Matrix_Product(MA,Matrix_Max(MB)));
+    65.       return M;
+    66.    exception
+    67.       when Constraint_Error =>
+    68.          put("Constraint error at Func2. Result is uncorrect:");
+    69.       return M;
+    70.    end Fun2;
+    71.
+    72. end Vector_F1.Matrix_F2;
+
+Compiling: vector_f1-matrix_f2.ads (source file time stamp: 2009-09-15 20:05:34)
+
+     1. generic
+     2.
+     3. package Vector_F1.Matrix_F2 is
+     4.
+     5.    -- Matrica razryadnosti N*N
+     6.    type Matrix is private;
+     7.
+     8.    -- Funkciya2
+     9.    function Fun2(MA,MB: Matrix) return Matrix;
+    10.
+    11. private
+    12.
+    13.    type Matrix is array (1..N) of Vector;
+    14.
+    15. end Vector_F1.Matrix_F2;
+    16.
+
+ 72 lines: No errors

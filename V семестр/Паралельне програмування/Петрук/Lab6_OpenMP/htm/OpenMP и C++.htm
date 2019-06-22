@@ -1,0 +1,1774 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="ctl00_Head1" xmlns="http://www.w3.org/1999/xhtml"><title>
+	
+  OpenMP и C++
+
+</title><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="DCS.dcsuri" content="/ru-ru/library/dd335940(d=lightweight,l=ru-ru,v=MSDN.10).aspx" /><meta name="NormalizedUrl" content="http://msdn.microsoft.com/ru-ru/library/dd335940(d=lightweight,l=ru-ru,v=MSDN.10).aspx" /><meta name="VotingContextUrl" content="http://msdn.microsoft.com/ru-ru/library/dd335940(l=ru-ru,v=MSDN.10).aspx" /><meta name="MN" content="1D90D2F9-10:55:21 AM" /><meta name="Search.ShortId" content="dd335940" /><meta name="Ms.Locale" content="ru-ru" /><link href="http://i3.msdn.microsoft.com/Hash/2ff7dde78ff1c11903524a6a2fcdf65c.css" rel="stylesheet" type="text/css" xmlns="http://www.w3.org/1999/xhtml" /><link rel="canonical" href="http://msdn.microsoft.com/ru-ru/library/dd335940.aspx" xmlns="http://www.w3.org/1999/xhtml" /><link rel="alternate" media="print" href="http://msdn.microsoft.com/ru-ru/library/dd335940(d=printer).aspx" xmlns="http://www.w3.org/1999/xhtml" /><link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Hash/a15fcf392bf954133123e209735029c3.css" media="print" title="printonly" xmlns="http://www.w3.org/1999/xhtml" /></head>
+<body>
+
+   
+    <div class="MetricsContainer">
+    
+    <div class="WebtrendsContainer">
+      
+
+<script type="text/javascript" language="javascript">
+//<![CDATA[
+  var literalNormalizedUrl = '/ru-ru/library/dd335940(d=lightweight,l=ru-ru,v=MSDN.10).aspx';
+  var wt_nvr_ru = 'WT_NVR_RU';
+  var wt_fpcdom = '.microsoft.com';
+  var wt_domlist = 'msdn.microsoft.com';
+  var wt_pathlist = '';
+  var wt_paramlist = 'DCSext.mtps_devcenter';
+  var wt_siteid = 'MSDN';
+  var gDomain = 'm.webtrends.com';
+  var gDcsId = 'dcsmgru7m99k7mqmgrhudo0k8_8c6m';
+  var gFpc = 'WT_FPC';
+  if (document.cookie.indexOf(gFpc + "=") == -1) {
+    document.write("<scr" + "ipt type='text/javascript' src='" + "http" + (window.location.protocol.indexOf('https:') == 0 ? 's' : '') + "://" + gDomain + "/" + gDcsId + "/wtid.js" + "'><\\/scr" + "ipt>");
+  }
+  var detectedLocale = 'ru-ru';
+  var wtsp = 'msdnlib_hp';
+  var gTrackEvents = '0';
+/*]]>*/
+</script>
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+    </div>
+    
+    <div class="OmnitureContainer">
+      
+
+
+
+<script type="text/javascript">
+  var omni_guid = '2e261b4f-41c2-402a-9f91-1c414909a2f3'; 
+</script>
+
+
+
+<noscript>
+    <a href="http://www.omniture.com" title="Web Analytics">
+        <img src="//msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" /></a>
+</noscript>
+
+
+    </div>
+    
+  
+</div>
+  <script language="javascript" type="text/javascript" src="//js.microsoft.com/library/svy/sto/broker.js"></script>
+
+
+  <div class="header">
+    
+
+<table border="0" cellpadding="0" cellspacing="0" class="headerBar cl_lightweight_topnav_slice">
+		<tr>
+			<td class="leftSection cl_lightweight_header_leftSection_wave leftSectionImageClusterOverride">
+        <div class="tabContainer">
+          <a href="http://msdn.microsoft.com/ru-ru/default.aspx" title="Домашняя" class=" headerTab">Домашняя</a>
+          <a href="http://msdn.microsoft.com/ru-ru/library/default.aspx" title="Библиотека" class="headerTabSelected cl_lightweight_selected_tab_repeatX ">Библиотека</a>
+          <a href="http://msdn.microsoft.com/ru-ru/bb188199.aspx" title="Обучение" class=" headerTab">Обучение</a>
+          <a href="http://msdn.microsoft.com/ru-ru/aa570309.aspx" title="Загружаемые компоненты" class=" headerTab">Загружаемые компоненты</a>
+          <a href="http://msdn.microsoft.com/ru-ru/hh361695.aspx" title="поддержка" class=" headerTab">поддержка</a>
+          <a href="http://msdn.microsoft.com/ru-ru/aa497440.aspx" title="Сообщество" class=" headerTab">Сообщество</a>
+          
+        </div>
+      </td>
+			<td class="rightSection cl_lightweight_header_rightSection_wave rightSectionImageClusterOverride">
+        <div class="tabContainer">
+            
+            <a href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=11&amp;ct=1319219721&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=msdn%24msdn%24msdn&amp;wreply=http:%2F%2Fmsdn.microsoft.com%2Fru-ru%2Flibrary%2Fdd335940.aspx&amp;lc=1049&amp;cb=&amp;id=254354" title=" Вход  " rel="nofollow"> Вход   </a>
+            <span class="pipe">|</span>
+            <a href="http://msdn.microsoft.com/ru-ru/library/preferences/locale/?returnurl=%252fru-ru%252flibrary%252fdd335940.aspx" title="Россия - Pусский" rel="nofollow">Россия - Pусский </a>
+            <span class="pipe">|</span>
+            <a class="dispinline clip15x15" href="http://msdn.microsoft.com/ru-ru/library/preferences/experience/?returnurl=%252fru-ru%252flibrary%252fdd335940.aspx" title="Предпочтения" rel="nofollow"><img class="head_gear" src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" alt="" /></a>
+            <span class="pipe">|</span>
+            <a id="exportPrintLink" class="dispinline clip30x15 moveToDown" href="/ru-ru/library/dd335940(d=printer).aspx" title="Печать/экспорт"><img class="head_print_noarrow" src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" alt="" /></a>
+            
+            <div id="exportPrintLinkArrowDiv" class="exportPrintLinkArrow">
+            <a id="exportPrintLinkArrow" class="dispinline clip30x15 moveToDown" href="javascript:void(0);" title="Печать/экспорт"><img class="head_print_arrow" src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" alt="" /></a>
+            </div>
+            
+        </div>
+			</td>
+	</tr>
+</table>
+
+  </div>
+    
+  <div class="contentPlaceHolder">
+    
+    
+  <div class="navigation" id="Navigation" style="width:380px;padding-bottom:96px;">
+    <div class="searchcontainer">
+      
+<form id="SearchForm" action="http://social.msdn.microsoft.com/Search/ru-ru" method="get" style="margin: 0; padding: 0;" onsubmit="return checkSearchBox()">
+<div class="searchBoxContainer" style="">
+  <table class="searchBox" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+      <td class="searchTextBoxTd">
+        <input id="SearchInput" type="text" maxlength="200" class="searchTextBox" name="query" />
+      </td>
+      <td class="searchButtonTd">
+          <input type="image" src="http://i.msdn.microsoft.com/Hash/0d0542f5f45cf9fc7273abd11cf5c0ee.gif" style="position: relative;" title="Поиск " />
+      </td>
+    </tr>
+  </table>
+</div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    if (!MTPS) var MTPS = {};
+    if (!MTPS.Watermarks) MTPS.Watermarks = {};
+    MTPS.Watermarks.SearchInput = {
+        "control": "SearchInput",
+        "defaultValue": "Поиск MSDN с помощью Bing",
+        "defaultCSS": "searchTextBox",
+        "focusCSS": "searchTextBoxTrue"
+    };
+    function checkSearchBox() {
+        if (document.getElementById("SearchInput").value == MTPS.Watermarks.SearchInput.defaultValue) {
+            document.getElementById("SearchInput").value = "";
+        }
+    }
+ //]]>
+</script>
+
+
+    </div>
+    <div class="navcontainer">
+      
+<div class="nav">
+    
+    <div id="tocnav">
+        
+        <div class="toclevel0 ancestry">
+            
+            <div class="clip5x9 nav_root">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_bullet" alt="" />
+            </div>
+            
+            <div class="nav_div_currentroot">
+                <a href="http://msdn.microsoft.com/ru-ru/library/ms123401.aspx" id="ms310241_MSDN.10_ru-ru" title="MSDN Library">MSDN Library</a>
+            </div>
+            
+            <div class="clip5x9 nav_arrows">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_arrow" alt="" />
+            </div>
+            
+            <div class="nav_div_currentroot">
+                <a href="http://msdn.microsoft.com/ru-ru/library/cc514048.aspx" id="cc514048_MSDN.10_ru-ru" title="Технические статьи">Технические статьи</a>
+            </div>
+            
+            <div class="clip13x9 nav_arrows">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_dots" alt="" />
+            </div>
+            
+            <div class="nav_div_currentroot">
+                <a href="http://msdn.microsoft.com/ru-ru/library/dd353137.aspx" id="dd353137_MSDN.10_ru-ru" title="Журнал MSDN Magazine/Русская Редакция">Журнал MSDN Magazine/Русская Редакция</a>
+            </div>
+            
+        </div>
+        
+        <div class="toclevel1 children" style="border-bottom: 1px solid #bbbbbb;">
+            
+            <div class="clip13x9 nav_dots_current">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_dots" alt="" />
+            </div>
+            
+            <div>
+                <a href="http://msdn.microsoft.com/ru-ru/library/dd335958.aspx" title="Основы Yukon: XML, T-SQL и CLR открывают новые перспективы в программировании баз данных">Основы Yukon: XML, T-SQL и CLR открывают новые перспективы в программировании баз данных</a>
+            </div>
+            
+            <div class="clip13x9 nav_dots_current">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_dots" alt="" />
+            </div>
+            
+            <div>
+                <a href="http://msdn.microsoft.com/ru-ru/library/dd335957.aspx" title="C# и наука: применение языковых средств C# в проектах для научных вычислений">C# и наука: применение языковых средств C# в проектах для научных вычислений</a>
+            </div>
+            
+            <div class="clip13x9 nav_dots_current">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_dots" alt="" />
+            </div>
+            
+            <div>
+                <a href="http://msdn.microsoft.com/ru-ru/library/dd335956.aspx" title="Анализ охвата кода — гарантия всестороннего тестирования приложения">Анализ охвата кода — гарантия всестороннего тестирования приложения</a>
+            </div>
+            
+            <div class="clip13x9 nav_dots_current">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_dots" alt="" />
+            </div>
+            
+            <div>
+                <a href="http://msdn.microsoft.com/ru-ru/library/dd335955.aspx" title="Whitehorse — мост через пропасть, отделяющую процессы разработки и эксплуатации">Whitehorse — мост через пропасть, отделяющую процессы разработки и эксплуатации</a>
+            </div>
+            
+            <div class="clip13x9 nav_dots_current">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_dots" alt="" />
+            </div>
+            
+            <div>
+                <a href="http://msdn.microsoft.com/ru-ru/library/dd335954.aspx" title="Выживает самый приспособленный: естественный отбор алгоритмов">Выживает самый приспособленный: естественный отбор алгоритмов</a>
+            </div>
+            
+            <div class="clip13x9 nav_dots_current">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_dots" alt="" />
+            </div>
+            
+            <div>
+                <a href="http://msdn.microsoft.com/ru-ru/library/dd335953.aspx" title="Новые средства анализа данных, доступные в Analysis Services 2005">Новые средства анализа данных, доступные в Analysis Services 2005</a>
+            </div>
+            
+            <div class="clip13x9 nav_dots_current">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_dots" alt="" />
+            </div>
+            
+            <div>
+                <a href="http://msdn.microsoft.com/ru-ru/library/dd335952.aspx" title="Bootstrapper в Visual Studio 2005 упрощает развертывание приложений">Bootstrapper в Visual Studio 2005 упрощает развертывание приложений</a>
+            </div>
+            
+            <div class="clip13x9 nav_dots_current">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_dots" alt="" />
+            </div>
+            
+            <div>
+                <a href="http://msdn.microsoft.com/ru-ru/library/dd335951.aspx" title="CryptoUtility — компонент, позволяющий применять стойкое шифрование в ваших приложениях">CryptoUtility — компонент, позволяющий применять стойкое шифрование в ваших приложениях</a>
+            </div>
+            
+            <div class="clip13x9 nav_dots_current">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_dots" alt="" />
+            </div>
+            
+            <div>
+                <a href="http://msdn.microsoft.com/ru-ru/library/dd335950.aspx" title="Разработка собственного дизайнера форм для .NET-приложений">Разработка собственного дизайнера форм для .NET-приложений</a>
+            </div>
+            
+            <div class="clip13x9 nav_dots_current">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_dots" alt="" />
+            </div>
+            
+            <div>
+                <a href="http://msdn.microsoft.com/ru-ru/library/dd335949.aspx" title="Семь советов по применению статических полей, методов и классов">Семь советов по применению статических полей, методов и классов</a>
+            </div>
+            
+            <div class="clip13x9 nav_dots_current">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_dots" alt="" />
+            </div>
+            
+            <div>
+                <a href="http://msdn.microsoft.com/ru-ru/library/dd335948.aspx" title="Вывод данных с помощью собственных средств визуализации для Reporting Services">Вывод данных с помощью собственных средств визуализации для Reporting Services</a>
+            </div>
+            
+            <div class="clip13x9 nav_dots_current">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_dots" alt="" />
+            </div>
+            
+            <div>
+                <a href="http://msdn.microsoft.com/ru-ru/library/dd335947.aspx" title="Многоликий класс CultureInfo — .NET-приложения станут дружелюбнее к пользователю">Многоликий класс CultureInfo — .NET-приложения станут дружелюбнее к пользователю</a>
+            </div>
+            
+            <div class="clip13x9 nav_dots_current">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_dots" alt="" />
+            </div>
+            
+            <div>
+                <a href="http://msdn.microsoft.com/ru-ru/library/dd335946.aspx" title="Как использовать лучшее из .NET в неуправляемом коде на C++">Как использовать лучшее из .NET в неуправляемом коде на C++</a>
+            </div>
+            
+            <div class="clip13x9 nav_dots_current">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_dots" alt="" />
+            </div>
+            
+            <div>
+                <a href="http://msdn.microsoft.com/ru-ru/library/dd335945.aspx" title="Внутреннее устройство .NET Framework — как CLR создает объекты периода выполнения">Внутреннее устройство .NET Framework — как CLR создает объекты периода выполнения</a>
+            </div>
+            
+            <div class="clip13x9 nav_dots_current">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_dots" alt="" />
+            </div>
+            
+            <div>
+                <a href="http://msdn.microsoft.com/ru-ru/library/dd335944.aspx" title="Hyper-Threading">Hyper-Threading</a>
+            </div>
+            
+            <div class="clip13x9 nav_dots_current">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_dots" alt="" />
+            </div>
+            
+            <div>
+                <a href="http://msdn.microsoft.com/ru-ru/library/dd335943.aspx" title="Visual Basic">Visual Basic</a>
+            </div>
+            
+            <div class="clip13x9 nav_dots_current">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_dots" alt="" />
+            </div>
+            
+            <div>
+                <a href="http://msdn.microsoft.com/ru-ru/library/dd335942.aspx" title="Winsock">Winsock</a>
+            </div>
+            
+            <div class="clip13x9 nav_dots_current">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_dots" alt="" />
+            </div>
+            
+            <div>
+                <a href="http://msdn.microsoft.com/ru-ru/library/dd335941.aspx" title="MOM 2005">MOM 2005</a>
+            </div>
+            
+            <div class="clip13x9 nav_dots_current">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_dots" alt="" />
+            </div>
+            
+            <div class="toclevel1 current">
+                <a href="http://msdn.microsoft.com/ru-ru/library/dd335940.aspx" title="OpenMP и C++">OpenMP и C++</a>
+            </div>
+            
+            <div class="clip13x9 nav_dots_current">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_dots" alt="" />
+            </div>
+            
+            <div>
+                <a href="http://msdn.microsoft.com/ru-ru/library/dd335939.aspx" title="Разработка и развертывание защищенных Web-приложений для ASP.NET 2.0 и IIS 6.0">Разработка и развертывание защищенных Web-приложений для ASP.NET 2.0 и IIS 6.0</a>
+            </div>
+            
+            <div class="clip13x9 nav_dots_current">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_dots" alt="" />
+            </div>
+            
+            <div>
+                <a href="http://msdn.microsoft.com/ru-ru/library/dd335938.aspx" title="Усовершенствования модели защиты CAS в .NET Framework 2.0">Усовершенствования модели защиты CAS в .NET Framework 2.0</a>
+            </div>
+            
+            <div class="clip13x9 nav_dots_current">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_dots" alt="" />
+            </div>
+            
+            <div>
+                <a href="http://msdn.microsoft.com/ru-ru/library/dd335937.aspx" title="Декларативная модель Windows Workflow Foundation упрощает разработку программного обеспечения">Декларативная модель Windows Workflow Foundation упрощает разработку программного обеспечения</a>
+            </div>
+            
+            <div class="clip13x9 nav_dots_current">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_dots" alt="" />
+            </div>
+            
+            <div>
+                <a href="http://msdn.microsoft.com/ru-ru/library/dd335936.aspx" title="Создание мобильных агентов .NET для взаимодействия по сети">Создание мобильных агентов .NET для взаимодействия по сети</a>
+            </div>
+            
+            <div class="clip13x9 nav_dots_current">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_dots" alt="" />
+            </div>
+            
+            <div>
+                <a href="http://msdn.microsoft.com/ru-ru/library/dd335935.aspx" title="Вдохните жизнь в свои документы: связывание с данными в Visual Studio Tools For Office">Вдохните жизнь в свои документы: связывание с данными в Visual Studio Tools For Office</a>
+            </div>
+            
+            <div class="clip13x9 nav_dots_current">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_dots" alt="" />
+            </div>
+            
+            <div>
+                <a href="http://msdn.microsoft.com/ru-ru/library/dd335934.aspx" title="Разработка высокопроизводительных приложений для Windows Compute Cluster Server">Разработка высокопроизводительных приложений для Windows Compute Cluster Server</a>
+            </div>
+            
+            <div class="clip13x9 nav_dots_current">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_dots" alt="" />
+            </div>
+            
+            <div>
+                <a href="http://msdn.microsoft.com/ru-ru/library/dd335933.aspx" title="Все, что нужно знать, чтобы начать программировать для 64-разрядных версий Windows">Все, что нужно знать, чтобы начать программировать для 64-разрядных версий Windows</a>
+            </div>
+            
+            <div class="clip13x9 nav_dots_current">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_dots" alt="" />
+            </div>
+            
+            <div>
+                <a href="http://msdn.microsoft.com/ru-ru/library/dd335932.aspx" title="Эффективные методики управления экземплярами в WCF-приложениях">Эффективные методики управления экземплярами в WCF-приложениях</a>
+            </div>
+            
+            <div class="clip13x9 nav_dots_current">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_dots" alt="" />
+            </div>
+            
+            <div>
+                <a href="http://msdn.microsoft.com/ru-ru/library/dd335931.aspx" title="ASP.NET Atlas — долгожданная основа для создания сайтов в стиле AJAX">ASP.NET Atlas — долгожданная основа для создания сайтов в стиле AJAX</a>
+            </div>
+            
+            <div class="clip13x9 nav_dots_current">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_dots" alt="" />
+            </div>
+            
+            <div>
+                <a href="http://msdn.microsoft.com/ru-ru/library/dd335930.aspx" title="Компилируйте приложения по-своему с помощью нестандартных заданий Microsoft Build Engine">Компилируйте приложения по-своему с помощью нестандартных заданий Microsoft Build Engine</a>
+            </div>
+            
+            <div class="clip13x9 nav_dots_current">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_dots" alt="" />
+            </div>
+            
+            <div>
+                <a href="http://msdn.microsoft.com/ru-ru/library/dd335929.aspx" title="Новые средства проектирования шаблонов форм">Новые средства проектирования шаблонов форм</a>
+            </div>
+            
+            <div class="clip13x9 nav_dots_current">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_dots" alt="" />
+            </div>
+            
+            <div>
+                <a href="http://msdn.microsoft.com/ru-ru/library/dd335928.aspx" title="Новые средства и документация для создания интегрированных настольных приложений">Новые средства и документация для создания интегрированных настольных приложений</a>
+            </div>
+            
+            <div class="clip13x9 nav_dots_current">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_dots" alt="" />
+            </div>
+            
+            <div>
+                <a href="http://msdn.microsoft.com/ru-ru/library/dd335927.aspx" title="Развертывание распределенных бизнес-процессов с помощью Windows Workflow Foundation и веб-сервисов">Развертывание распределенных бизнес-процессов с помощью Windows Workflow Foundation и веб-сервисов</a>
+            </div>
+            
+            <div class="clip13x9 nav_dots_current">
+                <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_nav_dots" alt="" />
+            </div>
+            
+            <div>
+                <a href="http://msdn.microsoft.com/ru-ru/library/dd335926.aspx" title="Введение в Active Directory Federation Services для разработчиков">Введение в Active Directory Federation Services для разработчиков</a>
+            </div>
+            
+        </div>
+        
+    </div>
+    <img src="http://i.msdn.microsoft.com/Hash/030c41d9079671d09a62d8e2c1db6973.gif" alt="Separator" class="communityContentNavigationSeparator cl_lt_cc_line_top" />
+    
+</div>
+
+<script type="text/javascript"> 
+  //<![CDATA[
+  if (!MTPS) var MTPS = {};
+  MTPS.TopicNodes= {
+  
+            "_last": ''
+    };
+  //]]>
+</script>
+
+    </div>
+    
+  </div>
+  <div id="tocResizeContainer" style="visibility:hidden">
+  <a href="#" class="tocResize" id="TocResize" style="left:380px">
+    <img id="ResizeImageIncrease" class="cl_nav_resize_open" src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" title="Развернуть" alt="Развернуть" />
+      <img id="ResizeImageReset" class="cl_nav_resize_close" src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" style="display:none" title="Свернуть" alt="Свернуть" />
+  </a>
+  </div>
+  <div class="content">
+    <img class="TOC_Fade_Top cl_lw_toc_fade_top" src="http://i.msdn.microsoft.com/Hash/030c41d9079671d09a62d8e2c1db6973.gif" alt="" />
+    
+
+<div class="clip117x31 logo">
+  <a href="http://msdn.microsoft.com/ru-ru/default.aspx">
+    <img src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="msdn_body_logo" alt="MSDN" title="MSDN" />
+  </a>
+</div>
+
+    <div class="topicContainer" style="">
+      
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">OpenMP и C++</h1>
+  
+  <div id="mainSection">
+      <div id="mainBody">
+        <div>
+        	<p><strong>Автор:</strong> <br />
+</p><ul><li>Канг Су Гэтлин</li>
+<li>Пит Айсенси</li></ul>
+<p></p>
+	<h2>Реализация многопоточности без лишних усилий</h2>
+	
+	
+		<p>Среди специалистов, занимающихся параллельными вычислениями, популярна шутка «Параллельные вычисления — технология будущего... и так будет всегда». Эта шутка не теряет актуальность уже несколько десятилетий. Аналогичные настроения были распространены в сообществе разработчиков архитектур компьютеров, обеспокоенном тем, что скоро будет достигнут предел тактовой частоты процессоров, однако частоты процессоров продолжают повышаться, хотя гораздо медленнее, чем раньше. Сплав оптимизма специалистов по параллельным вычислениям и пессимизма архитекторов систем способствовал появлению революционных многоядерных процессоров.</p>
+		<p>Главные производители процессоров сместили акцент с повышения тактовых частот на реализацию параллелизма в самих процессорах за счет использования многоядерной архитектуры. Идея проста: интегрировать в один процессор более одного ядра. Система, включающая процессор с двумя ядрами, по сути, не отличается от двухпроцессорного компьютера, а система с четырехядерным процессором — от четырехпроцессорного. Этот подход позволяет избежать многих технологических проблем, связанных с повышением тактовых частот, и создавать при этом более производительные процессоры.</p>
+		<p>Все это прекрасно, но если ваше приложение не будет использовать несколько ядер, его быстродействие никак не изменится. Именно здесь и вступает в игру технология OpenMP, которая помогает программистам на C++ быстрее создавать многопоточные приложения.</p>
+		<p>Подробно описать OpenMP в одной статье просто немыслимо, так как это очень объемный и мощный API. Рассматривайте эту статью как введение, где демонстрируется применение различных средств OpenMP для быстрого написания многопоточных программ. Если вам понадобится дополнительная информация по этой тематике, мы рекомендуем обратиться к спецификации, доступной на сайте OpenMP (www.openmp.org), — она на удивление легко читается.</p>
+		<h2>Активизация OpenMP в Visual C++</h2>
+		<p>Стандарт OpenMP был разработан в 1997 г. как API, ориентированный на написание портируемых многопоточных приложений. Сначала он был основан на языке Fortran, но позднее включил в себя и C/C++. Последняя версия OpenMP — 2.0;  ее полностью поддерживает Visual C++ 2005. Стандарт OpenMP поддерживается и платформой Xbox 360.</p>
+		<p>Прежде чем заниматься кодом, вы должны знать, как активизировать реализованные в компиляторе средства OpenMP. Для этого служит появившийся в Visual C++ 2005 параметр компилятора /openmp. (Вы можете активизировать директивы OpenMP на страницах свойств проекта, выбрав Configuration Properties, C/C++, Language и изменив значение свойства OpenMP Support.) Встретив параметр /openmp, компилятор определяет символ _OPENMP, с помощью которого можно выяснить, включены ли средства OpenMP. Для этого достаточно написать #ifndef _OPENMP.</p>
+		<p>OpenMP связывается с приложениями через библиотеку импорта vcomp.lib. Соответствующая библиотека периода выполнения называется vcomp.dll. Отладочные версии библиотек импорта и периода выполнения (vcompd.lib и vcompd.dll соответственно) поддерживают дополнительные сообщения об ошибках, генерируемых при некоторых недопустимых операциях. Имейте в виду, что Visual C++ не поддерживает статическое связывание с библиотекой OpenMP периода выполнения, хотя в версии для Xbox 360 это поддерживается.</p>
+		<h2>Параллельная обработка в OpenMP</h2>
+		<p>Работа OpenMP-приложения начинается с единственного потока — основного. В приложении могут содержаться параллельные регионы, входя в которые, основной поток создает группы потоков (включающие основной поток). В конце параллельного региона группы потоков останавливаются, а выполнение основного потока продолжается. В параллельный регион могут быть вложены другие параллельные регионы, в которых каждый поток первоначального региона становится основным для своей группы потоков. Вложенные регионы могут в свою очередь включать регионы более глубокого уровня вложенности.</p>
+		<p>Параллельную обработку в OpenMP иллюстрирует рис. 1. Самая левая стрелка представляет основной поток, который выполняется в одиночестве, пока не достигает первого параллельного региона в точке 1. В этой точке основной поток создает группу потоков, и теперь все они одновременно выполняются в параллельном регионе.</p>
+		 
+			
+					<p><a href="http://msdn.microsoft.com/ru-ru/library/Dd335940.01(l=ru-ru).gif" target="_blank"><img id="docs_gif" alt="Параллельные разделы OpenMP" src="http://i.msdn.microsoft.com/dynimg/IC4745.gif" title="Параллельные разделы OpenMP" xmlns="" /> <strong xmlns="http://www.w3.org/1999/xhtml">Рис. 1.</strong> Параллельные разделы OpenMP</a></p>
+			
+
+		<p>В точке 2 три из этих четырех потоков, достигнув вложенного параллельного региона, создают новые группы потоков. Исходный основной и потоки, создавшие новые группы, становятся владельцами своих групп (основными в этих группах). Учтите, что потоки могут создавать новые группы в разные моменты или вообще не встретить вложенный параллельный регион.</p>
+		<p>В точке 3 вложенный параллельный регион завершается. Каждый поток вложенного параллельного региона синхронизирует свое состояние с другими потоками в этом регионе, но синхронизация разных регионов между собой не выполняется. В точке 4 заканчивается первый параллельный регион, а в точке 5 начинается новый. Локальные данные каждого потока в промежутках между параллельными регионами сохраняются.</p>
+		<p>Таковы основы модели выполнения в OpenMP. Теперь вы готовы узнать, с чего начать разработку параллельного приложения.</p>
+		<h2>Конструкции OpenMP</h2>
+		<p>OpenMP прост в использовании и включает лишь два базовых типа конструкций: директивы pragma и функции исполняющей среды OpenMP. Директивы pragma, как правило, указывают компилятору реализовать параллельное выполнение блоков кода. Все эти директивы начинаются с #pragma omp. Как и любые другие директивы pragma, они игнорируются компилятором, не поддерживающим конкретную технологию — в данном случае OpenMP.</p>
+		<p>Функции OpenMP служат в основном для изменения и получения параметров среды. Кроме того, OpenMP включает API-функции для поддержки некоторых типов синхронизации. Чтобы задействовать эти функции библиотеки OpenMP периода выполнения (исполняющей среды), в программу нужно включить заголовочный файл omp.h. Если вы используете в приложении только OpenMP-директивы pragma, включать этот файл не требуется.</p>
+		<p>Для реализации параллельного выполнения блоков приложения нужно просто добавить в код директивы pragma и, если нужно, воспользоваться функциями библиотеки OpenMP периода выполнения. Директивы pragma имеют следующий формат:</p>
+
+		
+
+<div class="codeSnippetContainer" xmlns="">
+  <script type="text/javascript" src="/Areas/Global/Content/CodeSnippet.js"></script>
+  <link href="/Areas/Brand/Content/CodeSnippet.css" rel="stylesheet" type="text/css" />
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab codeSnippetContainerTabSingle" dir="ltr"><a>other</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" title="Копировать в буфер обмена." href="javascript:CodeSnippet_CopyCode('CodeSnippetContainerCode_bd03f880-9071-4242-812f-fdbd593ef649');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_bd03f880-9071-4242-812f-fdbd593ef649" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+#pragma omp &lt;директива&gt; [раздел [ [,] раздел]...]
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+
+		<p>OpenMP поддерживает директивы parallel, for, parallel for, section, sections, single, master, critical, flush, ordered и atomic, которые определяют или механизмы разделения работы или конструкции синхронизации. В этой статье мы обсудим большинство директив.</p>
+		<p>Раздел (clause) — это необязательный модификатор директивы, влияющий на ее поведение. Списки разделов, поддерживаемые каждой директивой, различаются, а пять директив (master, critical, flush, ordered и atomic) вообще не поддерживают разделы.</p>
+		<h2>Реализация параллельной обработки</h2>
+		<p>Хотя директив OpenMP много, все они сразу нам не понадобятся. Самая важная и распространенная директива — parallel. Она создает параллельный регион для следующего за ней структурированного блока, например:</p>
+		
+
+<div class="codeSnippetContainer" xmlns="">
+  <script type="text/javascript" src="/Areas/Global/Content/CodeSnippet.js"></script>
+  <link href="/Areas/Brand/Content/CodeSnippet.css" rel="stylesheet" type="text/css" />
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab codeSnippetContainerTabSingle" dir="ltr"><a>other</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" title="Копировать в буфер обмена." href="javascript:CodeSnippet_CopyCode('CodeSnippetContainerCode_8fed74bb-1948-4c31-9bfb-bd457603a33a');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_8fed74bb-1948-4c31-9bfb-bd457603a33a" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+#pragma omp parallel [раздел[ [,] раздел]...]
+структурированный блок
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+
+		<p>Эта директива сообщает компилятору, что структурированный блок кода должен быть выполнен параллельно, в нескольких потоках. Каждый поток будет выполнять один и тот же поток команд, но не один и тот же набор команд — все зависит от операторов, управляющих логикой программы, таких как if-else.</p>
+		<p>В качестве примера рассмотрим классическую программу «Hello World»:</p>
+
+
+<div class="codeSnippetContainer" xmlns="">
+  <script type="text/javascript" src="/Areas/Global/Content/CodeSnippet.js"></script>
+  <link href="/Areas/Brand/Content/CodeSnippet.css" rel="stylesheet" type="text/css" />
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab codeSnippetContainerTabSingle" dir="ltr"><a>other</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" title="Копировать в буфер обмена." href="javascript:CodeSnippet_CopyCode('CodeSnippetContainerCode_fa5a3e7b-bc42-4022-b1d9-20a100bd82f6');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_fa5a3e7b-bc42-4022-b1d9-20a100bd82f6" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+#pragma omp parallel
+{
+    printf("Hello World\n");
+}
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+
+<p>В двухпроцессорной системе вы, конечно же, рассчитывали бы получить следующее:</p>
+
+
+
+<div class="codeSnippetContainer" xmlns="">
+  <script type="text/javascript" src="/Areas/Global/Content/CodeSnippet.js"></script>
+  <link href="/Areas/Brand/Content/CodeSnippet.css" rel="stylesheet" type="text/css" />
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab codeSnippetContainerTabSingle" dir="ltr"><a>other</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" title="Копировать в буфер обмена." href="javascript:CodeSnippet_CopyCode('CodeSnippetContainerCode_b12251f5-3f67-4893-a906-6a32282863d7');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_b12251f5-3f67-4893-a906-6a32282863d7" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+Hello World
+Hello World
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+
+<p>Тем не менее, результат мог бы оказаться и таким:</p>
+
+
+
+<div class="codeSnippetContainer" xmlns="">
+  <script type="text/javascript" src="/Areas/Global/Content/CodeSnippet.js"></script>
+  <link href="/Areas/Brand/Content/CodeSnippet.css" rel="stylesheet" type="text/css" />
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab codeSnippetContainerTabSingle" dir="ltr"><a>other</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" title="Копировать в буфер обмена." href="javascript:CodeSnippet_CopyCode('CodeSnippetContainerCode_7333aa23-3aab-4cb3-bb87-52808c91ef9e');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_7333aa23-3aab-4cb3-bb87-52808c91ef9e" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+HellHell oo WorWlodrl
+d
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+
+<p>Второй вариант возможен из-за того, что два выполняемых параллельно потока могут попытаться вывести строку одновременно. Когда два или более потоков одновременно пытаются прочитать или изменить общий ресурс (в нашем случае им является окно консоли), возникает вероятность гонок (race condition). Это недетерминированные ошибки в коде программы, найти которые крайне трудно. За предотвращение гонок отвечает программист; как правило, для этого используют блокировки или сводят к минимуму обращения к общим ресурсам.</p>
+<p>Давайте взглянем на более серьезный пример, который определяет средние значения двух соседних элементов массива и записывает результаты в другой массив. В этом примере используется новая для вас OpenMP-конструкция #pragma omp for, которая относится к директивам разделения работы (work-sharing directive). Такие директивы применяются не для параллельного выполнения кода, а для логического распределения группы потоков, чтобы реализовать указанные конструкции управляющей логики. Директива #pragma omp for сообщает, что при выполнении цикла for в параллельном регионе итерации цикла должны быть распределены между потоками группы:</p>
+
+
+
+<div class="codeSnippetContainer" xmlns="">
+  <script type="text/javascript" src="/Areas/Global/Content/CodeSnippet.js"></script>
+  <link href="/Areas/Brand/Content/CodeSnippet.css" rel="stylesheet" type="text/css" />
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab codeSnippetContainerTabSingle" dir="ltr"><a>other</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" title="Копировать в буфер обмена." href="javascript:CodeSnippet_CopyCode('CodeSnippetContainerCode_41122807-ed14-4c65-8da5-645e6a570ce8');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_41122807-ed14-4c65-8da5-645e6a570ce8" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+#pragma omp parallel
+{
+#pragma omp for
+for(int i = 1; i &lt; size; ++i)
+        x[i] = (y[i-1] + y[i+1])/2;
+}
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+
+<p>Если бы этот код выполнялся на четырехпроцессорном компьютере, а у переменной size было бы значение 100, то выполнение итераций 1—25 могло бы быть поручено первому процессору, 26—50 — второму, 51—75  — третьему, а 76—99 — четвертому. Это характерно для политики планирования, называемой статической. Политики планирования мы обсудим позднее.</p>
+<p>Следует отметить, что в конце параллельного региона выполняется барьерная синхронизация (barrier synchronization). Иначе говоря, достигнув конца региона, все потоки блокируются до тех пор, пока последний поток не завершит свою работу.</p>
+<p>Если из только что приведенного примера исключить директиву #pragma omp for, каждый поток выполнит полный цикл for, проделав много лишней работы:</p>
+
+
+
+<div class="codeSnippetContainer" xmlns="">
+  <script type="text/javascript" src="/Areas/Global/Content/CodeSnippet.js"></script>
+  <link href="/Areas/Brand/Content/CodeSnippet.css" rel="stylesheet" type="text/css" />
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab codeSnippetContainerTabSingle" dir="ltr"><a>other</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" title="Копировать в буфер обмена." href="javascript:CodeSnippet_CopyCode('CodeSnippetContainerCode_d050efef-1f2d-472b-a521-b501865dba53');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_d050efef-1f2d-472b-a521-b501865dba53" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+#pragma omp parallel
+{
+for(int i = 1; i &lt; size; ++i)
+        x[i] = (y[i-1] + y[i+1])/2;
+}
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+
+<p>Так как циклы являются самыми распространенными конструкциями, где выполнение кода можно распараллелить, OpenMP поддерживает сокращенный способ записи комбинации директив #pragma omp parallel и #pragma omp for:</p>
+
+
+
+<div class="codeSnippetContainer" xmlns="">
+  <script type="text/javascript" src="/Areas/Global/Content/CodeSnippet.js"></script>
+  <link href="/Areas/Brand/Content/CodeSnippet.css" rel="stylesheet" type="text/css" />
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab codeSnippetContainerTabSingle" dir="ltr"><a>other</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" title="Копировать в буфер обмена." href="javascript:CodeSnippet_CopyCode('CodeSnippetContainerCode_472902a1-5f58-4e7a-a5ca-f316490decf1');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_472902a1-5f58-4e7a-a5ca-f316490decf1" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+#pragma omp parallel for
+for(int i = 1; i &lt; size; ++i)
+    x[i] = (y[i-1] + y[i+1])/2;
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+
+<p>Обратите внимание, что в этом цикле нет зависимостей, т. е. одна итерация цикла не зависит от результатов выполнения других итераций. А вот в двух следующих циклах есть два вида зависимости:</p>
+
+
+
+<div class="codeSnippetContainer" xmlns="">
+  <script type="text/javascript" src="/Areas/Global/Content/CodeSnippet.js"></script>
+  <link href="/Areas/Brand/Content/CodeSnippet.css" rel="stylesheet" type="text/css" />
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab codeSnippetContainerTabSingle" dir="ltr"><a>other</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" title="Копировать в буфер обмена." href="javascript:CodeSnippet_CopyCode('CodeSnippetContainerCode_09a796cf-b201-49a6-8ef8-edd4506c4d67');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_09a796cf-b201-49a6-8ef8-edd4506c4d67" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+for(int i = 1; i &lt;= n; ++i)    // цикл 1
+    a[i] = a[i-1] + b[i];
+
+for(int i = 0; i &lt; n; ++i)     // цикл 2
+    x[i] = x[i+1] + b[i];
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+
+<p>Распараллелить цикл 1 проблематично потому, что для выполнения итерации i нужно знать результат итерации i-1,  т. е. итерация i зависит от итерации i-1.  Распараллелить цикл 2 тоже проблематично, но по другой причине. В этом цикле вы можете вычислить значение x[i]  до x[i-1], однако, сделав так, вы больше не сможете вычислить значение x[i-1]. Наблюдается зависимость итерации i-1 от итерации i.</p>
+<p>При распараллеливании циклов вы должны убедиться в том, что итерации цикла не имеют зависимостей. Если цикл не содержит зависимостей, компилятор может выполнять цикл в любом порядке, даже параллельно. Соблюдение этого важного требования компилятор не проверяет — вы сами должны заботиться об этом. Если вы укажете компилятору распараллелить цикл, содержащий зависимости, компилятор подчинится, что приведет к ошибке.</p>
+<p>Кроме того, OpenMP налагает ограничения на циклы for, которые могут быть включены в блок #pragma omp for или #pragma omp parallel for block. Циклы for должны соответствовать следующему формату:</p>
+
+
+<div class="codeSnippetContainer" xmlns="">
+  <script type="text/javascript" src="/Areas/Global/Content/CodeSnippet.js"></script>
+  <link href="/Areas/Brand/Content/CodeSnippet.css" rel="stylesheet" type="text/css" />
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab codeSnippetContainerTabSingle" dir="ltr"><a>other</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" title="Копировать в буфер обмена." href="javascript:CodeSnippet_CopyCode('CodeSnippetContainerCode_f59ce90d-079a-4897-adb3-8d63bd517574');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_f59ce90d-079a-4897-adb3-8d63bd517574" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+for([целочисленный тип] i = инвариант цикла;
+    i {&lt;,&gt;,=,&lt;=,&gt;=} инвариант цикла;
+    i {+,-}= инвариант цикла)
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+
+<p>Эти требования введены для того, чтобы OpenMP мог при входе в цикл определить число итераций.</p>
+
+<h2>Сравнение поддержки потоков в OpenMP и Win32</h2>
+<p>Думаем, будет полезно сравнить только что приведенный пример, включающий директиву #pragma omp parallel for, с кодом, который пришлось бы написать для решения той же задачи на основе Windows API. Как видно в листинге 1, для достижения того же результата требуется гораздо больше кода, а за кулисами в этом варианте выполняются еще кое-какие операции. Так, конструктор класса ThreadData определяет, какими должны быть значения start и stop при каждом вызове потока. OpenMP обрабатывает все эти детали сам и предоставляет программисту дополнительные средства конфигурирования параллельных регионов и кода.</p>
+<p><strong>Листинг 1. Многопоточность в Win32</strong></p>
+
+
+<div class="codeSnippetContainer" xmlns="">
+  <script type="text/javascript" src="/Areas/Global/Content/CodeSnippet.js"></script>
+  <link href="/Areas/Brand/Content/CodeSnippet.css" rel="stylesheet" type="text/css" />
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab codeSnippetContainerTabSingle" dir="ltr"><a>other</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" title="Копировать в буфер обмена." href="javascript:CodeSnippet_CopyCode('CodeSnippetContainerCode_d0dd01ee-5910-43af-b1f0-0fca034232f5');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_d0dd01ee-5910-43af-b1f0-0fca034232f5" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+	class ThreadData {
+public:
+   // Конструктор инициализирует поля start и stop
+   ThreadData(int threadNum);
+   int start;
+   int stop;
+};
+
+DWORD ThreadFn(void* passedInData)
+{
+   ThreadData *threadData = (ThreadData *)passedInData;
+   for(int i = threadData-&gt;start; i &lt; threadData-&gt;stop; ++i )
+      x[i] = (y[i-1] + y[i+1]) / 2;
+   return 0;
+}
+
+void ParallelFor()
+{
+   // Запуск групп потоков
+   for(int i=0; i &lt; nTeams; ++i)
+      ResumeThread(hTeams[i]);
+
+   // Для каждого потока здесь неявно вызывается
+   // метод ThreadFn
+
+   // Ожидание завершения работы
+   WaitForMultipleObjects(nTeams, hTeams, TRUE, INFINITE);
+}
+
+int main(int argc, char* argv[])
+{
+   // Создание групп потоков
+   for(int i=0; i &lt; nTeams; ++i)
+   {
+      ThreadData *threadData = new ThreadData(i);
+      hTeams[i] = CreateThread(NULL, 0, ThreadFn, threadData,
+          CREATE_SUSPENDED, NULL);
+   }
+
+   ParallelFor(); // имитация OpenMP-конструкции parallel for
+
+   // Очистка
+   for(int i=0; i &lt; nTeams; ++i)
+      CloseHandle(hTeams[i]);
+}
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+
+<h2>Общие и частные данные</h2>
+<p>Разрабатывая параллельные программы, вы должны понимать, какие данные являются общими (shared), а какие частными (private), — от этого зависит не только производительность, но и корректная работа программы. В OpenMP это различие очевидно, к тому же вы можете настроить его вручную.</p>
+<p>Общие переменные доступны всем потокам из группы, поэтому изменения таких переменных в одном потоке видимы другим потокам в параллельном регионе. Что касается частных переменных, то каждый поток из группы располагает их отдельными экземплярами, поэтому изменения таких переменных в одном потоке никак не сказываются на их экземплярах, принадлежащих другим потокам.</p>
+<p>По умолчанию все переменные в параллельном регионе — общие, но из этого правила есть три исключения. Во-первых, частными являются индексы параллельных циклов for. Например, это относится к переменной i в коде, показанном в листинге 2. Переменная j по умолчанию не является частной, но явно сделана таковой через раздел firstprivate.</p>
+<p><strong>Листинг 2. Разделы директив OpenMP и вложенный цикл for</strong></p>
+
+
+<div class="codeSnippetContainer" xmlns="">
+  <script type="text/javascript" src="/Areas/Global/Content/CodeSnippet.js"></script>
+  <link href="/Areas/Brand/Content/CodeSnippet.css" rel="stylesheet" type="text/css" />
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab codeSnippetContainerTabSingle" dir="ltr"><a>other</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" title="Копировать в буфер обмена." href="javascript:CodeSnippet_CopyCode('CodeSnippetContainerCode_dc6e9395-689b-4ac8-8e27-da23afc5a070');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_dc6e9395-689b-4ac8-8e27-da23afc5a070" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+	float sum = 10.0f;
+MatrixClass myMatrix;
+int j = myMatrix.RowStart();
+int i;
+#pragma omp parallel
+{
+   #pragma omp for firstprivate(j) lastprivate(i)
+      reduction(+: sum)
+   for(i = 0; i &lt; count; ++i)
+   {
+      int doubleI = 2 * i;
+      for(; j &lt; doubleI; ++j)
+      {
+         sum += myMatrix.GetElement(i, j);
+      }
+   }
+}
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+
+<p>Во-вторых, частными являются локальные переменные блоков параллельных регионов. На рис. 3 такова переменная doubleI, потому что она объявлена в параллельном регионе. Любые нестатические и не являющиеся членами класса MatrixClass переменные, объявленные в методе myMatrix::GetElement, будут частными.</p>
+<p>В-третьих, частными будут любые переменные, указанные в разделах private, firstprivate, lastprivate и reduction. В листинге 2 переменные i, j и sum сделаны частными для каждого потока из группы, т. е. каждый поток будет располагать своей копией каждой из этих переменных.</p>
+<p>Каждый из четырех названных разделов принимает список переменных, но семантика этих разделов различается. Раздел private говорит о том, что для каждого потока должна быть создана частная копия каждой переменной из списка. Частные копии будут инициализироваться значением по умолчанию (с применением конструктора по умолчанию, если это уместно). Например, переменные типа int имеют по умолчанию значение 0.</p>
+<p>У раздела firstprivate такая же семантика, но перед выполнением параллельного региона он указывает копировать значение частной переменной в каждый поток, используя конструктор копий, если это уместно.</p>
+<p>Семантика раздела lastprivate тоже совпадает с семантикой раздела private, но при выполнении последней итерации цикла или раздела конструкции распараллеливания значения переменных, указанных в разделе lastprivate, присваиваются переменным основного потока. Если это уместно, для копирования объектов применяется оператор присваивания копий (copy assignment operator).</p>
+<p>Похожая семантика и у раздела reduction, но он принимает переменную и оператор. Поддерживаемые этим разделом операторы перечислены в табл. 1, а у переменной должен быть скалярный тип (например, float, int или long, но не std::vector, int [] и т. д.). Переменная раздела reduction инициализируется в каждом потоке значением, указанным в таблице. В конце блока кода оператор раздела reduction применяется к каждой частной копии переменной, а также к исходному значению переменной.</p>
+
+	
+<p><strong>Табл. 1. Операторы раздела reduction</strong></p>
+		<table><tr><th>Оператор раздела reduction</th><th>Инициализированное (каноническое) значение</th></tr>
+		
+		
+			<tr><td>+</td><td>0</td></tr>
+			<tr><td>*</td><td>1</td></tr>
+			<tr><td>-</td><td>0</td></tr>
+			<tr><td>&amp;</td><td>~0 (каждый бит установлен)</td></tr>
+			<tr><td>|</td><td>0</td></tr>
+			<tr><td>^</td><td>0</td></tr>
+			<tr><td>&amp;&amp;</td><td>1</td></tr>
+			<tr><td>||</td><td>0</td></tr>
+		</table>
+	
+
+<p>В листинге 2 переменная sum неявно инициализируется в каждом потоке значением 0.0f (заметьте, что в таблице указано каноническое значение 0, но в данном случае оно принимает форму 0.0f,  так как sum имеет тип float). После выполнения блока #pragma omp for над всеми частными значениями и исходным значением sum (которое в нашем случае равно 10.0f)  выполняется операция +. Результат присваивается исходной общей переменной sum.</p>
+<h2>Параллельная обработка в конструкциях, отличных от циклов</h2>
+<p>Как правило, OpenMP используется для распараллеливания циклов, но OpenMP поддерживает параллелизм и на уровне функций. Этот механизм называется секциями OpenMP (OpenMP sections). Он довольно прост и часто бывает полезен.</p>
+<p>Рассмотрим один из самых важных алгоритмов в программировании — быструю сортировку (quicksort). В качестве примера мы реализовали рекурсивный метод быстрой сортировки списка целых чисел. Ради простоты мы решили не создавать универсальную шаблонную версию метода, но суть дела от этого ничуть не меняется. Код нашего метода, реализованного с использованием секций OpenMP, показан в листинге 3 (код метода Partition опущен, чтобы не загромождать общую картину).</p>
+<p><strong>Листинг 3. Быстрая сортировка с использованием параллельных секций</strong></p>
+
+
+<div class="codeSnippetContainer" xmlns="">
+  <script type="text/javascript" src="/Areas/Global/Content/CodeSnippet.js"></script>
+  <link href="/Areas/Brand/Content/CodeSnippet.css" rel="stylesheet" type="text/css" />
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab codeSnippetContainerTabSingle" dir="ltr"><a>other</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" title="Копировать в буфер обмена." href="javascript:CodeSnippet_CopyCode('CodeSnippetContainerCode_98e2a663-dd6a-447a-8c5d-b163aed2ad74');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_98e2a663-dd6a-447a-8c5d-b163aed2ad74" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+	void QuickSort (int numList[],  int nLower, int nUpper)
+{
+   if (nLower &lt; nUpper)
+   {
+      // Разбиение интервала сортировки
+      int nSplit = Partition (numList, nLower, nUpper);
+      #pragma omp parallel sections
+      {
+         #pragma omp section
+         QuickSort (numList, nLower, nSplit - 1);
+
+         #pragma omp section
+         QuickSort (numList, nSplit + 1, nUpper);
+      }
+   }
+}
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>В данном примере первая директива #pragma создает параллельный регион секций. Каждая секция определяется директивой #pragma omp section. Каждой секции в параллельном регионе ставится в соответствие один поток из группы потоков, и все секции выполняются одновременно. В каждой секции рекурсивно вызывается метод QuickSort.</p>
+<p>Как и в случае конструкции #pragma omp parallel for, вы сами должны убедиться в независимости секций друг от друга, чтобы они могли выполняться параллельно. Если в секциях изменяются общие ресурсы без синхронизации доступа к ним, результат может оказаться непредсказуемым.</p>
+<p>Обратите внимание на то, что в этом примере используется сокращение #pragma omp parallel sections, аналогичное конструкции #pragma omp parallel for. По аналогии с #pragma omp for директиву #pragma omp sections можно использовать в параллельном регионе отдельно.</p>
+<p>По поводу кода, показанного в листинге 3, следует сказать еще пару слов. Прежде всего заметьте, что параллельные секции вызываются рекурсивно. Рекурсивные вызовы поддерживаются и параллельными регионами, и (как в нашем примере) параллельными секциями. Если создание вложенных секций разрешено, по мере рекурсивных вызовов QuickSort будут создаваться все новые и новые потоки. Возможно, это не то, что нужно программисту, так как такой подход может привести к созданию большого числа потоков. Чтобы ограничить число потоков, в программе можно запретить вложение. Тогда наше приложение будет рекурсивно вызывать метод QuickSort, используя только два потока.</p>
+<p>При компиляции этого приложения без параметра /openmp будет сгенерирована корректная последовательная версия. Одно из преимуществ OpenMP в том, что эта технология совместима с компиляторами, не поддерживающими OpenMP.</p>
+
+<h2>Директивы pragma для синхронизации</h2>
+
+<p>При одновременном выполнении нескольких потоков часто возникает необходимость их синхронизации. OpenMP поддерживает несколько типов синхронизации, помогающих во многих ситуациях.</p>
+<p>Один из типов — неявная барьерная синхронизация, которая выполняется в конце каждого параллельного региона для всех сопоставленных с ним потоков. Механизм барьерной синхронизации таков, что, пока все потоки не достигнут конца параллельного региона, ни один поток не сможет перейти его границу.</p>
+<p>Неявная барьерная синхронизация выполняется также в конце каждого блока #pragma omp for, #pragma omp single и #pragma omp sections. Чтобы отключить неявную барьерную синхронизацию в каком-либо из этих трех блоков разделения работы, укажите раздел nowait:</p>
+
+
+
+<div class="codeSnippetContainer" xmlns="">
+  <script type="text/javascript" src="/Areas/Global/Content/CodeSnippet.js"></script>
+  <link href="/Areas/Brand/Content/CodeSnippet.css" rel="stylesheet" type="text/css" />
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab codeSnippetContainerTabSingle" dir="ltr"><a>other</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" title="Копировать в буфер обмена." href="javascript:CodeSnippet_CopyCode('CodeSnippetContainerCode_e9705747-c5d1-455f-b518-48ff10c65be2');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_e9705747-c5d1-455f-b518-48ff10c65be2" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+#pragma omp parallel
+{
+    #pragma omp for nowait
+    for(int i = 1; i &lt; size; ++i)
+        x[i] = (y[i-1] + y[i+1])/2;
+}
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+
+<p>Как видите, этот раздел директивы распараллеливания говорит о том, что синхронизировать потоки в конце цикла for не надо, хотя в конце параллельного региона они все же будут синхронизированы.</p>
+<p>Второй тип — явная барьерная синхронизация. В некоторых ситуациях ее целесообразно выполнять наряду с неявной. Для этого включите в код директиву #pragma omp barrier.</p>
+<p>В качестве барьеров можно использовать критические секции. В Win32 API для входа в критическую секцию и выхода из нее служат функции EnterCriticalSection и LeaveCriticalSection. В OpenMP для этого применяется директива #pragma omp critical [имя]. Она имеет такую же семантику, что и критическая секция Win32, и опирается на EnterCriticalSection. Вы можете использовать именованную критическую секцию, и тогда доступ к блоку кода является взаимоисключающим только для других критических секций с тем же именем (это справедливо для всего процесса). Если имя не указано, директива ставится в соответствие некоему имени, выбираемому системой. Доступ ко всем неименованным критическим секциям является взаимоисключающим.</p>
+<p>В параллельных регионах часто встречаются блоки кода, доступ к которым желательно предоставлять только одному потоку, — например, блоки кода, отвечающие за запись данных в файл. Во многих таких ситуациях не имеет значения, какой поток выполнит код, важно лишь, чтобы этот поток был единственным. Для этого в OpenMP служит директива #pragma omp single.</p>
+<p>Иногда возможностей директивы single недостаточно. В ряде случаев требуется, чтобы блок кода был выполнен основным потоком, — например, если этот поток отвечает за обработку GUI и вам нужно, чтобы какую-то задачу выполнил именно он. Тогда применяется директива #pragma omp master. В отличие от директивы single при входе в блок master и выходе из него нет никакого неявного барьера.</p>
+<p>Чтобы завершить все незавершенные операции над памятью перед началом следующей операции, используйте директиву #pragma omp flush, которая эквивалентна внутренней функции компилятора _ReadWriteBarrier.</p>
+<p>Учтите, что OpenMP-директивы pragma должны обрабатываться всеми потоками из группы в одном порядке (или вообще не обрабатываться никакими потоками). Таким образом, следующий пример кода некорректен, а предсказать результаты его выполнения нельзя (вероятные варианты — сбой или зависание системы):</p>
+
+
+
+<div class="codeSnippetContainer" xmlns="">
+  <script type="text/javascript" src="/Areas/Global/Content/CodeSnippet.js"></script>
+  <link href="/Areas/Brand/Content/CodeSnippet.css" rel="stylesheet" type="text/css" />
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab codeSnippetContainerTabSingle" dir="ltr"><a>other</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" title="Копировать в буфер обмена." href="javascript:CodeSnippet_CopyCode('CodeSnippetContainerCode_258f650c-4f0b-49d3-b5bd-203ab4228fdb');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_258f650c-4f0b-49d3-b5bd-203ab4228fdb" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+#pragma omp parallel
+{
+    if(omp_get_thread_num() &gt; 3)
+    {
+        #pragma omp single   // код, доступный не всем потокам
+        x++;
+    }
+}
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+	
+<h2>Подпрограммы исполняющей среды OpenMP	</h2>
+	
+<p>Помимо уже описанных директив OpenMP поддерживает ряд полезных подпрограмм. Они делятся на три обширных категории: функции исполняющей среды, блокировки/синхронизации и работы с таймерами (последние в этой статье не рассматриваются). Все эти функции имеют имена, начинающиеся с omp_, и определены в заголовочном файле omp.h.</p>
+<p>Подпрограммы первой категории позволяют запрашивать и задавать различные параметры операционной среды OpenMP. Функции, имена которых начинаются на omp_set_, можно вызывать только вне параллельных регионов. Все остальные функции можно использовать как внутри параллельных регионов, так и вне таковых.</p>
+<p>Чтобы узнать или задать число потоков в группе, используйте функции omp_get_num_threads и omp_set_num_threads. Первая возвращает число потоков, входящих в текущую группу потоков. Если вызывающий поток выполняется не в параллельном регионе, эта функция возвращает 1. Метод omp_set_num_thread задает число потоков  для выполнения следующего параллельного региона, который встретится текущему выполняемому потоку. Кроме того, число потоков, используемых для выполнения параллельных регионов, зависит от двух других параметров среды OpenMP: поддержки динамического создания потоков и вложения регионов.</p>
+<p>Поддержка динамического создания потоков определяется значением булевого свойства, которое по умолчанию равно false. Если при входе потока в параллельный регион это свойство имеет значение false, исполняющая среда OpenMP создает группу, число потоков в которой равно значению, возвращаемому функцией omp_get_max_threads. По умолчанию omp_get_max_threads возвращает число потоков, поддерживаемых аппаратно, или значение переменной OMP_NUM_THREADS. Если поддержка динамического создания потоков включена, исполняющая среда OpenMP создаст группу, которая может содержать переменное число потоков, не превышающее значение, которое возвращается функцией omp_get_max_threads.</p>
+<p>Вложение параллельных регионов также определяется булевым свойством, которое по умолчанию установлено в false. Вложение параллельных регионов происходит, когда потоку, уже выполняющему параллельный регион, встречается другой параллельный регион. Если вложение разрешено, создается новая группа потоков, при этом соблюдаются правила, описанные ранее. А если вложение не разрешено, формируется группа, содержащая один поток.</p>
+<p>Для установки и чтения свойств, определяющих возможность динамического создания потоков и вложения параллельных регионов, служат функции omp_set_dynamic, omp_get_dynamic, omp_set_nested и omp_get_nested. Кроме того, каждый поток может запросить информацию о своей среде. Чтобы узнать номер потока в группе потоков, вызовите omp_get_thread_num. Помните, что она возвращает не Windows-идентификатор потока, а число в диапазоне от 0 до omp_get_num_threads - 1.</p>
+<p>Функция omp_in_parallel позволяет потоку узнать, выполняет ли он в настоящее время параллельный регион, а omp_get_num_procs возвращает число процессоров в компьютере.</p>
+<p>Чтобы лучше понять взаимосвязи различных функций исполняющей среды, взгляните на листинг 4. В этом примере мы реализовали четыре отдельных параллельных региона и два вложенных.</p>
+	<p><strong>Листинг 4. Использование подпрограмм исполняющей среды OpenMP</strong></p>
+
+
+<div class="codeSnippetContainer" xmlns="">
+  <script type="text/javascript" src="/Areas/Global/Content/CodeSnippet.js"></script>
+  <link href="/Areas/Brand/Content/CodeSnippet.css" rel="stylesheet" type="text/css" />
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab codeSnippetContainerTabSingle" dir="ltr"><a>other</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" title="Копировать в буфер обмена." href="javascript:CodeSnippet_CopyCode('CodeSnippetContainerCode_63930ab0-5755-467d-a876-9a618d0a7a8c');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_63930ab0-5755-467d-a876-9a618d0a7a8c" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+	#include &lt;stdio.h&gt;
+#include &lt;omp.h&gt;
+
+int main()
+{
+   omp_set_dynamic(1);
+   omp_set_num_threads(10);
+   #pragma omp parallel        // параллельный регион 1
+   {
+      #pragma omp single
+      printf("Num threads in dynamic region is = %d\n",
+         omp_get_num_threads());
+   }
+   printf("\n");
+   omp_set_dynamic(0);
+   omp_set_num_threads(10);
+   #pragma omp parallel        // параллельный регион 2
+   {
+      #pragma omp single
+      printf("Num threads in non-dynamic region is = %d\n",
+         omp_get_num_threads());
+   }
+   printf("\n");
+   omp_set_dynamic(1);
+   omp_set_num_threads(10);
+   #pragma omp parallel        // параллельный регион 3
+   {
+      #pragma omp parallel
+      {
+         #pragma omp single
+         printf(
+            "Num threads in nesting disabled region is = %d\n",
+            omp_get_num_threads());
+      }
+   }
+   printf("\n");
+   omp_set_nested(1);
+   #pragma omp parallel        // параллельный регион 4
+   {
+      #pragma omp parallel
+      {
+         #pragma omp single
+         printf("Num threads in nested region is = %d\n",
+            omp_get_num_threads());
+      }
+   }
+}
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+
+<p>Скомпилировав этот код в Visual Studio 2005 и выполнив его на обычном двухпроцессорном компьютере, мы получили такой результат:</p>
+
+
+
+<div class="codeSnippetContainer" xmlns="">
+  <script type="text/javascript" src="/Areas/Global/Content/CodeSnippet.js"></script>
+  <link href="/Areas/Brand/Content/CodeSnippet.css" rel="stylesheet" type="text/css" />
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab codeSnippetContainerTabSingle" dir="ltr"><a>other</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" title="Копировать в буфер обмена." href="javascript:CodeSnippet_CopyCode('CodeSnippetContainerCode_a74a999e-ea08-421d-b1d6-a4a6110ad841');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_a74a999e-ea08-421d-b1d6-a4a6110ad841" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+Num threads in dynamic region is = 2
+
+Num threads in non-dynamic region is = 10
+
+Num threads in nesting disabled region is = 1
+Num threads in nesting disabled region is = 1
+
+Num threads in nested region is = 2
+Num threads in nested region is = 2
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+
+<p>Для первого региона мы включили динамическое создание потоков и установили число потоков в 10. По результатам работы программы видно, что при включенном динамическом создании потоков исполняющая среда OpenMP решила создать группу, включающую всего два потока, так как у компьютера два процессора. Для второго параллельного региона исполняющая среда OpenMP создала группу из 10 потоков, потому что динамическое создание потоков для этого региона было отключено.</p>
+<p>Результаты выполнения третьего и четвертого параллельных регионов иллюстрируют следствия включения и отключения возможности вложения регионов. В третьем параллельном регионе вложение было отключено, поэтому для вложенного параллельного региона не было создано никаких новых потоков — и внешний, и вложенный параллельные регионы выполнялись двумя потоками. В четвертом параллельном регионе, где вложение было включено, для вложенного параллельного региона была создана группа из двух потоков (т. е. в общей сложности этот регион выполнялся четырьмя потоками). Процесс удвоения числа потоков для каждого вложенного параллельного региона может продолжаться, пока вы не исчерпаете пространство в стеке. На практике можно создать несколько сотен потоков, хотя связанные с этим издержки легко перевесят любые преимущества.</p>
+<p>Как вы, вероятно, заметили, для третьего и четвертого параллельных регионов динамическое создание потоков было включено. Посмотрим, что будет, если выполнить тот же код, отключив динамическое создание потоков:</p>
+
+
+
+<div class="codeSnippetContainer" xmlns="">
+  <script type="text/javascript" src="/Areas/Global/Content/CodeSnippet.js"></script>
+  <link href="/Areas/Brand/Content/CodeSnippet.css" rel="stylesheet" type="text/css" />
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab codeSnippetContainerTabSingle" dir="ltr"><a>other</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" title="Копировать в буфер обмена." href="javascript:CodeSnippet_CopyCode('CodeSnippetContainerCode_053a5a56-ee86-4a59-bd48-2609be0776e6');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_053a5a56-ee86-4a59-bd48-2609be0776e6" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+omp_set_dynamic(0);
+omp_set_nested(1);
+omp_set_num_threads(10);
+#pragma omp parallel
+{
+    #pragma omp parallel
+    {
+        #pragma omp single
+        printf("Num threads in nested region is = %d\n",
+           omp_get_num_threads());
+    }
+}
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+
+<p>А происходит то, чего и следовало ожидать. Для первого параллельного региона создается группа из 10 потоков, затем при входе во вложенный параллельный регион для каждого из этих 10 потоков создается группа также из 10 потоков. В общей сложности вложенный параллельный регион выполняют 100 потоков:</p>
+
+
+
+<div class="codeSnippetContainer" xmlns="">
+  <script type="text/javascript" src="/Areas/Global/Content/CodeSnippet.js"></script>
+  <link href="/Areas/Brand/Content/CodeSnippet.css" rel="stylesheet" type="text/css" />
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab codeSnippetContainerTabSingle" dir="ltr"><a>other</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" title="Копировать в буфер обмена." href="javascript:CodeSnippet_CopyCode('CodeSnippetContainerCode_498261ac-6cb0-4359-a208-e30f454c3ecc');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_498261ac-6cb0-4359-a208-e30f454c3ecc" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+Num threads in nested region is = 10
+Num threads in nested region is = 10
+Num threads in nested region is = 10
+Num threads in nested region is = 10
+Num threads in nested region is = 10
+Num threads in nested region is = 10
+Num threads in nested region is = 10
+Num threads in nested region is = 10
+Num threads in nested region is = 10
+Num threads in nested region is = 10
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+
+<h2>Методы синхронизации/блокировки</h2>
+
+<p>OpenMP включает и функции, предназначенные для синхронизации кода. В OpenMP два типа блокировок: простые и вкладываемые (nestable); блокировки обоих типов могут находиться в одном из трех состояний — неинициализированном, заблокированном и разблокированном.</p>
+<p>Простые блокировки (omp_lock_t) не могут быть установлены более одного раза, даже тем же потоком. Вкладываемые блокировки (omp_nest_lock_t) идентичны простым с тем исключением, что, когда поток пытается установить уже принадлежащую ему вкладываемую блокировку, он не блокируется. Кроме того, OpenMP ведет учет ссылок на вкладываемые блокировки и следит за тем, сколько раз они были установлены.</p>
+<p>OpenMP предоставляет подпрограммы, выполняющие операции над этими блокировками. Каждая такая функция имеет два варианта: для простых и для вкладываемых блокировок. Вы можете выполнить над блокировкой пять действий: инициализировать ее, установить (захватить), освободить, проверить и уничтожить. Все эти операции очень похожи на Win32-функции для работы с критическими секциями, и это не случайность: на самом деле технология OpenMP реализована как оболочка этих функций. Соответствие между функциями OpenMP и Win32 иллюстрирует табл. 2.</p>
+	
+	
+		<p><strong>Табл. 2. Функции для работы с блокировками в OpenMP и Win32</strong></p>
+		<table><tr><th>Простая блокировка OpenMP</th><th>Вложенная блокировка OpenMP</th><th>Win32-функция</th></tr>
+		
+		
+			<tr><td>	omp_lock_t</td><td>	omp_nest_lock_t</td><td>CRITICAL_SECTION</td></tr>
+			<tr><td>omp_init_lock</td><td>omp_init_nest_lock</td><td>InitializeCriticalSection</td></tr>
+			<tr><td>omp_destroy_lock</td><td>omp_destroy_nest_lock</td><td>DeleteCriticalSection</td></tr>
+			<tr><td>omp_set_lock</td><td>omp_set_nest_lock</td><td>EnterCriticalSection</td></tr>
+			<tr><td>omp_unset_lock</td><td>omp_unset_nest_lock</td><td>LeaveCriticalSection</td></tr>
+			<tr><td>omp_test_lock</td><td>omp_test_nest_lock</td><td>TryEnterCriticalSection</td></tr>
+		</table>
+	
+<p>Для синхронизации кода можно использовать и подпрограммы исполняющей среды, и директивы синхронизации. Преимущество директив в том, что они прекрасно структурированы. Это делает их более понятными и облегчает поиск мест входа в синхронизированные регионы и выхода из них.</p>
+<p>Преимущество подпрограмм исполняющей среды — гибкость. Например, вы можете передать блокировку в другую функцию и установить/освободить ее в этой функции. При использовании директив это невозможно. Как правило, если вам не нужна гибкость, обеспечиваемая лишь подпрограммами исполняющей среды, лучше использовать директивы синхронизации.</p>
+<h2>Параллельная обработка структур данных</h2>
+<p>В листинге 5 показан код двух параллельно выполняемых циклов, в начале которых исполняющей среде неизвестно число их итераций. В первом примере выполняется перебор элементов STL-контейнера std::vector, а во втором — стандартного связанного списка.</p>
+<p><strong>Листинг 5. Выполнение заранее неизвестного числа итераций</strong></p>
+
+
+<div class="codeSnippetContainer" xmlns="">
+  <script type="text/javascript" src="/Areas/Global/Content/CodeSnippet.js"></script>
+  <link href="/Areas/Brand/Content/CodeSnippet.css" rel="stylesheet" type="text/css" />
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab codeSnippetContainerTabSingle" dir="ltr"><a>other</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" title="Копировать в буфер обмена." href="javascript:CodeSnippet_CopyCode('CodeSnippetContainerCode_bfc498d1-4365-4bc9-83ee-9869ce6c21ff');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_bfc498d1-4365-4bc9-83ee-9869ce6c21ff" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+	#pragma omp parallel
+{
+   // Параллельная обработка вектора STL
+   std::vector&lt;int&gt;::iterator iter;
+   for(iter = xVect.begin(); iter != xVect.end(); ++iter)
+   {
+      #pragma omp single nowait
+      {
+         process1(*iter);
+      }
+   }
+
+   // Параллельная обработка стандартного связанного списка
+   for(LList *listWalk = listHead; listWalk != NULL;
+          listWalk = listWalk-&gt;next)
+   {
+      #pragma omp single nowait
+      {
+         process2(listWalk);
+      }
+   }
+}
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+
+<p>В примере с вектором STL каждый поток из группы потоков выполняет цикл for и имеет собственный экземпляр итератора, но при каждой итерации лишь один поток входит в блок single (такова семантика директивы single). Все действия, гарантирующие однократное выполнение блока single при каждой итерации, берет на себя исполняющая среда OpenMP. Такой способ выполнения цикла сопряжен со значительными издержками, поэтому он полезен, только если в функции process1 выполняется много работы. В примере со связанным списком реализована та же логика.</p>
+<p>Стоит отметить, что в примере с вектором STL мы можем до входа в цикл определить число его итераций по значению std::vector.size, что позволяет привести цикл к канонической форме для OpenMP:</p>
+
+
+
+<div class="codeSnippetContainer" xmlns="">
+  <script type="text/javascript" src="/Areas/Global/Content/CodeSnippet.js"></script>
+  <link href="/Areas/Brand/Content/CodeSnippet.css" rel="stylesheet" type="text/css" />
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab codeSnippetContainerTabSingle" dir="ltr"><a>other</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" title="Копировать в буфер обмена." href="javascript:CodeSnippet_CopyCode('CodeSnippetContainerCode_4972b639-6d17-45e4-8e2c-a33f1467ad34');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_4972b639-6d17-45e4-8e2c-a33f1467ad34" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+#pragma omp parallel for
+   for(int i = 0; i &lt; xVect.size(); ++i)
+      process(xVect[i]);
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>Это существенно уменьшает издержки в период выполнения, и именно такой подход мы рекомендуем применять для обработки массивов, векторов и любых других контейнеров, элементы которых можно перебрать в цикле for, соответствующем канонической форме для OpenMP.</p>
+<h2>Более сложные алгоритмы планирования</h2>
+<p>По умолчанию в OpenMP для планирования параллельного выполнения циклов for применяется алгоритм, называемый статическим планированием (static scheduling). Это означает, что все потоки из группы выполняют одинаковое число итераций цикла. Если n — число итераций цикла, а T — число потоков в группе, каждый поток выполнит n/T итераций (если n не делится на T без остатка, ничего страшного). Однако OpenMP поддерживает и другие механизмы планирования, оптимальные в разных ситуациях: динамическое планирование (dynamic scheduling), планирование в период выполнения (runtime scheduling) и управляемое планирование (guided scheduling).</p>
+<p>Чтобы задать один из этих механизмов планирования, используйте раздел schedule в директиве #pragma omp for или #pragma omp parallel for. Формат этого раздела выглядит так:</p>
+
+
+<div class="codeSnippetContainer" xmlns="">
+  <script type="text/javascript" src="/Areas/Global/Content/CodeSnippet.js"></script>
+  <link href="/Areas/Brand/Content/CodeSnippet.css" rel="stylesheet" type="text/css" />
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab codeSnippetContainerTabSingle" dir="ltr"><a>other</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" title="Копировать в буфер обмена." href="javascript:CodeSnippet_CopyCode('CodeSnippetContainerCode_3a0a6fd3-156b-482b-a01f-fc919260cc18');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_3a0a6fd3-156b-482b-a01f-fc919260cc18" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+schedule(алгоритм планирования[, число итераций])
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>Вот примеры этих директив:</p>
+
+
+<div class="codeSnippetContainer" xmlns="">
+  <script type="text/javascript" src="/Areas/Global/Content/CodeSnippet.js"></script>
+  <link href="/Areas/Brand/Content/CodeSnippet.css" rel="stylesheet" type="text/css" />
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab codeSnippetContainerTabSingle" dir="ltr"><a>other</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" title="Копировать в буфер обмена." href="javascript:CodeSnippet_CopyCode('CodeSnippetContainerCode_d23eb5da-80cb-43a0-adc7-2bdd64acc97e');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_d23eb5da-80cb-43a0-adc7-2bdd64acc97e" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+#pragma omp parallel for schedule(dynamic, 15)
+for(int i = 0; i &lt; 100; ++i)
+...
+#pragma omp parallel
+   #pragma omp for schedule(guided)
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+
+<p>При динамическом планировании каждый поток выполняет указанное число итераций. Если это число не задано, по умолчанию оно равно 1. После того как поток завершит выполнение заданных итераций, он переходит к следующему набору итераций. Так продолжается, пока не будут пройдены все итерации. Последний набор итераций может быть меньше, чем изначально заданный.</p>
+<p>При управляемом планировании число итераций, выполняемых каждым потоком, определяется по следующей формуле:</p>
+
+
+<div class="codeSnippetContainer" xmlns="">
+  <script type="text/javascript" src="/Areas/Global/Content/CodeSnippet.js"></script>
+  <link href="/Areas/Brand/Content/CodeSnippet.css" rel="stylesheet" type="text/css" />
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab codeSnippetContainerTabSingle" dir="ltr"><a>other</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" title="Копировать в буфер обмена." href="javascript:CodeSnippet_CopyCode('CodeSnippetContainerCode_55327dad-9c6d-4212-b357-f2030e7962aa');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_55327dad-9c6d-4212-b357-f2030e7962aa" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+число_выполняемых_потоком_итераций =
+   max(число_нераспределенных_итераций/omp_get_num_threads(),
+   число итераций)
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+
+<p>Завершив выполнение назначенных итераций, поток запрашивает выполнение другого набора итераций, число которых определяется по только что приведенной формуле. Таким образом, число итераций, назначаемых каждому потоку, со временем уменьшается. Последний набор итераций может быть меньше, чем значение, вычисленное по формуле.</p>
+<p>Если указать директиву #pragma omp for schedule(dynamic, 15), цикл for из 100 итераций может быть выполнен четырьмя потоками следующим образом:</p>
+
+
+<div class="codeSnippetContainer" xmlns="">
+  <script type="text/javascript" src="/Areas/Global/Content/CodeSnippet.js"></script>
+  <link href="/Areas/Brand/Content/CodeSnippet.css" rel="stylesheet" type="text/css" />
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab codeSnippetContainerTabSingle" dir="ltr"><a>other</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" title="Копировать в буфер обмена." href="javascript:CodeSnippet_CopyCode('CodeSnippetContainerCode_f666413c-6c95-4298-b85a-7dbba8f2c84d');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_f666413c-6c95-4298-b85a-7dbba8f2c84d" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+Поток 0 получает право на выполнение итераций 1-15
+Поток 1 получает право на выполнение итераций 16-30
+Поток 2 получает право на выполнение итераций 31-45
+Поток 3 получает право на выполнение итераций 46-60
+Поток 2 завершает выполнение итераций
+Поток 2 получает право на выполнение итераций 61-75
+Поток 3 завершает выполнение итераций
+Поток 3 получает право на выполнение итераций 76-90
+Поток 0 завершает выполнение итераций
+Поток 0 получает право на выполнение итераций 91-100
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+
+<p>А вот каким может оказаться результат выполнения того же цикла четырьмя потоками, если будет указана директива #pragma omp for schedule(guided, 15):</p>
+
+
+
+<div class="codeSnippetContainer" xmlns="">
+  <script type="text/javascript" src="/Areas/Global/Content/CodeSnippet.js"></script>
+  <link href="/Areas/Brand/Content/CodeSnippet.css" rel="stylesheet" type="text/css" />
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab codeSnippetContainerTabSingle" dir="ltr"><a>other</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" title="Копировать в буфер обмена." href="javascript:CodeSnippet_CopyCode('CodeSnippetContainerCode_0cbf5ff2-9b58-485e-aeb8-b4bf0d615110');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_0cbf5ff2-9b58-485e-aeb8-b4bf0d615110" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+Поток 0 получает право на выполнение итераций 1-25
+Поток 1 получает право на выполнение итераций 26-44
+Поток 2 получает право на выполнение итераций 45-59
+Поток 3 получает право на выполнение итераций 60-64
+Поток 2 завершает выполнение итераций
+Поток 2 получает право на выполнение итераций 65-79
+Поток 3 завершает выполнение итераций
+Поток 3 получает право на выполнение итераций 80-94
+Поток 2 завершает выполнение итераций
+Поток 2 получает право на выполнение итераций 95-100
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+
+<p>Динамическое и управляемое планирование хорошо подходят, если при каждой итерации выполняются разные объемы работы или если одни процессоры более производительны, чем другие. При статическом планировании нет никакого способа, позволяющего сбалансировать нагрузку на разные потоки. При динамическом и управляемом планировании нагрузка распределяется автоматически — такова сама суть этих подходов. Как правило, при управляемом планировании код выполняется быстрее, чем при динамическом, вследствие меньших издержек на планирование.</p>
+<p>Последний подход — планирование в период выполнения — это скорее даже не алгоритм планирования, а способ динамического выбора одного из трех описанных алгоритмов. Если в разделе schedule указан параметр runtime, исполняющая среда OpenMP использует алгоритм планирования, заданный для конкретного цикла for при помощи переменной OMP_SCHEDULE. Она имеет формат «тип[,число итераций]», например:</p>
+
+
+<div class="codeSnippetContainer" xmlns="">
+  <script type="text/javascript" src="/Areas/Global/Content/CodeSnippet.js"></script>
+  <link href="/Areas/Brand/Content/CodeSnippet.css" rel="stylesheet" type="text/css" />
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab codeSnippetContainerTabSingle" dir="ltr"><a>other</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" title="Копировать в буфер обмена." href="javascript:CodeSnippet_CopyCode('CodeSnippetContainerCode_f5a55f7e-9ff9-42e9-946d-da94d62196cd');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_f5a55f7e-9ff9-42e9-946d-da94d62196cd" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+set OMP_SCHEDULE=dynamic,8
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+
+<p>Планирование в период выполнения дает определенную гибкость в выборе типа планирования, при этом по умолчанию применяется статическое планирование.</p>
+<h2>Когда использовать OpenMP?</h2>
+<p>Знать, когда использовать технологию OpenMP, не менее важно, чем уметь с ней работать. Надеемся, что наши советы вам помогут.</p>
+<p><strong>Целевая платформа является многопроцессорной или многоядерной</strong>. Если приложение полностью использует ресурсы одного ядра или процессора, то, сделав его многопоточным при помощи OpenMP, вы почти наверняка повысите его быстродействие.</p>
+<p><strong>Приложение должно быть кроссплатформенным</strong>. OpenMP — кроссплатформенный и широко поддерживаемый API. А так как он реализован на основе директив pragma, приложение можно скомпилировать даже при помощи компилятора, не поддерживающего стандарт OpenMP.</p>
+<p><strong>Выполнение циклов нужно распараллелить</strong>. Весь свой потенциал OpenMP демонстрирует при организации параллельного выполнения циклов. Если в приложении есть длительные циклы без зависимостей, OpenMP — идеальное решение.</p>
+<p><strong>Перед выпуском приложения нужно повысить его быстродействие.</strong> Так как технология OpenMP не требует переработки архитектуры приложения, она прекрасно подходит для внесения в код небольших изменений, позволяющих повысить его быстродействие.</p>
+<p>В то же время следует признать, что OpenMP — не панацея от всех бед. Эта технология ориентирована в первую очередь на разработчиков высокопроизводительных вычислительных систем и наиболее эффективна, если код включает много циклов и работает с разделяемыми массивами данных.</p>
+<p>Создание как обычных потоков, так и параллельных регионов OpenMP имеет свою цену. Чтобы применение OpenMP стало выгодным, выигрыш в скорости, обеспечиваемый параллельным регионом, должен превосходить издержки на создание группы потоков. В версии OpenMP, реализованной в Visual C++, группа потоков создается при входе в первый параллельный регион. После завершения региона группа потоков приостанавливается, пока не понадобится вновь. За кулисами OpenMP использует пул потоков Windows. Рис. 2 иллюстрирует прирост быстродействия простой программы, приведенной в начале статьи, который достигается благодаря OpenMP на двухпроцессорном компьютере при различном числе итераций. Максимальный прирост быстродействия составляет примерно 1,7 от исходного, что типично для двухпроцессорных систем.</p>
+
+
+		<p><a href="http://msdn.microsoft.com/ru-ru/library/Dd335940.02(l=ru-ru).gif" target="_blank"><img id="docs_gif" alt="Сравнение времени последовательного и параллельного выполнения кода в двухпроцессорной системе" src="http://i.msdn.microsoft.com/dynimg/IC4745.gif" title="Сравнение времени последовательного и параллельного выполнения кода в двухпроцессорной системе" xmlns="" /> <strong xmlns="http://www.w3.org/1999/xhtml">Рис. 2.</strong> Сравнение времени последовательного и параллельного выполнения кода в двухпроцессорной системе</a></p>
+
+
+<p>На данном графике ось y представляет отношение времени последовательного выполнения кода ко времени параллельного выполнения того же кода. Обратите внимание, что параллельная версия настигает по быстродействию последовательную примерно при 5000 итераций, но это почти что худший сценарий. Большинство параллельных циклов будут выполняться быстрее последовательных даже при значительно меньшем числе итераций. Это зависит от объема работы, выполняемой на каждой итерации. Как бы то ни было, этот график показывает, насколько важно оценивать производительность ПО. Само по себе применение OpenMP не гарантирует, что быстродействие вашего кода повысится.</p>
+<p>OpenMP-директивы pragma просты в использовании, но не позволяют получать детальные сведения об ошибках. Если вы пишете критически важное приложение, которое должно определять ошибки и корректно восстанавливать нормальную работу, от OpenMP, пожалуй, следует отказаться (по крайней мере, пока). Например, если OpenMP не может создать потоки для параллельных регионов или критическую секцию, поведение программы становится неопределенным. В Visual C++ 2005 исполняющая среда OpenMP какое-то время продолжает пытаться выполнить нужную задачу, после чего сдается. В будущих версиях OpenMP мы помимо прочего собираемся реализовать стандартный механизм уведомления об ошибках.</p>
+<p>Еще одна ситуация, в которой следует сохранять бдительность, имеет место при использовании потоков Windows вместе с потоками OpenMP. Потоки OpenMP создаются на основе потоков Windows, поэтому они прекрасно работают в одном процессе. Увы, OpenMP ничего не знает о потоках Windows, созданных другими модулями. Из этого вытекают две проблемы: во-первых, исполняющая среда OpenMP не ведет учет других потоков Windows, а во-вторых, методы синхронизации OpenMP не синхронизируют потоки Windows, потому что они не входят в группы потоков.</p>
+
+<h2>Ловушки, в которые можно попасть при использовании OpenMP</h2>
+
+<p>Хотя использовать OpenMP совсем несложно, некоторые моменты все же требуют к себе повышенного внимания. Например, индексная переменная самого внешнего параллельного цикла for является частной, а индексные переменные вложенных циклов for по умолчанию общие. При работе с вложенными циклами обычно требуется, чтобы индексы внутренних циклов были частными. Используйте для этого раздел private.</p>
+<p>Разрабатывая приложения OpenMP, следует быть осторожным при генерации исключений C++. Если приложение генерирует исключение в параллельном регионе, оно должно быть обработано в том же регионе тем же потоком. Иначе говоря, исключение не должно покинуть регион. Как правило, все исключения, которые могут быть сгенерированы в параллельном регионе, следует перехватывать. Если не перехватить исключение в том же параллельном регионе, приложение скорее всего потерпит крах.</p>
+<p>Чтобы можно было открыть структурированный блок, выражение</p>
+          
+
+<div class="codeSnippetContainer" xmlns="">
+  <script type="text/javascript" src="/Areas/Global/Content/CodeSnippet.js"></script>
+  <link href="/Areas/Brand/Content/CodeSnippet.css" rel="stylesheet" type="text/css" />
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab codeSnippetContainerTabSingle" dir="ltr"><a>other</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" title="Копировать в буфер обмена." href="javascript:CodeSnippet_CopyCode('CodeSnippetContainerCode_c7ec60e1-6f23-45b2-9a7a-497e5bbcb8b3');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_c7ec60e1-6f23-45b2-9a7a-497e5bbcb8b3" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+#pragma omp &lt;директива&gt; [раздел]
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+ <p>должно завершаться символом новой строки, а не фигурной скобкой. Директива, заканчивающаяся фигурной скобкой, приведет к <span title="Пример, приведенный авторами ниже, противоречит этому утверждению. Здесь авторами, видимо, допущена какая-то ошибка. — Прим. перев.">ошибке компиляции<span class="sup">1</span></span>:</p>
+
+
+
+<div class="codeSnippetContainer" xmlns="">
+  <script type="text/javascript" src="/Areas/Global/Content/CodeSnippet.js"></script>
+  <link href="/Areas/Brand/Content/CodeSnippet.css" rel="stylesheet" type="text/css" />
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab codeSnippetContainerTabSingle" dir="ltr"><a>other</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" title="Копировать в буфер обмена." href="javascript:CodeSnippet_CopyCode('CodeSnippetContainerCode_48c54c9c-14b4-4a2a-a4fe-3ec8c6a0e74b');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_48c54c9c-14b4-4a2a-a4fe-3ec8c6a0e74b" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+// Плохо
+#pragma omp parallel
+{
+// Ошибка компиляции
+}
+
+// Хорошо
+#pragma omp parallel
+{
+   // Код
+}
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+
+<p>Отлаживать приложения OpenMP в среде Visual Studio 2005 иногда трудно. В частности, определенные неудобства связаны со входом в параллельный регион и/или с выходом из него нажатием клавиши F10/F11. Это объясняется тем, что компилятор генерирует дополнительный код для вызова исполняющей среды и групп потоков. Отладчик об этом не знает, поэтому то, что вы увидите, может показаться вам странным. Мы рекомендуем установить точку прерывания в параллельном регионе и нажать F5, чтобы достичь ее. Чтобы выйти из параллельного региона, установите точку прерывания вне такого региона и нажмите F5.</p>
+<p>При нахождении внутри параллельного региона в окне Threads Window отладчика будет отображаться информация о потоках, выполняемых в группе потоков. Идентификаторы этих потоков будут соответствовать не потокам OpenMP, а лежащим в их основе потокам Windows.</p>
+<p>В настоящее время использовать с OpenMP оптимизацию, определяемую профилем (Profile Guided Optimization, PGO), нельзя. К счастью, технология OpenMP основана на директивах pragma, поэтому вы можете скомпилировать свое приложение с параметром /openmp и с PGO и узнать, какой подход более эффективен.</p>
+<h2>OpenMP и .NET</h2>
+<p>Высокопроизводительные вычисления мало у кого ассоциируются с .NET, но в Visual C++ 2005 эта ситуация улучшена. Особо стоит отметить то, что мы добились совместной работы OpenMP с управляемым C++-кодом. Для этого мы обеспечили совместимость параметра /openmp с /clr и /clr:OldSyntax. То есть вы можете использовать OpenMP для параллельного выполнения методов .NET-типов, которые подлежат сбору мусора. Учтите, что сейчас параметр /openmp не совместим ни с /clr:safe, ни с /clr:pure, но мы планируем исправить это.</p>
+<p>Мы должны упомянуть одно важное ограничение, связанное с применением OpenMP в управляемом коде. Приложение, в котором задействованы средства OpenMP, следует использовать только в одном домене приложения. При загрузке другого AppDomain в процесс с уже загруженной исполняющей средой OpenMP приложение может потерпеть крах.</p>
+<p>OpenMP — простая, но мощная технология распараллеливания приложений. Она позволяет реализовать параллельное выполнение как циклов, так и функциональных блоков кода. Она легко интегрируется в существующие приложения и включается/выключается одним параметром компилятора. OpenMP позволяет более полно использовать вычислительную мощь многоядерных процессоров. Мы настоятельно советуем вам ознакомиться со спецификацией OpenMP. Удачи в разработке многопоточных программ!</p>
+
+   <p><span class="sup">1</span> Пример, приведенный авторами ниже, противоречит этому утверждению. Здесь авторами, видимо, допущена какая-то ошибка. — Прим. перев.</p>
+          
+   <br /><p><img id="arrow_px_up" alt="К началу страницы" src="http://i.msdn.microsoft.com/dynimg/IC170569.gif" title="К началу страницы" xmlns="" /> <a href="#mainsection">К началу страницы</a></p>
+        </div>
+      </div>
+    </div>
+</div>
+    </div>
+    
+  </div>
+  
+  </div>
+  <div class="footer">
+    
+
+<div id="footer" class="footerContainer cl_footer_slice">
+  <div class="footerLogoContainer">
+    <div class="footerContent">
+    <div class="copyright">
+      © 2011 Microsoft. Все права защищены.</div>
+    <div class="footerLogo cl_footer_logo"></div>
+    <a href="/ru-ru/cc300389.aspx">Условия использования</a><span class="pipe"> | </span>
+    <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/ru-ru.mspx">Товарные знаки</a><span class="pipe"> | </span>
+    <a href="http://www.microsoft.com/info/ru/privacy.mspx">Конфиденциальность</a>
+    <span class="pipe">| </span>
+    <a href="http://go.microsoft.com/?linkid=8786242&amp;lcid=1049">Управление профилем</a><span class="pipe"> | </span>
+    <a href="http://www.microsoft.com/legal/">Юридическая информация</a><span class="pipe"> | </span>
+    <a href="http://www.microsoft.com/Rus/Msdn/flash/Default.mspx">Бюллетень MSDN</a><span class="pipe"> | </span>
+    <a href="http://www.microsoft.com/rus/feedback/default.mspx">Свяжитесь с нами</a>
+    <span class="pipe">| </span>
+    <span class="FeedbacklinkDisabled" id="FeedbacklinkDisabled">Отзывы</span>
+    <a id="Feedbacklink" title="Отзывы" class="FeedbackLink" href="http://social.msdn.microsoft.com/Forums/en-US/libraryfeedback/threads">
+      Отзывы
+        <span class="FeedbackButton clip20x21" id="FeedbackButton">
+          <img id="feedBackImg" class="cl_footer_feedback_icon" src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" alt="Отзывы" />
+        </span>
+      </a>
+    
+  <div id="FeedbackContainer" class="FeedbackContainer">
+    <form method="post" action="/ru-ru/library/feedback/add/dd335940.aspx">
+    <div class="FeedbackTitleContainer">
+        <div class="FeedbackTitle">
+            Отзывы</div>
+        <div class="FeedbackCancel">
+            <a href="javascript:;" onclick="document.getElementById('FeedbackContainer').style.display = 'none';">x</a>
+            </div>
+    </div>
+    <div class="FeedbackData">
+        <div class="FeedbackInfoText">
+            Расскажите о своем опыте…
+        </div>
+        <div class="QuestionText">
+            Быстро ли загрузилась страница?
+        </div>
+        <div class="AnswerText">
+            
+            <span>
+                Да<span>
+                    <input id="searchBox" name="searchBox" type="radio" value="1" /></span></span>
+            
+            <span>
+                Нет<span>
+                    <input id="searchBox" name="searchBox" type="radio" value="0" /></span></span>
+            
+        </div>
+        <div class="QuestionText">
+            Понравилось ли вам оформление страницы?
+        </div>
+        <div class="AnswerText">
+            
+            <span>
+                Да<span>
+                    <input id="tabbedCode" name="tabbedCode" type="radio" value="1" /></span></span>
+            
+            <span>
+                Нет<span>
+                    <input id="tabbedCode" name="tabbedCode" type="radio" value="0" /></span></span>
+            
+        </div>
+        <div class="QuestionText">
+            Насколько полезен данный раздел?
+        </div>
+        <div class="FeedbackGraphicHolder clip269x23">            
+                <img alt="" src="http://i3.msdn.microsoft.com/Hash/c764fa3d6b8a84bd40aa131355215c98.png" class="cl_online_scale FeedbackSiderGraphic" />
+        </div>        
+            <div class="RadioButtonHolder"><div class="RateRadioOne">
+                    <input id="topicUseful" name="topicUseful" title="Мне совсем не понравилось" type="radio" value="1" />
+                </div>
+               <div class="RateRadio">
+                    <input id="topicUseful" name="topicUseful" title="Мне не понравилось" type="radio" value="2" />
+                </div>
+               <div class="RateRadio">
+                    <input id="topicUseful" name="topicUseful" title="ОК" type="radio" value="3" />
+                </div>
+               <div class="RateRadio">
+                    <input id="topicUseful" name="topicUseful" title="Хорошо" type="radio" value="4" />
+                </div>
+               <div class="RateRadioLast">
+                    <input id="topicUseful" name="topicUseful" title="Очень хорошо" type="radio" value="5" />
+                </div>
+               
+            </div>            
+        <div class="QuestionText">
+            Дополнительная информация
+        </div>
+        <div class="FeedbackTextAreaContainer">
+            <textarea id="feedbackText" data-maxlength="4000" name="feedbackText" cols="25" rows="5" class="FeedbackTextArea"></textarea>
+            
+            <textarea id="feedbackDescription" name="feedbackDescription" cols="25" rows="10" style="display:none;">Enter description here.</textarea>
+            <input type="hidden" id="feedbackPriority" name="feedbackPriority" value="" />
+            <input type="hidden" id="feedbackSourceUrl" name="feedbackSourceUrl" value="" />
+            <input type="hidden" id="ClientIP" name="ClientIP" value="" />
+            <input type="hidden" id="ClientOS" name="ClientOS" value="" />
+            <input type="hidden" id="ClientBrowser" name="ClientBrowser" value="" />
+            <input type="hidden" id="ClientTime" name="ClientTime" value="" />
+            <input type="hidden" id="ClientTimeZone" name="ClientTimeZone" value="" />
+            
+            
+        </div>
+        <div>
+            <input type="submit" value="Отправить" class="FeedbackSubmit" onclick="document.getElementById('feedbackDescription').value='';document.getElementById('feedBackVersion').value = '-1';" />
+        </div>
+    </div>
+    <input type="hidden" id="returnUrl" name="returnUrl" value="http://msdn.microsoft.com/ru-ru/library/dd335940.aspx" />
+    
+    
+    <input type="hidden" id="feedBackVersion" name="feedBackVersion" value="1" />
+    
+  </form> 
+</div>
+
+    </div>
+  </div>
+</div>
+
+  </div>
+ 
+<script type="text/javascript" src="http://i2.msdn.microsoft.com/Hash/97bf6854a8f5043ccfc9641ede05f54d.js" xmlns="http://www.w3.org/1999/xhtml"></script></body>
+</html>

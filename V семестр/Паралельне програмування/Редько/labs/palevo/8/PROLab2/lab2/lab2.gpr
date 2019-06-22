@@ -1,0 +1,20 @@
+project lab2 is
+
+   for Main use ("lab2.adb");
+
+   for Object_Dir use "objs";
+
+   package Compiler is
+      for Default_Switches ("Ada") use
+            ("-g", "-gnato", "-gnatwa", "-fstack-check");
+   end Compiler;
+
+   package Builder is
+      for Default_Switches ("Ada") use ("-g", "-gnatQ");
+   end Builder;
+
+   package IDE is
+      for Compiler_Command("Ada") use "gnatmake";
+   end IDE;
+
+end lab2;

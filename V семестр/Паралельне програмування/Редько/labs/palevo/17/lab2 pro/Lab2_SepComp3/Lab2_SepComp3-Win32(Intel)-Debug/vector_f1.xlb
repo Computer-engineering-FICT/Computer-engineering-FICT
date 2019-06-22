@@ -1,0 +1,169 @@
+Source file: ..\vector_f1.adb   Thu Oct 01 01:12:19 2009
+
+    1 ----------------------------------------------------------------
+    2 --              Paralel and distributed computing             --
+    3 --                     Laboratory work #2                     --
+    4 --                   IO-73 Rukavishnikov Gleb                 --
+    5 ----------------------------------------------------------------
+    6 --Variant: 1.12, 2.20, 3.24                                   --
+    7 --F1:  A=B+C-D*e                                              --
+    8 --F2:  MD=MA+MB-MC*MM                                         --
+    9 --F3:  k=min(MA*MB*å)                                         --
+   10 ------------------------BODY OF MAIN PACKAGE--------------------
+   11 ----------------------------------------------------------------
+   12 with Ada.Text_IO; use Ada.Text_IO;
+   13 package body Vector_F1 is
+   14    --Functions description
+   15    ---Vector operations
+   16    ----Multiplication of vectors a*b
+   17    function VectMult(a, b: Vector) return integer is
+   18       sum: integer;
+   19    begin
+   20       sum := 0;
+   21       for i in 1..N loop
+   22          sum := sum + a(i) * b(i);
+   23       end loop;
+   24       return sum;
+   25    end VectMult;
+   26 
+   27    ----Processing sum of vectors a+b
+   28    function VectSum(a, b: Vector) return Vector is
+   29       c: Vector;
+   30    begin
+   31       for i in 1..N loop
+   32          c(i) := a(i) + b(i);
+   33       end loop;
+   34       return c;
+   35    end VectSum;
+   36 
+   37    ----Descending sort of vector a
+   38    procedure VectSort(a: in out Vector) is
+   39                 flag: boolean := true;
+   40         help: integer;
+   41         begin
+   42         while flag loop
+   43            flag := false;
+   44            for i in 2..N loop
+   45               if a(i-1) < a(i) then
+   46                  help := a(i-1);
+   47                  a(i-1) := a(i);
+   48                  a(i) := help;
+   49                  flag := true;
+   50               end if;
+   51            end loop;
+   52         end loop;
+   53         end VectSort;
+   54 --===================================================--
+   55         function PlusVect (A, B: in Vector) return Vector is
+   56                                         Rez: Vector;
+   57                 begin
+   58                 for i in 1..N loop
+   59                                 Rez(i):=A(i)+B(i);
+   60                                         end loop;
+   61                                         return Rez;
+   62             end PlusVect;
+   63 
+   64         function MinusVect (A, B: in Vector) return Vector is
+   65                                         Rez: Vector;
+   66                 begin
+   67                 for i in 1..N loop
+   68                                 Rez(i):=A(i)-B(i);
+   69                                         end loop;
+   70                                         return Rez;
+   71             end MinusVect;
+   72 
+   73          function multiVectNum (A: in Vector; e: in integer) return Vector is
+   74                         Rez: Vector;
+   75                 begin
+   76                         for i in 1..N loop
+   77                                 Rez(i):=A(i)*e;
+   78                         end loop;
+   79                         return rez;
+   80                 end MultiVectNum;
+   81 
+   82                 --===========================================================--
+   83 
+   84    --Main Functions (Func1, Func2, Func3)
+   85         --A=B+C-D*e; 
+   86    procedure Func1(a: out Vector; b, c, d: in Vector; e:in integer) is
+   87    begin
+   88       A := MinusVect (PlusVect(b,C) , multiVectNum(d,E));
+   89       exception
+   90          when Constraint_Error =>
+   91             Put("Constraint error in Func1.");
+   92    end Func1;
+   93 
+   94         function  MultiplyStep (A, B: in Vector) return integer is
+   95                 Rez: integer := 0;
+   96                 begin
+   97                         for i in 1..N loop
+   98                                 Rez := Rez+A(i)*B(i);
+   99                         end loop;
+  100                 return Rez;
+  101         end MultiplyStep;
+  102 
+  103 end Vector_F1;
+
+NAME                 KIND/FILE            DEF    REFERENCES (* if assigned)
+---------------------------------------------------------------------------
+A                    parameter           55      59 
+A                    parameter           64      68 
+A                    parameter           73      77 
+A                    parameter           94      98 
+Ada                  #1:ada.ada                  12 
+B                    parameter           55      59 
+B                    parameter           64      68 
+B                    parameter           94      98 
+Func1                subprogram body     86      92 
+Func1                #3:lab2_sepcomp3.adb        22 
+MinusVect            subprogram body     64      71 
+MinusVect            #3:lab2_sepcomp3.adb        22 88 
+MultiplyStep         subprogram body     94      101 
+MultiplyStep         #3:lab2_sepcomp3.adb        22 
+N                    #3:lab2_sepcomp3.adb        21 31 44 58 67 76 97 
+PlusVect             subprogram body     55      62 
+PlusVect             #3:lab2_sepcomp3.adb        22* 88 
+Put                  #2:ada.text_io.spc          91 
+Rez                  object              56      59* 61 
+Rez                  object              65      68* 70 
+Rez                  object              74      77* 79 
+Rez                  object              95      98* 100 
+Text_IO              #2:ada.text_io.spc          12 
+VectMult             subprogram body     17      25 
+VectMult             #3:lab2_sepcomp3.adb        17 
+VectSort             subprogram body     38      53 
+VectSort             #3:lab2_sepcomp3.adb        21 
+VectSum              subprogram body     28      35 
+VectSum              #3:lab2_sepcomp3.adb        20* 
+Vector               #3:lab2_sepcomp3.adb        17 28 29 38 55 56 64 65 
+                                                 73 74 86 94 
+Vector_F1            lib package body    13      103 
+Vector_F1            #3:lab2_sepcomp3.adb        12 
+a                    parameter           17      22 
+a                    parameter           28      32 
+a                    parameter           38      45 46 47* 48* 
+a                    parameter           86      88* 
+b                    parameter           17      22 
+b                    parameter           28      32 
+b                    parameter           86      88* 
+c                    object              29      32* 34 
+c                    parameter           86      88* 
+d                    parameter           86      88* 
+e                    parameter           73      77 
+e                    parameter           86      88* 
+flag                 object              39      42 43* 49* 
+help                 object              40      46* 48 
+i                    object              21      22 
+i                    object              31      32 
+i                    object              44      45 46 47 48 
+i                    object              58      59 
+i                    object              67      68 
+i                    object              76      77 
+i                    object              97      98 
+multiVectNum         subprogram body     73      80 
+multiVectNum         #3:lab2_sepcomp3.adb        22 88 
+sum                  object              18      20* 22* 24 
+
+    File #1 d:\dist\objectada 8.4\lib\rts\ada.ada
+    File #2 d:\dist\objectada 8.4\lib\rts\ada.text_io.spc
+    File #3 ..\lab2_sepcomp3.adb

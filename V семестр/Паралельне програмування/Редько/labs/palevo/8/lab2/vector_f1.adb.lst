@@ -1,0 +1,95 @@
+GNAT GPL 2009 (20090519)
+Copyright 1992-2009, Free Software Foundation, Inc.
+
+Compiling: vector_f1.adb (source file time stamp: 2009-09-16 20:57:00)
+
+     1. with Ada.Text_IO; use Ada.Text_IO;
+     2.
+     3. package body Vector_F1 is
+     4.
+     5.    -- Summa vektorov
+     6.    function Vector_Sum(A,B: Vector) return Vector is
+     7.       C: Vector;
+     8.    begin
+     9.       for i in 1..N loop
+    10.             C(i):=A(i)+B(i);
+    11.       end loop;
+    12.       return C;
+    13.    end Vector_Sum;
+    14.
+    15.    -- Umnojenie vektorov
+    16.    function Vector_Product(A,B: Vector) return Integer is
+    17.                            separate;
+    18.
+    19.    -- Sortirovka vektora
+    20.       function Vector_Sort(A: in Vector; des: in Boolean)
+    21.                         return Vector is
+    22.       Buf: Integer;
+    23.       B: Vector;
+    24.    begin
+    25.       B:=A;
+    26.       for i in 1..N-1 loop
+    27.          for j in i+1..N loop
+    28.             if (B(i)>B(j) and not des) or (B(i)<B(j) and des) then
+    29.                Buf:=B(i); B(i):=B(j); B(j):=Buf;
+    30.             end if;
+    31.          end loop;
+    32.       end loop;
+    33.        return B;
+    34.    end Vector_Sort;
+    35.
+    36.    -- Funkciya1
+    37.    function Fun1(A,B,C: Vector) return Integer is
+    38.       e: Integer;
+    39.    begin
+    40.          e:=Vector_Product(Vector_Sum(A,Vector_Sort(B,False)),
+    41.                            Vector_Sum(C,Vector_Sort(C,False)));
+    42.       return e;
+    43.    exception
+    44.       when Constraint_Error =>
+    45.          Put("Constraint error at Func1. Result is uncorrect: ");
+    46.       return e;
+    47.    end Fun1;
+    48.
+    49. end Vector_F1;
+
+Compiling: vector_f1.ads (source file time stamp: 2009-09-16 20:55:50)
+
+     1. generic
+     2.
+     3.    -- Parametr paketa - razmernost' (po umolchaniyu 5)
+     4.    N:Integer:=5;
+     5.
+     6. package Vector_F1 is
+     7.
+     8.    -- Vektor razryadnosti N
+     9.    type Vector is private;
+    10.
+    11.    -- Funkciya1
+    12.    function Fun1(A,B,C: Vector) return Integer;
+    13.
+    14. private
+    15.
+    16.    function Vector_Sort(A: in Vector; des: in Boolean)
+    17.                         return Vector;
+    18.
+    19.    type Vector is array (1..N) of Integer;
+    20.
+    21. end Vector_F1;
+
+Compiling: vector_f1-vector_product.adb (source file time stamp: 2009-09-16 20:13:02)
+
+     1. separate (Vector_F1)
+     2.  
+     3. -- Umnojenie vektorov
+     4. function Vector_Product(A,B: Vector) return Integer is
+     5.    C: Integer;
+     6. begin
+     7.    C:=0;
+     8.    for i in 1..N loop
+     9.       C:=C+A(i)*B(i);
+    10.    end loop;
+    11.    return C;
+    12. end Vector_Product;
+
+ 49 lines: No errors

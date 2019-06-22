@@ -1,0 +1,60 @@
+Source file: ..\main.ada   Sun Oct 09 10:58:32 2011
+
+    1 -- Laboratorna robota 1
+    2 -- Petruk Vadim, IO-92
+    3 -- Variant: 1.13  C = A - B + D
+    4 --                      2.28  MD = MIN(MA)*MB*MC
+    5 --                      3.14  D = (A + B)*(MA - MB)
+    6 ---------------------------------------
+    7 with Ada.Integer_Text_IO, Ada.Text_iO, Unit;
+    8 use Ada.Integer_Text_IO, Ada.Text_IO, Unit;
+    9 --------------------------------------- 
+   10 procedure main is
+   11         
+   12         A:Vector;
+   13         b:Vector;
+   14         c:Vector;
+   15         D:Vector;
+   16         MA:Matrix;
+   17         MB:Matrix;
+   18         MC:Matrix;
+   19         MD:Matrix;
+   20 
+   21 task Task1;
+           *
+*****Error: LRM:3.11.1(6) Completion required for specification 'Task1',
+*****        Continuing
+   22 task body Task2 is
+                *
+*****Error: LRM:9.1(8) corresponding task declaration not found for Task2,
+*****        continuing
+   23         begin 
+   24                 VectorIn(A);
+   25                 VectorIn(b);
+   26                 VectorIn(d);
+   27                 Func1(A,B,D,C);
+   28                 put_Line("Func1: C:=A-B+D ");
+   29                 VectorOut(c);
+   30         end Task1;                              
+                  *
+*****Error: LRM:9.1(7) task identifier does not match defining identifier,
+*****        Task2, continuing
+   31 begin   
+   32         
+   33 --------------------------
+   34         matrixIn(MA);
+   35         MatrixIn(MB);
+   36         MatrixIn(MC);
+   37         func2(MA,MB,MC,MD);
+   38         put_Line("Func2: MD := MIN(MA)*MB*MC");
+   39         MatrixOut(MD);
+   40 --------------------------
+   41         VectorIn(A);
+   42         VectorIn(b);
+   43         MatrixIn(MA);
+   44         MatrixIn(MB);
+   45         func3(a,b,MA,MB,d);
+   46         put_Line("Func3: D := (A + B)*(MA - MB)");
+   47         vectorOut(d);
+   48 --------------------------
+   49 end Main;

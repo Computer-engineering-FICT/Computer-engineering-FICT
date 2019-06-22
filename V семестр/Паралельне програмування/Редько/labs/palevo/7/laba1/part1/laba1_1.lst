@@ -1,0 +1,223 @@
+  1 ----------------------------
+  2 -- Lab1.1
+  3 -- Kushnirenko Alexander
+  4 -- IO 81
+  5 -- 1.15, 2.4, 3.21
+  6 ----------------------------
+  7 
+  8 with
+  9    Ada.Text_IO,
+ 10    Ada.Integer_Text_IO;
+ 11 use
+ 12    Ada.Text_IO,
+ 13    Ada.Integer_Text_IO;
+ 14 
+ 15 procedure laba1_1 is
+ 16 
+ 17    N: constant integer := 3;
+ 18    type Vector is Array(1..N) of integer;
+ 19    type Matrix is Array(1..N) of Vector;
+ 20    
+ 21    procedure inputVectorTo(a: out Vector) is
+ 22    begin
+ 23       for i in 1..N loop
+ 24          get(a(i));
+ 25       end loop;
+ 26    end inputVectorTo;
+ 27 
+ 28    function addVector(a, b: Vector) return Vector is
+ 29       c: Vector;
+ 30    begin
+ 31       for i in 1..N loop
+ 32          c(i) := a(i) + b(i);
+ 33       end loop;
+ 34       return c;
+ 35    end addVector;
+ 36    
+ 37    function getMaxElement(a: Vector) return integer is
+ 38       b: integer := a(1);
+ 39    begin
+ 40       for i in 2..N loop
+ 41          if b < a(i) then
+ 42             b := a(i);
+ 43          end if;
+ 44       end loop;
+ 45       return b;
+ 46    end getMaxElement;
+ 47    
+ 48    procedure inputMatrixTo(a: out Matrix) is
+ 49    begin
+ 50       for i in 1..N loop
+ 51          for j in 1..N loop
+ 52             get(a(i)(j));
+ 53          end loop;
+ 54       end loop;
+ 55    end inputMatrixTo;
+ 56    
+ 57    function getMaxElement(a: Matrix) return integer is
+ 58       b: integer := a(1)(1);
+ 59    begin
+ 60       for i in 1..N loop
+ 61          for j in 1..N loop
+ 62             if b < a(i)(j) then
+ 63                b := a(i)(j);
+ 64             end if;
+ 65          end loop;
+ 66       end loop;
+ 67       return b;
+ 68    end getMaxElement;
+ 69    
+ 70    procedure sortVectorInAscendingOrder(a: in out Vector) is
+ 71       tempMin,
+ 72       tempMinPos,
+ 73       buffer: integer;
+ 74    begin
+ 75       for i in 1..N - 1 loop
+ 76          tempMin := a(i);
+ 77          tempMinPos := i;
+ 78          for j in i..N loop
+ 79             if tempMin > a(j) then
+ 80                tempMin := a(j);
+ 81                tempMinPos := j;
+ 82             end if;
+ 83          end loop;
+ 84          buffer := a(i);
+ 85          a(i) := a(tempMinPos);
+ 86          a(tempMinPos) := buffer;
+ 87       end loop;
+ 88    end sortVectorInAscendingOrder;
+ 89    
+ 90    function multiplyVectorByMatrix(a: Vector; b: Matrix) return Vector is
+ 91       c: Vector;
+ 92    begin
+ 93       for i in 1..N loop
+ 94          c(i) := 0;
+ 95          for j in 1..N loop
+ 96             c(i) := c(i) + a(i) * b(i)(j);
+ 97          end loop;
+ 98       end loop;
+ 99       return c;
+100    end multiplyVectorByMatrix;
+101    
+102    function multiplyMatrices(a, b: Matrix) return Matrix is
+103       c: Matrix;
+104    begin
+105       for i in 1..N loop
+106          for j in 1..N loop
+107             c(i)(j) := 0;
+108             for k in 1..N loop
+109                c(i)(j) := c(i)(j) + a(i)(k) * b(k)(j);
+110             end loop;
+111          end loop;
+112       end loop;
+113       return c;
+114    end multiplyMatrices;
+115    
+116    function subtractMatrix(a, b: Matrix) return Matrix is
+117       c: Matrix;
+118    begin
+119       for i in 1..N loop
+120          for j in 1..N loop
+121             c(i)(j) := a(i)(j) - b(i)(j);
+122          end loop;
+123       end loop;
+124       return c;
+125    end subtractMatrix;
+126    
+127    procedure outputVector(a: in Vector) is
+128    begin
+129       put("(");
+130       put(a(1), 3);
+131       for i in 2..N loop
+132          put(", ");
+133          put(a(i), 3);
+134       end loop;
+135       put_line(")");
+136    end outputVector;
+137    
+138    --d = MAX(A + B + C)
+139    function F1(A, B, C: Vector) return integer is
+140    begin
+141       return getMaxElement(addVector(addVector(A, B), C));
+142    end F1;
+143    
+144    --x = MAX(MB)
+145    function F2(MB: Matrix) return integer is
+146    begin
+147       return getMaxElement(MB);
+148    end F2;
+149    
+150    --W = SORT(B * MD) * (MA - MB)
+151    function F3(B: Vector; MD, MA, MB: Matrix) return Vector is
+152       W: Vector;
+153    begin
+154       W := multiplyVectorByMatrix(B, MD);
+155       sortVectorInAscendingOrder(W);
+156       return multiplyVectorByMatrix(W, subtractMatrix(MA, MB));
+157    end F3;
+158 
+159    A, B, C: Vector;
+160    MA, MB, MD: Matrix;
+161    
+162 begin
+163    
+164    -- F1 --
+165       new_line;
+166       put_line("F1: MAX(A + B + C)");
+167       new_line;
+168    
+169       put_line("Input vector A: ");
+170       inputVectorTo(A);
+171       new_line;
+172    
+173       put_line("Input vector B: ");
+174       inputVectorTo(B);
+175       new_line;
+176    
+177       put_line("Input vector C: ");
+178       inputVectorTo(C);
+179       new_line;
+180    
+181       put("MAX(A + B + C) = ");
+182       put(F1(A, B, C), 3);
+183       new_line;
+184    --------
+185    
+186    -- F2 --
+187       new_line;
+188       new_line;
+189       put_line("F2: MAX(MB)");
+190       new_line;
+191       put_line("Input matrix MB: ");
+192       inputMatrixTo(MB);
+193       new_line;
+194    
+195       put("MAX(MB) = ");
+196       put(F2(MB), 3);
+197       new_line;
+198    --------
+199    
+200    -- F3 --
+201       new_line;
+202       new_line;
+203       put_line("F3: SORT(B * MD) * (MA - MB)");
+204       new_line;
+205       put_line("Input vector B: ");
+206       inputVectorTo(B);
+207       new_line;
+208       put_line("Input matrix MD: ");
+209       inputMatrixTo(MD);
+210       new_line;
+211       put_line("Input matrix MA: ");
+212       inputMatrixTo(MA);
+213       new_line;
+214       put_line("Input matrix MB: ");
+215       inputMatrixTo(MB);
+216       new_line;
+217    
+218       put("SORT(B * MD) * (MA - MB) = ");
+219       outputVector(F3(B, MD, MA, MB));
+220       new_line;
+221    --------
+222    
+223 end laba1_1;

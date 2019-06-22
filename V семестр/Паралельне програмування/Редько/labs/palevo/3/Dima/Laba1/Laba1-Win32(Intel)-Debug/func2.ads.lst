@@ -1,0 +1,31 @@
+Source file: ..\..\..\..\РАБОЧИЙ СТОЛ\dima\func2.ads   Sun Oct 09 18:28:02 2011
+
+    1 --Водопьянов Дмитрий Вадимович, группа ИО-91
+    2 --Лаб. 1. Подпрограммы. Пакеты
+    3 --F1: C=A-B
+    4 --F2: MC=SORT(TRANS(MA)*MB)
+    5 --F3: D=SORT(A)*(MA+MB)
+    6 PACKAGE Func IS
+    7 
+    8 --Спецификация пакета
+    9 N : INTEGER := 4;
+   10 I, J, K : INTEGER;
+   11 TYPE Вектор IS private;
+   12 TYPE Матрица IS ARRAY (1..N) OF Вектор; 
+   13 PROCEDURE Edit_N;
+   14 PROCEDURE File_Output(F: IN File_type);  
+                                  *
+*****Error: LRM:4.1(3) Direct name, File_type, is not visible, Ignoring future
+*****        references
+   15 PROCEDURE Integer_File_Output(F: IN File_type; Int : IN INTEGER); 
+   16 PROCEDURE Vector_File_Output(F: IN File_type; V : IN Вектор);  
+   17 PROCEDURE Matrix_File_Output(F: IN File_type; M : IN Матрица);
+   18 PROCEDURE set_N (Value: IN INTEGER);    
+   19 PROCEDURE Create_Vector (V : OUT Вектор; Value: IN INTEGER);
+   20 PROCEDURE Create_Matrix (M : OUT Матрица; Value: IN INTEGER); 
+   21 PROCEDURE F1 (A, B : IN Вектор; C : OUT Вектор);
+   22 PROCEDURE F2 (MA, MB : IN Матрица; MC : OUT Матрица);
+   23 PROCEDURE F3 (MA, MB : IN Матрица; A : IN Вектор; D : OUT Вектор);
+   24 PRIVATE 
+   25     TYPE Вектор IS ARRAY (1..N) OF INTEGER;     
+   26 end Func;

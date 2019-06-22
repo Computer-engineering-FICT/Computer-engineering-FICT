@@ -1,0 +1,174 @@
+V "GNAT Lib v5"
+P ZX
+
+RN
+RV NO_IO
+RV NO_TASKING
+RV SPARK_05
+
+U data%b		data.adb		c1839fd6 NE OO PK GE
+W system%s		system.ads		system.ali
+W system.multiprocessors%s  s-multip.adb	s-multip.ali
+
+U data%s		data.ads		3301e87d BN EE NE OO PK GE
+W ada%s			ada.ads			ada.ali
+W ada.long_integer_text_io%s  a-liteio.ads	a-liteio.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W system%s		system.ads		system.ali
+W system.multiprocessors%s  s-multip.adb	s-multip.ali
+
+D ada.ads		20070406091342 3ffc8e18 ada%s
+D a-except.ads		20140730140058 5250cb69 ada.exceptions%s
+D a-ioexce.ads		20140225151544 e4a01f64 ada.io_exceptions%s
+D a-liteio.ads		20070406091342 09572056 ada.long_integer_text_io%s
+D a-stream.ads		20141120112812 119b8fb3 ada.streams%s
+D a-tags.ads		20140730140058 dc4d0634 ada.tags%s
+D a-textio.ads		20140717063745 386df5d4 ada.text_io%s
+D a-tiinio.ads		20140717063513 aa04e5d6 ada.text_io.integer_io%s
+D a-unccon.ads		20070406091342 f9eb8f06 ada.unchecked_conversion%s
+D data.ads		20160913064713 3a97a28c data%s
+D data.adb		20160913070249 fb143d5a data%b
+D interfac.ads		20141120112812 6033a23f interfaces%s
+D i-cstrea.ads		20140801100435 e53d8b8e interfaces.c_streams%s
+D system.ads		20141031112219 1d274481 system%s
+D s-crtl.ads		20141120112812 0ebbdb71 system.crtl%s
+D s-exctab.ads		20140225151139 54135002 system.exception_table%s
+D s-ficobl.ads		20140718105747 078245e4 system.file_control_block%s
+D s-multip.ads		20101011073009 38ac9f73 system.multiprocessors%s
+D s-parame.ads		20140801093848 7e2a0d7f system.parameters%s
+D s-soflin.ads		20140801100131 aa763b52 system.soft_links%s
+D s-stache.ads		20140225151139 a37c21ec system.stack_checking%s
+D s-stalib.ads		20150220094550 fa0a3617 system.standard_library%s
+D s-stoele.ads		20140225151139 2dc34a04 system.storage_elements%s
+D s-traent.ads		20140730135025 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20140731130224 9d58a4c0 system.unsigned_types%s
+D s-wchcon.ads		20140718092328 1b7d22d2 system.wch_con%s
+X 1 ada.ads
+16K9*Ada 19e8 10|1r6 1r19 2r5 2r18
+X 4 a-liteio.ads
+18K13*Long_Integer_Text_IO[8|46] 10|1w23 2r22
+X 7 a-textio.ads
+49K13*Text_IO 471e16 10|1w10 2r9
+166U14*New_Line 11|196s17 205s25
+263U14*Put_Line 11|228s25 230s25 235s25 237s25 242s25 244s25
+X 8 a-tiinio.ads
+56U14*Get 11|6s25[4|18] 14s33[4|18]
+66U14*Put 11|194s25[4|18] 203s33[4|18]
+X 10 data.ads
+4i9 N{long_integer} 28r33 29r33 29r39 11|5r29 12r29 13r37 21r29 28r29 29r37
+. 40r29 41r37 43r45 57r29 59r37 72r29 73r37 86r29 98r29 99r37 113r29 128r29
+. 129r37 145r29 160r29 161r37 178r29 179r37 193r29 201r29 202r37
+5k9*Data 4z9 28E14 30l5 30e9 11|1b14 252l5 252t9
+6A14*Vector(long_integer) 9r38 11r43 14r47 14r77 16r39 16r54 18r35 20r35
+. 22r36 22r51 23r38 25r32 25r46 25r82 25r140 25r173 28c14 11|3r38 19r43 52r47
+. 52r77 54r22 81r39 81r54 83r22 107r35 139r35 171r36 171r51 173r22 191r38
+. 209r32 209r46 209r82 209r140 209r173
+7A14*Matrix(long_integer) 10r39 12r44 13r47 13r62 14r62 15r68 15r83 17r42
+. 17r57 19r36 21r36 24r39 25r65 25r98 25r125 25r159 25r188 29c14 11|10r39
+. 26r44 35r47 35r62 37r22 52r62 67r68 67r83 69r22 93r42 93r57 95r22 122r36
+. 154r36 199r39 209r65 209r98 209r125 209r159 209r188
+9U19*Read_Vector 9<31 11|3b19 8l13 8t24
+9a31 A{6A14} 11|3b31 6m29 6r29
+10U19*Read_Matrix 10<31 11|10b19 17l13 17t24
+10a31 MA{7A14} 11|10b31 14m37 14r37
+11U19*Fill_Vector_1 11=33 11|19b19 24l13 24t26
+11a33 A{6A14} 11|19b33 22m25
+12U19*Fill_Matrix_1 12=33 11|26b19 33l13 33t26
+12a33 MA{7A14} 11|26b33 30m33
+13V18*Multiply_Matrices{7A14} 13>36 13>40 11|35b18 50l13 50t30 229s68 236s127
+. 243s68
+13a36 MA{7A14} 11|35b36 44r66
+13a40 MB{7A14} 11|35b40 44r77
+14V18*Multiply_Vector_Matrix{6A14} 14>41 14>55 11|52b18 65l13 65t35 229s42
+. 243s42 243s96
+14a41 A{6A14} 11|52b41 60r63
+14a55 MB{7A14} 11|52b55 60r52
+15V18*Multiply_Scalar_Matrix{7A14} 15>41 15>61 11|67b18 79l13 79t35 236s44
+. 236s88
+15i41 A{long_integer} 11|67b41 74r46
+15a61 MB{7A14} 11|67b61 74r50
+16V18*Sum_Vectors{6A14} 16>30 16>33 11|81b18 91l13 91t24 229s30 229s96 243s30
+16a30 A{6A14} 11|81b30 87r35
+16a33 B{6A14} 11|81b33 87r42
+17V18*Sum_Matrices{7A14} 17>31 17>35 11|93b18 105l13 105t25 236s31
+17a31 MA{7A14} 11|93b31 100r46
+17a35 MB{7A14} 11|93b35 100r57
+18V18*Min_Vector{long_integer} 18>29 11|107b18 120l13 120t23
+18a29 A{6A14} 11|107b29 112r24 114r34 115r40
+19V18*Min_Matrix{long_integer} 19>29 11|122b18 137l13 137t23 236s67
+19a29 MA{7A14} 11|122b29 127r24 130r42 131r48
+20V18*Max_Vector{long_integer} 20>29 11|139b18 152l13 152t23
+20a29 A{6A14} 11|139b29 144r24 146r34 147r40
+21V18*Max_Matrix{long_integer} 21>29 11|154b18 169l13 169t23 236s111
+21a29 MA{7A14} 11|154b29 159r24 162r42 163r48
+22V18*Sort_Vector{6A14} 22>30 11|171b18 189l13 189t24 243s119
+22a30 A{6A14} 11|171b30 177r24
+23U19*Print_Vector 23>32 11|191b19 197l13 197t25
+23a32 A{6A14} 11|191b32 194r29
+24U19*Print_Matrix 24>32 11|199b19 207l13 207t25
+24a32 MA{7A14} 11|199b32 203r37
+25U19*Funcs 25<25 25>40 25>54 25>58 25>73 25>76 25<90 25>106 25>110 25>114
+. 25>118 25<133 25>148 25>152 25>167 25>181 11|209b19 249l13 249t18
+25a25 C{6A14} 11|209b25 229m25
+25a40 A{6A14} 11|209b40 229r65
+25a54 MA{7A14} 11|209b54 229r86
+25a58 ME{7A14} 11|209b58 229r90
+25a73 B{6A14} 11|209b73 229r108
+25a76 D{6A14} 11|209b76 229r111
+25a90 ML{7A14} 11|209b90 236m25
+25a106 MF{7A14} 11|209b106 236r78 236r149
+25a110 MG{7A14} 11|209b110 236r83
+25a114 MH{7A14} 11|209b114 236r122
+25a118 MK{7A14} 11|209b118 236r145
+25a133 T{6A14} 11|209b133 243m25
+25a148 MO{7A14} 11|209b148 243r86
+25a152 MP{7A14} 11|209b152 243r90
+25a167 S{6A14} 11|209b167 243r65 243r131
+25a181 MR{7A14} 11|209b181 243r135
+X 11 data.adb
+5i21 i{long_integer} 6r31
+12i21 i{long_integer} 14r40
+13i29 k{long_integer} 14r43
+21i21 i{long_integer} 22r27
+28i21 i{long_integer} 30r36
+29i29 k{long_integer} 30r39
+37a17 res{10|7A14} 42m33 44m41 44r54 49r24
+40i21 i{long_integer} 42r37 44r45 44r58 44r69
+41i29 k{long_integer} 42r40 44r48 44r61 44r83
+43i37 j{long_integer} 44r72 44r80
+54a17 res{10|6A14} 58m25 60m33 60r43 64r24
+57i21 i{long_integer} 58r29 60r37 60r47 60r55
+59i29 j{long_integer} 60r58 60r65
+69a17 res{10|7A14} 74m33 78r24
+72i21 i{long_integer} 74r37 74r53
+73i29 k{long_integer} 74r40 74r56
+83a17 res{10|6A14} 87m25 90r24
+86i21 i{long_integer} 87r29 87r37 87r44
+95a17 res{10|7A14} 100m33 104r24
+98i21 i{long_integer} 100r37 100r49 100r60
+99i29 k{long_integer} 100r40 100r52 100r63
+109i9 res{long_integer} 112m17 114r28 115m33 119r24
+113i21 i{long_integer} 114r36 115r42
+124i17 res{long_integer} 127m17 130r36 131m41 136r24
+128i21 i{long_integer} 130r45 131r51
+129i29 k{long_integer} 130r48 131r54
+141i9 res{long_integer} 144m17 146r28 147m33 151r24
+145i21 i{long_integer} 146r36 147r42
+156i17 res{long_integer} 159m17 162r36 163m41 168r24
+160i21 i{long_integer} 162r45 163r51
+161i29 k{long_integer} 162r48 163r54
+173a17 res{10|6A14} 177m17 180r36 180r45 181r46 182m41 182r51 183m41 188r24
+174i17 t{long_integer} 181m41 183r55
+178i21 i{long_integer} 179r39 180r40 180r49 181r50 182r45 182r55 183r45
+179i29 k{long_integer}
+193i21 i{long_integer} 194r31
+201i21 i{long_integer} 203r40
+202i29 k{long_integer} 203r43
+211t22 Func1 226b27 231l21 231t26
+216t22 Func2 233b27 238l21 238t26
+221t22 Func3 240b27 245l21 245t26
+X 14 system.ads
+37K9*System 10|1r45 2r44 14|155e11
+X 18 s-multip.ads
+16K16*Multiprocessors 10|1w52 2r51 18|28e27
+

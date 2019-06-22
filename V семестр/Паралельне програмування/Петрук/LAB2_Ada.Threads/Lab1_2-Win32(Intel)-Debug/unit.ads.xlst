@@ -1,0 +1,60 @@
+    1	with Ada.text_iO, Ada.Integer_Text_IO;
+    2	use Ada.Text_IO, Ada.Integer_Text_IO;
+    3	
+    4	package Unit is
+    5		
+    6		N:constant := 3;
+    7	
+    8		type Vector is private;
+    9		type Matrix is private;
+   10	
+   11		procedure VectorIn (X : out Vector);
+   12		procedure VectorOut (X : in Vector );
+   13		procedure MatrixIn (MX : out Matrix);
+   14		procedure MatrixOut (MX : in Matrix);
+   15		procedure Func1 (A, B, D : in Vector; C : out Vector);
+   16		procedure Func2 (MA, MB, MC: in Matrix; MD : out Matrix);
+   17		procedure Func3(A, B: in Vector; MA, MB: in Matrix; D: out vector);
+   18	
+   19		private
+   20			type Vector is array (1..N) of Integer;
+   21			type Matrix is array (1..N) of Vector;
+   22	
+   23	end Unit;
+
+A                    parameter           17          
+A                    parameter           15          
+Ada                  File 1:f1ada.ada            1 
+B                    parameter           15          
+B                    parameter           17          
+C                    parameter           15          
+D                    parameter           17          
+D                    parameter           15          
+Func1                subprogram          15          
+Func2                subprogram          16          
+Func3                subprogram          17          
+Integer_Text_IO      File 4:f62ada.ada           1 2 
+MA                   parameter           16          
+MA                   parameter           17          
+MB                   parameter           17          
+MB                   parameter           16          
+MC                   parameter           16          
+MD                   parameter           16          
+MX                   parameter           14          
+MX                   parameter           13          
+Matrix               type                21          
+Matrix               type                 9          13 14 16 17 
+MatrixIn             subprogram          13          
+MatrixOut            subprogram          14          
+N                    object               6          
+Text_IO              File 2:f110spc.ada          1 2 
+Unit                 library package      4          23 
+Vector               type                 8          11 12 15 17 
+Vector               type                20          21 
+VectorIn             subprogram          11          
+VectorOut            subprogram          12          
+X                    parameter           11          
+X                    parameter           12          
+    File #1 src\f1ada.ada
+    File #2 src\f110spc.ada
+    File #4 src\f62ada.ada

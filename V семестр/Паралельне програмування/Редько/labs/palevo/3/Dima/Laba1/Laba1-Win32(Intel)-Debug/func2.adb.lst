@@ -1,0 +1,214 @@
+Source file: ..\..\..\..\РАБОЧИЙ СТОЛ\dima\func2.adb   Sun Oct 09 18:29:07 2011
+
+    1 --Водопьянов Дмитрий Вадимович, группа ИО-91
+    2 --Лаб. 1. Подпрограммы. Пакеты
+    3 --F1: C=A-B
+    4 --F2: MC=SORT(TARNS(MA)*MB)
+    5 --F3: D=SORT(A)*(MA+MB)
+    6 WITH ADA.TEXT_IO; USE ADA.TEXT_IO;
+    7 WITH ADA.INTEGER_TEXT_IO; USE ADA.INTEGER_TEXT_IO;
+    8 
+    9 PACKAGE BODY Func IS
+                   *
+*****Error: Unit depends on source file ..\..\..\..\РАБОЧИЙ СТОЛ\dima\func2.ads
+*****        which contains errors
+   10 --Реализации арифметических действий
+   11 
+   12         FUNCTION "-" (L, R: Вектор) RETURN Вектор IS
+   13                 Result : Вектор;
+   14         BEGIN
+   15                 FOR I IN 1..N LOOP
+   16                         Result(I) := L(I) - R(I);
+   17                 END LOOP;
+   18                 RETURN Result;
+   19         END "-";
+   20 
+   21         FUNCTION "*" (L: Матрица; R: Вектор) RETURN Вектор IS
+   22                 Result : Вектор;
+   23         BEGIN
+   24                 FOR I IN 1..N LOOP
+   25                         Result(I) := 0;
+   26                 END LOOP;
+   27                 FOR I IN 1..N LOOP
+   28                         FOR j IN 1..N LOOP
+   29                                 Result(I) := Result(I)+ (L(I)(J) * R(J));
+   30                         END LOOP;
+   31                 END LOOP;
+   32                 RETURN Result;
+   33         END "*";
+   34 
+   35    FUNCTION "*" (L, R : Матрица) RETURN Матрица IS
+   36        Result : Матрица;
+   37    BEGIN
+   38        FOR I IN 1..N LOOP
+   39            FOR J IN 1..N LOOP
+   40                            Result(I)(J):=0;
+   41                FOR K IN 1..N LOOP
+   42                    Result(I)(J) := L(I)(K)*R(K)(J)+Result(I)(J);
+   43                END LOOP;
+   44            END LOOP;
+   45        END LOOP;
+   46       RETURN Result;
+   47    END "*";
+   48 
+   49    FUNCTION "+" (L, R: Матрица) RETURN Матрица IS
+   50        Result : Матрица;
+   51    BEGIN
+   52            FOR I IN 1..N LOOP
+   53                    FOR J IN 1..N LOOP
+   54                            Result(I)(J) := L(I)(J) + R(I)(J);
+   55                    END LOOP;
+   56            END LOOP;
+   57            RETURN Result;
+   58    END "+";
+   59 
+   60 --Реализация транспонирования матрицы
+   61     PROCEDURE TRANS(M : IN OUT Матрица) IS
+   62         Buf : Матрица;
+   63         BEGIN
+   64         Buf := M;
+   65         FOR I IN 1..N LOOP
+   66             FOR J IN 1..N LOOP
+   67                 M(I)(J) := Buf(J)(I);
+   68                         END LOOP;
+   69                 END LOOP;
+   70     END TRANS;
+   71                  
+   72 --Реализации ввода/вывода
+   73         PROCEDURE File_Output(F: in File_type) IS
+   74     BEGIN
+   75         PUT(F, N);
+   76         NEW_LINE(F);
+   77     END File_Output;
+   78    
+   79     PROCEDURE Integer_File_Output(F: in File_type; Int: in INTEGER) IS
+   80     BEGIN
+   81         PUT(F, Int);
+   82         NEW_LINE(F);
+   83     END Integer_File_Output;
+   84 
+   85     PROCEDURE Vector_File_Output(F: in File_type; V : IN Вектор) IS
+   86     BEGIN
+   87         FOR I IN 1..N LOOP
+   88             PUT(F, V(I));
+   89         END LOOP;
+   90         NEW_LINE(F);
+   91     END Vector_File_Output;
+   92   
+   93     PROCEDURE Matrix_File_Output(F: in File_type; M : IN Матрица) IS
+   94     BEGIN
+   95         FOR I IN 1..N LOOP
+   96             FOR J IN 1..N LOOP
+   97                 PUT(F, M(I)(J));
+   98             END LOOP;      
+   99             NEW_LINE(F);
+  100         END LOOP;
+  101         NEW_LINE(F);    
+  102     END Matrix_File_Output;
+  103 
+  104     PROCEDURE set_N (Value: IN INTEGER) IS
+  105     BEGIN
+  106         N := Value;
+  107     END set_N;
+  108 
+  109     PROCEDURE Create_Vector (V : OUT Вектор; Value: IN INTEGER) IS
+  110     BEGIN
+  111         FOR I IN 1..N LOOP
+  112             V(I) := Value;
+  113         END LOOP;
+  114     END Create_Vector;
+  115   
+  116     PROCEDURE Create_Matrix(M : OUT Матрица; Value: IN INTEGER) IS
+  117     BEGIN
+  118         FOR I IN 1..N LOOP
+  119             FOR J IN 1..N LOOP
+  120                 M(I)(J) := Value;
+  121             END LOOP;
+  122         END LOOP;
+  123     END Create_Matrix;
+  124 
+  125 --Операция сортировки
+  126         PROCEDURE SORT(V : IN OUT Вектор) IS
+  127         T: INTEGER;
+  128         BEGIN
+  129                 FOR I IN 1..N LOOP
+  130                         FOR J IN I+1..N LOOP
+  131                                 IF V(J) > V(I) THEN
+  132                                         T:= V(I);
+  133                     V(I):= V(J);
+  134                                         V(J):= T;
+  135                                 END IF;  
+  136                         END LOOP;
+  137                 END LOOP;
+  138         END SORT;
+  139     PROCEDURE SORT(M : IN OUT Матрица) IS
+  140         I1,J1, T: INTEGER:=1;
+  141         V: ARRAY (1..N*N) OF INTEGER;
+  142     BEGIN
+  143         FOR I IN 1..N LOOP
+  144             FOR J IN 1..N LOOP
+  145                 V(T):= M(I)(J);
+  146                 T:= T+1;
+  147             END LOOP;
+  148         END LOOP;
+  149         FOR I IN 1..N*N LOOP
+  150             FOR J IN I+1..N*N LOOP
+  151                 IF V(J) > V(I) THEN
+  152                     T:= V(I);
+  153                     V(I):= V(J);
+  154                     V(J):= T;
+  155                 END IF;
+  156             END LOOP;
+  157         END LOOP;
+  158         T:= 1;
+  159         FOR I IN 1..N LOOP
+  160             FOR J IN 1..N LOOP
+  161                 M(I)(J):= V(T);
+  162                 T:= T+1;
+  163             END LOOP;
+  164         END LOOP;
+  165     END SORT;
+  166 
+  167 --Изменение значения N
+  168         PROCEDURE Edit_N IS
+  169         BEGIN
+  170                 PUT("N=");
+  171                 GET(N);
+  172     END Edit_N;
+  173 --Процедуры в соответствии с вариантом
+  174         PROCEDURE F1 (A,B : IN Вектор; C : OUT Вектор)  IS     
+  175         BEGIN
+  176         C := A-B;               
+  177         END F1;
+  178 
+  179     PROCEDURE F2 (MA,MB : IN Матрица; MC : OUT Матрица)  IS
+  180     Buf : Матрица;           
+  181         BEGIN
+  182         Buf := MA;
+  183         TRANS(Buf);
+  184         MC := Buf*MB;
+  185         SORT(MC);
+  186         END F2;
+  187         PROCEDURE F3 (MA,MB : IN Матрица; A : IN Вектор; D : OUT Вектор)IS
+  188         Buf : Матрица;
+  189         BufV : Вектор;
+  190     BEGIN
+  191         BufV := A;
+  192         SORT(BufV);
+  193         Buf := MA+MB;
+  194         D := Buf*BufV;
+  195         END F3;
+  196 END Func;
+      *
+*****Error: LRM:3.11.1(6) Completion required for specification 'File_Output',
+*****        Continuing
+      *
+*****Error: LRM:3.11.1(6) Completion required for specification
+*****        'Integer_File_Output', Continuing
+      *
+*****Error: LRM:3.11.1(6) Completion required for specification
+*****        'Vector_File_Output', Continuing
+      *
+*****Error: LRM:3.11.1(6) Completion required for specification
+*****        'Matrix_File_Output', Continuing
+  197 

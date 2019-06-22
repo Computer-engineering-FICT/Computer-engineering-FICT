@@ -1,0 +1,247 @@
+GNAT GPL 2014 (20140331)
+Copyright 1992-2014, Free Software Foundation, Inc.
+
+Compiling: data.adb (source file time stamp: 2014-09-19 14:45:08)
+
+     1. with Ada.Text_IO, Ada.Integer_Text_IO;
+     2. use Ada.Text_IO, Ada.Integer_Text_IO;
+     3. with Ada.Streams; use Ada.Streams;
+     4. ---------Тіло пакету Data--------------
+     5. package body Data is
+     6.    --Функція виконує додавання двох векторів
+     7.    function AddVect (A, B :Vect) return  Vect is
+     8.       g : Vect;
+     9.    begin
+    10.       for index in 1..N loop
+    11.       g(index):=A(index)+B(index);
+    12.       end loop;
+    13.       return g;
+    14.    end AddVect;
+    15.    --Функція виконує множення двох матриць
+    16.    function MultMatr (A, B : Matrix) return Matrix is
+    17.       Cell : Integer;
+    18.       Result : Matrix;
+    19.    begin
+    20.       for i in 1..N loop
+    21.       for j in 1..N loop
+    22.       Cell := 0;
+    23.       for k in 1..N loop
+    24.       Cell := Cell + A(i,k)*B(k,j);
+    25.       end loop;
+    26.       Result(i,j):= Cell;
+    27.       end loop;
+    28.       end loop;
+    29.       return Result;
+    30.    end MultMatr;
+    31.    --Функція транспонує матрицю
+    32.    function Transp (A : Matrix) return Matrix is
+    33.       Result : Matrix;
+    34.    begin
+    35.       for i in 1..N loop
+    36.       for j in 1..N loop
+    37.       Result(i,j) := A(j,i);
+    38.       end loop;
+    39.       end loop;
+    40.       return Result;
+    41.    end Transp;
+    42.    --Функція виконує пошук максимального елементу матриці
+    43.    function SearchMax(A : Matrix) return Integer is
+    44.       Var : Integer := A(1,1);
+    45.    begin
+    46.       for i in 1..N loop
+    47.       for j in 1..N loop
+    48.       if A(i,j) > Var then
+    49.       Var := A(i,j);
+    50.       end if;
+    51.       end loop;
+    52.       end loop;
+    53.       return Var;
+    54.    end SearchMax;
+    55.    --Функція виконує пошук мінімального елемента матриці
+    56.    function SearchMin(A : Matrix) return Integer is
+    57.       Var : Integer := A(1,1);
+    58.    begin
+    59.       for i in 1..N loop
+    60.       for j in 1..N loop
+    61.       if A(i,j) < Var then
+    62.       Var := A(i,j);
+    63.       end if;
+    64.       end loop;
+    65.       end loop;
+    66.       return Var;
+    67.    end SearchMin;
+    68.    --Функція виконує пошук мінімального елемента в векторі
+    69.    function SearchVectMin(A: Vect) return Integer is
+    70.       min : Integer;
+    71.    begin
+    72.       min := A(1);
+    73.       for i in 1..N loop
+    74.       if A(i) < min then
+    75.       min := A(i);
+    76.       end if;
+    77.       end loop;
+    78.       return min;
+    79.    end SearchVectMin;
+    80.    --Функція виконує додавання двох матриць
+    81.    function AddMatr(A, B : Matrix) return Matrix is
+    82.       Result : Matrix;
+    83.    begin
+    84.       for i in 1..N loop
+    85.       for j in 1..N loop
+    86.       Result(i,j) := A(i,j) + B(i,j);
+    87.       end loop;
+    88.       end loop;
+    89.       return Result;
+    90.    end AddMatr;
+    91.    --Функція виконує множення вектора на матрицю
+    92.    function MultVectMatr(A : Vect; B : Matrix) return Vect is
+    93.       Cell : Integer;
+    94.       Result : Vect;
+    95.    begin
+    96.       for j in 1..N loop
+    97.       Cell := 0;
+    98.       for k in 1..N loop
+    99.       Cell := Cell + A(k)*B(k,j);
+   100.       end loop;
+   101.       Result(j):= Cell;
+   102.       end loop;
+   103.       return Result;
+   104.    end MultVectMatr;
+   105.    --Функція виконує сортування вектора за зростанням
+   106.    function SortVect(A : Vect) return Vect is
+   107.       m : Integer;
+   108.       Result: Vect;
+   109.    begin
+   110.       for i in 1..N loop
+   111.       Result(i):= A(i);
+   112.       end loop;
+   113.       for i in reverse 1..N loop
+   114.       for j in 1..(i-1) loop
+   115.       if Result(j) > Result(j+1) then
+   116.       m := Result(j);
+   117.       Result(j):=Result(j+1);
+   118.       Result(j+1):=m;
+   119.       end if;
+   120.       end loop;
+   121.       end loop;
+   122.       return Result;
+   123.    end SortVect;
+   124.    --Функція виконує сортування матриці по спаданню
+   125.    function sortMatr(MA: Matrix) return Matrix is
+   126.       Result : Matrix;
+   127.       m: Integer;
+   128.    begin
+   129.       for i in 1..N loop
+   130.       for j in 1..N loop
+   131.       Result(i,j):=MA(i,j);
+   132.       end loop;
+   133.       end loop;
+   134.
+   135.       for k in 1..N loop
+   136.       for i in reverse 1..N loop
+   137.       for j in 1..(i-1) loop
+   138.       if Result(k,j) < Result(k,j+1) then
+   139.       m := Result(k,j);
+   140.       Result(k,j):=Result(k,j+1);
+   141.       Result(k,j+1):=m;
+   142.       end if;
+   143.       end loop;
+   144.       end loop;
+   145.       end loop;
+   146.       return Result;
+   147.    end sortMatr;
+   148.    --Функція виконує множення числа на матрицю
+   149.    function MultNumb(a: Integer; MA: Matrix) return Matrix is
+   150.       Result : Matrix;
+   151.    begin
+   152.       for i in 1..N loop
+   153.       for j in 1..N loop
+   154.       Result(i,j):= a*MA(i,j);
+   155.       end loop;
+   156.       end loop;
+   157.       return Result;
+   158.    end MultNumb;
+   159.    --F1: E:=A+B+C+D(MA*MZ)
+   160.    procedure F1(A,B,C,D: in Vect; MA, MZ: in Matrix; E : out Vect) is
+   161.    begin
+   162.        E := AddVect(AddVect(A,B),AddVect(C,MultVectMatr(D,MultMatr(MA,MZ))));
+   163.    end F1;
+   164.    --F2: MZ:=Min(MA)*MB+Max(MT)*(MX*MZ)
+   165.    procedure F2(MA,MB,MT,MX,MZ: in Matrix; ME: out Matrix) is
+   166.    begin
+   167.       ME := AddMatr(MultNumb(SearchMin(MA),MB),MultNumb(SearchMax(MT),MultMatr(MX,MZ)));
+   168.    end F2;
+   169.    --F3: d:=Min(A*Trans(MB*MM)+B*Sort(MC))
+   170.    procedure F3(A,B: in Vect; MB, MM,MC: in Matrix; d: out Integer) is
+   171.    begin
+   172.       d:= SearchVectMin(AddVect(MultVectMatr(A,Transp(MultMatr(MB,MM))),MultVectMatr(B,sortMatr(MC))));
+   173.    end F3;
+   174.    --Процедура зчитування вектора з консолі
+   175.    procedure readVect(A : out Vect) is
+   176.    begin
+   177.       for i in 1..N loop
+   178.          Get(A(i));
+   179.       end loop;
+   180.    end readVect;
+   181.    --Процедура відображення вектора в консолі
+   182.    procedure showVect(A : in Vect) is
+   183.    begin
+   184.       for i in 1..N loop
+   185.       Put(A(i));
+   186.       end loop;
+   187.    end showVect;
+   188.    --Процедура зчитування матриці з консолі
+   189.    procedure readMatr(MA: out Matrix) is
+   190.    begin
+   191.       for i in 1..N loop
+   192.       New_Line;
+   193.       for j in 1..N loop
+   194.       Get(MA(i,j));
+   195.       end loop;
+   196.       end loop;
+   197.    end readMatr;
+   198.    --Процедура відображення матриці в консоль
+   199.    procedure showMatr(MA: in Matrix) is
+   200.    begin
+   201.       for i in 1..N loop
+   202.       New_Line;
+   203.       for j in 1..N loop
+   204.       Put(MA(i,j));
+   205.       end loop;
+   206.       end loop;
+   207.    end showMatr;
+   208.
+   209.
+   210.
+   211. end Data;
+
+Compiling: data.ads (source file time stamp: 2014-09-17 05:04:46)
+
+     1. -----Специфікація пакету Data----------
+     2. generic
+     3.    N : in Integer;
+     4. package Data is
+     5.    --Оголошення приватних типів
+     6.    type Vect is private;
+     7.    type Matrix is private;
+     8.    --F1: E:=A+B+C+D(MA*MZ)
+     9.    procedure F1(A,B,C,D: in Vect; MA, MZ: in Matrix; E : out Vect);
+    10.    --F2: MZ:=Min(MA)*MB+Max(MT)*(MX*MZ)
+    11.    procedure F2(MA,MB,MT,MX,MZ: in Matrix; ME: out Matrix);
+    12.    --F3: d:=Min(A*Trans(MB*MM)+B*Sort(MC))
+    13.    procedure F3(A,B: in Vect; MB, MM,MC: in Matrix; d: out Integer);
+    14.    --Процедура зчитування вектора з консолі
+    15.    procedure readVect(A : out Vect);
+    16.    --Процедура відображення вектора в консолі
+    17.    procedure showVect(A : in Vect);
+    18.    --Процедура зчитування матриці з консолі
+    19.    procedure readMatr(MA: out Matrix);
+    20.    --Процедура відображення матриці в консоль
+    21.    procedure showMatr(MA: in Matrix);
+    22.   --Визначення приватних типів
+    23.   private
+    24.      type Vect is array(1..N) of Integer;
+    25.      type Matrix is array(1..N, 1..N) of Integer;
+    26. end Data;
+
+ 211 lines: No errors

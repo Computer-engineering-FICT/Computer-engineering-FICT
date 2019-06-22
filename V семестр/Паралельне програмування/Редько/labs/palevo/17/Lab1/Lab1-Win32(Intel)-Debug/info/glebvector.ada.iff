@@ -1,0 +1,37 @@
+SOURCE: ..\glebvector.ada
+  SRCTIME: 1157885418    Sun Sep 10 13:50:18 2006
+  COMPSW: adacomp SRC -m a -e 50 -m n -mr n -gc -ga
+COMPVER: 2.100
+SRCDEP: src\f1ada.ada
+  SRCDEPTIME: 825716910    Fri Mar 01 23:48:30 1996
+SRCDEP: src\f62ada.ada
+  SRCDEPTIME: 825717430    Fri Mar 01 23:57:10 1996
+SRCDEP: src\f110spc.ada
+  SRCDEPTIME: 827954560    Wed Mar 27 21:22:40 1996
+SRCDEP: src\f67dat.ada
+  SRCDEPTIME: 825717450    Fri Mar 01 23:57:30 1996
+UNIT: GlebVector
+  UKIND: 9    PKG_GENERIC
+  NEED: GlebVector
+    NEEDKIND: 8    PKG_BODY
+ENDUNIT
+UNIT: GlebVector
+  UKIND: 8    PKG_BODY
+  DEP: GlebVector
+    DEPKIND: 9    PKG_GENERIC
+    DEPSRC: ..\glebvector.ada
+    DEPSRCTIME: 1157885418    Sun Sep 10 13:50:18 2006
+  DEP: Ada.Text_IO
+    DEPKIND: 7    PKG_DECL
+    DEPSRC: src\f110spc.ada
+    DEPSRCTIME: 827954560    Wed Mar 27 21:22:40 1996
+  DEP: Ada.Integer_Text_IO
+    DEPKIND: 10    PKG_INST
+    DEPSRC: src\f62ada.ada
+    DEPSRCTIME: 825717430    Fri Mar 01 23:57:10 1996
+  DEP: Ada
+    DEPKIND: 7    PKG_DECL
+    DEPSRC: src\f1ada.ada
+    DEPSRCTIME: 825716910    Fri Mar 01 23:48:30 1996
+  ELABLINKNAME: glebvector__elab_subp
+ENDUNIT

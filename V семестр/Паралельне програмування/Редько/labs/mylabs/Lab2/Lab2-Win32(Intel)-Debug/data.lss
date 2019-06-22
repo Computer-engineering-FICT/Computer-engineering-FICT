@@ -1,0 +1,68 @@
+Source file: ..\data.ads   Wed Sep 17 20:51:58 2012
+
+    1 ------------------------------------------------------------------
+    2 --                                                              --
+    3 --              Parallel and Distributed Computing              --
+    4 --                  Laboratory work #2. Tasks                   --
+    5 --                                                              --
+    6 --  File: data.ads                                              --
+    7 --  Task: F1: E = A + B + C + D * (MA * MZ)                     -- 
+    8 --        F2: MD = (MA * MB) * TRANS(MC)                        --
+    9 --        F3: E = (MA * MM) * B + MB * SORT(A)                  --
+   10 --                                                              --
+   11 --  Author: Redko Alexander, group IO-01                        --
+   12 --  Date: 16.09.2012                                            --
+   13 --                                                              --
+   14 ------------------------------------------------------------------
+   15 
+   16 with Ada.Text_IO;
+   17 use Ada.Text_IO;
+   18 
+   19 generic
+   20    
+   21    N : in Natural;  -- dimension of Vector and Matrix(N * N)
+   22    
+   23 package Data is 
+   24 
+   25    type Vector is private;
+   26    type Matrix is private;
+   27 
+   28    procedure F1
+   29       (VA, VB, VC, VD : in Vector;
+   30        MA, MZ         : in Matrix;
+   31        VE             : out Vector);
+   32 
+   33    procedure F2
+   34       (MA, MB, MC : in Matrix;
+   35        MD         : out Matrix);
+   36 
+   37    procedure F3
+   38       (VA, VB     : in Vector;
+   39        MA, MB, MM : in Matrix;
+   40        VE         : out Vector);
+   41 
+   42    procedure Input (Way_To_Fill : in Character;
+   43                     Value : in Integer;
+   44                     V           : out Vector);
+   45    
+   46    procedure Input (Way_To_Fill : in Character;
+   47                     Value : in Integer;
+   48                     MA          : out Matrix);
+   49    
+   50    procedure Output (V : in Vector);
+   51 
+   52    procedure Output (MA : in Matrix);
+   53 
+   54    procedure Output (V : in Vector; File : File_Type);
+   55 
+   56    procedure Output (MA : in Matrix; File : File_Type);
+   57    
+   58 
+   59    private   
+   60       
+   61       subtype Index is Positive range 1..N;
+   62       type Vector is array (Index) of integer;
+   63       type Matrix is array (Index) of Vector;
+   64       
+   65 
+   66 end Data;

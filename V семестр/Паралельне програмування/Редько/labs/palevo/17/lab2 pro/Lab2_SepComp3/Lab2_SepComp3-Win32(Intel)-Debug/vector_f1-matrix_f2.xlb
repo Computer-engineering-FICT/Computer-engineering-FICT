@@ -1,0 +1,181 @@
+Source file: ..\vector_f1-matrix_f2.adb   Thu Oct 01 01:12:19 2009
+
+    1 with Ada.Text_IO; use Ada.Text_IO;
+    2 package body Vector_F1.Matrix_F2 is
+    3         
+    4         -- MD = MA+MB-MC*MM 
+    5    procedure Func2(MA, MB, MC, MM: in Matrix; MD: out Matrix) is
+    6    begin
+    7       MD := MatrixRizn( MatrixSum(MA,MB), MatrixMult(MC, MM));
+    8            exception
+    9               when Constraint_Error =>
+   10                  Put("Constraint error in Func2");
+   11     end Func2;
+   12 
+   13    ---Matrix operations
+   14    ----Multiplication of matrix a*b
+   15    function MatrixMult(A, B: in Matrix) return Matrix is
+   16                 RezMatr: Matrix;
+   17                 v: Vector;
+   18                 begin
+   19                         for i in 1..N loop      -- счетчик вертикалей
+   20                                 for j in 1..N loop    -- формирует вертикальный
+   21                                         v(j) := B(j)(i);  -- вектор второй матрицы 
+   22                                 end loop;             -- из номера вертикали
+   23                                 for k in 1..N loop      -- счетчик горизонталей
+   24                                         RezMatr(k)(i) := MultiplyStep (A(k),v);
+   25                                 end loop;
+   26                         end loop;
+   27                         return RezMatr; 
+   28                 end MatrixMult;
+   29 
+   30 
+   31 
+   32    ----Sum of matrix a+b
+   33    function MatrixSum(a, b: Matrix) return Matrix is
+   34       c: Matrix;
+   35    begin
+   36       for i in 1..N loop
+   37          for j in 1..N loop
+   38             c(i)(j) := a(i)(j) + b(i)(j);
+   39          end loop;
+   40       end loop;
+   41       return c;
+   42    end;
+   43 
+   44    ----Discrepancy of matrix a-b
+   45    function MatrixRizn(a, b: Matrix) return Matrix is
+   46       c: Matrix;
+   47    begin
+   48       for i in 1..N loop
+   49          for j in 1..N loop
+   50             c(i)(j) := a(i)(j) - b(i)(j);
+   51          end loop;
+   52       end loop;
+   53       return c;
+   54    end;
+   55 
+   56         function MultiMatrNum (A: in Matrix; e: in integer) return matrix is
+   57                         buf: matrix;
+   58         begin
+   59                 Buf := A;
+   60                         for i in 1..N loop
+   61                                 for J in 1..N loop
+   62                                         Buf(I)(J) := Buf(I)(J)*e;
+   63                                 end loop;
+   64                         end loop;
+   65                         return Buf;
+   66                 end MultiMatrNum;
+   67 
+   68    -----Descending sort of strings of matrix m
+   69    procedure MatrixSort(m: in out Matrix) is
+   70    begin
+   71       for i in 1..n loop
+   72          VectSort(m(i));
+   73       end loop;
+   74    end MatrixSort;
+   75 
+   76    ----Searching maximum in matrix m
+   77    function MatrixMax(m: Matrix) return integer is
+   78       max: integer;
+   79    begin
+   80       max := m(1)(1);
+   81       for i in 1..N loop
+   82          for j in 1..N loop
+   83             if max < m(i)(j) then
+   84                max := m(i)(j);
+   85             end if;
+   86          end loop;
+   87       end loop;
+   88       return max;
+   89    end;
+   90 
+   91         ----Searching maximum in matrix m
+   92    function MatrixMin(m: Matrix) return integer is
+   93       max: integer;
+   94    begin
+   95       max := m(1)(1);
+   96       for i in 1..N loop
+   97          for j in 1..N loop
+   98             if max > m(i)(j) then
+   99                max := m(i)(j);
+  100             end if;
+  101          end loop;
+  102       end loop;
+  103       return max;
+  104    end;
+  105 
+  106 end Vector_F1.Matrix_F2;
+
+NAME                 KIND/FILE            DEF    REFERENCES (* if assigned)
+---------------------------------------------------------------------------
+A                    parameter           15      24* 
+A                    parameter           56      59 
+Ada                  #1:ada.ada                  1 
+B                    parameter           15      21 
+Func2                subprogram body      5      11 
+Func2                #3:lab2_sepcomp3.adb        5 
+J                    object              61      62 
+MA                   parameter            5      7* 
+MB                   parameter            5      7* 
+MC                   parameter            5      7* 
+MD                   parameter            5      7* 
+MM                   parameter            5      7* 
+Matrix               #3:lab2_sepcomp3.adb        5 15 16 33 34 45 46 56 
+                                                 57 69 77 92 
+MatrixMax            subprogram body     77      89 
+MatrixMax            #3:lab2_sepcomp3.adb        11 
+MatrixMin            subprogram body     92      104 
+MatrixMin            #3:lab2_sepcomp3.adb        15 
+MatrixMult           subprogram body     15      28 
+MatrixMult           #3:lab2_sepcomp3.adb        7 
+MatrixRizn           subprogram body     45      54 
+MatrixRizn           #3:lab2_sepcomp3.adb        7* 
+MatrixSort           subprogram body     69      74 
+MatrixSort           #3:lab2_sepcomp3.adb        9 
+MatrixSum            subprogram body     33      42 
+MatrixSum            #3:lab2_sepcomp3.adb        7 
+Matrix_F2            lib package body     2      106 
+Matrix_F2            #3:lab2_sepcomp3.adb        2 
+MultiMatrNum         subprogram body     56      66 
+MultiMatrNum         #3:lab2_sepcomp3.adb        7* 
+MultiplyStep         #3:lab2_sepcomp3.adb        24 
+N                    #3:lab2_sepcomp3.adb        19 20 23 36 37 48 49 60 
+                                                 61 71 81 82 96 97 
+Put                  #2:ada.text_io.spc          10 
+RezMatr              object              16      24* 27 
+Text_IO              #2:ada.text_io.spc          1 
+VectSort             #3:lab2_sepcomp3.adb        72 
+Vector               #3:lab2_sepcomp3.adb        17 
+Vector_F1            #3:lab2_sepcomp3.adb        2 
+a                    parameter           33      38 
+a                    parameter           45      50 
+b                    parameter           33      38 
+b                    parameter           45      50 
+buf                  object              57      59* 62* 65 
+c                    object              34      38* 41 
+c                    object              46      50* 53 
+e                    parameter           56      62 
+i                    object              19      21 24 
+i                    object              36      38 
+i                    object              48      50 
+i                    object              60      62 
+i                    object              71      72 
+i                    object              81      83 84 
+i                    object              96      98 99 
+j                    object              20      21 
+j                    object              37      38 
+j                    object              49      50 
+j                    object              82      83 84 
+j                    object              97      98 99 
+k                    object              23      24 
+m                    parameter           69      72* 
+m                    parameter           77      80 83 84 
+m                    parameter           92      95 98 99 
+max                  object              78      80* 83 84* 88 
+max                  object              93      95* 98 99* 103 
+v                    object              17      21* 24* 
+
+    File #1 d:\dist\objectada 8.4\lib\rts\ada.ada
+    File #2 d:\dist\objectada 8.4\lib\rts\ada.text_io.spc
+    File #3 ..\lab2_sepcomp3.adb

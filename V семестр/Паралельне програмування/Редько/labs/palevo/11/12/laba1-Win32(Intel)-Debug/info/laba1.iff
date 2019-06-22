@@ -1,0 +1,60 @@
+SOURCE: ..\..\..\..\..\..\public\desktop\ןנמדנאללû\laba1
+  SRCTIME: 1317097378    Tue Sep 27 07:22:58 2011
+  COMPSW: -eo -e 50 -m n -mr n -gc -ga
+COMPVER: 8.4
+SRCDEP: ada.text_io.spc
+  SRCDEPTIME: 1184916516    Fri Jul 20 10:28:36 2007
+SRCDEP: ada.ada
+  SRCDEPTIME: 1184916558    Fri Jul 20 10:29:18 2007
+SRCDEP: ada.io_exceptions.dat
+  SRCDEPTIME: 1184916494    Fri Jul 20 10:28:14 2007
+SRCDEP: ada.integer_text_io.ada
+  SRCDEPTIME: 1184916492    Fri Jul 20 10:28:12 2007
+UNIT: Lab1
+  UKIND: 7    PKG_DECL
+  DEP: Ada.Integer_Text_IO
+    DEPKIND: 10    PKG_INST
+    DEPSRC: ada.integer_text_io.ada
+    DEPSRCTIME: 1184916492    Fri Jul 20 10:28:12 2007
+  DEP: Ada
+    DEPKIND: 7    PKG_DECL
+    DEPSRC: ada.ada
+    DEPSRCTIME: 1184916558    Fri Jul 20 10:29:18 2007
+  DEP: Text_IO
+    DEPKIND: 11    PKG_RENAME
+    DEPSRC: ada.text_io.spc
+    DEPSRCTIME: 1184916516    Fri Jul 20 10:28:36 2007
+  NEED: Lab1
+    NEEDKIND: 8    PKG_BODY
+  FEATURES: 16#100000#(-1,-1,-1,-1,-1,-1)
+  ELABLINKNAME: lab1__elab_spec
+ENDUNIT
+UNIT: Lab1
+  UKIND: 8    PKG_BODY
+  DEP: Lab1
+    DEPKIND: 7    PKG_DECL
+    DEPSRC: ..\..\..\..\..\..\public\desktop\ןנמדנאללû\laba1
+    DEPSRCTIME: 1317097378    Tue Sep 27 07:22:58 2011
+  ELABLINKNAME: lab1__elab_body
+ENDUNIT
+UNIT: laba1
+  UKIND: 2    SUBP_BODY
+  DEP: Ada.Integer_Text_IO
+    DEPKIND: 10    PKG_INST
+    DEPSRC: ada.integer_text_io.ada
+    DEPSRCTIME: 1184916492    Fri Jul 20 10:28:12 2007
+  DEP: Ada
+    DEPKIND: 7    PKG_DECL
+    DEPSRC: ada.ada
+    DEPSRCTIME: 1184916558    Fri Jul 20 10:29:18 2007
+  DEP: Lab1
+    DEPKIND: 7    PKG_DECL
+    DEPSRC: ..\..\..\..\..\..\public\desktop\ןנמדנאללû\laba1
+    DEPSRCTIME: 1317097378    Tue Sep 27 07:22:58 2011
+  DEP: Text_IO
+    DEPKIND: 11    PKG_RENAME
+    DEPSRC: ada.text_io.spc
+    DEPSRCTIME: 1184916516    Fri Jul 20 10:28:36 2007
+  FEATURES: 16#100000#(-1,-1,-1,-1,-1,-1)
+  MAINLINKNAME: laba1
+ENDUNIT

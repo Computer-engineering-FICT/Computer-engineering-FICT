@@ -1,0 +1,270 @@
+/*
+ * PSC: Laba №06
+ * Author: Kushnirenko Alexander
+ * from group "IO-81"
+ * f1: MAX(A + B + C)
+ * f2: MAX(MB)
+ * f3: SORT(B * MD) * (MA - MB)
+ */
+#include <cstdlib>
+
+using std::cout;
+using std::endl;
+
+int n = 1000;
+
+class Vector {
+public:
+	int length = 0;
+	int * value = 0;
+	Vector(int n = 1000) : length(n), value(new int[n]) {
+		for (int i = 0; i < length; i++) {
+			value[i] = a;
+		}
+	}
+	f
+	const Vector & operator + (const Vector & rhs) {
+		Vector result(length);
+		for (int i = 0; i < length; i++) {
+		}
+	}
+private:
+	
+}
+
+class Matrix : public Vector {
+public:
+	Vector * value;
+	Matrix(int n = 1000, int a = 1) : v(new Vector[n]){
+		
+		for (int i = 0; i < n; i++) {
+			value[i].;
+		}
+	}
+private:
+	
+}
+
+int getMax(Vector & v) {
+	return 0;
+}
+int getMax(Matrix & m) {
+	return 0;
+}
+
+// f1: MAX(A + B + C)
+DWORD WINAPI f1(PVOID pParam)
+{
+	DWORD dwResult = 0;
+	cout << "f1-thread: start\n";
+	Vector vA(n), vB(n), vC(n);
+	vA.fill();
+	vB.fill();
+	vC.fill();
+	cout << "f1: MAX(A + B + C) = " << getMax(vA + vB + vC) << endl;
+	cout << "f1-thread: end\n";
+	return dwResult;
+}
+
+// f2: MAX(MB)
+DWORD WINAPI f2(PVOID pParam)
+{
+	DWORD dwResult = 0;
+	
+	cout << "f2-thread: start\n";
+	Matrix mB(n);
+	cout << "f2: MAX(MB) = " << getMax(mB) << endl;
+	cout << "f2-thread: end\n";
+	
+	return dwResult;
+}
+
+// f3: SORT(B * MD) * (MA - MB)
+DWORD WINAPI f3(PVOID pParam)
+{
+	DWORD dwResult = 0;
+	
+	cout << "f3-thread: start\n";
+			
+	Vector vB(n);
+	Matrix mD(n);
+	Matrix mA(n);
+	Matrix mB(n);
+
+	cout << "f3: SORT(B * MD) * (MA - MB) = " << sorted(vB * mD) * (mA - mB) << endl;
+	
+	cout << "f3-thread: end\n";
+	
+	return dwResult;
+}
+
+int main(int argc, char** argv) {
+
+	cout << "Main thread starts.\n";
+	cout << "Enter n: ";
+	cin >> n;
+	
+	// run f1, f2, f3
+	// join t1, t2, t3
+	
+	cout << "Main thread ends.\nPress enter to exit ";
+	cin;
+
+    return 0;
+}
+
+
+    
+    public class Vector
+    {
+    	public static int defaultSize = 3;
+		public int[] v;
+		public Vector(int n)
+		{
+			v = new int[n];
+		}
+		public Vector(int[] v)
+		{
+			this.v = v;
+		}
+		
+		public void fill(int value)
+		{
+			for (int i = 0; i < v.Length; i++)
+			{
+				v[i] = value;
+			}
+		}
+
+		public Vector sorted()
+		{
+		    int[] sortedVector = new int[v.Length];
+            for (int i = 0; i < v.Length; i++)
+            {
+                sortedVector[i] = v[i];
+            }
+		    Array.Sort(sortedVector);
+		    return new Vector(sortedVector);
+		}
+
+		public string toString()
+		{
+		    string result = "(" + v[0];
+		    foreach(int i in v)
+		    {
+		    	result += ",\t" + i;
+		    }
+		    return result + ")";
+		}
+    }
+    
+    public class Matrix
+    {
+		public Vector[] m;
+
+		public Matrix(int n)
+		{
+		    m = new Vector[n];
+		    for (int i = 0; i < n; i++)
+		    {
+		        m[i] = new Vector(n);
+		    }
+		}
+
+		public void fill(int value)
+		{
+		    for (int i = 0; i < m.Length; i++)
+		    {
+		        m[i].fill(value);
+		    }
+		}
+	}
+
+	public class VectorsAndMatricesArithmetic
+	{
+
+		public static Vector add(Vector left, Vector right)
+		{
+		    if (left.v.Length != right.v.Length)
+		    {
+		        Console.WriteLine("Error: adding two vectors with different length");
+		        return null;
+		    }
+		    
+	        Vector result = new Vector(left.v.Length);
+	        for (int i = 0; i < result.v.Length; i++)
+	        {
+	            result.v[i] = left.v[i] + right.v[i];
+	        }
+	        return result;
+		}
+
+		public static int getMax(Vector v)
+		{
+		    int max = v.v[0];
+		    for (int i = 1; i < v.v.Length; i++)
+		    {
+		        if (max < v.v[i])
+		        {
+		        	max = v.v[i];
+		        }
+		    }
+		    return max;
+		}
+
+		public static int getMax(Matrix ma)
+		{
+		    int max = getMax(ma.m[0]);
+		    for (int i = 1; i < ma.m.Length; i++)
+		    {
+		        int m = getMax(ma.m[i]);
+		        if (max < m)
+		        {
+		        	max = m;
+		        }
+		    }
+		    return max;
+		}
+
+		public static Vector multiply(Vector v, Matrix m)
+		{
+		    if (v.v.Length != m.m.Length)
+		    {
+		        Console.WriteLine("Error: multiplying vector by matrix with different size");
+		        return null;
+		    }
+
+	        Vector vC = new Vector(v.v.Length);
+	        for (int i = 0; i < v.v.Length; i++)
+	        {
+	            vC.v[i] = 0;
+	            for (int j = 0; j < v.v.Length; j++)
+	            {
+	                vC.v[i] += v.v[i] * m.m[i].v[j];
+	            }
+	        }
+	        return vC;
+		    
+		}
+
+		public static Matrix subtract(Matrix left, Matrix right)
+		{
+		    if (left.m.Length != right.m.Length)
+		    {
+		        Console.WriteLine("Error: subtracting two matrices with different length");
+		        return null;
+		    }
+
+	        Matrix result = new Matrix(left.m.Length);
+	        for (int i = 0; i < result.m.Length; i++)
+	        {
+	            for (int j = 0; j < result.m.Length; j++)
+	            {
+	                result.m[i].v[j] = left.m[i].v[j] - right.m[i].v[j];
+	            }
+	        }
+	        return result;
+		}
+
+	}
+}

@@ -1,0 +1,1134 @@
+﻿<html><head><title>32 подводных камня OpenMP при программировании на C++</title><meta name="description" content="С распространением многоядерных систем задача параллельного программирования становится все более и более актуальной. Данная область, однако, является новой даже для большинства опытных программистов.&#xD;&#xA;Существующие компиляторы и анализаторы кода позволяют находить некоторые ошибки, возникающие при разработке параллельного кода. Многие ошибки никак не диагностируются. В данной статье приводится описание ряда ошибок, приводящих к некорректному поведению параллельных программ, созданных на основе технологии OpenMP." /><meta name="keywords" content="OpenMP" /><meta name="robots" content="index,follow" /><link rel="stylesheet" href="/css/article.css" type="text/css" /><script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.3/jquery.min.js"></script><script type="text/javascript" src="/Script/rsdn.v1.js"></script><script type="text/javascript" src="/Forum/Forum.v2.js" charset="utf-8"></script></head><body marginwidth="20" marginheight="20"><table width="100%" border="0" cellspacing="0" celpadding="2" style="font-family:verdana;font-weight:bold;padding: 0px 5px; BORDER: #9daabd 1px 	solid; 	COLOR: #646464; BACKGROUND-COLOR: #e6e6e6;"><tr><td nowrap="nowrap"><font size="1" style="font-weight:normal"><script src="/script/shMenu.v1.js" type="text/javascript" charset="utf-8"></script></font></td><td nowrap="nowrap" align="right" width="100%"><font size="2"> <A href="?print" target="_blank" title="Версия для печати"><IMG align="absmiddle" width="16" height="14" src="/images/printer2.gif" border="0" /></A>  <a href="/forum/cpp.applied/3078208.aspx" target="_self" title="Перейти к обсуждению статьи"><font size="1" color="#646464"> Сообщений </font><font color="black">0</font></a>  <a href="/forum/cpp.applied/3078208.aspx" target="_self" title="Перейти к обсуждению статьи"><img src="/forum/images/showfr.gif" align="absmiddle" border="0" width="18px" height="14px" /></a> <a href="/Forum/RateList.aspx?mid=3078208"><font color="#646464"><font size="1"> Оценка </font><font color="black">470</font>
+									[<font style="font-weight: normal;"><span style="color:green;">+1</span>/<span style="color:blue;">-0</span></font>]
+								</font></a>   <a target="_blank" rel="nofollow" href="/Users/Private/AddFav.aspx?mid=3078208" onclick="return AddFav(this.href);" title="Добавить в избранное"><img align="absmiddle" src="/images/fav.gif" border="0" height="14px" /></a>  <a href="/Forum/Private/Subscr.aspx?tid=3078208" onclick="return SubMsg(this.href)" title="Подписка на сообщения" rel="nofollow"><img class="i" align="absmiddle" src="/forum/images/sub.gif" border="0" width="18px" height="14px" /></a>   <font size="1">Оценить </font><a target="_blank" rel="nofollow" href="/forum/Private/Rate.aspx?mid=3078208&amp;rate=-3" onclick="return RateMsg(this.href);" title="+1"><img align="absmiddle" src="/forum/images/n11.gif" border="0" width="18px" height="14px" /></a><a target="_blank" rel="nofollow" href="/forum/Private/Rate.aspx?mid=3078208&amp;rate=1" onclick="return RateMsg(this.href);" title="Интересно"><img align="absmiddle" src="/forum/images/n1.gif" border="0" width="18px" height="14px" /></a><a target="_blank" rel="nofollow" href="/forum/Private/Rate.aspx?mid=3078208&amp;rate=2" onclick="return RateMsg(this.href);" title="Спасибо"><img align="absmiddle" src="/forum/images/n2.gif" border="0" width="18px" height="14px" /></a><a target="_blank" rel="nofollow" href="/forum/Private/Rate.aspx?mid=3078208&amp;rate=3" onclick="return RateMsg(this.href);" title="Супер"><img align="absmiddle" src="/forum/images/n3.gif" border="0" width="18px" height="14px" /></a><a target="_blank" rel="nofollow" href="/forum/Private/Rate.aspx?mid=3078208&amp;rate=-1" onclick="return RateMsg(this.href);" title="Удалить оценку"><img align="absmiddle" src="/forum/images/nx.gif" border="0" width="18px" height="14px" /></a><a target="_blank" rel="nofollow" href="/forum/Private/Rate.aspx?mid=3078208&amp;rate=-4" onclick="return RateMsg(this.href);" title="Согласен"><img align="absmiddle" src="/forum/images/np.gif" border="0" width="18px" height="14px" /></a><a target="_blank" rel="nofollow" href="/forum/Private/Rate.aspx?mid=3078208&amp;rate=0" onclick="return RateMsg(this.href);" title="Не согласен"><img align="absmiddle" src="/forum/images/nm.gif" border="0" width="18px" eight="14px" /></a> 
+					</font></td></tr></table><script type="text/javascript" src="/Script/orphus.js"></script><a href="http://orphus.ru" id="orphus"><img alt="Система Orphus" src="/Script/orphus.gif" border="0" width="100" height="25" /></a><H1>32 подводных камня OpenMP при программировании на C++</H1><H5><SPAN class="title">Авторы: </SPAN><SPAN class="value"><a target="_blank" href="mailto:kolosov@viva64.com">Алексей Колосов</a><BR /><a target="_blank" href="mailto:evg@viva64.com">Евгений Рыжков</a><BR /><a target="_blank" href="mailto:karpov@viva64.com">Андрей Карпов</a><BR />ООО "СиПроВер"</SPAN><br /><SPAN class="title">Источник: </SPAN><SPAN class="value"><a target="_blank" href="http://rsdn.ru/mag/main.htm">RSDN Magazine #2-2008</a></SPAN></H5><H6><SPAN class="title">Опубликовано: </SPAN><SPAN class="value">26.08.2008</SPAN><BR /><SPAN class="title">Исправлено: </SPAN><SPAN class="value">15.04.2009</SPAN><BR /><SPAN class="title">Версия текста: </SPAN><SPAN class="value">1.0</SPAN></H6><TABLE width="98%"><TR><TD valign="top" class="contents"><A href="#EIB"><B>Аннотация</B></A><BR /><A href="#EOB"><B>Введение</B></A><BR /><A href="#E1C"><B>Логические ошибки</B></A><BR /><DIV style="margin-left:2em"><A href="#E4C">1. Отсутствие /openmp</A><BR /><A href="#EFD">2. Отсутствие parallel</A><BR /><A href="#ELE">3. Отсутствие omp</A><BR /><A href="#EOF">4. Отсутствие for</A><BR /><A href="#EKG">5. Ненужное распараллеливание</A><BR /><A href="#EQH">6. Неправильное применение ordered</A><BR /><A href="#EZAAC">7. Переопределение количества потоков внутри параллельной секции</A><BR /><A href="#ERCAC">8. Попытка использовать блокировку без инциализации переменной</A><BR /><A href="#EKDAC">9. Попытка снять блокировку не из того потока, который ее установил</A><BR /><A href="#ENEAC">10. Попытка использования блокировки как барьера</A><BR /><A href="#ENFAC">11. Зависимость поведения от количества потоков</A><BR /><A href="#E5GAC">12. Некорректное использование динамического создания потоков</A><BR /><A href="#EEIAC">13. Одновременное использование общего ресурса</A><BR /><A href="#ELJAC">14. Незащищенный доступ к общей памяти</A><BR /><A href="#EZKAC">15. Использование директивы flush с указателем</A><BR /><A href="#EMMAC">16. Отсутствие директивы flush</A><BR /><A href="#E4NAC">17. Отсутствие синхронизации</A><BR /><A href="#EBAAE">18. Внешняя переменная задана как threadprivate не во всех модулях</A><BR /><A href="#ESAAE">19. Неинициализированные локальные переменные</A><BR /><A href="#EQBAE">20. Забытая директива threadprivate</A><BR /><A href="#EXDAE">21. Забытое выражение private</A><BR /><A href="#EPFAE">22. Некорректное распараллеливание работы с локальными переменными</A><BR /><A href="#EFHAE">23. Неосторожное применение lastprivate</A><BR /><A href="#ERIAE">24. Непредсказуемые значения threadprivate-переменных в начале параллельных секций</A><BR /><A href="#EMKAE">25. Некоторые ограничения локальных переменных</A><BR /><A href="#EILAE">26. Локальные переменные не помечены как таковые</A><BR /><A href="#EGOAE">27. Параллельная работа с массивом без упорядочивания итераций</A><BR /></DIV><A href="#EQQAE"><B>Ошибки производительности</B></A><BR /><DIV style="margin-left:2em"><A href="#ETQAE">1. Ненужная директива flush</A><BR /><A href="#EWRAE">2. Использование критических секций или блокировок вместо atomic</A><BR /><A href="#EMSAE">3. Ненужная защита памяти от одновременной записи</A><BR /><A href="#E1SAE">4. Неоправданно большое количество кода в критической секции</A><BR /><A href="#ECTAE">5. Слишком частое применение критических секций</A><BR /></DIV><A href="#EUUAE"><B>Заключение</B></A><BR /><A href="#E6ZAE"><B>Список использованных источников</B></A><BR /></TD><TD valign="top" align="center" class="contents"><IMG src="/mag/cover/mag0208.jpg"></IMG></TD></TR></TABLE><SCRIPT LANGUAGE="javascript">
+			function ToggleCode(id)
+			{
+				el=document.getElementById(id);
+				img=document.getElementById("img"+id);
+				if(el.style.display=="none")
+				{
+					img.src="/images/ls2.gif";
+					el.style.display="";
+				}
+				else
+				{
+					img.src="/images/ls1.gif";
+					el.style.display="none";
+				}
+				return false;
+			}
+		</SCRIPT><H2><A name="EEB"></A></H2><P></P>
+	<H2>Аннотация<A name="EIB"></A></H2>
+		<P>С распространением многоядерных систем задача параллельного программирования становится все более и более актуальной. Данная область, однако, является новой даже для большинства опытных программистов. Существующие компиляторы и анализаторы кода позволяют находить некоторые ошибки, возникающие при разработке параллельного кода. Многие ошибки никак не диагностируются. В данной статье приводится описание ряда ошибок, приводящих к некорректному поведению параллельных программ, созданных на основе технологии OpenMP.</P>
+	<H2>Введение<A name="EOB"></A></H2>
+		<P>Параллельное программирование появилось уже достаточно давно. Первый многопроцессорный компьютер был создан еще в 60-х годах прошлого века. Однако до недавних пор прирост производительности процессоров обеспечивался в основном благодаря росту тактовой частоты, и многопроцессорные системы были редкостью. Сейчас рост тактовой частоты замедляется, и прирост производительности обеспечивается за счет использования нескольких ядер. Многоядерные процессоры приобретают широкое распространение, и в связи с этим задача написания параллельных программ приобретает все большую и большую актуальность. Если ранее для увеличения производительности программы пользователь мог просто установить процессор с большей тактовой частотой и большим кешем, то теперь такой подход невозможен, и существенное увеличение производительности в любом случае потребует усилий от программиста.</P>
+		<P>В связи с тем, что параллельное программирование начинает набирать популярность только сейчас, процесс распараллеливания существующего приложения или написания нового параллельного кода может вызвать проблемы даже для опытных программистов, так как данная область является для них новой. Существующие компиляторы и анализаторы кода позволяют диагностировать лишь некоторые из возможных ошибок. Остальные ошибки (а таких большинство) остаются неучтенными и могут существенно увеличить время тестирования и отладки, особенно с учетом того, что такие ошибки почти всегда воспроизводятся нестабильно. В данной статье рассматривается язык C++, поскольку к коду именно на этом языке чаще всего предъявляются требования высокой производительности. Так как поддержка технологии OpenMP встроена в Microsoft Visual Studio 2005 и 2008 (заявлено соответствие стандарту OpenMP 2.0), мы будем рассматривать именно эту технологию. OpenMP позволяет с минимальными затратами переделать существующий код – достаточно лишь включить дополнительный флаг компилятора /openmp и добавить в свой код соответствующие директивы, описывающие, как именно выполнение программы будет распределено на несколько процессоров.</P>
+		<P>В данной статье рассматриваются далеко не все ошибки, которые могут возникнуть при программировании на C++ с использованием OpenMP и не диагностируются при этом компилятором или существующими статическими или динамическими анализаторами кода. Тем не менее, хочется надеяться, что приведенный материал поможет лучше понять особенности разработки параллельных систем и избежать множества ошибок. </P>
+		<P>Также стоит отметить, что данная статья носит исследовательский характер, и ее материал послужит при разработке статического анализатора VivaMP (<A href="http://www.viva64.com/vivamp.php" class="link-ext" target="_blank">http://www.viva64.com/vivamp.php</A>), предназначенного для поиска ошибок в параллельных программах, создаваемых на основе технологии OpenMP. Мы будем рады получить отзыв о статье и узнать новые паттерны ошибок параллельного программирования.</P>
+		<P>По аналогии с одной из использованных статей [<A href="http://www.viva64.com/go.php?url=100" class="link-ext" target="_blank">1</A>] ошибки в данной статье разделены на логические ошибки и ошибки, приводящие к потере производительности. Логические ошибки – это ошибки, приводящие к неожиданным результатам, то есть к некорректной работе программы. Под ошибками производительности понимаются ошибки, приводящие к снижению быстродействия программы.</P>
+		<P>Прежде чем перейти к рассмотрению конкретных ошибок, определим некоторые специфические термины, которые будут использоваться в этой статье:</P>
+		<P>Директивами (directives) назовем собственно директивы OpenMP, определяющие способ распараллеливания кода. Все директивы OpenMP имеют вид #pragma omp ...</P>
+		<P>Выражением (clause) будем называть вспомогательные части директив, определяющие количество потоков, режим распределения работы между потоками, режим доступа к переменным, и т. п.</P>
+		<P>Распараллеливаемой секцией (section) назовем фрагмент кода, на который распространяется действие директивы #pragma omp parallel.</P>
+		<P>Данная статья предполагает, что читатель уже знаком с основами OpenMP и собирается применять эту технологию в своих программах. Если же читатель еще не знаком с OpenMP, для первоначального знакомства можно посмотреть документ [<A href="http://www.viva64.com/go.php?url=101" class="link-ext" target="_blank">2</A>]. Более подробное описание директив, выражений, функций и глобальных переменных OpenMP можно найти в спецификации OpenMP 2.0 [<A href="http://www.viva64.com/go.php?url=102">3</A>]. Также эта спецификация продублирована в справочной системе MSDN Library, в более удобной форме, чем формат PDF.</P>
+		<P>Теперь перейдем к рассмотрению возможных ошибок, не диагностируемых совсем или плохо диагностируемых стандартными компиляторами.</P>
+	<H2>Логические ошибки<A name="E1C"></A></H2>
+		<H3>1. Отсутствие /openmp<A name="E4C"></A></H3>
+			<P>Начнем с простейшей ошибки: если поддержка OpenMP не будет включена в настройках компилятора, директивы OpenMP будут попросту игнорироваться. Компилятор не выдаст ни ошибки, ни даже предупреждения, код просто будет выполняться не так, как этого ожидает программист.</P>
+			<P>Поддержку OpenMP можно включить в диалоговом окне свойств проекта (раздел «Configuration Properties | C/C++ | Language»).</P>
+		
+		<H3>2. Отсутствие parallel<A name="EFD"></A></H3>
+			<P>Директивы OpenMP имеют достаточно сложный формат, поэтому сначала рассмотрим простейшие ошибки, которые могут возникнуть при неправильном написании самих директив. Ниже приведены примеры корректного и некорректного кода:</P>
+			<P>Некорректно:</P>
+			<DIV id="EMD"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+#pragma</SPAN> omp <SPAN class="KEYWORD">for</SPAN>
+... <SPAN class="COMMENT">//код</SPAN>
+			</PRE></TD></TR></TABLE></DIV>
+			<P>Корректно:</P>
+			<DIV id="EXD"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+#pragma</SPAN> omp parallel <SPAN class="KEYWORD">for</SPAN> 
+... <SPAN class="COMMENT">// код
+</SPAN>
+<SPAN class="KEYWORD">#pragma</SPAN> omp parallel
+{
+  <SPAN class="KEYWORD">#pragma</SPAN> omp <SPAN class="KEYWORD">for</SPAN>
+  ... <SPAN class="COMMENT">//код</SPAN>
+}
+</PRE></TD></TR></TABLE></DIV>
+			<P>Первый фрагмент кода успешно скомпилируется, и директива #pragma omp for будет попросту проигнорирована компилятором. Таким образом, цикл, вопреки ожиданиям программиста, будет выполняться только одним потоком, и обнаружить это будет достаточно затруднительно. Помимо директивы #pragma omp parallel for, эта ошибка может возникнуть и с директивой #pragma omp parallel sections.</P>
+		
+		<H3>3. Отсутствие omp<A name="ELE"></A></H3>
+			<P>Ситуация, аналогичная предыдущей, возникнет, если в директиве OpenMP не написать ключевое слово omp [<A href="http://www.viva64.com/go.php?url=103" class="link-ext" target="_blank">4</A>]. Рассмотрим простой пример.</P>
+			<P>Некорректно:</P>
+			<DIV id="EXE"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+#pragma</SPAN> omp parallel num_threads(2)
+{
+   <SPAN class="KEYWORD">#pragma</SPAN> single
+   {
+     printf(<SPAN class="STRING">"me\n"</SPAN>);
+   }
+}
+</PRE></TD></TR></TABLE></DIV>
+			<P>Корректно:</P>
+			<DIV id="ECF"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+#pragma</SPAN> omp parallel num_threads(2)
+{
+   <SPAN class="KEYWORD">#pragma</SPAN> omp single
+   {
+     printf(<SPAN class="STRING">"me\n"</SPAN>);
+   }
+}
+</PRE></TD></TR></TABLE></DIV>
+			<P>При выполнении этого кода сообщение «me» будет выведено два раза вместо ожидаемого одного. При компиляции компилятор выдаст предупреждение: «warning C4068: unknown pragma». Однако предупреждения могут быть отключены в настройках проекта, либо предупреждение может быть проигнорировано программистом.</P>
+		
+		<H3>4. Отсутствие for<A name="EOF"></A></H3>
+			<P>Директива #pragma omp parallel может относиться как к блоку кода, так и к одной команде. В случае цикла for это может приводить к неожиданному поведению:</P>
+			<DIV id="ETF"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+#pragma</SPAN> omp parallel num_threads(2)
+<SPAN class="KEYWORD">for</SPAN> (<SPAN class="KEYWORD">int</SPAN> i = 0; i &lt; 10; i++)
+  myFunc();  
+</PRE></TD></TR></TABLE></DIV>
+			<P>Если программист хотел распределить выполнение этого цикла на два потока, ему следовало использовать директиву #pragma omp parallel for. В этом случае цикл выполнился бы 10 раз. Однако при запуске приведенного выше кода цикл будет выполняться по одному разу в каждом потоке, и вместо ожидаемых 10 раз функция myFunc будет вызвана 20 раз. Исправленная версия кода должна выглядеть следующим образом:</P>
+			<DIV id="E5F"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD">
+#pragma</SPAN> omp parallel <SPAN class="KEYWORD">for</SPAN> num_threads(2)
+<SPAN class="KEYWORD">for</SPAN> (<SPAN class="KEYWORD">int</SPAN> i = 0; i &lt; 10; i++)
+  myFunc();  
+</PRE></TD></TR></TABLE></DIV>
+		
+		<H3>5. Ненужное распараллеливание<A name="EKG"></A></H3>
+			<P>Применение директивы #pragma omp parallel к большому участку кода при невнимательности программиста может вызывать неожиданное поведение, аналогичное предыдущему случаю:</P>
+			<DIV id="EPG"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+#pragma</SPAN> omp parallel num_threads(2)
+{ 
+  ... <SPAN class="COMMENT">// N строк кода</SPAN>
+  <SPAN class="KEYWORD">#pragma</SPAN> omp parallel <SPAN class="KEYWORD">for</SPAN>
+  <SPAN class="KEYWORD">for</SPAN> (<SPAN class="KEYWORD">int</SPAN> i = 0; i &lt; 10; i++)
+  {      
+    myFunc();
+  }
+}
+</PRE></TD></TR></TABLE></DIV>
+			<P>В силу забывчивости или неопытности программист, желающий распределить выполнение цикла на два потока, написал слово parallel внутри секции кода, уже распределенного на два потока. В результате выполнения этого кода функция myFunc, как и в предыдущем примере, будет выполнена 20 раз, вместо ожидаемых 10 раз. Исправленный код должен выглядеть так:</P>
+			<DIV id="EAH"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+#pragma</SPAN> omp parallel num_threads(2)
+{
+  ... <SPAN class="COMMENT">// N строк кода</SPAN>
+  <SPAN class="KEYWORD">#pragma</SPAN> omp <SPAN class="KEYWORD">for</SPAN>
+  <SPAN class="KEYWORD">for</SPAN> (<SPAN class="KEYWORD">int</SPAN> i = 0; i &lt; 10; i++)
+  {      
+    myFunc();
+  }
+}
+</PRE></TD></TR></TABLE></DIV>
+		
+		<H3>6. Неправильное применение ordered<A name="EQH"></A></H3>
+			<P>Применение директивы ordered может вызвать проблемы у начинающих программистов, не слишком хорошо знакомых с OpenMP [<A href="http://www.viva64.com/go.php?url=100">1</A>]. Приведем пример кода:</P>
+			<P>Некорректно:</P>
+			<DIV id="E2H"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+#pragma</SPAN> omp parallel <SPAN class="KEYWORD">for</SPAN> ordered
+<SPAN class="KEYWORD">for</SPAN> (<SPAN class="KEYWORD">int</SPAN> i = 0; i &lt; 10; i++)
+{      
+  myFunc(i);
+}
+</PRE></TD></TR></TABLE></DIV>
+			<P>Корректно:</P>
+			<DIV id="EJAAC"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+#pragma</SPAN> omp parallel <SPAN class="KEYWORD">for</SPAN> ordered
+<SPAN class="KEYWORD">for</SPAN> (<SPAN class="KEYWORD">int</SPAN> i = 0; i &lt; 10; i++)
+{      
+  <SPAN class="KEYWORD">#pragma</SPAN> omp ordered
+  {
+    myFunc(i);
+  }
+}
+</PRE></TD></TR></TABLE></DIV>
+			<P>Суть ошибки заключается в том, что в первом примере выражение ordered будет просто проигнорировано, поскольку не указана область его действия. Цикл будет выполняться в произвольном порядке.</P>
+		
+		<H3>7. Переопределение количества потоков внутри параллельной секции<A name="EZAAC"></A></H3>
+			<P>Перейдем к рассмотрению более сложных ошибок, которые могут возникнуть при недостаточном знании стандарта OpenMP. Согласно спецификации OpenMP 2.0 [<A href="http://www.viva64.com/go.php?url=102" class="link-ext" target="_blank">3</A>], количество потоков нельзя переопределять внутри параллельной секции. В C++ это приводит к ошибкам во время выполнения программы и ее аварийному завершению. Пример:</P>
+			<P>Некорректно:</P>
+			<DIV id="EFBAC"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+#pragma</SPAN> omp parallel
+{ 
+  omp_set_num_threads(2);
+  <SPAN class="KEYWORD">#pragma</SPAN> omp <SPAN class="KEYWORD">for</SPAN>
+  <SPAN class="KEYWORD">for</SPAN> (<SPAN class="KEYWORD">int</SPAN> i = 0; i &lt; 10; i++)
+  {      
+    myFunc();
+  }
+}
+</PRE></TD></TR></TABLE></DIV>
+			<P>Корректно:</P>
+			<DIV id="EUBAC"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+#pragma</SPAN> omp parallel num_threads(2)
+{                
+  <SPAN class="KEYWORD">#pragma</SPAN> omp <SPAN class="KEYWORD">for</SPAN>
+  <SPAN class="KEYWORD">for</SPAN> (<SPAN class="KEYWORD">int</SPAN> i = 0; i &lt; 10; i++)
+  {      
+    myFunc();
+  }
+}
+</PRE></TD></TR></TABLE></DIV>
+			<P>Корректно:</P>
+			<DIV id="EDCAC"><TABLE class="code" width="98%"><TR><TD><PRE>
+omp_set_num_threads(2)
+<SPAN class="KEYWORD">#pragma</SPAN> omp parallel 
+{                
+  <SPAN class="KEYWORD">#pragma</SPAN> omp <SPAN class="KEYWORD">for</SPAN>
+  <SPAN class="KEYWORD">for</SPAN> (<SPAN class="KEYWORD">int</SPAN> i = 0; i &lt; 10; i++)
+  {      
+    myFunc();
+  }
+}
+</PRE></TD></TR></TABLE></DIV>
+		
+		<H3>8. Попытка использовать блокировку без инциализации переменной<A name="ERCAC"></A></H3>
+			<P>Согласно спецификации OpenMP 2.0 [<A href="http://www.viva64.com/go.php?url=102" class="link-ext" target="_blank">3</A>], переменные, использующиеся для блокировки, необходимо инциализировать перед использованием, вызвав функцию omp_init_lock или omp_init_nest_lock (в зависимости от типа переменной). В С++ попытка использования (установка блокировки, снятие блокировки, проверка блокировки) неинициализированной переменной приводит к ошибке во время выполнения программы.</P>
+			<P>Некорректно:</P>
+			<DIV id="E4CAC"><TABLE class="code" width="98%"><TR><TD><PRE>
+omp_lock_t myLock;
+<SPAN class="KEYWORD">#pragma</SPAN> omp parallel num_threads(2)
+{                
+  ...
+  omp_set_lock(&amp;myLock);
+  ...
+}
+</PRE></TD></TR></TABLE></DIV>
+			<P>Корректно:</P>
+			<DIV id="EEDAC"><TABLE class="code" width="98%"><TR><TD><PRE>
+omp_lock_t myLock;
+omp_init_lock(&amp;myLock);
+<SPAN class="KEYWORD">#pragma</SPAN> omp parallel num_threads(2)
+{                
+  ...
+  omp_set_lock(&amp;myLock);
+  ...
+}
+</PRE></TD></TR></TABLE></DIV>
+		
+		<H3>9. Попытка снять блокировку не из того потока, который ее установил<A name="EKDAC"></A></H3>
+			<P>Если блокировка установлена одним потоком, попытка ее снятия из другого потока может привести к непредсказуемым результатам [<A href="http://www.viva64.com/go.php?url=102" class="link-ext" target="_blank">3</A>]. Рассмотрим пример:</P>
+			<P>Некорректно:</P>
+			<DIV id="EWDAC"><TABLE class="code" width="98%"><TR><TD><PRE>
+omp_lock_t myLock;
+omp_init_lock(&amp;myLock);
+<SPAN class="KEYWORD">#pragma</SPAN> omp parallel sections
+{                
+  <SPAN class="KEYWORD">#pragma</SPAN> omp section
+  {
+    ...
+    omp_set_lock(&amp;myLock);
+    ...
+  }
+  <SPAN class="KEYWORD">#pragma</SPAN> omp section
+  {
+    ...
+    omp_unset_lock(&amp;myLock);
+    ...
+  }
+}
+</PRE></TD></TR></TABLE></DIV>
+			<P>В C++ этот код приводит к ошибке во время выполнения программы. Поскольку операции установки и снятия блокировки по сути аналогичны входу в критическую секцию и выходу из нее, каждый из использующих блокировку потоков должен выполнять обе операции. Корректная версия кода будет выглядеть следующим образом:</P>
+			<P>Корректно:</P>
+			<DIV id="EDEAC"><TABLE class="code" width="98%"><TR><TD><PRE>
+omp_lock_t myLock;
+omp_init_lock(&amp;myLock);
+<SPAN class="KEYWORD">#pragma</SPAN> omp parallel sections
+{                
+  <SPAN class="KEYWORD">#pragma</SPAN> omp section
+  {
+    ...
+    omp_set_lock(&amp;myLock);
+    ...
+    omp_unset_lock(&amp;myLock);
+    ...
+  }
+  <SPAN class="KEYWORD">#pragma</SPAN> omp section
+  {
+    ...
+    omp_set_lock(&amp;myLock);
+    ...
+    omp_unset_lock(&amp;myLock);
+    ...
+  }
+}
+</PRE></TD></TR></TABLE></DIV>
+		
+		<H3>10. Попытка использования блокировки как барьера<A name="ENEAC"></A></H3>
+			<P>Функция omp_set_lock блокирует выполнение потока до тех пор, пока переменная, использующаяся для блокировки, не станет доступна, то есть до тех пор, пока тот же самый поток не вызовет функцию omp_unset_lock. Следовательно, как уже говорилось в описании предыдущей ошибки, каждый поток должен содержать вызовы обеих функций. Однако начинающий программист, недостаточно хорошо понимающий принципы работы OpenMP, может попытаться использовать функцию omp_set_lock в качестве барьера, то есть вместо директивы #pragma omp barrier (эту директиву нельзя использовать внутри параллельных секций, к которым применяется директива #pragma omp sections). В результате возникнет следующий код.</P>
+			<P>Некорректно:  </P>
+			<DIV id="EUEAC"><TABLE class="code" width="98%"><TR><TD><PRE>
+omp_lock_t myLock;
+omp_init_lock(&amp;myLock);
+<SPAN class="KEYWORD">#pragma</SPAN> omp parallel sections
+{                
+  <SPAN class="KEYWORD">#pragma</SPAN> omp section
+  {    
+    ...
+    omp_set_lock(&amp;myLock);
+    ...
+  }
+  <SPAN class="KEYWORD">#pragma</SPAN> omp section
+  {
+    ...
+    omp_set_lock(&amp;myLock);
+    omp_unset_lock(&amp;myLock);
+    ...
+  }
+}
+</PRE></TD></TR></TABLE></DIV>
+			<P>В результате выполнения этого фрагмента кода программа иногда будет зависать, а иногда – выполняться нормально. Зависеть это будет от того, какой поток завершается последним. Если последним будет завершаться поток, в котором выполняется блокировка переменной без ее освобождения, программа будет выдавать ожидаемый результат. Во всех остальных случаях будет возникать бесконечное ожидание освобождения переменной, захваченной потоком, работающим с переменной некорректно. Аналогичная ситуация будет возникать и при использовании функции omp_test_lock в цикле (а именно так эту функцию обычно и используют). В этом случае поток будет бесконечно «топтаться на месте», так и не дождавшись освобождения переменной.</P>
+			<P>Поскольку данная ошибка аналогична предыдущей, корректный вариант кода будет выглядеть так же.</P>
+			<P>Корректно:</P>
+			<DIV id="EDFAC"><TABLE class="code" width="98%"><TR><TD><PRE>
+omp_lock_t myLock;
+omp_init_lock(&amp;myLock);
+<SPAN class="KEYWORD">#pragma</SPAN> omp parallel sections
+{                
+  <SPAN class="KEYWORD">#pragma</SPAN> omp section
+  {
+    ...
+    omp_set_lock(&amp;myLock);
+    ...
+    omp_unset_lock(&amp;myLock);
+    ...
+  }
+  <SPAN class="KEYWORD">#pragma</SPAN> omp section
+  {
+    ...
+    omp_set_lock(&amp;myLock);
+    ...
+    omp_unset_lock(&amp;myLock);
+    ...
+  }
+}
+</PRE></TD></TR></TABLE></DIV>
+		
+		<H3>11. Зависимость поведения от количества потоков<A name="ENFAC"></A></H3>
+			<P>Количество параллельных потоков, создаваемых при выполнении приложения, в общем случае не является постоянной величиной. По умолчанию оно, как правило, равняется числу установленных на компьютере процессоров. Однако число потоков может также задаваться программистом вручную (например, с помощью функции omp_set_num_threads, или выражения num_threads, которое имеет больший приоритет, чем эта функция). Помимо указанной функции и выражения, существует еще и переменная среды OMP_NUM_THREADS, имеющая наименьший приоритет. Следовательно, число потоков является весьма ненадежным числом, к тому же значение этого числа по умолчанию может оказаться разным на разных компьютерах. Поведение вашего кода ни в коем случае не должно зависеть от количества выполняющих его потоков, если только вы не уверены до конца в том, что вам это действительно нужно.Рассмотрим пример некорректного кода, взятый из статьи [<A href="http://www.viva64.com/go.php?url=104" class="link-ext" target="_blank">5</A>]. Приведенная ниже программа должна по замыслу программиста вывести на экран все буквы английского алфавита.Некорректно:</P>
+			<DIV id="EXFAC"><TABLE class="code" width="98%"><TR><TD><PRE>
+omp_set_num_threads(4);
+<SPAN class="KEYWORD">#pragma</SPAN> omp parallel <SPAN class="KEYWORD">private</SPAN>(i)
+{
+<SPAN class="KEYWORD">  int</SPAN> lettersPerThread = 26 / omp_get_num_threads();
+<SPAN class="KEYWORD">  int</SPAN> thisThreadNum = omp_get_thread_num();
+<SPAN class="KEYWORD">  int</SPAN> startLetter = 'a' + thisThreadNum * lettersPerThread;
+<SPAN class="KEYWORD">  int</SPAN> endLetter = 'a' + thisThreadNum * lettersPerThread + lettersPerThread;
+<SPAN class="KEYWORD">  for</SPAN> (<SPAN class="KEYWORD">int</SPAN> i = startLetter; i &lt; endLetter; i++)
+    printf(<SPAN class="STRING">"%c"</SPAN>, i);
+}
+</PRE></TD></TR></TABLE></DIV>
+			<P>На практике, однако, будет выведено только 24 буквы из 26. Причина проблемы заключается в том, что 26 (число букв) делится на 4 (число потоков) с остатком. Следовательно, оставшиеся две буквы не будут выведены на экран. В качестве исправления можно либо отказаться от использования количества потоков в вычислениях и переписать код иначе, либо распределить вычисления на корректное число потоков (например, 2). Допустим, программист решил отказаться от использования количества потоков в своих вычислениях и возложить распределение работы между потоками на компилятор. В этом случае исправленная версия кода будет иметь следующий вид.Корректно:</P>
+			<DIV id="EOGAC"><TABLE class="code" width="98%"><TR><TD><PRE>
+omp_set_num_threads(4);
+<SPAN class="KEYWORD">#pragma</SPAN> omp parallel <SPAN class="KEYWORD">for</SPAN>
+<SPAN class="KEYWORD">for</SPAN> (<SPAN class="KEYWORD">int</SPAN> i = 'a'; i &lt;= 'z'; i++)
+{
+  printf (<SPAN class="STRING">"%c"</SPAN>, i);
+}
+</PRE></TD></TR></TABLE></DIV>
+			<P>Все итерации будут гарантированно выполнены. Если необходимо задать способ распределения итераций между потоками, можно воспользоваться выражением schedule. Распределением работы между потоками теперь занимается компилятор, и он не забудет про две «лишние» итерации. К тому же, код оказался намного короче и понятнее.</P>
+		
+		<H3>12. Некорректное использование динамического создания потоков<A name="E5GAC"></A></H3>
+			<P>В OpenMP слово dynamic встречается в двух контекстах: в выражении schedule(dynamic) и в переменной среды OMP_DYNAMIC, что вносит некоторую путаницу. Важно понимать разницу между этими двумя случаями и не считать, что выражением schedule(dynamic) можно пользоваться, только если переменная OMP_DYNAMIC имеет значение true. На самом деле эти случаи никак друг с другом не связаны.</P>
+			<P>Выражение schedule(dynamic) означает, что поделенные на куски (chunks) итерации цикла будут распределяться между потоками динамически – освободившись, поток будет брать следующую «порцию». В частности, в предыдущем примере это означало бы, что каждый из четырех потоков выведет по 6 букв, после чего тот поток, который освободится первым, выведет последние 2 буквы.</P>
+			<P>Переменная OMP_DYNAMIC задает возможность динамического определения числа потоков компилятором. Проблема заключается в том, что эта переменная имеет больший приоритет, чем даже выражение num_threads. Следовательно, если выполнение кода как-то зависит от количества выполняющих его потоков, поведение может стать некорректным, и это еще один аргумент в пользу того, чтобы не писать зависящий от количества потоков код.Опыт показывает, что в Visual Studio 2008 переменная OMP_DYNAMIC по умолчанию имеет значение false. Однако нет никаких гарантий, что это не изменится в будущем. В спецификации OpenMP [<A href="http://www.viva64.com/go.php?url=102" class="link-ext" target="_blank">3</A>] сказано, что значение этой переменной зависит от конкретной реализации. Следовательно, если в предыдущем примере программист решил пойти по легкому пути и все же использовать в своих вычислениях число потоков вместо того, чтобы переписывать код, ему следует позаботиться о том, чтобы это число потоков было именно таким, как он указал. В противном случае на четырехпроцессорной машине код начнет работать некорректно.</P>
+			<P>Корректно:</P>
+			<DIV id="EOHAC"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+if</SPAN> (omp_get_dynamic())
+  omp_set_dynamic(0);
+omp_set_num_threads(2);
+<SPAN class="KEYWORD">#pragma</SPAN> omp parallel <SPAN class="KEYWORD">private</SPAN>(i)
+{
+<SPAN class="KEYWORD">  int</SPAN> LettersPerThread = 26 / omp_get_num_threads();
+<SPAN class="KEYWORD">  int</SPAN> ThisThreadNum = omp_get_thread_num();
+<SPAN class="KEYWORD">  int</SPAN> StartLetter = 'a' + ThisThreadNum * LettersPerThread;
+<SPAN class="KEYWORD">  int</SPAN> EndLetter = 'a' + ThisThreadNum * LettersPerThread + LettersPerThread;
+<SPAN class="KEYWORD">  for</SPAN> (i=StartLetter; i&lt;EndLetter; i++)
+    printf (<SPAN class="STRING">"%c"</SPAN>, i);
+}
+</PRE></TD></TR></TABLE></DIV>
+		
+		<H3>13. Одновременное использование общего ресурса<A name="EEIAC"></A></H3>
+			<P>Если бы в предыдущем примере вывод производился не по одной букве в произвольном порядке, а хотя бы по две, проявилась бы еще одна проблема параллельного программирования – одновременное использование общего ресурса (которым в данном случае является консольное окно). Рассмотрим слегка измененный пример из статьи [<A href="http://www.viva64.com/go.php?url=105" class="link-ext" target="_blank">6</A>].</P>
+			<P>Некорректно:</P>
+			<DIV id="EQIAC"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+#pragma</SPAN> omp parallel num_threads(2)
+{ 
+    printf(<SPAN class="STRING">"Hello World\n"</SPAN>);
+}
+</PRE></TD></TR></TABLE></DIV>
+			<P>Вопреки ожиданиям программиста, на двухпроцессорной машине этот код, скорее всего, выведет нечто вроде следующих двух строчек:</P>
+			<DIV id="EZIAC"><TABLE class="code" width="98%"><TR><TD><PRE>
+HellHell oo WorWlodrl
+d
+</PRE></TD></TR></TABLE></DIV>
+			<P>Причина такого поведения заключается в том, что операция вывода строки на экран не является атомарной. Следовательно, два потока будут выводить свои символы одновременно. Та же самая ситуация возникнет при использовании стандартного потока вывода cout, а также любого другого объекта, доступного обоим потокам. </P>
+			<P>Если возникает необходимость выполнить какое-либо действие, изменяющее состояние такого объекта, из двух потоков, необходимо позаботиться о том, чтобы это действие выполнялось только одним из потоков в каждый момент времени. Для этого можно использовать директиву critical или блокировку (о том, что именно предпочтительнее с точки зрения производительности, будет рассказано ниже).</P>
+			<P>Корректно:</P>
+			<DIV id="EBJAC"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+#pragma</SPAN> omp parallel num_threads(2)
+{ 
+  <SPAN class="KEYWORD">#pragma</SPAN> omp critical
+  {
+    printf(<SPAN class="STRING">"Hello World\n"</SPAN>);
+  }
+}
+</PRE></TD></TR></TABLE></DIV>
+		
+		<H3>14. Незащищенный доступ к общей памяти<A name="ELJAC"></A></H3>
+			<P>Эта ошибка описана в статье [<A href="http://www.viva64.com/go.php?url=100" class="link-ext" target="_blank">1</A>]. По своей сути она аналогична предыдущей – если несколько потоков одновременно изменяют значение переменной, результат может быть непредсказуемым. Однако эта ошибка все же рассматривается отдельно от предыдущей, потому что в этом случае решение будет несколько иным. Поскольку операция над переменной может быть атомарной, в целях оптимизации быстродействия лучше использовать директиву atomic. Подробные рекомендации по поводу того, какой именно способ лучше использовать для защиты общей памяти, будут приведены ниже.</P>
+			<P>Некорректно:</P>
+			<DIV id="EXJAC"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+int</SPAN> a = 0;
+<SPAN class="KEYWORD">#pragma</SPAN> omp parallel
+{ 
+    a++;
+}
+</PRE></TD></TR></TABLE></DIV>
+			<P>Корректно:</P>
+			<DIV id="EAKAC"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+int</SPAN> a = 0;
+<SPAN class="KEYWORD">#pragma</SPAN> omp parallel
+{ 
+<SPAN class="KEYWORD">  #pragma</SPAN> omp atomic
+    a++;
+}
+</PRE></TD></TR></TABLE></DIV>
+			<P>Еще одно возможное решение – использовать выражение reduction. В этом случае каждый поток получит собственную копию переменной a, выполнит с ней все необходимые действия, а затем произведет указанную операцию, чтобы объединить получившиеся значения с исходным.</P>
+			<P>Корректно:</P>
+			<DIV id="ENKAC"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+int</SPAN> a = 0;
+<SPAN class="KEYWORD">#pragma</SPAN> omp parallel reduction(+:a)
+{ 
+    a++;
+}
+printf(<SPAN class="STRING">"a=%d\n"</SPAN>, a); 
+</PRE></TD></TR></TABLE></DIV>
+			<P>При таком изменении кода в случае двух потоков будет выведена строка "a=2".</P>
+		
+		<H3>15. Использование директивы flush с указателем<A name="EZKAC"></A></H3>
+			<P>Директива flush служит для того, чтобы потоки обновили значения общих переменных. Например, если один поток установил значение доступной обоим потокам общей переменной а, равное 1, это не гарантирует, что другой поток, обратившись к той же переменной, получит значение 1. Еще раз подчеркнем, что данная директива обновляет именно значения переменных. Если в коде имеется доступный обоим потокам указатель на какой-либо объект, вызов директивы flush обновит только значение этого указателя, но не состояние объекта. Более того, в стандарте OpenMP [<A href="http://www.viva64.com/go.php?url=102" class="link-ext" target="_blank">3</A>] явно сказано, что переменная-аргумент директивы flush не должна быть указателем.</P>
+			<P>Некорректно:</P>
+			<DIV id="EFLAC"><TABLE class="code" width="98%"><TR><TD><PRE>
+MyClass* mc = <SPAN class="KEYWORD">new</SPAN> MyClass();
+<SPAN class="KEYWORD">#pragma</SPAN> omp parallel sections
+{
+  <SPAN class="KEYWORD">#pragma</SPAN> omp section
+  {
+    <SPAN class="KEYWORD">#pragma</SPAN> omp flush(mc)
+    mc-&gt;myFunc();
+    <SPAN class="KEYWORD">#pragma</SPAN> omp flush(mc)
+  }
+  <SPAN class="KEYWORD">#pragma</SPAN> omp section
+  {
+    <SPAN class="KEYWORD">#pragma</SPAN> omp flush(mc)
+    mc-&gt;myFunc();
+    <SPAN class="KEYWORD">#pragma</SPAN> omp flush(mc)
+  }
+}
+</PRE></TD></TR></TABLE></DIV>
+			<P>На самом деле этот код содержит две ошибки – уже упоминавшуюся ранее одновременную работу с общим объектом и использование flush с указателем. Следовательно, если метод myFunc изменяет состояние объекта, результат выполнения этого кода будет непредсказуемым. Чтобы исправить эти ошибки, достаточно избавиться от одновременного использования общего объекта. Дело в том, что директива flush неявно выполняется при входе в критическую секцию и при выходе из нее (об этом будет подробнее рассказано позднее).</P>
+			<P>Корректно:</P>
+			<DIV id="E3LAC"><TABLE class="code" width="98%"><TR><TD><PRE>
+MyClass* mc = <SPAN class="KEYWORD">new</SPAN> MyClass();
+<SPAN class="KEYWORD">#pragma</SPAN> omp parallel sections
+{
+  <SPAN class="KEYWORD">#pragma</SPAN> omp section
+  {
+    <SPAN class="KEYWORD">#pragma</SPAN> omp critical
+    {
+      mc-&gt;myFunc();
+    }
+  }
+  <SPAN class="KEYWORD">#pragma</SPAN> omp section
+  {
+    <SPAN class="KEYWORD">#pragma</SPAN> omp critical
+    {
+      mc-&gt;myFunc();
+    }
+  }
+}
+</PRE></TD></TR></TABLE></DIV>
+		
+		<H3>16. Отсутствие директивы flush<A name="EMMAC"></A></H3>
+			<P>Согласно спецификации OpenMP [<A href="http://www.viva64.com/go.php?url=102" class="link-ext" target="_blank">3</A>], эта директива неявно выполняется во многих случаях (полный список этих случаев будет приведен ниже, в описании одной из ошибок производительности). Понадеявшись на это, программист может не использовать эту директиву там, где она действительно необходима. Директива flush не выполняется в следующих случаях:</P>
+			<UL style="LIST-STYLE:square"><LI>При входе в параллельную секцию директивы for.</LI>
+				<LI>При входе и при выходе из секции директивы master.</LI>
+				<LI>При входе в параллельную секцию директивы sections. </LI>
+				<LI>При входе в секцию директивы single.</LI>
+				<LI>При выходе из секции директивы for, single или sections, если к директиве применено выражение nowait (вместе с неявным барьером эта директива убирает и неявную директиву flush).</LI>
+			</UL>
+			<P>Некорректно:</P>
+			<DIV id="EENAC"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+int</SPAN> i = 0;
+<SPAN class="KEYWORD">#pragma</SPAN> omp parallel num_threads(2)
+{
+  a++;
+  <SPAN class="KEYWORD">#pragma</SPAN> omp single
+  {
+    cout &lt;&lt; a &lt;&lt; endl;
+  }
+}
+</PRE></TD></TR></TABLE></DIV>
+			<P>Корректно:</P>
+			<DIV id="EPNAC"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+int</SPAN> i = 0;
+<SPAN class="KEYWORD">#pragma</SPAN> omp parallel num_threads(2)
+{
+  a++;
+  <SPAN class="KEYWORD">#pragma</SPAN> omp single
+  {
+    <SPAN class="KEYWORD">#pragma</SPAN> omp flush(a)
+    cout &lt;&lt; a &lt;&lt; endl;
+  }
+}
+</PRE></TD></TR></TABLE></DIV>
+			<P>Вторая версия кода учитывает необходимость применения директивы flush, однако она тоже не идеальна – ей не хватает синхронизации.</P>
+		
+		<H3>17. Отсутствие синхронизации<A name="E4NAC"></A></H3>
+			<P>Помимо необходимости применения директивы flush, программист должен помнить еще и о синхронизации потоков, не полагаясь при этом на OpenMP. </P>
+			<P>Исправленная версия кода из предыдущего примера отнюдь не гарантирует, что в консольное окно будет выведено число «2». Да, выполняющий секцию поток выведет значение переменной а, актуальное на момент вывода. Однако нет никакой гарантии того, что потоки войдут в секцию single одновременно. В общем случае может быть взято как значение «1», так и «2». Такое поведение вызвано отсутствием синхронизации потоков. Директива single означает лишь то, что соответствующая секция должна быть выполнена одним потоком. А этим потоком с равной вероятностью может оказаться и тот, который завершился первым. Тогда на экран будет выведена цифра «1». Аналогичная ошибка описана в статье [<A href="http://www.viva64.com/go.php?url=106" class="link-ext" target="_blank">7</A>].</P>
+			<P>Неявная синхронизация потоков в виде директивы barrier выполняется только при выходе из секции директивы for, single или sections, если к директиве не применено выражение nowait, которое отменяет неявную синхронизацию. Во всех остальных случаях программист должен заботиться о синхронизации сам.</P>
+			<P>Корректно:</P>
+			<DIV id="ENOAC"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+int</SPAN> i = 0;
+<SPAN class="KEYWORD">#pragma</SPAN> omp parallel num_threads(2)
+{
+  a++;
+  <SPAN class="KEYWORD">#pragma</SPAN> omp barrier  
+  <SPAN class="KEYWORD">#pragma</SPAN> omp single
+  {
+    cout&lt;&lt;a&lt;&lt;endl;
+  }
+}
+</PRE></TD></TR></TABLE></DIV>
+			<P>Эта версия кода является полностью корректной – на экран всегда будет выведена цифра «2». Отметим, что в этой версии кода директива flush отсутствует – она неявно включена в директиву barrier. </P>
+			<P>Теперь рассмотрим еще один весьма интересный пример отсутствия синхронизации, взятый из MSDN [<A href="http://www.viva64.com/go.php?url=107" class="link-ext" target="_blank">8</A>].</P>
+			<P>Некорректно:</P>
+			<DIV id="EDPAC"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+struct</SPAN> MyType 
+{
+  ~MyType();
+};
+
+MyType threaded_var;
+<SPAN class="KEYWORD">#pragma</SPAN> omp threadprivate(threaded_var)
+<SPAN class="KEYWORD">int</SPAN> main() 
+{
+  <SPAN class="KEYWORD">#pragma</SPAN> omp parallel
+  {
+    ...
+  }
+}
+</PRE></TD></TR></TABLE></DIV>
+			<P>Проблема здесь заключается в том, что при завершении параллельной секции не выполняется синхронизация. В результате на момент завершения процесса некоторые из потоков могут еще существовать, и они не получат извещения о том, что процесс завершен. Реально деструктор для переменной threaded_var будет вызван только в главном потоке. Поскольку эта переменная является параметром директивы threadprivate, ее копии, созданные в других потоках, не будут уничтожены, и возникнет утечка памяти. Чтобы этого избежать, необходимо реализовать синхронизацию вручную.</P>
+			<P>Корректно:</P>
+			<DIV id="ESPAC"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+struct</SPAN> MyType 
+{
+  ~MyType();
+};
+
+MyType threaded_var;
+<SPAN class="KEYWORD">#pragma</SPAN> omp threadprivate(threaded_var)
+<SPAN class="KEYWORD">int</SPAN> main() 
+{
+  <SPAN class="KEYWORD">#pragma</SPAN> omp parallel
+  {
+    ...
+    <SPAN class="KEYWORD">#pragma</SPAN> omp barrier
+  }    
+}
+</PRE></TD></TR></TABLE></DIV>
+		
+		<H3>18. Внешняя переменная задана как threadprivate не во всех модулях<A name="EBAAE"></A></H3>
+			<P>Начиная с этой ошибки, мы переходим к самому неприятному виду ошибок – к ошибкам, связанным с моделью памяти OpenMP. В принципе, ошибки, связанные с одновременным доступом к общим переменным, тоже можно было бы отнести к этой категории, поскольку они касаются переменных, являющихся аргументами выражения shared (все глобальные переменные в OpenMP считаются shared по умолчанию). </P>
+			<P>Прежде чем перейти к рассмотрению конкретных ошибок отметим, что практически все они, так или иначе, связаны с переменными, являющимися параметрами выражения private (а также его вариаций – директивы threadprivate и выражений firstprivate и lastprivate). Большинства этих ошибок можно избежать, если отказаться от использования директивы threadprivate и выражения private, и вместо этого просто объявлять соответствующие переменные как локальные переменные в параллельных секциях.</P>
+			<P>Теперь, когда вы предупреждены, перейдем к рассмотрению конкретных ошибок. Начнем с директивы threadprivate. Эта директива применяется, как правило, к глобальным переменным, в том числе и к внешним переменным, объявленным в другом модуле. В этом случае директива должна быть применена к переменной во всех модулях, в которых она встречается. Это правило описано в уже упомянутой выше статье MSDN [<A href="http://www.viva64.com/go.php?url=107" class="link-ext" target="_blank">8</A>].</P>
+			<P>Частным случаем этого правила является другое правило, приведенное в той же статье: директиву threadprivate нельзя применять к переменным, объявленным в динамически подключаемой библиотеке, которая будет загружаться с помощью функции LoadLibrary или ключа линковщика /DELAYLOAD (в этом случае функция LoadLibrary используется неявно).</P>
+		
+		<H3>19. Неинициализированные локальные переменные<A name="ESAAE"></A></H3>
+			<P>При входе в поток для переменных, являющихся параметрами директивы threadprivate, а также выражений private и lastprivate, создаются локальные копии. Эти копии являются неинициализированными по умолчанию. Следовательно, любая попытка работы с ними без предварительной инициализации приведет к ошибке во время выполнения программы.</P>
+			<P>Некорректно:</P>
+			<DIV id="EZAAE"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+int</SPAN> a = 0;
+<SPAN class="KEYWORD">#pragma</SPAN> omp parallel <SPAN class="KEYWORD">private</SPAN>(a)
+{
+  a++;
+}
+</PRE></TD></TR></TABLE></DIV>
+			<P>Корректно:</P>
+			<DIV id="EEBAE"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD">
+int</SPAN> a = 0;
+<SPAN class="KEYWORD">#pragma</SPAN> omp parallel <SPAN class="KEYWORD">private</SPAN>(a)
+{
+  a = 0;
+  a++;
+}
+</PRE></TD></TR></TABLE></DIV>
+			<P>Синхронизация и директива flush в данном случае не нужны, так как каждый поток обладает собственной копией переменной.</P>
+		
+		<H3>20. Забытая директива threadprivate<A name="EQBAE"></A></H3>
+			<P>О директиве threadprivate легко забыть – например, когда возникает необходимость что-то изменить в большом модуле, созданном полгода назад, поскольку она применяется к переменной лишь единожды, и обычно используется для глобальных переменных, объявленных в начале модуля. В результате глобальная переменная, вопреки ожиданиям программиста, может оказаться не общей, как должно быть по умолчанию, а локальной для потока. Согласно спецификации OpenMP [<A href="http://www.viva64.com/go.php?url=102" class="link-ext" target="_blank">3</A>], значения таких переменных после соответствующей параллельной секции являются непредсказуемыми.</P>
+			<P>Некорректно:</P>
+			<DIV id="E3BAE"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+int</SPAN> a;
+<SPAN class="KEYWORD">#pragma</SPAN> omp threadprivate(a)  
+
+<SPAN class="KEYWORD">int</SPAN> _tmain(<SPAN class="KEYWORD">int</SPAN> argc, _TCHAR* argv[])
+{
+  ...
+  a = 0;
+<SPAN class="KEYWORD">  #pragma</SPAN> omp parallel
+  { 
+    <SPAN class="KEYWORD">#pragma</SPAN> omp sections
+    {
+      <SPAN class="KEYWORD">#pragma</SPAN> omp section 
+      {
+        a += 3;
+      }
+      <SPAN class="KEYWORD">#pragma</SPAN> omp section
+      {
+        a += 3;
+      }
+    }
+    <SPAN class="KEYWORD">#pragma</SPAN> omp barrier
+  }
+  cout &lt;&lt; <SPAN class="STRING">"a = "</SPAN> &lt;&lt; a &lt;&lt; endl;
+}
+</PRE></TD></TR></TABLE></DIV>
+			<P>Поведение приведенной выше программы будет полностью соответствовать документации – иногда в консольное окно будет выводиться число «6» – то самое значение, которое ожидает программист, а иногда – «0», что, в принципе, более логично, так как именно это значение было присвоено переменной до входа в параллельную секцию. Теоретически, такое же поведение должно наблюдаться, если вместо директивы threadprivate режим доступа к переменной "а" будет определяться выражениями private или firstprivate. Но на практике с компилятором среды Visual Studio 2008 описанное поведение удалось воспроизвести только с директивой threadprivate, именно поэтому этот пример и приведен в данной статье. К тому же такой вариант наиболее вероятен. Тем не менее, это не означает, что в других реализациях поведение будет корректным, поэтому следует учитывать и другие два варианта.</P>
+			<P>К сожалению, посоветовать хорошее решение в данном случае трудно, так как отказ от директивы threadprivate изменит поведение кода в других участках программы, а передать переменную, указанную в этой директиве, в выражение shared нельзя по правилам синтаксиса OpenMP. Единственное, что можно посоветовать в этой ситуации – использовать другую переменную.</P>
+			<P>Корректно:</P>
+			<DIV id="EZCAE"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+int</SPAN> a;
+<SPAN class="KEYWORD">#pragma</SPAN> omp threadprivate(a)  
+
+<SPAN class="KEYWORD">int</SPAN> _tmain(<SPAN class="KEYWORD">int</SPAN> argc, _TCHAR* argv[])
+{
+  ...
+  a = 0;
+  <SPAN class="KEYWORD">int</SPAN> b = a;
+  <SPAN class="KEYWORD">#pragma</SPAN> omp parallel
+  {        
+    <SPAN class="KEYWORD">#pragma</SPAN> omp sections
+    {
+      <SPAN class="KEYWORD">#pragma</SPAN> omp section 
+      {
+        b += 3;
+      }
+      <SPAN class="KEYWORD">#pragma</SPAN> omp section
+      {
+        b += 3;
+      }
+    }
+    <SPAN class="KEYWORD">#pragma</SPAN> omp barrier
+  }
+  a = b;
+  cout &lt;&lt; <SPAN class="STRING">"a = "</SPAN> &lt;&lt; a &lt;&lt; endl;
+}
+</PRE></TD></TR></TABLE></DIV>
+			<P>В этой версии кода переменная "a" как бы становится общей на время выполнения определенной параллельной секции. Конечно, это решение не является лучшим, но зато оно гарантирует, что старый код не изменит своего поведения.</P>
+			<P>В общем случае начинающим программистам рекомендуется использовать выражение default(none), которое заставит явно указывать режим доступа ко всем используемым в параллельной секции переменным. Это, конечно, потребует написания большего количества кода, но в результате удастся избежать многих ошибок, к тому же, код станет более понятным.</P>
+		
+		<H3>21. Забытое выражение private<A name="EXDAE"></A></H3>
+			<P>Возьмем сценарий, аналогичный предыдущему случаю – программисту требуется изменить что-то в модуле, написанном некоторое время назад, и выражение, определяющее режим доступа к переменной, находится достаточно далеко от того фрагмента кода, который должен быть изменен.</P>
+			<P>Некорректно:</P>
+			<DIV id="E5DAE"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+int</SPAN> a;
+<SPAN class="KEYWORD">#pragma</SPAN> omp parallel <SPAN class="KEYWORD">private</SPAN>(a)
+{
+  ...
+  a = 0;
+<SPAN class="KEYWORD">  #pragma</SPAN> omp <SPAN class="KEYWORD">for</SPAN>
+<SPAN class="KEYWORD">  for</SPAN> (<SPAN class="KEYWORD">int</SPAN> i = 0; i &lt; 10; i++)
+  {
+    a++;
+  }
+<SPAN class="KEYWORD">  #pragma</SPAN> omp critical
+  {
+    cout &lt;&lt; <SPAN class="STRING">"a = "</SPAN> &lt;&lt; a;
+  }
+}
+</PRE></TD></TR></TABLE></DIV>
+			<P>На первый взгляд может показаться, что эта ошибка эквивалентна предыдущей, но это не так. В предыдущем случае вывод производился после параллельной секции, а здесь значение переменной берется внутри параллельной секции. В результате, если значение переменной перед циклом равно нулю, в случае двухпроцессорной машины вместо ожидаемого числа «10» в консольное окно будет выведено число «5», потому что работа будет разделена пополам между потоками. Следовательно, каждый поток увеличит свое локальное значение переменной a лишь пять раз вместо ожидаемых десяти раз. Более того, значение переменной, получается, будет зависеть от количества потоков, выполняющих код параллельной секции. Кстати, эта ошибка возникнет и в случае использования выражения firstprivate вместо private.</P>
+			<P>Возможные пути исправления ошибки аналогичны предыдущей ситуации – нужно либо существенно переделывать весь старый код, либо подгонять поведение нового кода под поведение старого. В данном случае второе решение получается более элегантным, чем в предыдущем.</P>
+			<P>Корректно:</P>
+			<DIV id="EZEAE"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+int</SPAN> a;
+<SPAN class="KEYWORD">#pragma</SPAN> omp parallel <SPAN class="KEYWORD">private</SPAN>(a)
+{
+  ...
+  a = 0;
+<SPAN class="KEYWORD">  #pragma</SPAN> omp parallel <SPAN class="KEYWORD">for</SPAN>
+<SPAN class="KEYWORD">  for</SPAN> (<SPAN class="KEYWORD">int</SPAN> i = 0; i &lt; 10; i++)
+  {
+    a++;
+  }
+<SPAN class="KEYWORD">  #pragma</SPAN> omp critical
+  {
+    cout &lt;&lt; <SPAN class="STRING">"a = "</SPAN> &lt;&lt; a;
+  }
+}
+</PRE></TD></TR></TABLE></DIV>
+		
+		<H3>22. Некорректное распараллеливание работы с локальными переменными<A name="EPFAE"></A></H3>
+			<P>Данная ошибка аналогична предыдущей и также является, по сути, противоположностью ошибки «Ненужное разделение на потоки». В данном случае, однако, к ошибке может привести несколько иной сценарий.</P>
+			<P>Некорректно:</P>
+			<DIV id="EWFAE"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+int</SPAN> a;
+<SPAN class="KEYWORD">#pragma</SPAN> omp parallel <SPAN class="KEYWORD">private</SPAN>(a)
+{
+  a = 0;
+  <SPAN class="KEYWORD">#pragma</SPAN> omp barrier
+  <SPAN class="KEYWORD">#pragma</SPAN> omp sections 
+  {  
+    <SPAN class="KEYWORD">#pragma</SPAN> omp section
+    {
+      a+=100;    
+    }    
+    <SPAN class="KEYWORD">#pragma</SPAN> omp section
+    {      
+      a+=1;
+    }
+  }  
+  <SPAN class="KEYWORD">#pragma</SPAN> omp critical
+  {
+    cout &lt;&lt; <SPAN class="STRING">"a = "</SPAN> &lt;&lt; a &lt;&lt; endl;
+  }
+}
+</PRE></TD></TR></TABLE></DIV>
+			<P>В данном случае программист хотел увеличить значение локальной копии переменной в каждом из потоков на 101 и для этого использовал директиву sections. Однако, поскольку в директиве отсутствовало слово parallel, дополнительного распараллеливания не произошло. Работа распределяется на те же потоки. В результате на двухпроцессорной машине один поток выведет «1», а другой выведет «100». При большем количестве потоков результаты будут еще более неожиданными для программиста. Отметим, что если бы переменная "а" не была локальной (private), такой код был бы вполне корректным. Однако в случае локальной переменной секции необходимо распараллелить дополнительно.</P>
+			<P>Корректно:</P>
+			<DIV id="EPGAE"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+int</SPAN> a;
+<SPAN class="KEYWORD">#pragma</SPAN> omp parallel <SPAN class="KEYWORD">private</SPAN>(a)
+{
+  a = 0;
+  <SPAN class="KEYWORD">#pragma</SPAN> omp barrier
+  <SPAN class="KEYWORD">#pragma</SPAN> omp parallel sections 
+  {  
+    <SPAN class="KEYWORD">#pragma</SPAN> omp section
+    {      
+      a+=100;    
+    }    
+    <SPAN class="KEYWORD">#pragma</SPAN> omp section
+    {      
+      a+=1;
+    }
+  }  
+  <SPAN class="KEYWORD">#pragma</SPAN> omp critical
+  {
+    cout&lt;&lt;<SPAN class="STRING">"a = "</SPAN>&lt;&lt;a&lt;&lt;endl;
+  }
+}
+</PRE></TD></TR></TABLE></DIV>
+		
+		<H3>23. Неосторожное применение lastprivate<A name="EFHAE"></A></H3>
+			<P>Это выражение уже упоминалось в предыдущей ошибке, касавшейся выражения reduction. Теперь же рассмотрим эту директиву отдельно. Напомним, что эта директива после параллельной секции присваивает переменной значение из лексически последней секции, либо из последней итерации цикла. Согласно спецификации, если переменной не присваивается значение в упомянутом фрагменте кода, ее значение после окончания соответствующей параллельной секции является неопределенным. Рассмотрим пример, аналогичный предыдущему.</P>
+			<P>Некорректно:</P>
+			<DIV id="EMHAE"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+int</SPAN> a = 1;
+<SPAN class="KEYWORD">#pragma</SPAN> omp parallel 
+{
+  <SPAN class="KEYWORD">#pragma</SPAN> omp sections lastprivate(a)
+  {  
+    <SPAN class="KEYWORD">#pragma</SPAN> omp section  
+    {        
+      ...
+      a = 10;
+    }  
+    <SPAN class="KEYWORD">#pragma</SPAN> omp section  
+    {    
+      ...
+    }
+  }
+<SPAN class="KEYWORD">  #pragma</SPAN> omp barrier
+}
+</PRE></TD></TR></TABLE></DIV>
+			<P>Такой код теоретически может привести к ошибке. На практике это воспроизвести не удалось. Однако это не значит, что ошибка не возникнет никогда.</P>
+			<P>Если уж программисту действительно необходимо использовать выражение lastprivate, он должен четко представлять себе, какое именно значение будет присвоено переменной после выполнения параллельной секции. Ведь в общем случае ошибка может заключаться и в том, что переменной после параллельной секции будет присваиваться не то значение, которое ожидает программист. Например, программист будет ожидать, что переменной присвоится значение из того потока, который выполнится последним, а не из того, который является последним лексически. Для исправления подобных ошибок достаточно просто поменять код секций местами.</P>
+			<P>Корректно:</P>
+			<DIV id="EBIAE"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+int</SPAN> a = 1;
+<SPAN class="KEYWORD">#pragma</SPAN> omp parallel 
+{
+  <SPAN class="KEYWORD">#pragma</SPAN> omp sections lastprivate(a)
+  {  
+    <SPAN class="KEYWORD">#pragma</SPAN> omp section  
+    {        
+      ...      
+    }  
+    <SPAN class="KEYWORD">#pragma</SPAN> omp section  
+    {    
+      ...
+      a = 10;
+    }
+  }
+<SPAN class="KEYWORD">#pragma</SPAN> omp barrier
+}
+</PRE></TD></TR></TABLE></DIV>
+		
+		<H3>24. Непредсказуемые значения threadprivate-переменных в начале параллельных секций<A name="ERIAE"></A></H3>
+			<P>Эта ошибка описана в спецификации OpenMP [<A href="http://www.viva64.com/go.php?url=102" class="link-ext" target="_blank">3</A>]. Если изменить значение переменной, объявленной как threadprivate, начальное значение переменной в параллельной секции окажется непредсказуемым.</P>
+			<P>К сожалению, пример, приведенный в спецификации, не компилируется в Visual Studio, потому что компилятор этой среды не поддерживает динамическую инициализацию переменных, фигурирующих в директиве threadprivate. Поэтому приведем свой собственный, менее сложный, пример.</P>
+			<P>Некорректно:</P>
+			<DIV id="E6IAE"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+int</SPAN> a = 5;
+<SPAN class="KEYWORD">#pragma</SPAN> omp threadprivate(a)
+
+<SPAN class="KEYWORD">int</SPAN> _tmain(<SPAN class="KEYWORD">int</SPAN> argc, _TCHAR* argv[])
+{
+  ...
+  a = 10;
+<SPAN class="KEYWORD">  #pragma</SPAN> omp parallel num_threads(2)
+  {
+    <SPAN class="KEYWORD">#pragma</SPAN> omp critical
+    {
+      printf(<SPAN class="STRING">"\nThread #%d: a = %d"</SPAN>, omp_get_thread_num(),a);
+    }
+  }
+  getchar();
+<SPAN class="KEYWORD">  return</SPAN> 0;
+}
+</PRE></TD></TR></TABLE></DIV>
+			<P>В результате выполнения этого кода один из потоков выведет значение 5, а другой выведет 10. Если убрать инициализацию переменной а до директивы threadprivate, один из потоков начнет выводить 0, а второй – по-прежнему 10. Избавиться от непредсказуемого поведения удастся, лишь убрав второе присваивание. В этом случае оба потока будут выводить значение 5 (если первое присваивание все же оставить). Конечно, такие исправления изменят поведение кода. Они описаны здесь лишь для того, чтобы более четко показать поведение OpenMP. Вывод здесь может быть только один: никогда не полагайтесь на компилятор в вопросах инициализации локальных переменных. В случае private и lastprivate попытка использования неинициализированных переменных вызовет уже описанную ранее ошибку во время выполнения программы, которую, по крайней мере, можно относительно легко локализовать. Но директива threadprivate, как видите, может давать непредсказуемые результаты без всяких ошибок. Вообще от использования этой директивы лучше всего отказаться. В этом случае код станет намного более предсказуемым и понятным.</P>
+			<P>Корректно:</P>
+			<DIV id="EWJAE"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+int</SPAN> a = 5;
+
+<SPAN class="KEYWORD">int</SPAN> _tmain(<SPAN class="KEYWORD">int</SPAN> argc, _TCHAR* argv[])
+{
+  ...
+  a = 10;
+<SPAN class="KEYWORD">  #pragma</SPAN> omp parallel num_threads(2)
+  {
+    <SPAN class="KEYWORD">int</SPAN> a = 10;
+    <SPAN class="KEYWORD">#pragma</SPAN> omp barrier
+    <SPAN class="KEYWORD">#pragma</SPAN> omp critical
+    {
+      printf(<SPAN class="STRING">"\nThread #%d: a = %d"</SPAN>, omp_get_thread_num(),a);
+    }
+  }
+  getchar();
+<SPAN class="KEYWORD">  return</SPAN> 0;
+}
+</PRE></TD></TR></TABLE></DIV>
+		
+		<H3>25. Некоторые ограничения локальных переменных<A name="EMKAE"></A></H3>
+			<P>В спецификации OpenMP приведено множество ограничений, касающихся локальных переменных. Некоторые из этих ограничений проверяются компилятором автоматически, однако есть и такие, которые не проверяются:</P>
+			<UL style="LIST-STYLE:square"><LI>Переменная в выражении private не должна иметь ссылочный тип.</LI>
+				<LI>Если переменная в выражении lastprivate является экземпляром класса, в этом классе должен быть определен конструктор копирования.</LI>
+				<LI>Переменная в выражении firstprivate не должна иметь ссылочный тип.</LI>
+				<LI>Если переменная в выражении firstprivate является экземпляром класса, в этом классе должен быть определен конструктор копирования.</LI>
+				<LI>Переменная в выражении threadprivate не должна иметь ссылочный тип.</LI>
+			</UL>
+			<P>Фактически, это два требования: </P>
+			<P>а) переменная не должна быть указателем;</P>
+			<P>б) если переменная является экземпляром класса, для нее должен быть определен конструктор копирования. </P>
+			<P>Причины этих ограничений вполне очевидны – если переменная будет указателем, каждый поток получит по локальной копии этого указателя, и в результате все потоки будут работать через него с общей памятью. Ограничение насчет конструктора копирования тоже весьма логично – если в классе имеется поле, хранящее ссылку, корректно скопировать такой объект почленно не получится, и в результате все потоки будут, опять же, работать с той же самой памятью.</P>
+			<P>Пример в данном случае займет много места и вряд ли необходим. Достаточно лишь запомнить общее правило. Если требуется создать локальную копию объекта, массива или какой бы то ни было области памяти, адресуемой по ссылке, то соответствующая ссылка должна оставаться общей переменной. Делать ее локальной бессмысленно. Содержимое памяти нужно либо копировать явно, либо (в случае объектов) доверить это компилятору, который использует конструктор копирования.</P>
+		
+		<H3>26. Локальные переменные не помечены как таковые<A name="EILAE"></A></H3>
+			<P>Данная ошибка описана в статье [<A href="http://www.viva64.com/go.php?url=100" class="link-ext" target="_blank">1</A>]. Суть ее заключается в том, что переменная, которая по замыслу программиста должна быть локальной, не помечена как локальная и, следовательно, используется как общая, поскольку этот режим доступа применяется ко всем переменным по умолчанию.</P>
+			<P>Для диагностики этой ошибки рекомендуется уже упоминавшееся выше использование выражения default(none).</P>
+			<P>Как видно, данная ошибка весьма обобщенная, и привести конкретный пример достаточно трудно. Однако в одной из статей [<A href="http://www.viva64.com/articles/Parallel_programs_analysis.html" class="link-ext" target="_blank">9</A>] описана ситуация, в которой эта ошибка проявляется вполне явно.</P>
+			<P>Некорректно:</P>
+			<DIV id="E4LAE"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+int</SPAN> _tmain(<SPAN class="KEYWORD">int</SPAN> argc, _TCHAR* argv[])
+{
+  <SPAN class="KEYWORD">const</SPAN> size_t arraySize = 100000;
+  <SPAN class="KEYWORD">struct</SPAN> T 
+  {
+   <SPAN class="KEYWORD">int</SPAN> a;
+   size_t b;
+  };
+  T array[arraySize];
+  {
+    size_t i;
+    <SPAN class="KEYWORD">#pragma</SPAN> omp parallel sections num_threads(2)
+    {
+      <SPAN class="KEYWORD">#pragma</SPAN> omp section
+      {
+        <SPAN class="KEYWORD">for</SPAN> (i = 0; i != arraySize; ++i)
+          array[i].a = 1;
+      }
+      <SPAN class="KEYWORD">#pragma</SPAN> omp section
+      {
+        <SPAN class="KEYWORD">for</SPAN> (i = 0; i != arraySize; ++i)
+          array[i].b = 2;
+      }
+    }
+  }
+
+  size_t i;
+  <SPAN class="KEYWORD">for</SPAN> (i = 0; i != arraySize; ++i)
+  {
+    <SPAN class="KEYWORD">if</SPAN> (array[i].a != 1 || array[i].b != 2)
+    {
+      _tprintf(_T(<SPAN class="STRING">"OpenMP Error!\n"</SPAN>));
+      <SPAN class="KEYWORD">break</SPAN>;
+    }
+  }
+  <SPAN class="KEYWORD">if</SPAN> (i == arraySize)
+    _tprintf(_T(<SPAN class="STRING">"OK!\n"</SPAN>));
+  getchar();
+  <SPAN class="KEYWORD">return</SPAN> 0;
+}
+</PRE></TD></TR></TABLE></DIV>
+			<P>Смысл программы очень прост – массив записей с двумя полями заполняется из двух потоков. Один поток заполняет одно поле записей, другой – другое. Потом делается проверка – все ли записи заполнены правильно.</P>
+			<P>Ошибка здесь заключается в том, что в цикле для счетчика используется общая переменная i. В результате при выполнении программы в одних случаях будет выводиться сообщение «OpenMP Error!», а в других – возникать ошибка access violation, и лишь изредка будет выводиться «OK!». Чтобы исправить эту ошибку, достаточно объявить переменную-счетчик как локальную переменную.</P>
+			<P>Корректно:</P>
+			<DIV id="EINAE"><TABLE class="code" width="98%"><TR><TD><PRE>
+...
+  <SPAN class="KEYWORD">#pragma</SPAN> omp parallel sections num_threads(2)
+  {
+    <SPAN class="KEYWORD">#pragma</SPAN> omp section
+    {
+      <SPAN class="KEYWORD">for</SPAN> (size_t i = 0; i != arraySize; ++i)
+        array[i].a = 1;
+    }
+    <SPAN class="KEYWORD">#pragma</SPAN> omp section
+    {
+      <SPAN class="KEYWORD">for</SPAN> (size_t i = 0; i != arraySize; ++i)
+        array[i].b = 2;
+    }
+  }
+}
+...
+</PRE></TD></TR></TABLE></DIV>
+			<P>В статье [<A href="http://www.viva64.com/go.php?url=100" class="link-ext" target="_blank">1</A>] имеется аналогичный пример, касающийся именно циклов for (он выделен как отдельная ошибка). Там сказано, что переменная-счетчик для цикла for, к которому применяется директива OpenMP for, должна быть объявлена как локальная. С первого взгляда может показаться, что там рассматривается абсолютно такая же ситуация, однако это не так.</P>
+			<P>Дело в том, что, согласно стандарту OpenMP, переменная, использующаяся в качестве счетчика в цикле, неявно преобразуется из общей в локальную, даже если она является параметром выражения shared. Компилятор, делая это преобразование, не выдает никаких предупреждений. Именно этот случай описан в статье [<A href="http://www.viva64.com/go.php?url=100" class="link-ext" target="_blank">1</A>], и в этой ситуации преобразование действительно делается. Однако в нашем примере вместо директивы for используется директива sections, и такое преобразование не производится.</P>
+			<P>Вывод из этих двух примеров один: переменная, использующаяся как счетчик в цикле внутри параллельной секции, никогда не должна быть общей. Даже если на цикл распространяется действие директивы for, полагаться на неявное преобразование все равно не стоит.</P>
+		
+		<H3>27. Параллельная работа с массивом без упорядочивания итераций<A name="EGOAE"></A></H3>
+			<P>Во всех предыдущих примерах в циклах for, распределенных на несколько потоков, не использовалась директива ordered (за исключением примера, в котором рассматривался непосредственно синтаксис этой директивы). Причина этого заключается в том, что во всех этих примерах порядок выполнения итераций был для нас несущественен. Однако, существуют ситуации, в которых эта директива необходима. В частности, она необходима, если выполнение одной итерации как-либо зависит от результата выполнения предыдущих итераций (эта ситуация описана в статье [<A href="http://www.viva64.com/go.php?url=105" class="link-ext" target="_blank">6</A>]). Рассмотрим пример.</P>
+			<P>Некорректно:</P>
+			<DIV id="ESOAE"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+int</SPAN>* arr = <SPAN class="KEYWORD">new</SPAN> <SPAN class="KEYWORD">int</SPAN>[10];
+<SPAN class="KEYWORD">for</SPAN>(<SPAN class="KEYWORD">int</SPAN> i = 0; i &lt; 10; i++)
+  arr[i] = i;
+<SPAN class="KEYWORD">#pragma</SPAN> omp parallel <SPAN class="KEYWORD">for</SPAN>
+<SPAN class="KEYWORD">for</SPAN> (<SPAN class="KEYWORD">int</SPAN> i = 1; i &lt; 10; i++)
+  arr[i] = arr[i - 1];
+<SPAN class="KEYWORD">for</SPAN>(<SPAN class="KEYWORD">int</SPAN> i = 0; i &lt; 10; i++)
+  printf(<SPAN class="STRING">"\narr[%d] = %d"</SPAN>, i, arr[i]);
+</PRE></TD></TR></TABLE></DIV>
+			<P>Теоретически эта программа должна вывести последовательность из нулей. Однако на двухпроцессорной машине будет выведено некоторое количество нулей и некоторое количество пятерок (это связано с тем, что итерации, как правило, делятся между потоками пополам). Проблема легко решается с помощью директивы ordered.</P>
+			<P>Корректно:</P>
+			<DIV id="ERPAE"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+int</SPAN>* arr = <SPAN class="KEYWORD">new</SPAN> <SPAN class="KEYWORD">int</SPAN>[10];
+<SPAN class="KEYWORD">for</SPAN>(<SPAN class="KEYWORD">int</SPAN> i = 0; i &lt; 10; i++)
+  arr[i] = i;
+<SPAN class="KEYWORD">#pragma</SPAN> omp parallel <SPAN class="KEYWORD">for</SPAN> ordered
+<SPAN class="KEYWORD">for</SPAN> (<SPAN class="KEYWORD">int</SPAN> i = 1; i &lt; 10; i++)
+{
+  <SPAN class="KEYWORD">#pragma</SPAN> omp ordered
+  arr[i] = arr[i - 1];
+}
+<SPAN class="KEYWORD">for</SPAN>(<SPAN class="KEYWORD">int</SPAN> i = 0; i &lt; 10; i++)
+  printf(<SPAN class="STRING">"\narr[%d] = %d"</SPAN>, i, arr[i]);
+</PRE></TD></TR></TABLE></DIV>
+		
+	<H2>Ошибки производительности<A name="EQQAE"></A></H2>
+		<H3>1. Ненужная директива flush<A name="ETQAE"></A></H3>
+			<P>Все рассмотренные ранее ошибки влияли на поведение программы и являлись в той или иной мере критическими. Теперь же рассмотрим ошибки, которые повлияют лишь на производительность программы, не затрагивая логики ее работы. Эти ошибки описаны в статье[<A href="http://www.viva64.com/go.php?url=100" class="link-ext" target="_blank">1</A>].</P>
+			<P>Как уже упоминалось ранее, директива flush во многих случаях выполняется неявно. Следовательно, явное использование flush в этих случаях будет лишним. Лишняя директива flush, особенно если соответствующие переменные не будут указаны в качестве параметров директивы (в этом случае делается синхронизация всей общей памяти), может существенно замедлить выполнение программы.</P>
+			<P>Приведем случаи, в которых эта директива присутствует неявно и использовать ее нет нужды:</P>
+			<UL style="LIST-STYLE:square"><LI>В директиве barrier.</LI>
+				<LI>При входе и при выходе из параллельной секции директивы critical.</LI>
+				<LI>При входе и при выходе из параллельной секции директивы ordered.</LI>
+				<LI>При входе и при выходе из параллельной секции директивы parallel.</LI>
+				<LI>При выходе из параллельной секции директивы for.</LI>
+				<LI>При выходе из параллельной секции директивы sections.</LI>
+				<LI>При выходе из параллельной секции директивы single.</LI>
+				<LI>При входе и при выходе из параллельной секции директивы parallel for.</LI>
+				<LI>При входе и при выходе из параллельной секции директивы parallel sections.</LI>
+			</UL>
+		
+		<H3>2. Использование критических секций или блокировок вместо atomic<A name="EWRAE"></A></H3>
+			<P>Директива atomic работает быстрее, чем критические секции, поскольку некоторые атомарные операции могут быть напрямую заменены командами процессора. Следовательно, эту директиву желательно применять везде, где требуется защита общей памяти при элементарных операциях. К таким операциям, согласно спецификации OpenMP, относятся операции следующего вида:</P>
+			<UL style="LIST-STYLE:square"><LI>x binop= expr</LI>
+				<LI>x++</LI>
+				<LI>++x</LI>
+				<LI>x--</LI>
+				<LI>--x</LI>
+			</UL>
+			<P>Здесь х – скалярная переменная, expr – выражение со скалярными типами, в котором не присутствует переменная х, binop – не перегруженный оператор +, *, -, /, &amp;, ^, |, &lt;&lt;, или &gt;&gt;. Во всех остальных случаях применять директиву atomic нельзя (это проверяется компилятором).</P>
+			<P>Вообще, с точки зрения убывания быстродействия, средства защиты общих данных от одновременной записи располагаются так: atomic, critical, omp_set_lock.</P>
+		
+		<H3>3. Ненужная защита памяти от одновременной записи<A name="EMSAE"></A></H3>
+			<P>Любая защита памяти от одновременной записи замедляет выполнение программы, будь то атомарная операция, критическая секция или блокировка. Следовательно, в тех случаях, когда она не нужна, эту защиту лучше не использовать.</P>
+			<P>Переменную не нужно защищать от одновременной записи в следующих случаях:</P>
+			<UL style="LIST-STYLE:square"><LI>Если переменная является локальной для потока (а также если она участвует в выражении threadprivate, firstprivate, private или lastprivate).</LI>
+				<LI>Если обращение к переменной производится в коде, который гарантированно выполняется только одним потоком (в параллельной секции директивы master или директивы single).</LI>
+			</UL>
+		
+		<H3>4. Неоправданно большое количество кода в критической секции<A name="E1SAE"></A></H3>
+			<P>Критические секции замедляют выполнение программы. Во-первых, из-за критических секций потокам приходится ждать друг друга, а это уменьшает приращение производительности, достигнутое благодаря распараллеливанию кода. Во-вторых, на вход в критические секции и на выход из них также затрачивается некоторое время.</P>
+			<P>Следовательно, применение критических секций там, где они не нужны, нежелательно. В критические секции не рекомендуется помещать вызовы сложных функций, а также код, не работающий с общими переменными, объектами или ресурсами. Дать конкретные рекомендации тут достаточно трудно – в каждом случае программист должен сам определить, какой код вносить в критическую секцию, а какой – не вносить.</P>
+		
+		<H3>5. Слишком частое применение критических секций<A name="ECTAE"></A></H3>
+			<P>Как уже упоминалось в предыдущем пункте, вход в критическую секцию и выход из нее требуют определенного времени. Следовательно, частые входы в критическую секцию могут существенно замедлить программу. Чтобы избежать этого, рекомендуется насколько возможно уменьшать число входов в критические секции. Рассмотрим несколько измененный пример из статьи [<A href="http://www.viva64.com/go.php?url=100" class="link-ext" target="_blank">1</A>].</P>
+			<P>Некорректно:</P>
+			<DIV id="EOTAE"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+#pragma</SPAN> omp parallel <SPAN class="KEYWORD">for</SPAN>
+				<SPAN class="KEYWORD">for</SPAN> ( i = 0 ; i &lt; N; ++i ) 
+{ 
+  <SPAN class="KEYWORD">#pragma</SPAN> omp critical
+  {  
+    <SPAN class="KEYWORD">if</SPAN> (arr[i] &gt; max) 
+    max = arr[i];
+  } 
+}
+</PRE></TD></TR></TABLE></DIV>
+			<P>Очевидно, что если вынести условие из критической секции, вход в нее будет производиться далеко не во всех итерациях цикла.</P>
+			<P>Корректно:</P>
+			<DIV id="E6TAE"><TABLE class="code" width="98%"><TR><TD><PRE>
+				<SPAN class="KEYWORD"> 
+#pragma</SPAN> omp parallel <SPAN class="KEYWORD">for</SPAN>
+<SPAN class="KEYWORD">for</SPAN> ( i = 0 ; i &lt; N; ++i ) 
+{ 
+  <SPAN class="KEYWORD">#pragma</SPAN> omp flush(max)
+  <SPAN class="KEYWORD">if</SPAN> (arr[i] &gt; max)
+  {
+    <SPAN class="KEYWORD">#pragma</SPAN> omp critical
+    {  
+      <SPAN class="KEYWORD">if</SPAN> (arr[i] &gt; max) 
+      max = arr[i];
+    }
+  }
+}
+</PRE></TD></TR></TABLE></DIV>
+			<P>Такое простое исправление может существенно увеличить производительность вашего кода, и им не стоит пренебрегать.</P>
+		
+	<H2>Заключение<A name="EUUAE"></A></H2>
+		<P>На момент написания эта статья является наиболее полным списком возможных ошибок при программировании с использованием OpenMP, собранных из различных источников и из личного опыта авторов. Еще раз напомним, что все эти ошибки не диагностируются стандартными компиляторами. Подводя итоги, приведем краткое описание всех ошибок с соответствующими выводами, которые должен сделать из них программист.</P>
+		<TABLE border="0" cellspacing="2" cellpadding="5"><TR><TD>Ошибка</TD><TD>Вывод</TD></TR>
+			<TR><TD>1. Отсутствие /openmp</TD><TD>При создании проекта нужно сразу же включить соответствующую опцию.</TD></TR>
+			<TR><TD>2. Отсутствие parallel</TD><TD>Необходимо тщательно следить за синтаксисом используемых директив.</TD></TR>
+			<TR><TD>3. Отсутствие omp</TD><TD>Необходимо тщательно следить за синтаксисом используемых директив.</TD></TR>
+			<TR><TD>4. Отсутствие for</TD><TD>Необходимо тщательно следить за синтаксисом используемых директив.</TD></TR>
+			<TR><TD>5. Ненужное распараллеливание</TD><TD>Необходимо тщательно следить за синтаксисом используемых директив и четко представлять себе их назначение.</TD></TR>
+			<TR><TD>6. Неправильное применение ordered</TD><TD>Необходимо тщательно следить за синтаксисом используемых директив.</TD></TR>
+			<TR><TD>7. Переопределение количества потоков внутри параллельной секции</TD><TD>Количество потоков нельзя изменять внутри параллельной секции.</TD></TR>
+			<TR><TD>8. Попытка использовать блокировку без инциализации переменной</TD><TD>Переменная, использующаяся для блокировки, должна быть обязательно инициализирована функцией omp_init_lock.</TD></TR>
+			<TR><TD>9. Попытка снять блокировку не из того потока, который ее установил</TD><TD>Каждый из потоков, использующих блокировку, должен содержать вызов как блокирующей (omp_set_lock, omp_test_lock), так и разблокирующей (omp_unset_lock) функции.</TD></TR>
+			<TR><TD>10. Попытка использования блокировки как барьера</TD><TD>Каждый из потоков, использующих блокировку, должен содержать вызов как блокирующей (omp_set_lock, omp_test_lock), так и разблокирующей (omp_unset_lock) функции.</TD></TR>
+			<TR><TD>11. Зависимость поведения от количества потоков</TD><TD>Поведение вашего кода не должно зависеть от числа исполняющих его потоков.</TD></TR>
+			<TR><TD>12. Некорректное использование динамического создания потоков</TD><TD>Если вам все же необходим код, зависящий от числа потоков, вы должны убедиться в том, что он будет выполняться именно нужным числом потоков (для этого следует явно отключать динамическое создание потоков). Вообще использовать динамическое создание потоков не рекомендуется.</TD></TR>
+			<TR><TD>13. Одновременное использование общего ресурса</TD><TD>Одновременный доступ к общему ресурсу должен быть защищен критической секцией или блокировкой.</TD></TR>
+			<TR><TD>14. Незащищенный доступ к общей памяти</TD><TD>Одновременный доступ к общей памяти должен быть защищен как атомарная операция (наиболее предпочтительно), критической секцией, или блокировкой.</TD></TR>
+			<TR><TD>15. Использование директивы flush с указателем</TD><TD>Применять директиву flush к указателю бессмысленно – при этом обновится значение указателя, но не памяти, на которую он ссылается.</TD></TR>
+			<TR><TD>16. Отсутствие директивы flush</TD><TD>Отсутствие директивы flush может привести к чтению или записи некорректных данных.</TD></TR>
+			<TR><TD>17. Отсутствие синхронизации</TD><TD>Отсутствие синхронизации также может привести к чтению или записи некорректных данных.</TD></TR>
+			<TR><TD>18. Внешняя переменная задана как threadprivate не во всех модулях</TD><TD>Если переменная, фигурирующая в директиве threadprivate, является внешней, она должна быть объявлена как threadprivate во всех модулях, в которых она встречается. Вообще от использования директивы threadprivate и выражений private, firstprivate, lastprivate лучше отказаться. Вместо этого рекомендуется объявлять локальные переменные в коде параллельной секции, а соответствующие начальные и конечные присваивания (если они необходимы) производить с общей переменной.</TD></TR>
+			<TR><TD>19. Неинициализированные локальные переменные</TD><TD>По умолчанию локальные переменные, фигурирующие в выражениях private и lastprivate являются неинциализированными. Брать их значения без предварительной инициализации нельзя. Вообще от использования директивы threadprivate и выражений private, firstprivate, lastprivate лучше отказаться. Вместо этого рекомендуется объявлять локальные переменные в коде параллельной секции, а соответствующие начальные и конечные присваивания (если они необходимы) производить с общей переменной.</TD></TR>
+			<TR><TD>20. Забытая директива threadprivate</TD><TD>Забытая директива threadprivate может повлиять на поведение всего модуля. Вообще от использования директивы threadprivate и выражений private, firstprivate, lastprivate лучше отказаться. Вместо этого рекомендуется объявлять локальные переменные в коде параллельной секции, а соответствующие начальные и конечные присваивания (если они необходимы) производить с общей переменной.</TD></TR>
+			<TR><TD>21. Забытое выражение private</TD><TD>Необходимо четко контролировать режим доступа к переменным. Новичкам рекомендуется использовать выражение default(none), чтобы режим доступа всегда приходилось задавать явно. Вообще от использования директивы threadprivate и выражений private, firstprivate, lastprivate лучше отказаться. Вместо этого рекомендуется объявлять локальные переменные в коде параллельной секции, а соответствующие начальные и конечные присваивания (если они необходимы) производить с общей переменной.</TD></TR>
+			<TR><TD>22. Некорректное распараллеливание работы с локальными переменными</TD><TD>Если распараллелить выполнение кода, работающего с локальными переменными, на те же потоки, в которых они созданы, разные потоки получат разные значения переменных.</TD></TR>
+			<TR><TD>23. Неосторожное применение lastprivate</TD><TD>Нужно четко представлять себе, какое именно значение будет в итоге записано в переменную после выполнения параллельной секции, если переменная объявлена как lastprivate. Вообще от использования директивы threadprivate и выражений private, firstprivate, lastprivate лучше отказаться. Вместо этого рекомендуется объявлять локальные переменные в коде параллельной секции, а соответствующие начальные и конечные присваивания (если они необходимы) производить с общей переменной.</TD></TR>
+			<TR><TD>24. Непредсказуемые значения threadprivate-переменных в начале параллельных секций</TD><TD>Значение переменной, объявленной как threadprivate, является непредсказуемым в начале параллельной секции, особенно если переменной до этого присваивалось какое-либо значение. Вообще от использования директивы threadprivate и выражений private, firstprivate, lastprivate лучше отказаться. Вместо этого рекомендуется объявлять локальные переменные в коде параллельной секции, а соответствующие начальные и конечные присваивания (если они необходимы) производить с общей переменной.</TD></TR>
+			<TR><TD>25. Некоторые ограничения локальных переменных</TD><TD>Локальные переменные не должны быть ссылками (при этом через них будет производиться одновременный доступ к одной и той же общей памяти) и экземплярами классов, не имеющих конструктора копирования (если в классе содержатся ссылки, объект может быть скопирован некорректно).</TD></TR>
+			<TR><TD>26. Локальные переменные не помечены как таковые</TD><TD>Необходимо четко контролировать режим доступа к переменным. Новичкам рекомендуется использовать выражение default(none), чтобы режим доступа всегда приходилось задавать явно. В частности, переменная, использующаяся как счетчик в цикле, всегда должна быть локальной.</TD></TR>
+			<TR><TD>27. Параллельная работа с массивом без упорядочивания итераций</TD><TD>Если очередная итерация цикла при работе с массивом зависит от результата предыдущей, необходимо упорядочивать выполнение цикла с помощью директивы ordered.</TD></TR>
+			<TR><TD>1. Ненужная директива flush</TD><TD>Директиву flush нет смысла применять там, где она и без того включена по умолчанию.</TD></TR>
+			<TR><TD>2. Использование критических секций или блокировок вместо atomic</TD><TD>Для защиты элементарных операций лучше использовать директиву atomic. Использование критических секции и блокировок менее предпочтительно, поскольку оно замедляет работу программы.</TD></TR>
+			<TR><TD>3. Ненужная защита памяти от одновременной записи</TD><TD>Операцию работы с памятью нет смысла защищать, если речь идет о локальной переменной, либо если код гарантированно будет выполнять только один поток.</TD></TR>
+			<TR><TD>4. Неоправданно большое количество кода в критической секции</TD><TD>В критические секции стоит включать минимум кода. Не стоит включать в критические секции код, который не работает с общей памятью, и вызовы сложных функций.</TD></TR>
+			<TR><TD>5. Слишком частое применение критических секций</TD><TD>Количество входов в критические секции и выходов из них лучше всего сократить. Например, можно выносить условия из критических секций.</TD></TR>
+		</TABLE><FONT face="verdana" style="font-size:x-small;margin-left:1em"><I>Таблица 1 – Краткий список основных ошибок.</I></FONT>
+		<P>Вообще все ошибки можно разделить на три основные категории:</P>
+		<UL style="LIST-STYLE:square"><LI>Незнание синтаксиса OpenMP.</LI>
+			<LI>Непонимание принципов работы OpenMP.</LI>
+			<LI>Некорректная работа с памятью (незащищенный доступ к общей памяти, отсутствие синхронизации, неправильный режим доступа к переменным, и т. п.).</LI>
+		</UL>
+		<P>Приведенный в этой статье список ошибок, конечно, не является полным. Существует множество других ошибок, не затронутых здесь. Возможно, более полные списки будут приведены в новых статьях по этой теме. </P>
+		<P>Как бы то ни было, все эти ошибки в большинстве случаев можно легко диагностировать автоматически, средствами статического анализатора. На данный момент диагностику некоторых (лишь очень немногих) из них выполняет Intel Thread Checker, но специализированного инструмента пока не существует. В частности, Intel Thread Checker обнаруживает одновременный доступ к общим переменным, некорректное использование директивы ordered и отсутствие ключевого слова for в директиве #pragma omp parallel for [<A href="http://www.viva64.com/go.php?url=100" class="link-ext" target="_blank">1</A>].</P>
+		<P>Также полезной для разработчиков могла бы оказаться программа, визуально отображающая распараллеливание кода и режимы доступа к переменным в соответствующих параллельных секциях. Такой программы пока что также не существует.</P>
+		<P>В данный момент авторами начата работа над статическим анализатором кода (рабочее название VivaMP), который будет диагностировать все перечисленные выше ошибки и, возможно, некоторые другие. Этот анализатор сможет существенно упростить поиск и устранение ошибок при разработке параллельных приложений (напомним, что почти все эти ошибки воспроизводятся нестабильно). Дополнительную информацию вы можете получить на странице, посвященной проекту VivaMP (<A href="http://www.viva64.com/vivamp.php" class="link-ext" target="_blank">http://www.viva64.com/vivamp.php</A>). </P>
+		<P></P>
+	<H2>Список использованных источников<A name="E6ZAE"></A></H2>
+		<OL><LI>Michael Suess, Claudia Leopold, Common Mistakes in OpenMP and How To Avoid Them - A Collection of Best Practices, <A href="http://www.viva64.com/go.php?url=100" class="link-ext" target="_blank">http://www.viva64.com/go.php?url=100</A>. </LI>
+			<LI>OpenMP Quick Reference Sheet, <A href="http://www.viva64.com/go.php?url=101" class="link-ext" target="_blank">http://www.viva64.com/go.php?url=101</A>.</LI>
+			<LI>OpenMP C and C++ Application Program Interface specification, version 2.0, <A href="http://www.viva64.com/go.php?url=102" class="link-ext" target="_blank">http://www.viva64.com/go.php?url=102</A>.</LI>
+			<LI>Yuan Lin, Common Mistakes in Using OpenMP 1: Incorrect Directive Format, <A href="http://www.viva64.com/go.php?url=103" class="link-ext" target="_blank">http://www.viva64.com/go.php?url=103</A>.</LI>
+			<LI>Richard Gerber, Advanced OpenMP Programming, <A href="http://www.viva64.com/go.php?url=104" class="link-ext" target="_blank">http://www.viva64.com/go.php?url=104</A>.</LI>
+			<LI>Kang Su Gatlin and Pete Isensee. Reap the Benefits of Multithreading without All the Work, <A href="http://www.viva64.com/go.php?url=105" class="link-ext" target="_blank">http://www.viva64.com/go.php?url=105</A>.</LI>
+			<LI>Yuan Lin, Common Mistakes in Using OpenMP 5: Assuming Non-existing Synchronization Before Entering Worksharing Construct, <A href="http://www.viva64.com/go.php?url=106" class="link-ext" target="_blank">http://www.viva64.com/go.php?url=106</A>.</LI>
+			<LI>MSDN Library article on ‘threadprivate’ OpenMP directive, <A href="http://www.viva64.com/go.php?url=107" class="link-ext" target="_blank">http://www.viva64.com/go.php?url=107</A>.</LI>
+			<LI>Andrey Karpov, Evgeniy Ryzhkov, Adaptation of the technology of the static code analyzer for developing parallel programs, <A href="http://www.viva64.com/articles/Parallel_programs_analysis.html" class="link-ext" target="_blank">http://www.viva64.com/articles/Parallel_programs_analysis.html</A>.</LI>
+		</OL>
+		<P></P>
+	<DIV align="right"><FONT style="font-family:arial;font-size:9pt;color:#8088a0"><I><HR color="#8088a0" width="100%" size="1" /><div align="justify"><font size="2">
+                     Эта статья опубликована в журнале 
+                     RSDN Magazine
+                                         
+                        #2-2008. Информацию о журнале можно найти <a href="/mag/main.htm">здесь</a></font></div></I></FONT></DIV>
+<script type="text/javascript">
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+	var pageTracker = _gat._getTracker("UA-1276305-1");
+	pageTracker._addOrganic("rambler.ru", "words");
+	pageTracker._addOrganic("mail.ru", "q");
+	pageTracker._addOrganic("aport.ru", "r");
+	pageTracker._addOrganic("metabot.ru", "st");
+	pageTracker._addOrganic("meta.ua", "q");
+	pageTracker._addOrganic("bigmir.net", "q");
+	pageTracker._addOrganic("nigma.ru", "s");
+	pageTracker._trackPageview();
+</script>
+
+<!-- YaMetrics -->
+<script type="text/javascript"><!--
+var ya_class = 1;
+var ya_cid = 49003;
+//--></script>
+<script type="text/javascript" src="http://bs.yandex.ru/resource/watch.js"></script>
+<noscript><div style="display:inline;"><img src="http://bs.yandex.ru/watch/49003" width="1" height="1" alt="" /></div></noscript><table width="100%" border="0" cellspacing="0" celpadding="2" style="font-family:verdana;font-weight:bold;padding: 0px 5px; BORDER: #9daabd 1px 	solid; 	COLOR: #646464; BACKGROUND-COLOR: #e6e6e6;"><tr><td nowrap="nowrap"><font size="1" style="font-weight:normal"><script src="/script/shMenu.v1.js" type="text/javascript" charset="utf-8"></script></font></td><td nowrap="nowrap" align="right" width="100%"><font size="2"> <A href="?print" target="_blank" title="Версия для печати"><IMG align="absmiddle" width="16" height="14" src="/images/printer2.gif" border="0" /></A>  <a href="/forum/cpp.applied/3078208.aspx" target="_self" title="Перейти к обсуждению статьи"><font size="1" color="#646464"> Сообщений </font><font color="black">0</font></a>  <a href="/forum/cpp.applied/3078208.aspx" target="_self" title="Перейти к обсуждению статьи"><img src="/forum/images/showfr.gif" align="absmiddle" border="0" width="18px" height="14px" /></a> <a href="/Forum/RateList.aspx?mid=3078208"><font color="#646464"><font size="1"> Оценка </font><font color="black">470</font>
+									[<font style="font-weight: normal;"><span style="color:green;">+1</span>/<span style="color:blue;">-0</span></font>]
+								</font></a>   <a target="_blank" rel="nofollow" href="/Users/Private/AddFav.aspx?mid=3078208" onclick="return AddFav(this.href);" title="Добавить в избранное"><img align="absmiddle" src="/images/fav.gif" border="0" height="14px" /></a>  <a href="/Forum/Private/Subscr.aspx?tid=3078208" onclick="return SubMsg(this.href)" title="Подписка на сообщения" rel="nofollow"><img class="i" align="absmiddle" src="/forum/images/sub.gif" border="0" width="18px" height="14px" /></a>   <font size="1">Оценить </font><a target="_blank" rel="nofollow" href="/forum/Private/Rate.aspx?mid=3078208&amp;rate=-3" onclick="return RateMsg(this.href);" title="+1"><img align="absmiddle" src="/forum/images/n11.gif" border="0" width="18px" height="14px" /></a><a target="_blank" rel="nofollow" href="/forum/Private/Rate.aspx?mid=3078208&amp;rate=1" onclick="return RateMsg(this.href);" title="Интересно"><img align="absmiddle" src="/forum/images/n1.gif" border="0" width="18px" height="14px" /></a><a target="_blank" rel="nofollow" href="/forum/Private/Rate.aspx?mid=3078208&amp;rate=2" onclick="return RateMsg(this.href);" title="Спасибо"><img align="absmiddle" src="/forum/images/n2.gif" border="0" width="18px" height="14px" /></a><a target="_blank" rel="nofollow" href="/forum/Private/Rate.aspx?mid=3078208&amp;rate=3" onclick="return RateMsg(this.href);" title="Супер"><img align="absmiddle" src="/forum/images/n3.gif" border="0" width="18px" height="14px" /></a><a target="_blank" rel="nofollow" href="/forum/Private/Rate.aspx?mid=3078208&amp;rate=-1" onclick="return RateMsg(this.href);" title="Удалить оценку"><img align="absmiddle" src="/forum/images/nx.gif" border="0" width="18px" height="14px" /></a><a target="_blank" rel="nofollow" href="/forum/Private/Rate.aspx?mid=3078208&amp;rate=-4" onclick="return RateMsg(this.href);" title="Согласен"><img align="absmiddle" src="/forum/images/np.gif" border="0" width="18px" height="14px" /></a><a target="_blank" rel="nofollow" href="/forum/Private/Rate.aspx?mid=3078208&amp;rate=0" onclick="return RateMsg(this.href);" title="Не согласен"><img align="absmiddle" src="/forum/images/nm.gif" border="0" width="18px" eight="14px" /></a> 
+					</font></td></tr></table></body></html>

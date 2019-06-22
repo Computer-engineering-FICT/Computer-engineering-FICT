@@ -1,0 +1,386 @@
+GNAT GPL 2009 (20090519)
+Copyright 1992-2009, Free Software Foundation, Inc.
+
+Compiling: vector_f1.adb (source file time stamp: 2009-09-16 20:57:00)
+
+     1. with Ada.Text_IO; use Ada.Text_IO;
+     2.
+     3. package body Vector_F1 is
+     4.
+     5.    -- Summa vektorov
+     6.    function Vector_Sum(A,B: Vector) return Vector is
+     7.       C: Vector;
+     8.    begin
+     9.       for i in 1..N loop
+    10.             C(i):=A(i)+B(i);
+    11.       end loop;
+    12.       return C;
+    13.    end Vector_Sum;
+    14.
+    15.    -- Umnojenie vektorov
+    16.    function Vector_Product(A,B: Vector) return Integer is
+    17.                            separate;
+    18.
+    19.    -- Sortirovka vektora
+    20.       function Vector_Sort(A: in Vector; des: in Boolean)
+    21.                         return Vector is
+    22.       Buf: Integer;
+    23.       B: Vector;
+    24.    begin
+    25.       B:=A;
+    26.       for i in 1..N-1 loop
+    27.          for j in i+1..N loop
+    28.             if (B(i)>B(j) and not des) or (B(i)<B(j) and des) then
+    29.                Buf:=B(i); B(i):=B(j); B(j):=Buf;
+    30.             end if;
+    31.          end loop;
+    32.       end loop;
+    33.        return B;
+    34.    end Vector_Sort;
+    35.
+    36.    -- Funkciya1
+    37.    function Fun1(A,B,C: Vector) return Integer is
+    38.       e: Integer;
+    39.    begin
+    40.          e:=Vector_Product(Vector_Sum(A,Vector_Sort(B,False)),
+    41.                            Vector_Sum(C,Vector_Sort(C,False)));
+    42.       return e;
+    43.    exception
+    44.       when Constraint_Error =>
+    45.          Put("Constraint error at Func1. Result is uncorrect: ");
+    46.       return e;
+    47.    end Fun1;
+    48.
+    49. end Vector_F1;
+
+Compiling: vector_f1.ads (source file time stamp: 2009-09-16 20:55:50)
+
+     1. generic
+     2.
+     3.    -- Parametr paketa - razmernost' (po umolchaniyu 5)
+     4.    N:Integer:=5;
+     5.
+     6. package Vector_F1 is
+     7.
+     8.    -- Vektor razryadnosti N
+     9.    type Vector is private;
+    10.
+    11.    -- Funkciya1
+    12.    function Fun1(A,B,C: Vector) return Integer;
+    13.
+    14. private
+    15.
+    16.    function Vector_Sort(A: in Vector; des: in Boolean)
+    17.                         return Vector;
+    18.
+    19.    type Vector is array (1..N) of Integer;
+    20.
+    21. end Vector_F1;
+
+Compiling: vector_f1-vector_product.adb (source file time stamp: 2009-09-16 20:13:02)
+
+     1. separate (Vector_F1)
+     2.  
+     3. -- Umnojenie vektorov
+     4. function Vector_Product(A,B: Vector) return Integer is
+     5.    C: Integer;
+     6. begin
+     7.    C:=0;
+     8.    for i in 1..N loop
+     9.       C:=C+A(i)*B(i);
+    10.    end loop;
+    11.    return C;
+    12. end Vector_Product;
+
+ 49 lines: No errors
+
+
+GNAT GPL 2009 (20090519)
+Copyright 1992-2009, Free Software Foundation, Inc.
+
+Compiling: vector_f1-matrix_f2.adb (source file time stamp: 2009-09-16 21:05:18)
+
+     1. with Ada.Text_IO; use Ada.Text_IO;
+     2. package body Vector_F1.Matrix_F2 is
+     3.
+     4.    -- Proizvedenie matricy na skalyar
+     5.    function Scalar_Matrix_Product(MA: in Matrix; S:
+     6.                          in Integer) return Matrix is
+     7.       MC: Matrix;
+     8.    begin
+     9.       for i in 1..N loop
+    10.            for j in 1..N loop
+    11.             MC(i)(j):=MA(i)(j)*S;
+    12.          end loop;
+    13.       end loop;
+    14.       return MC;
+    15.    end Scalar_Matrix_Product;
+    16.
+    17.    -- Summa matric
+    18.    function Matrix_Sum(MA,MB: Matrix) return Matrix is
+    19.       MC: Matrix;
+    20.    begin
+    21.       for i in 1..N loop
+    22.            for j in 1..N loop
+    23.             MC(i)(j):=MA(i)(j)+MB(i)(j);
+    24.          end loop;
+    25.       end loop;
+    26.       return MC;
+    27.    end Matrix_Sum;
+    28.
+    29.    -- Nahojdenie minimal'nogo elementa matricy
+    30.    function Matrix_Min(A: in Matrix) return Integer is
+    31.       min: Integer;
+    32.    begin
+    33.       min:=A(1)(1);
+    34.       for i in 1..N loop
+    35.          for j in 1..N loop
+    36.             if A(i)(j)<min then
+    37.                min:=A(i)(j);
+    38.             end if;
+    39.          end loop;
+    40.       end loop;
+    41.       return min;
+    42.    end Matrix_Min;
+    43.
+    44.    -- Maksimal'nyi element matricy
+    45.    function Matrix_Max(A: in Matrix) return Integer is
+    46.       max: Integer;
+    47.    begin
+    48.       max:=A(1)(1);
+    49.       for i in 1..N loop
+    50.          for j in 1..N loop
+    51.             if A(i)(j)>max then
+    52.                max:=A(i)(j);
+    53.             end if;
+    54.          end loop;
+    55.       end loop;
+    56.       return max;
+    57.    end Matrix_Max;
+    58.
+    59.    -- Funkciya2
+    60.    function Fun2(MA,MB: Matrix) return Matrix is
+    61.       M: Matrix;
+    62.    begin
+    63.       M:=Matrix_Sum(Scalar_Matrix_Product(MB,Matrix_Min(MA)),
+    64.                     Scalar_Matrix_Product(MA,Matrix_Max(MB)));
+    65.       return M;
+    66.    exception
+    67.       when Constraint_Error =>
+    68.          put("Constraint error at Func2. Result is uncorrect:");
+    69.       return M;
+    70.    end Fun2;
+    71.
+    72. end Vector_F1.Matrix_F2;
+
+Compiling: vector_f1-matrix_f2.ads (source file time stamp: 2009-09-15 20:05:34)
+
+     1. generic
+     2.
+     3. package Vector_F1.Matrix_F2 is
+     4.
+     5.    -- Matrica razryadnosti N*N
+     6.    type Matrix is private;
+     7.
+     8.    -- Funkciya2
+     9.    function Fun2(MA,MB: Matrix) return Matrix;
+    10.
+    11. private
+    12.
+    13.    type Matrix is array (1..N) of Vector;
+    14.
+    15. end Vector_F1.Matrix_F2;
+    16.
+
+ 72 lines: No errors
+
+
+GNAT GPL 2009 (20090519)
+Copyright 1992-2009, Free Software Foundation, Inc.
+
+Compiling: vector_f1-matrix_f2-f3.adb (source file time stamp: 2009-09-16 21:03:46)
+
+     1. with Ada.Text_IO; use Ada.Text_IO;
+     2. package body Vector_F1.Matrix_F2.F3 is
+     3.
+     4.    -- Nahojdenie minimal'nogo elementa vektora
+     5.    function Vector_Min(A: in Vector) return Integer is
+     6.       min: Integer;
+     7.    begin
+     8.       min:=A(1);
+     9.       for i in 1..N loop
+    10.          if A(i)<min then
+    11.             min:=A(i);
+    12.          end if;
+    13.       end loop;
+    14.       return min;
+    15.    end Vector_Min;
+    16.
+    17.
+    18.    -- Raznost' vektorov
+    19.    function Vector_Difference(A,B: Vector) return Vector is
+    20.       C: Vector;
+    21.    begin
+    22.       for i in 1..N loop
+    23.             C(i):=A(i)-B(i);
+    24.       end loop;
+    25.       return C;
+    26.    end Vector_Difference;
+    27.
+    28.    -- Umnojenie maricy na vektor
+    29.    function Vector_Matrix_Product(MA: Matrix; A: Vector)
+    30.                                   return Vector is
+    31.       V: Vector;
+    32.       Sum: Integer;
+    33.    begin
+    34.       for i in 1..N loop
+    35.          Sum:=0;
+    36.          for j in 1..N loop
+    37.             Sum:=Sum+A(j)*MA(j)(i);
+    38.          end loop;
+    39.          V(i):=Sum;
+    40.       end loop;
+    41.       return V;
+    42.    end Vector_Matrix_Product;
+    43.
+    44.    -- Transponirovanie matricy
+    45.    function Matrix_Trans(MA: Matrix) return Matrix is
+    46.       M: Matrix;
+    47.    begin
+    48.       for i in 1..N loop
+    49.          for j in 1..N loop
+    50.             M(i)(j):=MA(j)(i);
+    51.          end loop;
+    52.       end loop;
+    53.       return M;
+    54.    end Matrix_Trans;
+    55.
+    56.    -- Funkciya3
+    57.    function Fun3(MB: Matrix; A,C: Vector) return Integer is
+    58.       d: Integer;
+    59.    begin
+    60.       d:=Vector_Min(Vector_Difference((Vector_Matrix_Product(
+    61.         Matrix_Trans(MB),
+    62.         A)),Vector_Matrix_Product(MB,Vector_Sort(C,False))));
+    63.       return d;
+    64.    exception
+    65.       when Constraint_Error =>
+    66.          put("Constraint error at Func3. Result is uncorrect:");
+    67.       return d;
+    68.    end Fun3;
+    69.
+    70. end Vector_F1.Matrix_F2.F3;
+    71.
+
+Compiling: vector_f1-matrix_f2-f3.ads (source file time stamp: 2009-09-15 20:05:18)
+
+     1. generic
+     2.
+     3. package Vector_F1.Matrix_F2.F3 is
+     4.
+     5.    -- Funkciya3
+     6.    function Fun3(MB: Matrix; A,C: Vector) return Integer;
+     7.
+     8. end Vector_F1.Matrix_F2.F3;
+
+ 71 lines: No errors
+
+GNAT GPL 2009 (20090519)
+Copyright 1992-2009, Free Software Foundation, Inc.
+
+Compiling: vector_f1-matrix_f2-io.adb (source file time stamp: 2009-09-16 20:49:56)
+
+     1. with Ada.Text_IO, Ada.IO_Exceptions; use Ada.Text_IO;
+     2. with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
+     3.
+     4. package body Vector_F1.Matrix_F2.IO is
+     5.
+     6.    -- Vyvod vektora
+     7.    procedure Vector_Output(V: in Vector) is
+     8.    begin
+     9.       for i in 1..N loop
+    10.          put(" V("); put(i,2); put(")="); put(V(i),3);
+    11.       end loop;
+    12.       new_line;
+    13.    end Vector_Output;
+    14.
+    15.    -- Vvod vektora
+    16.    function Vector_Input return Vector is
+    17.       V: Vector;
+    18.    begin
+    19.       for i in 1..N loop
+    20.          loop
+    21.             begin
+    22.                put(" V("); put(i,2); put(")=");
+    23.                get(V(i)); new_line;
+    24.                exit;
+    25.             exception
+    26.                when Ada.IO_Exceptions.Data_Error =>
+    27.                   put("Error! Data is uncorrect. Try again: ");
+    28.                   Skip_Line;
+    29.             end;
+    30.          end loop;
+    31.       end loop;
+    32.       return V;
+    33.    end Vector_Input;
+    34.
+    35.    -- Vyvod matricy
+    36.    procedure Matrix_Output(M: in Matrix) is
+    37.    begin
+    38.         for i in 1..N loop
+    39.          for j in 1..N loop
+    40.             loop
+    41.                begin
+    42.                   put(" M("); put(i,2); put(","); put(j,2);
+    43.                   put(")="); put(M(i)(j),3);
+    44.                   exit;
+    45.                exception
+    46.                   when Ada.IO_Exceptions.Data_Error =>
+    47.                      put("Error! Data is uncorrect. Try again: ");
+    48.                      Skip_Line;
+    49.                end;
+    50.             end loop;
+    51.          end loop;
+    52.          new_line;
+    53.       end loop;
+    54.    end Matrix_Output;
+    55.
+    56.    -- Vvod matricy
+    57.    function Matrix_Input return Matrix is
+    58.       M: Matrix;
+    59.    begin
+    60.         for i in 1..N loop
+    61.          for j in 1..N loop
+    62.             put(" M("); put(i,2); put(",");
+    63.             put(j,2); put(")="); get(M(i)(j));
+    64.             new_line;
+    65.          end loop;
+    66.          new_line;
+    67.       end loop;
+    68.       return M;
+    69.    end Matrix_Input;
+    70.
+    71. end Vector_F1.Matrix_F2.IO;
+
+Compiling: vector_f1-matrix_f2-io.ads (source file time stamp: 2009-09-16 19:46:06)
+
+     1. generic
+     2.
+     3. package Vector_F1.Matrix_F2.IO is
+     4.
+     5.
+     6.    -- Vvod vektora
+     7.    function Vector_Input return Vector;
+     8.
+     9.    -- Vyvod vektora
+    10.    procedure Vector_Output(V: in Vector);
+    11.
+    12.    -- Vvod matricy
+    13.    function Matrix_Input return Matrix;
+    14.
+    15.    -- Vyvod matricy
+    16.    procedure Matrix_Output(M: in Matrix);
+    17.
+    18. end Vector_F1.Matrix_F2.IO;
+
+ 71 lines: No errors

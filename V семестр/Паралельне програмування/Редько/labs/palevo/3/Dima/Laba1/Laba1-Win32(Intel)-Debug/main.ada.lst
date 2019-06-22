@@ -1,0 +1,89 @@
+Source file: ..\..\..\..\РАБОЧИЙ СТОЛ\dima\main.ada   Sun Oct 09 18:28:02 2011
+
+    1 --Водопьянов Дмитрий Вадимович, группа ИО-91
+    2 --Лаб. 1. Подпрограммы. Пакеты
+    3 --F1: С=A-B
+    4 --F2: MC=SORT(TRANS(MA)*MB)
+    5 --F3: D=SORT(A)*(MA+MB)
+    6 WITH ADA.TEXT_IO, Func, ADA.INTEGER_TEXT_IO; USE ADA.TEXT_IO, Func, ADA.INTEGER_TEXT_IO;
+                        *
+*****Error: Unit depends on source file ..\..\..\..\РАБОЧИЙ СТОЛ\dima\func2.ads
+*****        which contains errors
+    7 
+    8 --Основная программа
+    9 PROCEDURE Lab2 IS
+   10     TASK F1_TASK IS
+   11         PRAGMA PRIORITY(3);
+   12     END F1_TASK;
+   13     TASK BODY F1_TASK IS
+   14         A,B,C: Вектор;
+   15         F_OUT: File_type;
+   16     BEGIN
+   17 --C=A-B
+   18         PUT_LINE("T1 STARTED");
+   19         set_N(3);
+   20         Create_Vector(A, 1);
+   21         Create_Vector(B, 1);
+   22         delay 3.0;
+   23             F1(A,B,C);
+   24         CREATE(F_OUT, Out_File, "F1_OUT.TXT");
+   25         PUT_LINE(F_OUT, "C=A-B");
+   26         Vector_File_Output(F_OUT, C);
+              *
+*****Error: LRM:6.4.1(3) Parameter mismatch in call, continuing
+   27         CLOSE(F_OUT);
+   28         PUT_LINE("T1 COMPLETE");
+   29     END F1_TASK;
+   30     -----------------------------------------------------   
+   31     TASK F2_TASK IS
+   32         PRAGMA PRIORITY(4);
+   33     END F2_TASK;
+   34     TASK BODY F2_TASK IS 
+   35         MA,MB,MC: Матрица;
+   36         F_OUT: File_type;
+   37     BEGIN         
+   38     --MC=SORT(TRANS(MA)*MB)
+   39         PUT_LINE("T2 STarted"); 
+   40         set_N(3);
+   41         Create_Matrix(MA, 1);
+   42         Create_Matrix(MB, 1);  
+   43         delay 3.0;    
+   44         F2(MA,MB,MC);
+   45         CREATE(F_OUT, Out_File, "F2_OUT.TXT");
+   46         PUT_LINE(F_OUT, "MC=SORT(TRANS(MA)*MB)");
+   47         Matrix_File_Output(F_OUT, MC);
+              *
+*****Error: LRM:6.4.1(3) Parameter mismatch in call, continuing
+   48         CLOSE(F_OUT);
+   49         PUT_LINE("T2 COMPLETE");
+   50     END F2_TASK;
+   51    -----------------------------------------------
+   52     TASK F3_TASK IS 
+   53         PRAGMA PRIORITY(1);
+   54     END F3_TASK;
+   55     TASK BODY F3_TASK IS 
+   56         MA,MB: Матрица;
+   57         A,D: Вектор;   
+   58         F_OUT: File_type;  
+   59     BEGIN
+   60    --D=SORT(A)*(MA+MB)
+   61         PUT_LINE("T3 STARTED");
+   62         set_N(3);
+   63         Create_Matrix(MA, 1);
+   64         Create_Matrix(MB, 1);
+   65         Create_Vector(A,1);
+   66         delay 3.0;
+   67         F3(MA,MB,A,D);
+   68         CREATE(F_OUT, OUT_File, "F3_OUT.TXT");
+   69         PUT_LINE(F_OUT, "D=SORT(A)*(MA+MB)");
+   70         Vector_File_Output(F_OUT, D);
+              *
+*****Error: LRM:6.4.1(3) Parameter mismatch in call, continuing
+   71         Close(F_OUT);
+   72         PUT_LINE("T3 COMPLETE");
+   73     END F3_TASK;
+   74     t: integer;
+   75 BEGIN
+   76     GET(t); 
+   77 END Lab2;
+   78 

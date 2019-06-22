@@ -1,0 +1,302 @@
+Source file: ..\lab5.ada   Thu Apr 12 08:54:13 2012
+
+    1 -- Косейкина Анна Сергеевна, группа ИО-91
+    2 --Лаб. №5. Ада. Защищённый модуль
+    3 --a=(B+C*(MO*MX))*Z
+    4 with Ada.TEXT_IO; use Ada.TEXT_IO;
+    5 with Ada.INTEGER_TEXT_IO; use Ada.INTEGER_TEXT_IO;
+    6 PROCEDURE LAB5 IS
+    7         N: INTEGER := 6;
+    8         P: INTEGER := 6;
+    9         H: INTEGER := N/P;
+   10     TYPE VECTOR IS ARRAY (1..N) OF INTEGER;
+   11         TYPE MATRIX IS ARRAY (1..N) OF VECTOR; 
+   12     B, Z: VECTOR;
+   13         MX: MATRIX;
+   14         PROTECTED Monitor IS        
+   15         PROCEDURE Write_MO (value_MO:in MATRIX);
+   16         PROCEDURE Write_C (value_C:in VECTOR);
+   17         FUNCTION Copy_MO RETURN MATRIX;
+   18         FUNCTION Copy_C RETURN VECTOR;
+   19         PROCEDURE Signal_enter;
+   20         PROCEDURE Count_a (value_a: in INTEGER);
+   21         FUNCTION Output_a RETURN INTEGER;
+   22         ENTRY Wait_enter;
+   23         ENTRY Wait_count;
+   24         PRIVATE 
+   25                 a: INTEGER := 0;
+   26                 MO: MATRIX;
+   27                 C: VECTOR;      
+   28                 F1: INTEGER := 0;       
+   29                 F2: INTEGER := 0;       
+   30         end Monitor;
+   31     PROTECTED BODY Monitor IS
+   32                 PROCEDURE Write_MO(value_MO: in MATRIX)IS
+   33                 begin
+   34                         MO := value_MO;
+   35                 end Write_MO;
+   36                 PROCEDURE Write_C(value_C: in VECTOR) IS
+   37                 begin
+   38                         C := value_C;
+   39                 end Write_C;
+   40                 FUNCTION Copy_MO RETURN MATRIX IS
+   41                         copy: MATRIX;
+   42                 BEGIN
+   43             copy := MO;
+   44                         RETURN copy;
+   45                 END Copy_MO;
+   46                 FUNCTION Copy_C RETURN VECTOR IS
+   47                         copy: VECTOR;
+   48                 BEGIN
+   49             copy := C;
+   50                         RETURN copy;
+   51                 END Copy_C;     
+   52                 PROCEDURE Signal_enter IS
+   53                 BEGIN
+   54                         F1:= F1 + 1;
+   55                 END Signal_enter;
+   56                 PROCEDURE Count_a(value_a:in INTEGER) IS
+   57                 begin
+   58                         a := value_a;
+   59                         F2:= F2 +1;
+   60                 end Count_a;
+   61                 FUNCTION Output_a RETURN INTEGER IS
+   62                         copy: INTEGER;
+   63                 begin
+   64                         copy:= a;
+   65                         RETURN copy;
+   66                 end Output_a;
+   67         ENTRY Wait_enter WHEN F1 = 3 IS 
+   68                 BEGIN
+   69                         NULL;
+   70                 END Wait_enter;
+   71         ENTRY Wait_count WHEN F1 = 6 IS 
+   72                 BEGIN
+   73                         NULL;
+   74                 END Wait_count;
+   75         END Monitor;
+   76   --========================================================================
+   77         TASK T1;
+   78         TASK BODY T1 IS
+   79                 a1: INTEGER:= 0;
+   80                 MO1: MATRIX;
+   81                 C1: VECTOR;
+   82                 bufV: VECTOR;
+   83                 temp: INTEGER := 0;
+   84         BEGIN
+   85                 PUT_LINE(" T1 STARTED ");
+   86         --enter Z
+   87                 for i  in 1..N loop
+   88                         Z(i) := 1;
+   89                 end loop;  
+   90         --signal about enter                     
+   91                 Monitor.Signal_enter;
+   92 --wait for enter
+   93                 Monitor.Wait_enter;
+   94         --copy MO
+   95                 MO1 := Monitor.Copy_MO;
+   96         --copy C
+   97                 C1 := Monitor.Copy_C;
+   98         --count a1
+   99                 FOR i IN 1..H LOOP                      
+  100                         FOR j IN 1..N LOOP
+  101                                 temp:= 0;
+  102                                 FOR k IN 1..N LOOP
+  103                                         temp := temp+(MO1(i)(k)*MX(k)(j));
+  104                                 END LOOP;         
+  105                                 bufV(i) := temp + temp*C1(j);
+  106                         END LOOP;
+  107                         a1:= a1+ (bufV(i)+B(i))*Z(i);
+  108                 END LOOP;               
+  109                 --count a
+  110                 Monitor.Count_a(a1);
+  111         --output a
+  112                 a1 := Monitor.Output_a;
+  113                 PUT(a1);
+  114                 NEW_LINE;
+  115             PUT_LINE(" T1 FINISHED ");
+  116         END T1;
+  117   --========================================================================
+  118         TASK T2;
+  119         TASK BODY T2 IS
+  120                 a2: INTEGER:= 0;
+  121                 MO2: MATRIX;
+  122                 C2: VECTOR;
+  123                 temp: INTEGER := 0;
+  124                 buf: VECTOR;
+  125         BEGIN
+  126                 PUT_LINE(" T2 STARTED ");    
+  127         --wait for enter                     
+  128                 Monitor.Wait_enter;
+  129         --copy MO
+  130                 MO2 := Monitor.Copy_MO;
+  131         --copy C
+  132                 C2 := Monitor.Copy_C;
+  133         --count a2
+  134                 FOR i IN H..2*H LOOP
+  135                         FOR j IN 1..N LOOP
+  136                                 temp:= 0;
+  137                                 FOR k IN 1..N LOOP
+  138                                         temp := temp+(MO2(i)(k)*MX(k)(j));
+  139                                 END LOOP;         
+  140                                 buf(i) := temp + temp*C2(j);
+  141                         END LOOP;
+  142                         a2:= a2+ (buf(i)+B(i))*Z(i);
+  143                 END LOOP;               
+  144                 --count a
+  145                 Monitor.Count_a(a2);
+  146             PUT_LINE(" T2 FINISHED ");
+  147         END T2;
+  148   --========================================================================
+  149         TASK T3;
+  150         TASK BODY T3 IS
+  151                 a3: INTEGER:= 0;
+  152                 MO, MO3: MATRIX;
+  153                 C3: VECTOR;  
+  154                 buf: VECTOR;
+  155         temp: INTEGER := 0;
+  156         BEGIN
+  157                 PUT_LINE(" T3 STARTED ");
+  158         --enter B, MO
+  159                 for i  in 1..N loop
+  160                         B(i) := 1;
+  161                 end loop; 
+  162                 for i in 1..N loop
+  163                         for j in 1..N loop
+  164                                 MO(i)(j) := 1;
+  165                         end loop;
+  166                 end loop;
+  167                 Monitor.Write_MO(MO);     
+  168         --signal about enter                     
+  169                 Monitor.Signal_enter;
+  170 --wait for enter
+  171 Monitor.Wait_enter;
+  172         --copy MO
+  173                 MO3 := Monitor.Copy_MO;
+  174         --copy C
+  175                 C3 := Monitor.Copy_C;
+  176         --count a3
+  177                 FOR i IN H*2..H*3 LOOP
+  178                         FOR j IN 1..N LOOP
+  179                                 temp := 0;
+  180                                 FOR k IN 1..N LOOP
+  181                                         temp := temp+(MO3(i)(k)*MX(k)(j));
+  182                                 END LOOP;         
+  183                                 buf(i) := temp + temp*C3(j);
+  184                         END LOOP;
+  185                         a3:= a3+ (buf(i)+B(i))*Z(i);
+  186                 END LOOP;               
+  187                 --count a
+  188                 Monitor.Count_a(a3);
+  189             PUT_LINE(" T3 FINISHED ");
+  190         END T3;
+  191   --========================================================================
+  192         TASK T4;
+  193         TASK BODY T4 IS
+  194                 a4: INTEGER:= 0;
+  195                 MO4: MATRIX;
+  196                 C4: VECTOR;
+  197                 buf: VECTOR;
+  198                 temp: INTEGER := 0;
+  199         BEGIN
+  200                 PUT_LINE(" T4 STARTED ");    
+  201         --wait for enter                     
+  202                 Monitor.Wait_enter;
+  203         --copy MO
+  204                 MO4 := Monitor.Copy_MO;
+  205         --copy C
+  206                 C4 := Monitor.Copy_C;
+  207         --count a2
+  208                 FOR i IN 3*H..4*H LOOP
+  209                         FOR j IN 1..N LOOP
+  210                                 temp:= 0;
+  211                                 FOR k IN 1..N LOOP
+  212                                         temp := temp+(MO4(i)(k)*MX(k)(j));
+  213                                 END LOOP;         
+  214                                 buf(i) := temp + temp*C4(j);
+  215                         END LOOP;
+  216                         a4:= a4+ (buf(i)+B(i))*Z(i);
+  217                 END LOOP;               
+  218                 --count a
+  219                 Monitor.Count_a(a4);
+  220             PUT_LINE(" T4 FINISHED ");
+  221         END T4;
+  222   --========================================================================
+  223         TASK T5;
+  224         TASK BODY T5 IS
+  225                 a5: INTEGER:= 0;
+  226                 MO5: MATRIX;
+  227                 C5: VECTOR;
+  228                 buf: VECTOR;
+  229                 temp: INTEGER := 0;
+  230         BEGIN
+  231                 PUT_LINE(" T5 STARTED ");    
+  232         --wait for enter                     
+  233                 Monitor.Wait_enter;
+  234         --copy MO
+  235                 MO5 := Monitor.Copy_MO;
+  236         --copy C
+  237                 C5 := Monitor.Copy_C;
+  238         --count a5
+  239                 FOR i IN 4*H..5*H LOOP  
+  240                         FOR j IN 1..N LOOP
+  241                                      temp := 0;
+  242                                 FOR k IN 1..N LOOP
+  243                                         temp := temp+(MO5(i)(k)*MX(k)(j));
+  244                                 END LOOP;         
+  245                                 buf(i) := temp + temp*C5(j);
+  246                         END LOOP;
+  247                         a5:= a5+ (buf(i)+B(i))*Z(i);
+  248                 END LOOP;               
+  249                 --count a
+  250                 Monitor.Count_a(a5);
+  251             PUT_LINE(" T5 FINISHED ");
+  252         END T5;
+  253   --========================================================================
+  254         TASK T6;
+  255         TASK BODY T6 IS
+  256                 a6: INTEGER:= 0;
+  257                 MO6: MATRIX;
+  258                 C, C6: VECTOR;
+  259                 buf: VECTOR;
+  260                 temp: INTEGER := 0;
+  261         BEGIN
+  262                 PUT_LINE(" T6 STARTED ");
+  263         --enter C, MX
+  264                 for i  in 1..N loop
+  265                         C(i) := 1;
+  266                 end loop; 
+  267                 for i in 1..N loop
+  268                         for j in 1..N loop
+  269                                 MX(i)(j) := 1;
+  270                         end loop;
+  271                 end loop;
+  272                 Monitor.Write_C(C);     
+  273         --signal about enter                     
+  274                 Monitor.Signal_enter;
+  275 --wait for enter
+  276 Monitor.Wait_enter;
+  277         --copy MO
+  278                 MO6 := Monitor.Copy_MO;
+  279         --copy C
+  280                 C6 := Monitor.Copy_C;
+  281         --count a6
+  282                 FOR i IN H*5..N LOOP
+  283                         FOR j IN 1..N LOOP
+  284                                 temp := 0;
+  285                                 FOR k IN 1..N LOOP
+  286                                         temp := temp+(MO6(i)(k)*MX(k)(j));
+  287                                 END LOOP;         
+  288                                 buf(i) := temp + temp*C6(j);
+  289                         END LOOP;
+  290                         a6:= a6+ (buf(i)+B(i))*Z(i);
+  291                 END LOOP;               
+  292                 --count a
+  293                 Monitor.Count_a(a6);
+  294             PUT_LINE(" T6 FINISHED ");
+  295         END T6;
+  296         
+  297   BEGIN
+  298         NULL;
+  299   END LAB5;
+  300 

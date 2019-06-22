@@ -1,0 +1,118 @@
+GNAT 4.3.3
+Copyright 1992-2007, Free Software Foundation, Inc.
+
+Compiling: module.adb (source file time stamp: 2009-09-15 23:29:27)
+
+     1. ----------------------------------------------------------------
+     2. --              Paralel and distributed computing             --
+     3. --                     Laboratory work #1                     --
+     4. --                   IO-73 Pustovit Michael                   --
+     5. ----------------------------------------------------------------
+     6. --Variant: 1.27, 2.14, 3.18                                   --
+     7. --Func1: e = (A*B) + (C*D);                                      --
+     8. --Func2: MC = SORT(MA + MB*MO);                                  --
+     9. --Func3: p = MAX(SORT(MS) + MA*MB).                              --
+    10. ------------------------BODY OF MAIN PACKAGE--------------------
+    11. ----------------------------------------------------------------
+    12. with Ada.Text_IO; use Ada.Text_IO;
+    13. package body Module is
+    14.    --Functions description
+    15.    ---Vector operations
+    16.    ----Multiplication of vectors a*b
+    17.    function VectMult(a, b: Vector) return integer is
+    18.       sum: integer;
+    19.    begin
+    20.       sum := 0;
+    21.       for i in 1..N loop
+    22.          sum := sum + a(i) * b(i);
+    23.       end loop;
+    24.       return sum;
+    25.    end VectMult;
+    26.
+    27.    ----Processing sum of vectors a+b
+    28.    function VectSum(a, b: Vector) return Vector is
+    29.       c: Vector;
+    30.    begin
+    31.       for i in 1..N loop
+    32.          c(i) := a(i) + b(i);
+    33.       end loop;
+    34.       return c;
+    35.    end VectSum;
+    36.
+    37.    ----Descending sort of vector a
+    38.    procedure VectSort(a: in out Vector) is separate;
+    39.
+    40.
+    41.    --Main Functions (Func1, Func2, Func3)
+    42.    ---e = (a*b) + (c*d);
+    43.    procedure Func1(a, b, c, d: in Vector; e:out integer) is
+    44.    begin
+    45.       e := VectMult(a, b) + VectMult(c, d);
+    46.       exception
+    47.          when Constraint_Error =>
+    48.             Put("Constraint error in Func1.");
+    49.    end Func1;
+    50.
+    51. end Module;
+
+Compiling: module.ads (source file time stamp: 2009-09-16 12:53:31)
+
+     1. ----------------------------------------------------------------
+     2. --              Paralel and distributed computing             --
+     3. --                     Laboratory work #1                     --
+     4. --                   IO-73 Pustovit Michael                   --
+     5. ----------------------------------------------------------------
+     6. --Variant: 1.27, 2.14, 3.18                                   --
+     7. --Func1: e = (A*B) + (C*D);                                      --
+     8. --Func2: MC = SORT(MA + MB*MO);                                  --
+     9. --Func3: p = MAX(SORT(MS) + MA*MB).                              --
+    10. -------------------SPECIFICATION OF MAIN PACKAGE----------------
+    11. ----------------------------------------------------------------
+    12.
+    13. generic
+    14.       N: integer;
+    15.
+    16. package Module is
+    17.
+    18.    --N: integer := 3;
+    19.
+    20.    type vector is private;
+    21.
+    22.    ---e = (a*b) + (c*d);
+    23.    procedure Func1(a, b, c, d: in Vector; e:out integer);
+    24.
+    25.    private
+    26.       type Vector is array (1..N) of Integer;
+    27.
+    28.       ---Vector operations
+    29.       ----Multiplication of vectors a*b
+    30.       function VectMult(a, b: Vector) return integer;
+    31.
+    32.       ----Processing sum of vectors a+b
+    33.       function VectSum(a, b: Vector) return Vector;
+    34.
+    35.       ----Descending sort of vector a
+    36.       procedure VectSort(a: in out Vector);
+    37. end Module;
+
+Compiling: module-vectsort.adb (source file time stamp: 2009-09-16 13:36:29)
+
+     1. separate (Module)
+     2. procedure VectSort(a: in out Vector) is
+     3.    flag: boolean := true;
+     4.    help: integer;
+     5. begin
+     6.    while flag loop
+     7.       flag := false;
+     8.       for i in 2..N loop
+     9.          if a(i-1) < a(i) then
+    10.             help := a(i-1);
+    11.             a(i-1) := a(i);
+    12.             a(i) := help;
+    13.             flag := true;
+    14.          end if;
+    15.       end loop;
+    16.    end loop;
+    17. end VectSort;
+
+ 51 lines: No errors

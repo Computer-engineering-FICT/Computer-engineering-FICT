@@ -1,0 +1,42 @@
+Source file: ..\vector_f1-matrix_f2-f3.adb   Thu Oct 01 01:12:08 2009
+
+    1 with Ada.Text_IO; use Ada.Text_IO;
+    2 package body Vector_F1.Matrix_F2.F3 is
+    3         
+    4         --k=min(MA*MB*å)  
+    5    function Func3(MA, MB:in Matrix; E: in integer) return integer is
+    6       k: Integer;
+    7         begin
+    8                 K := MatrixMin(MatrixMult(MA, MultiMatrNum (MB,E)));
+    9                 
+   10            exception
+   11               when Constraint_Error =>
+   12             Put("Constraint error in Func3");
+   13                 return K;
+   14         end Func3;
+   15 
+   16 end Vector_F1.Matrix_F2.F3;
+
+NAME                 KIND/FILE            DEF    REFERENCES (* if assigned)
+---------------------------------------------------------------------------
+Ada                  #1:ada.ada                  1 
+E                    parameter            5      8* 
+F3                   lib package body     2      16 
+F3                   #3:lab2_sepcomp3.adb        2 
+Func3                subprogram body      5      14 
+Func3                #3:lab2_sepcomp3.adb        5 
+MA                   parameter            5      8* 
+MB                   parameter            5      8* 
+Matrix               #3:lab2_sepcomp3.adb        5 
+MatrixMin            #3:lab2_sepcomp3.adb        8 
+MatrixMult           #3:lab2_sepcomp3.adb        8 
+Matrix_F2            #3:lab2_sepcomp3.adb        2 
+MultiMatrNum         #3:lab2_sepcomp3.adb        8 
+Put                  #2:ada.text_io.spc          12 
+Text_IO              #2:ada.text_io.spc          1 
+Vector_F1            #3:lab2_sepcomp3.adb        2 
+k                    object               6      8* 13 
+
+    File #1 d:\dist\objectada 8.4\lib\rts\ada.ada
+    File #2 d:\dist\objectada 8.4\lib\rts\ada.text_io.spc
+    File #3 ..\lab2_sepcomp3.adb
