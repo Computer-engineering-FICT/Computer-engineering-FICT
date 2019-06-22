@@ -1,0 +1,28 @@
+Index: src/redactor/MatrixHandler.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/redactor/MatrixHandler.java	(revision 39:8269801b0217)
++++ src/redactor/MatrixHandler.java	(revision 39+:8269801b0217+)
+@@ -306,9 +306,9 @@
+                         findAllWays(i + 1, currentWay);
+ 
+                         //return here
+-                    //    while (!currentWay.get(currentWay.size()-1).equals(matrix[row][0]) && (currentWay.size()>2))   {
++                //        while (!currentWay.get(currentWay.size()-1).equals(matrix[row][0]) && (currentWay.size()>2))   {
+                             currentWay = subWay(currentWay);
+-                    //    }
++                //        }
+ 
+ 
+                     } else {
+@@ -317,7 +317,7 @@
+                     }
+ 
+                 }
+-                
++
+                 else {
+                     ArrayList<String> currentCycle = new ArrayList<String>();
+                     currentCycle.addAll(currentWay);

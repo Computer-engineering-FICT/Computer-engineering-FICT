@@ -1,0 +1,681 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ru"><head>   <script>function b(c){this.t={};this.tick=function(d,e,a){a=a?a:(new Date).getTime();this.t[d]=[a,e]};this.tick("start",null,c)}var f=new b;window.jstiming={Timer:b,load:f};try{window.jstiming.pt=window.gtbExternal&&window.gtbExternal.pageT()||window.external&&window.external.pageT}catch(g){};
+</script> <meta content="text/html; charset=UTF-8" 
+http-equiv="Content-Type"> <meta name="robots" content="noarchive&gt;"> 
+<!-- base --> <title>P-CAD-lab3</title> <style type="text/css">
+/* default css */
+table {
+font-size: 1em;
+line-height: inherit;
+border-collapse: collapse;
+}
+tr {
+text-align: left;
+}
+div, address, ol, ul, li, option, select {
+margin-top: 0px;
+margin-bottom: 0px;
+}
+p {
+margin: 0px;
+}
+pre {
+font-family: Courier New;
+white-space: pre-wrap;
+margin:0;
+}
+body {
+margin: 6px;
+padding: 0px;
+font-family: Verdana, sans-serif;
+font-size: 10pt;
+background-color: #ffffff;
+color: #000;
+}
+img {
+-moz-force-broken-image-icon: 1;
+}
+@media screen {
+html.pageview {
+background-color: #f3f3f3 !important;
+overflow-x: hidden;
+overflow-y: scroll;
+}
+body {
+min-height: 1100px;
+counter-reset: __goog_page__;
+}
+* html body {
+height: 1100px;
+}
+/* Prevent repaint errors when scrolling in Safari. This "Star-7" css hack
+targets Safari 3.1, but not WebKit nightlies and presumably Safari 4.
+That's OK because this bug is fixed in WebKit nightlies/Safari 4 :-). */
+html*#wys_frame::before {
+content: '\A0';
+position: fixed;
+overflow: hidden;
+width: 0;
+height: 0;
+top: 0;
+left: 0;
+}
+.pageview body {
+border-top: 1px solid #ccc;
+border-left: 1px solid #ccc;
+border-right: 2px solid #bbb;
+border-bottom: 2px solid #bbb;
+width: 648px !important;
+margin: 15px auto 25px;
+padding: 40px 50px;
+}
+/* IE6 */
+* html {
+overflow-y: scroll;
+}
+* html.pageview body {
+overflow-x: auto;
+}
+.writely-callout-data {
+display: none;
+}
+.writely-footnote-marker {
+background-image: url('images/footnote_doc_icon.gif');
+background-color: transparent;
+background-repeat: no-repeat;
+width: 7px;
+overflow: hidden;
+height: 16px;
+vertical-align: top;
+-moz-user-select: none;
+}
+.editor .writely-footnote-marker {
+cursor: move;
+}
+.writely-footnote-marker-highlight {
+background-position: -15px 0;
+-moz-user-select: text;
+}
+.writely-footnote-hide-selection ::-moz-selection, .writely-footnote-hide-selection::-moz-selection {
+background: transparent;
+}
+.writely-footnote-hide-selection ::selection, .writely-footnote-hide-selection::selection {
+background: transparent;
+}
+.writely-footnote-hide-selection {
+cursor: move;
+}
+/* Comments */
+.writely-comment-yellow {
+background-color: #ffffd7;
+}
+.writely-comment-orange {
+background-color: #ffe3c0;
+}
+.writely-comment-pink {
+background-color: #ffd7ff;
+}
+.writely-comment-green {
+background-color: #d7ffd7;
+}
+.writely-comment-blue {
+background-color: #d7ffff;
+}
+.writely-comment-purple {
+background-color: #eed7ff;
+}
+.br_fix span+br:not(:-moz-last-node) {
+position:relative;
+left: -1ex
+}
+#cb-p-tgt {
+font-size: 8pt;
+padding: .4em;
+background-color: #ddd;
+color: #333;
+}
+#cb-p-tgt-can {
+text-decoration: underline;
+color: #36c;
+font-weight: bold;
+margin-left: 2em;
+}
+#cb-p-tgt .spin {
+width: 16px;
+height: 16px;
+background: url(//ssl.gstatic.com/docs/clipboard/spin_16o.gif) no-repeat;
+}
+}
+h6 { font-size: 8pt }
+h5 { font-size: 8pt }
+h4 { font-size: 10pt }
+h3 { font-size: 12pt }
+h2 { font-size: 14pt }
+h1 { font-size: 18pt }
+blockquote {padding: 10px; border: 1px #DDD dashed }
+.webkit-indent-blockquote { border: none; }
+a img {border: 0}
+.pb {
+border-width: 0;
+page-break-after: always;
+/* We don't want this to be resizeable, so enforce a width and height
+using !important */
+height: 1px !important;
+width: 100% !important;
+}
+.editor .pb {
+border-top: 1px dashed #C0C0C0;
+border-bottom: 1px dashed #C0C0C0;
+}
+div.google_header, div.google_footer {
+position: relative;
+margin-top: 1em;
+margin-bottom: 1em;
+}
+/* Table of contents */
+.editor div.writely-toc {
+background-color: #f3f3f3;
+border: 1px solid #ccc;
+}
+.writely-toc > ol {
+padding-left: 3em;
+font-weight: bold;
+}
+ol.writely-toc-subheading {
+padding-left: 1em;
+font-weight: normal;
+}
+/* IE6 only */
+* html writely-toc ol {
+list-style-position: inside;
+}
+.writely-toc-none {
+list-style-type: none;
+}
+.writely-toc-decimal {
+list-style-type: decimal;
+}
+.writely-toc-upper-alpha {
+list-style-type: upper-alpha;
+}
+.writely-toc-lower-alpha {
+list-style-type: lower-alpha;
+}
+.writely-toc-upper-roman {
+list-style-type: upper-roman;
+}
+.writely-toc-lower-roman {
+list-style-type: lower-roman;
+}
+.writely-toc-disc {
+list-style-type: disc;
+}
+/* Ordered lists converted to numbered lists can preserve ordered types, and
+vice versa. This is confusing, so disallow it */
+ul[type="i"], ul[type="I"], ul[type="1"], ul[type="a"], ul[type="A"] {
+list-style-type: disc;
+}
+ol[type="disc"], ol[type="circle"], ol[type="square"] {
+list-style-type: decimal;
+}
+/* end default css */
+/* custom css */
+/* end custom css */
+/* ui edited css */
+body {
+font-family: Verdana;
+font-size: 12.0pt;
+line-height: normal;
+background-color: #ffffff;
+}
+/* end ui edited css */
+/* editor CSS */
+.editor a:visited {color: #551A8B}
+.editor table.zeroBorder {border: 1px dotted gray}
+.editor table.zeroBorder td {border: 1px dotted gray}
+.editor table.zeroBorder th {border: 1px dotted gray}
+.editor div.google_header, .editor div.google_footer {
+border: 2px #DDDDDD dashed;
+position: static;
+width: 100%;
+min-height: 2em;
+}
+.editor .misspell {background-color: yellow}
+.editor .writely-comment {
+font-size: 9pt;
+line-height: 1.4;
+padding: 1px;
+border: 1px dashed #C0C0C0
+}
+/* end editor CSS */
+</style> <style>
+body {
+margin: 0px;
+}
+#doc-contents {
+margin: 6px;
+}
+#google-view-footer {
+clear: both;
+border-top: thin solid;
+padding-top: 0.3em;
+padding-bottom: 0.3em;
+}
+a.google-small-link:link, a.google-small-link:visited {
+color:#112ABB;
+font-family:Arial,Sans-serif;
+font-size:11px !important;
+}
+body, p, div, td {
+direction: inherit;
+}
+@media print {
+#google-view-footer {
+display: none;
+}
+}
+</style> <script>
+function viewOnLoad() {
+if (document.location.href.indexOf('spi=1') != -1) {
+if (navigator.userAgent.toLowerCase().indexOf('msie') != -1) {
+window.print();
+} else {
+window.setTimeout(window.print, 10);
+}
+}
+if (document.location.href.indexOf('hgd=1') != -1) {
+var footer = document.getElementById("google-view-footer");
+if (footer) {
+footer.style.display = 'none';
+}
+}
+}
+</script> </head><body onload="window.jstiming.load.tick('ol'); 
+window.jstiming.report(window.jstiming.load, null, 
+document.location.protocol == 'https:' ? 'https://gg.google.com/csi' : 
+null);"> <div id="doc-contents"> <div style="font-family: Verdana;"><p 
+style="background-color: rgb(255, 255, 255); margin: 0pt 0pt 0pt 4.1pt; 
+text-align: center;"><font color="#000000"><b><font size="3">Лабораторная
+ работа № 3</font></b></font></p><p style="margin: 0pt;">&nbsp;</p><p 
+style="margin: 0pt;"><b><font size="3">Тема:</font></b><span 
+style="font-style: normal;"><font size="3"> Размещение конструктивных 
+элементов на печатной плате.</font></span></p><p style="margin: 0pt;"><font
+ size="3"><br></font></p><p style="margin: 0pt;"><b><font size="3">Цель 
+занятия</font></b><font size="3">:</font><font size="3"> Изучение 
+методики работы с графическим редактором </font><b><font size="3">P-CAD 
+РСВ</font></b><font size="3">; приобретение навыков при решении задачи 
+размещения конструктивных элементов РЭС на печатной плате.</font></p><p 
+style="margin: 0pt;">&nbsp;</p><p style="margin: 0pt; text-align: 
+center;"><b><font size="3">Общие сведения о графическом редакторе P-CAD 
+РСВ</font></b></p><p style="margin: 0pt;"><b>&nbsp;</b></p><p 
+style="margin: 0pt;"><font size="3">Графический редактор </font><b><font
+ size="3">P-CAD РСВ</font></b><font size="3"> предназначен для 
+выполнения работ, связанных с&nbsp; разработкой и конструированием узлов
+ печатных плат. Он позволяет размещать схемы на плате, задавать размеры,
+ ширину проводников и величину индивидуальных зазоров для разных 
+проводников, задавать размеры контактных площадок и диаметры переходных 
+отверстий, экранные слои. Редактор позволяет выполнять маркировку 
+элементов, их размещения, неавтоматическую трассировку проводников и 
+формировать управляющие файлы для технологического оборудования.</font></p><p
+ style="margin: 0pt;">&nbsp;</p><p style="margin: 0pt;"><font size="3">Запуск
+ программы осуществляется через кнопку «Пуск» с последующим выбором в 
+выпадающем меню программы P-CAD и P-CAD РСВ. В том случае, если на 
+компьютере запущена одна из программ P-CAD, необходимо щелкнуть ЛК по 
+команде Utils. Откроется выпадающее меню, в котором несколько пунктов 
+начинаются с аббревиатуры P-CAD. Щелчок мыши по </font><b><font size="3">P-CAD
+ РСВ</font></b><font size="3"> запустит программу При этом действующая 
+программа не закроется, а только свернется, и к ней всегда можно будет 
+вернуться. Экран графического редактора </font><b><font size="3">P-CAD 
+РСВ</font></b><font size="3"> представлен на </font><font size="3">Р</font><font
+ size="3">ис. 1.</font></p><p style="margin: 0pt;">&nbsp;<br></p><div 
+style="text-align: center;"><img alt="" src="View3_files/File_003.png" 
+style="border: medium none;" width="624" height="601"><br></div><p 
+style="margin: 0pt;"></p><p style="margin: 0pt; text-align: center;"><i><font
+ size="3"><br></font></i></p><p style="margin: 0pt; text-align: center;"><i><font
+ size="3">Рис. 1. Основное окно&nbsp; </font><font size="3">PCB</font><font
+ size="3"> Editor</font></i></p><p style="margin: 0pt; text-align: 
+center;">&nbsp;</p><p style="margin: 0pt;"><font size="3">Меню 
+инструментов содержит следующие пиктограммы.</font></p><p style="margin:
+ 0pt;"><font size="3">Левый ряд пиктограмм:</font></p><ul><li><font 
+size="3">Place Component — размещение корпуса элемента;</font></li><li><font
+ size="3">Place Connection — ввод электрической связи;</font></li><li><font
+ size="3">Place Pad — размещение стека КП;</font></li><li><font size="3">Place
+ Via — размещение переходного отверстия;</font></li><li><font size="3">Place
+ Line — размещение линии;</font></li><li><font size="3">Place </font><font
+ size="3">Arc</font><font size="3"> — размещение дуги;</font></li><li><font
+ size="3">Place Polygon — размещение полигона;</font></li><li><font 
+size="3">Place Point — размещение точки привязки;</font></li><li><font 
+size="3">Place Copper Pour — размещение области металлизации;</font></li><li><font
+ size="3">Place Cutout — размещение выреза в области металлизации;</font></li><li><font
+ size="3">Place Keepout — создание барьера трассировки;</font></li><li><font
+ size="3">Place Plane — создание линии раздела слоя 11 металлизации;</font></li><li><font
+ size="3">Place Room — создание «комнаты»;</font></li><li><font size="3">Place
+ Text — размещение текста;</font></li><li><font size="3">Place Attribute
+ — размещение атрибута;</font></li><li><font size="3">Place Field — 
+размещение строки данных трасс;</font></li><li><font size="3">Place 
+Dimension — измерение расстояния.</font></li></ul><p style="margin: 
+0pt;"><font size="3">Верхний ряд пиктограмм (кр. стандартных):</font></p><ul><li><font
+ size="3">Measure — измерение расстояния;</font></li><li><font size="3">Zoom
+ Window – </font><font size="3">масштабирование;</font></li><li><font 
+size="3">Online DRC — проверка соблюдения ограничений;</font></li><li><font
+ size="3">Record ECOs — начать/закончить запись файла изменений;</font></li><li><font
+ size="3">Route Manual — прокладка проводника вручную;</font></li><li><font
+ size="3">Route Interactive — прокладка проводников в интерактивном 
+режиме;</font></li><li><font size="3">Route </font><font size="3">Advanced</font><font
+ size="3"> — прокладка проводников;</font></li><li><font size="3">Route 
+Miter — сглаживание изгиба проводника; </font></li><li><font size="3">Route
+ Bus — прокладка шин;</font></li><li><font size="3">Route Multi Trace — 
+прокладка нескольких проводников;</font></li><li><font size="3">Route 
+Fanout — создание стрингеров;</font></li><li><font size="3">Push Traces —
+ отталкивание трасс;</font></li><li><font size="3">Maximize Hugging — 
+улучшение огибания препятствий;</font></li><li><font size="3">Minimize 
+Length — уменьшение длины;</font></li><li><font size="3">Visible Routing
+ Area — отображение области трассировки.</font></li></ul><p 
+style="margin: 0pt 0pt 0pt 18pt;">&nbsp;</p><p style="margin: 0pt; 
+text-align: center;"><b><font size="3">Размещение элементов на печатной 
+плате</font></b></p><p style="margin: 0pt 0pt 0pt 18pt;">&nbsp;</p><p 
+style="margin: 0pt;"><font size="3">После запуска программы </font><b><font
+ size="3">P-CAD PCB</font></b><font size="3"> следует настроить его 
+конфигурацию. Для этого в меню Options выполнить команды </font><font 
+size="3">Configure</font><b><font size="3">, </font></b><font size="3">Display</font><b><font
+ size="3">, </font></b><font size="3">Layers</font><b><font size="3">, </font></b><font
+ size="3">Grids</font><font size="3"> и др. Параметры конфигурации 
+сохраняются вместе с файлом текущего проекта и устанавливаются по 
+умолчанию для последующих сеансов проектирования.</font></p><p 
+style="margin: 0pt;">&nbsp;</p><p style="margin: 0pt;"><font size="3">По
+ командам </font><b><font size="3">Options/Configure</font></b><font 
+size="3"> на закладке General в графе Units выбрать метрическую систему 
+единиц — mm. В графе Workspace Size указать размер рабочей области, 
+превышающий габаритные размеры печатной платы (в нашем примере задать с 
+запасом 250x250 мм). В области AutoSave установить флажок Enable 
+AutoSave и нажать кнопку ОК (рис. 2).</font></p><p style="margin: 0pt;"><br></p><div
+ style="text-align: center;"><img alt="" src="View3_files/File_002.png" 
+style="border: medium none;" width="455" height="478"><br></div><p 
+style="margin: 0pt;"></p><p style="margin: 0pt;">&nbsp;</p><p 
+style="margin: 0pt; text-align: center;"><i><font size="3">Рис. 2. </font><font
+ size="3">Окно</font><font size="3"> настройки конфигурации –</font></i>
+ <i><font size="3">основная закладка</font></i></p><p style="margin: 0pt
+ 0pt 0pt 18pt; text-align: center;">&nbsp;</p><p style="margin: 0pt;"><font
+ size="3">На закладке Route в графе Orthogonal Modes включить все режимы
+ и завершить настройку нажатием кнопки ОК (Рис. 3).</font></p><p 
+style="margin: 0pt;">&nbsp;<br></p><div style="text-align: center;"><img
+ alt="" src="View3_files/File_009.png" style="border: medium none;" 
+width="455" height="478"><br></div><p style="margin: 0pt;"></p><p 
+style="margin: 0pt;">&nbsp;</p><p style="margin: 0pt; text-align: 
+center;"></p><p style="margin: 0pt; text-align: center;"><i><font 
+size="3">Рис. 3. </font><font size="3">Окно</font><font size="3"> 
+настройки конфигурации –</font></i> <i><font size="3">закладка 
+трассировки</font></i></p><p style="margin: 0pt 0pt 0pt 18pt; 
+text-align: center;">&nbsp;</p><p style="margin: 0pt;"><font size="3">Установить
+ размер сетки 1,25 мм. Для этого поместить курсор в строке состояний в 
+поле, показывающее текущую сетку. Щелкнуть ЛК и ввести 1.25. Нажать 
+клавишу Enter.</font></p><p style="margin: 0pt;"><br></p><p 
+style="margin: 0pt;"><font size="3">Загрузить библиотеки компонентов из 
+подкаталога </font><font size="3">Tutorial </font><font size="3">в 
+каталоге установки </font><font size="3">P-CAD</font><font size="3">. 
+Для этого выполнить команду </font><b><font size="3">Library/Setup</font></b><font
+ size="3"> - появится одноименное окно управления библиотеками, в 
+котором для добавления в список новой библиотеки нажать кнопку Add (рис.
+ 4).</font></p><p style="margin: 0pt;"><br></p><div style="text-align: 
+center;"><img alt="" src="View3_files/File_011.png" style="border: 
+medium none;" width="345" height="287"><br></div><p style="margin: 0pt;"></p><p
+ style="margin: 0pt;">&nbsp;</p><p style="margin: 0pt 0pt 0pt 18pt; 
+text-align: center;"></p><p style="margin: 0pt 0pt 0pt 18pt; text-align:
+ center;"><i><font size="3">Рис. </font><font size="3">4</font><font 
+size="3">. </font><font size="3">Окно</font><font size="3"> управления 
+библиотеками</font></i></p><p style="margin: 0pt 0pt 0pt 18pt; 
+text-align: center;">&nbsp;</p><p style="margin: 0pt;"><font size="3">Загрузить
+ список соединений электрической схемы. Для этого в меню Utils выполнить
+ команду Load NetList (Загрузить список соединений). В появившемся 
+одноименном окне щелкнуть ЛК по кнопке NetList Filename. В открывшемся 
+стандартном окне Windows выбрать файл соединений </font><font size="3">«PCBtutor.net»
+ </font><font size="3">из подкаталога </font><font size="3">Tutorial </font><font
+ size="3">в каталоге установки </font><font size="3">P-CAD</font><font 
+size="3">. В выпадающем списке NetList Format выбрать установленный 
+ранее формат Tango (рис. </font><font size="3">5</font><font size="3">).
+ Нажать кнопку ОК.</font></p><p style="margin: 0pt;"><br></p><div 
+style="text-align: center;"><img alt="" src="View3_files/File.png" 
+style="border: medium none;" width="503" height="451"><br></div><p 
+style="margin: 0pt;"></p><p style="margin: 0pt 0pt 0pt 18pt; text-align:
+ center;"><i><font size="3"><br></font></i></p><p style="margin: 0pt 0pt
+ 0pt 18pt; text-align: center;"><i><font size="3">Рис. </font><font 
+size="3">5</font><font size="3">. </font><font size="3">Окно</font><font
+ size="3"> загрузки списка соединений</font></i></p><p style="margin: 
+0pt 0pt 0pt 18pt;">&nbsp;</p><p style="margin: 0pt;"><font size="3">После
+ этого на рабочем поле должны появиться контуры ЭРЭ и связи между ними 
+(Рис. 6). Одновременно формируется текстовый файл, в который 
+записываются возникшие при трансляции ошибки и предупреждения (если есть
+ ошибки, загрузка файла соединении не произойдет). Необходимо 
+просмотреть перечень ошибок и предупреждений и исправить все ошибки.</font></p><p
+ style="margin: 0pt 0pt 0pt 18pt; text-align: center;">&nbsp;<br><img 
+alt="" src="View3_files/File_005.png" style="border: medium none;" 
+width="624" height="554"><br></p><p style="margin: 0pt; text-align: 
+center;"><i><font size="3"><br></font></i></p><p style="margin: 0pt; 
+text-align: center;"><i><font size="3">Рис. 6. Загруженная схема 
+соединений</font></i></p><p style="margin: 0pt;">&nbsp;</p><p 
+style="margin: 0pt;"><span style="font-style: normal;"><font size="3">Упростить
+ схему соединений, удалив все элементы кроме указанных в варианте, 
+например </font></span><span style="font-style: normal;"><font size="3">U6,
+ U7, U8, J8 (</font></span><span style="font-style: normal;"><font 
+size="3">Рис.7</font></span><span style="font-style: normal;"><font 
+size="3">).</font></span></p><p style="margin: 0pt;"><br></p><div 
+style="text-align: center;"><img alt="" src="View3_files/File_004.png" 
+style="border: medium none;" width="624" height="554"><br></div><p 
+style="margin: 0pt;"></p><p style="margin: 0pt; text-align: center;"><i><font
+ size="3"><br></font></i></p><p style="margin: 0pt; text-align: center;"><i><font
+ size="3">Рис. 7. Упрощенная (согласно варианту) схема соединений</font></i></p><p
+ style="margin: 0pt;">&nbsp;</p><p style="margin: 0pt;"><font size="3">Ввод
+ квадратного контура печатной платы в слое Board. Для этого в выпадающем
+ списке Select Layers (находится в строке параметров состояния правее 
+поля с текущей сеткой) перейти в слой Board (рис. 7). Выполнить команды </font><b><font
+ size="3">Place/Line</font></b><font size="3">. Установить курсор в 1-ю 
+точку квадрата с координатами (15; 15) контура ПП и щелкнуть ЛК. 
+Переместить курсор во 2-ю точку — (65; 15), щелкнуть ЛК. Переместить 
+курсор в 3-ю точку с координатами (65; 65) и опять щелкнуть ЛК, затем в 
+4-ю точку — (15; 65), щелкнуть ЛК. И, наконец, вернуть курсор в 1-ю 
+точку и щелкнуть ЛК, а затем ПК (Рис. 8).</font></p><p style="margin: 
+0pt;"></p><p style="margin: 0pt; text-align: left;">&nbsp;</p><p 
+style="margin: 0pt; text-align: center;"><img alt="" 
+src="View3_files/File_010.png" style="border: medium none;" width="624" 
+height="448"><br></p><p style="margin: 0pt; text-align: center;">&nbsp;</p><p
+ style="margin: 0pt; text-align: center;"><i><font size="3">Рис. 8. 
+Контур печатной платы</font></i></p><p style="margin: 0pt 0pt 0pt 18pt; 
+text-align: center;">&nbsp;</p><p style="margin: 0pt;"><font size="3">Приступить
+ к размещению элементов. Критерием качества размещения считать 
+минимальную суммарную длину соединений. Для этого выполнить команды </font><b><font
+ size="3">Edit/Select</font></b><font size="3">. Установить текущим слой
+ Тор. При установке элементов редактор позволяет манипулировать ими: 
+вращать, перемещать, делать невидимыми тексты. Вращать выбранный элемент
+ можно вокруг точки привязки. Для этого его выделяют командами 
+Edit/Select и нажатием клавиши R поворачивают против часовой стрелки на 
+90° или клавиши F на 180°. Кроме этого можно перемещать тексты с места 
+на место или сделать их невидимыми. Выполнить эту процедуру вначале с 
+разъемом </font><font size="3">J8.</font><font size="3"> Для этого 
+щелкнуть по нему ЛК. Разъем изменит свой цвет. После этого щелкнуть ПК. 
+Появится контекстное меню, в котором щелкнуть ЛК по строке Properties 
+(Свойства) (</font><font size="3">Р</font><font size="3">ис. </font><font
+ size="3">9</font><font size="3">). В окне Visibility (Видимость) 
+напротив строки Туре двумя щелчками ЛК снять флажок. Щелкнуть ЛК по 
+кнопке ОК. Надпись возле разъема исчезнет. Подобную процедуру повторить 
+со всеми элементами схемы. При размещении элементов контуре ПП 
+сохранятся только обозначения элементов.</font></p><br><p style="margin:
+ 0pt 0pt 0pt 18pt; text-align: center;"><img alt="" 
+src="View3_files/File_007.png" style="border: medium none;" width="558" 
+height="423"><br></p><p style="margin: 0pt; text-align: center;"><i><font
+ size="3"><br></font></i></p><p style="margin: 0pt; text-align: center;"><i><font
+ size="3">Рис. 9. Изменение свойств компонента</font></i></p><p 
+style="margin: 0pt 0pt 0pt 18pt;">&nbsp;</p><p style="margin: 0pt 0pt 
+0pt 18pt;"><font size="3">Вначале на ПП разместить разъем </font><font 
+size="3">J8</font><font size="3">. Для этого выделить его (навести на 
+него курсор и щелкнуть ЛК). Разъем изменит цвет на желтый. Еще раз 
+нажать ЛК и, не отпуская ее, перетащить разъем в центр крайней части 
+контура ПП — в точку с координатами (60; 32,5) (Координаты размещения 
+ЭРЭ соответствуют их точкам привязки). Остальные элементы необходимо 
+размещать внутри контура ПП так, чтобы суммарная длина соединений была 
+минимальной. </font></p><p style="margin: 0pt 0pt 0pt 18pt;"><font 
+size="3">После размещения может оказаться, что некоторые из обозначений 
+ЭРЭ либо перевернуты, либо неудачно размещены по отношению к ЭРЭ. В 
+таком случае обозначения надо установить в удобное для прочтения 
+положение. Для этого надо нажать и, удерживая клавишу Shift, щелкнуть ЛК
+ по передвигаемой надписи. Она изменит цвет. После этого, указав на нее 
+курсором и удерживая ЛК в нажатом состоянии, перетащить надпись в 
+требуемое место. При необходимости ее можно перевернуть, нажимая на 
+клавишу буквы R. Результат размещения представлен на Рис. 10.</font></p><p
+ style="margin: 0pt 0pt 0pt 18pt; text-align: center;">&nbsp;<br><img 
+alt="" src="View3_files/File_006.png" style="border: medium none;" 
+width="600" height="612"><br></p><p style="margin: 0pt; text-align: 
+center;"><i><font size="3"><br></font></i></p><p style="margin: 0pt; 
+text-align: center;"><i><font size="3">Рис. 10. Результат размещения</font></i></p><p
+ style="margin: 0pt 0pt 0pt 18pt;">&nbsp;</p><p style="margin: 0pt;"><font
+ size="3">После завершения размещения ЭРЭ на ПП целесообразно выполнить 
+минимизацию длин соединений путем перестановки логически эквивалентных 
+секций и выводов. Для этого командами </font><b><font size="3">Utils/Optimize
+ Nets</font></b><font size="3"> открыть одноименное окно, в котором 
+выбрать один из методов оптимизации:</font></p><p style="margin: 0pt 0pt
+ 0pt 18pt;"><font size="3">- Auto — автоматическая оптимизация,</font></p><p
+ style="margin: 0pt 0pt 0pt 18pt;"><font size="3">- Manual Gate Swap — 
+перестановка эквивалентных секции элементов вручную;</font></p><p 
+style="margin: 0pt 0pt 0pt 18pt;"><font size="3">- Manual Pin Swap — 
+перестановка эквивалентных выводов элементов вручную.</font></p><p 
+style="margin: 0pt;"><font size="3">При автоматической оптимизации в 
+области Auto Options установить флажки в Gate Swap (Перестановка 
+эквивалентных секций), в Pin Swap (Перестановка эквивалентных выводов) и
+ включить Entire Design (Оптимизация всего проекта) (Рис. 11). Нажать 
+кнопку ОК.</font></p><p style="margin: 0pt 0pt 0pt 18pt; text-align: 
+center;">&nbsp;<br><img alt="" src="View3_files/File_008.png" 
+style="border: medium none;" width="357" height="173"><br></p><br><p 
+style="margin: 0pt 0pt 0pt 18pt; text-align: center;"></p><p 
+style="margin: 0pt; text-align: center;"><i><font size="3">Рис. 11. 
+Оптимизация соединений</font></i></p><p style="margin: 0pt;">&nbsp;</p><p
+ style="margin: 0pt;"><font size="3">На дополнительный запрос системы 
+ответить утвердительно. После этого может измениться рисунок соединений и
+ на экран выводится информация об изменении длин связей.</font></p><p 
+style="margin: 0pt;">&nbsp;</p><p style="margin: 0pt;"><font size="3">Сохранить
+ результат размещения ЭРЭ на печатной плате. Для этого выполнить команды
+ </font><b><font size="3">File/Save As</font></b><font size="3">. 
+Результат размещения элементов на ПП будет сохранен в виде отдельного 
+файла с расширением .pcb.</font></p><p style="background-color: rgb(255,
+ 255, 255); margin: 12.7pt 24.95pt 0pt 2.9pt; text-align: center;"><b><font
+ size="3">Задание на лабораторную работу</font></b></p><p 
+style="background-color: rgb(255, 255, 255); margin: 12.7pt 0pt 0pt 
+24.95pt;"><font size="3">Произвести размещение элементов на печатной 
+плате с помощью графического редактора </font><b><font size="3">P-CAD 
+РСВ. </font></b><font size="3">Библиотеки элементов и список соединений 
+взять из подкаталога </font><font size="3">Tutorial </font><font 
+size="3">в каталоге установки </font><font size="3">P-CAD. </font><font 
+size="3">Схему упростить, оставив элементы согласно варианту.</font></p><p
+ style="background-color: rgb(255, 255, 255); margin: 12.7pt 0pt 0pt 
+24.95pt;"><font size="3">С8 = остаток от деления номера зачетки на 8.</font></p><p
+ style="margin: 0pt;">&nbsp;</p><table class="zeroBorder" 
+style="margin-left: 0pt;" cellpadding="0" cellspacing="0"><tbody><tr><td
+ style="vertical-align: top; width: 85.5pt;"><p style="margin: 0pt; 
+text-align: center;"><font size="3">№ варианта</font></p><p 
+style="margin: 0pt; text-align: center;"><font size="3">(С8)</font></p></td><td
+ style="vertical-align: top; width: 114pt;"><p style="margin: 0pt;"><font
+ size="3">Элементы</font></p></td></tr><tr><td style="vertical-align: 
+top; width: 85.5pt;"><p style="margin: 0pt; text-align: center;"><font 
+size="3">0</font></p></td><td style="vertical-align: top; width: 114pt;"><p
+ style="margin: 0pt;"><font size="3">J8, U6, U7, U8</font></p></td></tr><tr><td
+ style="vertical-align: top; width: 85.5pt;"><p style="margin: 0pt; 
+text-align: center;"><font size="3">1</font></p></td><td 
+style="vertical-align: top; width: 114pt;"><p style="margin: 0pt;"><font
+ size="3">J8, U6, U7, U9</font></p></td></tr><tr><td 
+style="vertical-align: top; width: 85.5pt;"><p style="margin: 0pt; 
+text-align: center;"><font size="3">2</font></p></td><td 
+style="vertical-align: top; width: 114pt;"><p style="margin: 0pt;"><font
+ size="3">J8, U6, U8, U9</font></p></td></tr><tr><td 
+style="vertical-align: top; width: 85.5pt;"><p style="margin: 0pt; 
+text-align: center;"><font size="3">3</font></p></td><td 
+style="vertical-align: top; width: 114pt;"><p style="margin: 0pt;"><font
+ size="3">J8, U7, U8, U9</font></p></td></tr><tr><td 
+style="vertical-align: top; width: 85.5pt;"><p style="margin: 0pt; 
+text-align: center;"><font size="3">4</font></p></td><td 
+style="vertical-align: top; width: 114pt;"><p style="margin: 0pt;"><font
+ size="3">J8, U6, U12</font></p></td></tr><tr><td style="vertical-align:
+ top; width: 85.5pt;"><p style="margin: 0pt; text-align: center;"><font 
+size="3">5</font></p></td><td style="vertical-align: top; width: 114pt;"><p
+ style="margin: 0pt;"><font size="3">J8, U7, U12</font></p></td></tr><tr><td
+ style="vertical-align: top; width: 85.5pt;"><p style="margin: 0pt; 
+text-align: center;"><font size="3">6</font></p></td><td 
+style="vertical-align: top; width: 114pt;"><p style="margin: 0pt;"><font
+ size="3">J8, U8, U12</font></p></td></tr><tr><td style="vertical-align:
+ top; width: 85.5pt;"><p style="margin: 0pt; text-align: center;"><font 
+size="3">7</font></p></td><td style="vertical-align: top; width: 114pt;"><p
+ style="margin: 0pt;"><font size="3">J8, U9, U12</font></p></td></tr></tbody></table><p
+ style="margin: 0pt;"><b>&nbsp;</b></p><p style="margin: 0pt 0pt 0pt 
+18pt; text-align: center;"><b><font size="3">Контрольн</font><font 
+size="3">ые вопросы</font></b></p><p style="margin: 0pt 0pt 0pt 18pt;">&nbsp;</p><ol><li><font
+ size="3">Поясните назначение графического редактора P-CAD PCB.</font></li><li><font
+ size="3">Поясните назначение кнопок на панели инструментов.</font></li><li><font
+ size="3">Объясните назначение полей в нижней части экрана.</font></li><li><font
+ size="3">Каков порядок настройки конфигурации редактора P-CAD PCB.</font></li><li><font
+ size="3">Каким образом загружаются библиотеки ЭРЭ?</font></li><li><font
+ size="3">Как загружается список соединений электрической схемы?</font></li><li><font
+ size="3">Как и в каком слое вводится контур ПП?</font></li><li><font 
+size="3">Каким образом выполняется размещение ЭРЭ на плате?</font></li><li><font
+ size="3">Как удалить «лишние» надписи у элементов на плате?</font></li><li><font
+ size="3">Как средствами программы РСВ можно выполнить оптимизацию длин 
+соединений на ПП?</font></li><li><font size="3">Как сохранить результат 
+размещения ЭРЭ на печатной плате?</font></li></ol></div><br 
+style="font-family: Verdana;"> <br clear="all"> </div> <div 
+id="google-view-footer"> <div id="maybecanedit" style="float: right;"><a
+ class="google-small-link" id="editpermissionlink" 
+href="http://docs.google.com/Doc?tab=edit&amp;dr=true&amp;id=dd7n8kjz_283fn5bcw8g"
+ title="Изменить данную страницу"> Изменить эту страницу (при наличии 
+разрешения)</a> <span style="color: rgb(103, 103, 103);">|</span> <input
+ id="report-abuse-button" value="Сообщение об оскорблении" 
+onclick="reportAbuse();" type="button"></div> <div style="float: left;">
+ <a title="Подробнее о Документах Google" class="google-small-link" 
+href="http://docs.google.com/"> Документы Google: веб-редактор текста, 
+презентаций и таблиц.</a> </div> <p> &nbsp; </p></div> <script><!--
+    viewOnLoad();
+    if(window.jstiming){window.jstiming.a={};window.jstiming.c=1;var j=function(a,b,e){var c=a.t[b],g=a.t.start;if(c&&(g||e)){c=a.t[b][0];g=e!=undefined?e:g[0];return c-g}};window.jstiming.report=function(a,b,e){var c="";if(window.jstiming.pt){c+="&srt="+window.jstiming.pt;delete window.jstiming.pt}try{if(window.external&&window.external.tran)c+="&tran="+window.external.tran;else if(window.gtbExternal&&window.gtbExternal.tran)c+="&tran="+window.gtbExternal.tran()}catch(g){}if(a.b)c+="&"+a.b;var f=a.t,
+n=f.start,k=[],h=[];for(var d in f)if(d!="start")if(d.indexOf("_")!=0){var i=f[d][1];if(i)f[i]&&h.push(d+"."+j(a,d,f[i][0]));else n&&k.push(d+"."+j(a,d))}delete f.start;if(b)for(var l in b)c+="&"+l+"="+b[l];a=[e?e:"http://csi.gstatic.com/csi","?v=3","&s="+(window.jstiming.sn||"writely")+"&action=",a.name,h.length?"&it="+h.join(","):"",c,"&rt=",k.join(",")].join("");b=new Image;var m=window.jstiming.c++;window.jstiming.a[m]=b;b.onload=b.onerror=function(){delete window.jstiming.a[m]};b.src=a;b=null;
+return a}};
+
+    window.jstiming.load.name = 'published';
+    
+    
+    var urchinPage = "/View";
+
+    
+    function getXHR() {
+      if (typeof XMLHttpRequest != "undefined") {
+        return new XMLHttpRequest();
+      }
+      try { return new ActiveXObject("Msxml2.XMLHTTP.6.0") } catch(e) {}
+      try { return new ActiveXObject("Msxml2.XMLHTTP.3.0") } catch(e) {}
+      try { return new ActiveXObject("Msxml2.XMLHTTP") } catch(e) {}
+      try { return new ActiveXObject("Microsoft.XMLHTTP") } catch(e) {}
+      return null;
+    }
+
+    function reportAbuse() {
+      var req = getXHR();
+      if (req) {
+        
+          var docid = 'dd7n8kjz_283fn5bcw8g';
+          var posttoken = '';
+        
+        req.onreadystatechange = function() {
+          try {
+            if (req.readyState == 4 && req.status == 200) {
+              var button = document.getElementById("report-abuse-button");
+              button.value = 'Благодарим вас!';
+              button.disabled = true;
+            }
+          } catch (ex) {
+            
+          }
+        }
+        try {
+          req.open('POST', 'MiscCommands', true);
+          req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+          req.send('command=report_abuse&abuseDoc=' + encodeURIComponent(docid) +
+                   '&POST_TOKEN=' + encodeURIComponent(posttoken));
+        } catch (ex) {
+          
+        }
+      }
+    }
+  --></script>  </body></html>

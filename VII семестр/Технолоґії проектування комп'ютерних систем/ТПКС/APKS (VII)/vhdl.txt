@@ -1,0 +1,121 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity ANDGATE is
+	port( 
+		ANDIN1 : in bit;
+		ANDIN2 : in bit;
+		ANDIN3 : in bit;
+		ANDOUT : out bit
+	);
+end ANDGATE;
+
+architecture BEH of ANDGATE is
+begin
+	ANDOUT <= ANDIN1 and ANDIN2 and ANDIN3;
+end BEH;
+
+------------------------------------------
+
+entity ORGATE is
+	port( 
+		ORIN1 : in bit;
+		ORIN2 : in bit;
+		ORIN3 : in bit;
+		OROUT : out bit
+	);
+end ORGATE;
+
+architecture BEH of ORGATE is
+begin
+	OROUT <= ORIN1 or ORIN2 or ORIN3;
+end BEH;
+
+------------------------------------------
+
+entity JK is
+	port( 
+		J : in bit;
+		K : in bit;
+		CLK : in bit;
+		Q : inout bit
+	);
+end JK;
+
+architecture BEH of JK is
+begin
+	process (CLK)
+	begin
+	if (CLK'event and CLK = '1') then
+		if (J = '0' and K = '0') then
+			Q <= Q;
+		elsif (J = '1' and K = '0') then
+			Q <= '1';
+		elsif (J = '0' and K = '1') then
+			Q <= '0';
+		elsif (J = '1' and K = '1') then
+			Q <= not(Q);
+		end if;
+	end if;
+	end process;
+end BEH;
+
+------------------------------------------
+
+entity Q1 is
+	port(
+		IN1 : in bit;
+		IN2 : in bit;
+		IN3 : in bit;
+		IN4 : in bit;
+		IN5 : in bit;
+		IN6 : in bit;
+		DOUT : out bit
+	);
+end Q1;
+
+architecture BEH of Q1 is
+signal S1, S2, S3 : bit;
+begin
+	L1: entity ANDGATE(BEH) port map(IN1, IN2, IN3, S1);
+	L2: entity ANDGATE(BEH) port map(IN4, IN5, IN6, S2);
+	L3: entity ORGATE(BEH) port map(S1, S2, S3);
+	DOUT <= S3;
+end BEH;
+
+------------------------------------------
+
+entity Q0 is
+	port(
+		J0 : in bit;
+		K0 : in bit;
+		CLK : in bit;
+		Q0 : inout bit
+	);
+end Q0;
+
+architecture BEH of Q0 is
+begin
+	L1: entity JK(BEH) port map(J0, K0, CLK, Q0);
+end BEH;
+
+------------------------------------------
+--Q1Q2Q3vX1X2
+entity J1 is
+	port(
+		Q1 : in bit;
+		Q2 : in bit;
+		Q3 : in bit;
+		X1 : in bit;
+		X2 : in bit;
+		J1 : out bit
+	);
+end J1;
+
+architecture BEH of J1 is
+signal S1, S2 : bit;
+begin
+	L1: entity ANDGATE(BEH) port map(Q1, Q2, Q3, S1);
+	L2: entity ANDGATE(BEH) port map(X1, X2, X2, S2);
+	L3: entity ORGATE(BEH) port map(S1, S2, S2, J1);
+end BEH;

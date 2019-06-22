@@ -1,0 +1,792 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ru"><head>   <script>function b(c){this.t={};this.tick=function(d,e,a){a=a?a:(new Date).getTime();this.t[d]=[a,e]};this.tick("start",null,c)}var f=new b;window.jstiming={Timer:b,load:f};try{window.jstiming.pt=window.gtbExternal&&window.gtbExternal.pageT()||window.external&&window.external.pageT}catch(g){};
+</script> <meta content="text/html; charset=UTF-8" 
+http-equiv="Content-Type"> <meta name="robots" content="noarchive&gt;"> 
+<!-- base --> <title>P-CAD-lab1</title> <style type="text/css">
+/* default css */
+table {
+font-size: 1em;
+line-height: inherit;
+border-collapse: collapse;
+}
+tr {
+text-align: left;
+}
+div, address, ol, ul, li, option, select {
+margin-top: 0px;
+margin-bottom: 0px;
+}
+p {
+margin: 0px;
+}
+pre {
+font-family: Courier New;
+white-space: pre-wrap;
+margin:0;
+}
+body {
+margin: 6px;
+padding: 0px;
+font-family: Verdana, sans-serif;
+font-size: 10pt;
+background-color: #ffffff;
+color: #000;
+}
+img {
+-moz-force-broken-image-icon: 1;
+}
+@media screen {
+html.pageview {
+background-color: #f3f3f3 !important;
+overflow-x: hidden;
+overflow-y: scroll;
+}
+body {
+min-height: 1100px;
+counter-reset: __goog_page__;
+}
+* html body {
+height: 1100px;
+}
+/* Prevent repaint errors when scrolling in Safari. This "Star-7" css hack
+targets Safari 3.1, but not WebKit nightlies and presumably Safari 4.
+That's OK because this bug is fixed in WebKit nightlies/Safari 4 :-). */
+html*#wys_frame::before {
+content: '\A0';
+position: fixed;
+overflow: hidden;
+width: 0;
+height: 0;
+top: 0;
+left: 0;
+}
+.pageview body {
+border-top: 1px solid #ccc;
+border-left: 1px solid #ccc;
+border-right: 2px solid #bbb;
+border-bottom: 2px solid #bbb;
+width: 648px !important;
+margin: 15px auto 25px;
+padding: 40px 50px;
+}
+/* IE6 */
+* html {
+overflow-y: scroll;
+}
+* html.pageview body {
+overflow-x: auto;
+}
+.writely-callout-data {
+display: none;
+}
+.writely-footnote-marker {
+background-image: url('images/footnote_doc_icon.gif');
+background-color: transparent;
+background-repeat: no-repeat;
+width: 7px;
+overflow: hidden;
+height: 16px;
+vertical-align: top;
+-moz-user-select: none;
+}
+.editor .writely-footnote-marker {
+cursor: move;
+}
+.writely-footnote-marker-highlight {
+background-position: -15px 0;
+-moz-user-select: text;
+}
+.writely-footnote-hide-selection ::-moz-selection, .writely-footnote-hide-selection::-moz-selection {
+background: transparent;
+}
+.writely-footnote-hide-selection ::selection, .writely-footnote-hide-selection::selection {
+background: transparent;
+}
+.writely-footnote-hide-selection {
+cursor: move;
+}
+/* Comments */
+.writely-comment-yellow {
+background-color: #ffffd7;
+}
+.writely-comment-orange {
+background-color: #ffe3c0;
+}
+.writely-comment-pink {
+background-color: #ffd7ff;
+}
+.writely-comment-green {
+background-color: #d7ffd7;
+}
+.writely-comment-blue {
+background-color: #d7ffff;
+}
+.writely-comment-purple {
+background-color: #eed7ff;
+}
+.br_fix span+br:not(:-moz-last-node) {
+position:relative;
+left: -1ex
+}
+#cb-p-tgt {
+font-size: 8pt;
+padding: .4em;
+background-color: #ddd;
+color: #333;
+}
+#cb-p-tgt-can {
+text-decoration: underline;
+color: #36c;
+font-weight: bold;
+margin-left: 2em;
+}
+#cb-p-tgt .spin {
+width: 16px;
+height: 16px;
+background: url(//ssl.gstatic.com/docs/clipboard/spin_16o.gif) no-repeat;
+}
+}
+h6 { font-size: 8pt }
+h5 { font-size: 8pt }
+h4 { font-size: 10pt }
+h3 { font-size: 12pt }
+h2 { font-size: 14pt }
+h1 { font-size: 18pt }
+blockquote {padding: 10px; border: 1px #DDD dashed }
+.webkit-indent-blockquote { border: none; }
+a img {border: 0}
+.pb {
+border-width: 0;
+page-break-after: always;
+/* We don't want this to be resizeable, so enforce a width and height
+using !important */
+height: 1px !important;
+width: 100% !important;
+}
+.editor .pb {
+border-top: 1px dashed #C0C0C0;
+border-bottom: 1px dashed #C0C0C0;
+}
+div.google_header, div.google_footer {
+position: relative;
+margin-top: 1em;
+margin-bottom: 1em;
+}
+/* Table of contents */
+.editor div.writely-toc {
+background-color: #f3f3f3;
+border: 1px solid #ccc;
+}
+.writely-toc > ol {
+padding-left: 3em;
+font-weight: bold;
+}
+ol.writely-toc-subheading {
+padding-left: 1em;
+font-weight: normal;
+}
+/* IE6 only */
+* html writely-toc ol {
+list-style-position: inside;
+}
+.writely-toc-none {
+list-style-type: none;
+}
+.writely-toc-decimal {
+list-style-type: decimal;
+}
+.writely-toc-upper-alpha {
+list-style-type: upper-alpha;
+}
+.writely-toc-lower-alpha {
+list-style-type: lower-alpha;
+}
+.writely-toc-upper-roman {
+list-style-type: upper-roman;
+}
+.writely-toc-lower-roman {
+list-style-type: lower-roman;
+}
+.writely-toc-disc {
+list-style-type: disc;
+}
+/* Ordered lists converted to numbered lists can preserve ordered types, and
+vice versa. This is confusing, so disallow it */
+ul[type="i"], ul[type="I"], ul[type="1"], ul[type="a"], ul[type="A"] {
+list-style-type: disc;
+}
+ol[type="disc"], ol[type="circle"], ol[type="square"] {
+list-style-type: decimal;
+}
+/* end default css */
+/* custom css */
+/* end custom css */
+/* ui edited css */
+body {
+font-family: Verdana;
+font-size: 12.0pt;
+line-height: normal;
+background-color: #ffffff;
+}
+/* end ui edited css */
+/* editor CSS */
+.editor a:visited {color: #551A8B}
+.editor table.zeroBorder {border: 1px dotted gray}
+.editor table.zeroBorder td {border: 1px dotted gray}
+.editor table.zeroBorder th {border: 1px dotted gray}
+.editor div.google_header, .editor div.google_footer {
+border: 2px #DDDDDD dashed;
+position: static;
+width: 100%;
+min-height: 2em;
+}
+.editor .misspell {background-color: yellow}
+.editor .writely-comment {
+font-size: 9pt;
+line-height: 1.4;
+padding: 1px;
+border: 1px dashed #C0C0C0
+}
+/* end editor CSS */
+</style> <style>
+body {
+margin: 0px;
+}
+#doc-contents {
+margin: 6px;
+}
+#google-view-footer {
+clear: both;
+border-top: thin solid;
+padding-top: 0.3em;
+padding-bottom: 0.3em;
+}
+a.google-small-link:link, a.google-small-link:visited {
+color:#112ABB;
+font-family:Arial,Sans-serif;
+font-size:11px !important;
+}
+body, p, div, td {
+direction: inherit;
+}
+@media print {
+#google-view-footer {
+display: none;
+}
+}
+</style> <script>
+function viewOnLoad() {
+if (document.location.href.indexOf('spi=1') != -1) {
+if (navigator.userAgent.toLowerCase().indexOf('msie') != -1) {
+window.print();
+} else {
+window.setTimeout(window.print, 10);
+}
+}
+if (document.location.href.indexOf('hgd=1') != -1) {
+var footer = document.getElementById("google-view-footer");
+if (footer) {
+footer.style.display = 'none';
+}
+}
+}
+</script> </head><body onload="window.jstiming.load.tick('ol'); 
+window.jstiming.report(window.jstiming.load, null, 
+document.location.protocol == 'https:' ? 'https://gg.google.com/csi' : 
+null);"> <div id="doc-contents"> <div style="font-family: Verdana;"><p 
+style="background-color: rgb(255, 255, 255); margin: 0pt 0pt 0pt 4.1pt; 
+text-align: center;"><font size="3"><span style="color: rgb(0, 0, 0);"><b>Лабораторная
+ работа № 1</b></span></font></p><p style="background-color: rgb(255, 
+255, 255); margin: 11.5pt 0pt 0pt 2.9pt; text-align: justify;"><span 
+style="color: rgb(0, 0, 0);"><b><font size="3">Тема: </font></b></span><span
+ style="color: rgb(0, 0, 0);"><font size="3">Создание условных 
+графических </font></span><span style="color: rgb(0, 0, 0);"><font 
+size="3">обозначений электронных элементов средствами редактора </font></span><span
+ style="color: rgb(0, 0, 0);"><font size="3">P</font></span><span 
+style="color: rgb(0, 0, 0);"><font size="3">-</font></span><span 
+style="color: rgb(0, 0, 0);"><font size="3">CAD</font></span> <span 
+style="color: rgb(0, 0, 0);"><font size="3">Symbol</font></span> <span 
+style="color: rgb(0, 0, 0);"><font size="3">Editor.</font><b><font 
+size="3"><br></font></b></span></p><p style="background-color: rgb(255, 
+255, 255); margin: 11.5pt 0pt 0pt 2.9pt; text-align: justify;"><span 
+style="color: rgb(0, 0, 0);"><b><font size="3">Цель:</font></b></span><span
+ style="color: rgb(0, 0, 0);"><font size="3"> Изучение методики 
+разработки символов элементов средствами редактора </font></span><span 
+style="color: rgb(0, 0, 0);"><b><font size="3">P</font></b></span><span 
+style="color: rgb(0, 0, 0);"><b><font size="3">-</font></b></span><span 
+style="color: rgb(0, 0, 0);"><b><font size="3">CAD</font></b></span> <span
+ style="color: rgb(0, 0, 0);"><b><font size="3">Symbol</font></b></span>
+ <span style="color: rgb(0, 0, 0);"><b><font size="3">Editor</font></b></span><span
+ style="color: rgb(0, 0, 0);"><font size="3">, </font></span><span 
+style="color: rgb(0, 0, 0);"><font size="3">получение практических 
+навыков создания условных </font></span><span style="color: rgb(0, 0, 
+0);"><font size="3">графических обозначений (УГО) элементов 
+электрических схем.</font></span></p><p style="background-color: 
+rgb(255, 255, 255); margin: 11.5pt 0pt 0pt 2.9pt; text-align: center;"><span
+ style="color: rgb(0, 0, 0);"><b><font size="3">Общие сведения о 
+графическом редакторе Р-</font></b></span><span style="color: rgb(0, 0, 
+0);"><b><font size="3">CAD</font></b></span> <span style="color: rgb(0, 
+0, 0);"><b><font size="3">Symbol</font></b></span> <span style="color: 
+rgb(0, 0, 0);"><b><font size="3">Editor</font></b></span></p><p 
+style="background-color: rgb(255, 255, 255); margin: 9.6pt 1.45pt 0pt 
+1.8pt; text-align: justify;"><span style="color: rgb(0, 0, 0);"><font 
+size="3">Графический редактор </font></span><span style="color: rgb(0, 
+0, 0);"><b><font size="3">P</font></b></span><span style="color: rgb(0, 
+0, 0);"><b><font size="3">-</font></b></span><span style="color: rgb(0, 
+0, 0);"><b><font size="3">CAD</font></b></span> <span style="color: 
+rgb(0, 0, 0);"><b><font size="3">Symbol</font></b></span> <span 
+style="color: rgb(0, 0, 0);"><b><font size="3">Editor</font></b></span> <span
+ style="color: rgb(0, 0, 0);"><font size="3">содержит набор </font></span><span
+ style="color: rgb(0, 0, 0);"><font size="3">команд, позволяющих 
+создавать символы ЭРЭ. </font></span><span style="color: rgb(0, 0, 0);"><font
+ size="3">Symbol</font></span> <span style="color: rgb(0, 0, 0);"><font 
+size="3">Editor</font></span><span style="color: rgb(0, 0, 0);"><font 
+size="3"> ра</font></span><span style="color: rgb(0, 0, 0);"><font 
+size="3">­</font></span><span style="color: rgb(0, 0, 0);"><font 
+size="3">ботает с файлами отдельных символов (.</font></span><span 
+style="color: rgb(0, 0, 0);"><font size="3">sym</font></span><span 
+style="color: rgb(0, 0, 0);"><font size="3">) и библиотек (.</font></span><span
+ style="color: rgb(0, 0, 0);"><font size="3">lib</font></span><span 
+style="color: rgb(0, 0, 0);"><font size="3">). </font></span><span 
+style="color: rgb(0, 0, 0);"><font size="3">Запускается программа 
+нажатием кнопки «Пуск» с последующим </font></span><span style="color: 
+rgb(0, 0, 0);"><font size="3">выполнением команд «Программы», «</font></span><span
+ style="color: rgb(0, 0, 0);"><font size="3">P</font></span><span 
+style="color: rgb(0, 0, 0);"><font size="3">-</font></span><span 
+style="color: rgb(0, 0, 0);"><font size="3">CAD</font></span><span 
+style="color: rgb(0, 0, 0);"><font size="3">» и «</font></span><span 
+style="color: rgb(0, 0, 0);"><font size="3">Symbol</font></span> <span 
+style="color: rgb(0, 0, 0);"><font size="3">Edi</font></span><span 
+style="color: rgb(0, 0, 0);"><font size="3">­</font></span><span 
+style="color: rgb(0, 0, 0);"><font size="3">tor</font></span><span 
+style="color: rgb(0, 0, 0);"><font size="3">» В том случае, если на 
+компьютере запущена одна из про</font></span><span style="color: rgb(0, 
+0, 0);"><font size="3">­</font></span><span style="color: rgb(0, 0, 0);"><font
+ size="3">грамм </font></span><span style="color: rgb(0, 0, 0);"><font 
+size="3">P</font></span><span style="color: rgb(0, 0, 0);"><font 
+size="3">-</font></span><span style="color: rgb(0, 0, 0);"><font 
+size="3">CAD</font></span><span style="color: rgb(0, 0, 0);"><font 
+size="3">, необходимо левой кнопкой (ЛК) мыши щелк</font></span><span 
+style="color: rgb(0, 0, 0);"><font size="3">­</font></span><span 
+style="color: rgb(0, 0, 0);"><font size="3">нуть по команде </font></span><span
+ style="color: rgb(0, 0, 0);"><font size="3">Utils</font></span><span 
+style="color: rgb(0, 0, 0);"><font size="3"> (служебные команды). 
+Откроется выпадаю</font></span><span style="color: rgb(0, 0, 0);"><font 
+size="3">­</font></span><span style="color: rgb(0, 0, 0);"><font 
+size="3">щее меню, в котором несколько пунктов начинаются с </font></span><span
+ style="color: rgb(0, 0, 0);"><font size="3">аббревиатуры </font></span><span
+ style="color: rgb(0, 0, 0);"><font size="3">P</font></span><span 
+style="color: rgb(0, 0, 0);"><font size="3">-</font></span><span 
+style="color: rgb(0, 0, 0);"><font size="3">CAD</font></span><span 
+style="color: rgb(0, 0, 0);"><font size="3">. Щелчок мыши по </font></span><span
+ style="color: rgb(0, 0, 0);"><font size="3">Symbol</font></span> <span 
+style="color: rgb(0, 0, 0);"><font size="3">Editor</font></span><span 
+style="color: rgb(0, 0, 0);"><font size="3"> запустит </font></span><span
+ style="color: rgb(0, 0, 0);"><font size="3">программу. При этом 
+действующая программа не закроется, а то</font></span><span 
+style="color: rgb(0, 0, 0);"><font size="3">­</font></span><span 
+style="color: rgb(0, 0, 0);"><font size="3">лько свернется, и к ней 
+всегда можно будет вернуться. Экран гра</font></span><span style="color:
+ rgb(0, 0, 0);"><font size="3">­</font></span><span style="color: rgb(0,
+ 0, 0);"><font size="3">фического редактора Р-</font></span><span 
+style="color: rgb(0, 0, 0);"><font size="3">CAD</font></span> <span 
+style="color: rgb(0, 0, 0);"><font size="3">Symbol</font></span> <span 
+style="color: rgb(0, 0, 0);"><font size="3">Editor</font></span><span 
+style="color: rgb(0, 0, 0);"><font size="3"> представлен на </font></span><span
+ style="color: rgb(0, 0, 0);"><font size="3">рис. 1.</font></span></p><p
+ style="background-color: rgb(255, 255, 255); margin: 9.6pt 1.45pt 0pt 
+1.8pt; text-align: justify;"><br></p><div style="text-align: center;"><img
+ alt="" src="View1_files/File_005.png" style="border: medium none;" 
+width="553" height="447"><br></div><p style="background-color: rgb(255, 
+255, 255); margin: 9.6pt 1.45pt 0pt 1.8pt; text-align: center;"><span 
+style="color: rgb(0, 0, 0);"><i><font size="3">Рис. 1. </font></i></span><span
+ style="color: rgb(0, 0, 0);"><i><font size="3">Основное окно </font></i></span><span
+ style="color: rgb(0, 0, 0);"><i><font size="3">Symbol Editor</font></i></span></p><p
+ style="background-color: rgb(255, 255, 255); margin: 1.2pt 0pt 0pt 
+14.65pt;"><span style="color: rgb(0, 0, 0);"><font size="3">&nbsp;</font></span></p><p
+ style="background-color: rgb(255, 255, 255); margin: 1.2pt 0pt 0pt 
+14.65pt;"><span style="color: rgb(0, 0, 0);"><font size="3">Пиктограммы 
+меню инструментов следующие.</font></span></p><p 
+style="background-color: rgb(255, 255, 255); margin: 0pt;"> &nbsp;&nbsp;
+ <span style="color: rgb(0, 0, 0);"><font size="3">Левый ряд пиктограмм:</font></span></p><ul><li><span
+ style="color: rgb(0, 0, 0);"><font size="3">Place Pin — размещение 
+вывода,</font></span></li><li><span style="color: rgb(0, 0, 0);"><font 
+size="3">Place Line — размещение линии;</font></span></li><li><span 
+style="color: rgb(0, 0, 0);"><font size="3">Place Arc — размещение дуги,</font></span></li><li><span
+ style="color: rgb(0, 0, 0);"><font size="3">Place Polygon — размещение 
+полигона;</font></span></li><li><span style="color: rgb(0, 0, 0);"><font
+ size="3">Place Ref Point -- размещение точки привязки символа элемента;</font></span></li><li><span
+ style="color: rgb(0, 0, 0);"><font size="3">Place Text — размещение 
+текста;</font></span></li><li><span style="color: rgb(0, 0, 0);"><font 
+size="3">Place Attribute — размещение атрибута;</font></span></li><li><span
+ style="color: rgb(0, 0, 0);"><font size="3">Place IEEE Symbol — 
+размещение символа функционального блока;</font></span></li></ul><p 
+style="background-color: rgb(255, 255, 255); margin: 0pt;"></p><p 
+style="background-color: rgb(255, 255, 255); margin: 0pt;"><span 
+style="color: rgb(0, 0, 0);"><font size="3">&nbsp;&nbsp; Верхний ряд 
+пиктограмм (кр. стандартных):</font></span></p><ul><li><span 
+style="color: rgb(0, 0, 0);"><font size="3">Measure — измерение 
+расстояния;</font></span></li><li><span style="color: rgb(0, 0, 0);"><font
+ size="3">Zoom Window – масштабирование</font></span></li><li><span 
+style="color: rgb(0, 0, 0);"><font size="3">Validate Symbol — проверка 
+корректности создания символа</font></span><span style="color: rgb(0, 0,
+ 0);"><font size="3"> элемента;</font></span></li><li><span 
+style="color: rgb(0, 0, 0);"><font size="3">Renumber Pins — 
+перенумерация вывода;</font></span></li><li><span style="color: rgb(0, 
+0, 0);"><font size="3">Symbol Attributes — просмотреть атрибуты;</font></span></li><li><span
+ style="color: rgb(0, 0, 0);"><font size="3">Symbol Wizard — мастер 
+быстрого создания УГО.</font></span></li></ul><p 
+style="background-color: rgb(255, 255, 255); margin: 0pt;"></p><div 
+style="text-align: center;"><span style="color: rgb(0, 0, 0);"><b><font 
+size="3">Создание библиотеки электрорадиоэлементов</font></b></span></div><p
+ style="background-color: rgb(255, 255, 255); margin: 10.8pt 0pt 0pt 
+15.1pt;"></p><p style="background-color: rgb(255, 255, 255); margin: 
+7.2pt 0pt 0pt 1.8pt; text-align: justify;"><span style="color: rgb(0, 0,
+ 0);"><font size="3">В процессе разработки печатной платы нам 
+понадобится биб</font></span><span style="color: rgb(0, 0, 0);"><font 
+size="3">­</font></span><span style="color: rgb(0, 0, 0);"><font 
+size="3">лиотека, в которой будут храниться упакованные библиотечные 
+элементы (библиотек может быть и несколько, но в данной работе </font></span><span
+ style="color: rgb(0, 0, 0);"><font size="3">вполне достаточно одной)</font></span></p><p
+ style="background-color: rgb(255, 255, 255); margin: 0pt 0pt 0pt 
+15.1pt;"><span style="color: rgb(0, 0, 0);"><font size="3">Библиотека 
+создается следующим образом.</font></span></p><ul><li><span 
+style="color: rgb(0, 0, 0);"><font size="3">Выполнить команду </font></span><span
+ style="color: rgb(0, 0, 0);"><b><font size="3">Library/New</font></b></span>
+ <span style="color: rgb(0, 0, 0);"><font size="3">(</font></span><span 
+style="color: rgb(0, 0, 0);"><font size="3">Hoвая</font></span><span 
+style="color: rgb(0, 0, 0);"><font size="3"> библиотека).</font></span></li><li><span
+ style="color: rgb(0, 0, 0);"><font size="3">В окне </font></span><span 
+style="color: rgb(0, 0, 0);"><font size="3">Library</font></span> <span 
+style="color: rgb(0, 0, 0);"><font size="3">New</font></span><span 
+style="color: rgb(0, 0, 0);"><font size="3"> задаеть имя библиотеки </font></span><span
+ style="color: rgb(0, 0, 0);"><font size="3">comsys</font></span><span 
+style="color: rgb(0, 0, 0);"><font size="3">.</font></span><span 
+style="color: rgb(0, 0, 0);"><font size="3">lib</font></span></li><li><span
+ style="color: rgb(0, 0, 0);"><font size="3">Нажать кнопку </font></span><span
+ style="color: rgb(0, 0, 0);"><font size="3">Save.</font></span></li></ul><p
+ style="background-color: rgb(255, 255, 255); margin: 0.25pt 0pt 0pt 
+3.1pt;"></p><p style="background-color: rgb(255, 255, 255); margin: 
+0.25pt 0pt 0pt;"><font size="2">&nbsp;&nbsp;</font></p><div 
+style="text-align: center;"><b><font size="3">Пример с</font></b><b><font
+ size="3">оздани</font></b><b><font size="3">я</font></b><b><font 
+size="3"> условного графического обозначения микросхемы 13ЗЛА6</font></b></div><p
+ style="background-color: rgb(255, 255, 255); margin: 0.25pt 0pt 0pt;"></p><p
+ style="margin: 0pt;"><font size="3">&nbsp;</font></p><p style="margin: 
+0pt;"><font size="3">В микросхему 133ЛА6 входят два логических элемента 
+«4И-НЕ». Необходимо создать УГО элемента «</font><span 
+style="font-weight: normal;"><font size="3">4И-НЕ</font></span><font 
+size="3">».</font></p><p style="margin: 0pt;"><font size="3">Порядок 
+создания УГО элемента «4И-НЕ»</font></p><p style="margin: 0pt;"><font 
+size="2"><br></font><font size="3">Запустить программу Symbol Editor,</font></p><p
+ style="margin: 0pt;"><font size="3"><br></font></p><p style="margin: 
+0pt;"><font size="3">Настроить конфигурацию программы Symbol Editor. Для
+ этого:</font></p><ul><li><font size="3">Выполнить команды </font><b><font
+ size="3">Options/Configure</font></b><font size="3"> и в 
+появившемсяокне установить размер рабочего поля формата А4.</font></li><li><font
+ size="3">В области </font><span style="font-weight: normal;"><font 
+size="3">Units</font></span><font size="3"> выбрать миллиметры (mm) как 
+единицу измерения.</font></li><li><font size="3">В области </font><span 
+style="font-weight: normal;"><font size="3">Orthogonal Modes</font></span><font
+ size="3"> выделить флажком оба пункта(рис.2).</font></li></ul><p 
+style="margin: 0pt;"></p><p style="margin: 0pt;"><br></p><div 
+style="text-align: center;"><img alt="" src="View1_files/File_009.png" 
+style="border: medium none;" width="345" height="399"><br></div><p 
+style="margin: 0pt;"></p><p style="margin: 0pt;"><font size="3">&nbsp;</font></p><p
+ style="margin: 0pt; text-align: center;"><font size="3">&nbsp;&nbsp;</font><i><font
+ size="3">Рис. </font></i><i><font size="3">2. </font></i><i><font 
+size="3">Окно настройки конфигурации</font></i></p><p style="margin: 
+0pt;"><i><font size="3">&nbsp;</font></i></p><p style="margin: 0pt;"><font
+ size="3">Привязать</font><font size="3"> курсор к узлам сетки, для чего
+ выполнить команды </font><b><font size="3">View/Snap to </font></b><b><font
+ size="3">G</font></b><b><font size="3">rid</font></b><font size="3">.</font></p><p
+ style="margin: 0pt;"><font size="3"><br></font></p><p style="margin: 
+0pt;"><font size="3">Установить сетки с шагом 2,5 мм и 1 мм, выполнив 
+команды</font> <b><font size="3">Options/Grids...</font></b><font 
+size="3"> После этого в окне Options Grids в области Grids Spacing 
+ввести шаг сетки 2,5, нажать «Add». Затем аналогично ввести шаг сетки 
+1,0 и нажать «Add». Нажать кнопку</font> <font size="3">ОК (рис.3).</font></p><p
+ style="margin: 0pt;">&nbsp; <br></p><div style="text-align: center;"><img
+ alt="" src="View1_files/File_010.png" style="border: medium none;" 
+width="366" height="228"><br></div><p style="margin: 0pt;"></p><p 
+style="margin: 0pt;"><font size="2">&nbsp;</font></p><p style="margin: 
+0pt; text-align: center;"><font size="2">&nbsp;</font><i><font size="3">Рис.
+ </font></i><i><font size="3">3</font></i><i><font size="3">. </font></i><i><font
+ size="3">Окно настройки сетки</font></i></p><p style="margin: 0pt; 
+text-align: center;"><font size="2">&nbsp;</font></p><p style="margin: 
+0pt;"><font size="3">Установить</font><font size="3"> текущую линию 
+рисования. Для этого командами</font> <b><font size="3">Options/Current 
+Line...</font></b><font size="3"> в </font><font size="3">о</font><font 
+size="3">дноименном диалоговом окне в поле</font> <font size="3">Width 
+выбрать User и задать ширину 0,2 мм. Нажать на кнопку</font> <font 
+size="3">ОК (рис. 4).</font></p><p style="margin: 0pt; text-align: 
+center;"><br><img alt="" src="View1_files/File_003.png" style="border: 
+medium none;" width="234" height="197"><br></p><p style="margin: 0pt; 
+text-align: center;"><font size="2"><br></font></p><p style="margin: 
+0pt; text-align: center;"><i><font size="3">Рис. </font></i><i><font 
+size="3">4. Окно настройки линии рисования</font></i></p><p 
+style="margin: 0pt;"><font size="3">&nbsp;</font></p><p style="margin: 
+0pt;"><font size="3">Нарисовать </font><font size="3">прямоугольный</font><font
+ size="3"> контур УГО логического элемента</font> <font size="3">«4И-НЕ»
+ размером&nbsp; 15x20 мм. Для этого выполнить команду</font> <font 
+size="3">Place Line. Задать необходимый масштаб увеличения нажатием на 
+клавишу «серый плюс». Установить курсор в точку с координатами (15; 15) и
+ щелкнуть ЛК. Перевести курсор в точку с</font> <font size="3">координатами
+ (30;&nbsp; 15) и щелкнуть ЛК. Переставить курсор в</font> <font 
+size="3">точку с координатами (30; 35) и вновь щелкнуть ЛК. Вновь 
+перевести курсор в точку с координатами (15; 35) и щелкнуть ЛК.</font> <font
+ size="3">И, наконец, переместив курсор в точку с координатами (15; 15),
+ щелкнуть сначала ЛК, а затем ПК Получили прямоугольник, представленный 
+на рис. 5.</font></p><p style="margin: 0pt;">&nbsp; <br></p><div 
+style="text-align: center;"><img alt="" src="View1_files/File_004.png" 
+style="border: medium none;" width="553" height="447"><br></div><p 
+style="margin: 0pt;"></p><p style="margin: 0pt; text-align: center;"></p><p
+ style="margin: 0pt; text-align: center;"><br></p><p style="margin: 0pt;
+ text-align: center;"><i><font size="3">Рис. </font></i><i><font 
+size="3">5. Контур УГО</font></i></p><p style="margin: 0pt; text-align: 
+center;"><font size="3">&nbsp;</font></p><p style="margin: 0pt;"><font 
+size="3">Проста</font><font size="3">в</font><font size="3">ить </font><font
+ size="3">выводы</font> <font size="3">л</font><font size="3">огического
+ элемента. Вхо</font><font size="3">д</font><font size="3">ные выводы 
+установить слева, выходные - справа. Для этого выполнить команду Place 
+Pin. Откроется диалоговое окно Place Pin. В нем в поле Length установить
+ флажок в окне User и задать длину выводов 5 мм. В</font> <font size="3">областях</font><font
+ size="3"> Inside Edge, Outside Edge, Inside, Outside </font><font 
+size="3">установить</font> <font size="3">значение</font><font size="3">
+ None. </font><font size="3">В поле Default Pin Name ввести </font><font
+ size="3">имя вывода&nbsp; InA. В поле Default Pin Des ввести номер 
+вывода - 1.Нажать на кнопку ОК (рис. 6). Поставив курсор в точку с 
+координатами (15; 32,5), щелкнуть ЛК, а затем ПК.</font></p><p 
+style="margin: 0pt;"></p><p style="margin: 0pt;"><br></p><div 
+style="text-align: center;"><img alt="" src="View1_files/File_006.png" 
+style="border: medium none;" width="483" height="355"><br></div><p 
+style="margin: 0pt;"></p><p style="margin: 0pt;"><font size="2"><br></font></p><p
+ style="margin: 0pt; text-align: center;"><i><font size="3">Рис. </font></i><i><font
+ size="3">6. Установка параметров входного вывода</font></i></p><p 
+style="margin: 0pt;"><font size="3">&nbsp;</font></p><p style="margin: 
+0pt;"><font size="3">Опять щелкнуть ЛК, вновь </font><font size="3">откроется</font><font
+ size="3"> диалоговое окно Place Pin. Теперь в поле Default Pin Name 
+ввести имя вывода — InB, а в поле Default Pin Des ввести номер вывода — 
+2. Нажать на кнопку ОК. Установив курсор в точку с координатами (15; 
+27,5), щелкнуть ЛК, а затем ПК. Аналогичным&nbsp;&nbsp; 
+образом&nbsp;&nbsp; сформировать&nbsp;&nbsp; входные&nbsp;&nbsp; 
+выводы&nbsp; InC, InD.</font></p><p style="margin: 0pt;"><font size="2"><br></font></p><p
+ style="margin: 0pt;"><font size="3">Сформировать выходной вывод. Для 
+этого надо щелкнуть ЛК. Откроется диалоговое окно Place Pin. В области 
+Outside Edge выбрать значение Dot, а в остальных областях оставить None.
+ В поле Default Pin Name ввести имя вывода — Out. В поле Defa</font><font
+ size="3">ult</font> <font size="3">Pin</font> <font size="3">Des</font><font
+ size="3"> ввести номер вывода 6. Нажать на кнопку ОК (рис.7). </font></p><p
+ style="margin: 0pt;"><br></p><div style="text-align: center;"><img 
+alt="" src="View1_files/File_002.png" style="border: medium none;" 
+width="483" height="409"><br></div><p style="margin: 0pt;"></p><p 
+style="margin: 0pt;"><font size="2"><br></font></p><p style="margin: 
+0pt; text-align: center;"><i><font size="3">Рис. 7. </font></i><i><font 
+size="3">Установка параметров выходного вывода</font></i></p><p 
+style="margin: 0pt;"><font size="2">&nbsp;</font></p><p style="margin: 
+0pt;"><font size="3">Поставить курсор в точку с координатами (30; 25), 
+нажать ЛК и, удерживая ее, дважды нажать на клавишу буквы R для 
+разворота вывода на 180° (или один раз клавишу буквы F). Отпустить ЛК 
+Щелкнуть ПК. Полученный результат представлен на рис.</font><font 
+size="3">8</font><font size="3">.</font></p><p style="margin: 0pt;">&nbsp;
+ <br></p><div style="text-align: center;"><img alt="" 
+src="View1_files/File_007.png" style="border: medium none;" width="536" 
+height="589"><br></div><p style="margin: 0pt;"></p><p style="margin: 
+0pt; text-align: center;"></p><p style="margin: 0pt; text-align: 
+center;"><font size="2">&nbsp;</font></p><p style="margin: 0pt; 
+text-align: center;"><i><font size="3">Рис. </font></i><i><font size="3">8
+ Контур УГО с выводами</font></i></p><p style="margin: 0pt; text-align: 
+center;"><font size="3">&nbsp;</font></p><p style="margin: 0pt;"><font 
+size="3">Ввести обозначение </font><font size="3">элемента</font><font 
+size="3">. Для этого выполнить команду Place Text. Перевести курсор в 
+точку с координатами (20; 32,5) и щелкнуть ЛК. Откроется диалоговое окно
+ Place Text, в нем в поле Text набрать символ &amp;. В зоне 
+Justification установить точку в центр по осям X и Y. В списке стилей 
+текста Text Style выбрать стиль PartStyle. Нажать кнопку Place. </font></p><p
+ style="margin: 0pt;"><font size="3"><br></font></p><p style="margin: 
+0pt;"><font size="3">Ввести атрибуты элемента. В качестве атрибутов 
+введем место для размещения позиционного обозначения и надпись типа 
+элемента. Для этого надо выполнить команду Place Attribute. В результате
+ появится диалоговое окно Place Attribute. В этом окне в области 
+Attribute Category выбрать Component. В области Name выбрать RefDes. В 
+открывшемся списке Text Slyle выбрать PartStyle. Установить в поле 
+Justification по вертикали — низ, а по горизонтали — центр. Нажать 
+кнопку ОК (рис.9). Установить курсор в точку с координатами (22,5; 35) и
+ нажать ЛК.</font></p><p style="margin: 0pt;">&nbsp; <br></p><div 
+style="text-align: center;"><img alt="" src="View1_files/File.png" 
+style="border: medium none;" width="582" height="426"><br></div><p 
+style="margin: 0pt;"></p><font size="3"><br></font><p style="margin: 
+0pt;"></p><p style="margin: 0pt; text-align: center;"><i><font size="3">Рис.
+ </font></i><i><font size="3">9. </font></i><i><font size="3">Установка 
+аттрибута</font></i></p><p style="margin: 0pt;"><font size="3">&nbsp;</font></p><p
+ style="margin: 0pt;"><font size="3">Вновь выбрать </font><font size="3">команду</font><font
+ size="3"> Place Attribute В появившемся окне в области Attribute 
+Category выделить цветом Component, а в соседней области Name — Туре. 
+Установить стиль текста PartStyle. Выравнивание Justification выбрать по
+ вертикали — верх, а по горизонтали — центр Нажать кнопку ОК. Установить
+ курсор в точку с координатами (22,5, 15) и щелкнуть ЛК.</font></p><p 
+style="margin: 0pt;"><font size="3"><br></font></p><p style="margin: 
+0pt;"><font size="3">Установить точку привязки элемента в центр УГО. Для
+ этого выполнить команду Place Ref Point. Переместить курсор в точку с 
+координатами (10; 32,5) и щелкнуть ЛК (рис.10).</font></p><p 
+style="margin: 0pt;"><br></p><div style="text-align: center;"><img 
+alt="" src="View1_files/File_008.png" style="border: medium none;" 
+width="616" height="647"><br></div><p style="margin: 0pt;"></p><p 
+style="margin: 0pt; text-align: center;"><i><font size="3"><br></font></i></p><p
+ style="margin: 0pt; text-align: center;"><i><font size="3">Рис. 10. </font></i><i><font
+ size="3">Сформированный УГО</font></i></p><p style="margin: 0pt; 
+text-align: center;"><font size="3">&nbsp;</font></p><p style="margin: 
+0pt;"><font size="3">Записать созданный УГО </font><font size="3">логического</font><font
+ size="3"> элемента в библиотеку. Для этого выполнить команду Save. В 
+появившемся окне щелкнуть по кнопке Library и в открывшемся окне выбрать
+ созданную ранее библиотеку </font><font size="3">comsys</font><font 
+size="3">.</font><font size="3">lib</font><font size="3">. В поле Symbol
+ набрать имя элемента «4И-НЕ» и нажать кнопку ОК</font> <font size="3">(рис.11).</font></p><br><p
+ style="margin: 0pt; text-align: center;"><img alt="" 
+src="View1_files/File_011.png" style="border: medium none;" width="357" 
+height="196"><br></p><p style="margin: 0pt; text-align: center;">&nbsp; <br></p><p
+ style="margin: 0pt; text-align: center;"><i><font size="3">Рис. 11</font></i><i><font
+ size="3">. Окно сохранения УГО элемента</font></i></p><p 
+style="background-color: rgb(255, 255, 255); margin: 12.7pt 0pt 0pt 
+24.95pt; text-align: center;"><b><font size="3">Задание на лабораторную 
+работу</font></b></p><p style="background-color: rgb(255, 255, 255); 
+margin: 12.7pt 0pt 0pt 24.95pt;"><font size="3">Создать условное 
+графическое обозначение (УГО)</font><font size="3"> логического элемента
+ в соответствии со следующими вариантами</font></p><p 
+style="background-color: rgb(255, 255, 255); margin: 12.7pt 0pt 0pt 
+24.95pt;"><font size="3">С3 = </font><font size="3">остаток от деления 
+номера </font><font size="3">зачетки </font><font size="3">на </font><font
+ size="3">3</font></p><p style="background-color: rgb(255, 255, 255); 
+margin: 12.7pt 0pt 0pt 24.95pt;"></p><p style="background-color: 
+rgb(255, 255, 255); margin: 12.7pt 0pt 0pt 24.95pt;"><font size="3">С4 =
+ остаток от деления номера </font><font size="3">зачетки </font><font 
+size="3">на 4</font></p><p style="background-color: rgb(255, 255, 255); 
+margin: 12.7pt 0pt 0pt 24.95pt;">&nbsp; <font size="3"><br></font></p><table
+ class="zeroBorder" style="margin-left: 0pt;" width="243" 
+cellpadding="0" cellspacing="0" height="128"><tbody><tr><td 
+style="vertical-align: top; width: 77.4pt;"><p style="margin: 12.7pt 0pt
+ 0pt 24.95pt;"><font size="2">№ </font><font size="2">Варианта (С4)</font></p></td><td
+ style="vertical-align: top; width: 99.05pt;"><p style="margin: 12.7pt 
+0pt 0pt 24.95pt;"><font size="3">Тип логического элемента</font></p></td></tr><tr><td
+ style="vertical-align: top; width: 77.4pt;"><p style="margin: 0pt 0pt 
+0pt 24.95pt;"><font size="3">0</font></p></td><td style="vertical-align:
+ top; width: 99.05pt;"><p style="margin: 0pt 0pt 0pt 24.95pt;"><font 
+size="3">И</font></p></td></tr><tr><td style="vertical-align: top; 
+width: 77.4pt;"><p style="margin: 0pt 0pt 0pt 24.95pt;"><font size="3">1</font></p></td><td
+ style="vertical-align: top; width: 99.05pt;"><p style="margin: 0pt 0pt 
+0pt 24.95pt;"><font size="3">И-НЕ</font></p></td></tr><tr><td 
+style="vertical-align: top; width: 77.4pt;"><p style="margin: 0pt 0pt 
+0pt 24.95pt;"><font size="3">2</font></p></td><td style="vertical-align:
+ top; width: 99.05pt;"><p style="margin: 0pt 0pt 0pt 24.95pt;"><font 
+size="3">ИЛИ</font></p></td></tr><tr><td style="vertical-align: top; 
+width: 77.4pt;"><p style="margin: 0pt 0pt 0pt 24.95pt;"><font size="3">3</font></p></td><td
+ style="vertical-align: top; width: 99.05pt;"><p style="margin: 0pt 0pt 
+0pt 24.95pt;"><font size="3">ИЛИ-НЕ</font></p></td></tr></tbody></table><table
+ class="zeroBorder" style="margin-left: 0pt;" width="243" 
+cellpadding="0" cellspacing="0" height="126"><tbody><tr><td 
+style="vertical-align: top; width: 77.4pt;"><p style="margin: 12.7pt 0pt
+ 0pt 24.95pt;"><font size="2">№ Вар</font><font size="2">ианта (С3)</font></p></td><td
+ style="vertical-align: top; width: 97pt;"><p style="margin: 12.7pt 0pt 
+0pt 24.95pt;"><font size="3">Количечтво входов</font></p></td></tr><tr><td
+ style="vertical-align: top; width: 77.4pt;"><p style="margin: 0pt 0pt 
+0pt 24.95pt;"><font size="3">0</font></p></td><td style="vertical-align:
+ top; width: 97pt;"><p style="margin: 0pt 0pt 0pt 24.95pt;"><font 
+size="3">4</font></p></td></tr><tr><td style="vertical-align: top; 
+width: 77.4pt;"><p style="margin: 0pt 0pt 0pt 24.95pt;"><font size="3">1</font></p></td><td
+ style="vertical-align: top; width: 97pt;"><p style="margin: 0pt 0pt 0pt
+ 24.95pt;"><font size="3">2</font></p></td></tr><tr><td 
+style="vertical-align: top; width: 77.4pt;"><p style="margin: 0pt 0pt 
+0pt 24.95pt;"><font size="3">2</font></p></td><td style="vertical-align:
+ top; width: 97pt;"><p style="margin: 0pt 0pt 0pt 24.95pt;"><font 
+size="3">3</font></p></td></tr></tbody></table><p style="margin: 0pt;"><font
+ size="2">&nbsp;</font></p><div style="text-align: center;"><b><font 
+size="3">Контрольные вопросы</font></b></div><p style="background-color:
+ rgb(255, 255, 255); margin: 12.7pt 0pt 0pt 24.95pt;"></p><p 
+style="background-color: rgb(255, 255, 255); margin: 12.7pt 0pt 0pt 
+24.95pt;"><font size="3">1.</font><font size="3"> Назначение редактора 
+P-CAD Symbol Editor.</font></p><p style="background-color: rgb(255, 255,
+ 255); margin: 12.7pt 0pt 0pt 24.95pt;"><font size="3">2. Назначение 
+пиктограмм на панели инструментов</font></p><p style="background-color: 
+rgb(255, 255, 255); margin: 12.7pt 0pt 0pt 24.95pt;"><font size="3">3</font><font
+ size="3">. Назначение полей в нижней части экрана.</font></p><p 
+style="background-color: rgb(255, 255, 255); margin: 12.7pt 0pt 0pt 
+24.95pt;"><font size="3">4. Как создается библиотека УГО элементов?</font></p><p
+ style="background-color: rgb(255, 255, 255); margin: 12.7pt 0pt 0pt 
+24.95pt;"><font size="3">5. Каким образом настраивается конфигурация 
+программы Symbol Editor?</font></p><p style="background-color: rgb(255, 
+255, 255); margin: 12.7pt 0pt 0pt 24.95pt;"><font size="3">6. Какова 
+последовательность действий при создании УГО? </font></p><p 
+style="background-color: rgb(255, 255, 255); margin: 12.7pt 0pt 0pt 
+24.95pt;"><font size="3">7</font><font size="3">. Как выполняется 
+вычерчивание контура элемента?</font></p><p style="background-color: 
+rgb(255, 255, 255); margin: 12.7pt 0pt 0pt 24.95pt;"><font size="3">8. 
+Каким образом проставляются выводы элемента?</font></p><p 
+style="background-color: rgb(255, 255, 255); margin: 12.7pt 0pt 0pt 
+24.95pt;"><font size="3">9. Каков порядок ввода текста и атрибутов 
+элементов?</font></p><p style="background-color: rgb(255, 255, 255); 
+margin: 12.7pt 0pt 0pt 24.95pt;"><font size="3">10 Как устанавливается 
+точка привязки УГО элемента?</font></p><p style="background-color: 
+rgb(255, 255, 255); margin: 12.7pt 0pt 0pt 24.95pt;"><font size="3">11. 
+Каким образом производится запись сформированного УГО элемента?</font></p></div><br
+ style="font-family: Verdana;"> <br clear="all"> </div> <div 
+id="google-view-footer"> <div id="maybecanedit" style="float: right;"><a
+ class="google-small-link" id="editpermissionlink" 
+href="http://docs.google.com/Doc?tab=edit&amp;dr=true&amp;id=dd7n8kjz_256c86ksmhj"
+ title="Изменить данную страницу"> Изменить эту страницу (при наличии 
+разрешения)</a> <span style="color: rgb(103, 103, 103);">|</span> <input
+ id="report-abuse-button" value="Сообщение об оскорблении" 
+onclick="reportAbuse();" type="button"></div> <div style="float: left;">
+ <a title="Подробнее о Документах Google" class="google-small-link" 
+href="http://docs.google.com/"> Документы Google: веб-редактор текста, 
+презентаций и таблиц.</a> </div> <p> &nbsp; </p></div> <script><!--
+    viewOnLoad();
+    if(window.jstiming){window.jstiming.a={};window.jstiming.c=1;var j=function(a,b,e){var c=a.t[b],g=a.t.start;if(c&&(g||e)){c=a.t[b][0];g=e!=undefined?e:g[0];return c-g}};window.jstiming.report=function(a,b,e){var c="";if(window.jstiming.pt){c+="&srt="+window.jstiming.pt;delete window.jstiming.pt}try{if(window.external&&window.external.tran)c+="&tran="+window.external.tran;else if(window.gtbExternal&&window.gtbExternal.tran)c+="&tran="+window.gtbExternal.tran()}catch(g){}if(a.b)c+="&"+a.b;var f=a.t,
+n=f.start,k=[],h=[];for(var d in f)if(d!="start")if(d.indexOf("_")!=0){var i=f[d][1];if(i)f[i]&&h.push(d+"."+j(a,d,f[i][0]));else n&&k.push(d+"."+j(a,d))}delete f.start;if(b)for(var l in b)c+="&"+l+"="+b[l];a=[e?e:"http://csi.gstatic.com/csi","?v=3","&s="+(window.jstiming.sn||"writely")+"&action=",a.name,h.length?"&it="+h.join(","):"",c,"&rt=",k.join(",")].join("");b=new Image;var m=window.jstiming.c++;window.jstiming.a[m]=b;b.onload=b.onerror=function(){delete window.jstiming.a[m]};b.src=a;b=null;
+return a}};
+
+    window.jstiming.load.name = 'published';
+    
+    
+    var urchinPage = "/View";
+
+    
+    function getXHR() {
+      if (typeof XMLHttpRequest != "undefined") {
+        return new XMLHttpRequest();
+      }
+      try { return new ActiveXObject("Msxml2.XMLHTTP.6.0") } catch(e) {}
+      try { return new ActiveXObject("Msxml2.XMLHTTP.3.0") } catch(e) {}
+      try { return new ActiveXObject("Msxml2.XMLHTTP") } catch(e) {}
+      try { return new ActiveXObject("Microsoft.XMLHTTP") } catch(e) {}
+      return null;
+    }
+
+    function reportAbuse() {
+      var req = getXHR();
+      if (req) {
+        
+          var docid = 'dd7n8kjz_256c86ksmhj';
+          var posttoken = '';
+        
+        req.onreadystatechange = function() {
+          try {
+            if (req.readyState == 4 && req.status == 200) {
+              var button = document.getElementById("report-abuse-button");
+              button.value = 'Благодарим вас!';
+              button.disabled = true;
+            }
+          } catch (ex) {
+            
+          }
+        }
+        try {
+          req.open('POST', 'MiscCommands', true);
+          req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+          req.send('command=report_abuse&abuseDoc=' + encodeURIComponent(docid) +
+                   '&POST_TOKEN=' + encodeURIComponent(posttoken));
+        } catch (ex) {
+          
+        }
+      }
+    }
+  --></script>  </body></html>

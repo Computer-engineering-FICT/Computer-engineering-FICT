@@ -1,0 +1,30 @@
+object DMarking: TDMarking
+  Left = 377
+  Top = 297
+  Width = 636
+  Height = 268
+  Caption = 'Marking'
+  Color = clBtnFace
+  ParentFont = True
+  FormStyle = fsStayOnTop
+  OldCreateOrder = True
+  Position = poScreenCenter
+  OnCreate = FormCreate
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object MarkingSG: TStringGrid
+    Left = 0
+    Top = 0
+    Width = 628
+    Height = 238
+    Align = alClient
+    ColCount = 1
+    DefaultColWidth = 45
+    DefaultRowHeight = 20
+    FixedCols = 0
+    RowCount = 2
+    FixedRows = 0
+    TabOrder = 0
+  end
+end

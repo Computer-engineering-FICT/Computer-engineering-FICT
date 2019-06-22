@@ -1,0 +1,24 @@
+1200 700
+Begin 0 180 10 init Begin 0 undirectedLine 220 50 40 1 Condition 1 
+End 0 180 400 finish
+Condition 1 160 90 <> 0 1 Condition 1 undirectedLine 160 120 -30 2 undirectedLine 130 120 120 1 OperationalVertex 1 Condition 1 undirectedLine 280 120 50 2 undirectedLine 330 120 10 2 undirectedLine 340 120 -60 1 undirectedLine 340 60 150 2 undirectedLine 490 60 60 1 Condition 2 
+OperationalVertex 1 90 240 <> OperationalVertex 1 undirectedLine 130 280 70 1 undirectedLine 130 350 90 2 undirectedLine 220 350 50 1 End 6 
+OperationalVertex 2 370 190 <y6> OperationalVertex 2 undirectedLine 410 230 30 1 OperationalVertex 5 
+Condition 2 430 120 <> 0 1 Condition 2 undirectedLine 430 150 -20 2 undirectedLine 410 150 40 1 OperationalVertex 2 Condition 2 undirectedLine 550 150 60 2 undirectedLine 610 150 10 2 undirectedLine 620 150 -60 1 undirectedLine 620 90 150 2 undirectedLine 770 90 70 1 Condition 3 
+Condition 3 710 160 <> 0 1 Condition 3 undirectedLine 710 190 90 1 undirectedLine 710 280 -110 2 undirectedLine 600 280 -40 2 undirectedLine 560 280 70 1 undirectedLine 560 350 -340 2 undirectedLine 220 350 50 1 End 6 Condition 3 undirectedLine 830 190 60 2 undirectedLine 890 190 60 1 OperationalVertex 3 
+OperationalVertex 3 850 250 <> OperationalVertex 3 undirectedLine 890 290 60 1 OperationalVertex 4 
+OperationalVertex 4 850 350 <> OperationalVertex 4 undirectedLine 890 390 70 1 undirectedLine 890 460 80 2 undirectedLine 970 460 -430 1 undirectedLine 970 30 -670 2 undirectedLine 300 30 20 1 undirectedLine 300 50 -20 2 undirectedLine 280 50 10 1 undirectedLine 280 60 -60 2 undirectedLine 220 60 30 1 Condition 1 
+OperationalVertex 5 370 260 <> OperationalVertex 5 undirectedLine 410 300 20 1 undirectedLine 410 320 -190 2 undirectedLine 220 320 80 1 End 6 
+matrix
+P0 (!C1);(!C1) P1
+P0 (C1,!C2);(C1,!C2) P2
+P0 (C1,C2,C3);(C1,C2,C3) P3
+P0 (C1,C2,!C3);(C1,C2,!C3) P6
+P1 1 P6
+P2 1 P5
+P3 1 P4
+P4 (!C1) P1
+P4 (C1,!C2) P2
+P4 (C1,C2,C3) P3
+P4 (C1,C2,!C3) P6
+P5 1 P6

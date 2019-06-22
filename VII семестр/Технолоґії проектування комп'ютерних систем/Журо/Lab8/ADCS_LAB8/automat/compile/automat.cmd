@@ -1,0 +1,1 @@
+-w -s "D:\облако\учеба\7 семестр\ТПКС-1\ТПКС\Захожий\№8\ADCS_LAB8\library.cfg"  -j "D:\облако\учеба\7 семестр\ТПКС-1\ТПКС\Захожий\№8\ADCS_LAB8\automat\projlib.cfg"  -d "D:\облако\учеба\7 семестр\ТПКС-1\ТПКС\Захожий\№8\ADCS_LAB8\automat\compile"   -work automat  -O3 -e 100 -o -2002 "D:\облако\учеба\7 семестр\ТПКС-1\ТПКС\Захожий\№8\ADCS_LAB8\automat\src\test2.vhd"

@@ -1,0 +1,13 @@
+1200 700
+Begin 0 180 10 init Begin 0 undirectedLine 220 50 30 1 OperationalVertex 1 
+End 0 190 450 finish
+OperationalVertex 1 180 80 <Y1> OperationalVertex 1 undirectedLine 220 120 30 1 Condition 1 
+OperationalVertex 2 100 220 <Y2> OperationalVertex 2 undirectedLine 140 260 20 1 undirectedLine 140 280 90 2 undirectedLine 230 280 20 1 OperationalVertex 3 
+Condition 1 160 150 <X1> 0 1 Condition 1 undirectedLine 160 180 -20 2 undirectedLine 140 180 40 1 OperationalVertex 2 Condition 1 undirectedLine 280 180 40 2 undirectedLine 320 180 220 1 undirectedLine 320 400 -90 2 undirectedLine 230 400 50 1 End 4 
+OperationalVertex 3 190 300 <Y3> OperationalVertex 3 undirectedLine 230 340 110 1 End 4 
+matrix
+P0 1;1 P1
+P1 (!C1) P2
+P1 (C1) P4
+P2 1 P3
+P3 1 P4
