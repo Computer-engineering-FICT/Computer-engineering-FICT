@@ -1,0 +1,17 @@
+<!DOCTYPE AFC>
+<algorithm>
+  <branch>
+    <for from="1" to="5" var="i" >
+      <branch>
+        <io text="a[i], b[i]" />
+      </branch>
+    </for>
+    <assign dest="F" src="1" />
+    <for from="1" to="5" var="i" >
+      <branch>
+        <assign dest="F" src="F*(a[i]+b[i])" />
+      </branch>
+    </for>
+    <io text="F" />
+  </branch>
+</algorithm>

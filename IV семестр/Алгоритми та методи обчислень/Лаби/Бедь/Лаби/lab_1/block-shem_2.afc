@@ -1,0 +1,15 @@
+<!DOCTYPE AFC>
+<algorithm>
+  <branch>
+    <io text="a, x" />
+    <if cond="a > 10" >
+      <branch>
+        <assign dest="y" src="2*a^2+x" />
+      </branch>
+      <branch>
+        <assign dest="y" src="2*a^2-x" />
+      </branch>
+    </if>
+    <io text="y" />
+  </branch>
+</algorithm>

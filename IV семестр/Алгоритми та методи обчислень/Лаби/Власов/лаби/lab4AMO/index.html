@@ -1,0 +1,118 @@
+<html>
+<head>
+   <title>Лабораторная работа №4</title>
+   <meta charset="utf-8">
+   <link rel="stylesheet" href="style.css">
+<script language="javascript" type="text/javascript" src="flot/jquery.js"></script>
+   <script language="javascript" type="text/javascript" src="flot/jquery.flot.js"></script>
+</head>
+<body>
+<h1> Лабораторная работа №4</h1>
+<h2> Метод хорд </h2>
+<p> <img src="variant.png"></p>
+
+<div id ="main">
+    <form>
+        <input type="text" id="a"  placeholder="Значення 'A'"/>
+        <input type="text" id="b" placeholder="Значення 'B'"/>
+        <div id="but">
+            <p> <select id="E">
+                <option value ="o">Оберіть точність</option>
+                <option value = 0.01> 0.01</option>
+                <option value = 0.001> 0.001</option>
+                <option value = 0.0001> 0.0001</option>
+                <option value = 0.00001> 0.00001</option>
+                <option value = 0.000001> 0.000001</option>
+                <option value = 0.0000001> 0.0000001</option>
+                <option value = 0.00000001> 0.00000001</option>
+                <option value = 0.000000001> 0.000000001</option>
+                <option value = 0.0000000001> 0.0000000001</option>
+                <option value = 0.00000000001> 0.00000000001</option>
+                <option value = 0.000000000001> 0.000000000001</option>
+            </select>
+                <input type="button" id="button" value="Обчислити" onclick="mainF()"/>
+        </div>
+        <h2> Результат:  <div id = "result"></div></h2>
+    </form>
+</div>
+
+
+<script>
+var a, b, E, result;
+
+function secondDerivative(x) {
+
+	return 2 + Math.cos(Math.PI*x);
+}
+
+function firstDerivative(x) {
+
+	return 2*x + Math.PI*Math.sin(Math.PI*x);
+}
+
+function myFunction(x) {
+
+	return x*x - Math.cos(Math.PI*x);
+}
+
+function methHord(constant, x) {
+
+  return x-(myFunction(x)*(constant-x))/(myFunction(constant)-myFunction(x));
+}
+function count(constant, change, E) {
+    var x = methHord(constant, change);
+    var i = 0;
+    hords = new Array(5)
+    while(Math.abs(x-change) > E) {
+
+        change = x;
+        x = methHord(constant, change);
+    }
+    return x;
+}
+
+function countResult(a, b, E) {
+
+    var result;
+    if(myFunction(b)*secondDerivative(b) > 0) {
+        var z = a;
+        a = b;
+        b = z;
+    }
+    result = count(a,b,E);
+    return result;
+}
+
+function clear() {
+   document.getElementById('a').value = "";
+   document.getElementById('b').value = "";
+   document.getElementById('E').value = "o";
+}
+ 
+function mainF() {
+a = +document.getElementById('a').value;
+b = +document.getElementById('b').value;
+E = document.getElementById('E').value;
+
+if(a == false || a >= b || E == "o"){
+ 
+   alert("Будь ласка, перевірте ввід даних");
+   clear();
+}else {
+E = +E;
+(a*b < 0) && ( (alert("А і В повинні бути однакового знаку")) (clear())) || (result = countResult(a,b,E))
+
+var html='<a>';
+html +=result;
+document.getElementById('result').innerHTML=html+'</a>';
+  
+
+}
+
+
+
+}
+
+</script>
+</body>
+</html>

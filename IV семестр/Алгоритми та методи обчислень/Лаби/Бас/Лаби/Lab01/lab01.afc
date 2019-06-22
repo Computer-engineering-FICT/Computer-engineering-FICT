@@ -1,0 +1,25 @@
+<!DOCTYPE AFC>
+<algorithm>
+  <branch>
+    <assign dest="i" src="0" />
+    <if cond="i &lt; 11" >
+      <branch>
+        <io text="Readln(a[i])" />
+        <io text="Readln(b[i])" />
+        <io text="Readln(fg[i])" />
+        <process text="i := i + 1" />
+      </branch>
+      <branch/>
+    </if>
+    <process text="i := 0" />
+    <assign dest="F" src="0" />
+    <if cond="i &lt; 11" >
+      <branch>
+        <process text="F := F + a[i] * a[i]" />
+        <process text="F:=F+56*b[i]*fg[i])" />
+      </branch>
+      <branch/>
+    </if>
+    <io text="Writeln(F)" />
+  </branch>
+</algorithm>

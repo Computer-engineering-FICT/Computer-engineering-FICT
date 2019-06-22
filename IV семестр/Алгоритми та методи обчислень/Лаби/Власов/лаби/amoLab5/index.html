@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Лабораторная работа №5</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="body">
+<div id="main">
+<h2>Лабораторна робота №5 </h2>
+    <div class="menu">
+<form>
+    <input type="text" class="field" id="a11" value="1"> <a>X<sub>1</sub></a>
+    <input type="text" class="field"  id="a12" value="-3"> <a>X<sub>2</sub></a>
+    <input type="text" class="field"  id="a13" value="2"> <a>X<sub>3</sub></a> =
+    <input type="text" class="field"  id="b1" value="5">  </br>
+    <input type="text" class="field"  id="a21" value="3"> <a>X<sub>1</sub></a>
+    <input type="text" class="field"  id="a22" value="-4"> <a>X<sub>2</sub></a>
+    <input type="text" class="field"  id="a23" value="0"> <a>X<sub>3</sub></a> =
+    <input type="text" class="field"  id="b2" value="7"> </br>
+    <input type="text" class="field"  id="a31" value="2"> <a>X<sub>1</sub></a>
+    <input type="text" class="field"  id="a32" value="-5"> <a>X<sub>2</sub></a>
+    <input type="text" class="field"  id="a33" value="3"> <a>X<sub>3</sub></a> =
+    <input type="text" class="field"  id="b3" value="9"> </br>
+    <input type="button" id="button" value="Пуск" onclick="mainF()"/>
+</form>
+    </div>
+
+<div id = "calcHead"></div>
+<div id = "calc" class="menu"></div>
+
+
+<div id = "res"> </div>
+<div class="menu" id = "result">
+</div>
+    </div>
+</div>
+<script>
+    var n = 3; //number of eq.
+    var html='<a>';
+    var htmlDelta = '<a>';
+    var arA = new Array(n);
+    var arB = new Array(n);
+    var arX = new Array(n);
+    for (var i = 0; i < arA.length; i++) {
+        arA[i] = new Array(n);
+        ;
+    }
+    function createArrayA() {
+        for (var i = 0; i < n; i++) {
+
+            for (var j = 0; j < n; j++) {
+                var aNN = 'a' + (i + 1) + (j + 1);
+		
+                arA[i][j] = +document.getElementById(aNN).value;
+            }
+        }
+        return arA;
+    }
+
+    function createArrayB() {
+        for (var i = 0; i < arB.length; i++) {
+            var bN = 'b' + (i + 1);
+            arB[i] = +document.getElementById(bN).value;
+        }
+        return arB;
+    }
+
+  function Determinante(A)    {
+      var n = A.length, subA = [], detA = 0;
+      if (n==1) {
+          return A[0][0];
+      }
+      if (n==2) {
+          return (A[0][0]*A[1][1]-A[0][1]*A[1][0]);
+      }
+    
+
+    for (var i=0; i<n; i++) {
+        for (var h=0; h<n-1; h++)
+            subA[h]=[];
+          for (var a=1; a<n; a++) {
+              for (var b=0; b<n; b++) {
+                  if (b<i)       subA[a-1][ b ] = A[ a ][ b ];
+                      else if (b>i)  subA[a-1][b-1] = A[ a ][ b ];
+                    }
+              }
+          var sign = (i%2==0) ? 1 : -1;
+          detA += sign * A[0][i] * Determinante(subA);
+        }
+
+    return detA;  
+}
+    function calculateArrX(arA, arB) {
+	document.getElementById('res').innerHTML = '<h2>' + "Корені рівняння:" + '</h2>';
+	var tempArr =  new Array(n);
+        var det = Determinante(arA);
+        htmlDelta +=  "&#916 = " + det + '</a>' + '</br>';
+	var html2 = '<h2>' + "Визначники матриць: " + '</h2>';
+        document.getElementById('calcHead').innerHTML= html2;
+        
+	for(var i = 0; i < n; i++){
+          
+ 	  for(var j = 0; j < n; j++) {
+           tempArr[j] = arA[j][i];
+           
+           arA[j][i] = arB[j];
+	 
+	   
+	}
+           tempDeti = Determinante(arA)
+           arX[i] = tempDeti/det;
+           htmlDelta += "&#916" + '<sub>' + (i+1) + '</sub>' + " = " + tempDeti + '</a>' + '</br>'
+           for(var j = 0; j < n; j++)
+		arA[j][i] = tempArr[j];
+ 	   
+          html += ("X" + '<sub>' + (i+1) + '</sub>' + " = " + arX[i] + '</br>');     
+          
+        } 
+       
+	
+	return arX;
+
+    }
+    function isZero(d){
+	if(d == 0) {
+                alert("Матриця не повинна мати нульовий рядок або стовбець");
+		location.reload();
+}
+}
+    function mainF() {
+        createArrayA();
+	isZero(Determinante(arA));
+        createArrayB();
+	
+        
+        calculateArrX(arA, arB);
+        
+document.getElementById('calc').innerHTML=htmlDelta;
+document.getElementById('result').innerHTML=html+'</a>';
+    };
+</script>
+</body>
+</html>

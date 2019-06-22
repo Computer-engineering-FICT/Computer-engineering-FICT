@@ -1,0 +1,22 @@
+<!DOCTYPE AFC>
+<algorithm>
+  <branch>
+    <if cond="клавіатура" >
+      <branch>
+        <io text="s, u" />
+      </branch>
+      <branch>
+        <io text="s, u" />
+      </branch>
+    </if>
+    <if cond="s>=0 &amp; u!=0" >
+      <branch>
+        <process text="M6=log(s/u)+(s/u)^7" />
+        <io text="M6" />
+      </branch>
+      <branch>
+        <io text="ERROR" />
+      </branch>
+    </if>
+  </branch>
+</algorithm>

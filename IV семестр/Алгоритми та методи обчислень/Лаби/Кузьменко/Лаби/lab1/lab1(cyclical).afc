@@ -1,0 +1,27 @@
+<!DOCTYPE AFC>
+<algorithm>
+  <branch>
+    <process text="a = 0" />
+    <if cond="клавіатура" >
+      <branch>
+        <io text="g,h,n,b,k,j" />
+        <for from="0" to="25" var="i" >
+          <branch>
+            <io text="p" />
+            <process text="a = a + p" />
+          </branch>
+        </for>
+      </branch>
+      <branch>
+        <io text="g,h,n,b,k,j" />
+        <for from="0" to="25" var="i" >
+          <branch>
+            <io text="p" />
+            <process text="a = a + p" />
+          </branch>
+        </for>
+      </branch>
+    </if>
+    <io text="a/25" />
+  </branch>
+</algorithm>

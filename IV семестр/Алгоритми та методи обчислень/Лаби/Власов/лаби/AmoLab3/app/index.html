@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>My AngularJS App</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script language="javascript" type="text/javascript" src="../flot/jquery.js"></script>
+  <script language="javascript" type="text/javascript" src="../flot/jquery.flot.js"></script>
+  <link rel="stylesheet" href="app.css">
+
+</head>
+<body>
+
+  <script src="app.js"></script>
+
+  <div class="Place">
+    <h3 class= "header">Налаштування програми за допомогою функції sin(x)</h3>
+  <div id="placeholder" style="width:700px;height:300px;"></div>
+  <div class="plot"></div>
+  <script language="javascript" type="text/javascript">
+   var valuesFunct, valuesInterp, valuesErr;
+    var a = 1, b = 5, n = 3, m=5;
+    var h;
+    var x,y;
+
+    var getCtrlFunctionValue = function(x){
+      return Math.sin(x);
+    }
+    var interpolation = function(m, n, a,b){
+      h = (b-a)/(m-1);
+      x = new Array(m);
+      y = new Array(m);
+      x[0] = a;
+      y[0] = getCtrlFunctionValue(x[0]);
+      for(var i = 1; i < x.length; i++){
+        x[i] = x[i-1] + h;
+        y[i] = getCtrlFunctionValue(x[i]);
+      }
+      return x, y;
+    }
+
+   interpolation(m,n,a,b);
+    var interpolate = function(value) {
+      var result = 0;
+      var mul;
+      for(var k = 0; k < m-1; k++){
+        if(value >= x[k] && value < x[k+1]) {
+          if(k <= m/2){
+            for(var j = k; j <=k + n; j++){
+              mul = y[j];
+              for(var i = k; i <= k+n; i++){
+                if(i != j){
+                  mul = mul*(value - x[i])/(x[j]-x[i]);
+                }
+              }
+              result = result + mul;
+            }
+          }else{
+            for(var j = k+1; j >= k - n+1; j--){
+              mul = y[j];
+              for(var i = k+1; i >= k-n+1; i--){
+                if (i != j){
+                   mul = mul*(value-x[i])/(x[j]-x[i])
+                }
+              }
+              result = result + mul;
+            }
+          }
+        }
+      }
+      return result;
+    }
+
+
+    var getError = function(){
+      var result = new Array(m);
+      for(var i = 0; i < result.length; i++){
+        result[i] = Math.abs(interpolate(h/2+i*h)-getCtrlFunctionValue(h/2+i*h));
+      }
+      return result;
+    }
+
+    var getMeanError= function(){
+      var error = getError();
+      var result  = 0;
+      for(var i = 0; i < error.length; i++){
+        result = result + error[i];
+      }
+      result = result/error.length;
+      return result;
+
+    }
+
+
+    var getPointsArrays = function(a,b){
+      var temp;
+      var tempo;
+      valuesFunct = new Array(b*50);
+      valuesInterp = new Array(b*50);
+      valuesErr = new Array(b*50);
+
+      for(var i = 50; i < b*50;i++){
+        temp = interpolate(i/50);
+        tempo = getCtrlFunctionValue(i/50);
+
+        valuesFunct[i] = (new Array((i/50),temp));
+        valuesInterp[i] = (new Array((i/50),tempo));
+        valuesErr[i] = (new Array((i/50),(Math.abs(temp-tempo))));
+      }
+        return valuesFunct, valuesInterp, valuesErr;
+    }
+
+    getPointsArrays(a,b);
+
+
+
+    var all_data = [
+
+      { label: "Известная функция", color: 23, data: valuesFunct},
+      { label: "Интерполяционная", color: 10, data: valuesInterp},
+      { label: "Похибка", color: 7, data: valuesErr}
+
+    ];
+
+
+
+    var plot_conf = {
+      series: {
+        lines: {
+          show: true,
+          lineWidth: 2
+        }
+      },
+      xaxis: {
+
+      }
+    };
+
+    $.plot($("#placeholder"), all_data, plot_conf);
+  </script>
+</div>
+  <div id = "txt1"></div>
+<div class="Place">
+  <h3 class= "header">Виконання програми за варіантом (10*ln2x)/(1+x) </h3>
+    <div id="placeholder1" style="width:700px;height:300px;"></div>
+    <div class="plot"></div>
+      <div class="print">
+        <h4>Помилка на кожному вузлі</h4>
+       <div id="xlop"></div>
+        <h4>Середня похибка</h4>
+        <div id="delta"></div>
+      </div>
+      <script language="javascript" type="text/javascript">
+        var valuesFunct, valuesInterp, valuesErr;
+        var a = 1, b = 5, n = 10, m=10;
+        var h;
+        var x,y;
+        var getMyFunctionValue = function(x) {
+          return (10*Math.log(2*x))/(1+x);
+        }
+
+        var interpolation = function(m, n, a,b){
+          h = (b-a)/(m-1);
+          x = new Array(m);
+          y = new Array(m);
+          x[0] = a;
+          y[0] = getMyFunctionValue(x[0]);
+          for(var i = 1; i < x.length; i++){
+            x[i] = x[i-1] + h;
+            y[i] = getMyFunctionValue(x[i]);
+          }
+          return x, y;
+        }
+
+        interpolation(m,n,a,b);
+        var interpolate = function(value) {
+          var result = 0;
+          var mul;
+          for(var k = 0; k < m-1; k++){
+            if(value >= x[k] && value < x[k+1]) {
+              if(k <= m/2){
+                for(var j = k; j <=k + n; j++){
+                  mul = y[j];
+                  for(var i = k; i <= k+n; i++){
+                    if(i != j){
+                      mul = mul*(value - x[i])/(x[j]-x[i]);
+                    }
+                  }
+                  result = result + mul;
+                }
+              }else{
+                for(var j = k+1; j >= k - n+1; j--){
+                  mul = y[j];
+                  for(var i = k+1; i >= k-n+1; i--){
+                    if (i != j){
+                      mul = mul*(value-x[i])/(x[j]-x[i])
+                    }
+                  }
+                  result = result + mul;
+                }
+              }
+            }
+          }
+          return result;
+        }
+
+
+        var getError = function(){
+          var result = new Array(m);
+          for(var i = 0; i < result.length; i++){
+            result[i] = Math.abs(interpolate(h/2+i*h)-getMyFunctionValue(h/2+i*h));
+          }
+          return result;
+        }
+
+        var getMeanError= function(){
+          var error = getError();
+          var result  = 0;
+          for(var i = 0; i < error.length; i++){
+            result = result + error[i];
+          }
+          result = result/error.length;
+          return result;
+
+        }
+
+
+        var getPointsArrays = function(a,b){
+          var temp;
+          var tempo;
+          valuesFunct = new Array(b*50);
+          valuesInterp = new Array(b*50);
+          valuesErr = new Array(b*50);
+
+          for(var i = 50; i < b*50;i++){
+            temp = interpolate(i/50);
+            tempo = getMyFunctionValue(i/50);
+
+            valuesFunct[i] = (new Array((i/50),temp));
+            valuesInterp[i] = (new Array((i/50),tempo));
+            valuesErr[i] = (new Array((i/50),(Math.abs(temp-tempo))));
+          }
+          return valuesFunct, valuesInterp, valuesErr;
+        }
+
+        getPointsArrays(a,b);
+        var Array1 = getError();
+        window.onload=function(){
+          var html='<table><tr>';
+          var html1='<p>'
+
+            for(var q=0; q<10; q++)
+            {
+              html+='<td>'
+
+              html+=Array1[q]+", "+'</td>';
+
+
+            html+='</tr>';
+
+
+          }
+          html1 = html1 + getMeanError() + '</p>'
+          html+='</tr></table>';
+          document.getElementById('xlop').innerHTML=html;
+          document.getElementById('delta').innerHTML=html1;
+
+        }
+
+
+
+        var all_data = [
+
+          { label: "Известная функция", color: 0, data: valuesFunct},
+          { label: "Интерполяционная", color: 1, data: valuesInterp},
+          { label: "Похибка", color: 3, data: valuesErr}
+
+        ];
+
+
+
+        var plot_conf = {
+          series: {
+            lines: {
+              show: true,
+              lineWidth: 2
+            }
+          },
+          xaxis: {
+
+          }
+        };
+        // виводимо графік
+        $.plot($("#placeholder1"), all_data, plot_conf);
+      </script>
+
+  </div>
+</body>
+</html>

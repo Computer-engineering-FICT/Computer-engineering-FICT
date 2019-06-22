@@ -1,0 +1,29 @@
+<!DOCTYPE AFC>
+<algorithm>
+  <branch>
+    <if cond="клавіатура" >
+      <branch>
+        <io text="g,h,n,b,k,j" />
+      </branch>
+      <branch>
+        <io text="g,h,n,b,k,j" />
+      </branch>
+    </if>
+    <if cond="n*b!=0  " >
+      <branch>
+        <if cond="g>0||g*h%2=0" >
+          <branch>
+            <process text="a=g^(g*h)/n/b^(k*j)" />
+            <io text="a" />
+          </branch>
+          <branch>
+            <io text="ERROR" />
+          </branch>
+        </if>
+      </branch>
+      <branch>
+        <io text="ERROR" />
+      </branch>
+    </if>
+  </branch>
+</algorithm>
