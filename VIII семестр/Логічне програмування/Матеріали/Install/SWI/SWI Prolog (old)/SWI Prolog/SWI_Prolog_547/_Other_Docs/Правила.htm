@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0071)http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/06_rules/index.html -->
+<HTML><HEAD><TITLE>Правила</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=koi8-r"><LINK 
+href="Правила.files/list.css" type=text/css rel=stylesheet>
+<SCRIPT language=javascript1.2 src="Правила.files/cookie.js">
+</SCRIPT>
+
+<SCRIPT language=javascript1.2>
+function onLoad () {
+  parent.nav.set_cookie ("Source", "./ch_10_prolog/06_rules/index.html", 1000);
+}
+</SCRIPT>
+
+<META content="MSHTML 6.00.2900.2180" name=GENERATOR></HEAD>
+<BODY><A 
+href="http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/05_unific/index.html"><IMG 
+alt="Предыдущий раздел" src="Правила.files/prev.gif" border=0></A> <A 
+href="http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/index.html"><IMG 
+alt="Уровень выше" src="Правила.files/up.gif" border=0></A> <A 
+href="http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/07_recurs/index.html"><IMG 
+alt="Следующий раздел" src="Правила.files/next.gif" border=0></A> <A 
+onmousedown="document.images['cont'].src='../../Images/ContentsDown.gif'" 
+onmouseout="document.images['cont'].src='../../Images/Contents.gif'" 
+href="http://www.ctc.msiu.ru/materials/Book2/contents.html"><IMG 
+src="Правила.files/Contents.gif" border=0 name=cont></A> 
+<H2>Правила</H2><IMG src="Правила.files/blank.gif"> 
+<P>Кроме фактов программы на языке Пролог могут содержать <B>правила</B>, 
+позволяющие получать дополнительные знания о том мире, который описывает 
+программа. <B><A name=15></A>Правило</B> задает новый предикат через 
+определенные ранее. 
+<P>Правило состоит из головы (предиката) и тела (последовательности предикатов, 
+разделенных запятыми). Голова и тело разделены знаком <B><TT>:-</TT></B> и, 
+подобно каждой фразе Пролога, правило должно заканчиваться точкой. Запятая в 
+теле правила означает конъюнкцию (&amp;&amp;, логическое <B>и</B>). 
+<P>Знак <B><TT>:-</TT></B> есть схематическая запись стрелки (<TT>&lt;-</TT>) и 
+показывает, что из правой части следует левая. Этот знак читается как 
+<EM>"если"</EM>. Интуитивный смысл правила состоит в том, что цель, являющаяся 
+головой, будет истинной, если Пролог сможет показать, что все выражения 
+(подцели) в теле правила являются истинными. 
+<P><BR><B>Пример</B><BR>Правило, определяющее отношение <TT>ребенок/2</TT> через 
+отношение <TT>отец/2</TT>, запишется следующим образом: <PRE>ребенок(X, Y) :- отец(Y, X).
+</PRE>Это означает, что если человек <TT>Y</TT> является для человека <TT>X</TT> 
+отцом, то <TT>X</TT> является ребенком <TT>Y</TT>. Здесь <TT>X</TT> и <TT>Y</TT> 
+- переменные. Напомним, что запись <TT>ребенок/2</TT> показывает, что предикат 
+<TT>ребенок</TT> является функцией от двух аргументов. 
+<P><BR><B>Пример</B><BR>Определим отношение <TT>мать/2</TT> через отношения 
+<TT>родитель/2</TT> и <TT>женщина/1</TT> следующим образом: матерью <TT>X</TT> 
+для человека <TT>Y</TT> является его родитель женского рода. <PRE>мать(X, Y) :- родитель(X, Y), женщина(X).
+</PRE>
+<P>Предикаты отличаются друг от друга не только именем, но и количеством 
+аргументов. Можно, например, определить отношение <TT>мать/1</TT> следующим 
+образом: <PRE>мать(X) :- родитель(X, _), женщина(X).
+</PRE>Так как нам в данном предикате не важно, чьим родителем является данная 
+женщина, то мы использовали анонимную переменную. <PRE>?- мать(X, Y).
+X=анна
+Y=юлия
+Yes
+
+?- мать(X).
+X=анна
+Yes
+</PRE>
+<P><BR><B>Пример</B><BR>Определим отношение <TT>дедушка/2</TT>: <PRE>дедушка(X, Y) :- отец(X, Z), отец(Z, Y).
+дедушка(X, Y) :- отец(X, Z), мать(Z, Y).
+</PRE>Эти правила утверждают, что дедушкой <TT>X</TT> для человека <TT>Y</TT> 
+является отец человека <TT>Z</TT>, который в свою очередь является отцом или 
+матерью человека <TT>Y</TT>. 
+<P><BR><B>Задания</B><BR>
+<OL>
+  <LI>Создайте файл, содержащий следующую базу данных: 
+  <DIV class=noprint>(скопировать <A 
+  href="http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/06_rules/family.pl">файл</A>)</DIV><PRE>женщина(анна).    мужчина(борис).       
+женщина(юлия).	  мужчина(олег).  
+женщина(галина).  мужчина(антон).      
+женщина(елена).   мужчина(павел).
+
+родитель(борис,павел).  %         кто  чей
+родитель(анна,юлия).    родитель(анна,антон).
+родитель(анна,борис).   родитель(олег,юлия).
+родитель(олег,антон).   родитель(олег,борис).
+родитель(галина,анна).  родитель(галина,елена).
+</PRE>
+  <LI>Добавьте правила, задающее отношения <TT>отец/2</TT>, <TT>мать/2</TT>, 
+  <TT>мать/1</TT> и <TT>дедушка/2</TT>, после чего сформулируйте запросы, 
+  определяющие всех матерей и дедушек в данной базе. 
+  <LI>Определите отношение <TT>сестра/2</TT> через отношения <TT>родитель/2</TT> 
+  и <TT>женщина/1</TT>. 
+  <LI>Сформулируйте правило, определяющее отношение <TT>тетя/2</TT> через 
+  отношения <TT>родитель/2</TT> и <TT>сестра/2</TT>. </LI></OL><BR clear=all><A 
+href="http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/05_unific/index.html"><IMG 
+alt="Предыдущий раздел" src="Правила.files/prev.gif" border=0></A> <A 
+href="http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/index.html"><IMG 
+alt="Уровень выше" src="Правила.files/up.gif" border=0></A> <A 
+href="http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/07_recurs/index.html"><IMG 
+alt="Следующий раздел" src="Правила.files/next.gif" border=0></A> </BODY></HTML>

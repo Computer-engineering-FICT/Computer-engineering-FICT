@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0071)http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/04_query/index.html -->
+<HTML><HEAD><TITLE>Запросы к базе данных</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=koi8-r"><LINK 
+href="Запросы&nbsp;к&nbsp;базе&nbsp;данных.files/list.css" type=text/css 
+rel=stylesheet>
+<SCRIPT language=javascript1.2 
+src="Запросы&nbsp;к&nbsp;базе&nbsp;данных.files/cookie.js">
+</SCRIPT>
+
+<SCRIPT language=javascript1.2>
+function onLoad () {
+  parent.nav.set_cookie ("Source", "./ch_10_prolog/04_query/index.html", 1000);
+}
+</SCRIPT>
+
+<META content="MSHTML 6.00.2900.2180" name=GENERATOR></HEAD>
+<BODY><A 
+href="http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/03_fact/index.html"><IMG 
+alt="Предыдущий раздел" 
+src="Запросы&nbsp;к&nbsp;базе&nbsp;данных.files/prev.gif" border=0></A> <A 
+href="http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/index.html"><IMG 
+alt="Уровень выше" src="Запросы&nbsp;к&nbsp;базе&nbsp;данных.files/up.gif" 
+border=0></A> <A 
+href="http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/05_unific/index.html"><IMG 
+alt="Следующий раздел" src="Запросы&nbsp;к&nbsp;базе&nbsp;данных.files/next.gif" 
+border=0></A> <A 
+onmousedown="document.images['cont'].src='../../Images/ContentsDown.gif'" 
+onmouseout="document.images['cont'].src='../../Images/Contents.gif'" 
+href="http://www.ctc.msiu.ru/materials/Book2/contents.html"><IMG 
+src="Запросы&nbsp;к&nbsp;базе&nbsp;данных.files/Contents.gif" border=0 
+name=cont></A> 
+<H2>Запросы к базе данных</H2><IMG 
+src="Запросы&nbsp;к&nbsp;базе&nbsp;данных.files/blank.gif"> 
+<P><B><A name=13></A>Запрос</B> - это последовательность предикатов, разделенных 
+запятыми и завершающаяся точкой. На естественном языке запятая соответствует 
+союзу "и", а на языке математической логики обозначает конъюнкцию. С помощью 
+запросов можно "спрашивать" базу данных о том, какие утверждения являются 
+истинными. Предикат запроса называется <EM>целью.</EM> 
+<P>Простые вопросы, не содержащие никаких переменных, называют 
+<EM>да-нет-вопросами</EM>. Они допускают лишь два возможных ответа: "Yes" 
+означает наличие соответствующего факта в базе данных (первый запрос примера, 
+приведенного ниже), "No" - его отсутствие (второй запрос). В случае ответа "Yes" 
+говорят, что <EM>запрос завершился успехом, цель достигнута.</EM> 
+<P><BR><B>Пример</B><BR><PRE>?- больше(слон, лошадь), больше(лошадь,осел).
+Yes
+
+?- больше(слон, собака).
+No
+</PRE>
+<P>Использование <B>переменных</B> в запросах позволяет задавать более сложные 
+вопросы. Предположим, например, что мы хотим определить, <EM>какие</EM> животные 
+больше осла? В следующем запросе переменная <TT>X</TT> обозначает искомый ответ: 
+<PRE>?- больше(X, осел).
+X = лошадь
+Yes
+</PRE>При обработке запроса переменная <TT>X</TT> приняла значение "лошадь". 
+Просматривая базу данных, интерпретатор обнаружил факт, утверждающий, что лошадь 
+больше осла, и запрос был успешно выполнен. 
+<P>Запросы с переменными могут иметь более одного решения. Первым всегда 
+выводится то из решений, которое находится ближе к началу базы данных. Если нам 
+достаточно только одного ответа, то можно нажать <TT>Enter</TT> и закончить 
+поиск. В случае, если мы захотим получить очередной ответ, нужно нажать клавишу 
+<TT>;</TT> (точка с запятой), и Пролог начнет поиск других вариантов ответа на 
+запрос. Сообщение "No" говорит об отсутствии очередного решения. 
+<P><BR><B>Пример</B><BR><PRE>?- больше(осел, Х).
+X = собака;
+X = обезьяна;
+No
+
+?- больше(X,Y).
+X = слон 
+Y = лошадь;
+
+X = лошадь
+Y = осел;
+
+X = осел
+Y = собака;
+
+X = осел
+Y = обезьяна;
+No
+</PRE>
+<P><BR><B>Задания</B><BR>
+<OL>
+  <LI>Загрузите в Пролог базу данных "Цвет" (файл <TT>task1.pl</TT>) и 
+  сформулируйте к ней следующие запросы. 
+  <BLOCKQUOTE>а) Машина красного цвета?<BR>б) Светофор желтого цвета?<BR>в) 
+    Море синего цвета <I>и</I> солнце желтого цвета?<BR></BLOCKQUOTE>
+  <LI>Добавьте в базу данных факт <PRE>цвет(трава, зеленый).
+</PRE>Сформулируйте запросы к измененной базе данных. 
+  <BLOCKQUOTE>а) Какого цвета машина?<BR>б) Что в этой базе данных зеленого 
+    цвета?<BR>б) Какие элементы составляют эту базу данных и каковы 
+    соответствующие им цвета?<BR></BLOCKQUOTE></LI></OL><BR clear=all><A 
+href="http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/03_fact/index.html"><IMG 
+alt="Предыдущий раздел" 
+src="Запросы&nbsp;к&nbsp;базе&nbsp;данных.files/prev.gif" border=0></A> <A 
+href="http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/index.html"><IMG 
+alt="Уровень выше" src="Запросы&nbsp;к&nbsp;базе&nbsp;данных.files/up.gif" 
+border=0></A> <A 
+href="http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/05_unific/index.html"><IMG 
+alt="Следующий раздел" src="Запросы&nbsp;к&nbsp;базе&nbsp;данных.files/next.gif" 
+border=0></A> </BODY></HTML>

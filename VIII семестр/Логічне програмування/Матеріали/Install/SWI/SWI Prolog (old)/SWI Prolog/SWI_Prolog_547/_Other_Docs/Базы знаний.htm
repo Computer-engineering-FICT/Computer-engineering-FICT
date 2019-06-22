@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0074)http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/08_programm/index.html -->
+<HTML><HEAD><TITLE>Базы знаний</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=koi8-r"><LINK 
+href="Базы&nbsp;знаний.files/list.css" type=text/css rel=stylesheet>
+<SCRIPT language=javascript1.2 src="Базы&nbsp;знаний.files/cookie.js">
+</SCRIPT>
+
+<SCRIPT language=javascript1.2>
+function onLoad () {
+  parent.nav.set_cookie ("Source", "./ch_10_prolog/08_programm/index.html", 1000);
+}
+</SCRIPT>
+
+<META content="MSHTML 6.00.2900.2180" name=GENERATOR></HEAD>
+<BODY><A 
+href="http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/07_recurs/index.html"><IMG 
+alt="Предыдущий раздел" src="Базы&nbsp;знаний.files/prev.gif" border=0></A> <A 
+href="http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/index.html"><IMG 
+alt="Уровень выше" src="Базы&nbsp;знаний.files/up.gif" border=0></A> <A 
+href="http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/09_logik_task/index.html"><IMG 
+alt="Следующий раздел" src="Базы&nbsp;знаний.files/next.gif" border=0></A> <A 
+onmousedown="document.images['cont'].src='../../Images/ContentsDown.gif'" 
+onmouseout="document.images['cont'].src='../../Images/Contents.gif'" 
+href="http://www.ctc.msiu.ru/materials/Book2/contents.html"><IMG 
+src="Базы&nbsp;знаний.files/Contents.gif" border=0 name=cont></A> 
+<H2>Базы знаний</H2><IMG src="Базы&nbsp;знаний.files/blank.gif"> 
+<P>Как уже отмечалось, программа на языке Пролог, содержащая факты и правила, 
+составляет базу знаний. При разработке программ на Прологе часто используют 
+<EM>встроенные предикаты</EM>, т.&nbsp;е. предикаты, определяемые автоматически 
+при инициализации интерпретатора Пролога. 
+<P>Встроенные предикаты используются так же, как и определяемые пользователем 
+предикаты. Единственное ограничение - встроенный предикат не может являться 
+головой правила или появляться в факте. 
+<P>Одним из наиболее часто используемых встроенных предикатов является предикат 
+<TT>not/1</TT> (отрицание). Этот предикат истиннен, если его аргумент ложен, и 
+наоборот. Можно использовать и другую форму записи данного предиката 
+<TT>\+</TT>. 
+<P><BR><B>Пример</B><BR>Если мы определим правило <PRE>ложь(X) :- not(X).
+ложь1(X) :- \+(X).
+</PRE>то следующие запросы будут эквивалентны: <PRE>?- not(больше(собака, лошадь)).
+Yes;
+
+?- ложь(больше(собака, лошадь)).
+Yes
+</PRE>
+<P>Другим часто используемым встроенным предикатом является <TT>=/2</TT> 
+(унификация): <TT>=(X, Y)</TT>. Этот предикат допускает более удобную форму 
+записи <TT>X = Y</TT>. Значение этого предиката истинно, если термы <TT>X</TT> и 
+<TT>Y</TT> удается унифицировать. 
+<P>На предикат <TT>not/1</TT> похож встроенный предикат <TT>\=</TT>, зависящий 
+от двух аргументов. Утверждение <TT>X \= Y</TT> эквивалентно утверждению 
+<TT>not(X = Y)</TT>. 
+<P>Иногда бывает полезно использовать предикаты, про которые заранее известно, 
+истинны они или ложны. Для этих целей используют предикаты <TT>true/0</TT> и 
+<TT>fail/0</TT>. Предикат <TT>true</TT> всегда истинен, в то время как 
+<TT>fail</TT> всегда ложен. 
+<P>Встроенный предикат <TT>read/1</TT> позволяет считывать термы с клавиатуры. 
+При этом приглашение Пролога <TT>?-</TT> меняется на <TT>|:</TT>. Вводимый терм 
+должен обязательно заканчиваться точкой. 
+<P><BR><B>Пример</B><BR><PRE>?- read(Name), read(Age).
+|: коля. 15.
+
+Name = коля
+Age = 15
+Yes
+
+?- read(X), больше_2(X,Y).
+|: осел.
+
+X = осел
+Y = собака ;
+ 
+X = осел
+Y = обезьяна ;
+No
+
+</PRE>
+<P>Если при обработке запросов Пролога вы пожелаете получить более подробный 
+вывод, то для этих целей можно использовать предикат <TT>write/1</TT>. 
+Аргументом этого предиката может являться любой допустимый терм Пролога. В 
+случае, когда аргументом является переменная, будет напечатано ее значение. 
+<P>Выполнение предиката <TT>nl/0</TT> осуществляет перевод строки: последующий 
+вывод начнется с новой строки. Предикат <TT>tab/1</TT> выводит количество 
+пробелов, определяемое его аргументом. 
+<P><BR><B>Пример</B> <PRE>?- write('Hello World!').
+Hello World!
+Yes
+
+?- write('Hello'), nl, tab(5), write('World!').
+Hello
+     World!
+Yes
+
+?- X = слон, write(X), nl.
+слон
+
+X = слон
+Yes
+</PRE>
+<P>В последнем примере сначала переменная <TT>X</TT> унифицируется с атомом 
+<TT>слон</TT>, а затем <EM>значение переменной</EM> <TT>X</TT>, т.&nbsp;е. 
+<TT>слон</TT>, выводится на экран при помощи предиката <TT>write/1</TT>. После 
+перехода на новую строку Пролог выдает отчет об унифицированной переменной, 
+т.&nbsp;е. печатает <TT>X = слон</TT>. 
+<P>Большинство Пролог-систем предоставляет доступ к справочной информации при 
+вызове предиката <TT>help/1</TT>. Примененный к терму (обычно представляющему 
+имя встроенного предиката) он осуществляет вывод краткого описания этого терма. 
+<P><BR><B>Пример</B> <PRE>?- help(write).
+write(+Term)
+  Write Term to the current output, using brackets and operators 
+  where appropriate. See feature/2 for contrillong   floating point
+  output format.
+
+write(+Stream, +Term) 
+  Write Term to Stream.
+Yes
+</PRE>
+<P>И, напоследок, поговорим о <B>комментариях</B>. Комментарии никак не влияют 
+на выполнение программы, но при правильном их использовании они оказываются 
+весьма существенной частью исходного текста. Несколько удачно расположенных 
+строк с комментариями могут оказать человеку, читающему программу, большую 
+помощь. Пролог игнорирует произвольное число строк, заключенное между символами 
+<TT>/*</TT> и <TT>*/</TT>. Все, что находится между <TT>%</TT> и концом строки, 
+также рассматривается как комментарий: 
+<P><BR><B>Пример</B> <PRE>/* Это 
+        комментарий */
+
+% Это тоже комментарий
+</PRE><BR clear=all><A 
+href="http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/07_recurs/index.html"><IMG 
+alt="Предыдущий раздел" src="Базы&nbsp;знаний.files/prev.gif" border=0></A> <A 
+href="http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/index.html"><IMG 
+alt="Уровень выше" src="Базы&nbsp;знаний.files/up.gif" border=0></A> <A 
+href="http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/09_logik_task/index.html"><IMG 
+alt="Следующий раздел" src="Базы&nbsp;знаний.files/next.gif" border=0></A> 
+</BODY></HTML>

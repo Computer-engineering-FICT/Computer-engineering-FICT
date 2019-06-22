@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0071)http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/10_arifm/index.html -->
+<HTML><HEAD><TITLE>Работа с числами</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=koi8-r"><LINK 
+href="Работа&nbsp;с&nbsp;числами.files/list.css" type=text/css rel=stylesheet>
+<SCRIPT language=javascript1.2 src="Работа&nbsp;с&nbsp;числами.files/cookie.js">
+</SCRIPT>
+
+<SCRIPT language=javascript1.2>
+function onLoad () {
+  parent.nav.set_cookie ("Source", "./ch_10_prolog/10_arifm/index.html", 1000);
+}
+</SCRIPT>
+
+<META content="MSHTML 6.00.2900.2180" name=GENERATOR></HEAD>
+<BODY><A 
+href="http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/09_logik_task/index.html"><IMG 
+alt="Предыдущий раздел" src="Работа&nbsp;с&nbsp;числами.files/prev.gif" 
+border=0></A> <A 
+href="http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/index.html"><IMG 
+alt="Уровень выше" src="Работа&nbsp;с&nbsp;числами.files/up.gif" border=0></A> 
+<A 
+href="http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/11_number_task/index.html"><IMG 
+alt="Следующий раздел" src="Работа&nbsp;с&nbsp;числами.files/next.gif" 
+border=0></A> <A 
+onmousedown="document.images['cont'].src='../../Images/ContentsDown.gif'" 
+onmouseout="document.images['cont'].src='../../Images/Contents.gif'" 
+href="http://www.ctc.msiu.ru/materials/Book2/contents.html"><IMG 
+src="Работа&nbsp;с&nbsp;числами.files/Contents.gif" border=0 name=cont></A> 
+<H2>Арифметические выражения</H2><IMG 
+src="Работа&nbsp;с&nbsp;числами.files/blank.gif"> 
+<P>В языке Пролог имеется ряд встроенных функций для вычисления арифметических 
+выражений, некоторые из которых перечислены в таблице. </P>
+<TABLE align=center border=1>
+  <TBODY>
+  <TR>
+    <TD><TT>X + Y</TT></TD>
+    <TD><SMALL>Сумма <TT>X</TT> и <TT>Y</TT></SMALL> </TD></TR>
+  <TR>
+    <TD><TT>X - Y</TT></TD>
+    <TD><SMALL>Разность <TT>X</TT> и <TT>Y</TT></SMALL> </TD></TR>
+  <TR>
+    <TD><TT>X * Y</TT></TD>
+    <TD><SMALL>Произведение <TT>X</TT> и <TT>Y</TT> </SMALL></TD></TR>
+  <TR>
+    <TD><TT>X / Y</TT></TD>
+    <TD><SMALL>Деление <TT>X</TT> на <TT>Y</TT></SMALL> </TD></TR>
+  <TR>
+    <TD><TT>X mod Y</TT></TD>
+    <TD><SMALL>Остаток от деления <TT>X</TT> на <TT>Y</TT></SMALL></TD></TR>
+  <TR>
+    <TD><TT>X // Y</TT></TD>
+    <TD><SMALL>Деление нацело <TT>X</TT> на <TT>Y</TT> </SMALL></TD></TR>
+  <TR>
+    <TD><TT>X ** Y</TT></TD>
+    <TD><SMALL>Возведение <TT>X</TT> в степень <TT>Y</TT></SMALL></TD></TR>
+  <TR>
+    <TD><TT>- X</TT></TD>
+    <TD><SMALL>Смена знака <TT>X</TT></SMALL></TD></TR>
+  <TR>
+    <TD><TT>abs(X)</TT></TD>
+    <TD><SMALL>Абсолютная величина числа <TT>X</TT> </SMALL></TD></TR>
+  <TR>
+    <TD><TT>max(X,Y)</TT></TD>
+    <TD><SMALL>Большее из чисел <TT>X</TT> и <TT>Y</TT></SMALL></TD></TR>
+  <TR>
+    <TD><TT>min(X,Y)</TT></TD>
+    <TD><SMALL>Меньшее из чисел <TT>X</TT> и <TT>Y</TT></SMALL></TD></TR>
+  <TR>
+    <TD><TT>sqrt(X)</TT></TD>
+    <TD><SMALL>Квадратный корень из <TT>X</TT></SMALL></TD></TR>
+  <TR>
+    <TD><TT>random(Int)</TT></TD>
+    <TD><SMALL>Случайное целое число в диапазоне от 0 до 
+    <TT>Int</TT></SMALL></TD></TR>
+  <TR>
+    <TD><TT>sin(X)</TT></TD>
+    <TD><SMALL>Синус <TT>X</TT></SMALL></TD></TR>
+  <TR>
+    <TD><TT>cos(X)</TT></TD>
+    <TD><SMALL>Косинус <TT>X</TT></SMALL></TD></TR>
+  <TR>
+    <TD><TT>tan(X)</TT></TD>
+    <TD><SMALL>Тангенс <TT>X</TT></SMALL></TD></TR>
+  <TR>
+    <TD><TT>log(X)</TT></TD>
+    <TD><SMALL>Натуральный логарифм (ln) числа <TT>X</TT></SMALL></TD></TR>
+  <TR>
+    <TD><TT>log10(X)</TT></TD>
+    <TD><SMALL>Десятичный логарифм (lg) числа <TT>X</TT></SMALL></TD></TR>
+  <TR>
+    <TD><TT>float(X)</TT></TD>
+    <TD><SMALL>Вещественное число, соответствующее целому числу 
+      <TT>X</TT></SMALL></TD></TR>
+  <TR>
+    <TD><TT>pi</TT></TD>
+    <TD><SMALL>3.14159 (приближенное значение числа <IMG 
+      src="Работа&nbsp;с&nbsp;числами.files/pi.gif">) </SMALL></TD></TR>
+  <TR>
+    <TD><TT>е</TT></TD>
+    <TD><SMALL>2.71828 (приближенное значение числа е) 
+</SMALL></TD></TR></TBODY></TABLE>
+<P>Еще раз отметим, что Пролог старается скрыть различие между арифметикой целых 
+и вещественных чисел везде, где это можно. 
+<P>Для вычисления арифметических выражений в Прологе используется встроенный 
+бинарный оператор <TT>is</TT>, который интерпретирует правый терм как 
+арифметическое выражение, после чего унифицирует (если возможно) результат 
+вычисления с левым термом (обычно с переменной). Приоритет выполнения 
+арифметических операций является традиционным. Круглые скобки используются для 
+изменения порядка вычислений. В следующих примерах переменная <TT>X</TT> 
+унифицируется со значениями арифметических выражений: <PRE>?- X is 2.5 + 2.5.
+X = 5
+Yes
+
+?- X is 4/(2+1).
+X =  1.33333
+Yes
+
+?- X is cos(3*pi).
+X = -1
+Yes
+
+?- 1 is sin(pi/2).
+Yes
+
+?- 1.0 is sin(pi/2).
+No
+</PRE>Поясним несколько неожиданный ответ Пролога в последнем запросе. Значение 
+sin(pi/2) автоматически округляется предикатом <TT>is</TT> до целого значения 1, 
+которое не удается унифицировать с вещественным числом 1.0. Предикат 
+<TT>float</TT> заставит считать значение sin(pi/2) вещественным числом: <PRE> 
+?- 1.0 is float( sin(pi/2)).
+Yes
+</PRE>
+<P>Для сравнения арифметических выражений используется ряд операторов. Цель 
+<TT>X &gt; Y</TT> (больше) будет успешна, если выражение <TT>X</TT> будет 
+соответствовать большему числу, чем выражение <TT>Y</TT>. 
+<P>Аналогично используются операторы <TT>&lt;</TT> (меньше), <TT>=&lt;</TT> 
+(меньше или равно), <TT>&gt;=</TT> (больше или равно), <TT>=\=</TT> (не равно) и 
+<TT>=:=</TT> (арифметически равный). Различия между операторами <TT>=:=</TT> и 
+<TT>=</TT> очень существенны. Первый оператор сравнивает значения арифметических 
+выражений, тогда как последний пытается унифицировать их. 
+<P><BR><B>Пример</B> <PRE>?- 2 ** 3 =:= 3 + 5.
+Yes
+
+?- 2 ** 3 = 3 + 5.
+No
+
+?- 1.0 = float(sin(pi/2)).
+No
+
+?- 1.0 =:= sin(pi/2).
+Yes
+</PRE>
+<P>Заметьте, что цель <TT>X =:= Y</TT> будет истинна, даже если один из термов 
+есть целое число, а другой - равное ему вещественное. 
+<P><BR><B>Пример</B><BR>Порядок подцелей в запросе влияет на его результат: <PRE>?- X is 4+Y, Y=3. 
+ERROR: Arguments are not sufficiently instantiated  
+
+?- Y=3, X is 4+Y.
+Y = 3
+X = 7
+Yes
+</PRE>В первом запросе сообщение об ошибке появилось потому, что первая подцель 
+запроса (<TT>X is 4+Y</TT>) потерпела неудачу, т.&nbsp;к. в момент ее обработки 
+невозможно вычислить выражение <TT>4+Y</TT>. 
+<P><BR><B>Задание</B><BR>Какой ответ выдаст интерпретатор Пролога на следующие 
+запросы? 
+<OL>
+  <LI><TT>?- 3 is 2+1.</TT> 
+  <LI><TT>?- X=3/2.</TT> 
+  <LI><TT>?- X is 3/2.</TT> 
+  <LI><TT>?- X is min(tan(pi/4), log(pi)).</TT> </LI></OL><BR clear=all><A 
+href="http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/09_logik_task/index.html"><IMG 
+alt="Предыдущий раздел" src="Работа&nbsp;с&nbsp;числами.files/prev.gif" 
+border=0></A> <A 
+href="http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/index.html"><IMG 
+alt="Уровень выше" src="Работа&nbsp;с&nbsp;числами.files/up.gif" border=0></A> 
+<A 
+href="http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/11_number_task/index.html"><IMG 
+alt="Следующий раздел" src="Работа&nbsp;с&nbsp;числами.files/next.gif" 
+border=0></A> </BODY></HTML>

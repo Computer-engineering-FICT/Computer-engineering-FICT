@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0077)http://gollem.science.uva.nl/SWI-Prolog/mailinglist/archive/2004/q2/0264.html -->
+<HTML><HEAD><TITLE>SWI-Prolog mailing list: Re: [SWIPL] Embedding SWI Prolog in Delphi - Are there Examples?</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="M B (progdel@altern.org)" name=Author>
+<META content="Re: [SWIPL] Embedding SWI Prolog in Delphi - Are there Examples?" 
+name=Subject><LINK rev=made href="mailto:jan@swi.psy.uva.nl">
+<META content="MSHTML 6.00.2900.2180" name=GENERATOR></HEAD>
+<BODY text=#000000 bgColor=#ffffff>
+<H1 align=center>Re: [SWIPL] Embedding SWI Prolog in Delphi - Are there 
+Examples?</H1>
+<P align=center><IMG height=4 alt=--------- src="" width=400></P><!-- received="Wed May 12 16:24:05 2004" --><!-- isoreceived="20040512142405" --><!-- sent="Wed, 12 May 2004 16:21:42 +0200" --><!-- isosent="20040512142142" --><!-- name="M B" --><!-- email="progdel@altern.org" --><!-- subject="Re: [SWIPL] Embedding SWI Prolog in Delphi - Are there Examples?" --><!-- id="5.0.2.1.2.20040512161618.02fe81d8@mail.altern.org" --><!-- inreplyto="001f01c43745$3488d3f0$0100a8c0@cleaner" -->
+<DIV align=center>
+<TABLE width="100%" border=2>
+  <TBODY>
+  <TR>
+    <TH><A href="mailto:prolog@swi.psy.uva.nl">New Message</A></TH>
+    <TH><A 
+      href="mailto:prolog@swi.psy.uva.nl&amp;replyto=5.0.2.1.2.20040512161618.02fe81d8@mail.altern.org&amp;subject=Re:%20[SWIPL]%20Embedding%20SWI%20Prolog%20in%20Delphi%20-%20Are%20there%20Examples?">Reply</A></TH>
+    <TH><A href="http://www.swi-prolog.org/mailinglist.html">About this 
+      list</A></TH>
+    <TH><A 
+      href="http://gollem.science.uva.nl/SWI-Prolog/mailinglist/archive/2004/q2/date.html">Date 
+      view</A></TH>
+    <TH><A 
+      href="http://gollem.science.uva.nl/SWI-Prolog/mailinglist/archive/2004/q2/index.html">Thread 
+      view</A></TH>
+    <TH><A 
+      href="http://gollem.science.uva.nl/SWI-Prolog/mailinglist/archive/2004/q2/subject.html">Subject 
+      view</A></TH>
+    <TH><A 
+      href="http://gollem.science.uva.nl/SWI-Prolog/mailinglist/archive/2004/q2/author.html">Author 
+      view</A></TH></TR></TBODY></TABLE></DIV>
+<P><STRONG>From:</STRONG> M B (<A 
+href="mailto:progdel@altern.org&amp;replyto=5.0.2.1.2.20040512161618.02fe81d8@mail.altern.org&amp;subject=Re:%20[SWIPL]%20Embedding%20SWI%20Prolog%20in%20Delphi%20-%20Are%20there%20Examples?"><EM>progdel@altern.org</EM></A>)<BR><STRONG>Date:</STRONG> 
+Wed 12 May 2004 - 16:21:42 CEST 
+<P><!-- next="start" -->
+<UL>
+  <LI><STRONG>Next message:</STRONG> <A 
+  href="http://gollem.science.uva.nl/SWI-Prolog/mailinglist/archive/2004/q2/0265.html">Alan 
+  Baljeu: "Re: [SWIPL] backtracking without forgetting"</A> 
+  <LI><STRONG>Previous message:</STRONG> <A 
+  href="http://gollem.science.uva.nl/SWI-Prolog/mailinglist/archive/2004/q2/0263.html">Alan 
+  Baljeu: "Re: [SWIPL] backtracking without forgetting"</A> 
+  <LI><STRONG>In reply to:</STRONG> <A 
+  href="http://gollem.science.uva.nl/SWI-Prolog/mailinglist/archive/2004/q2/0244.html">Cleaner: 
+  "[SWIPL] Embedding SWI Prolog in Delphi - Are there Examples?"</A> <!-- nextthread="start" --><!-- reply="end" --></LI></UL>
+<HR noShade>
+
+<P><!-- body="start" --><PRE>I had sent a small example to the list :
+<A href="http://hcs.science.uva.nl/projects/SWI-Prolog/mailinglist/archive/old/3357.html">http://hcs.science.uva.nl/projects/SWI-Prolog/mailinglist/archive/old/3357.html</A>
+
+If you want to assert a new fact, you can replace the hello prolog 
+predicate with a predicate that first converts the atom to a term with 
+atom_to_term and then assert the term.
+
+
+A 12:46 11/05/2004 +0200, vous avez écrit :
+&gt;Hello!
+&gt;
+&gt;Has anyone ever embedded SWI Prolog in Delphi ? Where can I find some =
+&gt;examples? I need some help!
+&gt;
+&gt;I'm looking forward to implement a IActiveScript Interface for SWI =
+&gt;Prolog to use it with Windows Scripting Host. I allready downloaded the =
+&gt;DelphiInterface for SWI-Prolog
+&gt;&lt;<A href="http://gollem.swi.psy.uva.nl/twiki/pl/pub/Foreign/DelphiInterface/DelphiS">http://gollem.swi.psy.uva.nl/twiki/pl/pub/Foreign/DelphiInterface/DelphiS</A>&gt;<A href="http://gollem.swi.psy.uva.nl/twiki/pl/pub/Foreign/DelphiInterface/DelphiS">http://gollem.swi.psy.uva.nl/twiki/pl/pub/Foreign/DelphiInterface/DelphiS</A>=
+&gt;WI.zip
+&gt;But i don't know, how i can pass/consult Data to the engine. I dont want =
+&gt;to pass a File, i want to pass Data by calling a function.
+&gt;
+&gt;My favourite function whould look like:
+&gt;
+&gt;function ConsultText( prologbasedtext : String ) : Resultcode;
+&gt;
+&gt;I found some streaming functions in the SWI Source , but don't know how =
+&gt;to use them, nor do i not think that i can use them that easy with =
+&gt;delphi when I took a closer look to the IOSTREAM Structure:
+&gt;
+&gt;function PL_open_stream(t: term_t, var s: IOSTREAM): Integer; cdecl; =
+&gt;external 'libpl.dll';
+&gt;
+&gt;Can anyone help me?
+&gt;
+&gt;thanks a lot!
+</PRE>
+<P><!-- body="end" -->
+<HR noShade>
+
+<UL><!-- next="start" -->
+  <LI><STRONG>Next message:</STRONG> <A 
+  href="http://gollem.science.uva.nl/SWI-Prolog/mailinglist/archive/2004/q2/0265.html">Alan 
+  Baljeu: "Re: [SWIPL] backtracking without forgetting"</A> 
+  <LI><STRONG>Previous message:</STRONG> <A 
+  href="http://gollem.science.uva.nl/SWI-Prolog/mailinglist/archive/2004/q2/0263.html">Alan 
+  Baljeu: "Re: [SWIPL] backtracking without forgetting"</A> 
+  <LI><STRONG>In reply to:</STRONG> <A 
+  href="http://gollem.science.uva.nl/SWI-Prolog/mailinglist/archive/2004/q2/0244.html">Cleaner: 
+  "[SWIPL] Embedding SWI Prolog in Delphi - Are there Examples?"</A> <!-- nextthread="start" --><!-- reply="end" --></LI></UL>
+<DIV align=center>
+<TABLE width="100%" border=2>
+  <TBODY>
+  <TR>
+    <TH><A href="mailto:prolog@swi.psy.uva.nl">New Message</A></TH>
+    <TH><A 
+      href="mailto:prolog@swi.psy.uva.nl&amp;replyto=5.0.2.1.2.20040512161618.02fe81d8@mail.altern.org&amp;subject=Re:%20[SWIPL]%20Embedding%20SWI%20Prolog%20in%20Delphi%20-%20Are%20there%20Examples?">Reply</A></TH>
+    <TH><A href="http://www.swi-prolog.org/mailinglist.html">About this 
+      list</A></TH>
+    <TH><A 
+      href="http://gollem.science.uva.nl/SWI-Prolog/mailinglist/archive/2004/q2/date.html">Date 
+      view</A></TH>
+    <TH><A 
+      href="http://gollem.science.uva.nl/SWI-Prolog/mailinglist/archive/2004/q2/index.html">Thread 
+      view</A></TH>
+    <TH><A 
+      href="http://gollem.science.uva.nl/SWI-Prolog/mailinglist/archive/2004/q2/subject.html">Subject 
+      view</A></TH>
+    <TH><A 
+      href="http://gollem.science.uva.nl/SWI-Prolog/mailinglist/archive/2004/q2/author.html">Author 
+      view</A></TH></TR></TBODY></TABLE></DIV><!-- trailer="footer" -->
+<P>
+<HR>
+
+<ADDRESS><EM><SMALL>This archive was generated by <A 
+href="http://www.hypermail.org/">hypermail 2b29</A> 
+<P align=center><A 
+href="mailto:jan@swi.psy.uva.nl">jan@swi.psy.uva.nl</A></P></SMALL></EM></ADDRESS></BODY></HTML>

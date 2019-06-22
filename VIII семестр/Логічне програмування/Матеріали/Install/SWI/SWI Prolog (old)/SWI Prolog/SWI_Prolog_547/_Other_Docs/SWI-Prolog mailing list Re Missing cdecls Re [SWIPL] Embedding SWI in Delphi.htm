@@ -1,0 +1,233 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0079)http://hcs.science.uva.nl/projects/SWI-Prolog/mailinglist/archive/old/3357.html -->
+<HTML><HEAD><TITLE>SWI-Prolog mailing list: Re: Missing "cdecl"s Re: [SWIPL] Embedding SWI in Delphi</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1251">
+<META content="M B (progdel@altern.org)" name=Author>
+<META content='Re: Missing "cdecl"s Re: [SWIPL] Embedding SWI in Delphi' 
+name=Subject><LINK rev=made href="mailto:jan@swi.psy.uva.nl">
+<META content="MSHTML 6.00.2900.2180" name=GENERATOR></HEAD>
+<BODY text=#000000 bgColor=#ffffff>
+<H1 align=center>Re: Missing "cdecl"s Re: [SWIPL] Embedding SWI in Delphi</H1>
+<P align=center><IMG height=4 alt=--------- src="" width=400></P><!-- received="Mon Jul 21 23:43:27 2003" --><!-- isoreceived="20030721214327" --><!-- sent="Mon, 21 Jul 2003 23:43:19 +0200" --><!-- isosent="20030721214319" --><!-- name="M B" --><!-- email="progdel@altern.org" --><!-- subject="Re: Missing &quot;cdecl&quot;s Re: [SWIPL] Embedding SWI in Delphi" --><!-- id="5.0.2.1.2.20030721231925.031e9c00@mail.altern.org" --><!-- inreplyto="Law10-OE62D8SYgkkpN0001239c@hotmail.com" -->
+<DIV align=center>
+<TABLE width="100%" border=2>
+  <TBODY>
+  <TR>
+    <TH><A href="mailto:prolog@swi.psy.uva.nl">New Message</A></TH>
+    <TH><A 
+      href='mailto:prolog@swi.psy.uva.nl&amp;replyto=5.0.2.1.2.20030721231925.031e9c00@mail.altern.org&amp;subject=Re:%20Missing%20"cdecl"s%20Re:%20[SWIPL]%20Embedding%20SWI%20in%20Delphi'>Reply</A></TH>
+    <TH><A href="http://www.swi-prolog.org/mailinglist.html">About this 
+      list</A></TH>
+    <TH><A 
+      href="http://hcs.science.uva.nl/projects/SWI-Prolog/mailinglist/archive/old/date.html">Date 
+      view</A></TH>
+    <TH><A 
+      href="http://hcs.science.uva.nl/projects/SWI-Prolog/mailinglist/archive/old/index.html">Thread 
+      view</A></TH>
+    <TH><A 
+      href="http://hcs.science.uva.nl/projects/SWI-Prolog/mailinglist/archive/old/subject.html">Subject 
+      view</A></TH>
+    <TH><A 
+      href="http://hcs.science.uva.nl/projects/SWI-Prolog/mailinglist/archive/old/author.html">Author 
+      view</A></TH></TR></TBODY></TABLE></DIV>
+<P><STRONG>From:</STRONG> M B (<A 
+href='mailto:progdel@altern.org&amp;replyto=5.0.2.1.2.20030721231925.031e9c00@mail.altern.org&amp;subject=Re:%20Missing%20"cdecl"s%20Re:%20[SWIPL]%20Embedding%20SWI%20in%20Delphi'><EM>progdel@altern.org</EM></A>)<BR><STRONG>Date:</STRONG> 
+Mon 21 Jul 2003 - 23:43:19 CEST 
+<P><!-- next="start" -->
+<UL>
+  <LI><STRONG>Next message:</STRONG> <A 
+  href="http://hcs.science.uva.nl/projects/SWI-Prolog/mailinglist/archive/old/3358.html">Richard 
+  A. O'Keefe: "RE: [SWIPL] Question about calling structures in Prolog"</A> 
+  <LI><STRONG>Previous message:</STRONG> <A 
+  href="http://hcs.science.uva.nl/projects/SWI-Prolog/mailinglist/archive/old/3356.html">Jan 
+  Wielemaker: "Re: [SWIPL] String Streams / Stream Filters"</A> 
+  <LI><STRONG>In reply to:</STRONG> <A 
+  href="http://hcs.science.uva.nl/projects/SWI-Prolog/mailinglist/archive/old/3352.html">Mikhail 
+  Balabanov: "Re: Missing "cdecl"s Re: [SWIPL] Embedding SWI in Delphi"</A> <!-- nextthread="start" -->
+  <LI><STRONG>Next in thread:</STRONG> <A 
+  href="http://hcs.science.uva.nl/projects/SWI-Prolog/mailinglist/archive/old/3359.html">Mikhail 
+  Balabanov: "Re: [SWIPL] Embedding SWI in Delphi"</A> 
+<!-- reply="end" --></LI></UL>
+<HR noShade>
+
+<P><!-- body="start" --><PRE>I have tried to dowload your updated unit, but I seem to have a problem 
+with the connection, I tried both IE and Netscape with right-click and 
+"save target as" but I could only reach 62% of the 8,77 k after one hour ! 
+It's strange since I access the home page of www.hit.bg without any problem.
+
+Anyway, since I have managed to make a small program which works with 
+version 5.2.4, here is the small code, hoping it can help :
+
+1. A small prolog file :
+
+hello.pl
+--------------------------------------------------------
+hello(Nom,Message) :-
+   atom_concat('Dobar den / Dag / Bonjour / Hello ',Nom, S1),
+   atom_concat(S1, ' from SWI Prolog', Message).
+
+hello(Nom,'2nd message').
+--------------------------------------------------------
+
+2. I consult it with SWI (latest version) and make a saved-state :
+
+?- qsave_program(hello).
+
+which gives hello.exe in the same directory.
+
+3. I copy in the same directory the libpl.dll and ptheadVC.dll from the 
+pl\bin directory.
+
+4. With your first version of the SWIProlog.pas unit where I only added :
+- PInteger =^Integer; in the type declaration
+- the 'cdecl ;' declaration before 'external' in each function
+
+I create in the same directory a small Delphi (5 PE) project with a form 
+containing just a single button (caption, e.g. : SWI Prolog) and the 
+associated unit with the following code :
+
+lafiche.pas
+--------------------------------------------------------
+unit lafiche;
+
+interface
+
+uses
+   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+   ExtCtrls, StdCtrls, ComCtrls, Menus, SWIProlog;
+
+type
+   TFicheapplication = class(TForm)
+     Button1: TButton;
+     procedure Button1Click(Sender: TObject);
+   private
+
+   public
+
+   end;
+
+var
+   Ficheapplication: TFicheapplication;
+
+implementation
+
+{$R *.DFM}
+
+procedure TFicheapplication.Button1Click(Sender: TObject);
+
+var
+   argc, i: integer;
+   argv: array[0..2] of PChar;
+   buf: array[0..120] of Char;
+   texte: PChar;
+   predicat: predicate_t;
+   terme0,terme1: term_t;
+   requete: qid_t;
+
+begin
+  argv[0]:=StrNew(PChar('libpl.dll'));
+  argv[1]:=StrNew(PChar('-x'));
+  argv[2]:=StrNew(PChar('hello.exe'));
+  argc:=3;
+  if ( PL_initialise(argc, argv) = 1 )
+  then
+   begin
+    StrPCopy(buf,'PL_initialise OK');
+    MessageBox(0, buf, 'Initialisation', MB_OK);
+    terme0:=PL_new_term_refs(2);
+    terme1:=terme0+1;
+    StrPCopy(buf,'Delphi');
+    PL_put_atom_chars(terme0,buf);
+    predicat:=PL_predicate(PChar('hello'),2,PChar('user'));
+    requete:=PL_open_query(nil,PL_Q_NORMAL,predicat,terme0);
+    i:=PL_next_solution(requete);
+    PL_get_chars(terme1,texte,CVT_ALL);
+    MessageBox(0, texte, 'Message de SWI Prolog', MB_OK);
+    i:=PL_next_solution(requete);
+    PL_get_chars(terme1,texte,CVT_ALL);
+    MessageBox(0, texte, 'Message de SWI Prolog', MB_OK);
+    PL_cleanup(i)
+    // PL_halt(argc)
+   end
+  else
+   begin
+    StrPCopy(buf,'PL_initialise = 0');
+    MessageBox(0, buf, 'Initialisation', MB_OK)
+   end;
+end;
+
+end.
+--------------------------------------------------------
+
+and after the compilation, it works just alright, when I click the button, 
+I first get the "PL_initialise OK" message, then the two messages from the 
+prolog hello/2 predicate.
+
+I have tried with bigger saved-states and it works fine too.
+
+Hope this helps.
+
+Marc.
+
+
+A 11:05 21/07/2003 +0300, Mikhail Balabanov a йcrit :
+
+&gt;You are certainly right about the 'cdecl' declarations - I still hadn't put
+&gt;them on all functions. Now I have uploaded an updated version of the files,
+&gt;where all cdecl's are in place (hopefully).
+&gt;
+&gt;Nevertheless, before posting the first version of the unit I had tested the
+&gt;execution of predicates by PL_initialise()/PL_chars_to_term()/PL_call(), and
+&gt;it worked. Now that I have installed SWI-Prolog 5.2.4, this stopped
+&gt;working - the sample application halts at PL_initialise. I'm trying to
+&gt;investigate what is wrong.
+&gt;
+&gt;You may download the unit from the same place. I have tried to update
+&gt;everything to SWI-Prolog 5.2.4, but again: this is an unfinished, pre-alpha
+&gt;development version of the unit.
+</PRE>
+<P><!-- body="end" -->
+<HR noShade>
+
+<UL><!-- next="start" -->
+  <LI><STRONG>Next message:</STRONG> <A 
+  href="http://hcs.science.uva.nl/projects/SWI-Prolog/mailinglist/archive/old/3358.html">Richard 
+  A. O'Keefe: "RE: [SWIPL] Question about calling structures in Prolog"</A> 
+  <LI><STRONG>Previous message:</STRONG> <A 
+  href="http://hcs.science.uva.nl/projects/SWI-Prolog/mailinglist/archive/old/3356.html">Jan 
+  Wielemaker: "Re: [SWIPL] String Streams / Stream Filters"</A> 
+  <LI><STRONG>In reply to:</STRONG> <A 
+  href="http://hcs.science.uva.nl/projects/SWI-Prolog/mailinglist/archive/old/3352.html">Mikhail 
+  Balabanov: "Re: Missing "cdecl"s Re: [SWIPL] Embedding SWI in Delphi"</A> <!-- nextthread="start" -->
+  <LI><STRONG>Next in thread:</STRONG> <A 
+  href="http://hcs.science.uva.nl/projects/SWI-Prolog/mailinglist/archive/old/3359.html">Mikhail 
+  Balabanov: "Re: [SWIPL] Embedding SWI in Delphi"</A> 
+<!-- reply="end" --></LI></UL>
+<DIV align=center>
+<TABLE width="100%" border=2>
+  <TBODY>
+  <TR>
+    <TH><A href="mailto:prolog@swi.psy.uva.nl">New Message</A></TH>
+    <TH><A 
+      href='mailto:prolog@swi.psy.uva.nl&amp;replyto=5.0.2.1.2.20030721231925.031e9c00@mail.altern.org&amp;subject=Re:%20Missing%20"cdecl"s%20Re:%20[SWIPL]%20Embedding%20SWI%20in%20Delphi'>Reply</A></TH>
+    <TH><A href="http://www.swi-prolog.org/mailinglist.html">About this 
+      list</A></TH>
+    <TH><A 
+      href="http://hcs.science.uva.nl/projects/SWI-Prolog/mailinglist/archive/old/date.html">Date 
+      view</A></TH>
+    <TH><A 
+      href="http://hcs.science.uva.nl/projects/SWI-Prolog/mailinglist/archive/old/index.html">Thread 
+      view</A></TH>
+    <TH><A 
+      href="http://hcs.science.uva.nl/projects/SWI-Prolog/mailinglist/archive/old/subject.html">Subject 
+      view</A></TH>
+    <TH><A 
+      href="http://hcs.science.uva.nl/projects/SWI-Prolog/mailinglist/archive/old/author.html">Author 
+      view</A></TH></TR></TBODY></TABLE></DIV><!-- trailer="footer" -->
+<P>
+<HR>
+
+<ADDRESS><EM><SMALL>This archive was generated by <A 
+href="http://www.hypermail.org/">hypermail 2b29</A> 
+<P align=center><A 
+href="mailto:jan@swi.psy.uva.nl">jan@swi.psy.uva.nl</A></P></SMALL></EM></ADDRESS></BODY></HTML>

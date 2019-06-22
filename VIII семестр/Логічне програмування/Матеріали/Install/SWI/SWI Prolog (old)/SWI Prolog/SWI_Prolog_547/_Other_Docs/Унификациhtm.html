@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0072)http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/05_unific/index.html -->
+<HTML><HEAD><TITLE>Унификация</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=koi8-r"><LINK 
+href="Унификация.files/list.css" type=text/css rel=stylesheet>
+<SCRIPT language=javascript1.2 src="Унификация.files/cookie.js">
+</SCRIPT>
+
+<SCRIPT language=javascript1.2>
+function onLoad () {
+  parent.nav.set_cookie ("Source", "./ch_10_prolog/05_unific/index.html", 1000);
+}
+</SCRIPT>
+
+<META content="MSHTML 6.00.2900.2180" name=GENERATOR></HEAD>
+<BODY><A 
+href="http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/04_query/index.html"><IMG 
+alt="Предыдущий раздел" src="Унификация.files/prev.gif" border=0></A> <A 
+href="http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/index.html"><IMG 
+alt="Уровень выше" src="Унификация.files/up.gif" border=0></A> <A 
+href="http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/06_rules/index.html"><IMG 
+alt="Следующий раздел" src="Унификация.files/next.gif" border=0></A> <A 
+onmousedown="document.images['cont'].src='../../Images/ContentsDown.gif'" 
+onmouseout="document.images['cont'].src='../../Images/Contents.gif'" 
+href="http://www.ctc.msiu.ru/materials/Book2/contents.html"><IMG 
+src="Унификация.files/Contents.gif" border=0 name=cont></A> 
+<H2>Унификация</H2><IMG src="Унификация.files/blank.gif"> 
+<P><B>Унификация</B> есть основной механизм обработки запросов в логическом 
+программировании. После того как пользователь посылает запрос интерпретатору, 
+этот запрос <EM>активизируется.</EM> Интерпретатор приступает к анализу фраз 
+базы данных в поисках первой фразы, заголовок которой будет унифицироваться с 
+запросом. Для того чтобы запрос унифицировался с заголовком фразы, необходимо 
+совпадение у них имени предиката, количества аргументов и <A 
+name=14></A>унификация каждого из них. 
+<P>Унификация термов, которыми являются аргументы, описывается приводимыми ниже 
+правилами. В примерах используется предикат <TT>=</TT>, который пытается 
+унифицировать свои аргументы. <BR>&nbsp; <BR>1) <EM>Переменная унифицируется с 
+атомом или составным термом.</EM> В результате этого переменная становится 
+<EM>конкретизированной</EM>, т.&nbsp;е. принимает значение данного атома или 
+терма. <PRE>?- X=коля.
+X=коля
+Yes
+</PRE>2) <EM>Переменная унифицируется с переменной</EM>, при этом они обе 
+становятся как бы одной и той же переменной. <PRE>?- X=Y.
+X = _G161
+Y = _G161
+Yes
+</PRE>3) <EM>Анонимная переменная унифицируется с любым термом.</EM> <PRE>?- автор(пушкин)=_.
+Yes
+</PRE>4) <EM>Атом унифицируется с атомом, если они идентичны.</EM> <PRE>?- коля=коля.
+Yes
+</PRE>5) <EM>Составной терм унифицируется с другим составным термом, если их 
+имена и количество аргументов совпадает, а аргументы поддаются унификации.</EM> <PRE>?- отец(борис)=отец(X).
+X = борис 
+Yes
+?- дедушка(борис, Y)=отец(X).
+No
+</PRE>
+<P><BR><B>Пример</B><BR>Термы <TT>больше(Х, собака)</TT> и <TT>больше(осел, 
+собака)</TT> унифицируются, потому что переменная <TT>X</TT> может быть 
+конкретизирована атомом <TT>осел</TT>: <PRE>?- больше(Х,собака) = больше(осел,собака).
+X = осел
+Yes
+</PRE>Рассматриваемый в следующем примере запрос не будет успешным, потому что 
+переменная <TT>X</TT> не может быть конкретизирована двумя значениями 1 и 2 
+одновременно. <PRE>?- p(X,2,2) = p(1,Y,X).
+No
+</PRE>
+<P>Если в этом примере вместо <TT>X</TT> мы используем анонимную переменную 
+<TT>_</TT>, то унификация будет возможна, потому что при каждом использовании 
+<TT>_</TT> создается новая переменная. Смысл анонимности в том, что мы 
+предоставляем Прологу возможность генерации имени для данной переменной и нам не 
+нужны ни ее имя, ни ее значение. Переменная <TT>Y</TT> во время унификации 
+конкретизируется значением 2: <PRE>?- p(_,2,2) = p(1,Y,_).
+Y = 2
+Yes
+</PRE>
+<P><BR><B>Пример</B><BR>В следующем запросе унификация возможна, хотя и нет 
+специфических переменных, которые могли бы быть связаны или унифицированы (как в 
+предыдущих примерах): <PRE>?- f(a,g(X,Y)) = f(X,Z), Z = g(W,h(x)).
+X = a
+Y = h(x)
+Z = g(a, h(x))
+W = a
+Yes
+</PRE><BR clear=all><A 
+href="http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/04_query/index.html"><IMG 
+alt="Предыдущий раздел" src="Унификация.files/prev.gif" border=0></A> <A 
+href="http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/index.html"><IMG 
+alt="Уровень выше" src="Унификация.files/up.gif" border=0></A> <A 
+href="http://www.ctc.msiu.ru/materials/Book2/ch_10_prolog/06_rules/index.html"><IMG 
+alt="Следующий раздел" src="Унификация.files/next.gif" border=0></A> 
+</BODY></HTML>
