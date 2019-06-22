@@ -1,0 +1,309 @@
+Бінарний пошук
+A = [0,3,5,7,10,20,28,30,45,56]
+x = 45
+i = 0
+j = len(A)-1
+m = int(j/2)
+while A[m] != x and i < j:
+    if x > A[m]:
+        i = m+1
+    else:
+        j = m-1
+    m = int((i+j)/2)
+if i > j:
+    print('Елемент не знайдено')
+else:
+    print('Індекс елемента: ', m)
+
+Приклад 1.
+# Перевірка на входження
+>>> 2 in [1, 2, 3, 4, 5], 6 in [1, 2, 3, 4, 5]
+
+>>> 2 not in [l,2,3,4,5], 6 not in [1,2,3,4,5]
+
+Приклад 2.
+>>> arr = [1, 2, 1, 2, 1, 7]
+>>> arr.index(1), arr.index(2)
+
+>>> arr.index(1, 1), arr.index(1, 3, 5)
+
+>>> arr.index(3)
+
+Приклад 2.
+>>> arr = [1, 2, 1, 2, 1]
+>>> arr.count(1 ), arr.count(2)
+>>> arr.count(3)
+
+Приклад 3.
+>>> arr = [1, 2, 3, 4, 5, 6]
+>>> max(arr), min(arr)
+
+>>> arr = ["a", "b", "c", "d", "e", "f"]
+>>> min(arr), max(arr)
+
+>>> arr = ["a", "aa", "aaa", "aaaa"]
+>>> min(arr), max(arr)
+
+Приклад 4.
+>>> any([0, None])
+
+>>> any([])
+
+>>> any([0, None, 1])
+
+>>> any(["a"])
+
+
+Приклад 5.
+>>> all([18, "Petrenko"])
+
+>>> all([])
+
+>>> all([0, "Petrenko"])
+
+>>> all([18, ""])
+
+>>> all([0, None])
+
+Приклад 6.
+>>> arr = [1, 2, 3, 4, 5]
+>>> arr.reverse() # Змінюється поточний список
+>>> arr
+
+>>> arr = ["a", "b", "c", "d"]
+>>> arr.reverse()
+>>> arr
+
+Приклад 7. Застосування функції reversed
+>>> arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+>>> reversed(arr)
+
+>>> list(reversed(arr))
+
+>>> for i in reversed(arr): print(i, end=" ")
+
+>>> [i for i in reversed(arr)]
+
+Приклад 8.
+>>> import random # Підключаємо модуль random
+>>> arr = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+>>> random.shuffle(arr)
+>>> arr
+
+>>> random.choice(["s", "t", "r", "i", "n", "g"])
+
+>>> random.choice("programming")
+
+>>> random.choice((1, 1.12345, "tuple"))
+
+Приклад 9.
+>>> arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+>>> random.sample(arr, 2)
+
+>>> random.sample(arr, 4)
+
+>>> arr
+
+Сортування
+Сортування вибором
+a=[7, 3, 4, 5, 9]
+for i in range(len(a)-1):
+    for j in range(i+1, len(a)-1):
+        if a[i]>a[j]:
+        a[i], a[j] = a[j], a[i]
+print(a)
+
+
+Бульбашкове сортування
+a = [5,2,7,4,0,9,8,6]
+n = 1
+while n < len(a):
+    for i in range(len(a)-n):
+        if a[i] > a[i+1]:
+            a[i],a[i+1] = a[i+1],a[i]
+    n += 1
+print(a)
+
+
+Приклад 10.
+>>> arr = [2, 7, 10, 4, 6, 8, 9, 3, 1, 5]
+>>> arr.sort()
+>>> arr
+
+Приклад 11.
+>>> arr = [7, 2, 10, 4, 8, 6, 9, 3, 1, 5]
+>>> arr.sort(reverse = True)
+>>> arr
+
+>>> arr = ["sky","land","water","fire","sun"]
+>>> arr.sort(reverse = True)
+>>> arr
+
+>>> arr = ["sky","land","water","fire","Sun"]
+>>> arr.sort(reverse = True)
+>>> arr
+
+
+Стандартне сортування залежить від регістру символів
+
+Приклад 12.
+arr = ["ant", "Asia", "bee", "Brazil"]
+arr.sort()
+    for i in arr:
+print(i, end=" ")
+
+
+Приклад 13.
+arr = ["ant", "Asia", "bee", "Brazil"]
+arr.sort(key=str.lower)# Указуємо метод lower()
+for i in arr:
+   print(i, end=" ")
+
+Приклад 14. Сортування по першому елементу
+>>> def getkey(item):
+    return item[0]
+>>> s = [[10, 3], [1, 7], [9, 34], [3, 64]]
+>>> s.sort(key=getkey);s
+
+
+Приклад 15. Застосування функції sorted()
+>>> arr = [7, 10, 4, 2, 6, 8, 9, 3, 1, 5]
+>>> sorted(arr)
+
+>>> sorted(arr, reverse=True)
+
+
+arr = ["Asia","bee", "ant", "Brazil"]
+arr1 = sorted(arr,key=str.lower) # метод lower()
+for i in arr1:
+    print(i, end=" ")
+
+Приклад 16.
+>>> list(range(11))
+
+Приклад 17.
+>>> list(range(1,16))
+
+>>> list(range(15, 0, -1))
+
+Приклад 18.
+>>> arr = ["word1", "word2", "word3"]
+>>>"-".join(arr)
+
+Приклад 19.
+>>> arr = [ "word1", "word2", "word3", 2]
+>>> " - ".join(arr)
+
+Приклад 20.
+>>> arr = ["word1", "word2", "word3", 2]
+>>> " - ".join(( str(i) for i in arr ))
+
+Приклад 21.
+>>> arr = [ "word1", "word2", "word3", 2]
+>>> str(arr)
+
+Приклад 22.
+>>> tuple()
+
+>>> tuple("String")
+
+>>> tuple([1, 2, 3, 4, 5])
+
+Приклад 23.
+>>> t1 = ()
+>>> t2 = (5,)
+>>> t3 =(1, "str", (3, 4))
+>>> t4 = 1, "str", (3, 4)
+>>> t1, t2, t3, t4
+
+Приклад 24.
+>>> t =(5); type(t)
+
+>>> t = ("str"); type(t)
+
+Приклад 25
+>>> t = (1, 2, 3, 4, 5, 6, 7, 8, 9)
+>>> t[0]
+
+>>> t[::-1]
+
+>>> t[2:5]
+
+>>> 8 in t, 0 in t
+
+>>> ( 1, 2, 3)*3
+
+>>> (1, 2, 3) + (4, 5, 6)
+
+
+Приклад 26
+>>> t = (1, 2, 3) # Створюємо кортеж
+>>> t[0]
+
+>>> t[0] = 50
+
+Приклад 27.
+>>> t = (1, 2, 3) # Створюємо кортеж
+>>> len(t)
+
+>>> t = ( 1, 2, 1, 2, 1)
+>>> t.index(1), t.index(2)
+
+Приклад 28.
+>>> s = set()
+>>> s
+
+Приклад 29. Перетворення в множину
+>>> set("string")
+
+>>> set([1, 2, 3, 4, 5])
+
+>>> set((1, 2, 3, 4, 5))
+
+>>> set([1, 2, 3, 1, 2, 3])
+
+Приклад 30.
+>>> for i in set([1, 2, 3]): print(i)
+
+>>> for i in {1, 2, 3}: print(i)
+
+Приклад 31.
+>>> len(set([1, 2, 3]))
+
+Приклад 32.
+>>> s = set([ 1, 2, 3])
+>>> s.union(set([4, 5, 6])), s | set([4, 5, 6])
+
+Приклад 33.
+>>> set([1, 2, 3]) | set([1, 2, 3])
+
+Приклад 35.
+>>> s = set([1, 2, 3])
+>>> s.update(set([4, 5, 6]))
+>>> s
+
+>>> s |= set([7, 8, 9]); s
+
+Приклад 36.
+>>> set([l, 2, 3]) - set([l, 2, 4])
+
+>>> s = set([1, 2, 3])
+>>> s.difference(set([1, 2, 4]))
+
+Приклад 37.
+>>> s = set([1, 2, 3])
+>>> s.difference_update(set([1, 2, 4])); s
+>>> s -= set([3, 4, 5]); s
+
+Приклад 38.
+>>> set([1, 2, 3]) & set([1, 2, 4])
+
+>>> s = set([ 1, 2, 3])
+>>> s.intersection(set([1, 2, 4]))
+
+Приклад 39.
+>>> s.intersection_update(set([1, 2, 4]))
+>>> s
+
+>>> s &= set([1, 6, 7])
+>>> s

@@ -1,0 +1,8 @@
+def suma (a, b, c):
+    return a + b + c
+t1, arr = (1, 2, 3), [6, 7, 8]
+print("case1",suma(*t1))
+print("case2",suma(*arr))
+t2 = (4, 5)
+print("case3",suma(1, *t2))
+print("case4",suma(t1,t2,tuple(arr)))

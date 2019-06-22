@@ -1,0 +1,175 @@
+#Example 1
+>>> s = "Python"
+>>> s[0]
+>>> s[0] = "J"
+
+#Example 2
+>>> type ("рядок")
+>>> "рядок".encode(encoding="cp1251")
+>>> "рядок".encode(encoding="utf-8")
+
+#Example 3
+>>> s = bytes ("стр str", "cp1251")
+>>> s[0], s[5], s[0:3], s[4:7]
+>>> s[0], hex(s[0])
+>>> s[5], hex(s[5])
+>>> s
+
+#Example 4
+>>> len("рядок")
+>>> len(bytes("рядок", "cp1251"))
+>>> len(bytes("рядок", "utf-8"))
+
+#Example 5
+>>> s = bytearray("str","cp1251")
+>>> s[0] = 49; s
+>>> s.append(55); s
+
+#Example 6
+>>> str(), str([1, 2]), str((3, 4)), str({"x": 1})
+>>> str(b"\xf1\xf2\xf0\xee\xea\xe0")
+
+#Example 7
+>>> str(b"\xf0\xff\xe4\xee\xea", "cp1251")
+
+#Example 8
+>>> obj1 = bytes("рядок1", "utf-8")
+>>> obj2 = bytearray("рядок2", "utf-8")
+>>> str(obj1, "utf-8"), str(obj2, "utf-8")
+>>> str(obj1, "ascii", "strict")
+>>> str (obj1, "ascii", "ignore")
+
+#Example 9
+>>> 'рядок', "рядок", '"x":5', "'x':5"
+>>> print('рядок1\nрядок2')
+
+#Example 10
+>>> print('Рядок1\\nрядок2')
+>>> print ('Рядок1\nрядок2')
+
+#Example 11
+>>> "\"x\": 5", '\'x\': 5'
+>>> "'x': 5", '"x": 5'
+
+#Example 12
+>>> "string
+
+#Example 13
+>>> "string1\
+... string2"
+>>> ("string1"
+...     "string2")
+>>> ("string1" +
+...     "string2")
+
+#Example 14
+>>> print("http:string\")
+>>> print("string\\")
+
+#Example 15
+>>> print('''Рядок1
+... Рядок2''')
+>>> print("""Іван
+... Марія""")
+
+#Example 16
+>>> print("Рядок1\nрядок2")
+>>> print(r"Рядок1\nрядок2")
+>>> print(r"""Рядок1\nрядок2""")
+
+#Example 17
+>>> print(r"C:\Python35-2\lib\site-packages")
+
+#Example 18
+>>> print("C:\\Python35-2\\lib\\site-packages")
+
+#Example 19
+>>> print(r"C:\Python35-2\lib\site-packages\")
+>>> print("C:\Python35-2\lib\site-packages\\")
+
+#Example 20
+>>> print("C:\Python35-2\lib\site-packages" + "\\")
+>>> print("C:\\Python35-2\\lib\\site-packages\\")
+>>> print(r"C:\Python35-2\lib\site-packages\\"[:-1])
+
+#Example 21
+>>> print("Цей символ \не спеціальний")
+
+#Example 22
+>>> print("Цей символ \\не спеціальний")
+
+#Example 23
+>>> s = "Python"
+>>> s[0], s[1], s[2], s[3], s[4], s[5]
+
+#Example 24
+>>> s = "Python"
+>>> s[10]
+
+#Example 25
+>>> s = "Python"
+>>> s[-1], s[len(s)-1]
+
+#Example 26
+>>> s = "Python"
+>>> s[0] = "J"
+>>> News = "J"+s[1]+s[2]+s[3]+s[4]+s[5]
+>>> News
+
+#Example 27
+>>> s = "Python"
+>>> s[:]
+
+#Example 28
+>>> s[::-1]
+
+#Example 29
+>>> "J" + s[1:]
+
+#Example 30
+>>> s[:-1]
+
+#Example 31
+>>> s[0:1]
+
+#Example 32
+>>> s[-1:]
+
+#Example 33
+>>> s[2:5]
+
+#Example 34
+>>> len("Python"), len("\r\n\t"), len(r"\r\n\t")
+
+#Example 35
+>>> s = "Python"
+>>> for i in range(len(s)): print(s[i], end=" ")
+
+#Example 36
+>>> s = "Python"
+>>> for i in s: print(i, end=' ')
+
+#Example 37
+>>> print("Рядок1" + "Рядок2")
+
+#Example 38
+>>> print("Рядок1"
+... "Рядок2")
+
+#Example 39
+>>> s = "Рядок1", "Рядок2"
+>>> type(s)
+
+#Examle 40
+>>> s = "Рядок1"
+>>> print(s + "Рядок2")
+>>> print(s "Рядок2")
+
+#Example 41
+>>> "string" + str(10)
+
+#Example 42
+>>> "-" * 20
+>>> "yt" in "Python"
+>>> "yt" in "Perl"
+>>> "PHP" not in "Python"

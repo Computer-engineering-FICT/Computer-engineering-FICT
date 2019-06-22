@@ -1,0 +1,71 @@
+01
+class MyClass:
+    """ Це рядок документування """
+    A = 20+10
+    print("Інструкції виконуються відразу")
+
+02
+class MyClass:
+    x = 10
+    def out_x(self):
+        print("Attribute x =", self.x)
+c = MyClass()
+c.out_x()
+print("Stright print x =", c.x)
+
+03
+class MyClass:
+    def __init__(self, value1, value2):
+        self.x = value1
+        self.y = value2
+        print("Спрацював конструктор")
+    print("Створено клас MyClass")
+
+c = MyClass(100, 300)
+print("Створено екземпляр класу MyClass")
+print(c.x, c.y)
+
+04
+class Person:
+    def __init__(self, name, job, pay):
+        self.name = name
+        self.job = job
+        self.pay = pay
+
+petro = Person("Petrenko Petro","Python developer", 10000)
+print(petro.name, petro.job, petro.pay)
+
+05
+class Person:
+    def __init__(a, name, job, pay):
+        a.name = name
+        a.job = job
+        a.pay = pay
+
+ivan = Person("Ivanov Ivan")
+print(ivan.name)
+
+05
+class Person:
+    def __init__(self, name, job = None, pay = 0):
+        self.name = name
+        self.job = job
+        self.pay = pay
+petro = Person("Petrenko Petro","Python developer", 10000)
+print(petro.name, petro.job, petro.pay)
+ivan = Person("Ivanov Ivan")
+print(ivan.name, ivan.job, ivan.pay)
+
+06
+class MyClass:
+    def __init__(self):
+        print( "Виконано метод __init__() ")
+    def __del__(self):
+        print("Виконано метод __del__()")
+c1 = MyClass()
+del c1
+c2 = MyClass()
+с3 = c2
+del c2
+print("С2 не видалено. Оскільки є С3")
+del с3

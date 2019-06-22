@@ -1,0 +1,87 @@
+01
+>>> "C:\\temp\\new\\file.txt"
+>>> r"C:\temp\new\file.txt"
+>>> "C:\temp\new\file.txt"
+
+02
+>>> import os.path
+>>> os.path.abspath(r"file.txt")
+
+03
+>>> import os.path
+>>> os.path.abspath("folder1/file.txt")
+>>> os.path.abspath("folder1/folder2/file.txt")
+
+04
+>>> import os.path
+>>> os.path.abspath("../file.txt")
+>>> os.path.abspath("../../file.txt")
+
+05 (win)
+>>>import os.path
+>>> os.path.abspath(r"\PYTHON\folder1\file.txt")
+>>> os.path.abspath(r"\PYTHON\folder1\folder2\file.txt")
+
+06 (win)
+>>>import os.path
+>>> os.path.sep
+>>> os.path.abspath(r"C:/PYTHON/folder1/file.txt")
+
+06 Вміст файлу Презентації/ex24/first.py
+
+07 Вміст файлу Презентації/ex24/folder1/module1.рy
+
+08
+import os, sys
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+print("%-25s%s" % ("Файл:", __file__))
+print("%-25s%s" % ("Поточний робочий каталог:", os.getcwd()))
+print("%-25s%s" % ("Каталог для импорту:", sys.path[0]))
+print("%-25s%s" % ("Шлях до файлу:", os.path.abspath("file.txt")))
+
+09
+>>> f = open("Презентації/ex24/file.txt", "w")
+>>> f.write("String1\nstring2")
+>>> f.close()
+
+10
+>>> with open("Презентації/ex24/file.txt", "rb") as f:
+...     for line in f:
+...         print(repr(line))
+
+>>> with open("Презентації/ex24/file.txt", "r") as f:
+...     for line in f:
+...         print(repr(line))
+
+11
+>>> f = open("Презентації/ex24/file.txt", "w", encoding="utf‐8")
+>>> f.write("Рядок")
+>>> f.close()
+
+12
+>>> with open("Презентації/ex24/file.txt", "r", encoding="utf‐8") as f:
+...     for line in f:
+...         print(line)
+
+13
+>>> f = open ("Презентації/ex24/file.txt", "w", encoding="utf‐8‐sig")
+>>> f.write("Рядок")
+>>> f.close ()
+
+14
+>>> with open("Презентації/ex24/file.txt", "r", encoding="utf‐8") as f:
+...     for line in f:
+...         print(repr(line))
+
+>>> with open("Презентації/ex24/file.txt", "r", encoding="utf‐8-sig") as f:
+...     for line in f:
+...         print(repr(line))
+
+15
+>>> with open("Презентації/ex24/file.txt", "w", encoding = "utf‐16") as f:
+...      f.write ( "Рядок")
+...
+
+>>> with open("Презентації/ex24/file.txt", "r", encoding = "utf‐16") as f:
+...     for line in f:
+...         print (repr (line))

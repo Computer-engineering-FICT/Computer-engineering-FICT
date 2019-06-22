@@ -1,0 +1,6 @@
+def suma(a, b, c):
+    return a + b + c
+d1 = {"a": 1, "b": 2, "c": 3}
+print("dict", suma(**d1))
+t, d2 = (1, 2), {"c": 3}
+print("comb",suma(*t, **d2))

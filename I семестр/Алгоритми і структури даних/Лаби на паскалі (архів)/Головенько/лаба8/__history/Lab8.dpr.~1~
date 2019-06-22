@@ -1,0 +1,38 @@
+program Lab8;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+uses 
+ unit1 in 'Unit1.pas';
+
+begin
+  Write('Write n= ');
+  read(n);
+
+  CreateMatrix(n, f, Matrix);
+
+  Writeln;
+  Writeln('NewMatrix');
+  WriteMatrix(n, Matrix);
+
+  SortVector(n,Vector);
+
+  Writeln;
+  Writeln('SortMatrix');
+  WriteMatrix(n, Matrix);
+
+  createVector(n, Matrix, Vector);
+
+  Writeln;
+  Writeln('NewVector');
+  WriteVector(n, Vector);
+
+  EditVector(n, Vector);
+
+  Writeln;
+  WriteVector(n, Vector);
+
+end.

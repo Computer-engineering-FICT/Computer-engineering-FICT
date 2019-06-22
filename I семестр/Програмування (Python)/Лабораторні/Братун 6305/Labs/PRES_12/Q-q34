@@ -1,0 +1,17 @@
+import functools
+def func (x, y):
+print("({0}, {1})".format(x, y), end=" ")
+return x + y
+arr = [1, 2, 3, 4, 5]
+suma = functools.reduce(func, arr)
+# Послідовність: (1, 2) (3, 3) (6, 4) (10, 5)
+print('вариант1',suma) # Результат виконання: 15
+suma = functools.reduce(func, arr, 10)
+# Послідовність:(10,1) (11,2) (13,3) (16,4) (20,5)
+print('вариант2',suma) # Результат виконання: 25
+suma = functools.reduce(func, [], 10)
+print('вариант3',suma) # Результат виконання: 10
+del functools
+suma = functools.reduce(func, [1,1], 10)
+print('вариант4',suma)
+# Помилка через вивантаження модуля functools

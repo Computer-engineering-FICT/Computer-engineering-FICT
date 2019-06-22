@@ -1,0 +1,216 @@
+Приклад 12. Імпорт усіх ідентифікаторів з модуля
+ 
+from math import *
+print (pi) 
+print(floor(5.49)) 
+
+
+
+Приклад 13.
+# Вміст файлу module1.рy
+s = "Значення з модуля module1"
+# Вміст файлу module2.py
+s = "Значення з модуля module2"
+# початковий код основної програми main.py
+from module1 import *
+from module2 import *
+import module1, module2
+print(s)  
+print(modulel.s) 
+print(module2.s)
+
+
+Приклад 14.
+>>> import sys  
+>>> sys.path 
+
+
+Приклад 15.
+C:\Program Files(x86)\Python35-32\Lib\sitepackages\mypath.pth
+
+
+C:\pyfiles
+C:\pyprogs 
+
+Приклад 15.  
+import sys
+>>> sys.path.append(r"С:\pyLecture19")
+ 
+>>>sys.path.insert(0, r"pyLecture1")
+ 
+>>> print(sys.path)
+
+
+Приклад 16. 
+Розглянемо файли pyrel.py та testrel.py
+
+pyrel.py:
+
+import testrel, importlib
+print(testrel.x)
+
+testrel.py:
+x=200
+#x='File testrel reloaded' 
+
+pyrel.py:
+import testrel, importlib
+importlib.reload(testrel)
+print(testrel.x) 
+
+testrel.py:
+#x=200
+x='File testrel reloaded' 
+
+
+Приклад 2.  
+print("__init__",__name__)
+
+
+
+Приклад 3.  
+msg = "Модуль {0}".format(__name__) 
+
+
+
+
+
+Приклад 4.
+print("Доступ до модуля sample1")
+import mypack.sample1 as s1
+print(s1.msg)
+print(s1.__name__)
+
+print("\nДоступ до модуля subsump1")
+import mypack.subpack.subsamp1 as ss1
+print(ss1.msg)
+print(ss1.__name__)
+
+print("\nДоступ до модуля subsump2")
+import mypack.subpack.subsamp2 as ss2
+print(ss2.msg)
+print(ss2.__name__) 
+
+
+
+Приклад 5.  
+Доступ до модуля sample1
+__init__ mypack
+Модуль mypack.sample1
+mypack.sample1
+
+Доступ до модуля subsamp1
+Модуль mypack.subpack.subsamp1
+mypack.subpack.subsamp1
+
+Доступ до модуля subsamp2
+Модуль mypack.subpack.subsamp2
+mypack.subpack.subsamp2 
+
+
+Приклад 6.
+import mypack.subpack.subsamp1
+print(mypack.subpack.subsamp1.msg) 
+
+
+
+Приклад 7.
+import mypack.subpack.subsamp1 as ss1
+print(ss1.msg) 
+
+
+Приклад 8
+from mypack.subpack import subsamp1
+print(subsamp1.msg) 
+
+
+Приклад 9
+from mypack.subpack.subsamp1 import msg, msg1,msg2
+print (msg)
+print (msg1)
+print (msg2)
+
+
+Приклад 10
+from mypack.subpack.subsamp1 import *
+print (msg)
+print (msg1)
+print (msg2) 
+
+
+Приклад 11.
+from mypack.subpack1 import *
+print(subsamp1.msg)
+print(subsamp1.msg1)
+print(subsamp1.msg2)
+print(subsamp2.msg) 
+
+
+
+Приклад 12.   Вміст модуля relative.py 
+ 
+ 
+from .import subsamp1 as ss1
+var1 ="Значення з: {0}".format(ss1.msg)
+from .subsamp1 import msg as ms1
+var2 = "Значення з: {0}".format(ms1)
+ 
+from ..import sample1 as smp
+var3 = "Значення з: {0}".format(smp.msg)
+from ..sample1 import msg as m
+var4 = "Значення з: {0}".format(m) 
+
+
+
+Приклад 13. Вміст файлу main.py
+from mypack.subpack import relative as ss2
+print(ss2.var1)
+print(ss2.var2)
+print(ss2.var3)
+print(ss2.var4)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

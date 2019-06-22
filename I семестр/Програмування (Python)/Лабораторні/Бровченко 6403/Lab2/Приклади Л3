@@ -1,0 +1,340 @@
+#examle1
+>>> import keyword
+>>> keyword.kwlist
+
+#example2
+>>> import builtins
+>>> dir(builtins)
+
+#example3
+>>> size=int(input('число'))
+if size >= 0:
+    print('додатнє')
+else:
+    print('від*ємне')
+
+#example4
+>>> size = 1
+>>> size < 0
+False
+>>> size = -1
+>>> size < 0
+True
+
+#example5
+>>> True + True
+2
+>>> False + True
+1
+>>> False + False
+0
+
+#example6
+>>> type(1), type(111111111)
+(<class 'int'>, <class 'int'>)
+
+#example7
+>>> 0b10101
+21
+>>> 762537
+762537
+>>> 0o14523
+6483
+>>> 0xdec1F
+912415
+
+#example8
+>>> float(4.2)
+4.2
+>>> float(8.9e-4)
+0.00089
+
+#example9
+>>> 1+45j
+(1+45j)
+>>> 11+3j, 23+12j
+((11+3j), (23+12j))
+
+#example10
+>>> my_variable = None
+>>> if my_variable is None:
+...     print('my_variable is None')
+... else:
+...     print('my_variable is not None')
+my_variable is None
+
+#example11
+>>> S = "River"
+>>> len(S)
+5
+>>> S[0]
+'R'
+>>> S[1]
+'i'
+>>> S[4]
+'r'
+
+#example12
+>>> list1=[1,2,3,4]
+>>> print(list1)
+[1, 2, 3, 4]
+>>> list2 = [x**2 for x in range(10)]
+>>> print(list2)
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+>>> list3 = list("rhtn")
+>>> print(list3)
+['r', 'h', 't', 'n']
+
+#example13
+>>> p = (1.2, 3.4, 0.9)
+>>> print(p)
+(1.2, 3.4, 0.9)
+>>> for s in "one","two": print(s)
+one
+two
+>>> p1 = 1, 3, 9
+>>> print(p1)
+(1, 3, 9)
+>>> p2 = 1, 2, 3, 4,
+>>> print(p2)
+(1, 2, 3, 4)
+
+#example14
+>>> for i in range(5):
+...     print(i)
+...
+0
+1
+2
+3
+4
+>>> for i in range(0,‐10,‐2):
+... print(i)
+...
+0
+‐2
+‐4
+‐6
+‐8
+
+#example15
+>>> dan={'Name':'Nastya','Age':17,'Course':1}
+>>> print('Name: ',dan['Name'])
+Name:  Nastya
+
+#example16
+>>> Group={"Маша","Настя","Аня"}
+>>> Total=len(Group)
+>>> print(Group)
+{'Маша', 'Аня', 'Настя'}
+>>> Group={"Маша","Настя","Аня"}
+>>> Total=len(Group)
+>>> print("Всього: ",Total)
+Всього:  3
+
+#example17
+>>> arr = [1,2,3]
+>>> arr[0]=0
+>>> arr
+[0, 2, 3]
+
+#example18
+>>> strl = "кар"
+>>> str2 = "тон"
+>>> str3 = strl + str2
+>>> print(str3)
+картон
+
+#example19
+>>> arr = [4, 2, -1]
+>>> i = iter(arr)
+>>> next(i)
+4
+>>> next(i)
+2
+>>> next(i)
+-1
+
+#example20
+>>> d = {"х": 1, "y": 2}
+>>> i = iter(d)
+>>> c = next(i)
+>>> print(c,':',d[c])
+х : 1
+>>> c = next(i)
+>>> print(c,':',d[c])
+y : 2
+
+#example21
+>>> for i in [1, 2]: print(i)
+1
+2
+
+#example22
+>>> for i in "Рядок": print(i)
+Р
+я
+д
+о
+к
+
+#example23
+>>> d = {"х": 1, "y": 2}
+>>> for key in d:
+...    print(d[key])
+...
+1
+2
+
+#example24
+>>> х = y = [1, 2]
+>>> х, y
+([1, 2], [1, 2])
+>>> y[1] = 100
+>>> x, y
+([1, 100], [1, 100])
+>>> х = [1, 2]
+>>> y = [1, 2]
+>>> y[l] = 100
+>>> х, y
+([1, 2], [1, 100])
+
+#example25
+>>> x = y = [1,2]
+>>> x is y
+True
+>>> x = [1,2]
+>>> y = [1,2]
+>>> x is y
+False
+
+#example26
+>>> х = 2; y = 2; z = 2
+>>> х is y, y is z
+(True, True)
+
+#example27
+>>> х, y, z = 1, 2, 3
+>>> х, y, z
+(1, 2, 3)
+
+#example28
+>>> х, y = 1, 2; х, y
+(1, 2)
+>>> х, y = y, х; х, y
+(2, 1)
+
+#example29
+>>> х, y, z = "123"
+>>> х, y, z
+('1', '2', '3')
+>>> х, y, z = [1, 2, 3]
+>>> х, y, z
+[1, 2, 3]
+>>> х, y, z = (1, 2, 3)
+>>> х, y, z
+(1, 2, 3)
+>>> [х, y, z] = (1, 2, 3)
+>>> х, y, z
+(1, 2, 3)
+
+#example30
+>>> х,y,*z=(1, 2, 3, 4)
+>>> х,y,z
+(1, 2, [3, 4])
+>>> х,*y,z = ( 1, 2, 3, 4)
+>>> х,y,z
+(1, [2,3], 4)
+>>> *х,y,z =(1, 2, 3, 4)
+>>> х,y,z
+([1,2], 3, 4)
+>>> х,y,*z =(1, 2, 3)
+>>> х,y,z
+(1, 2, [3])
+>>> х,y,*z=(1, 2)
+>>> х,y,z
+(1, 2, [])
+
+#example31
+>>> a = 'Рядок'
+>>> a = 7
+>>> type(a)
+<class 'int'>
+
+#example32
+>>> bool(0),bool(1),bool(""),bool("Рядок"),bool([1,2])
+(False, True, False, True, True)
+>>> bool([])
+False
+
+#example33
+>>> int(7.5),int("71")
+(7, 71)
+>>> int("71",10),int("71",8),int("0o71",8),int("A",16)
+(71, 57, 57, 10)
+
+#example34
+>>> float(7),float("7.1")
+(7.0, 7.1)
+>>> float("Infinity"), float("-inf")
+(inf, -inf)
+>>> float("Infinity") + float("-inf")
+nan
+
+#example35
+>>> str(125), str([1, 2, 3])
+('125', '[1,2,3]')
+>>> str((1,2,3)), str({"x": 5, "в": 10})
+('(1, 2, 3)', "{'x': 5, 'у': 10}")
+>>> str( bytes("а", "UTF-8") )
+"b'\\xd0\\xb0'"
+>>> str( bytes("F", "UTF-8") )
+"b'F'"
+>>> str( bytearray("З", "UTF-8") )
+"bytearray(b'\\xd0\\xa1')"
+>>> str( bytearray("L", "UTF-8") )
+"bytearray(b'L')"
+
+#example36
+>>> list("12345")
+['1', '2', '3', '4', '5']
+>>> list("Рядок")
+['Р', 'я', 'д', 'о', 'к']
+>>> list({1,2,3,4,5})
+[1, 2, 3, 4, 5]
+>>> list({"x": 5, "y": 10})
+['y', 'x']
+
+#example37
+>>> tuple("123456")
+('1', '2', '3', '4', '5', '6')
+>>> tuple([1,2,3,4,5])
+(1, 2, 3, 4, 5)
+>>> tuple(({"x": 5, "y": 10}))
+('y', 'x')
+
+#example38
+>>> х = input("x = ")
+x =  5
+>>> y = input("y = ")
+y =  12
+>>> print (х + y)
+512
+
+#example39
+>>> х = int(input("x = "))
+x =  5
+>>> y = int(input("y = "))
+y =  12
+>>> print (х + y)
+17
+
+#example40
+>>> x = 20
+>>> x
+20
+>>> del x
+>>> x
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+NameError: name 'x' is not defined

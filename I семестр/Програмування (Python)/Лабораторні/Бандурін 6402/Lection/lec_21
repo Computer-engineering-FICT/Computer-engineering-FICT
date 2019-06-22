@@ -1,0 +1,35 @@
+Приклад1. Створеннякласу
+class MyClass:
+ """ Це рядок документування """
+    A=20+10
+print("Інструкціївиконуються відразу")
+
+Приклад 2.
+class MyClass:
+x =10  # Атрибут екземпляра класу
+def out_x(self):
+# self‐це посилання на екземпляр класу
+print("Attribute x =",self.x)
+c =MyClass ()
+# Створення екземпляра класу
+# Викликаємо метод‐ out_х()
+c.out_x()
+# self не вказують при виклику метод
+print("Stright print x =",c.x)
+Результатвиконання:
+Atribut x = 10
+Stright print x = 10
+
+Приклад 3. #Створюємоклас
+class MyClass:
+def __init__(self, value1, value2):
+#Конструктор
+self.x = value1
+self.y = value2
+print("Спрацював конструктор")
+print("Створено клас MyClass")
+# Створюємо екземпляр класу
+c = MyClass(100, 300)
+print("Створено екземпляр класу MyClass")
+print(c.x, c.y)
+

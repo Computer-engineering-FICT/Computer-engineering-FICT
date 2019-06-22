@@ -1,0 +1,286 @@
+#ex1
+numvar = int(input("Write the number"))
+firstvar, secondvar, thirdvar = 0,0,0
+if numvar < 20:
+    firstvar = numvar
+    secondvar = numvar**2
+    thirdvar = numvar**3
+result = firstvar + secondvar + thirdvar
+print("first_power=",numvar)
+print("second_power=",secondvar)
+print("third_power=",thirdvar)
+print("Total=",result)
+
+#ex2
+numvar = int(input("Write the number: "))
+if numvar < 20:
+    print("floor= ",numvar // 2)
+    print("remainder= ",numvar % 2)
+    print("second_power= ",numvar**2)
+else:
+    print ("Your number is greater than 20")
+
+#ex3
+x = int ( input ( "Введіть число: ") )
+if x % 2 == 0: print(x, " - парне число")
+else: print(x, " - непарне число")
+
+#ex4
+x = int(input("Bвeдіть число: "))
+if x % 2 == 0:
+    print(x, " - парне число")
+else:
+    print(x, " - непарне число")
+
+#ex5
+x= int(input("Bвeдіть число: "))
+if x % 2 ==0: print(x, end=" "); print("- парне число")
+else: print(x, end=" "); print("- непарне число")
+
+#ex6
+x = int (input ( "Введіть число: ") )
+if x % 2 == 0:
+    print(x, end=" ")
+    print ( "- парне число")
+else:
+    print(x, end=" ")
+    print("- непарне число")
+
+#ex7
+numvar = int(input("Write the number: "))
+if numvar < 20 and numvar % 2 == 0:
+    print("This is an even number")
+    print("floor by 3 = ",numvar // 3)
+    print("second_power = ",numvar**2)
+elif numvar < 20 and numvar % 2 !=0:
+    print("This is an odd number")
+    print("floor by 4 = ",numvar // 4)
+    print("3hd power = ",numvar**3)
+else:
+    print ("Your number is greater than 20")
+
+#ex8
+print("""Якою операційною системою ви
+користуєтесь?
+1 - Windows 10
+2 - Windows 8
+3 - Windows 7
+4 - Windows ХР
+5 - Інша""")
+os = input("Введіть відповідне число: ")
+if os == "1":
+    print("Ви вибрали: Windows 10")
+elif os == "2":
+    print("Ви вибрали: Windows 8")
+elif os == "3":
+    print("Ви вибрали: Windows 7")
+elif os == "4":
+    print("Ви вибрали: Windows XP")
+elif os == "5":
+    print("Ви вибрали: інша")
+elif not os:
+    print("Ви не ввели число")
+else:
+    print("Ми не визначили вашу операційну систему")
+
+#ex9
+print("""Якою операційною системою ви
+користуєтесь?
+1 - Windows 10
+2 - Windows 8
+З - Windows 7
+4 - Windows ХР
+5 - Інша""")
+os = input("Введіть відповідне число: ")
+if os != "":
+    if os == "1":
+        print("Ви вибрали: Windows 10")
+    elif os == "2":
+        print("Bи вибрали: Windows 8")
+    elif os == "3":
+        print("Bи вибрали: Windows 7")
+    elif os == "4":
+        print ( "Ви вибрали: Windows XP")
+    elif os == "5":
+        print("Ви вибрали: інша")
+    else:
+        print("Ми не визначили вашу операційну систему")
+else:
+    print("Bи не ввели число")
+
+#ex10
+print("""Якою операційною системою вы користуєтесь?
+1 - Windows 10
+2 - Windows 8
+З - Windows 7
+4 - Windows ХР
+5 - Інша""")
+os = input("Введіть відповідне число: ")
+if not os:
+    print("Bи не ввели число")
+else:
+    if os == "1":
+        print("Ви вибрали: Windows 10")
+    else:
+        if os == "2":
+            print("Bи вибрали: Windows 8")
+        else:
+            if os == "3":
+                print("Bи вибрали: Windows 7")
+            else:
+                if os == "4":
+                    print ( "Ви вибрали: Windows XP")
+                else:
+                    if os == "5":
+                        print("Ви вибрали: інша")
+
+#ex11
+>>> print("Yes" if 10 % 2 == 0 else "No")
+
+>>> s = "Yes" if 10 % 2 == 0 else "No"
+>>> s
+
+>>> s = "Yes" if 11 % 2 == 0 else "No"
+>>> s
+
+#ex12
+for s in "Я вчуся програмувати":
+    print(s, end=" ")
+else:
+    print ( "\n Цикл виконаний")
+
+#ex13
+for x in [ "London","Paris","Washington"]:
+    print(x)
+
+for y in ( "Europe", "Asia","Africa" ):
+    print (y)
+
+#ex14
+>>> arr = {"х": 1, "y": 2, "z": 3}
+>>> arr.keys()
+dict keys (['y', 'х', 'z'] )
+
+>>> for key in arr.keys():
+    print(key, arr[key])
+
+#ex15
+>>> for key in arr:
+    print(key, arr[key])
+
+#ex16
+>>> arr = {"х":1, "y":2, "z":3}
+>>> for key in sorted(arr):
+    print ( key, arr [ key] )
+
+#ex17
+>>> arr = [(1,2),(3,4)]
+>>> for x, y in arr:
+    print(x, y)
+
+#ex18
+>>> s = [1,2,3,4,5,6]
+>>> for i in s: print(2*i)
+
+>>> print(s)
+
+#ex19
+arr = [1, 2, 3]
+for i in range(len(arr)):
+arr[i] *= 2
+print(arr)
+
+#ex20
+for i in range(1,101 ): print(i)
+
+#ex21
+for i in range(100, 0, -1): print(i)
+
+#ex22
+for i in range(2, 101, 2): print(i)
+
+#ex23
+>>> obj = range(len([1, 2, 3]))
+>>> obj
+
+>>> obj[0],obj[1],obj[2]
+
+>>> obj[0:2]
+
+>>> i=iter(obj)
+>>> next(i),next(i),next(i)
+
+>>> list(obj)
+
+>>> 1 in obj, 7 in obj
+
+
+#ex24
+>>> obj = range(1, 5)
+>>> obj.index(1), obj.index(4)
+
+>>> obj.index(5)
+
+#ex25
+>>> obj = range(l, 5)
+>>> obj.count(l), obj.count(l0)
+
+#ex26
+arr = [1, 2, 3, 4, 5, 6]
+for i, elem in enumerate(arr):
+    if elem % 2 == 0:
+        arr[i] *= 2
+print(arr)
+
+#ex27
+>>> arr = [1, 2]
+>>> obj = enumerate(arr, start=0)
+>>> next(obj)
+
+>>> next(obj)
+
+>>> next(obj)
+
+#ex28
+i = 1
+while i < 101:
+    print(i)
+    i += 1
+
+#ex29
+i = 100
+while i:
+    print(i)
+    i -= 1
+
+#ex30
+arr = [1, 2, 3]
+i, count = 0, len(arr)
+while i < count:
+    arr[i] *= 2
+    i += 1
+print(arr)
+
+#ex31
+for i in range(1, 101):
+    if 4 < i < 11:
+        continue
+    print(i)
+
+#ex32
+i = 1
+while True:
+    if i > 100: break
+    print(i)
+    i += 1
+
+#ex33
+print("Введіть слово 'stop' для одержання результату")
+s = 0
+while True:
+    x = input("Введіть число: ")
+    if x == "stop":
+        break
+    y = int(x)
+    s += y
+print("Cyмa чисел дорівнює:", s)

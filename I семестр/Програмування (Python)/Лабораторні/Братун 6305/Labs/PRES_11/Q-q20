@@ -1,0 +1,17 @@
+>>> x, y, *z = [1, 2, 3]; x, y, z
+
+>>> x, y, *z = [1, 2, 3, 4, 5]; x, y, z
+
+>>> x, y, *z = [1, 2]; x, y, z
+
+>>> *x, y, z = [1, 2]; x, y, z
+
+>>> x, *y, z = [1, 2, 3, 4, 5]; x, y, z
+
+>>> *z, = [1, 2, 3, 4, 5]; z
+
+
+>>> x,*y,*z = [1, 2, 3, 4, 5]; x, y, z
+File "<input>", line 1
+Syntaxerror: two starred expressions in
+assignment

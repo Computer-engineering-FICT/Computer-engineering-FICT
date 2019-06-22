@@ -1,0 +1,283 @@
+#example 1 - перевірка на ввід числа
+
+s=input('Write the number')
+a=0
+for i in s:
+for j in (range(10)):
+if i==str(j):a+=1
+if a == len(s): print("Number")
+else: print("Not number")
+
+#example 2
+>>> type ("рядок")
+<class 'str'>
+>>> "рядок".encode(encoding="cp1251")
+b'\xf0\xff\xe4\xee\xea'
+>>> "рядок".encode(encoding="utf-8")
+b'\xd1\x80\xd1\x8f\xd0\xb4\xd0\xbe\xd0\xba'
+
+#example 3
+>>> s = bytes ("стр str", "cp1251")
+>>> s[0], s[5], s[0:3], s[4:7]
+(241, 116, b'\xf1\xf2\xf0', b'str')
+>>> s[0], hex(s[0])
+(241, '0xf1')
+>>> s[5],hex(s[5])
+(116, '0x74')
+>>> s
+b'\xf1\xf2\xf0 str'
+
+#example 4
+>>> len("рядок")
+>>> len (bytes("рядок", "cp1251"))
+>>> len (bytes ("рядок", "utf-8"))
+
+#example 5
+>>> s = bytearray("str", "cp1251")
+>>> s[0] = 49; s # Можна змінити символ
+bytearray(b'1tr')
+>>> s.append(55); s
+bytearray(b'1tr7')# Можна додати символ
+
+#example 6
+>>> str(), str([1, 2]), str((3, 4)), str({"x": 1})
+('', '[1, 2]', '(3, 4)', "{'x': 1}")
+>>> str(b"\xf1\xf2\xf0\xee\xea\xe0")
+"b'\\xf1\\xf2\\xf0\\xee\\xea\\xe0'"
+
+#example 7
+>>> str(b"\xf0\xff\xe4\xee\xea", "cp1251")
+'рядок'
+
+#example 8 - "strict"-виключення невід символу,
+            #"replace"-невідомий символ заміняється символом, що має код \ufffd,
+            #"ignore"-невідомі символи ігноруються
+>>> obj1 = bytes("рядок1", "utf-8")
+>>> obj2 = bytearray("рядок2", "utf-8")
+>>> str(obj1, "utf-8"), str(obj2, "utf-8")
+('рядок1', 'рядок2')
+>>> str(obj1, "ascii", "strict")
+Traceback (most recent call last):
+ File "<input>", line 1, in <module>
+UnicodeDecodeError: 'ascii' codec can't
+decode byte 0xd1 in position 0: ordinal not
+in range(128)
+>>> str (obj1, "ascii", "ignore")
+'1'
+
+#example 9 - немає різниці між лапками і апострофами
+>>> 'рядок', "рядок", '"х":5', "'х':5"
+('рядок', 'рядок', '"х":5', "'х':5")
+>>> print ('рядок1\nрядок2')
+рядок1
+рядок2
+
+#example 10 - екранування слешем
+>>> print("Рядок1\\nрядок2")
+Рядок1\nрядок2
+>>> print('Рядок1\nрядок2')
+Рядок1
+рядок2
+
+#example 11
+>>>"\"х\": 5", '\'х\': 5'
+('"х": 5', "'х': 5")     # Але апостроф в лапках
+>>> "'х': 5", '"х": 5'   #і лапки в апострофах
+("'х': 5", '"х": 5')     # не екранують
+
+#example 12
+>>> "string
+Syntaxerror: EOL while scanning string literal
+
+#example 13
+>>> "string1\
+string2" #після \ не повинно бути жодних символів
+'string1string2'
+>>> ("string1"
+"string2") # Неявна конкатенація рядків
+'string1string2'
+>>> ("string1" +
+"string2") # Явна конкатенація рядків
+'string1string2'
+
+#example 14
+>>> print("http:string\")
+Syntaxerror: EOL while scanning string
+literal
+>>> print("string\\")
+string\
+
+#example 15
+>>> print('''Рядок1
+Рядок2''')
+Рядок1
+Рядок2
+>>> print ("""Іван
+Марія""")
+Іван
+Марія
+
+#example 16
+>>> def test():
+"""Це опис функції"""
+pass
+>>> print(test.__doc__)
+Це опис функції
+
+#example 17
+>>> print("Рядок1\nрядок2")
+Рядок1
+Рядок2
+>>> print(r"Рядок1\nрядок2")
+Рядок1\nрядок2
+>>> print(r"""Рядок1\nрядок2""")
+Рядок1\nрядок2
+
+#example 18
+>>>print(r"C:\Python35-2\lib\site-packages")
+C:\Python35-2\lib\site-packages
+
+#example 19
+>>>print("C:\\Python35-2\\lib\\site-packages")
+C:\Python35-2\lib\site-packages
+
+#example 20
+>>> print(r"C:\Python35-2\lib\site-packages\")
+File "<input>", line 1
+ print(r"C:\Python35-2\lib\site-packages\")
+ ^
+Syntaxerror: EOL while scanning string literal
+>>> print("C:\Python35-2\lib\site-packages\\")
+C:\Python35-2\lib\site-packages\
+
+#example 21
+# Конкатенація(виділяємо в окремий рядок)
+>>> print("C:\Python35-2\lib\site-packages" + "\\")
+C:\Python35-2\lib\site-packages\
+
+# Звичайний рядок
+>>> print("C:\\Python33-2\\lib\\sitepackages\\")
+C:\Python34\lib\site-packages\
+
+# Видалення слеша
+>>> print("C:\Python34\lib\sitepackages\\"[:-1])
+C:\Python34\lib\site-packages\
+
+#example 22
+>>> print("Цей символ \не спеціальний:")
+Цей символ \не спеціальний
+
+>>> print("Цей символ \\не спеціальний:")
+Цей символ \не спеціальний
+
+#example 23
+>>> s = "Python"
+>>> s[0], s[1], s[2], s[3], s[4], s[5]
+('Р', 'у', 't', 'h', 'о', 'n')
+
+#example 24
+>>> s = "Python"
+>>> s[10]
+Traceback (most recent call last):
+ File "<input>", line 1, in <module>
+Indexerror: string index out of range
+
+#example 25
+>>> s = "Python"
+>>> s[-1], s[len(s)-1]
+('n', 'n')
+
+#example 26
+>>> s = "Python"
+>>> s [0] = "J" # Змінити рядок не можна
+Traceback (most recent call last):
+File "<Input>", line 1, in <module>
+>>> News ="J"+s[1]+s[2]+s[3]+s[4]+s[5]
+>>> News
+'Jython'
+
+#example 27
+>>> s = "Python"
+>>> s[:]#повертається фрагмент від позиції 0
+до кінця рядка
+'Python'
+
+#example 28
+>>> s(::-1)# Від’ємне значення в параметрі
+<Крок>
+'nohtyp'
+
+#example 29
+>>> "J"+s[l:] # фрагмент від символу 1 до
+кінця рядка
+'Jython'
+
+#example 30
+>>> s[:-1] # повертається фрагмент від 0 до
+len(s)-1
+'Pytho'
+
+#example 31
+>>> s[0:1] # Символ з індексом 1 не входить
+у діапазон
+'Р'
+
+#example 32
+>>> s[-1:] #отримуємо фрагмент від len(s)-1
+до кінця рядка
+'n'
+
+#example 33
+>>> s[2:5] # повертаються символи з
+індексами 2, 3 и 4
+'tho'
+
+#example 34
+>>> len("Python"),len("\r\n\t"),len(r"\r\n\t")
+(6, 3, 6)
+
+#example 35
+>>> s = "Python"
+>>> for i in range(len(s)): print(s[i], end=" ")
+
+>>> s = "Python"
+>>> for i in s: print(i, end=" ")
+
+#example 36
+>>> print("Рядок1" + "Рядок2")
+Рядок1Рядок2
+
+#example 37
+>>> print("Рядок1" "Рядок2")
+Рядок1Рядок2
+>>> print("Рядок1"
+... "Рядок2")
+...
+Рядок1Рядок2
+
+#example 38
+>>> s = "Рядок1", "Рядок2"
+>>> type(s)             # Одержуємо кортеж, а не рядок, якщо між рядками вказати кому
+<class 'tuple'>
+
+#example 39
+>>> s = "Рядок1"
+>>> print(s + "Рядок2") # Нормально
+Рядок1Рядок2
+
+>>> print(s "Рядок2") # Помилка
+Syntaxerror: invalid syntax
+
+#example 40
+>>> "string" + str(10)
+'stringl0'
+
+#example 41
+>>> "-" * 20
+'--------------------'
+>>> "yt" in "Python"
+True
+>>> "yt" in "Perl"
+False
+>>> "РНР" not in "Python"
+True

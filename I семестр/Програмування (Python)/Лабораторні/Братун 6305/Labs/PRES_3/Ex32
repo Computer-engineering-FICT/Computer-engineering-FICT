@@ -1,0 +1,20 @@
+>>> float(7),float("7.l")
+
+>>> float("Infinity"), float("-inf")
+(inf, -inf)
+>>> float("Infinity") + float("-inf")
+nan
+
+
+>>> str(l25), str([l, 2, 3])
+
+>>> str((1,2,3)), str({"x": 5, "в": 10})
+
+>>> str( bytes("а", "UTF-8") )
+"b'\\xd0\\xb0'"
+>>> str( bytes("F", "UTF-8") )
+"b'F'"
+>>> str( bytearray("З", "UTF-8") )
+"bytearray(b'\\xd0\\xa1')"
+>>> str( bytearray("L", "UTF-8") )
+"bytearray(b'L')"

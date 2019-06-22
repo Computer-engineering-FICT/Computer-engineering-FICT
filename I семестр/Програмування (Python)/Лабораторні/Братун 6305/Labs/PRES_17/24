@@ -1,0 +1,11 @@
+def func():
+    local1 = 77 а
+    glob1 = 25
+    print("Значення glob1 усередині функції =", glob1)
+glob1 = 10
+func()
+print("Значення glob1 поза функцією =", glob1)
+try:
+    print(local1)
+except Nameerror:
+    print("Змінна local1 не видима поза функцією")

@@ -1,0 +1,111 @@
+program Laba6;
+
+{$APPTYPE CONSOLE}
+
+
+type
+tindex=1..20;
+vector= array [tindex] of integer;
+Matrix=array[tindex] of vector;
+var
+n,n1,m,i,j,g:tindex;
+a,b,c:matrix;
+
+
+procedure Transposition(var n,m:tindex; var a:matrix);
+var
+z:integer;
+begin
+
+for i:=1 to n-1 do
+for j:=i+1 to m do
+begin
+z:=a[i,j];
+a[i,j]:=a[j,i];
+a[j,i]:=z;
+end;
+
+readln;
+end;
+
+procedure InputMatra(var n,m:tindex; var a:matrix);
+begin
+writeln('Size of matrix?');
+write('How many strings: ');
+readln(n);
+write('How many columns: ');
+readln(m);
+writeln('Enter ', n*m,  ' elements of matrix string by string:');
+for i:=1 to n do
+        begin
+        for j:=1 to m do
+                read(a[i,j]);
+        end;
+end;
+
+Procedure InputMatrb(var m,n1:tindex; var b:matrix);
+begin
+writeln('Size of second matrix?');
+write('How many columns: ');
+readln(n1);
+writeln('Enter ', n1*m,  ' elements of matrix string by string:');
+for i:=1 to m do
+        begin
+        for j:=1 to n1 do
+                read(b[i,j]);
+        end;
+end;
+
+
+procedure Multiply (a:matrix; b:matrix);
+var
+s,k:integer;
+begin
+for i:=1 to n do
+        for j:=1 to n1 do
+                begin
+                s:=0;
+                for k:=1 to m do
+                        s:=s+a[i,k]*b[k,j];
+                c[i,j]:=s;
+                end;
+writeln;
+readln;
+end;
+
+procedure OutputMatr (n,m:tindex;a:matrix);
+begin
+for i:=1 to n do
+        begin
+        for j:=1 to m do
+                write(a[i,j], ' ');
+        writeln;
+        end;
+end;
+
+
+begin
+InputMatra(n,m,a);
+writeln('Do:');
+writeln('1:Transposition');
+writeln('2:Multiply');
+write('Your choice: ');
+read(g);
+case g of
+2:      begin
+        InputMatrb(m,n1,b);
+        Multiply(a,b);
+        OutputMatr(n,n1,c);
+        end;
+1:      begin
+        if m<>n then
+                writeln('Error!')
+                else
+                begin
+        Transposition(n,m,a);
+        OutputMatr(n,m,a);
+        end;
+        end;
+end;
+readln;
+end.

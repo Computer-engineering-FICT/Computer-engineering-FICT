@@ -1,0 +1,8 @@
+def gen2(n):
+    for е in range(1, n + 1):
+        yield е * 2
+def gen(m):
+    for e in m:
+        yield from gen2(e)
+m = [5, 10]
+for i in gen([5, 10]): print(i, end = " ")

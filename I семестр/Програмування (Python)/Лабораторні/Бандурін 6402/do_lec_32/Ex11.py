@@ -1,0 +1,13 @@
+from tkinter import *
+root = Tk()
+label1 = Label(root, text="example",font = ("Arial", 20))
+button1 = Button(root, text = '1',font = ("Arial", 20))
+button2 = Button(root, text = '2',font = ("Arial", 20))
+label1.grid(row=0,column=1,columnspan=3)
+button1.grid(row=1,column=0, sticky = "w")
+button2.grid(row=1,column=4)
+print("Розмір сітки: ",root.grid_size())
+print("Сітка містить: ",root.grid_slaves())
+print("Параметри комірки: ", label1.grid_info())
+print("Комірка: ", root.grid_location(150,100))
+root.mainloop()

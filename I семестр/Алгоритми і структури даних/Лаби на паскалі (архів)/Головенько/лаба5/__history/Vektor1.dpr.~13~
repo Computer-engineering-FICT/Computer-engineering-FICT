@@ -1,0 +1,73 @@
+Program Vektor1;
+
+{$APPTYPE CONSOLE}
+
+Type
+Tindex = 1..10;
+Tarray = array[Tindex]of integer;
+Procedure SortM1(n:Tindex;var X:Tarray);
+var
+ i,j:Tindex;
+ z:integer;
+ begin
+  for i := 1 to n-1 do
+    begin
+      for j := i+1 to n do
+        begin
+          if X[i] > X[j]
+            then
+              begin
+                z := X[j];
+                X[j] := X[i];
+                X[i] := z;
+              end;
+        end;
+    end;
+  writeLn('An ordered array');
+    for i := 1 to n do
+      writeln('X[',i,']=',X[i]);
+ end;
+Function SearchMAX(n:Tindex;X:Tarray):integer;
+var
+  i:Tindex;
+  MAX:integer;
+begin
+  MAX := X[1];
+  for i := 1 to n do
+    if MAX < X[i]
+      then
+        MAX := X[i];
+        SearchMAX := MAX;
+end;
+var
+  n,i,act:Tindex;
+  X:Tarray;
+  T:integer;
+begin
+  write('Enter the size of the array ');
+  readln(n);
+  writeln('Enter the value');
+  for i := 1 to n do
+    begin
+      write('X[',i,']=');
+      readln(X[i]);
+    end;
+  T := 1;
+    while T = 1 do
+      begin
+        writeln('Choose an action');
+        writeln('1-Finding the maximum value');
+        writeln('2-Sorting');
+        writeln('3-Exit');
+        readln(act);
+        if act = 1
+          then
+            writeln('Maximum value= ',SearchMAX(n,X));
+            if act = 2
+              then
+                SortM1(n,X);
+            if act = 3
+              then
+                T := 0;
+      end;
+end.

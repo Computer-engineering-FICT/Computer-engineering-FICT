@@ -1,0 +1,309 @@
+#example1
+>>> x, y, z = 1,10,-80
+>>> x,y,z
+
+>>> p = 1,10,-80
+>>> list(p)
+
+>>> a="12345678"
+>>> list(a)
+
+#example2
+>>> list(range(9))
+>>> tuple(range(9))
+>>> tuple(range(1,20,2))
+>>> tuple(range(50,1,-4))
+
+#example3
+>>> 0b111, 0b101
+>>> range(0b1010)
+>>> list(range(0b1010))
+
+#example4
+>>> 0o0, 0o1, 0o7, 0o10, 0o11
+>>> range(0o12)
+>>> tuple(range(0o12))
+
+#example5
+>>> 0x1,0x2, 0X9, 0xa, 0xf
+>>> range(0xb)
+>>> list(range(0xb))
+
+#example6
+>>> p = [1.1, 2,345, 0.23, 45.67, 11.678, 4.67, 11.56]
+>>> p[1:3]
+>>> p[2:7]
+
+#example7
+>>> 0.3 - 0.1 - 0.1 - 0.1
+-2.7755575615628914е-17
+>>> 0.6-0.2-0.4
+-5.551115123125783e-17
+
+#example8
+>>> from decimal import Decimal
+>>> Decimal("0.2")‐Decimal("0.1")‐Decimal("0.1")
+
+>>> p=float(Decimal("0.2")‐Decimal("0.1")‐Decimal("0.1"))
+>>> p
+
+#example9
+>>> from fractions import Fraction
+>>> Fraction(4, 5)
+
+#example10
+>>> Fraction(l, 2) #за допомогою дробу
+Fraction(l, 2)
+>>> Fraction #за допомогою рядка
+Fraction(l, 2)
+>>> Fraction(0.5) #за допомогою числа
+Fraction(l, 2)
+
+#example11
+from fractions import Fraction
+from math import *
+p=Fraction(1,2)+Fraction(1,4)
+c=float(p)
+l=trunc(p)
+m=modf(p)
+print("c = ",c)
+print("l = ",l)
+print("m = ",m)
+print(p)
+
+#example12
+>>> complex(2,3)
+
+#example13
+>>> z = 2+3j
+>>> z.real
+2.0 # ціла частина
+>>> z.imag
+3.0 # уявна частина
+>>> z.conjugate()
+(2-3j) # спряжене (поєднане?) число
+
+#example14
+>>> complex(2,3)==2+3J
+True
+>>> 2+3J+4+7J
+(6+10j)
+>>> complex(2,3)+complex(4,7)
+(6+10j)
+>>> complex(2,3)*complex(4,7)
+(-13+26j)                     #Правило множення: (a+bJ)*(c+dJ)
+                              #                   M=(ac-bd)+(ad+bc)J
+                              #                   M=(2*4-3*7)+(2*7+3*4)J
+
+#example15
+>>> int(7.5)
+7
+>>> int("71",10)
+71
+>>> int("0B1010",2)
+10
+>>> int("0o71",8)
+57
+>>> int("0xa",16)
+10
+
+#example16
+>>> bin(255), bin(1), bin(-45)
+('0b11111111', '0b1', '-0b101101')
+
+#example17
+>>> oct(7), oct(8), oct(64)
+('0o7', '0o10', '0o100')
+
+#example18
+>>> hex(10), hex(16), hex(255)
+('0xa', '0x10', '0xff')
+
+#example19
+>>> float(7)
+7.0
+>>> float("7.1")
+7.1
+>>> float("inf")
+inf
+20
+>>> float("-Infinity")
+-inf
+>>> float("nan")
+nan
+>>> float()
+0.0
+
+#example20
+>>> round(0.49), round(0.50), round(0.51)
+(0, 0, 1)
+>>> round(1.49), round(1.50), round(1.51)
+(1, 2, 2)
+>>> round(2.49), round(2.50), round(2.51)
+(2, 2, 3)
+>>> round(3.49), round(3.50), round(3.51)
+(3, 4, 4)
+
+#example21
+>>> round(1.524,2),round(1.525,2),round(1.5555,3)
+(1.52, 1.52, 1.556)
+
+#example22 - модуль
+>>> abs(-10), abs(10), abs(-12.5)
+
+#example23 - піднесення до степеня
+>>> pow(10,2) = 10**2, pow(3,3) = 3**3
+>>> math.pow(10,2) = 10**2, math.pow(3,3) = 3**3
+
+#example24
+>>> pow(10,2,2) = (10**2)%2, pow(3,3,2) = (3**3)%2
+(0, 0, 1, 1)
+
+#example25
+>>> max(1,2,3), max(3,2,3,1), max(1,1.0), max(1.0,1)
+
+>>> p={1, 3, 1.4, True}
+>>> max(p)
+
+>>> p="string"
+>>> max(p)
+
+#example26
+>>> min(l,2,3), min(3,2,3,l), min(l,1.0), min(l.0,1)
+
+>>> p="string"
+>>> min(p)
+
+>>> p={1, 3, 1.4, True}
+>>> min(p)
+
+#example27
+>>> max({"a":2016, "b":"London", "c": "West"})
+
+>>> p = {"a":2016, "b":"London", "c": "West"}
+>>> l = max(p)
+>>> print(p[l])
+
+>>> l = min(p)
+>>> print(p[l])
+
+#example28
+>>> sum((10,20,30,40)),sum([10,20,30,40])
+
+>>> sum([10,20,30,40],2), sum([],2)
+(102, 2)
+
+#example29
+>>> p=(1,2,3,4,5,6,7,8,9)
+>>> sum(p)
+>>> sum(p,3)
+
+#example30
+>>> divmod(l3, 2) #13 == 6 *2+ 1
+(6, l)
+>>> 13//2, 13%2
+(6,1)
+>>> divmod(l3.5,2.0) #13.5==6.0*2.0+1.5
+(6.0, 1.5)
+>>> 13.5//2.0, 13.5 % 2.0
+(6.0, 1.5)
+
+#example31
+>>> import math
+>>> math.pi
+>>> math.e
+
+#example32
+>>> math.degrees(math.pi)
+>>> math.radians(180.0)
+
+#example33
+>>> import math
+>>> math.exp(1)
+
+#example34
+>>> math.sqrt(100)
+
+#example35 - округленя до найближчого більшого цілого
+>>> math.ceil(6.49), math.ceil(6.50), math.ceil(6.51)
+
+#example36 - округлення до найближчого меншого цілого
+>>> math.floor(5.49),math.floor(5.50),math.floor(5.51)
+
+#example37 - модуль
+>>> math.fabs(10), math.fahs(-10), math.fabs(-12.5)
+
+#example38 - залишок від ділення
+>>> math.fmod(10,5) = 10%5, math.fmod(10,3) = 10%3
+
+#example39
+>>> math.factorial(5), math.factorial(6)
+
+#example40 - повертає точну суму чисел із заданого списку
+>>> sum{[.1,.1,.1,.1,.1,.1,.1,.1,.1,.1])
+0.9999999999999999
+>>> math.fsum([.1,.1,.1,.1,.1,.1,.1,.1,.1,.1))
+1.0
+
+#example41 - повертає псевдовипадкове число від 0.0 до 1.0
+>>> import random
+>>> random.random()
+
+#example42
+>>> random.seed(10)
+>>> random.random()
+0.5714025946899135
+>>> random.seed(10)
+>>> random.random()
+0.5714025946899135
+
+#example43 - повертає псевдовипадкове дійсне число у вказаному діапазоні
+>>> random.uniform(0,10)
+9.965569925394552
+>>> random.uniform(0,10)
+0.4455638245043303
+
+#example44 - повертає псевдовипадкове ціле число у вказаному діапазоні
+random.randint(0,10)
+4
+>>> random.randint(0,10)
+10
+
+#example45 - повертає випадковий елемент із числової послідовності
+>>> random.randrange(10)
+>>> random.randrange(0,10)
+>>> random.randrange(0,10,2)
+
+#example46 - повертає випадковий елемент із заданої послідовності (рядка, списку, кортежу)
+>>> random.choice("string")
+
+#example47 - перемішує елементи списку випадковим чином
+>>> arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+>>> random.shuffle(arr)
+>>> arr
+[8, 6, 9, 5, 3, 7, 2, 4, 10, 1]
+
+#example48 - повертає список із зазначеної кількості елементів, які будуть обрані випадковим чином із заданої послідовності
+>>> random.sample("string", 2)
+>>> arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+>>> random.sample(arr, 2)
+>>> random.sample(range(300), 5)
+
+#Приклад створення генератора паролів довільної довжини
+
+import random # Підключаємо модуль randorn
+def passw_generator(count_char=8):
+arr = ['а', 'b', 'с', 'd', 'е', 'f', 'g',
+'h', 'i', 'j ', 'k', '1', 'm', 'n', 'o',
+'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
+'y', 'z', 'А', 'В', 'С', 'D', 'Е', 'F', 'G',
+'Н', 'I', 'J', 'К', 'L','М', 'N', 'О', 'Р',
+'Q', 'R', 'S', 'Т', 'U', 'V', 'W', 'Х',
+'У','Z', '1', '2', '3', '4', '5', '6', '7',
+'8', '9', '0']
+passw = []
+for i in range(count_char):
+ passw.append(random.choice(arr))
+return "".join(passw) # Викликаємо функцію
+print(passw_generator(10) # Виведе щось на кшталт ngodhebjbx
+print(passw_generator()) # Виведе щось на кшталт Zxcpkfso

@@ -1,0 +1,11 @@
+def deco1(f):
+    print("Викликана функція deco1()")
+    return f
+def deco2(f):
+    print("Викликана функція deco2()")
+    return f
+@deco1
+@deco2
+def func(x):
+    return "x = {0}".format(x)
+print(func(10))

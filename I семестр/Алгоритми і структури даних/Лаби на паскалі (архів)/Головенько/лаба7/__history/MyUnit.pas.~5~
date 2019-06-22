@@ -1,0 +1,43 @@
+unit MyUnit;
+
+interface
+
+type
+  TMyFunc = function (x,e: real): real;
+
+var
+  x,e: real;
+
+function sinus(x,e: real): real;
+procedure Writeln(x,e: real; g: TMyFunc);
+
+implementation
+
+function sinus(x,e: real): real;
+var
+  a,p,S: real;
+  j: integer;
+begin
+  S := x;
+  j := 3;
+  p := x;
+  a := sqr(x);
+  while abs(p)> e do
+    begin
+      p := -(p*a)/(j*(j-1));
+      S := S+p;
+      j := j+2;
+    end;
+   sinus := S;
+end;
+
+procedure Writeln(x,e: real; g: TMyFunc);
+begin
+  write('input x=');
+  readln(x);
+  write('input e=');
+  readln(e);
+  system.writeln(g(x,e):2:5);
+end;
+
+end.

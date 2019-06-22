@@ -1,0 +1,21 @@
+from tkinter import *
+root=Tk()
+var=IntVar()
+vars=StringVar()
+vars.set("one")
+var.set(1)
+rbutton1=Radiobutton(root,text='1',variable=var,value=1)
+rbutton2=Radiobutton(root,text='2',variable=var,value=2)
+rbutton3=Radiobutton(root,text='3',variable=var,value=3)
+rbutton1s=Radiobutton(root,text='one',variable=vars,value="one")
+rbutton2s=Radiobutton(root,text='two',variable=vars,value="two")
+rbutton3s=Radiobutton(root,text='three',variable=vars,value="three")
+rbutton1.pack(anchor=W)
+rbutton2.pack(anchor=W)
+rbutton3.pack(anchor=W)
+rbutton1s.pack(anchor=W)
+rbutton2s.pack(anchor=W)
+rbutton3s.pack(anchor=W)
+
+root.mainloop()
+

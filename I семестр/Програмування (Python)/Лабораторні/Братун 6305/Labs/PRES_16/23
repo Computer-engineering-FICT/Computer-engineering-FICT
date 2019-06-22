@@ -1,0 +1,9 @@
+def func(a, b):
+    а = a[:]
+    b = b.copy()
+    а[0], b["a"] = "str", 800
+    print("a =",a, "b =",b)
+x = [ 1, 2, 3]
+y= {"a": 1, "b": 2}
+func(x, y)
+print("x =",x, "y =",y)

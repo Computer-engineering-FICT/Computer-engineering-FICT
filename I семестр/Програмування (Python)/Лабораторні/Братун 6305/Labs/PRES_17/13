@@ -1,0 +1,5 @@
+def gen(b):
+    for е in b:
+        yield from range(1, е + 1)
+b = [ 5, 10]
+for i in gen([5, 10]): print(i, end = " ")

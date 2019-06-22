@@ -1,0 +1,11 @@
+def func1(а):
+    b = а 
+    def func2(c):
+        nonlocal b # Оголошуємо змінну як nonlocal 
+        print(b) # Можемо змінити значення х в func1()
+        b = c
+    return func2
+f = func1(10)
+f(5)
+f(12)
+f(3)

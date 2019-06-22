@@ -1,0 +1,39 @@
+program lab7_3;
+
+{$APPTYPE CONSOLE}
+
+
+ type
+  func = function (x,e:real):real;
+ var x,e:real;
+ function telor (x,e:real):real;
+   var
+   a,p,s:real;
+   j:integer;
+  begin
+   S:=x;
+   j:=3;
+   p:=x;
+   a:=sqr(x);
+   while abs(p)>=e do
+     begin
+      p:=-1*((p*a)/(j*(j-1)));
+      S:=S+p;
+      j:=j+2;
+     end;
+   telor:=s
+   end;
+ procedure form (g:func;x,e:real);
+  begin
+  write('input x');
+  readln(x);
+  write('input e');
+  readln(e);
+  g:=telor;
+  writeln(g(x,e):2:5);
+  end;
+ begin
+ form(telor,x,e);
+ end.
+  
+

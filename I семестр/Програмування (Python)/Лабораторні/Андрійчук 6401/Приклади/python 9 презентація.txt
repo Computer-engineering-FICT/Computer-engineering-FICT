@@ -1,0 +1,337 @@
+Приклад 1.
+>>> str(), str([l,2]), str((3,4)), str({"x": 1})
+
+>>> print("рядок1\nрядок2")
+
+Приклад 2
+>>> repr("Рядок"), repr([1,2,3]),repr({"x": 5})
+
+>>> repr("рядок1\nрядок2")
+
+Приклад 3
+>>> ascii([1, 2, 3]), ascii({"х":5})
+
+>>> ascii("рядок")
+
+Приклад 4
+>>>len("Python"), len("\r\n\t"),len(r"\r\n\t")
+
+>>> lеn("рядок")
+
+>>> a=bytes("рядок", "utf-8")
+>>> len(a)
+
+>>> a=bytearray("рядок", "utf-8")
+
+Приклад 5
+>>> s1, s2 = " str\n\r\v\t", "strstrstrokstrstrstr"
+>>> "'%s' ? '%s'" % (s1.strip(), s2.strip("tsr"))
+
+>>> s1, s2 = " str\n\r\v\t", "strstrstrokstrsmrstr"
+>>> "'%s' ? '%s'" % (s1.strip(), s2.strip("tsr"))
+
+Приклад 6.
+>>> s1, s2 = " \tstr ", "strstrstrokstrstrstr"
+>>> "'%s' ? '%s'" % (s1.lstrip(), s2.lstrip("tsr"))
+
+Приклад 7
+>>> s1, s2 = " str\t ", "strstrstrokstrstrstr"
+>>> "'%s' ? '%s'" % (s1.rstrip(), s2.rstrip("tsr"))
+
+Приклад 8. Дія методу split
+>>> s = "word1 word2 word3"
+>>> s.split(),
+
+>>> s.split(None, 1)
+
+>>> s = "word1\nword2\nword3"
+>>> s.split("\n")
+
+Приклад 9
+>>> s = "word1 word2 word3 "
+>>> s.split()
+
+>>> s = ",,word1,,word2,,word3,,"
+>>> s.split(",")
+
+Приклад 10
+>>> s = "word1 word2 word3"
+>>> s.rsplit()
+
+>>> s = "word1 word2 word3"
+>>> s.rsplit(None,1)
+
+Приклад 11
+>>> "word1\nword2\nword3".splitlines()
+
+>>> "word1\nword2\nword3".splitlines(True)
+
+>>> "word1\nword2\nword3".splitlines(False)
+
+Приклад 12
+>>> "word1 word2 word3".partition(" ")
+
+>>> "word1 word2 word3".partition("\n ")
+
+Приклад 13
+>>> "word1 word2 word3".rpartition(" ")
+
+>>> "word1 word2 word3".rpartition("\n" )
+
+Приклад 14
+>>> "=>" .join(["word1", "word2", "word3"] )
+
+>>> " ".join(("word1", "word2", "word3"))
+
+Приклад 15
+>>> " ".join(("word1", "word2", 5))
+
+Приклад 16
+>>> s = "Python"
+>>> arr = list(s)
+arr 
+>>> arr[0] = "J"
+arr 
+>>> s = "".join(arr)
+s
+
+Приклад 17
+>>> s = "python"
+>>> b = bytearray(s, "cp1251"); b
+
+>>> b[0] = ord("j" ); b
+
+>>> s = b.decode("cp1251"); s
+
+Приклад 24
+>>> print(chr(1055))
+
+Приклад 25
+>>> print (ord ( "П"))
+
+Приклад 18. Застосування setlocale() і getlocale()
+>>> import locale
+
+>>> locale.setlocale(locale.LC_ALL, "Ukrainian_Ukraine.1251")
+
+>>> locale.setlocale(locale.LC_ALL, "")
+
+>>> locale.getlocale()
+
+>>> locale.getlocale(locale.LC_COLLATE)
+
+Приклад 19
+>>> print("рядок".upper())
+
+Приклад 20
+>>> print("РЯДОК".lower())
+
+Приклад 21
+>>> print("РЯДОК рядок".swapcase())
+
+Приклад 22
+>>> print("рядок рядок".capitalize())
+
+title () – робить першу букву кожного слова великою:
+Приклад 22
+>>> s = "перша буква кожного слова стане
+прописною"
+>>> print(s.title())
+
+Приклад 23
+>>> "Python".casefold()=="python".casefold()
+
+>>> "grosse".casefold() == "gro?e".casefold()
+
+Приклад 26
+>>> s = "приклад приклад Приклад"
+>>> s.find(" при")
+
+>>> s.find(" При")
+
+>>> s.find("тест")
+
+>>> s.find(" при",9)
+
+s.find(" при",0,6)
+
+s.find(" при",7,12)
+
+Приклад 27
+>>> s = "приклад приклад Приклад"
+>>> s.index(" при")
+
+s.index(" при", 7, 12)
+
+s.index(" При", 1)
+
+>>> s.index("тест")
+
+Приклад 28
+>>> s = "приклад приклад Приклад Приклад"
+>>> s.rfind("при")
+
+s.rfind("При")
+
+s.rfind("тecт")
+
+>>> s.find(" при",0,61)
+
+s.find(" При",10,20)
+
+Приклад 29
+>>> s = "приклад приклад Приклад Приклад"
+>>> s.rindex(" при")
+
+>>> s.rindex(" при",0,11)
+
+>>> s.rindex("тест")
+
+Приклад 30
+>>> s = "приклад приклад Приклад Приклад"
+>>> s.count(" при")
+
+>>> s.count(" при", 6)
+
+>>> s.count(" При")
+
+>>> s.count("тecт")
+
+Приклад 31
+>>> "0123".isalnum()
+
+>>> "123аbс".isalnum()
+
+>>> "рядок".isalnum()
+T
+>>> "".isalnum()
+
+>>> "123 аbс".isalnum()
+
+>>> "аbс, 123.".isalnum()
+
+Приклад 32
+>>> "string".isalpha()
+
+>>> "рядок".isalpha()
+
+>>> "".isalpha()
+
+>>> "123аbс".isalpha()
+
+>>> "str str".isalpha()
+
+>>> "st,st". isalpha()
+
+Приклад 33
+>>> "0123".isdigit()
+
+>>> "1.3".isdigit()
+
+>>> "123abc".isdigit()
+
+>>> "abcl23".isdigit()
+
+Приклад 34
+>>> "123".isdecimal()
+
+>>> "123cтp".isdecimal()
+
+>>> "?".isdecimal()
+
+Приклад 35
+>>> "\u2155".isnumeric() # символ ?
+
+>>> "\u2155".isdigit ()
+
+>>> print("\u2155")
+
+>>> "?".isnumeric()
+
+>>> "?".isdigit()
+
+Приклад 36
+>>> "STRING".isupper()
+
+>>> "РЯДОК".isupper()
+
+>>> "".isupper()
+
+>>> "String1". isupper()
+
+>>> "РЯДОК,123".isupper()
+
+>>> "123".isupper()
+
+>>> "string".isupper(), "String".isupper()
+
+Приклад 37
+>>> "srting".islower()
+
+>>> "рядок".islower()
+
+>>> "".islower()
+
+>>> "string1".islower()
+
+>>> "s tr, 123".islower()
+
+"123".islower()
+
+>>> "STRING".islower(), "Рядок".islower()
+
+Приклад 38
+>>> "Str Str".istitle()
+
+>>> "Стр Стр".istitle()
+
+>>> "Str Str 123".istitle()
+
+>>> "Стр Стр 123".istitle()
+
+>>> "Str str".istitle(), "Стр cтp".istitle()
+
+>>>"123".isprintable()
+
+>>> "РНР Python".isprintable()
+
+>>> "\n".isprintable()
+
+Приклад 40
+>>> "".isspace()," \n\r\t".isspace(),"strstr".isspace()
+ 
+Приклад 41
+>>> "s".isidentifier()
+
+>>> "func".isidentifier()
+
+>>> "123func".isidentifier()
+
+Приклад 42
+>>> import keyword
+>>> keyword. iskeyword ("else")
+
+>>> keyword.iskeyword("elsewhere")
+
+Приклад 43. Додавання довільної кількості чисел
+print("Введіть слово 'stop' для отримання
+результату")
+suma = 0
+while True:
+	x = input("Введіть число: ")
+	if x == "stop":
+		break 
+	elif x == "":
+		print("Ви не ввели значення!")
+		continue
+	if x[0] == "-": 
+		if not x[1:].isdigit():
+			print("Необхідно ввести число, а не рядок!")
+			continue
+	else: 
+		if not x.isdigit(): 
+			print("Необхідно ввести число, а не рядок!")
+			continue
+	х = int(x) # Перетворюємо рядок в число 
+	suma += х
+print("Cyмa чисел дорівнює:", suma)

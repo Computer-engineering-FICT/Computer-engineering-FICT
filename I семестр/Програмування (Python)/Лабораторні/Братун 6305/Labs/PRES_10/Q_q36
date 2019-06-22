@@ -1,0 +1,8 @@
+>>> import hashlib
+>>> h = hashlib.md5(b"password")
+>>> p = h.hexdigest()
+>>> p # Пароль, збережений у базі
+
+>>>h2 = hashlib.md5(b"password")
+# Пароль, введений користувачем
+>>> if р == h2.hexdigest():print("Пароль правильний")

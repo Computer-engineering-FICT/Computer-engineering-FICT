@@ -1,0 +1,133 @@
+Приклад 1.  
+if __name__=="__main__":
+	print("Це головна програма")
+else:
+	print( "Імпортований модуль") 
+
+
+
+Приклад 2.
+import time, math  
+print (time.strftime ( "%d. % m. % y"))
+
+print(math.pi) 
+
+
+Приклад 2.
+import math
+ 
+print (getattr (math, "pi" ))
+ 
+print (getattr (math, "х", 50))
+
+
+Приклад 3.
+import math
+def chattr_math(attr):
+	if hasattr(math, attr):
+		return "Атрибут існує"
+	else:
+		return "Атрибут не існує"
+print (chattr_math("pi")) # Атрибут існує
+print (hasattr_math ("x")) 
+
+
+
+Приклад 4.
+import math as m  
+print (m.pi) 
+
+
+(х = 50)
+Приклад 5.
+import tests  
+x = 22
+print(tests.x)  
+print(x)
+
+
+Приклад 6.
+>>> import py_compile
+>>> py_compile.compile('tests.py') 
+
+
+Приклад 7.
+import testcom35, sys
+print(sorted(sys.modules.keys())) 
+
+
+
+Приклад 8.
+s = "test" + "s"  
+m = __import__(s)  
+print(m.x)  
+ 
+s = "math"  
+m = __import__(s)  
+print(m.pi)
+
+
+Приклад 9.
+import tests
+print(dir(tests))
+print(sorted(tests._dict_.keys())) 
+
+
+Приклад 10.  
+from math import pi, floor as f
+print(pi)  
+ 
+print(f(5.49))
+
+
+
+
+Приклад 11.
+from math import (pi, floor,sin, cos)
+print(pi) 
+print(floor(5.49))  
+print(round(sin(2*pi),2))
+print(cos(pi))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

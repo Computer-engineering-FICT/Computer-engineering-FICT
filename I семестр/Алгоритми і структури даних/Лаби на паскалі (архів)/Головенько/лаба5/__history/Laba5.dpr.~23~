@@ -1,0 +1,85 @@
+﻿Program Laba5;
+
+{$APPTYPE CONSOLE}
+
+const
+  MinIndex = 1;
+  MaxIndex = 10;
+type
+  TIndex = MinIndex..MaxIndex;
+  TArray = array[TIndex] of Integer;
+
+procedure InitArray(var X: TArray);
+var
+  n, i: Integer;
+begin
+  write('Enter the size of the array ');
+  readln(n);
+  if n > MaxIndex
+    then
+      n := MaxIndex;
+  writeln('Enter values');
+  for i := MinIndex to n do
+    begin
+      write('X[',i,']=');
+      readln(X[i]);
+    end;
+end;
+
+procedure SortM1(var X: TArray);
+var
+  i,j: TIndex;
+  z: Integer;
+begin
+  for i := MinIndex to MaxIndex-1 do
+    begin
+      for j := i+1 to MaxIndex do
+        begin
+          if X[i] > X[j]
+            then
+              begin
+                z := X[j];
+                X[j] := X[i];
+                X[i] := z;
+              end;
+        end;
+    end;
+end;
+
+function SearchMAX(var Arr: TArray): Integer;
+var
+  i: TIndex;
+begin
+  Result := Arr[MinIndex];
+  for i := MinIndex + 1 to MaxIndex do
+    if Result < Arr[i]
+      then
+        Result := Arr[i];
+end;
+
+var
+  i: TIndex;
+  act: Integer;
+  X: TArray;
+begin
+  InitArray(X);
+
+  repeat
+    writeln('Choose an action');
+    writeln('1) Finding the maximum value');
+    writeln('2) Sorting');
+    writeln('3) Define array with new values');
+    writeln('4) Exit');
+    readln(act);
+
+    case act of
+      1: writeln('Maximum value= ', SearchMAX(X));
+      2: begin
+           SortM1(X);
+           writeln('Sorted array');
+             for i := MinIndex to MaxIndex do
+               writeln('X[',i,']=',X[i]);
+         end;
+    end;
+  until act = 3;
+end.

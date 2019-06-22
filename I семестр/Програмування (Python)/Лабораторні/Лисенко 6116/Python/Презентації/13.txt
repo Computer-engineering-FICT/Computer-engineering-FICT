@@ -1,0 +1,217 @@
+#Example 1
+>>> 2 in [1, 2, 3, 4, 5], 6 in [1, 2, 3, 4, 5]
+>>> 2 not in [1, 2, 3, 4, 5], 6 not in [1, 2, 3, 4, 5]
+
+#Example 2
+>>> arr = [1, 2, 1, 2, 1, 7]
+>>> arr.index(1), arr.index(2)
+>>> arr.index(1, 1), arr.index(1, 3, 5)
+>>> arr.index(3)
+
+#Example 2
+>>> arr = [1, 2, 1, 2, 1]
+>>> arr.count(1), arr.count(2)
+>>> arr.count(3)
+
+#Example 3
+>>> arr = [1, 2, 3, 4, 5, 6]
+>>> max(arr), min(arr)
+>>> arr = ["a", "b", "c", "d", "e", "f"]
+>>> min(arr), max(arr)
+>>> arr = ["a", "aa", "aaa", "aaaa"]
+>>> min(arr), max(arr)
+
+#Example 4
+>>> any([0, None])
+>>> any([])
+>>> any([0, None, 1])
+>>> any(["a"])
+
+#Example 5
+>>> all([18, "Petrenko"])
+>>> all([])
+>>> all([0, "Petrenko"])
+>>> all([18, ""])
+>>> all([0, None])
+
+#Example 6
+>>> arr = [1, 2, 3, 4, 5]
+>>> arr.reverse()
+>>> arr
+
+>>> arr = ["a", "b", "c", "d"]
+>>> arr.reverse()
+>>> arr
+
+#Example 7
+>>> arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+>>> reversed(arr)
+>>> list(reversed(arr))
+>>> for i in reversed(arr): print(i, end=" ")
+>>> [i for i in reversed(arr)]
+
+#Example 8
+>>> import random
+>>> arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+>>> random.shuffle(arr)
+>>> arr
+
+#Example 9
+>>> arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+>>> random.sample(arr, 2)
+>>> random.sample(arr, 4)
+>>> arr
+
+#Example 10
+>>> arr = [2, 7, 10, 4, 6, 8, 9, 3, 1, 5]
+>>> arr.sort()
+>>> arr
+
+#Example 11
+>>> arr = [7, 2, 10, 4, 8, 6, 9, 3, 1, 5]
+>>> arr.sort(reverse=True)
+>>> arr
+>>> arr = ["sky","land","water","fire","sun"]
+>>> arr.sort(reverse=True)
+>>> arr
+>>> arr = ["sky","land","water","fire","Sun"]
+>>> arr.sort(reverse=True)
+>>> arr
+
+#Example 12
+arr = ["ant", "Asia", "bee", "Brazil"]
+arr.sort()
+for i in arr:
+    print(i, end=" ")
+
+#Example 13
+arr = ["ant", "Asia", "bee", "Brazil"]
+arr.sort(key=str.lower)
+for i in arr:
+    print(i, end=" ")
+
+#Example 14
+>>> def getkey(item):
+...     return item[0]
+... s = [[10, 3], [1, 7], [9, 34], [3, 64]]
+>>> s.sort(key=getkey);s
+
+#Example 15
+>>> arr = [7, 10, 4, 2, 6, 8, 9, 3, 1, 5]
+>>> sorted(arr)
+>>> sorted(arr, reverse=True)
+
+arr = ["Asia", "bee", "ant", "Brazil"]
+arr1 = sorted(arr, key=str.lower)
+for i in arr1:
+    print(i, end=" ")
+
+#Example 16
+>>> list(range(11))
+
+#Example 17
+>>> list(range(1,16))
+>>> list(range(15,0,-1))
+
+#Example 18
+>>> arr = ["word1", "word2", "word3"]
+>>> "-".join(arr)
+
+#Example 19
+>>> arr = ["word1", "word2", "word3", 2]
+>>> " - ".join(arr)
+
+#Example 20
+>>> arr = ["word1", "word2", "word3", 2]
+>>> " - ".join(( str(i) for i in arr ))
+
+#Example 21
+>>> arr = ["word1", "word2", "word3", 2]
+>>> str(arr)
+
+#Example 22
+>>> tuple()
+>>> tuple("String")
+>>> tuple([1, 2, 3, 4, 5])
+
+#Example 23
+>>> t1 = ()
+>>> t2 = (5,)
+>>> t3 =(1, "str", (3, 4))
+>>> t4 = 1, "str", (3, 4)
+>>> t1, t2, t3, t4
+
+#Example 24
+>>> t = (5); type(t)
+>>> t = ("str"); type(t)
+
+#Example 25
+>>> t = (1, 2, 3, 4, 5, 6, 7, 8, 9)
+>>> t[0]
+>>> t[::-1]
+>>> t[2:5]
+>>> 8 in t, 0 in t
+>>> (1,2,3)*3
+>>> (1,2,3)+(4,5,6)
+
+#Example 26
+>>> t = (1,2,3)
+>>> t[0]
+>>> t[0]=50
+
+#Example 27
+>>> t = (1,2,3)
+>>> len(t)
+>>> t = (1,2,1,2,1)
+>>> t.index(1), t.index(2)
+
+#Example 28
+>>> s = set()
+>>> s
+
+#Example 29
+>>> set("string")
+>>> set([1, 2, 3, 4, 5])
+>>> set((1, 2, 3, 4, 5))
+>>> set([1, 2, 3, 1, 2, 3])
+
+#Example 30
+for i in set([1, 2, 3]): print(i)
+for i in {1, 2, 3}: print(i)
+
+#Example 31
+len(set([1, 2, 3]))
+
+#Example 32
+>>> s = set([1,2,3])
+>>> s.union(set([4,5,6])), s | set([4,5,6])
+
+#Example 33
+set([1, 2, 3]) | set([1, 2, 3])
+
+#Example 35
+>>> s = set([1,2,3])
+>>> s.update(set([4, 5, 6]))
+>>> s
+>>> s |= set([7, 8, 9]); s
+
+#Example 36
+>>> set([1, 2, 3]) - set([1, 2, 4])
+>>> s = set([1, 2, 3])
+>>> s.difference(set([1,2,4]))
+
+#Example 37
+>>> s = set([1, 2, 3])
+>>> s.difference_update(set([1, 2, 4])); s
+>>> s -= set([3, 4, 5]); s
+
+#Example 38
+>>> set([1,2,3]) & set([1,2,4])
+>>> s = set([1,2,3])
+>>> s.intersection(set([1,2,4]))
+
+#Example 39
+>>> s.intersection_update(set([1, 2, 4]))
+>>> s
+>>> s &= set([1,6,7])
+>>> s

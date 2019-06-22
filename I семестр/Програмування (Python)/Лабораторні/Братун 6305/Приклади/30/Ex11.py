@@ -1,0 +1,11 @@
+from tkinter import *
+root=Tk()
+frame1=Frame(root,bg='green',bd=5)
+frame2=Frame(root,bg='red',bd=5)
+button1=Button(frame1,text='Перша кнопка',font = ("Arial",20) )
+button2=Button(frame2,text='Друга кнопка',font = ("Arial",20))
+frame1.pack()
+frame2.pack()
+button1.pack()
+button2.pack()
+root.mainloop()

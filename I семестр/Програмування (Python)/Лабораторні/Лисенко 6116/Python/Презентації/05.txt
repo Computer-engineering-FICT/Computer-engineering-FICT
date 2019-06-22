@@ -1,0 +1,309 @@
+    #Example 1
+numvar = int(input("Write the number"))
+firstvar, secondvar, thirdvar = 0,0,0
+if numvar <20:
+    firstvar = numvar
+    secondvar = numvar**2
+    thirdvar = numvar**3
+result = firstvar + secondvar+ thirdvar
+print("first_power=",firstvar)
+print("second_power=",secondvar)
+print("third_power=",thirdvar)
+print("Total=", result)
+
+    #Example 2
+numvar = int(input("Write the number: "))
+if numvar < 20:
+    print("floor= ", numvar //2)
+    print("remainder= ", numvar % 2)
+    print("scond_power= ", numvar**2)
+else:
+    print("Your number is greater than 20")
+
+    #Example 3
+x= int(input("Введіть число"))
+if x % 2 == 0:
+    print(x, " - парне число")
+else:
+    print(x, " - непарне число")
+
+    #Example 4
+x = int(input("Введіть число: "))
+if x % 2 == 0: print(x, " - парне число")
+else: print(x, " - непарне число")
+
+    #Example 5
+x = int(input("Bвeдіть число: "))
+if x % 2 ==0: print(x, end=" "); print("-парне число")
+else: print(x, end=" "); print("- непарне чсило")
+
+    #Example 6
+x = int (input ( "Введіть число: ") )
+if x % 2 == 0:
+    print(x, end=" ")
+    print ( "- парне число")
+else:
+    print(x, end=" ")
+    print("- непарне число")
+
+    #Example 7
+numvar = int(input("Write the Number: "))
+if numvar < 20 and numvar % 2 == 0:
+    print("This is an even number")
+    print("floor by 3 = ", numvar // 3)
+    print("second_power = ", numvar**2)
+elif numvar <20 and numvar % 2 !=0:
+    print("This is an odd number")
+    print("floor by 4 = ", numvar // 4)
+    print("3hd power = ", numvar**3)
+else:
+    print ("Your number is greater than 20")
+
+    #Example 8
+print(""""Якою операційною системою ви
+користуєтесь?
+1 - Windows 10
+2 - Windows 8
+3 - Windows 7
+4 - Windows ХР
+5 - Інша""")
+os = input("Введіть відповідне число: " )
+if os == "1":
+    print("Ви вибрали: Windows 10")
+elif os == "2":
+    print("Ви вибрали: Windows 8")
+elif os == "3":
+    print("Ви вибрали: Windows 7")
+elif os == "4":
+    print("Ви вибрали: Windows XP")
+elif os == "5":
+    print("Ви вибрали: інша")
+elif not os:
+    print("Ви не ввели число")
+else:
+    print("Ми не визначили вашу операційну систему")
+
+    #Example 9
+print("""Якою операційною системою ви користуєтесь?
+1 - Windows 10
+2 - Windows 8
+З - Windows 7
+4 - Windows ХР
+5 - Інша""")
+os = input("Введіть відповідне число: ")
+if os != "":
+    if os == "1":
+        print("Ви вибрали: Windows 10")
+    elif os == "2":
+        print("Bи вибрали: Windows 8")
+    elif os == "3":
+        print("Bи вибрали: Windows 7")
+    elif os == "4":
+        print ( "Ви вибрали: Windows XP")
+    elif os == "5":
+        print("Ви вибрали: інша")
+    else:
+        print("Мы не визначили вашу операційну систему")
+else:
+    print("Bи не ввели число")
+
+    #Example 10
+print("""Якою операційною системою вы користуєтесь?
+1 - Windows 10
+2 - Windows 8
+З - Windows 7
+4 - Windows ХР
+5 - Інша""")
+os = input("Введіть відповідне число: ")
+if not os:
+    print("Bи не ввели число")
+else:
+    if os == "1":
+        print("Ви вибрали: Windows 10")
+    else:
+        if os == "2":
+            print("Bи вибрали: Windows 8")
+        else:
+            if os == "3":
+                print("Bи вибрали: Windows 7")
+            else:
+                if os == "4":
+                    print ( "Ви вибрали: Windows XP")
+                else:
+                    if os == "5":
+                        print("Ви вибрали: інша")
+
+    #Example 11
+>>> print("Yes" if 10 % 2 == 0 else "No")
+Yes
+>>> s = "Yes" if 10 % 2 == 0 else "No"
+>>> s
+'Yes'
+>>> s = "Yes" if 11 % 2 == 0 else "No"
+>>> s
+'No'
+
+    #Example 12
+for s in "Я вчуся програмувати":
+    print(s, end=" ")
+else:
+    print("\n Цикл виконаний")
+
+    #Example 13
+for x in [ "London", "Paris", "Washington" ]:
+    print (x)
+
+    #Example 13
+>>> arr = {"х": 1, "y": 2, "z": 3}
+>>> arr.keys()
+dict_keys(['y', 'z', 'х'])
+>>> for key in arr.keys():
+...     print(key, arr[key])
+...
+y 2
+z 3
+х 1
+
+    #Example 15
+>>> for key in arr:
+        print(key, arr[key])
+y 2
+z 3
+х 1
+
+    #Example 16
+>>> arr = {"х":1, "y":2, "z":3}
+>>> for key in sorted(arr):
+...     print ( key, arr [ key] )
+...
+y 2
+z 3
+х 1
+
+    #Example 17
+>>> arr = [(1,2),(3,4)] # Список кортежей
+>>> for x, y in arr:
+...     print(x, y)
+...
+1 2
+3 4
+
+    #Example 18
+>>> s = [1,2,3,4,5,6]
+>>> for i in s: print(2*i)
+2
+4
+6
+8
+10
+12
+>>> print(s)
+[1, 2, 3, 4, 5, 6]
+
+    #Example 19
+arr = [1,2,3]
+for i in range (len(arr)):
+    arr[i] *=2
+print(arr)
+
+    #Example 20
+for i in range(1,101): print(i)
+
+    #Example 21
+for i in range(100, 0, -1): print(i)
+
+    #Example 22
+for i in range(2, 101, 2): print(i)
+
+    #Example 23
+>>> obj = range(len([1, 2, 3]))
+>>> obj
+range(0, 3)
+>>> obj[0],obj[1],obj[2]  # Доступ по індексу
+(0, 1, 2)
+>>> obj[0:2]  # Отримання зрізу
+range(0, 2)
+>>> i=iter(obj)
+>>> next(i),next(i),next(i) # Доступ за допомоги ітераторів
+(0, 1, 2)
+>>> list(obj) # Перетворення діапазона на список
+[0, 1, 2]
+>>> 1 in obj, 7 in obj # Перевірка на входження значення
+(True, False)
+
+    #Example 24
+>>> obj = range(1, 5)
+>>> obj.index(1), obj.index(4)
+(0, 3)
+>>> obj.index(5)
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+ValueError: 5 is not in range
+
+    #Example 25
+>>> obj = range(1, 5)
+>>> print(obj.count(1), obj.count(10))
+1 0
+
+    #Example 26
+arr = [1, 2, 3, 4, 5, 6]
+for i, elem in enumerate(arr):
+    if elem % 2 == 0:
+        arr[i] *= 2
+print(arr)
+
+    #Example 27
+>>> arr = [1,2]
+>>> obj = enumerate(arr, start=0)
+>>> next(obj)
+(0, 1)
+>>> next(obj)
+(1, 2)
+>>> next(obj)
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+StopIteration
+
+    #Example 28
+i = 1          # <Початкове значення>
+while i < 101: # <Умова>
+    print(i)   # <Інструкції>
+    i += 1     # <Збільшення (приріст)>
+
+    #Example 29
+i = 100
+while i:
+    print(i)
+    i -= 1
+
+    #Example 30
+arr = [1, 2, 3]
+i, count = 0, len(arr)
+while i < count:
+    arr[i] *= 2
+    i += 1
+print(arr)
+
+    #Example 31
+for i in range(1, 101):
+    if 4 < i < 11:
+        continue #Переходимо на наступну ітерацію циклу
+    print(i)
+
+    #Example 32
+i = 1
+while True:
+    if i > 100: break # Перериваємо цикл
+    print(i)
+i += 1
+
+    #Example 33
+print("Введіть слово 'stop' для одержання результату")
+s = 0
+while True:
+    x = input("Введіть число: ")
+    if x == "stop":
+         break # Вихід із циклу
+    y = int(x) # Перетворимо рядок у число
+    s += y
+print("Cyмa чисел дорівнює:", s)

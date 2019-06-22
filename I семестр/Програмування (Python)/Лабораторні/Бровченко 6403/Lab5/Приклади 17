@@ -1,0 +1,407 @@
+Приклад 1.
+def suma(*t):
+	""" Приймаємо довільну кількість параметрів """
+	res = 0
+	for i in t:
+ 		res += i
+	return res
+print(suma(10, 20, 30, 40, 50))
+
+
+
+
+
+Приклад 2.
+def f(*t): print(t)
+d=(1,2,3)
+f(*d)
+
+
+
+Приклад 3.
+def suma(x, y=5, *t):
+	res = x + y
+	for i in t:
+ 		res += i
+	return res
+
+print(suma(10))
+print(suma(10, 20, 30, 40, 50))
+
+
+
+Приклад 4.
+def func(**d):
+func(a=1, b=2, c=3)
+
+def func(**d): print(d)
+func(**m)
+m={"a":1,"b":2}
+
+
+
+
+Приклад 5. Комбінування параметрів
+def func(*t, **d):
+	""" Функція прийме будь‐які параметри """ 
+	for i in t:
+		print(i, end=" ")
+	for i in d:
+		print("{0} => {1}".format(i, d[i]), end=" ")
+	print()
+
+func(35, 10, a=1, b=2, c=3)
+func(10)
+func(a= 1, b=2)
+
+
+
+
+Приклад 6.
+def func(*t, a, b=10, **d):
+	print(t, a, b, d)
+func(35, 10, a=1, c=3)
+func (10, a=5)
+func(a=1, b=2)
+
+
+Приклад 7.
+def func (x=1, y=2, *, a, b=10):
+	print(x, y, a, b)
+
+func (35, 10, a=1)
+func (10, a=5)
+func (a=1, b=2)
+func (a=1, y=8, x=7)
+
+
+
+
+
+Приклад 8.
+
+f1 = lambda: 10 + 20
+f2 = lambda х, y: х + y
+f3 = lambda х, y, z: х + y + z
+print(f1())
+print(f2(5, 10))
+print(f3(5, 10, 30))
+
+
+
+Приклад 9.
+
+f = lambda x, y = 2: x + y
+print (f(5))
+print(f(5, 6))
+
+
+
+Приклад 10.
+arr=["anaconda", "Africa", "bee", "Brazil"]
+arr.sort(key=lambda s: s.lower())
+for i in arr:
+	print(i, end=" ")
+
+
+
+Приклад 11.
+def func(x, y):
+	for i in range(1, x+1):
+		yield i ** y
+for n in func(10, 2):
+	print(n, end=" ")
+
+
+for n in func(10, 3):
+	print(n, end=" ")
+
+
+Приклад 12.
+def func (x, y) :
+	for i in range(1, x+1):
+		yield i ** y
+i = func(3, 3)# Функція як ітератор
+print(i.__next__())
+print(i.__next__())
+print(i.__next__())
+print(i.__next__())
+
+
+
+
+Приклад 13.
+def gen(b):
+	for е in b:
+		yield from range(1, е + 1)
+b = [ 5, 10]
+for i in gen([5, 10]): print(i, end = " ")
+
+
+
+Приклад 14.
+def gen2(n):
+	for е in range(1, n + 1):
+		yield е * 2
+def gen(m):
+	for e in m:
+		yield from gen2(e)
+m = [5, 10]
+for i in gen([5, 10]): print(i, end = " ")
+
+
+
+Приклад 15 
+def my_decorator(function_to_decorate):
+
+     
+	def wrapper_function():
+		print("Тут пишемо код, до виклику функції")
+		function_to_decorate()
+		print("Тут пишумо код, що працює після виклику")
+
+return wrapper_function
+def unchangeable_function():
+	print("Це незмінна функція")
+unchangeable_function()
+unchangeable_function = my_decorator(unchangeable_function)
+unchangeable_function()
+
+
+
+Приклад 16
+def my_decorator(function_to_decorate):   
+      
+	def wrapper_function():
+		print("Тут пишемо код, до виклику функції")
+		function_to_decorate() # Сама функція  
+		print("Тут пишемо код, що працює після виклику")
+
+        return wrapper_function
+@my_decorator
+def unchangeable_function():
+	print("Це незмінна функція")
+unchangeable_function()
+
+
+
+Приклад 17.
+def deco(f):  
+ 	print ("Викликана функція func ()")
+ 	return f #
+@deco
+def func(x) :
+ 	return "x = {0}".format(x)
+print (func (10))
+
+
+
+Приклад 18.
+def deco(f):
+	print("Викликана функція func()")
+	return f
+def func(x):
+	return "х = {0}".format(x)
+
+print (deco(func)(10))
+
+
+
+
+Приклад 19.
+def deco1(f):
+	print("Викликана функція deco1()")
+	return f
+def deco2(f):
+	print("Викликана функція deco2()")
+	return f
+@deco1
+@deco2
+def func(x):
+	return "x = {0}".format(x)
+print(func(10))
+
+
+
+Приклад 20.
+ps = input("Уведіть пароль: ")
+def test_passw(p):
+	def deco (f):
+		if p == "universe":
+			return f
+		else:
+			return lambda: "Доступ закритий"
+	return deco
+@test_passw(ps)
+def func():
+	return "Доступ відкритий"
+print(func())
+
+
+Приклад 21.
+def factor(n):
+	if n == 0 or n == 1: return 1
+	else:
+		return n * factor(n - 1)
+while True:
+ 	z = input("Введіть число: ")
+	if z.isdigit():
+ 		b=int(z)
+		break
+ 	else:
+		print("Bи ввели не число!")
+print(b,factor(b))
+
+
+
+Приклад 22.
+>>> import math
+>>> math.factorial(5)
+
+>>> math.factorial(6)
+
+
+Приклад 23. Глобальні змінні
+def func (glob2):
+	print("Значення глобальної змінної glob1 =", glob1)
+	glob2 += 10
+	print("Значення локальної змінної glob2 =", glob2)
+glob1, glob2 = 10, 5
+func(77) # Викликаємо фунцію 
+print("Значення глобальної змінної glob2 =", glob2)
+
+
+
+Приклад 24.
+def func():
+	local1 = 77
+	glob1 = 25
+	print("Значення glob1 усередині функції =", glob1)
+glob1 = 10
+func()
+print("Значення glob1 поза функцією =", glob1)
+try:
+	print(local1)
+except Nameerror:
+	print("Змінна local1 не видима поза функцією")
+
+
+
+Приклад 25.
+def func():
+ 	 print(glob1)
+ 	 glob1 = 25
+glob1 = 10
+func()
+
+
+Приклад 26.
+def func():
+	global glob1
+ 	glob1 = 25
+	print("Значення glob1 усередині функції =", glob1)
+glob1 = 10
+print("Значення glob1 поза функцією =", glob1)
+func()
+print("Значення glob1 після функції =", glob1)
+
+
+Приклад 27.
+х = 5
+func = lambda: х
+х = 80
+print(func())
+
+
+Приклад 28.
+х = 5
+func = (lambda y: lambda: y)(х)
+х = 80
+print(func())
+
+
+
+Приклад 29.
+b = 5
+func = lambda b = b: b
+b = 80
+print(func())
+
+
+
+Приклад 30.
+def func():
+	local1: = 54
+	glob2 = 2
+	рrint("Локальні ідентифікатори усередині функції")
+	print(sorted(locals().keys()))
+glob1, glob2 = 10, 88
+func()
+print ("Глобальні ідентифікатори поза функцією")
+print(sorted(globals().keys()))
+
+
+
+Приклад 31.
+def func1 (b) :
+	def func2():
+		print(b)
+	return func2
+fl = func1(10)
+f2 = func1(99)
+ fl()
+f2()
+
+
+
+
+Приклад 32.
+def func1(b):
+	def func2():
+		print(b)
+ 	b = 30
+	return func2
+f1 = func1(10)
+f2 = func1(99)
+f1 ()
+f2 ()
+
+
+
+Приклад 33.
+def func1(b) :
+	def func2(b=b):
+		print(b)
+ 	b = 30
+	return func2
+f1 = func1(10)
+f2 = func1( 99)
+f1()
+f2()
+
+
+
+Приклад 34.
+def func1(а):
+	b = а 
+	def func2(c):
+		nonlocal b
+		print(b)
+                b = c
+	return func2
+f = func1(10)
+f(5)
+f(12)
+f(3)
+
+
+
+Приклад 35. В
+def func(a: "Параметр1", b: 10 + 5 = 3) None:
+    print(a, b)
+
+
+Приклад 36.
+>>> def func(a: "Параметр1", b: 10 + 5 = 3)None:
+	pass
+>>> func.__annotations__

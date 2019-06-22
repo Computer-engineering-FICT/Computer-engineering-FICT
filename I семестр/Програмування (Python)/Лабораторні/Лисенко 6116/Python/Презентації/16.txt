@@ -1,0 +1,231 @@
+#Example 1
+def <Ім'я функції> ([<Параметри>]):
+    [""" Рядок документування """]
+    <Тіло функції>
+    [return <Результат>]
+
+#Example 2
+def func():
+    pass
+
+#Example 3
+def func():
+    print("Текст до інструкції return")
+    return "значення, що повертається"
+    print("Ця інструкція ніколи не буде виконана")
+
+print(func())
+
+#Example 4
+def print_ok():
+    """ Приклад функції без параметрів """
+    print("Повідомлення при вдало виконаній операції")
+
+def echo(m):
+    """ Приклад функції з параметром """
+    print(m)
+
+def suma(х, y):
+    """Приклад функції з параметрами,
+    що повертає суму двох змінних"""
+    return х + y
+
+#Example 5
+print_ok()
+
+x = suma(5, 2)
+print(x)
+
+m = "довільний рядок"
+print(echo(m))
+
+#Example 6
+def echo(m):
+    print(m)
+
+n = "Параметр має інше ім’я"
+echo(n)
+
+#Example 7
+def suma(x, y):
+    return x + y
+
+x = 20
+y = 45
+z = 20 + 45
+print(z)
+a = 10
+b = 11
+print(suma(a, b))
+
+#Example 8
+def suma(x, y):
+    return x + y
+
+print(suma("str", "ing"))
+print(suma([1, 2], [3, 4]))
+
+#Example 9
+def suma(x, y):
+    return x + y
+
+f = suma
+v = f(10, 20)
+print("10 + 20 =", v)
+
+#Example 10
+def suma (z, y):
+    """Функція suma()"""
+    return z + y
+
+def func(f):
+    """ Через змінну f буде доступне посилання на функцію suma() """
+    a = 10
+    b = 20
+    return f(a, b)
+
+v = func(suma)
+print("suma =", v)
+
+#Example 11
+>>> def suma(x, y):
+...     """ Додавання двох чисел """
+...     return x + y
+...
+>>> suma.__name__
+>>> suma.__doc__
+
+print(suma.__code__.co_varnames)
+print(suma.__module__)
+
+#Example 12
+def difference(x, y):
+    return x - y
+v = difference(20, 9)
+print("20 – 9 =", v)
+
+v = difference(20, 9)
+def difference(x, y):
+    return x - y
+
+#Example 13
+n = input("Введіть 1 для виклику першої функції: ")
+if n == "1":
+    def echo():
+        print("Bи ввели число 1")
+else:
+    def echo():
+        print("Альтернативна функція")
+echo()
+
+#Example 14
+def echo():
+    print("Bи ввели число 1")
+def echo():
+    print("Альтернативна функція")
+echo()
+
+#Example 15
+def suma(x, y, z=2):
+    return x + y + z
+a = suma(5, 10)
+print("a =", a)
+b = suma(10, 50, 40)
+print("b =", b)
+
+#Example 16
+def forcalc(x, y, z):
+    print("x =", x, "y =", y, "z =", z)
+    return x*y+z
+print("m =", forcalc(3, 5, 7))
+
+#Example 17
+def forcalc(x, y, z):
+    print("x =", x, "y =", y, "z =", z)
+    return x*y+z
+print("m =", forcalc(z=7, x=3, y=5))
+
+#Example 18
+def suma(a=2, b=3, c=4):
+    return a + b + c
+print("case1", suma())
+print("case2", suma(2, 3, 20))
+print("case3", suma(c=15))
+
+#Example 19
+def suma(a, b, c):
+    return a + b + c
+
+t1, arr = (1, 2, 3), [6, 7, 8]
+print("case1", suma(*t1))
+print("case2", suma(*arr))
+t2 = (4, 5)
+print("case3", suma(1, *t2))
+print("case4", suma(t1, t2, tuple(arr)))
+
+#Example 20
+def suma(a, b, c):
+    return a + b + c
+d1 = {"a": 1, "b": 2, "c": 3}
+print("dict", suma(**d1))
+t, d2 = (1, 2), {"c": 3}
+print("comb", suma(*t, **d2))
+
+#Example 21
+def func(a, b):
+    a, b = 20, "str"
+    print("a =", a, "b =", b)
+x, s = 80, "test"
+func(x, s)
+print("x =", x, "s =", s)
+
+#Example 22
+def func(a, b):
+    a[0], b["a"] = "str", 800
+x = [1, 2, 3]
+y = {"a": 1, "b": 2}
+func(x, y)
+print("x =", x, "y =", y)
+
+#Example 23
+def func(a, b):
+    a = a[:]
+    b = b.copy()
+    a[0], b["a"] = "str", 800
+    print("a =", a, "b =", b)
+
+x = [1, 2, 3]
+y = {"a": 1, "b": 2}
+func(x, y)
+print("x =", x, "y =", y)
+
+#Example 24
+def func(a, c):
+    print(a)
+    print(c)
+    a[0], c["a"] = "str", 800
+    print("a =", a, "b =", c)
+x = [1, 2, 3]
+y = {"a": 1, "b": 2}
+func(x[:], y.copy())
+print("x =", x, "y =", y)
+
+#Example 25
+def func(a = []):
+    a.append(2)
+    return a
+print(func())
+print(func())
+print(func())
+
+#Example 26
+def func(a=None):
+    if a is None:
+        a = []
+    a.append(2)
+    return a
+
+print(func())
+print(func([1]))
+print(func([1, 3]))
+print(func())

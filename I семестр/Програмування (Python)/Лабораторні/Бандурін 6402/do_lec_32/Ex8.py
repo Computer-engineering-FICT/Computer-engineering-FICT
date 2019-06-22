@@ -1,0 +1,11 @@
+from tkinter import *
+root=Tk()
+button1 = Button(text="1", font = ("Arial", 20))
+button2 = Button(text="2", font = ("Arial", 20))
+button3 = Button(text="3", font = ("Arial", 20))
+button4 = Button(text="4", font = ("Arial", 20))
+button1.pack(anchor=W)
+button2.pack(anchor=E)
+button3.pack(anchor=N)
+button4.pack(anchor=S)
+root.mainloop()

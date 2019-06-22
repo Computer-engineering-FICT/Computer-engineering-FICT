@@ -1,0 +1,138 @@
+Приклад 1. Створення класу
+class MyClass:
+ 	""" Це рядок документування """
+ 	A=20+10
+	print("Інструкції виконуються відразу") 
+
+
+Приклад 2.
+class MyClass:
+ 	x = 10  
+	def out_x(self): 
+		print("Attribute x =",self.x)
+c = MyClass ()  
+ 
+c.out_x() 
+print("Stright print x =",c.x)
+
+
+
+Приклад 3.
+class MyClass:
+	def __init__(self, value1, value2):#Конструктор
+		self.x = value1
+		self.y = value2
+		print("Спрацював конструктор")
+	print("Створено клас MyClass")
+
+c = MyClass(100, 300)
+print("Створено екземпляр класу MyClass")
+print(c.x, c.y)
+
+Приклад 4.
+class Person:
+	def __init__(self, name, job, pay):
+		self.name = name
+		self.job = job 
+		self.pay = pay
+petro = Person("Petrenko Petro","Python developer", 10000)
+print(petro.name, petro.job, petro.pay)
+
+
+
+Приклад 5.
+ivan = Person("Ivanov Ivan")
+print(ivan.name) 
+
+
+
+Приклад 5.
+class Person:
+	def __init__(self, name, job = None, pay = 0):
+		self.name = name
+		self.job = job
+		self.pay = pay
+petro = Person("Petrenko Petro","Python developer", 10000 )
+print(petro.name, petro.job, petro.pay)
+ivan = Person("Ivanov Ivan")
+print(ivan.name, ivan.job, ivan.pay) 
+
+
+Приклад 6.  
+class MyClass:
+	def __init__(self):
+		print( "Виконано метод __init__() ")
+	def __del__(self): # Деструктор класу
+		print("Виконано метод __del__()")
+c1 = MyClass()
+del c1
+c2 = MyClass()
+с3 = c2  
+del c2  
+print("С2 не видалено. Оскільки є С3")
+del с3 
+
+
+
+
+
+class Person:
+	Inner= True 
+    	def __init__(self, name, job = None, pay = 0):
+		self.name = name
+		self.job = job
+		self.pay = pay
+m= Person("Michael","programmer", 100)
+print(m.__dict__) 
+
+
+
+class Person:
+ 	Inner= True
+ 	def __init__(self,name,job=None, pay = 0):
+			self.name = name
+		self.job = job
+		self.pay = pay
+m= Person("Michael","programmer", 100)
+print(Person.__class__)
+print(Person.__dict__)
+print(m.__class__.__dict__) 
+
+
+
+
+
+class Car:
+ 	wheels=4
+	engine=1
+my=Car()
+my.seats='Leather'
+print("Атрибут екземпляру:", my.seats)
+print("Атрибут класу:", my.wheels)
+print(my.__dict__)
+print(my.__class__.__dict__) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

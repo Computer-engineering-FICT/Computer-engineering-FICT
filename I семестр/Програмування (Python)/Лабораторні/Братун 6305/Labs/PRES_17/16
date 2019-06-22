@@ -1,0 +1,12 @@
+def my_decorator(function_to_decorate):
+
+    def wrapper_function():
+        print("Тут пишемо код, до виклику функції")
+        function_to_decorate() # Сама функція  
+        print("Тут пишемо код, що працює після виклику")
+ 
+    return wrapper_function
+@my_decorator
+def unchangeable_function():
+    print("Це незмінна функція")
+unchangeable_function()

@@ -1,0 +1,36 @@
+// Лаба_2.cpp: определяет точку входа для консольного приложения.
+//
+
+#include "stdafx.h"
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int n,res=0,res2=0;
+	cin>>n;
+	for(int i=1;i<=n;i++)
+	{
+		for(int j=1; j<=i; j++)
+		{
+			if((i%j)==0)
+			{
+				//cout<<i<<"  %  "<<j<<endl;
+				res+=j;
+				if(res>res2)
+				{
+					//cout<<"Max: "<<res<<endl;
+					res2 = res;
+				}
+			}
+		}
+		
+		cout<<"Sum: "<<res<<endl;
+		res=0;
+	}
+	cout<<"Max: "<<res2<<endl;
+	
+	system("pause");
+	return 0;
+}

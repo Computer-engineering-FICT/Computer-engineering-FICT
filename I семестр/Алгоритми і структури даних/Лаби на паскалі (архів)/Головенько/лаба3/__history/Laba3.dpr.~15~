@@ -1,0 +1,39 @@
+﻿program Laba3;
+
+{$APPTYPE CONSOLE}
+
+var
+ x, e, p, s, pi: real;
+ j,n: integer;
+ begin
+  write ('Enter x= ');
+  readln(x);
+  write ('Enter e= ');
+  readln(e);
+  pi := 3.1415926;
+    if x >= 0
+     then
+       begin
+         p:=x;
+         while p > 2*pi do
+           p := p-(2*pi);
+           j := 3;
+           n := 1;
+           s := p;
+         repeat
+           begin
+             p := - p*(x*x)/(j*(j-1));
+             s := s+p;
+             j := j+2;
+             n := n+1;
+            end
+           until abs(p) < e;
+             begin
+               writeln ('sin(x)= ', s:0:8);
+               writeln ('steps= ', n);
+             end;
+       end
+     else
+            writeln('Error');
+   readln;
+ end.

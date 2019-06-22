@@ -1,0 +1,7 @@
+>>> "рядок".encode() #utf-8
+
+>>> "рядок".encode(encoding="cp1251")
+
+>>>"рядок\ufffd".encode(encoding="cp1251",errors="xmlcharrefreplace")
+
+>>> "рядок\ufffd".encode(encoding="cp1251",errors="backslashreplace")

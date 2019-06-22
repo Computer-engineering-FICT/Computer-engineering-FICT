@@ -1,0 +1,9 @@
+>>> w = bytes("Рядок", "cp1251")
+
+>>> k = w.decode("cp1251") .encode("koi8-r")
+>>> k, str(k, "koi8-r")#Данные в кодуванні KOI8-R
+
+
+
+>>> w = k.decode("koi8-r").encode("cp1251")
+>>> w, str (w, "cp1251")

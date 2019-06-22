@@ -1,0 +1,153 @@
+unit Unit1;
+
+interface
+
+type
+  TIndex = 0 .. 10;
+  TVector = array [TIndex] of real;
+  TMatrix = array [TIndex] of TVector;
+  TFunction = function(i, j: TIndex): real;
+var
+  n: TIndex;
+  Vector: TVector;
+  Matrix: TMatrix;
+
+procedure CreateMatrix(n: TIndex; f: TFunction; Var Matrix: TMatrix);
+procedure CreateVector(n: TIndex; Matrix: TMatrix; Var Vector: TVector);
+procedure SortMatrix(n: TIndex; Var Matrix: TMatrix);
+procedure EditVector(n: TIndex; Var Vector: TVector);
+procedure WriteMatrix(n: TIndex; Matrix: TMatrix);
+procedure WriteVector(n: TIndex; Vector: TVector);
+function f(i, j: TIndex): real;
+function G(x: real; y: integer): real;
+
+implementation
+
+procedure CreateMatrix(n: TIndex; f: TFunction; Var Matrix: TMatrix);
+var
+  i, j: TIndex;
+begin
+  for i := 1 to n do
+    for j := 1 to n do
+      Matrix[i, j] := f(i, j);
+end;
+
+procedure SortVector(n: TIndex; Var Vector: TVector);
+type
+  TPosition = array [TIndex] of TIndex;
+var
+  i, j, k: TIndex;
+  P: TPosition;
+  m: real;
+begin
+  k := 0;
+  for i := 1 to n do
+    if (Vector[i] < 0)
+      then
+        begin
+          k := k + 1;
+          P[k] := i;
+        end;
+
+  for i := 2 to k do
+    if Vector[P[i]] > Vector[P[i] - 1]
+      then
+        begin
+          m := Vector[P[i]];
+          j := i;
+          while (k > Vector[P[j] - 1]) and (j > 1) do
+            begin
+              Vector[P[j]] := Vector[P[j] - 1];
+              j := j - 1;
+            end;
+            Vector[P[j]] := m;
+        end;
+end;
+
+procedure SortMatrix(n: TIndex; Var Matrix: TMatrix);
+var
+  i: TIndex;
+begin
+  for i := 1 to n do
+    SortVector(n, Matrix[i]);
+end;
+
+procedure CreateVector(n: TIndex; Matrix: TMatrix; Var Vector: TVector);
+var
+  i: TIndex;
+begin
+  for i := 1 to n do
+    Vector[i] := Matrix[i, i];
+end;
+
+procedure EditVector(n: TIndex; Var Vector: TVector);
+var
+  i, k, m: TIndex;
+  V: TVector;
+begin
+  k := n div 2;
+  m := n mod 2;
+
+  for i := 1 to k do
+    V[i + k + m] := Vector[i];
+  for i := k + 1 to n do
+    V[i - k] := Vector[i];
+  for i := 1 to n do
+    Vector[i] := V[i];
+end;
+
+procedure WriteVector(n: TIndex; Vector: TVector);
+var
+  i: TIndex;
+begin
+  for i := 1 to n do
+    Write(Vector[i]:2:2, ' ');
+end;
+
+procedure WriteMatrix(n: TIndex; Matrix: TMatrix);
+var
+  i: TIndex;
+begin
+  for i := 1 to n do
+    begin
+      WriteVector(n, Matrix[i]);
+      Writeln;
+    end;
+end;
+
+
+
+
+
+function f(i, j: TIndex): real;
+function G(x: real; y: integer): real;
+  Var
+    p, s: real;
+    k: integer;
+  Begin
+    p := x;
+    k := abs(y);
+    S := 1;
+
+    while k >= 1 do
+    begin
+      if (k mod 2) = 1
+        then
+          begin
+            S := S * p;
+            p := p * p;
+            k := k div 2;
+          end;
+    end;
+
+    if y < 0
+      then
+        begin
+          S := 1 / S;
+          G := S;
+        end;
+  end;
+begin
+  f := (abs(j - 3) - 1.3) * (6.5 - j) + 2 * G(3.33, -i) - 1.5;
+end;
+end.

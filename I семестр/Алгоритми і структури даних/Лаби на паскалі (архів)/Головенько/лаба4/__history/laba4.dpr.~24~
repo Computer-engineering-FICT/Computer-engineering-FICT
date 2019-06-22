@@ -1,0 +1,161 @@
+program laba4;
+
+{$APPTYPE CONSOLE}
+
+function F(z:real):real;
+begin
+  F := z*z
+end;
+
+var
+  a,b,e,r,s1,s2,h,d:real;
+  m,i,j,c,k:integer;
+begin
+  write('Enter left limit: ');
+  readln(a);
+
+  write('Enter right limit: ');
+  readln(b);
+
+  write('Enter accuracy: ');
+  readln(e);
+
+  writeln('Select method:');
+  writeln(' 1 - left rectangle');
+  writeln(' 2 - right rectangle');
+  writeln(' 3 - middle rectangle');
+  writeln(' 4 - trapezoid');
+  writeln(' 5 - parabola');
+  writeln(' 6 - Bode');
+  write('Your choice: ');
+  readln(c);
+
+  case c of
+  1:
+    begin
+      s1 := (b-a)*F(a);
+      m := 1;
+      repeat
+        m := m*2;
+        h := (b-a)/m;
+
+        s2 := 0;
+        for i:= 0 to m-1 do
+          s2 := s2+F(a+i*h);
+
+        s2 := s2*h;
+        r := abs(s2-s1);
+        s1 := s2;
+      until r <= e;
+    end;
+  2:
+    begin
+      s1 := (b-a)*F(b);
+      m := 1;
+      repeat
+        m := m*2;
+        h := (b-a)/m;
+
+        s2 := 0;
+        for i:= 1 to m do
+          s2 := s2+F(b-i*h);
+
+        s2 := s2*h;
+        r := abs(s2-s1);
+        s1 := s2;
+      until r <= e;
+    end;
+  3:
+    begin
+      s1 := (b-a)*F((a+b)/2);
+      m := 1;
+      repeat
+        m := m*2;
+        h := (b-a)/m;
+
+        s2 := 0;
+        for i:=0 to m-1 do
+          s2 := s2+F(a+(i*h)+h/2);
+
+        s2 := h*s2;
+        r := abs(s1-s2);
+        s1 := s2;
+      until r <= e;
+    end;
+  4:
+    begin
+      s1 := (b-a)*(F(a)+F(b))/2;
+      m :=1 ;
+      repeat
+        m := m*2;
+        h := (b-a)/m;
+
+        s2 := 0;
+        for i:=0 to m-1 do
+          s2 := s2+(f(a+i*h)+f(a+(i+1)*h));
+
+        s2 := h/2*s2;
+        r := abs(s2-s1);
+        s1 := s2;
+      until r <= e
+    end;
+  5:
+    begin
+      s1 := (b-a)*(F(a)+F(b))/3;
+      m :=1 ;
+      repeat
+        m := m*2;
+        h := (b-a)/m;
+        s2 := 0;
+        for i := 0 to m do
+          if (i=m)or(i=0)
+            then
+              s2 := s2+f(a+i*h)
+            else
+              if (i mod 2)=0
+                then
+                  s2 := s2+2*f(a+i*h)
+                else
+                  begin
+                    s2 := s2+4*f(a+i*h);
+                    s2 := s2*h/3;
+                    r := abs(s1-s2);
+                    s1 := s2;
+                  end;
+      until r <= e;
+    end;
+  6:
+    begin
+      m := 1;
+      h := (b-a)/m;
+      d := h/4;
+      s1 := (b-a)*(f(b)+f(a));
+      repeat
+        m:=m*2;
+        h:=(b-a)/m;
+        d:=h/4;
+        s2:=0;
+        for i:=0 to m-1 do
+          for j:=0 to 4 do
+            begin
+              case j of
+                0,4: k := 7;
+                1,3: k := 32;
+                  2: k := 12;
+              end;
+              s2:=(s2+k*(f(a+h*i+j*d)));
+            end;
+
+        s2:=((2*d)/45)*s2;
+        r:=abs(s2-s1);
+        s1:=s2;
+      until r <= e;
+    end;
+  end;
+
+  writeln('Integral from ',a:3:2,' to ',b:3:2,' = ',s2:7:4);
+  writeln('Number of iterations: ',m);
+  writeln;
+  writeln('Press Enter to exit...');
+  readln;
+end.

@@ -1,0 +1,504 @@
+Приклад 1.
+arr = [1, 2, 3, 4, 5, 6]
+for i in arr: print(i, end=" ") 
+
+arr = ["U","k", "r", "a", "i", "n", "e"]
+for i in arr: print(i, end=" ") 
+
+Приклад 2.
+
+>>>arr=[1, 2, 3, 4, 5]
+>>> for i in arr: i += 10
+>>> arr 
+
+
+>>> arr = [[1, 2], [3, 4]]
+>>> for i in arr: i[0] += 10
+>>> arr 
+
+Приклад 3.
+arr = [1, 2, 3, 4]
+for i in range(len(arr)):
+    arr[i] *= 2
+print (arr) 
+
+arr = [1, 2, 3, 4, 5, 6, 7, 8]
+for i in range(len(arr)):
+    if i>0: arr[i]+=arr[i-1]
+print (arr) 
+
+
+Приклад 4.
+>>> seasons=['Spring','Summer','Fall','Winter']
+>>> list(enumerate(seasons)) 
+
+>>> list(enumerate(seasons, start=1))
+
+Приклад 5.
+arr = [1, 2, 3, 4]
+for i, elem in enumerate(arr):
+    elem *=2 # елемент arr не змінюється
+print(elem, end = " ")
+    arr[i] *= 2 # елемент arr змінюється
+print (arr)
+
+
+Приклад 6.
+arr = [1, 2, 3, 4]
+i, с = 0, len(arr)
+while i < с:
+    arr[i] *= 2
+    i += 1
+print(arr) 
+
+
+arr = [1, 2, 3, 4]
+for i in range(len(arr)):
+ arr[i] *= 2
+print(arr) 
+
+Приклад 7. Використання генератора
+arr = [ 1, 2, 3, 4]
+arr = [ i * 2 for i in arr]
+print(arr) 
+
+
+Приклад 8.
+arr = [1, 2, 3, 4]
+arr = [ i * 10 for i in arr if i % 2 == 0]
+print(arr) 
+
+
+Приклад 9. Еквівалентний код:
+arr = []
+for i in [1, 2, 3, 4] :
+    if i % 2 == 0: # Якщо число парне
+        arr .append(i*10) # Додаємо елемент
+print(arr) 
+
+Приклад 10.
+arr = [[1, 2], [3, 4], [5, 6]]
+arr1=[j * 10 for i in arr for j in i if j % 2 == 0]
+print(arr1) 
+
+Приклад 11. Еквівалентний код:
+arr = [[1, 2], [3, 4], [5, 6]]
+arr1 = []
+for i in arr:
+    for j in i:
+        if j % 2 == 0: # Якщо число парне
+	    arr1.append(j * 10) # Додаємо елемент 
+print (arr)
+
+
+Приклад 12.
+>>> arr = [1, 4, 12, 45, 10]
+>>>j=(i for i in arr if i % 2 == 0)
+>> next(j)
+
+>>> next(j)
+
+>>> next(j)
+
+>>> next(j) 
+
+Приклад 13.
+>>> arr = [1, 4, 12, 45, 10]
+>>> j=(i for i in arr if i % 2 == 0)
+>>> sum(j)
+
+
+>>> arr = [1, 4, 12, 45, 10]
+>>> sum(arr) 
+
+Приклад 14. Використаємо конструкцію: ітератор+next
+def func(elem):
+    """ Збільшення значення кожного елемента списку """ 
+    return elem + 10 # Повертаємо нове значення
+arr = [1, 2, 3, 4, 5]
+j=map(func, arr)
+for i in arr: print(next(j), end=" ") 
+
+
+Приклад 15. Використаємо функцію list()
+def func(elem):
+    """ Збільшення значення кожного елемента списку """ 
+    return elem + 10 # Повертаємо нове значення
+arr = [1, 2, 3, 4, 5]
+print(list(map(func, arr)), end=" ") 
+
+
+Приклад 16. Використаємо функцію tuple()
+def func(elem):
+    return elem * 10
+arr = [1, 2, 3, 4, 5]
+print(tuple(map(func, arr)), end=" ")
+
+
+Приклад 17. Використаємо функцію set()
+def func(elem):
+    return elem - 10
+arr = [1, 2,2, 2, 2, 2, 2, 2, 3, 4, 5]
+print(set(map(func, arr)), end=" ")
+
+
+Приклад 18. Використаємо функцію sum()
+def func(elem):
+    return elem**2
+arr = [1, 2, 3, 4, 5]
+J= map(func, arr)
+print(sum(J)) 
+
+
+Приклад 19.
+def func(e1, е2, е3):
+    return e1 + е2 + е3 # Повертаємо нове значення 
+arr1 = [1, 2, 3, 4, 5]
+arr2 = [10, 20, 30, 40, 50]
+arr3 = [100, 200, 300, 400, 500]
+print(list(map(func, arr1, arr2, arr3))) 
+
+
+Приклад 20.
+def func(e1, е2, е3):
+    return e1 - е2 - е3
+arr1 = [100, 200, 300, 400, 500]
+arr2 = [10, 20, 30, 40, 50]
+arr3 = [1, 2, 3, 4, 5]
+print(list(map(func, arr1, arr2, arr3)))
+
+
+Приклад 21.
+def func(e1, е2, е3):
+    """ Додавання елементів трьох різних списків"""
+    return e1 + е2 + е3
+arr1 = [1, 2, 3, 4, 5]
+arr2 = [10, 20]
+arr3 = [100, 200, 300, 400, 500]
+print(list( map(func, arr1, arr2, arr3))) 
+
+
+Приклад 22.
+>>> J=zip([1, 2, 3], [4, 5, 6], [7, 8, 9])
+>>> next(J)
+
+>>> next(J)
+
+>>> next(J)
+
+>>> next(J) 
+
+Приклад 22.
+>>> list(zip([1, 2, 3], [4, 5, 6], [7, 8, 9])) 
+
+Приклад 23.
+a = [1, 2, 3]
+b = [4, 5, 6]
+c = [7, 8, 9]
+j = list(zip(a,b,c))
+print("Список j =",j)
+s1,s2,s3 = sum(j[0]),sum(j[1]),sum(j[2])
+print("Cуми елементів з однаковим зсувом
+=",s1,s2,s3) 
+
+
+Приклад 24.
+J=zip([1, 2, 3], [4, 5, 6], [7, 8, 9])
+for i in range(3):
+    a=next(J)
+    sum(a)
+    print(a, sum(a)) 
+
+Приклад 25.
+J=zip([1, 2, 3], [4, 5, 6], [7, 8, 9])
+print(max(list(J)[0])) 
+
+
+Приклад 26.
+>>> list(zip([1, 2, 3], [4, 6], [7, 8, 9, 10]))
+
+Приклад 27
+a=[1,2,3,4]
+b=[5,6]
+c=[9,10,11]
+J = zip(a,b,c)
+z=min(len(a),len(b),len(c))
+for i in range(z):
+    y=next(J)
+    print(y) 
+
+
+Приклад 28.
+arr1 = [1, 2, 3, 4, 5]
+arr2 = [10, 20, 30, 40, 50]
+arr3 = [100, 200, 300, 400, 500]
+arr=[x + y + z for (x, y, z) in zip(arr1, arr2, arr3)]
+print(arr)
+
+
+Приклад 29.
+arr1 = [1, 2, 3, 4, 5]
+arr2 = [10, 20, 30, 40, 50]
+arr3 = [100, 200, 300, 400]
+arr=[min(x,y,z) for (x, y, z) in zip(arr1,arr2,arr3)]
+print(arr) 
+
+Приклад 30. Використання функції filter
+>>> J = filter(None, (1, 0, None, [], 2))
+>>> next(J)
+
+>>> next(J)
+
+>>> next(J) 
+
+>>> list(filter(None, [1, 0, None, [], 2]))
+[ 1, 2] 
+
+Приклад 31.
+>>> [i for i in [1, 0, None, [], 2] if i]
+[ 1, 2] 
+
+
+Приклад 32.
+def func(elem):
+    return elem >= 0
+arr = [-1, 2, -3, 4, 0, -20, 10]
+J=filter(func,arr)
+while True:
+    try:
+        a=next(J)
+        print(a)
+    except: StopIteration
+
+
+Варіант з використанням list
+
+def func(elem):
+    return elem >= 0
+arr = [-1, 2, -3, 4, 0, -20, 10]
+arr = list(filter(func, arr))
+print(arr) 
+
+
+Приклад 33. Вилучити елементи списку з
+використанням генератора списків
+def func(elem):
+    return elem >= 0
+arr = [-1, 2, -3, 4, 0, -20, 10]
+arr = [ i for i in arr if func(i) ]
+print(arr) 
+
+Приклад 34. Одержимо суму всіх елементів списку
+import functools
+def func (x, y):
+    print("({0}, {1})".format(x, y), end=" ")
+    return x + y
+arr = [1, 2, 3, 4, 5]
+suma = functools.reduce(func, arr)
+print('вариант1',suma) 
+suma = functools.reduce(func, arr, 10) 
+print('вариант2',suma) 
+suma = functools.reduce(func, [], 10)
+print('вариант3',suma)
+del functools
+suma = functools.reduce(func, [1,1], 10)
+print('вариант4',suma) 
+
+
+Приклад 35.
+>>> arr = [1, 2, 3]
+>>> arr.append(4); arr
+
+>>> arr. append([5, 6])
+>>> arr
+
+>>> arr. append ( (7, 8) )
+>>> arr
+
+Приклад 36.
+>>> arr = [1, 2, 3]
+>>> arr.extend([4, 5, 6]) # Додаємо список
+>>> arr. extend ((7, 8, 9)) # Додаємо кортеж
+>>> arr.extend("abc") # Додаємо букви з рядка
+>>> arr 
+
+Приклад 37.
+>>> arr = [1, 2, 3]
+>>> arr + [4, 5, 6] 
+
+>>> arr = [1, 2, 3]
+>>> arr += [4, 5, 6]
+>>> arr 
+
+
+Приклад 38.
+>>> arr = [1, 2, 3]
+>>> arr[len(arr):] = [4, 5, 6]# Змінює список
+>>> arr 
+
+
+Приклад 39.
+>>> arr = [1, 2, 3]
+>>> arr.insert(0, 0); arr 
+
+>>> arr.insert(-1, 20); arr
+
+>>> arr.insert(2, 100); arr 
+
+>>> arr.insert(10, [ 4, 5]); arr
+ 
+
+Приклад 40.
+>>> arr = [1, 2, 3]
+>>> arr[:0] = [-2, -1, 0]
+>>> arr 
+
+Приклад 41.
+>>> arr = [1, 2, 3, 4, 5]
+>>> arr.pop()
+
+>>> arr 
+
+>>> arr.pop(0)
+
+>>>arr 
+
+
+Приклад 42.
+>>> arr = [1, 2, 3, 4, 5]
+>>> del arr[4]; arr 
+
+>>> del arr[:2]; arr 
+
+
+Приклад 43.
+>>> arr = [ 1, 2, 3, 1, 1 ]
+>>> arr.remove(1) 
+>>> arr 
+
+>>> arr.remove(S) 
+
+>>> arr.remove(3)
+>>> arr 
+
+>>> arr.remove(1)
+>>> arr 
+
+>>> arr.remove(5)
+
+Приклад 44
+>>> arr = [1, 2, 3, 1, 1]
+>>> arr.clear()
+>>> arr
+
+Приклад 45
+>>> arr = [ 1, 2, 3, 1, 1, 2, 2, 3, 3]
+>>> s = set(arr) 
+>>> s 
+>>> arr = list(s)
+>>> arr 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

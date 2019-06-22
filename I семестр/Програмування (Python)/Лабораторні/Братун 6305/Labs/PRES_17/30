@@ -1,0 +1,9 @@
+def func():
+    local1: = 54
+    glob2 = 2
+    рrint("Локальні ідентифікатори усередині функції")
+    print(sorted(locals().keys()))
+glob1, glob2 = 10, 88
+func()
+print ("Глобальні ідентифікатори поза функцією")
+print(sorted(globals().keys()))

@@ -1,0 +1,11 @@
+import shelve
+db = shelve.open(r"C:\lab6\shelve")
+db.update(obj4={"Salad": 30})
+a = db.setdefault("obj1")
+print(list(db.keys()))
+print(list(db.values()))
+print(list(db.items()))
+print(a)
+a = db.pop("obj4")
+print(a)
+print(list(db.keys()))

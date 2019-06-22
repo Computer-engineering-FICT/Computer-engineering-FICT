@@ -1,0 +1,209 @@
+#Example 1
+>>> bytes()
+>>> bytes("рядок", "cp1251")
+>>> bytes("рядок")
+
+#Example 2
+>>> bytes("string\ufffd","cp1251","strict")
+>>> bytes("string\ufffd","cp1251","replace")
+>>> bytes("string\ufffd","cp1251","ignore")
+
+#Example 3
+>>> "рядок".encode()
+>>> "рядок".encode(encoding="cp1251")
+>>> "рядок\ufffd".encode(encoding="cp1251",errors="xmlcharrefreplace")
+>>> "рядок\ufffd".encode(encoding="cp1251",errors="backslashreplace")
+
+#Example 4
+>>> b"string",b'string',b"""string""",b'''string'''
+>>> b"рядок"
+>>> b"\xf1\xf2\xf0\xee\xea\xe0"
+
+#Example 5
+>>> b = bytes([225, 226, 224, 174, 170, 160])
+>>> b
+>>> str(b,"cp866")
+
+#Example 6
+>>> bytes(10)
+>>> bytes(5)
+
+#Example 6
+>>> b = bytes.fromhex('f0ffe4eeea')
+>>> b
+>>> str(b, "cp1251")
+
+#Example 7
+>>> b = bytes("string","cp1251")
+>>> b
+>>> b[0]
+>>> b[1:3]
+>>> b+b"123"
+>>> b*3
+>>> 115 in b, b"tr" in b, b"as" in b
+
+#Example 8
+>>> list(bytes("string","cp1251"))
+>>> b[0]
+
+#Example 9
+>>> b = bytes("string","cp1251")
+>>> b[0] = 168
+
+#Example 10
+>>> b = bytes("string","cp1251")
+>>> c = b.replace(b"s", b"S")
+>>> c
+>>> b
+>>> c is b
+
+#Example 11
+>>> b"string" + "string"
+>>> b"string" + "string".encode("ascii")
+
+#Example 12
+>>> len("рядок")
+>>> len(bytes("рядок","cp1251"))
+>>> len(bytes("рядок","utf-8"))
+
+#Example 13
+>>> b = bytes("рядок", "cp1251")
+>>> b.decode(encoding="cp1251"), b.decode("cp1251")
+
+#Example 14
+>>> b = bytes("рядок", "cp1251")
+>>> str(b, "cp1251")
+
+#Example 15
+>>> w = bytes("Рядок", "cp1251")
+>>> k = w.decode("cp1251").encode("koi8-r")
+>>> k, str(k, "koi8-r")
+>>> w = k.decode("koi8-r").encode("cp1251")
+>>> w, str(w, "cp1251")
+
+#Example 16
+>>> bytearray()
+>>> bytearray("рядок", "cp1251")
+>>> bytearray("рядок")
+
+#Example 17
+>>> bytearray("string\ufffd", "cp1251", "strict")
+>>> bytearray("string\ufffd", "cp1251", "replace")
+>>> bytearray("string\ufffd", "cp1251", "ignore")
+
+#Example 18
+>>> b = bytearray([224, 239, 164, 174, 170])
+>>> b
+>>> str(b, "cp866")
+
+#Example 19
+>>> bytearray(5)
+>>> bytearray(10)
+
+#Example 20
+>>> c = bytearray.fromhex('f0ffe4eeea')
+>>> c
+>>> str(c, "cp1251")
+
+#Example 21
+>>> c = bytearray("Python", "ascii")
+>>> c[0]
+>>> c[0]=b"J"[0]
+>>> c
+
+#Example 22
+>>> c = bytearray("string", "ascii")
+>>> c.append(b"1"[0]); c
+
+#Example 23
+>>> c = bytearray("string", "ascii")
+>>> c.extend(b"123"); c
+
+#Example 24
+>>> c = bytearray("string", "ascii")
+>>> c + b"123"
+>>> c += b"456"; c
+
+#Example 25
+>>> c = bytearray("string", "ascii")
+>>> c[len(c):] = b"123"
+>>> c
+
+#Example 26
+>>> c = bytearray("string", "ascii")
+>>> c.insert(0, b"1"[0]); c
+>>> c = bytearray("string", "ascii")
+>>> c[:0] = b"123"; c
+
+#Example 27
+>>> c = bytearray("string", "ascii")
+>>> c.pop()
+>>> c
+>>> c.pop(0)
+>>> c
+
+#Example 28
+>>> c = bytearray("string", "ascii")
+>>> del c[5]
+>>> c
+>>> del c[:2]
+>>> c
+
+#Example 29
+>>> c = bytearray("strstr", "ascii")
+>>> c.remove(b"s"[0])
+>>> c
+
+#Example 30
+>>> c = bytearray("string", "ascii")
+>>> c.reverse();c
+>>> c = bytearray("123456789", "cp1251")
+>>> c.reverse();c
+>>> c = bytearray("абвгдеж", "utf-8")
+>>> c
+>>> c.reverse(); c
+
+#Example 31
+>>> c = bytearray("рядок", "cp1251")
+>>> c.decode(encoding="cp1251"), c.decode("cp1251")
+>>> c = bytearray("123\n456", "cp1251")
+>>> c.decode(encoding="cp1251", errors="replace")
+>>> c = bytearray("рядок","cp1251")
+>>> str(c, "cp1251")
+
+#Example 32
+>>> import pickle
+>>> obj1 = [1, 2, 3, 4, 5]
+>>> obj2 = (6, 7, 8, 9, 10)
+>>> pickle.dumps(obj1)
+>>> pickle.dumps(obj2)
+
+#Example 33
+>>> pickle.loads(b'\x80\x03]q\x00(K\x01K\x02K\x03K\x04K\x05e.')
+>>> pickle.loads(b'\x80\x03(K\x06K\x07K\x08K\tK\ntq\x00.')
+
+#Example 34
+>>> import hashlib
+>>> h = hashlib.sha1(b"password")
+>>> h = hashlib.sha1()
+>>> h.update(b"password")
+
+#Example 35
+>>> h = hashlib.sha1(b"password")
+>>> h.digest()
+>>> h.hexdigest()
+
+#Example 36
+>>> import hashlib
+>>> h = hashlib.md5(b"password")
+>>> p = h.hexdigest()
+>>> p
+>>> h2 = hashlib.md5(b"password")
+>>> if p == h2.hexdigest(): print("Пароль правильний")
+>>> h = hashlib.sha512(b"password")
+>>> h.digest_size
+
+#Example 37
+>>> import hashlib
+>>> dk = hashlib.pbkdf2_hmac('sha512', b'1234567', b'saltsaltsaltsalt', 100000)
+>>> dk

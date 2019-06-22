@@ -1,0 +1,352 @@
+#example1
+>>> bytes()
+b''
+>>> bytes("рядок", "cp1251")
+b'\xf1\xf2\xf0\xee\xea\xe0'
+>>> bуtеs("рядок")
+Traceback (most recent call last):
+ File "<input>", line 1, in <module>
+Nameerror: name 'bуtеs' is not defined
+    # Третій параметр: <Обробка помилок>
+    #"strict" (при помилці виконується виключення Unicodeencodeerror – значення за замовчуванням),
+    #"replace" (невідомий символ заміняється символом питання)
+    #"ignore" (невідомі символи ігноруються).
+
+#example2
+>>> bytes("string\ufffd","cp1251","strict")
+Traceback (most recent call last):
+ File "<input>", line 1, in <module>
+ File "C:\Program Files (x86)\Python35-
+32\lib\encodings\cp1251.py", line 12, in encode
+ return
+codecs.charmap_encode(input,errors,encoding_tabl
+e)
+Unicodeencodeerror: 'charmap' codec can't encode
+character '\ufffd' in position 6: character maps
+to <undefined>
+>>> bytes("string\ufffd", "cp1251", "replace")
+b'string?'
+>>> bytes ( "string\ufffd", "cp1251", "ignore")
+b'string'
+
+#example3
+>>> "рядок".encode() #utf-8
+b'\xd1\x81\xd1\x82\xd1\x80\xd0\xbe\xd0\xba\xd0\xb0'
+>>> "рядок".encode(encoding="cp1251")
+b'\xf1\xf2\xf0\xee\xea\xe0'
+>>>"рядок\ufffd".encode(encoding="cp1251",errors="xmlcharrefreplace")
+b'\xf1\xf2\xf0\xee\xea\xe0&#65533;'
+>>> "рядок\ufffd".encode(encoding="cp1251",errors="backslashreplace")
+b'\xf1\xf2\xf0\xee\xea\xe0\\ufffd'
+
+#example4
+>>> b"string", b'string',  b"""string""", b'''string'''
+(b'string', b'string', b'string', b'string')
+>>> b"рядок"
+Syntaxerror: bytes can only contain ASCII
+literal characters.
+>>> b"\xf1\xf2\xf0\xee\xea\xe0"
+b'\xf1\xf2\xf0\xee\xea\xe0'
+
+#example5
+>>> b = bytes([225, 226, 224, 174, 170, 160])
+>>> b
+b'\xe1\xe2\xe0\xae\xaa\xa0'
+>>> str (b,"cp866")
+'рядок
+
+#example6
+>>> bytes (10)
+b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+>>> bytes (5)
+b'\x00\x00\x00\x00\x00'
+
+#example7
+>>> b = bytes.fromhex('f0ffe4eeea')
+>>> b
+b'\xe1\xe2\xe0\xae\xaa\xa0'
+>>> str(b, "cp1251")
+'рядок'
+
+#example8
+>>> b = bytes ( "string", "cp1251")
+>>> b
+b'string'
+>>> b[0] # Доступ по індексу
+115
+>>> b[1:3] # Одержання зрізу
+b'tr'
+>>> b+b"123" # Конкатенація
+b'string123'
+>>> b*3 # Повторення
+b'stringstringstring'
+>>> 115 in b, b"tr" in b, b"as" in b
+(True, True, False)
+
+#example9
+>>># Перетворення в список
+>>> list(bytes("string","cp1251"))
+[115, 116, 114, 105, 110, 103]
+>>> # Доступ по індексу
+>>> b[0]
+115
+
+#example10
+>>> b = bytes ("string", "cp1251")
+>>> b[0] = 168
+Traceback (most recent call last):
+ File "<input>", line 1, in <module>
+Typeerror: 'bytes' object does not support item
+assignment
+
+#example11
+>>> b= bytes( "string", "cp1251")
+>>> c=b.replace(b"s", b"S")
+>>> c
+b'String'
+>>> b
+b'string' #сам об'єкт не змінився
+>>> c is b
+False
+
+#example12 -  Помилка при додаванні об'єктів різних типів
+>>> b"string" + "string"
+Traceback (most recent call last):
+ File "<input>", line 1, in <module>
+Typeerror: can't concat bytes to str
+>>> # Рядок привели до типу bytes
+>>> b"string" + "string".encode("ascii")
+b'stringstring'
+
+#example13
+>>> #Робота з типом str
+>>> lеn("рядок")
+6
+>>> #Робота з типом bytes у кодуванні cp1251
+>>> len(bytes("рядок","cp1251"))
+6
+>>> #Робота з типом bytes у кодуванні utf-8
+>>> len(bytes("рядок", "utf-8"))
+12
+
+#example14
+>>> b = bytes("рядок", "cp1251")
+>>> b.decode(encoding="cp1251"), b.decode("cp1251")
+('рядок', 'рядок')
+
+#example15
+>>> w = bytes("Рядок", "cp1251")
+#w-"cp1251" k-"koi8-r"
+>>> k = w.decode("cp1251") .encode("koi8-r")
+>>> k, str(k, "koi8-r")#Данные в кодуванні KOI8-R
+(b'\xf3\xd4\xd2\xcf\xcb\xc1', 'Рядок')
+#k-"koi8-r" w- "cp1251"
+>>> w = k.decode("koi8-r").encode("cp1251")
+>>> w, str (w, "cp1251")
+(b'\xd1\xf2\xf0\xee\xea\xe0', 'Рядок')
+
+#example16
+>>> bytearray()
+bytearray(b'') #повертає порожній об'єкт
+>>> bytearray("рядок", "cp1251")
+bytearray(b'\xf1\xf2\xf0\xee\xea\xe0')
+>>> bytearray ("рядок ")
+Traceback (most recent call last):
+ File "<input>", line 1, in <module>
+Typeerror: string argument without an encoding
+
+#example17
+>>> bytearray("string\ufffd", "cp1251","strict")
+Traceback (most recent call last):
+ File "<input>", line 1, in <module>
+File "C:\Program Files(x86)\Python35-32\lib\
+encodings\cp1251.py",line 12,in encode return
+codecs.charmap_encode(input,errors,encoding_table)
+Unicodeencodeerror: 'charmap' codec can't encode
+character '\ufffd' in position 6: character maps
+to <undefined>
+>>> bytearray("string\ufffd","cp1251", "replace")
+bytearray(b'string?')
+>>> bytearray ("string\ufffd", " cp1251", "ignore")
+bytearray(b'string')
+
+#example18
+>>> b = bytearray([224, 239, 164, 174, 170])
+>>> b
+bytearray(b'\xe0\xef\xa4\xae\xaa')
+>>> str(b, "cp866")
+'рядок'
+
+#example19
+>>> bytearray(5)
+bytearray(b'\x00\x00\x00\x00\x00')
+>>> bytearray(10)
+bytearray(b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00')
+
+#example20
+>>> c = bytearray.fromhex('f0ffe4eeea')
+>>> c
+bytearray(b'\xf0\xff\xe4\xee\xea')
+>>> str(c, "cp1251")
+'рядок'
+
+#example21
+>>> c = bytearray ("Python", "ascii")
+>>> c[0]
+80 # Можемо одержати значення
+>>> c[0]=b"J"[0] # Можемо змінити значення
+>>> c
+bytearray(b'jython')
+
+#example22
+>>> c = bytearray("string", "ascii")
+>>> c.append(b"1"[0]); c
+bytearray(b'string1')
+
+#example23
+>>> c = bytearray ( "string", "ascii")
+>>> c.extend(b"123"); c
+bytearray(b'string123')
+
+#example24
+>>> c = bytearray("string", "ascii")
+>>> c + b"123" # Повертає новий об'єкт
+bytearray (b' string123')
+>>> c += b"456"; c
+bytearray(b'ptring456')# Змінює поточний об'єкт
+
+#example25
+>>> c = bytearray( "string", "ascii")
+>>> c[len(c):] = b"123"
+# Додаємо елементи в послідовність
+>>> c
+bytearray(b'string123')
+
+#example26
+>>> с = bytearray("string", "ascii")
+>>> с.insert(0, b"1"[0]); с
+bytearray(b'1string')
+
+>>> с = bytearray("string", "ascii")
+>>> с[:0] = b"123"; с
+bytearray(b'123string')
+
+#example27
+>>> с = bytearray ( "string", "ascii")
+>>> с.pop() # Видаляємо останній елемент
+103
+>>> с
+bytearray(b'strin')
+>>> с.pop(0) # Видаляємо перший елемент
+115
+>>> с
+bytearray(b'trin')
+
+#example28
+>>> с = bytearray("string", "ascii")
+>>> del с[5] # Видаляємо останній елемент
+>>> с
+bytearray(b'strin')
+>>> del с[:2] # Видаляємо перший і другий елементи
+>>> с
+bytearray(b'rin')
+
+#example29
+>>> с = bytearray("strstr", "ascii")
+>>> с.remove(b"s"[0]) # Видаляє тільки перший елемент
+>>> с
+bytearray(b'trstr')
+
+#example30
+>>> с = bytearray("string", "ascii")
+>>> с.reverse(); с
+bytearray(b'gnirts')
+>>> с = bytearray("123456789", "cp1251")
+>>> с.reverse();с
+bytearray(b'987654321')
+>>> с = bytearray("абвгдеж", "utf-8")
+>>> с
+bytearray(b'\xd0\xb0\xd0\xb1\xd0\xb2\xd0\xb3\xd0\xb4\xd0\xb5\xd0\xb6')
+>>> с.reverse(); с
+bytearray(b'\xb6\xd0\xb5\xd0\xb4\xd0\xb3\xd0\xb2\xd0\xb1\xd0\xb0\xd0')
+
+#example31
+>>> с = bytearray("рядок", "cp1251")
+>>> с.decode(encoding="cp1251"), с.decode("cp1251")
+('рядок','рядок')
+>>> с = bytearray("123\n456", "cp1251")
+>>> b.decode(encoding="cp1251", errors="replace")
+'123\n456'
+
+#example32
+>>> с = bytearray("рядок", "cp1251")
+>>> str (с, "cp1251")
+'рядок''рядок'
+
+#Додавання елементів
+c.append(b"1"[0])           #append (<Число>)
+c.extend(b"123")            #ехtеnd(<Послідовність>)
+c += b"456"                 #+ і +=
+с.insert(0, b"1"[0])        #insert(<Індекс>, <Число>)
+#Видалення елементів 
+с.pop(0)                    #рор([<Індекс>])
+del с[:2], del с[5]         #по елементу або зрізу
+с.remove(b"s"[0])           #remove(<Число>)
+#Інші методи
+с.reverse()                 #reverse ()
+с.decode("cp1251")          #b.decode(encoding="cp1251", errors="replace")
+
+#example33
+>>> import pickle
+>>> obj1 = [1, 2, 3, 4, 5] # Список
+>>> obj2 = (6, 7, 8, 9, 10) # Кортеж
+>>> pickle.dumps(obj1)
+b'\x80\x03]q\x00(K\x01K\x02K\x03K\x04K\x05e.'
+>>> pickle. dumps(obj2)
+b'\x80\x03(K\x06K\x07K\x08K\tk\ntq\x00.'
+
+#example34
+>>>pickle.loads(b'\x80\x03]q\x00(K\x01K\x02K\x03K\x04K\x05e.')
+[1, 2, 3, 4, 5]
+>>> pickle.loads(b'\x80\x03(K\x06K\x07K\x08K\tk\ntq\x00.')
+(6, 7, 8, 9, 10)
+
+#example35
+>>> import hashlib
+>>> h = hashlib.sha1(b"password")
+
+>>> h = hashlib.sha1()
+>>> h.update(b"password")
+
+#example36
+>>> h = hashlib.sha1(b"password")
+>>> h.digest()
+b'[\xaaa\xe4\xc9\xb9??\x06\x82%\x0bl\xf83\x1b~\x
+e6\x8f\xd8'
+>>> h.hexdigest()
+'5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8'
+
+#example37
+>>> import hashlib
+>>> h = hashlib.md5(b"password")
+>>> p = h.hexdigest()
+>>> p # Пароль, збережений у базі
+'5f4dcc3b5aa765d6ld8327deb882cf99'
+>>>h2 = hashlib.md5(b"password")
+# Пароль, введений користувачем
+>>> if р == h2.hexdigest():print("Пароль
+правильний")
+
+#example38
+>>> h = hashlib.sha512(b"password")
+>>> h.digest_size
+64
+
+#example39
+>>> import hashlib
+>>> dk = hashlib.pbkdf2_hmac('sha512', b'1234567', b'saltsaltsaltsalt', 100000)
+>>> dk
+b"Sb\x85tc‐\xcb@\xc5\x97\x19\x90\x94@\x9f\xde\x07\xa4p‐
+\x83\x94\xf4\x94\x99\x07\xec\xfa\xf3\xcd\xc3\x88jv\xd1\xe5\x9a\x11
+9\x15/\xa4\xc2\xd3N\xaba\x02\xc0s\xc1\xd1\x0b\x86xj(\x8c>Mr'@\xb
+b"

@@ -1,0 +1,315 @@
+Приклад 1. Створення словників у спосіб 1
+>>> d = dict(); d
+
+>>> d = dict(a = 1, b = 2); d
+
+>>> d = dict({"a" : 1, "b" : 2}); d
+
+>>> d = dict ([("a",1), ("b", 2)]); d
+
+>>> d = dict ([["a",1], ["b", 2]]); d
+
+
+
+Приклад 2.
+>>> k = ["а", "b"] # Список з ключами
+>>> v = [1, 2]
+
+>>> list(zip(k, v))
+
+>>>d = dict ([("a",1), ("b", 2)]); d
+
+>>> d = dict(zip(k, v)); d
+
+
+Приклад 3.
+>>> d = {}; d
+
+
+>>> d = {"Ann":19, "Wolf":22 }; d
+
+>>> d = {"Пн":1, "Вт":2, "Ср":2, "Чт":2}; d
+
+>>> d = {("Пн","Вер"):1, ("Вт","Жовт"):2}; d
+
+Приклад 4.
+>>> d = {}
+>>> d["a"] = 1
+>>> d["b"] = 2
+>>> d["c"] = 3
+>>> d
+
+>>> nest = {}
+>>> nest["Africa","South"]=1
+>>> nest["America","West"]=2
+>>> nest
+
+Приклад 5.
+# немає другого параметра
+>>> d=dict.fromkeys(["winter","summer","spring"])
+>>> d
+
+>>> d = dict.fromkeys(("Пн", "Вт", "Ср"), 0); d
+
+
+
+Приклад 6.
+# Нібито створили два об'єкти
+>>> d1 = d2 = { "а": 1, "b": 2}
+>>> d2["b"] = 10
+>>> d1, d2
+
+
+Приклад 7.
+>>> d1, d2 = {"а": 1, "b": 2}, {"а": 1, "b": 2}
+>>> d2["b"] = 10
+>>> d1, d2
+
+
+Приклад 8.
+>>> d1 = {"а": 1, "b": 2} # Створюємо словник
+>>> d2 = dict(d1) # Створюємо поверхневу кoпию
+>>> d1 is d2
+
+>>> d2["b"] = 10
+>>> dl, d2
+
+
+
+Приклад 9.
+>>> d1 = {"а": 1, "b": 2} # Створюємо словник
+>>> d2 = d1.copy()
+>>> d1 is d2
+
+>>> d2 ["b"] = 10
+>>> d1, d2
+
+
+Приклад 10.
+>>> d1 = {"а": 1, "b": [20, 30, 40]}
+>>> d2 = dict(d1) # Створюємо поверхневу копію
+>>> d2 ["b"][0] = "test"
+>>> d1, d2
+
+>>> import copy
+>>> d3 = copy.deepcopy(d1)#створюємо глиб. копію
+>>> d3["b"][1] = 800
+>>> d1, d3
+
+
+Приклад 11.
+>>> d = {1: "int", "а": "str", (1, 2): "tuple"}
+>>> d[1], d["a"], d[(1, 2)]
+
+
+Приклад 12.
+>>> d = {"Пн": 1, "Вт": 2}; d["Ср"]
+
+Приклад 13.
+>>> d = { "а": 1, "b": 2}
+>>> "а" in d
+
+>>> "с" in d
+
+Приклад 14.
+>>> d = {"а": 1, "b": 2}
+>>> "c" not in d
+
+>>> "а" not in d
+
+
+Приклад 15.
+d = {"а": 1, "b": 2}
+a=d.get("a")
+print(a)
+
+a=d.get("c")
+print(a)
+
+a=d.get("c", 800)
+print(a)
+
+
+Приклад 16.
+d = {"a": 1, "b": 2}
+a=d.setdefault("a")
+print("a={0!s}; d={1!s}".format(a,d))
+
+
+a=d.setdefault("a",0)
+print("a={0!s}; d={1!s}".format(a,d))
+
+
+a=d.setdefault("c")
+print("a={0!s}; d={1!s}".format(a,d))
+
+
+a=d.setdefault("c",0)
+print("a={0!s}; d={1!s}".format(a,d))
+
+
+Приклад 17.
+>>> d = {"a": 1, "b": 2}
+>>> d ["a"] = 800
+>>> d["c"] = "string"
+>>> d
+
+
+Приклад 18.
+>>> d = {"a": 1, "b": 2}
+>>> len(d)
+
+
+Приклад 19.
+>>> d = { "a": 1, "a": 2}
+>>> del d["b"]; d
+
+
+Приклад 20.
+#спосіб 1
+d = {"x": 1, "y": 2, "z": 3}
+for key in d.keys(): # Використання методу keys()
+	print("{0}:{1}".format(key, d[key]), end=" ")
+
+
+#спосіб 2
+d = {"x": 1, "y": 2, "z": 3}
+for key in d:
+	print("{0!s}: {1!s},".format(key, d[key]), end=" ")
+
+
+
+Приклад 21.
+d = {"x": 1, "y": 2, "z": 3}
+k = list(d.keys()) # Одержуємо список ключів
+k. sort() #
+for key in k:
+	print("({0!s} => {1!s})".format(key, d[key]), end=" ")
+
+
+
+Приклад 22.
+d = {"x": 1, "y": 2, "z": 3}
+for key in sorted(d.keys()):
+	print("({0!s} => {1!s})".format(key, d[key]), end=" ")
+
+d = {"x": 1, "y": 2, "z": 3}
+for key in sorted(d):
+	print("({0!s} => {1!s})".format(key, d[key]), end=" ")
+
+
+Приклад 23.
+# Одержуємо об'єкт dict values
+>>> d1 = {"а": 1, "b": 2}
+>>> d2 = {"а": 3, "с": 4, "d": 5}
+>>> d1.keys(), d2.keys()
+
+>>> list(d1.keys()), list(d2.keys())
+
+>>> for k in d1.keys(): print(k, end=" ")
+
+
+d1, d2 = {"а": 1, "b": 2}, {"а": 3, "c": 4, "d": 5}
+A = d1.keys() | d2.keys()
+print(A)
+
+A = d1.keys() - d2.keys()
+print(A)
+
+A = d1.keys() & d2.keys()
+print(A)
+
+>>> A = d1.keys() ^ d2.keys()
+
+
+
+Приклад 24.
+>>> d = {"а": 1, "b": 2}
+>>> d.values()
+
+>>> list(d.values())
+
+>>> [ v for v in d.values()]
+
+
+Приклад 25.
+>>> d = {"а": 1, "b": 2}
+>>> d.items()
+
+>>> list(d.items())
+
+
+Приклад 26.
+>>> d = {"а": 1, "b": 2}
+>>> "а" in d
+
+>>> "c" in d
+
+
+Приклад 27.
+>>> d = {"а": 1,"b": 2}
+>>> "c" not in d
+
+>>> "a" not in d
+
+
+Приклад 28.
+d = {"a": 1, "b": 2, "c": 3}
+m = d.pop("a")
+print("m = {0!s}; d = {1!s}".format(m,d))
+
+m = d.pop("a",245)
+print("m = {0!s}; d = {1!s}".format(m,d))
+
+m = d.pop("n",245)
+print("m = {0!s}; d = {1!s}".format(m,d))
+
+m = d.pop("n")
+print("m = {0!s}; d = {1!s}".format(m,d))
+
+
+Приклад 29.
+>>> d = {"а": 1, "b": 2}
+>>> d.popitem()
+
+>>> d.popitem()
+
+>>> d.popitem()
+
+Приклад 30.
+>>> d = {"a": 1, "b": 2}
+>>> d.clear()
+>>> d
+
+
+Приклад 31.
+d = {"a": 1, "b": 2}
+d.update(c=3, d=4, f=123)
+print(d)
+
+
+d.update({"c": 10, "d": 20}) # Словник
+print(d)
+
+d.update([("d", 80), ("е", 6)])#Cпиcoк кортежів
+print(d)
+
+
+d.update([["a","str"],["i","t"]])#Cпиcoк списків
+print(d)
+
+
+Приклад 33.
+# Список з ключами
+>>> keys = ["Anna", "Maria","Bonni"]
+# Список зі значеннями
+>>> values = [18, 21, 50]
+>>> {k:v for (k, v) in zip(keys, values)}
+
+>>> {k:10 for k in keys}
+
+
+Приклад 34.
+d={"Maxim":11, "Bart":12, "Dago":15, "Whit": 18}
+p={k: v for (k,v) in d.items() if v % 2 == 0}
+print(p)

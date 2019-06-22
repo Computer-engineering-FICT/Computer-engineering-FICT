@@ -1,0 +1,213 @@
+01
+class Person:
+    def __init__(self, name, job=None, pay=0):
+        self.name = name
+        self.job = job
+        self.pay = pay
+
+    def lastName(self):
+        return self.name.split()[-1]
+
+    def giveRaise(self, percent):
+        self.pay = int(self.pay + (self.pay/100)*percent)
+
+02
+petro = Person("Petro Petrenko","Python developer", 10000)
+ivan = Person("Ivan Ivanov")
+print(petro.lastName(), ivan.lastName())
+petro.giveRaise(10)
+print(petro.name, petro.pay)
+print(ivan.name, ivan.pay)
+
+03
+class Person:
+    def __init__(self, name, job=None, pay=0):
+        self.name = name
+        self.job = job
+        self.pay = pay
+
+    def lastName(self):
+        return self.name.split()[-1]
+
+    def giveRaise(self, percent):
+        self.pay = int(self.pay + (self.pay/100)*percent)
+
+    def __str__(self):
+        return '[Person: %s, %s]' % (self.name, self.pay)
+
+petro = Person("Petro Petrenko","Python developer", 10000)
+ivan = Person("Ivan Ivanov")
+petro.giveRaise(10)
+print(petro)
+print(ivan)
+
+04
+class Class1:
+    def func1(self):
+        print("Meтoд func1() класу Class1")
+
+    def func2(self):
+        print("Meтoд func2() класу Class1")
+
+
+class Class2(Class1):
+    def func3(self):
+        print("Meтoд func3() класу Class2")
+с = Class2()
+с.func1()
+с.func2()
+с.func3()
+
+05
+class OldClass: pass
+class NewClass(OldClass):pass
+c = NewClass
+
+06
+class OldClass:
+    def __init__(self):
+        print("Конструктор базового класу")
+
+    def func(self):
+        print("Meтoд func() класу OldClass")
+
+
+class NewClass(OldClass):
+    def __init__(self):
+        print("Конструктор підкласу")
+        OldClass.__init__(self)
+
+    def func(self):
+        print("Meтoд func() класу NewClass")
+        OldClass.func(self)
+с = NewClass()
+с.func()
+
+07
+class Class1:
+    def func1(self):
+        print("Meтoд func1() класу Class1")
+
+
+class Class2(Class1):
+    def func2(self):
+        print("Meтoд func2() класу Class2")
+
+
+class Class3(Class1):
+    def func1(self):
+        print("Метод func1() класу Class3")
+
+    def func2(self):
+        print("Meтoд func2() класу Class3")
+
+    def func3(self):
+        print("Meтoд func3() класу Class3")
+
+    def func4(self):
+        print("Meтoд func4() класу Class3")
+
+
+class Class4(Class2, Class3):
+    def func4(self):
+        print("Meтoд func4() класу Class4")
+с = Class4()
+с.func1()
+с.func2()
+с.func3()
+с.func4()
+
+08
+class Class1:
+    def func1(self):
+        print("Meтoд func1() класу Class1")
+
+
+class Class2(Class1):
+    def func2(self):
+        print("Meтoд func2() класу Class2")
+
+
+class Class3(Class1):
+    def func1(self):
+        print("Метод func1() класу Class3")
+
+    def func2(self):
+        print("Meтoд func2() класу Class3")
+
+    def func3(self):
+        print("Meтoд func3() класу Class3")
+
+    def func4(self):
+        print("Meтoд func4() класу Class3")
+
+
+class Class4(Class2, Class3):
+    func2 = Class3.func2
+
+    def func4(self):
+        print("Meтoд func4() класу Class4")
+
+с = Class4()
+с.func1()
+с.func2()
+с.func3()
+с.func4()
+
+09
+print(Class1.__bases__)
+print(Class2.__bases__)
+print(Class3.__bases__)
+print(Class4.__bases__)
+
+10
+class Class1: x = 10
+class Class2(Class1): pass
+class Class3(Class2): pass
+class Class4(Class3): pass
+class Class5(Class2): pass
+class Class6(Class5): pass
+class Class7(Class4, Class6): pass
+c = Class7 ()
+print(c.x)
+
+class Class1: x = 10
+class Class2(Class1): pass
+class Class3(Class2): pass
+class Class4(Class3): pass
+class Class5(Class2): pass
+class Class6(Class5): pass
+class Class7(Class4, Class6): pass
+c = Class7 ()
+print(Class7. __mro__)
+
+11
+class First:
+    def func(self,a,b):
+        return a+b
+m=First()
+result=m.func(25,75)
+print(result)
+result=m.func("При", "віт")
+print(result)
+result=m.func(True, True)
+print(result)
+
+12
+class FClass:
+    n = 10
+    def total(self,N):
+        self.total = int(self.n) + int(N)
+
+
+class SClass:
+    def total(self,s):
+        self.total = len(str(s))
+
+f = FClass()
+s = SClass()
+f.total(45)
+s.total(45)
+print(f.total)
+print(s.total)
+

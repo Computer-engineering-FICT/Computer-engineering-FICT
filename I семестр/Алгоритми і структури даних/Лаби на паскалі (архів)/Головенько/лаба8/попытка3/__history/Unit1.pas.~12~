@@ -1,0 +1,105 @@
+unit Unit1;
+
+interface
+ type
+ index=1..100;
+ Vector = array [index] of real;
+ Matrix = array [index] of Vector;
+//------------------------------------------------------------------------------ 
+var n: integer;
+    A,B: matrix;
+    F: file of matrix;
+    X:vector;
+//------------------------------
+procedure vz (var n:integer; var A:matrix);
+procedure vvm (n:integer; A:matrix);
+procedure vvv (n:integer; X:vector);
+procedure zapf (A :matrix; F:file of matrix);
+procedure chtenf (var B:matrix; F:file of matrix);
+procedure m2v (n:integer; A: matrix; var X:vector);
+procedure v2dv (n:integer; var X:vector);
+implementation
+ uses crt;
+//------------------------------------------------------------------------------
+procedure vz;                     //ввод матрицы
+var p,q: index;
+begin
+writeln ('¬ведите размер квадратной матрицы');
+read (n);
+for p:=1 to n do
+ for q:=1 to n do 
+  A[p,q]:=(2-(q-3)*(q-3))*(q-5.7)/(p+q)+power(2,p)*sin(p);//p*q;
+end;
+//------------------------------
+procedure vvm;                     //выввод матрицы
+var p,q: index;
+begin
+//clrscr;
+for p:=1 to n do
+ begin
+  for q:=1 to n do
+   write (A[p,q]:3:3,' ');
+  writeln;
+ end;
+writeln; 
+readln; 
+end;
+//------------------------------
+procedure vvv;                     //выввод вектора
+var p: index;
+begin
+//clrscr;
+for p:=1 to n do
+ write (X[p]:3:3,' ');
+writeln; 
+readln; 
+end;
+//------------------------------
+procedure zapf;                //запись в файл   
+begin
+ assign (F,'myfile');
+ rewrite(F);
+ write(F,A);
+ close(F);
+end; 
+//------------------------------
+procedure chtenf;              //чтение с файла    
+begin
+ assign(F,'myfile');
+ reset(F);
+ read(F,B);
+ close(F);
+end; 
+//------------------------------
+procedure m2v;                 //матрицу в вектор
+var p,q: index;
+    buf,max: real;
+    k: integer;
+begin
+ for p:=1 to n do
+  begin
+   for q:=1 to n do
+    buf:=buf+A[p,q];
+   X[p]:=buf/n;
+   buf:=0;
+  end; 
+for p:=1 to n-1 do
+ for q:=1 to n-1 do
+  if X[q]<X[q+1] then
+   begin
+    buf:=X[q];
+    X[q]:=X[q+1];
+    X[q+1]:=buf;
+   end; 
+end;
+//------------------------------
+procedure v2dv;                //вектор в другой вектор
+var p: index;
+begin
+ for p:=n downto 2 do
+  X[p]:=(X[p]-X[p-1])/2;
+end; 
+//------------------------------------------------------------------------------
+
+end.
+

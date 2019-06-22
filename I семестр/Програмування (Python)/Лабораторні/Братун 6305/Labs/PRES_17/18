@@ -1,0 +1,6 @@
+def deco(f):
+    print("Викликана функція func()")
+    return f
+def func(x):
+    return "х = {0}".format(x)
+print (deco(func)(10))

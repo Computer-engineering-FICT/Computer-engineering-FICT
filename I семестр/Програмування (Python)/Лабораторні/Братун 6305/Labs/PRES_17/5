@@ -1,0 +1,9 @@
+def func(*t, **d):
+    for i in t:
+        print(i, end=" ")
+    for i in d: # Перебираємо словник
+        print("{0} => {1}".format(i, d[i]), end=" ")
+    print()
+func(35, 10, a=1, b=2, c=3)
+func(10)
+func(a= 1, b=2)

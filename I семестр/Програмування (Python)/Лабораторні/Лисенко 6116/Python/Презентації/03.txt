@@ -1,0 +1,366 @@
+    #Example 1
+size=int(input("write the number"))
+if size >= 0:
+    print('number positive')
+else:
+    print('number negative')
+
+    #Example 2
+>>> size = 1
+>>> size < 0
+False
+>>> size = 0
+>>> size < 0
+False
+>>> size = -1
+>>> size < 0
+True
+
+    #Example 3
+>>> True + True
+2
+>>> True - False
+1
+>>> True * False
+0
+
+    #Example 4
+>>> type(2147483647), type(999999999999999999999999)
+(<class 'int'>, <class 'int'>)
+
+    #Example 5
+>>> #Десяткове число
+>>> 123445567788778
+123445567788778
+>>> #Двійкове число (починається з префікса 0b)
+>>> 0b001101011010101010101010101
+28136789
+>>> #Вісімкове число (починається з префікса 0o)
+>>> 0o1237645
+343973
+>>> #Шістнадцяткове число (починається з префікса 0x)
+>>> 0xdec1F
+912415
+
+    #Example 6
+>>> float(5.4)
+5.4
+>>> float(8.9e-4)
+0.00089
+>>> float(8.9e-12)
+8.9e-12
+
+    #Example 7
+>>> 2+5j
+(2+5j)
+>>> 23j
+23j
+>>> 11+3j, 23+12j
+((11+3j), (23+12j))
+
+    #Example 8
+my_variable = None
+if my_variable is None:
+    print('my_variable is None')
+else:
+    print('my_variable is not None')
+
+    #Example 9
+>>> S = "Spam"
+>>> len(S)      #довжина
+4
+>>> S[0]        #перший елемент в S
+'S'
+>>> S[1]        #другий елемент зліва
+'p'
+
+    #Example 10
+>>> list1=[1,2,3,4]
+>>> print(list1)
+[1, 2, 3, 4]
+>>> list2 = [x**2 for x in range(10)]
+>>> print(list2)
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+>>> list3 = list("abcde")
+>>> print(list3)
+['a', 'b', 'c', 'd', 'e']
+
+    #Example 11
+>>> for s in "one","two": print(s) #цикл за значеннями кортежу
+
+one
+two
+>>> p = (1.2, 3.4, 0.9)#точка в тривимірному просторі
+>>> print(p)
+(1.2, 3.4, 0.9)
+>>> p1 = 1, 3, 9       #без дужок
+>>> print(p1)
+(1, 3, 9)
+>>> p2 = 1, 2, 3, 4,   #кома ігнорується
+>>> print(p2)
+(1, 2, 3, 4)
+
+    #Example 12
+>>> #one parameter
+>>> for i in range(5):
+	print(i)
+
+
+0
+1
+2
+3
+4
+>>> #Two parameters
+>>> for i in range(3,6):
+	print(i)
+
+
+3
+4
+5
+>>> #Three parameters
+>>> for i in range(4, 10, 2):
+	print(i)
+
+
+4
+6
+8
+>>> #Going backwards
+>>> for i in range(0,-10,-2):
+	print(i)
+
+
+0
+-2
+-4
+-6
+-8
+
+    #Example 13
+dan={'Name':'Ivan','Age':17,'Course':1}
+print(dan)
+print('Name: ',dan['Name'])
+
+    #Example 14
+Group={"Galenko","Petrenko","Sydorko"}
+Total=len(Group)
+print(Group)
+print("Total: ",Total)
+if "Petrenko" in Group:
+    print("Petrenko is a student")
+Group.add("Trump")
+print(Group)
+
+    #Example 15
+>>> arr = [1,2,3]
+>>> arr[0]=0 #змінюємо перший елемент списку
+>>> arr
+[0, 2, 3]
+
+    #Example 16
+>>> str1 = "авто"
+>>> str2 = "транспорт"
+>>> str3 = str1 + str2 # Конкатенація
+>>> print(str3)
+автотранспорт
+
+    #Example 17
+>>> arr = [1, 2, 3]
+>>> i = iter(arr)
+>>> next(i)
+1
+>>> next(i)
+2
+>>> next(i)
+3
+
+    #Example 18
+d = {"х": 1, "y": 2}
+i = iter(d)
+c = next(i)
+print(c,':',d[c])
+c = next(i)
+print(c,':',d[c])
+
+    #Example 19
+>>> for i in [1, 2]: print(i)
+
+1
+2
+
+    #Example 20
+>>> for i in "Рядок": print(i)
+
+Р
+я
+д
+о
+к
+
+    #Example 21
+>>> d = {"x":1, "y": 2}
+>>> for key in d:
+	print (d[key])
+
+
+2
+1
+
+    #Example 22
+>>> x = y = [1, 2] #Наче створили два об'єкти
+>>> x, y
+([1, 2], [1, 2])
+>>> y[1] = 100 # Змінюємо другий елемент
+>>> x, y
+([1, 100], [1, 100])
+>>> x = [1, 2]
+>>> y = [1, 2]
+>>> y[1] = 100
+>>> x, y
+([1, 2], [1, 100])
+
+    #Example 23
+>>> x = y = [1,2] #один об'єкт
+>>> x is y
+True
+>>> x = [1,2]   #різні об'єкти
+>>> y = [1,2]
+>>> x is y
+False
+
+    #Example 24
+>>> x = 2; y = 2; z = 2
+>>> x is y, y is z
+(True, True)
+
+    #Example 25
+>>> x, y, z = 1, 2, 3
+>>> x, y, z
+(1, 2, 3)
+
+    #Example 26
+>>> x, y = 1, 2; x, y
+(1, 2)
+>>> x, y = y, x; x, y
+(2, 1)
+
+    #Example 27
+>>> x, y, z = "123" # Рядок
+>>> x, y, z
+('1', '2', '3')
+>>> х, y, z = [1, 2, 3] # Список
+>>> х, y, z
+(1, 2, 3)
+>>> х, y, z = (1, 2, 3) # Кортеж
+>>> х, y, z
+(1, 2, 3)
+>>> [х, y, z] = (1, 2, 3)#Список ліворуч, кортеж праворуч
+>>> х, y, z
+(1, 2, 3)
+
+    #Example 28
+>>> x,y,*z=(1,2,3,4)
+>>> х,y,z
+(1, 2, [3, 4])
+>>> x,*y,z = ( 1,2,3,4)
+>>> x,y,z
+(1, [2, 3], 4)
+>>> *x,y,z=(1,2,3,4)
+>>> x,y,z
+([1, 2], 3, 4)
+>>> x,y,*z=(1,2,3)
+>>> x,y,z
+(1, 2, [3])
+>>> x,y,*z=1,2
+>>> x,y,z
+(1, 2, [])
+
+    #Example 29
+>>> a="рядок" #тип str
+>>> a=7       #тепер змінна має тип int
+
+    #Example 30
+>>> bool(0),bool(1),bool(""),bool("Рядок"),bool([1,2])
+(False, True, False, True, True)
+
+    #Example 31
+>>> int(7.5),int("71")
+(7, 71)
+>>> int("71",10),int("71",8),int("0o71",8),int("A",16)
+(71, 57, 57, 10)
+
+    #Example 32
+>>> float(7),float("7.1")
+(7.0, 7.1)
+>>> float("Infinity"),float("-inf")
+(inf, -inf)
+>>> float("Infinity")+float("-inf")
+nan
+
+    #Example 32
+>>> str(125),str([1, 2, 3])
+('125', '[1, 2, 3]')
+>>> str((1,2,3)),str({"x":5,"y":10})
+('(1, 2, 3)', "{'y': 10, 'x': 5}")
+>>> str(bytes("a","UTF-8"))
+"b'a'"
+>>> str(bytes("а","UTF-8"))
+"b'\\xd0\\xb0'"
+>>> str(bytes("F","UTF-8"))
+"b'F'"
+>>> str(bytearray("З","UTF-8"))
+"bytearray(b'\\xd0\\x97')"
+>>> str(bytearray("L","UTF-8"))
+"bytearray(b'L')"
+
+    #Example 33
+>>> list("12345")   #Рядок str->list
+['1', '2', '3', '4', '5']
+>>> list("Рядок")   #Рядок str->list
+['Р', 'я', 'д', 'о', 'к']
+>>> list({1,2,3,4,5}) #Множина set-> list
+[1, 2, 3, 4, 5]
+>>> list({"x": 5, "y": 10}) #Словник dict->list
+['y', 'x']
+
+    #Example 34
+>>> tuple("123456") #Рядок str->tuple
+('1', '2', '3', '4', '5', '6')
+>>> tuple([1,2,3,4,5]) #Список list-> tuple
+(1, 2, 3, 4, 5)
+>>> tuple(({"x": 5, "y": 10})) #Словник dict-> tuple
+('y', 'x')
+
+    #Example 35
+х = input("x = ")
+y = input("y = ")
+print (х + y)
+
+    #Example 36
+х = int(input("x = "))
+y = int(input("y = "))
+print (х + y)
+
+    #Example 37
+>>> x=20;x
+20
+>>> del x
+>>> x
+Traceback (most recent call last):
+  File "<pyshell#168>", line 1, in <module>
+    x
+NameError: name 'x' is not defined
+>>> x,y=10,20
+>>> del x,y
+>>> x
+Traceback (most recent call last):
+  File "<pyshell#171>", line 1, in <module>
+    x
+NameError: name 'x' is not defined
+>>> y
+Traceback (most recent call last):
+  File "<pyshell#172>", line 1, in <module>
+    y
+NameError: name 'y' is not defined

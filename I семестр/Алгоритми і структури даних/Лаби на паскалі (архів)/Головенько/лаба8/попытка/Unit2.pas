@@ -1,0 +1,66 @@
+unit Unit2;
+
+interface
+
+Type
+TIndex = 0 .. 20;
+TVector = array [TIndex] of real;
+TMatrix = array [TIndex] of TVector;
+TFunction = function(i, j: TIndex): real;
+
+procedure CreateMatrix(n: TIndex; f: TFunction; Var a: TMatrix);
+procedure CreateVector(n: TIndex; a: TMatrix; Var Vector: TVector);
+procedure SortVector(n: TIndex; Var a: TVector);
+procedure EditVector(n: TIndex; Var Vector: TVector);
+procedure WriteMatrix(n: TIndex; a: TMatrix);
+procedure WriteVector(n: TIndex; Vector: TVector);
+
+
+implementation
+ procedure CreateMatrix(n: TIndex; f: TFunction; Var a: TMatrix);
+Var
+  i, j: TIndex;
+Begin
+for i := 1 to n do
+for j := 1 to n do
+a[i, j] := f(i, j);
+End;
+procedure CreateVector(n: TIndex; a: TMatrix; Var Vector: TVector);
+Var
+  i,j: TIndex;
+Begin
+vector[i]:=a[i,j]/n;
+end;
+procedure SortVector(n:TIndex; Var x,Vector:TVector);
+Var
+i,j,z:integer;
+begin
+if Vector[i]>Vector[i+1] then
+ begin
+ z:=x[j];
+ x[j]:=x[i];
+ x[i]:=z;
+ end;
+end;
+procedure WriteVector(n: TIndex; Vector: TVector);
+Var
+  i: TIndex;
+Begin
+for i := 1 to n do
+Write(Vector[i],' ');
+End;
+
+procedure WriteMatrix(n: TIndex; a: TMatrix);
+Var
+  i,j: TIndex;
+Begin
+for i := 1 to n do
+begin
+for j:=1 to n do
+Write(a[i,j],' ');
+writeln;
+End;
+end;
+
+end.
+

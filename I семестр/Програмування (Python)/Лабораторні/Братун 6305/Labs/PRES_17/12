@@ -1,0 +1,8 @@
+def func (x, y) :
+    for i in range(1, x+1):
+        yield i ** y
+i = func(3, 3)
+print(i.__next__())
+print(i.__next__())
+print(i.__next__())
+print(i.__next__())

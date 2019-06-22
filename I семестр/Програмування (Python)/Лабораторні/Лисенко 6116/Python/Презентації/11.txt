@@ -1,0 +1,263 @@
+#Example 1
+>>> arr = [1, 2, 3]
+>>> arr[0]
+>>> arr[0]=50
+>>> arr
+
+#Example 2
+>>> t = (1, 2, 3)
+>>> t[0]
+>>> t[0]=50
+
+#Example 3
+>>> set([0,1,1,2,3,3,4])
+>>> set(["a","b","c","c","d"])
+>>> set(["string", 1, "string", 3, 3])
+
+#Example 4
+r = range(0, 101, 10)
+for i in r: print(i, end = " ")
+
+#Example 5
+>>> list()
+>>> list("String")
+>>> list((1,2,3,4,5))
+
+s = {"a", "string", "рядок", 12, 45.123, True}
+b = list(s)
+print(b)
+
+#Example 6
+>>> arr = [1, "str", 3, "4"]
+>>> arr
+>>> lmy = ["Петренко", "Петро", 22, "року"]
+>>> lmy
+>>> nmy = [12.2, 11.234567, 23e-12]
+>>> nmy
+
+#Example 7
+>>> arr = []
+>>> arr.append(1)
+>>> arr.append("str")
+>>> arr
+
+#Example 8
+>>> x=y=[1,2]
+>>> x,y
+>>> y[1]=100
+>>> x,y
+>>> x=y=[1,2]
+>>> x is y
+
+#Example 9
+>>> x, y = [1,2], [1,2]
+>>> y[1]=100
+>>> x, y
+>>> x,y,z=2,2,2
+>>> x is y
+>>> y=3
+>>> x is y
+
+#Example 10
+>>> arr = [ [] ] * 2
+>>> arr
+>>> arr[0].append(5)
+>>> arr
+
+#Example 11
+>>> arr=[]
+>>> for i in range(2): arr.append([])
+>>> arr
+>>> arr[0].append(5)
+>>> arr
+
+#Example 12
+>>> arr=[[] for i in range(2)]
+>>> arr
+>>> arr[1].append(2)
+>>> arr
+>>> arr[0].append(3)
+>>> arr
+>>> arr[0].append('str')
+>>> arr
+
+#Example 13
+>>> x = y = [1, 2]
+>>> x is y
+>>> x, y = [1, 2], [1, 2]
+>>> x is y
+
+#Example 14
+>>> x = [1, 2, 3, 4, 5]
+>>> y = ["a", "b", "c", "d"]
+>>> z = list(x)
+>>> f = list(y)
+>>> z,f
+>>> z is x
+>>> f is y
+
+>>> x = [1, 2, 3, 4, 5]
+>>> y = ["a", "b", "c", "d"]
+>>> z = x[:]
+>>> f = y[:]
+>>> z,f
+>>> f is y
+>>> z is x
+
+>>> x = ["2014","2015","2016","2017"]
+>>> y = x.copy()
+>>> y
+>>> x is y
+>>> y[1] = "2018"
+>>> x,y
+
+#Example 15
+>>> x = [1, [2, 3, 4, 5]]
+>>> y = list(x)
+>>> x is y
+>>> y[1][1]=100
+>>> y[0]=200
+>>> x,y
+
+#Example 16
+>>> import copy
+>>> x = [1, [2, 3, 4, 5]]
+>>> y = copy.deepcopy(x)
+>>> y[1][1]=100
+>>> x,y
+
+#Example 17
+>>> import copy
+>>> x = [1, 2]
+>>> y = [x, x]
+>>> y
+>>> z = copy.deepcopy(y)
+>>> z[0] is x, z[1] is x, z[0] is z[1]
+>>> z[0][0] = 300
+>>> z
+>>> x
+
+#Example 18
+>>> arr = [1, "str", 4.1, "5"]
+>>> arr[0], arr[1], arr[2], arr[3]
+>>> arr[0]
+
+#Example 19
+>>> x, y, z = [1, 2, 3]
+>>> x, y, z
+>>> x, y = [1, 2, 3]
+
+#Example 20
+>>> x, y, *z = [1, 2, 3]; x,y,z
+>>> x, y, *z = [1, 2, 3, 4, 5]; x,y,z
+>>> x, y, *z = [1, 2]; x,y,z
+>>> *x, y, z = [1, 2]; x,y,z
+>>> x, *y, z = [1, 2, 3, 4, 5]; x,y,z
+>>> *z, = [1, 2, 3, 4, 5]; z
+>>> x, *y, *z = [1, 2, 3, 4, 5]; x,y,z
+
+#Example 21
+>>> arr = [1, 2, 3, 4, 5, 6]
+>>> len(arr)
+>>> arr[len(arr)-1]
+
+#Example 22
+>>> arr = [1, 2, 3, 4, 5, 6]
+>>> arr[6]
+>>> arr = [1, 'str', 4.1, '5']
+>>> arr[5]
+
+#Example 23
+>>> arr = [1, 2, 3, 4, 5, 6]
+>>> arr[-6], arr[-1]
+
+#Example 24
+>>> arr = [1, 2, 3, 4, 5, 6]
+>>> arr[3] = 100
+>>> arr
+>>> arr[-6] = 50
+>>> arr
+
+#Example 25
+>>> arr = [1, 2, 3, 4, 5, 6]
+>>> m = arr[1:6:2]
+>>> m
+>>> m is arr
+>>> s = arr[:]
+>>> s
+>>> s is arr
+
+#Example 26
+>>> arr = [1, 2, 3, 4, 5, 6]
+>>> arr[::-1]
+>>> arr[1:]
+>>> arr[:-1]
+[1, 2, 3, 4, 5]
+>>> arr[0:2]
+>>> arr[-1:]
+>>> arr[1:4]
+
+#Example 27
+>>> arr = [1, 2, 3, 4, 5, 6]
+>>> arr[1:3] = [8,7]
+>>> arr
+>>> arr[1:3] = []
+>>> arr
+
+#Example 28
+>>> arr1 = [1, 2, 3, 4, 5, 6]
+>>> arr2 = [7, 8, 9]
+>>> sum = arr1 + arr2
+
+#Example 29
+>>> arr = [1, 2, 3, 4, 5, 6]
+>>> arr += [7,8,9]
+>>> arr
+
+#Example 30
+>>> ["a", "b", "c"]*2
+>>> ["a", "b", "c"]*3
+
+>>> "a" in ["a", "b", "c"], "d" in ["a", "b", "c"]
+
+#Example 30
+>>> nested = [[1,2,3],[4,5,6],[7,8,9]]
+>>> nested
+
+#Example 31
+>>> nested = [
+...     [1,2,3],
+...     [4,5,6],
+...     [7,8,9],
+...     ]
+...
+>>> nested
+
+#Example 32
+>>> nested[0]
+>>> nested[0][0]
+
+#Example 32
+>>> nested = [
+...     [["a","b","A"],1],
+...     [["c","d","B"],2],
+...     [["e","f","C"],3],
+...     ]
+...
+>>> nested[0][1],nested[1][1],nested[2][1]
+>>> nested[0][0][0], nested[1][0][1], nested[2][0][2]
+
+>>> nested = [
+...     [("a","b","A"),1],
+...     [("c","d","B"),2],
+...     [("e","f","C"),3],
+...     ]
+...
+>>> nested[0][0][0], nested[1][0][1], nested[2][0][2]
+
+>>> nestdic = [1, "a", {"b":10, "c":["d", 100]}]
+>>> nestdic[0]
+>>> nestdic[1]
+>>> nestdic[2]
+>>> nestdic[2]["c"]
+>>> nestdic[2]["c"][0]

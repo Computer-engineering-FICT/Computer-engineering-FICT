@@ -1,0 +1,19 @@
+>>> s = {1, 2, 3}
+>>> s ^ {1, 2, 4} #{1, 2, 3}^{1, 2, 4}
+
+>>> s.symmetric_difference(set([1, 2, 4]))
+
+>>> s = {1, 2, 3}
+>>> s ^ {1, 2, 3} #{1, 2, 3}^{1, 2, 3}
+
+>>> s.symmetric_difference(set([1, 2, 3]))
+
+>>> s ^ set([4, 5, 6]) #{1, 2, 3}^{4, 5, 6}
+
+>>> s.symmetric_difference(set([4, 5, 6]))
+
+
+
+s = set(range(4)) ^ set(range(2,7))
+print(s)
+

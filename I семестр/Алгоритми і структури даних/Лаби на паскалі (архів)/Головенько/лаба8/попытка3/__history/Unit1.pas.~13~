@@ -1,0 +1,105 @@
+unit Unit1;
+
+interface
+ type
+ index=1..100;
+ Vector = array [index] of real;
+ Matrix = array [index] of Vector;
+//------------------------------------------------------------------------------ 
+var n: integer;
+    A,B: matrix;
+    F: file of matrix;
+    X:vector;
+//------------------------------
+procedure InputMatrix (var n:integer; var A:matrix);
+procedure OutputMatrix (n:integer; A:matrix);
+procedure OutputVector (n:integer; X:vector);
+procedure WriteFile (A :matrix; F:file of matrix);
+procedure ReadFile (var B:matrix; F:file of matrix);
+procedure MatrixOnVector (n:integer; A: matrix; var X:vector);
+procedure VectorOn2Vector (n:integer; var X:vector);
+implementation
+ uses crt;
+//------------------------------------------------------------------------------
+procedure InputMatrix;                     //ввод матрицы
+var p,q: index;
+begin
+writeln ('¬ведите размер квадратной матрицы');
+read (n);
+for p:=1 to n do
+ for q:=1 to n do 
+  A[p,q]:=(2-(q-3)*(q-3))*(q-5.7)/(p+q)+power(2,p)*sin(p);//p*q;
+end;
+//------------------------------
+procedure OutputMatrix;                     //выввод матрицы
+var p,q: index;
+begin
+//clrscr;
+for p:=1 to n do
+ begin
+  for q:=1 to n do
+   write (A[p,q]:3:3,' ');
+  writeln;
+ end;
+writeln; 
+readln; 
+end;
+//------------------------------
+procedure OutputVector;                     //выввод вектора
+var p: index;
+begin
+//clrscr;
+for p:=1 to n do
+ write (X[p]:3:3,' ');
+writeln; 
+readln; 
+end;
+//------------------------------
+procedure WriteFile;                //запись в файл
+begin
+ assign (F,'myfile');
+ rewrite(F);
+ write(F,A);
+ close(F);
+end; 
+//------------------------------
+procedure ReadFile;              //чтение с файла
+begin
+ assign(F,'myfile');
+ reset(F);
+ read(F,B);
+ close(F);
+end; 
+//------------------------------
+procedure MatrixOnVector;                 //матрицу в вектор
+var p,q: index;
+    buf,max: real;
+    k: integer;
+begin
+ for p:=1 to n do
+  begin
+   for q:=1 to n do
+    buf:=buf+A[p,q];
+   X[p]:=buf/n;
+   buf:=0;
+  end; 
+for p:=1 to n-1 do
+ for q:=1 to n-1 do
+  if X[q]<X[q+1] then
+   begin
+    buf:=X[q];
+    X[q]:=X[q+1];
+    X[q+1]:=buf;
+   end; 
+end;
+
+procedure VectorOn2Vector;                //вектор в другой вектор
+var p: index;
+begin
+ for p:=n downto 2 do
+  X[p]:=(X[p]-X[p-1])/2;
+end; 
+//------------------------------------------------------------------------------
+
+end.
+

@@ -1,0 +1,223 @@
+Приклад 1
+>>> bytes()
+
+>>> bytes("рядок", "cp1251")
+
+>>> bуtеs("рядок")
+
+Приклад 2. Приклади обробки помилок
+>>> bytes("string\ufffd","cp1251","strict")
+
+>>> bytes("string\ufffd", "cp1251", "replace")
+
+>>> bytes ( "string\ufffd", "cp1251", "ignore")
+
+Приклад 3. Приклади застосування методу encode
+>>> "рядок".encode() #utf-8
+
+>>> "рядок".encode(encoding="cp1251")
+
+>>>"рядок\ufffd".encode(encoding="cp1251",errors="xmlcharrefreplace")
+
+>>> "рядок\ufffd".encode(encoding="cp1251",errors="backslashreplace")
+
+Приклад 4
+>>> b"string", b'string', b"""string""", b'''string'''
+
+>>> b"рядок"
+
+>>> b"\xf1\xf2\xf0\xee\xea\xe0"
+
+Приклад 5
+>>> b = bytes([225, 226, 224, 174, 170, 160])
+>>> b
+
+>>> str (b,"cp866")
+
+Приклад 6
+>>> bytes (10)
+
+>>> bytes (5)
+
+Приклад 6.
+>>> b = bytes.fromhex('f0ffe4eeea')
+>>> b
+
+Приклад 7. Приклади операцій з типом bytes
+>>> b = bytes ( "string", "cp1251")
+>>> b
+
+>>> b[0] 
+
+>>> b[1:3] 
+
+>>> b+b"123" 
+
+>>> b*3 
+
+>>> 115 in b, b"tr" in b, b"as" in b
+
+Приклад 8
+>>># Перетворення в список
+>>> list(bytes("string","cp1251"))
+
+>>> # Доступ по індексу
+>>> b[0]
+
+Приклад 9
+>>> b = bytes ("string", "cp1251")
+>>> b[0] = 168
+
+Приклад 10
+>>> b= bytes( "string", "cp1251")
+>>> c=b.replace(b"s", b"S")
+>>> c
+
+>>> b
+
+Приклад 11
+>>># Помилка при додаванні об'єктів різних типів
+>>> b"string" + "string"
+
+>>> b"string" + "string".encode("ascii")
+
+Приклад 12
+>>> #Робота з типом str
+>>> lеn("рядок")
+
+>>> #Робота з типом bytes у кодуванні cp1251
+>>> len(bytes("рядок","cp1251"))
+
+>>> #Робота з типом bytes у кодуванні utf-8
+>>> len(bytes("рядок", "utf-8"))
+
+Приклад 13
+>>> b = bytes("рядок", "cp1251")
+>>> b.decode(encoding="cp1251"), b.decode("cp1251")
+
+Приклад 13
+>>> b = bytes("рядок", "cp1251")
+>>> b.decode(encoding="cp1251"), b.decode("cp1251")
+
+Приклад 14
+>>> b = bytes("рядок", "cp1251")
+>>> str(b, "cp1251")
+
+Приклад 15
+>>> w = bytes("Рядок", "cp1251")
+
+>>> k = w.decode("cp1251") .encode("koi8-r")
+>>> k, str(k, "koi8-r")
+
+>>> w = k.decode("koi8-r").encode("cp1251")
+>>> w, str (w, "cp1251")
+
+Приклад 16
+>>> bytearray()
+bytearray(b'')
+
+>>> bytearray("рядок", "cp1251")
+
+>>> bytearray ("рядок ")
+
+Приклад 17. Третій параметр
+>>> bytearray("string\ufffd", "cp1251","strict")
+
+>>> bytearray("string\ufffd","cp1251", "replace")
+
+>>> bytearray ("string\ufffd", " cp1251", "ignore")
+
+Приклад 18
+>>> b = bytearray([224, 239, 164, 174, 170])
+>>> b
+
+>>> str(b, "cp866")
+
+Приклад 19
+
+bytearray(b'\x00\x00\x00\x00\x00')
+
+Приклад 20
+>>> c = bytearray.fromhex('f0ffe4eeea')
+>>> c
+
+>>> str(c, "cp1251")
+
+Приклад 21
+>>> c = bytearray ("Python", "ascii")
+>>> c[0]
+
+>>> c[0]=b"J"[0] 
+>>> c
+
+Приклад 22
+>>> c = bytearray("string", "ascii")
+>>> c.append(b"1"[0]); c
+
+Приклад 23
+>>> c = bytearray ( "string", "ascii")
+>>> c.extend(b"123"); c
+
+Приклад 24
+>>> c = bytearray("string", "ascii")
+>>> c + b"123" # Повертає новий об'єкт
+
+>>> c += b"456"; c
+
+Приклад 25
+>>> c = bytearray( "string", "ascii")
+>>> c[len(c):] = b"123"
+
+>>> c
+
+Приклад 27
+>>> с = bytearray ( "string", "ascii")
+>>> с.pop()
+
+>>> с
+
+>>> с.pop(0)
+
+Приклад 28
+>>> с = bytearray("string", "ascii")
+>>> del с[5] # Видаляємо останній елемент
+>>> с
+
+>>> del с[:2] # Видаляємо перший і другий елементи
+>>> с
+
+Приклад 29
+>>> с = bytearray("strstr", "ascii")
+>>> с.remove(b"s"[0]) 
+>>> с
+
+Приклад 30
+>>> с = bytearray("string", "ascii")
+>>> с.reverse(); с
+
+>>> с = bytearray("123456789", "cp1251")
+>>> с.reverse();с
+
+>>> с = bytearray("абвгдеж", "utf-8")
+>>> с
+
+Приклад 31. Приклад перетворення bytearray в str:
+>>> с = bytearray("рядок", "cp1251")
+>>> с.decode(encoding="cp1251"), с.decode("cp1251")
+
+>>> с = bytearray("123\n456", "cp1251")
+>>> b.decode(encoding="cp1251", errors="replace")
+
+Приклад 32. Приклад перетворення списку й кортежу:
+>>> import pickle
+>>> obj1 = [1, 2, 3, 4, 5] # Список
+>>> obj2 = (6, 7, 8, 9, 10) # Кортеж
+>>> pickle.dumps(obj1)
+
+>>> pickle. dumps(obj2)
+
+Приклад 33.
+>>>pickle.loads(b'\x80\x03]q\x00(K\x01K\x02K\x03K\x04K\x05e.')
+
+>>> pickle.loads(b'\x80\x03(K\x06K\x07K\x08K\tk\ntq\x00.')
+

@@ -1,0 +1,344 @@
+01
+class First:
+    def func(self,a,b):
+        return a+b
+m=First()
+result=m.func(25,75)
+print(result)
+result=m.func("При", "віт")
+print(result)
+result=m.func(True, True)
+print(result)
+
+02
+class FClass:
+    n = 10
+    def total(self,N):
+        self.total = int(self.n) + int(N)
+
+
+class SClass:
+    def total(self,s):
+        self.total = len(str(s))
+
+f = FClass()
+s = SClass()
+f.total(45)
+s.total(45)
+print(f.total)
+print(s.total)
+
+03
+class One:
+     def __init__(self, a): self.a = a ** 2
+     def __str__(self):
+         return '[Піднесли до квадрата: %s]' % (self.a)
+
+
+class Two:
+     def __init__(self, a): self.a = a * 2
+     def __str__(self):
+         return '[Подвоїли: %s]' % (self.a)
+
+a = input ("Введіть число: ")
+a = int(a)
+if -100 < a < 100: obj = One(a)
+else: obj = Two(a)
+print(obj)
+
+04
+class Base:
+    def __init__(self, n):
+        self.numb = n
+    def out(self):
+        print(self.numb)
+
+
+class One(Base):
+    def multi(self, m):
+        self.numb *= m
+
+
+class Two(Base):
+    def inlist(self):
+        self.inlist = list(str(self.numb))
+    def out(self):
+        i = 0
+        while i < len(self.inlist):
+            print(self.inlist[i])
+            i += 1
+
+obj1 = One(45)
+obj1.out()
+obj1.multi(2)
+obj1.out()
+obj2 = Two('abc')
+obj2.inlist()
+obj2.out()
+
+05
+class Mixin:
+    attr = 0
+    def mixin_method(self):
+        print("Meтoд домішка")
+
+m = Mixin
+m.mixin_method(m)
+
+06
+class Mixin:
+    attr = 0
+
+    def mixin_method(self):
+        print("Meтoд домішки")
+
+
+class MixClass(Mixin):
+    def MC_method(self):
+        print("Meтoд класу MixClass")
+
+
+class SubClass (MixClass):
+    def Sub_method(self):
+        print("Meтoд класу SubClass")
+
+c1=MixClass()
+c1.MC_method()
+c1.mixin_method()
+с2=SubClass()
+с2.MC_method()
+с2.Sub_method()
+с2.mixin_method()
+
+07
+class Base:
+    def __init__(self, N):
+        self.numb = N
+
+    def out(self):
+        self.numb /= 2
+        print(self.numb)
+
+
+class Subclass(Base):
+    def out(self):
+        print("\n----")
+        Base.out(self)
+        print("\n----")
+
+i = 0
+while i < 10:
+    if 4 < i < 7:
+        obj = Subclass(i)
+        i += 1
+        obj.out()
+    else:
+        obj = Base(i)
+        i += 1
+        obj.out()
+
+08
+class Base:
+    tb=10
+
+
+class One(Base):
+    to=20
+
+
+class Two(Base):
+    tt=30
+
+x=Base()
+y=One()
+z=Two()
+L=[(x,"tb"),(y,"to"),(z,"tt")]
+for i,j in L:
+    print(getattr(i,j), end=" ")
+
+09
+class One:
+    to=10
+class Two:
+    tw=20
+x=One()
+y=Two()
+L=[(x,"to",1),(y,"tw",2)]
+for i,j,k in L:
+    setattr(i,j,k)
+print(x.__dict__)
+print(y.__dict__)
+
+10
+class One():
+    def __init__(self,a,b):
+        self.t3 = a
+        self.t4 = b
+
+x=One(20,50)
+print("Атрибути до видалення",x.__dict__)
+delattr(x,"t3")
+print("Атрибути після видалення",x.__dict__)
+
+11
+class MyClass:
+    def __init__(self):
+        self.x = 10
+
+    def get_x(self):
+        return self.x
+
+с = MyClass()
+print(hasattr(с, "x"))
+print(hasattr(с, "y"))
+
+12
+class MyClass: pass
+MyClass.x = 50
+c1, c2 = MyClass(), MyClass()
+c1.y = 10
+c2.y = 20
+print(c1.x, c1.y)
+print(c2.x, c2.y)
+
+13
+class MyClass:
+    x = 10
+
+    def __init__(self):
+        self.y = 20
+c1 = MyClass()
+с2 = MyClass()
+print(c1.x, с2.x)
+MyClass.x = 88
+print(c1.x, с2.x)
+
+14
+print(c1.y, c2.y)
+c1.y = 88
+print(c1.y, c2.y)
+
+15
+class MyClass:
+    x = 10
+
+c1 = MyClass()
+c2 = MyClass()
+print(c1.x, c2.x)
+c1.y = 88
+print(c1.x, c1.y)
+c2.z = 100
+print(c2.x, c2.z)
+
+16
+class MyClass:
+    x = 10
+
+c = MyClass()
+MyClass.x = 100
+print(c.x)
+c.x = 200
+print(c.x, MyClass.x)
+
+17
+class A:
+    def __call__(self):
+        print("Виклик у стилі функції")
+a=A()
+a()
+
+18
+class MyClass:
+    def __init__(self, m):
+        self.msg = m
+
+    def __call__(self):
+        print(self.msg)
+        return "Повертаємо "+self.msg
+
+x = MyClass("Повідомлення об'єкта x")
+y = MyClass("повідомлення y")
+x()
+b=y()
+print(b)
+
+19
+class A:
+    def __getattr__(self,b):
+        print("Викликано метод __getattr__()")
+a=A()
+a.c
+
+20
+class MyClass:
+    def __init__(self):
+        self.i = 20
+
+    def __getattr__(self, attr):
+        print("Метод __getattr__()")
+        return 0
+
+c = MyClass()
+print(c.i)
+print(c.s)
+
+21
+class MyClass:
+    def __init__(self):
+        self.i = 20
+
+    def __getattribute__(self, attr):
+       print("Метод __getattribute__()")
+       return object.__getattribute__(self, attr)  # Тільки так!!!
+
+с = MyClass()
+print(с.i)
+
+22
+class MyClass:
+    def __setattr__(self, attr, value):
+        print("Метод __setattr__()")
+        self.__dict__[attr] = value
+        #object.__setattr__(self, attr, value)
+
+c = MyClass()
+c.i = 10
+print(c.i)
+
+23
+class MyClass:
+    x = "Line"
+
+    def __len__(self):
+        b = len(self.x)
+        return b
+
+c = MyClass()
+print(len(c))
+
+24
+class MyClass:
+    def __init__(self, m):
+        self.msg = m
+
+    def __repr__(self):
+        return "Метод  __repr__()  {0}".format(self.msg)
+
+    def __str__(self):
+        return "Метод __str__() {0}".format(self.msg)
+
+c = MyClass("Значення")
+print(repr(c))
+print(str(c))
+print(c)
+
+25
+class MyClass:
+    def __init__ (self, y):
+        self.x = y
+    def hash (self) :
+        return hash(self.x)
+m = MyClass(10)
+d = {}
+d[m] = "Значення"
+print(d[m])

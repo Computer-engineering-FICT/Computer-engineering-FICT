@@ -1,0 +1,13 @@
+import re
+p = re.compile(r"\bpython")
+print("Знaйдeнo" if p.search("python") else "Ні")
+print("Знaйдeнo" if p.search("pythonware") else "Ні")
+print("Знaйдeнo" if p.search("my python ware") else "Ні")
+print("Знaйдeнo" if p.search("thon") else "Ні")
+print("Знaйдeнo" if p.search("pyth") else "Ні")
+print("===============================")
+p = re.compile(r"\bpython\b")
+print("Знaйдeнo" if p.search("python") else "Ні")
+print("Знaйдeнo" if p.search("pythonware") else "Ні")
+print("Знaйдeнo" if p.search("thon") else "Ні")
+print("Знaйдeнo" if p.search("pyth") else "Ні")

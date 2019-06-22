@@ -1,0 +1,12 @@
+ps = input("Уведіть пароль: ")
+    def test_passw(p):
+        def deco (f):
+            if p == "universe":
+                return f
+            else:
+                return lambda: "Доступ закритий"
+        return deco
+@test_passw(ps)
+def func():
+    return "Доступ відкритий"
+print(func())

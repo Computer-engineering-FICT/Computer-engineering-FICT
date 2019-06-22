@@ -1,0 +1,13 @@
+>>> import locale
+>>> # Для кодування windows‐1251
+>>> locale.setlocale(locale.LC_ALL, "Ukrainian_Ukraine.1251")
+
+>>># встановлюємо локаль за замовчуванням 
+>>> locale.setlocale(locale.LC_ALL, "")
+
+>>> #отримуємо поточне значення локалі для всіх категорій 
+>>> locale.getlocale()
+
+>>> # Одержуємо поточне значення категорії locale. LC COLLATE
+>>> locale.getlocale(locale.LC_COLLATE)
+

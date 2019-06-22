@@ -1,0 +1,34 @@
+program Sinus;
+ 
+ var
+ x, e, z, p, S : real;
+ i : integer;
+
+ begin
+  writeln('do you want to input the value in degrees(1) or radians(0)');
+  read(i);
+  writeln('enter x for counting its sinus');
+  read(x);
+  writeln('enter the accuracy');
+  read(e);
+  if i=1 then
+         x:=(x/180)*pi;
+  z:=abs(x);
+  while z>=2*pi do
+                begin
+                z:=z-2*pi;
+                end;
+  p:=z;
+  S:=z;
+  z:=z*z;
+  i:=3;
+  while abs(p)>=e do
+                  begin
+                  p:=(-p*z)/(i*(i-1));
+                  S:=S+p;
+                  i:=i+2;
+                  end;
+  if x<0 then
+         S:=-S;
+  writeln ('sin x= ',S,'number of iterations=', i div 2);
+ end.

@@ -1,0 +1,12 @@
+def factor(n):
+    if n == 0 or n == 1: return 1
+    else:
+        return n * factor(n - 1)
+while True:
+    z = input("Введіть число: ")
+    if z.isdigit():
+        b=int(z)
+        break
+    else:
+        print("Bи ввели не число!")
+print(b,factor(b))

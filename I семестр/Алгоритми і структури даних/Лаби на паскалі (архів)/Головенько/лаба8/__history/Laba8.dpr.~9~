@@ -1,0 +1,32 @@
+program Laba8;
+
+{$APPTYPE CONSOLE}
+
+
+uses
+  Unit2 in 'Unit2.pas';
+
+begin
+
+CreateMatrix(n, f, Matrix);
+
+Writeln;
+Writeln('NewMatrix');
+WriteMatrix(n, Matrix);
+
+SortVector(n,Vector);
+
+Writeln;
+Writeln('SortMatrix');
+WriteMatrix(n, Matrix);
+
+CreateVector(n, Matrix, Vector);
+
+Writeln;
+Writeln('NewVector');
+WriteVector(n, Vector);
+
+Writeln;
+WriteVector(n, Vector);
+
+end.

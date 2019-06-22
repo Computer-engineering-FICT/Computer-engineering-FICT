@@ -1,0 +1,199 @@
+#Example 1
+>>> "%s" % 10
+>>> "%s-%s-%s"%(10, 20, 30)
+
+#Example 2
+>>> "%(name)s-%(year)s"%{"year":1978, "name":"Nik"}
+
+#Example 3
+>>> print("%#o %#o %#o"%(0o77, 10, 12))
+>>> print("%#x %#x %#x"%(0xff, 10, 12))
+>>> print("%#X %#X %#X"%(0xff, 10, 12))
+>>> print("%#.F %#.F"%(300,300))
+>>> print("%#F  %#F"%(300.12345678,300.123))
+
+#Example 4
+>>> "'%d'" % (3)
+>>> "'%d' - '%05d" % (3, 3)
+
+#Example 5
+>>> "'%5d' - '%-5d'" % (3, 3)
+>>> "'%05d' - '%-05d'" % (3, 3)
+
+#Example 6
+>>> "'% d' - '% d'" % (-3, 3)
+
+#Example 7
+>>> "'%+d' - '%+d'" % (-3, 3)
+
+#Example 8
+>>> "'%10d' - '%-10d'" % (3, 3)
+>>> "'%3s' '%10s'" % ("string", "string")
+
+#Example 9
+>>> "'%*s' '%10s'" % (10, "string", "str")
+
+#Example 10
+>>> import math
+>>> "%s %f %.2f" % (math.pi, math.pi, math.pi)
+
+#Example 11
+>>> "'%*.*f'" % (8, 5, math.pi)
+>>> "'%.*f'" % (3, math.pi)
+
+#Example 12
+>>> print("%s"%("Звичайний рядок"))
+>>> print("%s %s %s"%(10, 10.52, [1, 2, 3]))
+
+#Example 13
+>>> print("%r"%("Звичайний рядок"))
+
+#Example 14
+>>> print("%a" % ("рядок"))
+
+#Example 15
+>>> for i in range(33, 127): print("%s => %c" % (i, i))
+
+#Example 16
+>>> print("%d %d %d" % (10, 25.6, -80))
+>>> print("%i %i %i" % (10, 25.6, -80))
+
+#Example 17
+>>> print("%o %o %o" % (0o77, 10, 10))
+>>> print("%#o %#o %#o" % (0o77, 10, 10))
+
+#Example 18
+>>> print("%x %x %x"%(0xff, 10, 10))
+>>> print("%#x %#x %#x"%(0xff, 10, 10))
+>>> print("%X %X %X"%(0xff, 10, 10))
+>>> print("%#X %#X %#X"%(0xff, 10, 10))
+
+#Example 19
+>>> print("%e %e" % (3000, 18657.81452))
+
+#Example 20
+>>> print("%E %E" % (3000, 18657.81452))
+
+#Example 21
+>>> print("%g %g %g" % (0.086578, 0.000086578, 1.865E-005))
+>>> print("%G %G %G" % (0.086578, 0.000086578, 1.865E-005))
+
+#Example 22
+>>> print("% %s" % ("- це символ відсотка"))
+>>> print("%% %s" % ("- це символ відсотка"))
+>>> print("%s" % ("% - це символ відсотка"))
+
+#Example 26
+>>> s = "str"
+>>> s.center(15), s.center(11, "-")
+
+#Example 27
+>>> s = "str"
+>>> "'%5s' '%-5s' '%s'" % (s, s, s.center(5))
+
+#Example 28
+>>> s = "string"
+>>> s.center(6), s.center(5)
+
+#Example 29
+>>> s = "string"
+>>> s.ljust(15), s.ljust(15, "-")
+>>> s.ljust(6), s.ljust(5)
+
+#Example 30
+>>> s = "string"
+>>> s.rjust(15), s.rjust(15, "-")
+>>> s.rjust(6), s.rjust(5)
+
+#Example 31
+>>> "5".zfill(20), "123456".zfill(5)
+>>> s="Рядок"
+>>> s.zfill(12), s.zfill(5)
+
+#Example 32
+>>> print("{0}".format("Мінімальний набір параметрів"))
+>>> print("Символи {{ i }} - {0}".format("спеціальні"))
+
+#Example 33
+>>> "{0} - {1} - {2}".format(10, 12.3, "string")
+>>> arr = [10, 12.3, "string"]
+>>> "{0} - {1} - {2}".format(*arr)
+>>> "{model}-{color}".format(color="red", model="BMW")
+>>> d = {"color": "red", "model": "BMW"}
+>>> "{model}-{color}".format(**d)
+>>> "{color} - {0}".format(2015, color="red")
+
+#Example 34
+>>> arr = [10, [12.3, "string"]]
+>>> "{0[0]} - {0[1][0]} - {0[1][1]}".format(arr)
+>>> "{a[0]} - {a[1][1]".format(a=arr)
+>>> "{a[0]} - {a[1][1]}".format(a=arr)
+
+#Example 35
+>>> "{} - {} - {} - {n}".format(1, 2, 3, n=4)
+>>> "{} - {} - {n} - {}".format(1, 2, 3, n=4)
+
+#Example 36
+>>> print("{0!s}".format("рядок"))
+>>> print("{0!r}".format("рядок"))
+>>> print("{0!a}".format("рядок"))
+
+#Example 37
+>>> "'{0:10}' '{1:3}'".format(3, "string")
+
+#Example 38
+>>> "'{0:{1}}'".format(3, 10)
+
+#Example 39
+>>> "'{0:<10}''{1:>10}''{2:^10}'".format(3, 3, 3)
+
+#Example 40
+>>> "'{0:=10}' '{1:=10}'".format(-3, 3)
+
+#Example 41
+>>> "'{0:=010}' '{1:=010}'".format(-3, 3)
+>>> "'{0:=05}' '{1:=06}'".format(-123, 34)
+
+#Example 42
+>>> "'{0:0=10}' '{1:0=10}'".format(-3, 3)
+>>> "'{0:*<10}' '{1:+>10}' '{2:10}' '{2:.^10}'".format(3, 3, 3)
+
+#Example 43
+>>> "'{0:+}' '{1:+}' '{0:-}' '{1:-}'".format(3, -3)
+>>> "'{0: }' '{1: }'".format(3, -3)
+
+#Example 44
+>>> "'{0:b}' '{0:#b}'".format(3)
+
+#Example 45
+>>> "'{0:c}'".format(100)
+
+#Example 46
+>>> print("{0:,d}".format(1000000000))
+>>> "'{0:d}' '{0: o}' '{0:#o}'".format(511)
+>>> "'{0:x}' '{0:#x}'".format(255)
+>>> "'{0:X}' '{0:#X}'".format(255)
+
+#Example 47
+>>> "'{0:f}' '{1:f}' '{2:f}'".format(30, 18.6578145, -2.5)
+
+#Example 48
+>>> "'{0:7f}' '{1:.2f}'".format(18.6578145, -2.5)
+
+#Example 49
+>>> "'{0:e}' '{1:e}'".format(3000, 18657.81452)
+
+#Example 50
+>>> "'{0:E}' '{1:E}'".format(3000, 18657.81452)
+
+#Example 51
+>>> "'{0:.2e}' '{1:.2E}'".format(3000, 18657.81452)
+
+#Example 52
+>>> "'{0:g}' '{1:g}'".format(0.086578, 0.000086578)
+
+#Example 53
+>>> "'{0:G}' '{1:G}'".format(0.086578, 0.000086578)
+
+#Example 54
+>>> "'{0:%}' '{1:.4%}'".format(0.086578, 0.000086578)
