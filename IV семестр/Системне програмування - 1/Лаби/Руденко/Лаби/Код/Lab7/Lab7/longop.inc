@@ -1,0 +1,3 @@
+EXTERN DIV_10_LONGOP : proc
+EXTERN MUL_N_32_LONGOP : proc
+EXTERN Factorial_LONGOP : proc

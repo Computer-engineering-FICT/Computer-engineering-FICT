@@ -1,0 +1,103 @@
+Turbo Assembler	 Version 3.1	    02/26/13 12:17:01	    Page 1
+lab40.asm
+
+
+
+      1					 .386
+      2					 assume	cs: code, ds: data
+      3	    0000			 data segment use16
+      4	    0000  00000005 00000008   +		 block dd 5, 8,	13, 21,	34, 55,	89, 144, 233, 377
+      5		  0000000D 00000015   +
+      6		  00000022 00000037   +
+      7		  00000059 00000090   +
+      8		  000000E9 00000179
+      9	    0028  00000009			 n dd 9
+     10	    002C  000000DC			 nn dd 220
+     11	    0030  ????????			 temp dd ?
+     12	    0034  46 6C	6F 61 74 69 6E+		 yes db	'Floating-point	unit available$'
+     13		  67 2D	70 6F 69 6E 74+
+     14		  20 75	6E 69 74 20 61+
+     15		  76 61	69 6C 61 62 6C+
+     16		  65 24
+     17	    0052  46 6C	6F 61 74 69 6E+		 no db 'Floating-point unit not	available$'
+     18		  67 2D	70 6F 69 6E 74+
+     19		  20 75	6E 69 74 20 6E+
+     20		  6F 74	20 61 76 61 69+
+     21		  6C 61	62 6C 65 24
+     22	    0074			 data ends
+     23
+     24	    0000			 code segment use16
+     25	    0000			 beg:
+     26	    0000  B8 0000s			 mov ax, data
+     27	    0003  8E D8				 mov ds, ax
+     28
+     29	    0005  66| 8B 16 0000r		 mov edx, block
+     30	    000A  66| 33 F6			 xor esi, esi
+     31
+     32	    000D  66| 8B 0E 002Cr		 mov ecx, nn
+     33	    0012  66| 8D 1E 0000r		 lea ebx, block
+     34
+     35	    0017  66| 51		 lo: push ecx
+     36	    0019  66| 8B 0E 0027r		 mov ecx, n-1
+     37	    001E					 li:
+     38	    001E  66| 67| 8B 44	B3 04				 mov eax, ebx[esi*4+4]
+     39	    0024  66| 67| 0F A4	04 B3 +				 shld ebx[esi*4], eax, 1
+     40		  01
+     41	    002B  66| 46					 inc esi
+     42	    002D  E2 EF						 loop li
+     43	    002F  66| 67| 0F A4	14 B3 +				 shld ebx[esi*4], edx, 1
+     44		  01
+     45	    0036  66| 59					 pop ecx
+     46	    0038  E2 DD				 loop lo
+     47
+     48	    003A  CD 11				 int 11h
+     49	    003C  0F BA	E0 01			 bt ax,	1
+     50	    0040  BA 0034r			 mov dx, offset	yes
+     51	    0043  72 05	90 90			 jc yes_l
+     52	    0047  BA 0052r			 mov dx, offset	no
+     53
+     54	    004A			 yes_l:
+     55	    004A  B4 09				 mov ah, 09h
+     56	    004C  CD 21				 int 21h
+     57
+Turbo Assembler	 Version 3.1	    02/26/13 12:17:01	    Page 2
+lab40.asm
+
+
+
+     58	    004E  B8 4C00			 mov ax, 4c00h
+     59	    0051  CD 21				 int 21h
+     60	    0053			 code ends
+     61					 end beg
+Turbo Assembler	 Version 3.1	    02/26/13 12:17:01	    Page 3
+Symbol Table
+
+
+
+
+Symbol Name			  Type	 Value
+
+??DATE				  Text	 "02/26/13"
+??FILENAME			  Text	 "lab40	  "
+??TIME				  Text	 "12:17:01"
+??VERSION			  Number 030A
+@CPU				  Text	 0F0FH
+@CURSEG				  Text	 CODE
+@FILENAME			  Text	 LAB40
+@WORDSIZE			  Text	 2
+BEG				  Near	 CODE:0000
+BLOCK				  Dword	 DATA:0000
+LI				  Near	 CODE:001E
+LO				  Near	 CODE:0017
+N				  Dword	 DATA:0028
+NN				  Dword	 DATA:002C
+NO				  Byte	 DATA:0052
+TEMP				  Dword	 DATA:0030
+YES				  Byte	 DATA:0034
+YES_L				  Near	 CODE:004A
+
+Groups & Segments		  Bit Size Align  Combine Class
+
+CODE				  16  0053 Para	  none
+DATA				  16  0074 Para	  none
+

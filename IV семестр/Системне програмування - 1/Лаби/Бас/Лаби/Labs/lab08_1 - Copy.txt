@@ -1,0 +1,138 @@
+.586
+.model flat, stdcall
+option casemap : none			;розрізнювати великі та маленькі букви
+include \masm32\include\windows.inc
+
+include \masm32\include\user32.inc
+include \masm32\include\kernel32.inc
+
+; а також include для інших заголовочних файлів
+includelib \masm32\lib\user32.lib
+includelib \masm32\lib\kernel32.lib
+
+include \masm32\include\comdlg32.inc
+includelib \masm32\lib\comdlg32.lib
+
+include module.inc
+include longop.inc
+
+.const
+	Len equ 8
+	FactorialValue equ 51
+
+.data
+	captionHeaderFactorial db "Lab 5, factorial", 0
+	captionHeaderSquare db "Lab 5, square", 0	
+		
+	textBufFactorial dd Len dup(0ffffffffh)
+	textBufSquare dd Len * 2 dup(0ffffffffh)
+	
+	Res dd Len dup(0)
+	
+	pTemp dd ?   ; temporary pointer 
+
+	RF dd Len * 2 dup(0)
+	
+	; count factorial correctly only for N <= 51, for bigger numbers needs bigger arrays (more than 8) and also counters updated)
+	N dd ?
+
+	;szFileName db 256 dup(0)
+
+	hFile dd 0
+	pResFile dd 0
+	szFileName db "tmp.txt",0
+	szTextBuf db "Рядок тексту, записаний у файл",0
+	newLine db 0ah, 0dh
+
+.code
+
+MySaveFileName proc
+	LOCAL ofn : OPENFILENAME
+	invoke RtlZeroMemory, ADDR ofn, SIZEOF ofn  ; спочатку усі поля обнулюємо
+	mov ofn.lStructSize, SIZEOF ofn
+	mov ofn.lpstrFile, OFFSET szFileName
+	mov ofn.nMaxFile, SIZEOF szFileName
+	invoke GetSaveFileName, ADDR ofn			; виклик вікна File Save As
+	ret
+MySaveFileName endp
+
+ main:
+
+	;call MySaveFileName
+	;cmp eax, 0           ; перевірка: якщо у вікні було натиснуто кнопку Cancel, то EAX=0
+	;je @exit
+
+	invoke CreateFile,	ADDR szFileName,
+						GENERIC_WRITE,
+						FILE_SHARE_WRITE,
+						0, CREATE_ALWAYS,
+						FILE_ATTRIBUTE_NORMAL,
+						0
+	cmp eax, INVALID_HANDLE_VALUE
+	je @exit ;доступ до файлу неможливий
+	mov hFile, eax
+
+	invoke lstrlen, ADDR szTextBuf
+	invoke WriteFile, hFile, ADDR szTextBuf, eax, ADDR pResFile, 0
+ 
+    ; allocation of dynamic memory
+	invoke GlobalAlloc, GPTR, 32 * Len
+	mov pTemp, eax
+
+	;mov dword ptr [eax], 1
+	
+	mov dword ptr [Res], 1
+
+	mov N, 1
+	@factorial:
+
+		; give Mul_N32_LONGOP all params
+		push Len
+		push pTemp
+		push N
+		push offset Res
+		call Mul_N32_LONGOP
+
+		; copy content of Res to pTemp
+		mov ecx, Len
+		dec ecx
+		mov edx, pTemp
+		@copy_Res_to_pTemp:
+			mov eax, [Res + 4 * ecx]
+			mov [edx + 4 * ecx], eax  ; запис у масив по вказівнику робиться через регістр
+			dec ecx
+			jge @copy_Res_to_pTemp
+
+		inc N
+		cmp N, FactorialValue
+		jl @factorial
+
+	invoke GlobalFree, pTemp  ; free memory 
+	invoke CloseHandle, hFile
+
+	; output
+	push offset dword ptr [textBufFactorial]
+	push offset dword ptr [Res]
+	push Len * 32
+	call StrHex_MY
+	invoke MessageBoxA, 0, ADDR textBufFactorial, ADDR captionHeaderFactorial, MB_ICONINFORMATION	
+
+	; call NxN procedure
+	push Len
+	push offset Res
+	push Len
+	push offset Res
+	push offset RF
+	call Mul_NN_LONGOP
+
+	; output
+	push offset dword ptr [textBufSquare]
+	push offset dword ptr [RF]
+	push Len * 32 * 2 - 64
+	call StrHex_MY
+	invoke MessageBoxA, 0, ADDR textBufSquare, ADDR captionHeaderSquare, MB_ICONINFORMATION	
+
+	@exit:
+		invoke ExitProcess, 0
+end main
+

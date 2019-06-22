@@ -1,0 +1,111 @@
+.586
+.model flat, stdcall
+option casemap : none			;розрізнювати великі та маленькі букви
+include \masm32\include\windows.inc
+
+include \masm32\include\user32.inc
+include \masm32\include\kernel32.inc
+
+; а також include для інших заголовочних файлів
+includelib \masm32\lib\user32.lib
+includelib \masm32\lib\kernel32.lib
+
+include \masm32\include\comdlg32.inc
+includelib \masm32\lib\comdlg32.lib
+
+include module.inc
+include longop.inc
+
+.const
+	Len equ 8
+
+.data
+	captionHeaderFactorial db "Lab 5, factorial", 0
+	captionHeaderSquare db "Lab 5, square", 0	
+		
+	textBufFactorial dd Len dup(0ffffffffh)
+	textBufSquare dd Len * 2 dup(0ffffffffh)
+	
+	R dd Len dup(0)
+	
+	pTemp dd ?   ; temporary pointer 
+
+	RF dd Len * 2 dup(0)
+	
+	; count factorial correctly only for N <= 51, for bigger numbers needs bigger arrays (more than 8) and also counters updated)
+	N dd 51
+
+	szFileName db 256 dup(0)
+.code
+
+MySaveFileName proc
+	LOCAL ofn : OPENFILENAME
+	invoke RtlZeroMemory, ADDR ofn, SIZEOF ofn  ; спочатку усі поля обнулюємо
+	mov ofn.lStructSize, SIZEOF ofn
+	mov ofn.lpstrFile, OFFSET szFileName
+	mov ofn.nMaxFile, SIZEOF szFileName
+	invoke GetSaveFileName, ADDR ofn			; виклик вікна File Save As
+	ret
+MySaveFileName endp
+
+ main:
+
+	;call MySaveFileName
+	;cmp eax, 0 ; перевірка: якщо у вікні було натиснуто кнопку Cancel, то EAX=0
+	;je @exit
+	
+	invoke GlobalAlloc, GPTR, 32 * Len
+	mov pTemp, eax
+	;mov dword ptr [eax], 1
+
+	mov dword ptr [R], 1
+	@factorial:
+
+		; give Mul_N32_LONGOP all params
+		push Len
+		push pTemp
+		push N
+		push offset R
+		call Mul_N32_LONGOP
+
+		; copy content of R to pTemp
+		mov ecx, Len
+		dec ecx
+		mov edx, pTemp
+		@copy_R_to_pTemp:
+			mov eax, [R + 4 * ecx]
+			mov [edx + 4 * ecx], eax  ; запис у масив по вказівнику робиться через регістр
+			dec ecx
+			jge @copy_R_to_pTemp
+
+		dec N
+		jnz @factorial
+
+	invoke GlobalFree, pTemp  ; free memory 
+
+	; output
+	push offset dword ptr [textBufFactorial]
+	push offset dword ptr [R]
+	push Len * 32
+	call StrHex_MY
+	invoke MessageBoxA, 0, ADDR textBufFactorial, ADDR captionHeaderFactorial, MB_ICONINFORMATION	
+
+	; call NxN procedure
+	push Len
+	push offset R
+	push Len
+	push offset R
+	push offset RF
+	call Mul_NN_LONGOP
+
+	; output
+	push offset dword ptr [textBufSquare]
+	push offset dword ptr [RF]
+	push Len * 64 - 64
+	call StrHex_MY
+	invoke MessageBoxA, 0, ADDR textBufSquare, ADDR captionHeaderSquare, MB_ICONINFORMATION	
+
+	@exit:
+		invoke ExitProcess, 0
+end main
+

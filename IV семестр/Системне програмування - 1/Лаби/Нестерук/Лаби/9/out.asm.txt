@@ -1,0 +1,15 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;Виведення елементів таблиці
+	mov ah, 2
+	mov cx, word ptr num
+	lea di, elems
+	l_out1:
+		mov dl, ds:[di]
+		int 21h
+		mov dl, ds:[di + 1]
+		int 21h
+		add di, 2
+	loop l_out1
+	mov dl, 1fh
+	int 21h
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

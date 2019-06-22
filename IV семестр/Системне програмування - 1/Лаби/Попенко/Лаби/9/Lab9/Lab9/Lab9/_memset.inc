@@ -1,0 +1,1 @@
+EXTERN _memset:proc

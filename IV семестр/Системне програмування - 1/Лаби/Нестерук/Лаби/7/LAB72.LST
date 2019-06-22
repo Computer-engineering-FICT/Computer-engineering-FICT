@@ -1,0 +1,146 @@
+Turbo Assembler	 Version 3.1	    04/14/13 21:05:53	    Page 1
+lab72.asm
+
+
+
+      1					 .386
+      2					 multiply macro	array1,	array2,	result,	len, t,	totype1, totype2, reg1,	reg2, sign
+      3						 local mul_loop
+      4						 mov cx, len
+      5						 lea bx, array1
+      6						 lea si, array2
+      7						 lea di, result
+      8
+      9					 mul_loop:
+     10						 mov reg1, totype1 ptr [bx]
+     11						 mov reg2, totype1 ptr [si]
+     12						 &sign&mul reg1
+     13
+     14						 mov [di], reg2
+     15						 mov [di+t], reg1
+     16
+     17						 add di, t*2
+     18						 add bx, t
+     19						 add si, t
+     20						 loop mul_loop
+     21					 endm
+     22
+     23					 assume	cs: code, ds: data
+     24	    0000			 data segment use16
+     25	    0000  0C 17	22 2D 38		 arr11 db 12, 23, 34, 45, 56
+     26	    0005  17 22	2D 38 43		 arr12 db 23, 34, 45, 56, 67
+     27	    000A  05*(????)			 res1 dw 5 dup(?)
+     28
+     29	    0014  1234 2345 3456		 arr21 dw 1234h, 2345h,	3456h
+     30	    001A  0123 1234 2345		 arr22 dw 0123h, 1234h,	2345h
+     31	    0020  03*(????????)			 res2 dd 3 dup(?)
+     32
+     33	    002C  01234567 12345678		 arr31 dd 01234567h, 12345678h
+     34	    0034  12345678 23456789		 arr32 dd 12345678h, 23456789h
+     35	    003C  02*		      +		 res3 dq 2 dup(?)
+     36		  (????????????????)
+     37	    004C			 data ends
+     38	    0000			 code segment use16
+     39	    0000			 beg:
+     40	    0000  B8 0000s			 mov ax, data
+     41	    0003  8E D8				 mov ds, ax
+     42
+     43					 ;			 array1, array2, result, len,
+     44					 ;			 t, totype1, totype2, reg1, reg2, sign
+     45					 ;1- ah, al
+     46					 ;2- dx, ax
+     47					 ;4- edx, eax
+     48
+     49						 multiply arr11, arr12,	res1, 5, 1, byte, word,	ah, al,	i		 ;byte
+1    50	    0005  B9 0005			 mov cx, 5
+1    51	    0008  BB 0000r			 lea bx, arr11
+1    52	    000B  BE 0005r			 lea si, arr12
+1    53	    000E  BF 000Ar			 lea di, res1
+1    54	    0011			 ??0000:
+1    55	    0011  8A 27				 mov ah, byte ptr [bx]
+1    56	    0013  8A 04				 mov al, byte ptr [si]
+1    57	    0015  F6 EC				 imul ah
+Turbo Assembler	 Version 3.1	    04/14/13 21:05:53	    Page 2
+lab72.asm
+
+
+
+1    58	    0017  88 05				 mov [di], al
+1    59	    0019  88 65	01			 mov [di+1], ah
+1    60	    001C  83 C7	02			 add di, 1*2
+1    61	    001F  83 C3	01			 add bx, 1
+1    62	    0022  83 C6	01			 add si, 1
+1    63	    0025  E2 EA				 loop ??0000
+     64						 multiply arr21, arr22,	res2, 3, 2, word, dword, dx, ax,		 ;word
+1    65	    0027  B9 0003			 mov cx, 3
+1    66	    002A  BB 0014r			 lea bx, arr21
+1    67	    002D  BE 001Ar			 lea si, arr22
+1    68	    0030  BF 0020r			 lea di, res2
+1    69	    0033			 ??0001:
+1    70	    0033  8B 17				 mov dx, word ptr [bx]
+1    71	    0035  8B 04				 mov ax, word ptr [si]
+1    72	    0037  F7 E2				 mul dx
+1    73	    0039  89 05				 mov [di], ax
+1    74	    003B  89 55	02			 mov [di+2], dx
+1    75	    003E  83 C7	04			 add di, 2*2
+1    76	    0041  83 C3	02			 add bx, 2
+1    77	    0044  83 C6	02			 add si, 2
+1    78	    0047  E2 EA				 loop ??0001
+     79						 multiply arr31, arr32,	res3, 2, 4, dword, qword, edx, eax,	 ;dword
+1    80	    0049  B9 0002			 mov cx, 2
+1    81	    004C  BB 002Cr			 lea bx, arr31
+1    82	    004F  BE 0034r			 lea si, arr32
+1    83	    0052  BF 003Cr			 lea di, res3
+1    84	    0055			 ??0002:
+1    85	    0055  66| 8B 17			 mov edx, dword	ptr [bx]
+1    86	    0058  66| 8B 04			 mov eax, dword	ptr [si]
+1    87	    005B  66| F7 E2			 mul edx
+1    88	    005E  66| 89 05			 mov [di], eax
+1    89	    0061  66| 89 55 04			 mov [di+4], edx
+1    90	    0065  83 C7	08			 add di, 4*2
+1    91	    0068  83 C3	04			 add bx, 4
+1    92	    006B  83 C6	04			 add si, 4
+1    93	    006E  E2 E5				 loop ??0002
+     94	    0070  B8 4C00			 mov ax, 4c00h
+     95	    0073  CD 21				 int 21h
+     96	    0075			 code ends
+     97					 end beg
+Turbo Assembler	 Version 3.1	    04/14/13 21:05:53	    Page 3
+Symbol Table
+
+
+
+
+Symbol Name			  Type	 Value
+
+??0000				  Near	 CODE:0011
+??0001				  Near	 CODE:0033
+??0002				  Near	 CODE:0055
+??DATE				  Text	 "04/14/13"
+??FILENAME			  Text	 "lab72	  "
+??TIME				  Text	 "21:05:53"
+??VERSION			  Number 030A
+@CPU				  Text	 0F0FH
+@CURSEG				  Text	 CODE
+@FILENAME			  Text	 LAB72
+@WORDSIZE			  Text	 2
+ARR11				  Byte	 DATA:0000
+ARR12				  Byte	 DATA:0005
+ARR21				  Word	 DATA:0014
+ARR22				  Word	 DATA:001A
+ARR31				  Dword	 DATA:002C
+ARR32				  Dword	 DATA:0034
+BEG				  Near	 CODE:0000
+RES1				  Word	 DATA:000A
+RES2				  Dword	 DATA:0020
+RES3				  Qword	 DATA:003C
+
+Macro Name
+
+MULTIPLY
+
+Groups & Segments		  Bit Size Align  Combine Class
+
+CODE				  16  0075 Para	  none
+DATA				  16  004C Para	  none
+
