@@ -1,0 +1,22 @@
+1.  #pragma once
+2.  
+3.  #include "matrix.h"
+4.  
+5.  // Повертає max(MT)
+6.  int maxValue(
+7.     const Matrix &MT,
+8.     size_t start,
+9.     size_t end);
+10.  
+11. 
+12. // MAH = a*MEH + alpha*MKH*MR
+13. void calculation(
+14.    const int a,
+15.    const int alpha,
+16.    const Matrix &ME,
+17.    const Matrix &MK,
+18.    const Matrix &MR,   
+19.    size_t H,
+20.    size_t offsMA,
+21.    size_t offsME,
+22.    Matrix &MA);

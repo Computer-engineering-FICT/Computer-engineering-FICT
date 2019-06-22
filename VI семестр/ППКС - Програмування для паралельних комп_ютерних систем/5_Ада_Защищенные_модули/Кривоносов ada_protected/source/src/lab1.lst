@@ -1,0 +1,336 @@
+GNAT GPL 2015 (20150428-49)
+Copyright 1992-2015, Free Software Foundation, Inc.
+
+Compiling: lab5.adb
+Source file time stamp: 2016-04-18 11:42:52
+Compiled at: 2016-04-18 14:46:17
+
+     1.      with Ada.Text_IO, Ada.Integer_text_iO, Ada.Synchronous_Task_Control, Data;
+     2.      use Ada.Text_IO, Ada.Integer_text_iO, Ada.Synchronous_Task_Control;
+     3.
+     4.      procedure Lab5 is
+     5.         Value : Integer :=1;
+     6.         N: Natural :=1000;
+     7.         package DataN is new Data(N);
+     8.         use DataN;
+     9.
+    10.         P: Natural :=4;
+    11.         H: Natural:= N/P;
+    12.
+    13.         B, C : Vector;
+    14.         MO, MT, MA: Matrix;
+    15.            buf : Matrix;
+    16.      ------------------------------------------------------------------
+    17.
+    18.      ------------------------------------------------------------------
+    19.         protected Synchronization is
+    20.            entry WaitForInput;
+    21.            entry WaitForCalcV;
+    22.            entry WaitForCalcMA;
+    23.            procedure InputSignal;
+    24.            procedure CalcVSignal;
+    25.            procedure CalcMASignal;
+    26.         private
+    27.            inputFlag:Natural:=0;
+    28.            vFlag:Natural:=0;
+    29.            MAflag:Natural:=0;
+    30.         end Synchronization;
+    31.
+    32.        protected GeneralResourse is
+    33.            procedure addV(data : in Integer);
+    34.            procedure setMR(data : in Matrix);
+    35.            procedure setAlfa(data : in Integer);
+    36.
+    37.            function CopyAlfa return Integer;
+    38.            function CopyV return Integer;
+    39.            function CopyMR return Matrix;
+    40.
+    41.
+    42.         private
+    43.            alfa: Integer;
+    44.            v: Integer:=0;
+    45.            MR:Matrix;
+    46.
+    47.         end GeneralResourse;
+    48.      ------------------------------------------------------------------
+    49.
+    50.      ------------------------------------------------------------------
+    51.         protected body Synchronization is
+    52.
+    53.            procedure InputSignal is
+    54.            begin
+    55.               inputFlag := inputFlag + 1;
+    56.            end InputSignal;
+    57.
+    58.            procedure CalcVSignal is
+    59.            begin
+    60.               vFlag := vFlag + 1;
+    61.            end CalcVSignal;
+    62.
+    63.            procedure CalcMASignal is
+    64.            begin
+    65.               MAflag := MAflag + 1;
+    66.            end CalcMASignal;
+    67.
+    68.            entry WaitForInput
+    69.              when inputFlag = 3 is
+    70.            begin
+    71.               null;
+    72.            end WaitForInput;
+    73.
+    74.            entry WaitForCalcV
+    75.              when vFlag = 4 is
+    76.            begin
+    77.               null;
+    78.            end WaitForCalcV;
+    79.
+    80.            entry WaitForCalcMA
+    81.              when MAflag = 3 is
+    82.            begin
+    83.               null;
+    84.            end WaitForCalcMA;
+    85.
+    86.        end Synchronization;
+    87.
+    88.        protected body GeneralResourse is
+    89.
+    90.           procedure addV(data : in Integer) is
+    91.           begin
+    92.              v := v+data;
+    93.           end addV;
+    94.
+    95.           procedure setAlfa(data : in Integer) is
+    96.           begin
+    97.              alfa := data;
+    98.           end setAlfa;
+    99.
+   100.
+   101.           procedure setMR(data : in Matrix) is
+   102.           begin
+   103.              MR:=data;
+   104.           end setMR;
+   105.              function CopyAlfa return Integer is
+   106.           begin
+   107.              return alfa;
+   108.           end CopyAlfa;
+   109.
+   110.          function CopyV return Integer is
+   111.           begin
+   112.              return v;
+   113.           end CopyV;
+   114.
+   115.           function CopyMR return Matrix is
+   116.           begin
+   117.              return MR;
+   118.           end CopyMR;
+   119.           end GeneralResourse;
+   120.
+   121.        procedure StartTasks  is
+   122.        ------------------------------------------------------------------
+   123.
+   124.        ------------------------------------------------------------------
+   125.           task T1;
+   126.
+   127.           MR1:Matrix;
+   128.           v1:Integer;
+   129.           alfa1:Integer;
+   130.             task body T1 is
+   131.              begin
+   132.              Put_Line ("T1 started");
+   133.
+   134.              Input(Value, MT);
+   135.              Input(Value, buf);
+   136.              GeneralResourse.setMR(buf);
+   137.
+   138.              Synchronization.InputSignal;
+   139.
+   140.              Synchronization.WaitForInput;
+   141.
+   142.              v1 :=0;
+   143.              for i in 1..H loop
+   144.                 v1:=v1+B(i)*C(i);
+   145.              end loop;
+   146.
+   147.              GeneralResourse.addV(v1);
+   148.
+   149.              Synchronization.CalcVSignal;
+   150.
+   151.              Synchronization.WaitForCalcV;
+   152.
+   153.              alfa1 := GeneralResourse.CopyAlfa;
+   154.             MR1 := GeneralResourse.CopyMR;
+   155.             v1 := GeneralResourse.CopyV;
+   156.
+   157.
+   158.              for i in 1..H loop
+   159.                 for j in 1..N loop
+   160.                    MA(i)(j) :=0;
+   161.                    for k in 1..N loop
+   162.                       MA(i)(j) := MA(i)(j) + MT(i)(k) * MR1(k)(j);
+   163.                   end loop;
+   164.                    MA(i)(j) := MA(i)(j) * alfa1 + v1 * MO(i)(j);
+   165.                 end loop;
+   166.              end loop;
+   167.
+   168.                 Synchronization.CalcMASignal;
+   169.              Put_Line ("T1 finished");
+   170.           end T1;
+   171.        ------------------------------------------------------------------
+   172.
+   173.       ------------------------------------------------------------------
+   174.          task T2;
+   175.
+   176.           v2: Integer;
+   177.           alfa2:Integer;
+   178.           MR2: Matrix;
+   179.              task body T2 is
+   180.              begin
+   181.              Put_Line ("T2 started");
+   182.
+   183.              Synchronization.WaitForInput;
+   184.
+   185.              v2 :=0;
+   186.              for i in H+1..2*H loop
+   187.                 v2:=v2+B(i)*C(I);
+   188.              end loop;
+   189.
+   190.              GeneralResourse.addV(v2);
+   191.
+   192.              Synchronization.CalcVSignal;
+   193.               Synchronization.WaitForCalcV;
+   194.
+   195.             alfa2 := GeneralResourse.CopyAlfa;
+   196.              MR2 := GeneralResourse.CopyMR;
+   197.              v2 := GeneralResourse.CopyV;
+   198.
+   199.
+   200.             for i in H+1..2*H loop
+   201.                 for j in 1..N loop
+   202.                    MA(i)(j) :=0;
+   203.                    for k in 1..N loop
+   204.                       MA(i)(j) := MA(i)(j) + MT(i)(k) * MR2(k)(j);
+   205.                    end loop;
+   206.                    MA(i)(j) := MA(i)(j) * alfa2 + v2 * MO(i)(j);
+   207.                 end loop;
+   208.             end loop;
+   209.
+   210.                 Synchronization.CalcMASignal;
+   211.              Put_Line ("T2 finished");
+   212.           end T2;
+   213.       ------------------------------------------------------------------
+   214.
+   215.        ------------------------------------------------------------------
+   216.           task T3;
+   217.
+   218.           v3: Integer;
+   219.           alfa3:Integer;
+   220.           MR3: Matrix;
+   221.              task body T3 is
+   222.              begin
+   223.              Put_Line ("T3 started");
+   224.
+   225.              Input(Value, MA);
+   226.              Input(Value, B);
+   227.
+   228.              Synchronization.InputSignal;
+   229.
+   230.              Synchronization.WaitForInput;
+   231.
+   232.              v3 :=0;
+   233.              for i in 2*H+1..3*H loop
+   234.                 v3:=v3+B(i)*C(I);
+   235.              end loop;
+   236.
+   237.              GeneralResourse.addV(v3);
+   238.
+   239.              Synchronization.CalcVSignal;
+   240.
+   241.              Synchronization.WaitForCalcV;
+   242.
+   243.              alfa3 := GeneralResourse.CopyAlfa;
+   244.              MR3 := GeneralResourse.CopyMR;
+   245.              v3 := GeneralResourse.CopyV;
+   246.
+   247.
+   248.              for i in 2*H+1..3*H loop
+   249.                 for j in 1..N loop
+   250.                    MA(i)(j) :=0;
+   251.                    for k in 1..N loop
+   252.                       MA(i)(j) := MA(i)(j) + MT(i)(k) * MR3(k)(j);
+   253.                    end loop;
+   254.                    MA(i)(j) := MA(i)(j) * alfa3 + v3 * MO(i)(j);
+   255.                 end loop;
+   256.              end loop;
+   257.
+   258. 			Synchronization.WaitForCalcMA;
+   259.              
+   260. 			  if N<6 then
+   261.              Output(MA);
+   262. 		   end if;
+   263.              Put_Line ("T3 finished");
+   264.           end T3;
+   265.        ------------------------------------------------------------------
+   266.
+   267.        ------------------------------------------------------------------
+   268.           task T4;
+   269.
+   270.           v4: Integer;
+   271.           alfa4:Integer;
+   272.           MR4: Matrix;
+   273.             task body T4 is
+   274.            begin
+   275.          Put_Line ("T4 started");
+   276.              GeneralResourse.setAlfa(Value);
+   277.              Input(Value, C);
+   278.              Input(Value, MO);
+   279.
+   280.
+   281.
+   282.              Synchronization.InputSignal;
+   283.
+   284.              Synchronization.WaitForInput;
+   285.
+   286.
+   287.              v4 :=0;
+   288.              for i in 3*H+1..4*H loop
+   289.                 v4:=v4+B(i)*C(I);
+   290.              end loop;
+   291.
+   292.              GeneralResourse.addV(v4);
+   293.               Synchronization.CalcVSignal;
+   294.                 Synchronization.WaitForCalcV;
+   295.                alfa4 := GeneralResourse.CopyAlfa;
+   296.              MR4 := GeneralResourse.CopyMR;
+   297.             v4 := GeneralResourse.CopyV;
+   298.
+   299.
+   300.              for i in 3*H+1..4*H loop
+   301.                 for j in 1..N loop
+   302.                    MA(i)(j) :=0;
+   303.                    for k in 1..N loop
+   304.                       MA(i)(j) := MA(i)(j) + MT(i)(k) * MR4(k)(j);
+   305.                    end loop;
+   306.                    MA(i)(j) := MA(i)(j) * alfa4 + v4 * MO(i)(j);
+   307.                 end loop;
+   308.              end loop;
+   309.
+   310.
+   311.              
+   312.           		   Synchronization.CalcMASignal;
+   313.
+   314.              Put_Line ("T4 finished");
+   315.           end T4;
+   316.        ------------------------------------------------------------------
+   317.
+   318.       ------------------------------------------------------------------
+   319.           begin
+   320.             null;
+   321.        end StartTasks;
+   322.
+   323.     begin
+   324.      Put_Line ("Lab5 started");
+   325.      StartTasks;
+   326.      Put_Line ("Lab5 finished");
+   327. end Lab5;
+
+ 327 lines: No errors

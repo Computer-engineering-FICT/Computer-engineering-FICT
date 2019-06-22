@@ -1,0 +1,39 @@
+1.  #include "data.h"
+2.  
+3.  void vector_matrix_multiply(const int start, const int end,
+4.     const Vector &B, const Matrix &MO, Vector &T)
+5.  {
+6.     int sum;
+7.      for (int i = start; i < end; i++)
+8.     {
+9.        sum = 0;
+10.        for (int j = 0; j < B.cols; j++)
+11.       {
+12.          sum += B.get(j) * MO.get(i, j);
+13.          }
+14.       T.set(i, sum);
+15.     }
+16. }
+17. 
+18. 
+19. //AH = BH + C(MO*MXH)alpha
+20. //AH = T(MY*MTH + alpha*MXH)
+21. void calculation(const int start, const int end, const int alpha,
+22.    const Vector &B, const Vector &C, const Matrix &MO, const Matrix &MX,
+23.    Vector &A)
+24. {
+25.    long int sum1, sum2;
+26. 
+27.    for(int i = start; i < end; i++) {
+28.       sum2 = 0;
+29.       for(int j = 0; j < MO.cols; j++) {
+30.          sum1 = 0;
+31.          for(int k = 0; k < MO.cols; k++) {
+32.             sum1 += MX.get(i, k) * MO.get(j, k) * alpha;
+33.          }
+34.          sum2 += C.get(j) * sum1;
+35.       }
+36.       sum2 += B.get(i);
+37.       A.set(i, sum2);
+38.    }
+39. }

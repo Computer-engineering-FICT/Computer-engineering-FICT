@@ -1,0 +1,218 @@
+-----------------------------------------------------------------
+--                                                             --
+--   	 Programming for parallel computer systems
+--             Laboratory work #1. Ada. Semaphore         --
+--                                                                                   --
+--                                                                                   --
+--  Task: MA = MB*MC + (MO*MR)*a                         --
+--                                                                                   --
+--  Author: Krivonosov Olexiy, group IO-34          --
+--  Date: 21.02.2016                                                  --
+--                                                                                  --
+------------------------------------------------------------------
+
+with Ada.Text_IO, Ada.Integer_Text_IO, Ada.Synchronous_Task_Control;
+use Ada.Text_IO, Ada.Integer_Text_IO, Ada.Synchronous_Task_Control;
+   procedure Lab1 is
+    N : Natural :=2;
+begin
+Put_Line ("Input N: ");
+Get (Item => N);
+
+declare
+      P : Integer:=4;
+      H : Integer:= N/P;
+
+      subtype Index is Positive range 1..N;
+      type Vector is array (Index) of Integer ;
+      type Matrix is array (Index) of Vector;
+
+
+
+		MA, MB, MC, MO, MR : Matrix;
+        alpha, tempV : Integer;
+        S1,S2, Skd1  : Suspension_Object;	 --semaphores
+
+      procedure Input_Matrix(MA : out Matrix);
+      procedure Output_Matrix(MA : in Matrix);
+      
+
+
+         procedure Start_tasks is
+            task T1;
+            task body T1 is
+              MC1,MR1, Buf11, Buf12  : Matrix;
+
+               alpha1:integer;
+            begin
+               Put_Line("T1 started");
+            -- Entering data  (1) 
+              Input_Matrix(MB);
+              Input_Matrix(MC);
+              Input_Matrix(MO);
+              Input_Matrix(MR);
+              alpha := 1;
+
+            --Signal to T2 about end of input  (2)
+                Set_True(S1);
+            -- copying shared resources  (3,4,5)
+                 Suspend_Until_True(Skd1);
+                    MC1 := MC;				  --Critical sections
+                    MR1 := MR;
+                    alpha1 := alpha;
+                 Set_True(Skd1);
+           -- Calculation MAH = MBH*MC1 + (MOH*MR1)*a1 (6)
+                for i in 1..H loop
+                 for j in Index loop
+                         tempV:=0;
+                      for k in Index loop
+                       tempV:=tempV+MO(i)(k)*MR1(k)(j);
+                      Buf11(i)(j):=tempV;
+                     end loop;
+                    end loop;
+            end loop;
+
+            for i in 1..H loop
+               for j in Index loop
+               Buf11(i)(j) := Buf11(i)(j) * alpha1;
+               end loop;
+               end loop;
+
+               for i in 1..H loop
+                   for j in Index loop
+                         tempV:=0;
+                      for k in Index loop
+                       tempV:=tempV+MB(i)(k)*MC1(k)(j);
+                      Buf12(i)(j):=tempV;
+                     end loop;
+                    end loop;
+            end loop;
+
+            for i in 1..H loop
+               for j in Index loop
+                  MA(i)(j) := Buf11(i)(j) + Buf12(i)(j);
+               end loop;
+            end loop;
+
+
+
+            --Waiting signal from Task2 (7)
+
+                 Suspend_Until_True(S2);
+            -- Output result MA (8)  
+                Output_Matrix(MA);
+                 Put_Line("T1 finished");
+              end T1;
+ 
+              task T2;
+              task body T2 is
+                MC2,MR2, Buf21, Buf22  : Matrix;
+
+               tempV, alpha2:integer;
+
+
+             begin
+                Put_Line("T2 started");
+              -- Waiting to the end of the input data in Task1 (1)  
+                Suspend_Until_True(S1);
+             -- Copying shared resources  (2,3,4)
+                Suspend_Until_True(Skd1);
+                   MC2 := MC;
+                   MR2 := MR;
+                   alpha2 := alpha;
+                Set_True(Skd1);
+
+             -- Calculation MAH = MBH*MC2 + (MOH*MR2)*a2 (5)
+
+
+                for i in H+1..N loop
+                 for j in Index loop
+                         tempV:=0;
+                      for k in Index loop
+                       tempV:=tempV+MO(i)(k)*MR2(k)(j);
+                      Buf21(i)(j):=tempV;
+                     end loop;
+                    end loop;
+            end loop;
+
+            for i in H+1..N loop
+               for j in Index loop
+               Buf21(i)(j) := Buf21(i)(j) * alpha2;
+               end loop;
+               end loop;
+
+               for i in H+1..N loop
+                   for j in Index loop
+                         tempV:=0;
+                      for k in Index loop
+                       tempV:=tempV+MB(i)(k)*MC2(k)(j);
+                      Buf22(i)(j):=tempV;
+                     end loop;
+                    end loop;
+            end loop;
+
+            for i in H+1..N loop
+               for j in Index loop
+                  MA(i)(j) := Buf21(i)(j) + Buf22(i)(j);
+               end loop;
+            end loop;
+
+
+                
+
+                Set_True(S2);
+             -- Signal to Task1 about end of calculation  (6)
+                Put_Line("T2 finished");
+             end T2;
+          begin
+             null;
+          end;
+
+          procedure Input_Vector (M : out Vector)is
+
+          begin
+             for J in Index loop
+                M(J):=1;
+             end loop;
+          end Input_Vector;
+
+          procedure Input_Matrix (MA : out Matrix)is
+          begin
+             for I in Index loop
+                for J in Index loop
+                   MA(I)(J):=1;
+                end loop;
+             end loop;
+          end Input_Matrix;
+      procedure Output_Matrix (MA:in Matrix) is
+      begin
+         if N < 6 then
+            for i in Index loop
+               for j in Index loop
+                  Put(MA(i)(j));
+               end loop;
+               Put_line("");
+            end loop;
+         end if;
+
+      end Output_Matrix;
+          procedure Vector_Output (A:in Vector) is
+          begin
+             if N<6 then
+                Put_Line("");
+                for i in Index loop
+                   Put(A(i));
+                end loop;
+                Put_Line("");
+             end if;
+          end Vector_Output;
+
+
+        begin
+   		   Put_Line("Main procedure start");
+          Set_True(Skd1);
+          Start_tasks;
+          null;
+       end;
+    end Lab1;
+

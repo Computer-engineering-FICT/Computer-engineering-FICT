@@ -1,0 +1,293 @@
+ --------------------------------------------------
+      ---PRO
+      ---Lab1. Ада. Семафоры.
+      ---IV-73
+      ---Grubyi P. V.
+      ---
+      ---Var
+      ---A = a*B + C * (MO*MT)
+      ---18.02.2010
+     --------------------------------------------------
+	       With Matrix_Pack
+	    Ada.Text_IO,
+           Ada.Integer_Text_IO;
+      Use  Ada.Text_IO,
+          Ada.Integer_Text_IO;
+     
+      Package Body Matrix_Pack Is
+     
+         Procedure Matrix_Multiply (M1, M2 : In TMatrix;  p, q : In Integer; XMatrix : Out TMatrix) Is
+     
+           Function X (K, S : In Integer)Return Integer Is
+              Xbuf : Integer := 0;
+           Begin
+              For L In 1 .. N Loop
+                 Xbuf := Xbuf + M1 (K) (L) * M2 (L) (S);
+              End Loop;
+             Return Xbuf;
+          End X;
+    
+        Begin
+           For I In 1 .. N Loop
+              For J In p .. q Loop
+                 XMatrix (I) (J) := 0;
+              End Loop;
+           End Loop;
+    
+           For I In 1 .. N Loop
+              For J In p .. q Loop
+                 XMatrix (I) (J) := X (I, J);
+              End Loop;
+           End Loop;
+        End Matrix_Multiply;
+    
+        Procedure Vector_Matrix_Multiplication (Vec : In  TVector; Matr : In  TMatrix; p, q : In Integer; S : Out TVector) Is
+        Begin
+           For I In p .. q Loop
+              S (I) := 0;
+              For J In 1 .. N Loop
+                 S (I) := S (I) + Vec (J) * Matr (J) (I);
+              End Loop;
+           End Loop;
+        End Vector_Matrix_Multiplication;
+    
+         Procedure Vector_Summ (InVec1, InVec2 : In  TVector; p, q : In Integer; ResVec : Out TVector) Is
+        Begin
+           For I In p .. q Loop
+              ResVec (I) := InVec1 (I) + InVec2 (I);
+           End Loop;
+        End Vector_Summ;
+    
+        Procedure Vector_Scalar_Multiply (InVec : In  TVector; InScalar, p, q : In Integer; ResVec : Out TVector) Is
+        Begin
+           For I In p .. q Loop
+              ResVec (I) := InVec (I) * InScalar;
+           End Loop;
+        End Vector_Scalar_Multiply;
+    
+        Procedure Ah (alpha, p, q : In Integer; B, C : In  TVector; MO, MT : In TMatrix; MOT : in out TMatrix; D, E : in out TVector; A : Out TVector) Is
+        begin
+           Matrix_Multiply (M1 => MO, M2 => MT, p => p, q => q, XMatrix => MOT);
+           Vector_Matrix_Multiplication (Vec => C, Matr => MOT, p => p, q => q, S => D);
+           Vector_Scalar_Multiply (InVec => B, InScalar => Alpha, p => p, q => q, ResVec => E);
+           Vector_Summ(inVec1 => D, inVec2 => E, p => p,q => q, resVec => A);
+        end Ah;
+    
+     End Matrix_Pack;
+
+      Generic
+         N : Integer;
+     
+      Package Matrix_Pack Is
+     
+         Type TVector Is Private;
+         Type TMatrix Is Private;
+    
+         Procedure Ah (alpha, p, q : In Integer; B, C : In  TVector; MO, MT : In TMatrix; MOT : in out TMatrix; D, E : in out TVector; A : Out TVector);
+    
+     Private
+        Type TVector Is Array (1 .. N) Of Integer;
+        Type TMatrix Is Array (1 .. N) Of TVector;
+    
+     End Matrix_Pack;
+
+      with Ada.Text_Io, Ada.Integer_Text_Io;
+      use Ada.Text_Io, Ada.Integer_Text_Io;
+     
+      package body Matrix_Pack.IO is
+     
+         procedure Vector_Input (vec : out TVector) is
+         begin
+            for i in 1 .. N loop
+               vec(i) := 1;
+           end loop;
+          -- Skip_Line;
+        end Vector_Input;
+    
+     --     procedure getValue(x: out integer) is
+     --     begin
+     --        Get(x);
+     --     exception
+     --        when Data_Error =>
+     --           Put_Line("Data input error! Insert element again.");
+     --           New_Line;
+     --           Skip_Line;
+     --           getValue(x);
+     --        when Constraint_Error =>
+     --           Put_Line("Constraint error! Insert element again.");
+     --           New_Line;
+     --           Skip_Line;
+     --           getValue(x);
+     --     end getValue;
+    
+        procedure Vector_Output (vec: in TVector) is
+        begin
+           for i in 1..N loop
+              put(vec(i),4);
+           end loop;
+        new_line;
+        end Vector_Output;
+    
+        procedure Matrix_Input (m: out TMatrix) is
+        begin
+           for i in 1..N loop
+              Vector_Input(m(i));
+           end loop;
+        end Matrix_Input;
+    
+        procedure Matrix_Output (m: in TMatrix) is
+    begin
+           for i in 1..N loop
+              Vector_Output(m(i));
+              new_line;
+           end loop;
+        end Matrix_Output;
+     end Matrix_Pack.IO;
+
+     With ada.Integer_text_IO,
+          Ada.Text_Io,
+          Ada.Synchronous_Task_Control;
+    
+    Use Ada.Text_Io, Ada.Synchronous_Task_Control;
+    
+     Procedure Lab1 Is
+     --------------------------------------------------------
+        N : Integer := 8;
+        P : Integer := 2;
+        H : Integer := N / P;
+     --------------------------------------------------------
+        Package  Matrix Is New  Matrix_Pack (N);
+        Use Matrix;
+    
+     Package IO Is New Matrix.IO;
+        Use IO;
+    
+        -- Глобальные переменные
+        A, B, D, E : TVector;
+        MT, MOT : TMatrix;
+    
+        -- Общие ресурсы
+        alpha : Integer;
+        C : TVector;
+        MO : TMatrix;
+    
+        -- Семафоры
+        Sem_a, Sem_C, Sem_MO, Sem1, Sem2 : Suspension_Object;
+    
+     --------------------------------------------------------
+       Task T1 Is
+           Pragma Priority (8);
+        End T1;
+     --------------------------------------------------------
+        Task T2 Is
+           Pragma Priority (8);
+        End T2;
+     --------------------------------------------------------
+    
+        Task Body T1 Is
+           alpha1 : Integer;
+           C1     : TVector;
+           MO1    : TMatrix;
+    
+        Begin
+           Put_Line ("T1 started");
+           Suspend_Until_True (Sem1); --W2-1
+    
+           -- Копирование общих ресурсов
+           Suspend_Until_True (Sem_MO);
+           MO1 := MO;
+           Set_True (Sem_MO);
+          Suspend_Until_True (Sem_a);
+           alpha1 := alpha;
+           Set_True (Sem_a);
+          Suspend_Until_True (Sem_C);
+           C1 := C;
+           Set_True (Sem_C);
+    
+           -- Вычисление
+           Ah (alpha => alpha1,
+               p     => 1,
+               q     => H,
+               B     => B,
+               C     => C1,
+               MO    => MO1,
+               MT    => MT,
+              MOT   => MOT,
+               D     => D,
+               E     => E,
+               A     => A);
+    
+           Set_True (sem2); --S2-1
+           Put_Line ("T1 ended");
+        End T1;
+     --------------------------------------------------------
+    
+        Task Body T2 Is
+           alpha2 : Integer;
+           C2     : TVector;
+           MO2    : TMatrix;
+    
+        Begin
+           Put_Line ("T2 started");
+         -- Ввод данных
+           alpha := 1;
+           Vector_Input (B);
+          Vector_Input (C);
+          Matrix_Input (MO);
+          Matrix_Input (MT);
+   
+          Set_True (Sem1); --S1-1
+   
+          -- Копирование общих ресурсов
+          Suspend_Until_True (Sem_a);
+          alpha2 := alpha;
+          Set_True (Sem_a);
+          Suspend_Until_True (Sem_C);
+          C2 := C;
+          Set_True (Sem_C);
+          Suspend_Until_True (Sem_MO);
+          MO2 := MO;
+          Set_True (Sem_MO);
+   
+          -- Вычисление
+          Ah (alpha => alpha2,
+             p     => H + 1,
+              q     => N,
+              B     => B,
+              C     => C2,
+              MO    => MO2,
+           MT    => MT,
+              MOT   => MOT,
+              D     => D,
+              E     => E,
+              A     => A);
+   
+       Suspend_Until_True (sem2); --W1-1
+  
+          -- Вывод результата
+          if N <= 8 then
+             Vector_Output (A);
+          end if;
+   
+          Put_Line ("T2 ended");
+       End T2;
+    --------------------------------------------------------
+   
+    Begin
+       Set_True (Sem_a);
+       Set_True (Sem_C);
+       Set_True (Sem_MO);
+    End Lab1;
+	
+      generic package Matrix_Pack.IO is
+         procedure Vector_Input (vec: out TVector);
+     
+         procedure Vector_Output (vec: in TVector);
+     
+         procedure Matrix_Input (m: out TMatrix);
+     
+         procedure Matrix_Output (m: in TMatrix);
+     
+     private
+       -- procedure getValue(x: out integer);
+     end Matrix_Pack.IO;

@@ -1,0 +1,40 @@
+project adaprotectedunit is
+
+   type Build_Modes is ("Release", "Debug");
+   Mode : Build_Modes := external ("BUILD", "Debug");
+
+   for Main use ("lab4.adb");
+
+   for Exec_Dir use ".";
+
+   case Mode is
+      when "Debug" =>
+         for Object_Dir use "debug_objs";
+      when "Release" =>
+         for Object_Dir use "release_objs";
+   end case;
+
+   package Compiler is
+      case Mode is
+         when "Debug" =>
+            for Default_Switches ("Ada") use
+                  ("-g", "-gnato", "-gnatwa", "-fstack-check", "-gnat05");
+         when "Release" =>
+            for Default_Switches ("Ada") use ("-O2", "-gnat05");
+      end case;
+   end Compiler;
+
+   package Builder is
+      case Mode is
+         when "Debug" =>
+            for Default_Switches ("Ada") use ("-g");
+         when "Release" =>
+            for Default_Switches ("Ada") use ("");
+      end case;
+   end Builder;
+
+   package IDE is
+      for Compiler_Command("Ada") use "gnatmake";
+   end IDE;
+
+end adaprotectedunit;

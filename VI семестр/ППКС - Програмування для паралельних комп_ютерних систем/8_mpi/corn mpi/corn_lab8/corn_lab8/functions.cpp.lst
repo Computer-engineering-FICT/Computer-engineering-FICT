@@ -1,0 +1,42 @@
+1.  #include "functions.h"
+2.  
+3.  int maxValue(
+4.     const Matrix &MO,
+5.     size_t start,
+6.     size_t end)
+7.  {
+8.     int result = INT_MIN;
+9.     for(size_t i = start; i < end; i++) {
+10.        for(size_t j = 0; j < MO.cols; j++) {
+11.          int x = MO.get(i, j);
+12.          if(x > result) {
+13.             result = x;
+14.          }
+15.       }
+16.    }
+17.    return result;
+18. }
+19. 
+20. void calculation(
+21.    const int a,
+22.    const int alpha,
+23.    const Matrix &ME,
+24.    const Matrix &MK,
+25.    const Matrix &MR,
+26.    size_t H,
+27.    size_t offsMA,
+28.    size_t offsME,
+29.    Matrix &MA)
+30. {
+31.    int sum;
+32.    for(size_t i = 0; i < H; i++) {
+33.       for(size_t j = 0; j < MA.cols; j++) {
+34.          sum = 0;
+35.          for(size_t k = 0; k < MA.cols; k++) {
+36.             sum += MK.get(i + offsMA, k) * MR.get(k, j);
+37.          }
+38.          sum = a * ME.get(i + offsME, j) + alpha * sum;
+39.          MA.set(i + offsMA, j, sum);
+40.       }
+41.    }
+42. }

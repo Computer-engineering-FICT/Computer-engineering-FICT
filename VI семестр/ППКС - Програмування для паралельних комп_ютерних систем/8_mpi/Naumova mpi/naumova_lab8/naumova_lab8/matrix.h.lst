@@ -1,0 +1,37 @@
+1.  #pragma once
+2.  #include "vector.h"
+3.  
+4.  class Matrix :
+5.     public Vector
+6.  {
+7.  public:
+8.     Matrix(int rows, int cols);
+9.     Matrix(int N);
+10.     Matrix(const Matrix &other);
+11.    ~Matrix();
+12. 
+13.    long int get(int i, int j) const
+14.    {
+15.       assert(i < this->rows);
+16.       assert(j < this->cols);
+17.       return Vector::get(i * cols + j);
+18.    }
+19. 
+20.    void set(int i, int j, long int value)
+21.    {
+22.       assert(i < this->rows);
+23.       assert(j < this->cols);
+24.       Vector::set(i * cols + j, value);
+25.    }
+26. 
+27.    void output();
+28.    void get_column(int col, Vector &vector);
+29.    void transpose();
+30. 
+31. 
+32.    const int rows;
+33.    const int cols;
+34. 
+35. 
+36. };
+37. 

@@ -1,0 +1,136 @@
+Source file: ..\package1.adb   Mon May 16 19:42:49 2011
+
+    1     with Ada.Text_IO; use Ada.Text_IO;
+    2     with Ada.INteger_Text_IO; use Ada.INteger_Text_IO;
+    3     with Ada.IO_Exceptions; use Ada.IO_Exceptions;
+    4 
+    5     package Package1 is
+    6         N: integer := 4000;   --size of structures
+    7                 P: integer := 4;   --count of processors
+    8                 H: integer := N/P; --size of piece
+    9 
+   10            type Vec is array (1..N) of Integer;
+   11        type Matr is array (1..N) of Vec;
+   12 
+   13        procedure Constant_Out(a: integer);
+   14        procedure Vec_print(v: Vec);
+   15        procedure Matr_print(m: Matr);
+   16            procedure Vec_Input(V: in out Vec);
+   17            procedure Matr_Input(M: in out Matr);
+   18            procedure Sort (V : in out Vec);
+   19 
+   20     end Package1;
+   21     
+   22             
+   23   package body Package1 is
+   24         
+   25     procedure Matr_Input(M: in out Matr) is 
+   26         begin
+   27                 for i in 1 .. N loop
+   28             for j in 1 .. N loop
+   29                M(i)(j) := 1;
+   30             end loop;
+   31          end loop;      
+   32 end Matr_Input;
+   33 
+   34             procedure Vec_Input(V: in out Vec) is 
+   35         begin
+   36                 for i in 1 .. N loop
+   37                V(i) := 1;
+   38          end loop;      
+   39         end Vec_Input;
+   40            
+   41         procedure Constant_Out(a: integer) is   
+   42    begin
+   43           Put(a, 4);
+   44           New_Line;
+   45    end Constant_Out;
+   46 
+   47    procedure Vec_print(v: Vec) is
+   48    begin
+   49       for i in 1 .. N loop
+   50          Put(v(i), 4);
+   51       end loop;
+   52    end;
+   53 
+   54    procedure Matr_print(m: Matr) is
+   55    begin
+   56       for i in 1..n loop
+   57          Vec_print(m(i));
+   58          New_Line;
+   59       end loop;
+   60    end Matr_print;
+   61 
+   62    procedure Sort (V : in out Vec) is
+   63        Temp  : Integer;
+   64 begin
+   65        temp := V(1);
+   66        -- сортування бульбашкою ---
+   67        for Count1 in V'Range loop
+   68           for Count2 in V'Range loop
+   69              if (V(Count1) > V(Count2)) then
+   70                 begin
+   71                    Temp      := V(Count1);
+   72                    V(Count1) := V(Count2);
+   73                    V(Count2) := Temp;
+   74                 end;
+   75                  end if;
+   76               end loop;
+   77            end loop;
+   78         end Sort;
+   79 
+   80    
+   81   end Package1;
+
+NAME                 KIND/FILE            DEF    REFERENCES (* if assigned)
+---------------------------------------------------------------------------
+Ada                  #1:ada.ada                  1 2 3 
+Constant_Out         subprogram          13      
+Constant_Out         subprogram body     41      45 
+Count1               object              67      69 71 72 
+Count2               object              68      69 72 73 
+H                    object               8      
+INteger_Text_IO      #4:ada.integer_text_io.ada  2 
+IO_Exceptions        #3:ada.io_exceptions.dat    3 
+M                    parameter           17      
+M                    parameter           25      29* 
+Matr                 type                11      15 17 25 54 
+Matr_Input           subprogram          17      
+Matr_Input           subprogram body     25      32 
+Matr_print           subprogram          15      
+Matr_print           subprogram body     54      60 
+N                    object               6      8 10 11 27 28 36 49 56 
+New_Line             #2:ada.text_io.spc          44 58 
+P                    object               7      8 
+Package1             library package      5      20 
+Package1             lib package body    23      81 
+Put                  #2:ada.text_io.spc          43 50 
+Sort                 subprogram          18      
+Sort                 subprogram body     62      78 
+Temp                 object              63      65* 71* 73 
+Text_IO              #2:ada.text_io.spc          1 
+V                    parameter           16      
+V                    parameter           18      
+V                    parameter           34      37* 
+V                    parameter           62      65 67 68 69 71 72* 73* 
+Vec                  type                10      11 14 16 18 34 47 62 
+Vec_Input            subprogram          16      
+Vec_Input            subprogram body     34      39 
+Vec_print            subprogram          14      57 
+Vec_print            subprogram body     47      52 
+a                    parameter           13      
+a                    parameter           41      43* 
+i                    object              27      29 
+i                    object              36      37 
+i                    object              49      50 
+i                    object              56      57 
+j                    object              28      29 
+m                    parameter           15      
+m                    parameter           54      57* 
+v                    parameter           14      
+v                    parameter           47      50* 
+
+    File #1 ada.ada
+    File #2 ada.text_io.spc
+    File #3 ada.io_exceptions.dat
+    File #4 ada.integer_text_io.ada

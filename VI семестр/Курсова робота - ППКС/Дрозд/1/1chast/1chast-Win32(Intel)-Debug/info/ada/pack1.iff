@@ -1,0 +1,62 @@
+SOURCE: ..\..\pack1.ada
+  SRCTIME: 1148656888    Fri May 26 08:21:28 2006
+  COMPSW: adacomp SRC -eo -e 50 -m n -mr n -gc -ga
+COMPVER: 3.273
+SRCDEP: src\ada.ada
+  SRCDEPTIME: 918070990    Wed Feb 03 11:43:10 1999
+SRCDEP: src\text_io.spc
+  SRCDEPTIME: 886775850    Fri Feb 06 06:37:30 1998
+SRCDEP: src\io_exceptions.dat
+  SRCDEPTIME: 848429030    Tue Nov 19 10:43:50 1996
+SRCDEP: src\SYSTEM.SPC
+  SRCDEPTIME: 848429050    Tue Nov 19 10:44:10 1996
+SRCDEP: src\unchecked_conversion.ada
+  SRCDEPTIME: 857479580    Tue Mar 04 04:46:20 1997
+SRCDEP: src\rts.spc
+  SRCDEPTIME: 918071020    Wed Feb 03 11:43:40 1999
+SRCDEP: src\sys_config.ads
+  SRCDEPTIME: 902848880    Tue Aug 11 08:21:20 1998
+SRCDEP: src\integer_text_io.ada
+  SRCDEPTIME: 848429030    Tue Nov 19 10:43:50 1996
+SRCDEP: src\protected_type_descriptor_pkg.dat
+  SRCDEPTIME: 892067250    Wed Apr 08 13:27:30 1998
+UNIT: pack1
+  UKIND: 7    PKG_DECL
+  DEP: System.RTS.Protected_Type_Descriptor_Pkg
+    DEPKIND: 7    PKG_DECL
+    DEPSRC: src\protected_type_descriptor_pkg.dat
+    DEPSRCTIME: 892067250    Wed Apr 08 13:27:30 1998
+  DEP: System.RTS
+    DEPKIND: 7    PKG_DECL
+    DEPSRC: src\rts.spc
+    DEPSRCTIME: 918071020    Wed Feb 03 11:43:40 1999
+  DEP: Ada.Integer_Text_IO
+    DEPKIND: 10    PKG_INST
+    DEPSRC: src\integer_text_io.ada
+    DEPSRCTIME: 848429030    Tue Nov 19 10:43:50 1996
+  DEP: Ada.Text_IO
+    DEPKIND: 7    PKG_DECL
+    DEPSRC: src\text_io.spc
+    DEPSRCTIME: 886775850    Fri Feb 06 06:37:30 1998
+  DEP: Ada
+    DEPKIND: 7    PKG_DECL
+    DEPSRC: src\ada.ada
+    DEPSRCTIME: 918070990    Wed Feb 03 11:43:10 1999
+  NEED: system.rts.TGT.Sec_Stack_Pkg
+    NEEDKIND: 7    PKG_DECL
+  NEED: system.rts.Protected_Interface
+    NEEDKIND: 7    PKG_DECL
+  NEED: pack1
+    NEEDKIND: 8    PKG_BODY
+  FEATURES: 16#8000084100100#(-1,-1,2,-1,-1,-1)
+  ELABLINKNAME: pack1__elab_spec
+ENDUNIT
+UNIT: pack1
+  UKIND: 8    PKG_BODY
+  DEP: pack1
+    DEPKIND: 7    PKG_DECL
+    DEPSRC: ..\..\pack1.ada
+    DEPSRCTIME: 1148656888    Fri May 26 08:21:28 2006
+  FEATURES: 16#8800000000000#(-1,-1,-1,-1,-1,-1)
+  ELABLINKNAME: pack1__elab_body
+ENDUNIT

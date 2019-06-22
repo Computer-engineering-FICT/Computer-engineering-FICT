@@ -1,0 +1,85 @@
+GNAT GPL 2015 (20150428-49)
+Copyright 1992-2015, Free Software Foundation, Inc.
+
+Compiling: data.adb
+Source file time stamp: 2016-04-18 11:48:58
+Compiled at: 2016-04-18 14:54:05
+
+     1. ------------------------------------------------------------------
+     2. --                                                              --
+     3. --              Parallel and Distributed Computing              --
+     4. --           Laboratory work #5. Ada. Protected unit            --
+     5. --                                                              --
+     6. --  File:Data.adb                                                --
+     7. --  Task: MA = (B*C)*MO+ a(MT*MR)                               --
+     8. --                                                              --
+     9. --  Author: Krivonosov Oleksii, group IO-34                     --
+    10. --  Date: 14.04.2016                                            --
+    11. --                                                              --
+    12.  ------------------------------------------------------------------
+    13.
+    14. with Ada.Text_IO, Ada.Integer_Text_IO;
+    15. use Ada.Text_IO, Ada.Integer_Text_IO;
+    16.
+    17.      package body Data is
+    18.
+    19.         procedure Input(Value : Integer; V : out Vector) is
+    20.         begin
+    21.            for i in 1..N loop
+    22.               V(i):=Value;
+    23.               end loop;
+    24.         end Input;
+    25.         procedure Input (Value : Integer; MA : out Matrix) is
+    26.         begin
+    27.               for I in 1..N loop
+    28.                   for J in 1..N loop
+    29.                          MA(I)(J) := Value;
+    30.                   end loop;
+    31.                end loop;
+    32.             end Input;
+    33.
+    34.
+    35.             procedure Output (V : in Vector) is
+    36.             begin
+    37.                New_Line;
+    38.                for I in 1..N loop
+    39.                   Put(Item => V(I), Width => 4);
+    40.                end loop;
+    41.                New_Line;
+    42.             end Output;
+    43.
+    44.             procedure Output (MA : in Matrix) is
+    45.             begin
+    46.                New_Line;
+    47.                for I in 1..N loop
+    48.                   for J in 1..N loop
+    49.                      Put(MA(i)(j));
+    50.                   end loop;
+    51.                   New_line;
+    52.                end loop;
+    53.                New_Line;
+    54.             end Output;
+    55.
+    56.
+    57.         end Data;
+
+Compiling: data.ads
+Source file time stamp: 2016-04-18 11:17:44
+Compiled at: 2016-04-18 14:54:05
+
+     1. with Ada.Text_IO;
+     2.      use Ada.Text_IO;
+     3.
+     4.      generic
+     5.         N: in Natural;
+     6.
+     7.      package Data is
+     8.         type Vector is array (1..N) of Integer;
+     9.         type Matrix is array (1..N) of Vector;
+    10.         procedure Input (Value : in Integer; V : out Vector);
+    11.         procedure Input (Value : in Integer;  MA : out Matrix);
+    12.         procedure Output (V : in Vector);
+    13.         procedure Output (MA : in Matrix);
+    14.      end Data;
+
+ 57 lines: No errors

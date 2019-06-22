@@ -1,0 +1,278 @@
+----------------------------------------------------------------
+--              Paralel and distributed computing             --
+--             Laboratory work #1. Ada. Semaphores            --
+--                  Func: MA = (MB*MZ*Alfa) + ME*MR           --
+--                   IO-83 Vorobyev Vitaliy                   --
+--                        28.03.2011                           --
+----------------------------------------------------------------
+
+with Package1; use Package1;
+with Ada.Text_IO; use Ada.Text_IO;
+with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
+
+procedure Lab4 is
+   MA, MB, MZ, ME, MR: Matr;
+   Alfa: Integer;
+
+-----------------------------------------------------------
+---------------ОПИСАТЕЛЬНАЯ ЧАСТЬ ЗАЩИЩЕННЫХ МОДУЛЕЙ-------
+-----------------------------------------------------------
+
+----ЗАЩИЩЕННЫЙ МОДУЛЬ Synchro
+	protected Synchro is
+		procedure InputSignal;
+		procedure CalcEndSignal;
+		entry OutputSync;
+		entry InputSync;
+	--приватная часть защищенного модуля
+   	private
+		F1: integer := 0;
+		F2: integer := 0;
+	end Synchro;
+
+--ЗАЩИЩЕННЫЙ МОДУЛЬ OP_MZ
+	protected OP_MZ is
+		procedure SetMZ(M: in Matr);
+		function GetMZ return Matr;
+	--приватная часть защищенного модуля
+   	private
+		MZ: Matr;
+	end OP_MZ;
+
+--ЗАЩИЩЕННЫЙ МОДУЛЬ OP_alfa
+	protected OP_alfa is
+		procedure SetAlfa(A: in integer);
+		function GetAlfa return Integer;
+	--приватная часть защищенного модуля
+   	private
+		Alf: Integer;
+	end OP_alfa;
+
+--ЗАЩИЩЕННЫЙ МОДУЛЬ OP_MZ
+	protected OP_MR is
+		procedure SetMR(M: in Matr);
+		function GetMR return Matr;
+	--приватная часть защищенного модуля
+   	private
+		MR: Matr;
+	end OP_MR;
+
+-----------------------------------------------------------
+------------------ТЕЛА ЗАЩИЩЕННЫХ МОДУЛЕЙ------------------
+-----------------------------------------------------------
+
+--ЗАЩИЩЕННЫЙ МОДУЛЬ Synchro
+	protected body Synchro is
+		procedure InputSignal is 
+			begin
+				F2 := F2 + 1;
+    	end InputSignal;
+		procedure CalcEndSignal is
+			begin
+				F1 := F1 + 1;
+    	end CalcEndSignal;
+		entry OutputSync when F1 = P - 1 is
+		begin
+				null;
+		end OutputSync;
+		entry InputSync when F2 = 1 is
+		begin
+				null;
+		end InputSync;
+	end Synchro;
+
+--ЗАЩИЩЕННЫЙ МОДУЛЬ OP_MZ
+	protected body OP_MZ is
+		procedure SetMZ(M: in Matr) is
+		begin	
+			for i in 1 .. N loop
+	            for j in 1 .. N loop
+	               MZ(i)(j) := M(i)(j);
+	            end loop;
+	         end loop;	
+		end SetMZ;
+
+		function GetMZ return Matr is
+		begin
+			return MZ;
+		end;
+	end OP_MZ;
+
+--ЗАЩИЩЕННЫЙ МОДУЛЬ OP_Alfa
+	protected body OP_Alfa is
+		procedure SetAlfa(A: in integer) is
+		begin	
+			Alfa := A;
+		end SetAlfa;
+
+		function GetAlfa return Integer is
+		begin
+			return Alfa;
+		end;
+	end OP_Alfa;
+
+--ЗАЩИЩЕННЫЙ МОДУЛЬ OP_MR
+	protected body OP_MR is
+		procedure SetMR(M: in Matr) is
+		begin	
+			for i in 1 .. N loop
+	            for j in 1 .. N loop
+	               MR(i)(j) := M(i)(j);
+	            end loop;
+	         end loop;	
+		end SetMR;
+
+		function GetMR return Matr is
+		begin
+			return MR;
+		end;
+	end OP_MR;
+
+-----------------------------------------------------------
+------------------------З А Д А Ч И------------------------
+-----------------------------------------------------------
+	task T1;
+	task T2;
+	task T3;
+	task T4;
+
+-----------------------ЗАДАЧА Т1 --------------------------
+	task body T1 is
+		alfa1, Sum1, Sum2: Integer;
+		MZ1, MR1 : Matr;
+	begin
+		Put_Line("T1 start");
+--1.	Ожидание ввода в задаче Т4
+		Synchro.InputSync;
+--2.	Копирование Alfa1:=Alfa, MZ1:=MZ, MR1:= MR     
+		Alfa1 := OP_Alfa.GetAlfa;
+		MZ1 := OP_MZ.GetMZ;
+		MR1 := OP_MR.GetMR;
+--3.	Счёт MAH = + MEH*MR1
+		 for i in 1.. N loop
+            for j in 1 .. H loop
+			   sum1 := 0;
+			   sum2 := 0;
+               for z in 1 .. N loop
+                  sum1 := sum1 + MB(Z)(J) * MZ1(I)(Z);
+				  sum2 := sum2 + ME(Z)(J) * MR1(I)(Z);
+               end loop;
+			   MA(I)(J) := Sum1 * Alfa1 + Sum2;
+			   sum1 := 0;
+			   sum2 := 0;
+			end loop;
+         end loop;
+--4.	Ожидание окончания счёта от Т2, Т3, Т4
+		Synchro.OutputSync;           
+--5.	Вывод МА
+		Put_Line("             ");
+		Matr_Print(MA);                     
+		Put_Line("T1 stop");
+    end T1;
+
+-----------------------ЗАДАЧА Т2 --------------------------
+	task body T2 is
+		alfa2, Sum1, Sum2: Integer;
+		MZ2, MR2 : Matr;
+	begin
+		Put_Line("T2 start");
+--1.	Ожидание ввода в задаче Т4	
+		Synchro.InputSync;
+--2.	Копирование Alfa2:=Alfa, MZ2:=MZ, MR2:=MR 
+		Alfa2 := OP_Alfa.GetAlfa;
+		MZ2 := OP_MZ.GetMZ;
+		MR2 := OP_MR.GetMR;     
+--3.	Счёт MAH = (MBH*MZ2*Alfa2) + MEH*MR2
+		for i in 1.. N loop
+            for j in H+1 .. 2*H loop
+			   sum1 := 0;
+			   sum2 := 0;
+               for z in 1 .. N loop
+                  sum1 := sum1 + MB(Z)(J) * MZ2(I)(Z);
+				  sum2 := sum2 + ME(Z)(J) * MR2(I)(Z);
+               end loop;
+			   MA(I)(J) := Sum1 * Alfa2 + Sum2;
+			   sum1 := 0;
+			   sum2 := 0;
+			end loop;
+         end loop;
+--4.	Сигнал задаче Т1 о конце счёта	
+		Synchro.CalcEndSignal;
+
+		Put_Line("T2 stop");
+    end T2;
+
+-----------------------ЗАДАЧА Т3 ----------------------------
+	task body T3 is
+		alfa3, Sum1, Sum2: Integer;
+		MZ3, MR3 : Matr;
+	begin
+		Put_Line("T3 start");
+--1.	Ожидание ввода в задаче Т4	
+		Synchro.InputSync;
+--2.	Копирование Alfa3:=Alfa, MZ3:=MZ, MR3:=MR 
+		Alfa3 := OP_Alfa.GetAlfa;
+		MZ3 := OP_MZ.GetMZ;
+		MR3 := OP_MR.GetMR;     
+--3.	Счёт MAH = (MBH*MZ3*Alfa3) + MEH*MR3
+		for i in 1.. N loop
+            for j in 2*H+1 .. 3*H loop
+			   sum1 := 0;
+			   sum2 := 0;
+               for z in 1 .. N loop
+                  sum1 := sum1 + MB(Z)(J) * MZ3(I)(Z);
+				  sum2 := sum2 + ME(Z)(J) * MR3(I)(Z);
+               end loop;
+			   MA(I)(J) := Sum1 * Alfa3 + Sum2;
+			   sum1 := 0;
+			   sum2 := 0;
+			end loop;
+         end loop;
+--4.	Сигнал задаче Т1 о конце счёта	
+		Synchro.CalcEndSignal;
+
+		Put_Line("T3 stop");
+    end T3;	
+
+-----------------------ЗАДАЧА Т4 --------------------------
+	task body T4 is
+		alfa4, Sum1, Sum2: Integer;
+		MZ4, MR4 : Matr;
+	begin
+		Put_Line("T4 start");
+--1.	Ввод MB, MZ, ME, MR, Alfa
+--2.	Копирование Alfa4:=Alfa, MZ4:=MZ, MR4:=MR     
+		Matr_Input(MB);		
+		Matr_Input(MZ4);	
+		Matr_Input(ME);	
+		Matr_Input(MR4);	
+		Alfa4 := 2;
+
+		OP_Alfa.SetAlfa(Alfa4);
+		OP_MR.SetMR(MR4);
+		OP_MZ.SetMZ(MZ4);
+--3.	Cигнал задачам Т1, Т2, Т3 о завершении ввода
+		Synchro.InputSignal;
+--4.	Счёт MAH = (MBH*MZ4*Alfa4) + MEH*MR4
+		for i in 1.. N loop
+            for j in 3*H+1 .. N loop
+			   sum1 := 0;
+			   sum2 := 0;
+               for z in 1 .. N loop
+                  sum1 := sum1 + MB(Z)(J) * MZ4(I)(Z);
+				  sum2 := sum2 + ME(Z)(J) * MR4(I)(Z);
+               end loop;
+			   MA(I)(J) := Sum1 * Alfa4 + Sum2;
+			   sum1 := 0;
+			   sum2 := 0;
+			end loop;
+         end loop;
+--5.	Сигнал задаче Т1 о конце счёта
+		Synchro.CalcEndSignal;
+          
+		Put_Line("T4 stop");
+    end T4;	
+
+begin
+   null;
+end Lab4;

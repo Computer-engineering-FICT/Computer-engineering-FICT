@@ -1,0 +1,152 @@
+Source file: ..\randevu-lineyka.ada   Thu May 24 03:27:15 2007
+
+    1 ----------------------------------------------------
+    2 -- Kursovaya rabota                               --
+    3 -- Avtor: Katasonova Olesya                       --
+    4 -- studentka gr. IV-41                            --
+    5 -- Ada95. Randevu. Lineyka                        --
+    6 -- Data sozdaniya:   18.05.07                     --
+    7 ----------------------------------------------------
+    8 with Ada.Text_IO, Ada.Integer_Text_IO, Ada.Calendar;
+    9 Use Ada.Text_IO, Ada.Integer_Text_IO, Ada.Calendar;
+   10 
+   11 Procedure KursP is
+   12         -- consts
+   13         N: Integer:=16;
+   14     p: Integer:=8;
+   15     H: Integer:=N/p;  
+   16     -- types
+   17         TYPE Vector is ARRAY (Integer range<>) OF Integer;
+   18         Type Matrix is array (Integer range<>) of Vector(1..N);
+   19         -- variables
+   20     Tbeg,Tend: Time;
+   21     Tsum: Duration;
+   22 
+   23 procedure StartTasks is
+   24 
+   25    Task type TT(Tid:Integer) is
+   26                 entry Data(MXy: in Matrix; MZy: in Matrix; By: in Vector);
+   27                 entry DataP(MYy: in Matrix;  Cy: in Vector);
+   28                 entry Result(ay: in Vector);
+   29    end TT;
+   30    
+   31 type TTP is access TT;          
+   32 Tarray: array (1..P) of TTP;
+   33 
+   34    -------------------------------------------Task TT----------------------------
+   35    Task body TT is
+   36        MX, MZ: Matrix(1..(N+1-Tid)*H);
+   37            MY: Matrix(1..N);
+   38            B,C: Vector(1..N);
+   39            A: Vector(1..Tid*H);
+   40            Cur: Matrix(1..H);
+   41    begin  
+   42            Put("Started T");
+   43        Put(Tid);
+   44        New_Line;           
+   45        delay(0.5);
+   46            -- 1. Vvod B, MX, MZ
+   47        if Tid=1 then
+   48                    for i in 1..N loop
+   49                        for j in 1..n loop
+   50                                MX(i)(j):=1;
+   51                                MZ(i)(j):=1;
+   52                        end loop;
+   53                        B(i):=1;
+   54            end loop;
+   55            end if;
+   56            -- 2. Vvod C, MY
+   57        if Tid=P then
+   58                    for i in 1..N loop
+   59                        for j in 1..n loop
+   60                                MY(i)(j):=1;
+   61                        end loop;
+   62                        C(i):=1;
+   63            end loop;
+   64            end if;
+   65            -- 3. Prinyat' MX(N+1-Tid)h, MZ(N+1-Tid)h, B ot TT(Tid-1)
+   66            if Tid/=1 then
+   67                    accept Data(MXy: in Matrix; MZy: in Matrix; By: in Vector) do
+   68                            MX:=MXy;
+   69                            MZ:=MZy;
+   70                            B:=By;
+   71                    end;
+   72            end if;
+   73        -- 4. Peredat' MX(N-Tid)h, MZ(N-Tid)h, B v TT(Tid+1)
+   74            if Tid/=P then
+   75                    Tarray(Tid+1).Data(MX(h+1..(N+1-Tid)*H),MZ(h+1..(N+1-Tid)*H),B(1..N));
+   76            end if;
+   77            -- 5. Prinyat' MY, C ot TT(Tid+1)
+   78            if Tid/=P then
+   79                    accept DataP(MYy: in Matrix;  Cy: in Vector) do
+   80                           MY:=MYy;
+   81                           C:=Cy;
+   82                    end;
+   83        end if;
+   84            -- 6. Peredat' MY, C v TT(Tid-1)
+   85            if Tid/=1 then
+   86                    Tarray(Tid-1).DataP(MY,C);
+   87            end if;
+   88            -- 7. Schet A = (B+C)*(MX+MY*MZ)
+   89        For i in 1..H loop
+   90            For j in 1..N loop
+   91                Cur(i)(j):=0;
+   92                For l in 1..N loop
+   93                    Cur(i)(j):=Cur(i)(j)+MZ(i)(l)*MY(l)(j);
+   94                end loop;
+   95                Cur(I)(J):=Cur(I)(J)+MX(I)(J);
+   96            end loop;
+   97        end loop;
+   98        For i in 1..H loop
+   99                    A(I):=0;
+  100            For j in 1..N loop
+  101                            A(i) := A(i) + (B(I)+C(I))*Cur(I)(J);
+  102                    end loop;
+  103            end loop;
+  104        -- 8. Prinyat' A ot TT(Tid-1)
+  105            if Tid/=1 then
+  106                    accept Result(Ay: in Vector) do
+  107                            A(H+1..Tid*H):=Ay;
+  108                    end;
+  109            end if;
+  110        -- 9. Peredat' A v TT(Tid+1) 
+  111            if Tid /= P then 
+  112                Tarray(Tid+1).Result(A(1..Tid*H));
+  113            END IF;
+  114        -- 10. Vyvod rezul'tata
+  115            if Tid=P then        
+  116                    New_Line;
+  117                    put("Value A:");
+  118            New_Line;
+  119                    for i in 1..n loop 
+  120                        put ("A(");
+  121                put (i,width=>2);
+  122                put (")");
+  123                put (A(i));
+  124                new_line;
+  125            end loop;
+  126            Tend:=Clock;
+  127                Tsum:=Tend-Tbeg;
+  128                New_Line;
+  129                put("Execution Time:");
+  130                put(integer(Tsum));
+  131            end if;
+  132            Put("Finished TT");
+  133        Put(Tid);
+  134        New_Line;
+  135 end TT; 
+  136 
+  137 Begin   
+  138          -- inicializaciya zadach
+  139          for i in 1..P loop
+  140         Tarray(i) := new TT(i);
+  141          end loop; 
+  142  end StartTasks;
+  143 -------------------------------------------Main Task----------------------------
+  144 begin
+  145     Tbeg:=Clock;
+  146         put("Main process started");
+  147         New_Line;
+  148         StartTasks;
+  149     Put("Main process finished");
+  150 end KursP;

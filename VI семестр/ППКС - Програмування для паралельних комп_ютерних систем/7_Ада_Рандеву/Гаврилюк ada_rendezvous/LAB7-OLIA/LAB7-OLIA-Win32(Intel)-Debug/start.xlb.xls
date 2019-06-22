@@ -1,0 +1,582 @@
+Source file: ..\start.adb   Thu May 26 02:49:35 2011
+
+    1 ----------------------------------------------------------------
+    2 
+    3 with Package1; use Package1;
+    4 with Ada.Text_IO; use Ada.Text_IO;
+    5 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
+    6 with Ada.Calendar; use Ada.Calendar;
+    7 with ada.float_text_io; use ada.float_text_io;
+    8 
+    9 procedure CoursePRO is
+   10             N: integer := 6;   --size of structures
+   11             P: integer := 6;   --count of processors
+   12                         H: Integer := N / P;
+   13     
+   14             --типы оптимальные для рассылки данных между задачами.
+   15             type vector is array(integer range <>) of integer;
+   16             Subtype Vector_N is Vector(1..N);
+   17                         Subtype Vector_5H is Vector(1..5*H);
+   18                         Subtype Vector_4H is Vector(1..4*H);
+   19                         Subtype Vector_3H is Vector(1..3*H);
+   20             Subtype Vector_2H is Vector(1..2*H);
+   21             Subtype Vector_H is Vector(1..H);
+   22             
+   23             type Matrix is array(integer range <>) of Vector_N;
+   24             Subtype Matrix_N is Matrix(1..N);
+   25                         Subtype Matrix_5H is Matrix(1..5*H);
+   26                         Subtype Matrix_4H is Matrix(1..4*H);
+   27                         Subtype Matrix_3H is Matrix(1..3*H);
+   28             Subtype Matrix_2H is Matrix(1..2*H);
+   29             Subtype Matrix_H is Matrix(1..H);
+   30 
+   31                                 --Спецификация задач
+   32                     task T1 is
+   33                                                 entry allother(MOc: in Matrix_N; BH: in Vector_H; Cx: in Vector_N);
+   34                     end T1;
+   35                 
+   36                     task T2 is
+   37                                                 entry MZ5H(MZx: in Matrix_5H);
+   38                                                 entry B2HC(Bx: in Vector_2H; Cx: in Vector_N);
+   39                                                 entry REZ(AA: in Vector_H); --кусочки данных
+   40                     end T2;
+   41             
+   42                     task T3 is
+   43                                                 entry MOMZ4H(MOX: in Matrix_N; MZX: in Matrix_4H);
+   44                                                 entry B3HC(Bx: in Vector_3H; Cx: in Vector_N);
+   45 
+   46                                                 entry REZ(AA: in Vector_2H); --кусочки данных
+   47                     end T3;
+   48             
+   49                     task T4 is
+   50                                                 entry B5HC(Bx: in Vector_5H; Cx: in Vector_N);
+   51                                                 entry MOMZ3H(MOx: in Matrix_N; MZx: in Matrix_3H);
+   52                                                 entry REZ5(AA: in Vector_H); --кусочки данных
+   53                                                 entry REZ3(AA: in Vector_3H);
+   54                     end T4;
+   55 
+   56                                 task T5 is
+   57                                                 entry BHC(Bx: in Vector_H; Cx: in Vector_N);
+   58                                                 entry MOMZH(MOx: in Matrix_N; MZx: in Matrix_H);
+   59                     end T5;
+   60 
+   61                                 task T6 is
+   62                                                 entry MOMZH(MOx: in Matrix_N; MZx: in Matrix_H);
+   63                                                 entry REZ(AA: in Vector_5H);
+   64                     end T6;
+   65             
+   66                     --Реализация задач
+   67                     task body T1 is
+   68                             Sum1: Integer := 0;
+   69                                                 MO, MZ: Matrix_N;
+   70                                                 C: Vector_N;
+   71                                                 B: Vector_H;
+   72                                                 
+   73                                                 A: Vector_H;
+   74                                                 MTx: Matrix_H;
+   75                         begin
+   76                     put_Line("T1 started!");
+   77 --1.    Ввод MZ
+   78                 for i in 1 .. N loop
+   79                         for j in 1 .. N loop
+   80                                  MZ(i)(j) := 1;
+   81                         end loop;
+   82                 end loop;  
+   83 --2.    Передать MZ5H задаче Т2
+   84                 T2.MZ5H(MZ(1 .. 5*H));
+   85 --3.    Принять MO, BH, C от задачи Т2
+   86                 accept allother(MOc: in Matrix_N; BH: in Vector_H; Cx: in Vector_N) do
+   87                         MO := MOc;
+   88                         B := BH;
+   89                         C := Cx;
+   90                 end allother;
+   91 --4.    Счёт AH = BH + С * (MO  * MZH)
+   92                 for i in 1.. N loop
+   93                   for j in 1 .. H loop
+   94                         sum1 := 0;
+   95                     for z in 1 .. N loop
+   96                        Sum1 := sum1 + MZ(J)(Z) * MO(Z)(I);
+   97                     end loop;
+   98                         MTx(J)(I) := Sum1;
+   99                   end loop;
+  100                 end loop;
+  101                 for i in 1.. H loop
+  102                   Sum1 := 0;
+  103                   for j in 1 .. N loop
+  104                 Sum1 := sum1 + C(J) * MTx(I)(J);
+  105                   end loop;
+  106                   A(I) := Sum1 + B(I);
+  107                 end loop;
+  108 --5.    Передать AH задаче Т2
+  109                 T2.REZ(A);
+  110 
+  111                 put_Line("T1 end!");
+  112          end T1;
+  113            
+  114                    task body T2 is
+  115                             Sum1: Integer := 0;
+  116                                                 MO: Matrix_N;
+  117                                                 MZ: Matrix_5H;
+  118                                                 C: Vector_N;
+  119                                                 B: Vector_2H;
+  120 
+  121                                                 A: Vector_2H;
+  122                                                 MTx: Matrix_H;
+  123                    begin
+  124                           put_Line("T2 started!");
+  125                   
+  126 --1.    Ввод MO
+  127                 for i in 1 .. N loop
+  128                         for j in 1 .. N loop
+  129                                  MO(i)(j) := 1;
+  130                         end loop;
+  131                 end loop;  
+  132 --2.    Принять MZ5H от задачи Т1
+  133                 accept MZ5H(MZx: in Matrix_5H) do
+  134                         MZ := MZx;              
+  135                 end MZ5h;
+  136 
+  137 --3.    Передать MO, MZ4H задаче Т3
+  138                 T3.MOMZ4H(MO, MZ(H+1 .. 5*H));
+  139 --4.    Принять B2H, C от задачи Т3
+  140 
+  141                 accept B2HC(Bx: in Vector_2H; Cx: in Vector_N) do
+  142                         B := Bx;
+  143                         C := Cx;
+  144                 end B2HC;
+  145 --5.    Передать MO, BH, C задаче Т1
+  146                 T1.allother(MO, B(1 .. H), C);
+  147 --6.    Счёт AH = BH + С * (MO  * MZH)
+  148                 for i in 1.. N loop
+  149                   for j in 1 .. H loop
+  150                         sum1 := 0;
+  151                     for z in 1 .. N loop
+  152                        Sum1 := sum1 + MZ(J)(Z) * MO(Z)(I);
+  153                     end loop;
+  154                         MTx(J)(I) := Sum1;
+  155                   end loop;
+  156                 end loop;
+  157                 for i in 1.. H loop
+  158                   Sum1 := 0;
+  159                   for j in 1 .. N loop
+  160                 Sum1 := sum1 + C(J) * MTx(I)(J);
+  161                   end loop;
+  162                   A(I + H) := Sum1 + B(I + H);
+  163                 end loop;
+  164 --7.    Принять AH  от задачи Т1
+  165                 accept REZ(AA: in Vector_H) do
+  166                         A(1 .. H) := AA;
+  167                 end REZ;
+  168 --8.    Передать A2H задаче Т3
+  169                 T3.REZ(A);
+  170 
+  171 
+  172                           Put_Line("T2 ended");
+  173                    end T2;
+  174            
+  175                    task body T3 is
+  176                             Sum1: Integer := 0;
+  177                                                 MO: Matrix_N;
+  178                                                 MZ: Matrix_4H;
+  179                                                 C: Vector_N;
+  180                                                 B: Vector_3H;
+  181 
+  182                                                 A: Vector_3H;
+  183                                                 MTx: Matrix_H;
+  184                    begin
+  185                            put_Line("T3 started!");
+  186 
+  187 --1.    Принять MO, MZ4H от задачи Т2
+  188         accept MOMZ4H(MOX: in Matrix_N; MZX: in Matrix_4H) do
+  189                 MO := MOX;
+  190                 MZ := MZX;
+  191         end MOMZ4H;
+  192 
+  193 --2.    Принять B3H, C от задачи Т4
+  194         accept B3HC(Bx: in Vector_3H; Cx: in Vector_N) do
+  195                 B := Bx;
+  196                 C := Cx;
+  197         end B3HC;
+  198 --3.    Передать MO, MZ3H задаче Т4
+  199         T4.MOMZ3H(MO, MZ(H+1 .. 4*h));
+  200 --4.    Передать B2H, C от задачи Т2
+  201         T2.B2HC(B(1 .. 2*H), C);
+  202 --5.    Счёт AH = BH + С * (MO  * MZH)
+  203         for i in 1.. N loop
+  204                   for j in 1 .. H loop
+  205                         sum1 := 0;
+  206                     for z in 1 .. N loop
+  207                        Sum1 := sum1 + MZ(J)(Z) * MO(Z)(I);
+  208                     end loop;
+  209                         MTx(J)(I) := Sum1;
+  210                   end loop;
+  211                 end loop;
+  212                 for i in 1.. H loop
+  213                   Sum1 := 0;
+  214                   for j in 1 .. N loop
+  215                 Sum1 := sum1 + C(J) * MTx(I)(J);
+  216                   end loop;
+  217                   A(I + 2*H) := Sum1 + B(I + 2*H);
+  218                 end loop;
+  219 --6.    Принять A2H  от задачи Т2
+  220         accept REZ(AA: in Vector_2H) do
+  221                 A(1 .. 2*H) := AA;
+  222         end REZ;
+  223 
+  224 --7.    Передать A3H задаче Т4
+  225         T4.REZ3(A);
+  226         
+  227         Put_Line("T3 ended");
+  228  end T3;
+  229            
+  230                    task body T4 is
+  231                             Sum1: Integer := 0;
+  232                                                 MO: Matrix_N;
+  233                                                 MZ: Matrix_3H;
+  234                                                 C: Vector_N;
+  235                                                 B: Vector_5H;
+  236 
+  237                                                 A: Vector_5H;
+  238                                                 MTx: Matrix_H;
+  239                    begin
+  240                            put_Line("T4 started!");
+  241            
+  242 --1.    Принять B5H, C от задачи Т6
+  243         accept B5HC(Bx: in Vector_5H; Cx: in Vector_N) do
+  244                 B := Bx;
+  245                 C := Cx;
+  246         end B5HC;
+  247 --2.    Передать BH, C от задачи Т5
+  248         T5.BHC(B(4*H+1 .. 5*H), C);
+  249 --3.    Передать B3H, C от задачи Т3
+  250         T3.B3HC(B(1 .. 3*H), C);
+  251 --4.    Принять MO, MZ3H от задачи Т3
+  252         accept MOMZ3H(MOx: in Matrix_N; MZx: in Matrix_3H) do
+  253                 MO := MOx;
+  254                 MZ := MZx;
+  255         end MOMZ3H;
+  256 --5.    Передать MO, MZH задаче Т5
+  257         T5.MOMZH(MO, MZ(H+1 .. 2*H));
+  258 --6.    Передать MO, MZH задаче Т6
+  259         T6.MOMZH(MO, MZ(2*H+1 .. 3*H));
+  260 --7.    Счёт AH = BH + С * (MO  * MZH)
+  261         for i in 1.. N loop
+  262                   for j in 1 .. H loop
+  263                         sum1 := 0;
+  264                     for z in 1 .. N loop
+  265                        Sum1 := sum1 + MZ(J)(Z) * MO(Z)(I);
+  266                     end loop;
+  267                         MTx(J)(I) := Sum1;
+  268                   end loop;
+  269                 end loop;
+  270                 for i in 1.. H loop
+  271                   Sum1 := 0;
+  272                   for j in 1 .. N loop
+  273                 Sum1 := sum1 + C(J) * MTx(I)(J);
+  274                   end loop;
+  275                   A(I + 3*H) := Sum1 + B(I + 3*H);
+  276                 end loop;
+  277 --8.    Принять AH  от задачи Т5
+  278         accept REZ5(AA: in Vector_H) do
+  279                 A(4*H+1 .. 5*H) := AA;
+  280         end REZ5;
+  281 --9.    При5нять A3H  от задачи Т3
+  282         accept REZ3(AA: in Vector_3H) do
+  283                 A(1 .. 3*H) := AA;
+  284         end REZ3;
+  285 --10.   Передать A5H задаче Т6
+  286         T6.REZ(A);
+  287 
+  288           Put_Line("T4 ended");
+  289 end T4;
+  290 
+  291                    task body T5 is
+  292                             Sum1: Integer := 0;
+  293                                                 MO: Matrix_N;
+  294                                                 MZ: Matrix_H;
+  295                                                 C: Vector_N;
+  296                                                 B: Vector_H;
+  297 
+  298                                                 A: Vector_H;
+  299                                                 MTx: Matrix_H;
+  300                    begin
+  301                            put_Line("T5 started!");
+  302 
+  303 --1.    Принять BH, C от задачи Т4
+  304         accept BHC(Bx: in Vector_H; Cx: in Vector_N) do
+  305                 B := Bx;
+  306                 C := Cx;
+  307         end BHC;
+  308 --2.    Принять MO, MZH от задачи Т4
+  309         accept MOMZH(MOx: in Matrix_N; MZx: in Matrix_H) do
+  310                 MO := MOx;
+  311                 MZ := MZx;
+  312         end MOMZH;
+  313 --3.    Счёт AH = BH + С * (MO  * MZH)
+  314         for i in 1.. N loop
+  315                   for j in 1 .. H loop
+  316                         sum1 := 0;
+  317                     for z in 1 .. N loop
+  318                        Sum1 := sum1 + MZ(J)(Z) * MO(Z)(I);
+  319                     end loop;
+  320                         MTx(J)(I) := Sum1;
+  321                   end loop;
+  322                 end loop;
+  323                 for i in 1.. H loop
+  324                   Sum1 := 0;
+  325                   for j in 1 .. N loop
+  326                 Sum1 := sum1 + C(J) * MTx(I)(J);
+  327                   end loop;
+  328                   A(I) := Sum1 + B(I);
+  329                 end loop;
+  330 
+  331 --4.    Передать AH  задаче Т4
+  332         T4.REZ5(A);
+  333 
+  334         Put_Line("T5 ended");
+  335    end T5;
+  336 
+  337                            task body T6 is
+  338                             Sum1: Integer := 0;
+  339                                                 MO: Matrix_N;
+  340                                                 MZ: Matrix_H;
+  341                                                 C: Vector_N;
+  342                                                 B: Vector_N;
+  343 
+  344                                                 A: Vector_N;
+  345                                                 MTx: Matrix_H;
+  346                    begin
+  347                            put_Line("T6 started!");
+  348 
+  349 --1.    Ввод B, C
+  350                 for i in 1 .. N loop
+  351                         B(i) := 1;
+  352                         C(I) := 1;
+  353                 end loop;  
+  354 --2.    Передать B5H, C задаче Т4
+  355                 T4.B5HC(B(1 .. 5*H), C);
+  356 --3.    Принять MO, MZH от задачи Т4
+  357         accept MOMZH(MOx: in Matrix_N; MZx: in Matrix_H) do
+  358                 MO := MOx;
+  359                 MZ := MZx;
+  360         end MOMZH;
+  361 --4.    Счёт AH = BH + С * (MO  * MZH)
+  362         for i in 1.. N loop
+  363                   for j in 1 .. H loop
+  364                         sum1 := 0;
+  365                     for z in 1 .. N loop
+  366                        Sum1 := sum1 + MZ(J)(Z) * MO(Z)(I);
+  367                     end loop;
+  368                         MTx(J)(I) := Sum1;
+  369                   end loop;
+  370                 end loop;
+  371                 for i in 1.. H loop
+  372                   Sum1 := 0;
+  373                   for j in 1 .. N loop
+  374                 Sum1 := sum1 + C(J) * MTx(I)(J);
+  375                   end loop;
+  376                   A(I + 5*H) := Sum1 + B(I + 5*H);
+  377                 end loop;
+  378 --5.    Принять A5H от задачи Т4
+  379         accept REZ(AA: in Vector_5H) do
+  380                 A(1 .. 5*H) := AA;
+  381         end REZ;
+  382 --6.    Вывод А.
+  383         --if N < 36 then
+  384                 for i in 1 .. N loop
+  385                 Put(A(i), 4);
+  386                 end loop;
+  387         --end if;
+  388            
+  389         Put_Line("T6 ended");
+  390    end T6;
+  391 
+  392 begin
+  393         null;
+  394 end CoursePRO;
+  395 
+
+NAME                 KIND/FILE            DEF    REFERENCES (* if assigned)
+---------------------------------------------------------------------------
+A                    object              73      106* 109* 
+A                    object             121      162* 166* 169* 
+A                    object             182      217* 221* 225* 
+A                    object             237      275* 279* 283* 286* 
+A                    object             298      328* 332* 
+A                    object             344      376* 380* 385* 
+AA                   parameter           39      
+AA                   parameter           46      
+AA                   parameter           52      
+AA                   parameter           53      
+AA                   parameter           63      
+B                    object              71      88* 106 
+B                    object             119      142* 146* 162 
+B                    object             180      195* 201* 217 
+B                    object             235      244* 248* 250* 275 
+B                    object             296      305* 328 
+B                    object             342      351* 355* 376 
+B2HC                 subprogram          38      141 201 
+B3HC                 subprogram          44      194 250 
+B5HC                 subprogram          50      243 355 
+BH                   parameter           33      
+BHC                  subprogram          57      248 304 
+Bx                   parameter           38      
+Bx                   parameter           44      
+Bx                   parameter           50      
+Bx                   parameter           57      
+C                    object              70      89* 104 
+C                    object             118      143* 146* 160 
+C                    object             179      196* 201* 215 
+C                    object             234      245* 248* 250* 273 
+C                    object             295      306* 326 
+C                    object             341      352* 355* 374 
+Calendar             #5:ada.calendar.spc         6 
+CoursePRO            library subp body    9      394 
+Cx                   parameter           33      
+Cx                   parameter           38      
+Cx                   parameter           44      
+Cx                   parameter           50      
+Cx                   parameter           57      
+H                    object              12      17 18 19 20 21 25 26 27 
+                                                 28 29 93 101 149 157 162 
+                                                 204 212 217 262 270 275 
+                                                 315 323 363 371 376 
+Integer_Text_IO      #4:ada.integer_text_io.ada  5 
+MO                   object              69      87* 96 
+MO                   object             116      129* 138* 146* 152 
+MO                   object             177      189* 199* 207 
+MO                   object             232      253* 257* 259* 265 
+MO                   object             293      310* 318 
+MO                   object             339      358* 366 
+MOMZ3H               subprogram          51      199 252 
+MOMZ4H               subprogram          43      138 188 
+MOMZH                subprogram          58      257 309 
+MOMZH                subprogram          62      259 357 
+MOX                  parameter           43      
+MOc                  parameter           33      
+MOx                  parameter           51      
+MOx                  parameter           58      
+MOx                  parameter           62      
+MTx                  object              74      98* 104 
+MTx                  object             122      154* 160 
+MTx                  object             183      209* 215 
+MTx                  object             238      267* 273 
+MTx                  object             299      320* 326 
+MTx                  object             345      368* 374 
+MZ                   object              69      80* 84* 96 
+MZ                   object             117      134* 138* 152 
+MZ                   object             178      190* 199* 207 
+MZ                   object             233      254* 257* 259* 265 
+MZ                   object             294      311* 318 
+MZ                   object             340      359* 366 
+MZ5H                 subprogram          37      84 133 
+MZX                  parameter           43      
+MZx                  parameter           37      
+MZx                  parameter           51      
+MZx                  parameter           58      
+MZx                  parameter           62      
+Matrix               type                23      24 25 26 27 28 29 
+Matrix_2H            subtype             28      
+Matrix_3H            subtype             27      51 233 252 
+Matrix_4H            subtype             26      43 178 188 
+Matrix_5H            subtype             25      37 117 133 
+Matrix_H             subtype             29      58 62 74 122 183 238 294 
+                                                 299 309 340 345 357 
+Matrix_N             subtype             24      33 43 51 58 62 69 86 116 
+                                                 177 188 232 252 293 309 
+                                                 339 357 
+N                    object              10      12 16 24 78 79 92 95 103 
+                                                 127 128 148 151 159 203 
+                                                 206 214 261 264 272 314 
+                                                 317 325 350 362 365 373 
+                                                 384 
+P                    object              11      12 
+Package1             #1:package1.adb             3 
+Put                  #3:ada.text_io.spc          385 
+Put_Line             #3:ada.text_io.spc          76 111 124 172 185 227 
+                                                 240 288 301 334 347 389 
+REZ                  subprogram          39      109 165 
+REZ                  subprogram          46      169 220 
+REZ                  subprogram          63      286 379 
+REZ3                 subprogram          53      225 282 
+REZ5                 subprogram          52      278 332 
+Sum1                 object              68      94* 96* 98 102* 104* 106 
+Sum1                 object             115      150* 152* 154 158* 160* 
+                                                 162 
+Sum1                 object             176      205* 207* 209 213* 215* 
+                                                 217 
+Sum1                 object             231      263* 265* 267 271* 273* 
+                                                 275 
+Sum1                 object             292      316* 318* 320 324* 326* 
+                                                 328 
+Sum1                 object             338      364* 366* 368 372* 374* 
+                                                 376 
+T1                   object              32      34 146 
+T1                   task body           67      112 
+T2                   object              36      40 84 109 201 
+T2                   task body          114      173 
+T3                   object              42      47 138 169 250 
+T3                   task body          175      228 
+T4                   object              49      54 199 225 332 355 
+T4                   task body          230      289 
+T5                   object              56      59 248 257 
+T5                   task body          291      335 
+T6                   object              61      64 259 286 
+T6                   task body          337      390 
+Text_IO              #3:ada.text_io.spc          4 
+Vector_2H            subtype             20      38 46 119 121 141 220 
+Vector_3H            subtype             19      44 53 180 182 194 282 
+Vector_4H            subtype             18      
+Vector_5H            subtype             17      50 63 235 237 243 379 
+Vector_H             subtype             21      33 39 52 57 71 73 86 165 
+                                                 278 296 298 304 
+Vector_N             subtype             16      23 33 38 44 50 57 70 86 
+                                                 118 141 179 194 234 243 
+                                                 295 304 341 342 344 
+ada                  #2:ada.ada                  4 5 6 7 
+allother             subprogram          33      86 146 
+float_text_io        #6:ada.float_text_io.ada    7 
+i                    object              78      80 
+i                    object              92      96 98 
+i                    object             101      104 106 
+i                    object             127      129 
+i                    object             148      152 154 
+i                    object             157      160 162 
+i                    object             203      207 209 
+i                    object             212      215 217 
+i                    object             261      265 267 
+i                    object             270      273 275 
+i                    object             314      318 320 
+i                    object             323      326 328 
+i                    object             350      351 352 
+i                    object             362      366 368 
+i                    object             371      374 376 
+i                    object             384      385 
+j                    object              79      80 
+j                    object              93      96 98 
+j                    object             103      104 
+j                    object             128      129 
+j                    object             149      152 154 
+j                    object             159      160 
+j                    object             204      207 209 
+j                    object             214      215 
+j                    object             262      265 267 
+j                    object             272      273 
+j                    object             315      318 320 
+j                    object             325      326 
+j                    object             363      366 368 
+j                    object             373      374 
+vector               type                15      16 17 18 19 20 21 
+z                    object              95      96 
+z                    object             151      152 
+z                    object             206      207 
+z                    object             264      265 
+z                    object             317      318 
+z                    object             365      366 
+
+    File #1 ..\package1.adb
+    File #2 ada.ada
+    File #3 ada.text_io.spc
+    File #4 ada.integer_text_io.ada
+    File #5 ada.calendar.spc
+    File #6 ada.float_text_io.ada

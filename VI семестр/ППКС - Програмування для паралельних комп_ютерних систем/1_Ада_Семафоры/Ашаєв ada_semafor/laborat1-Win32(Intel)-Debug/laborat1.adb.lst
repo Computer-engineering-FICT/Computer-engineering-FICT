@@ -1,0 +1,174 @@
+Source file: ..\laborat1.adb   Mon Feb 15 23:29:12 2010
+
+    1 
+    2 --------------------------------------------
+    3 -----ПРО. Лаб 1. Ада. Семафоры.
+    4 -----MA=MB(MC*MZ)*a
+    5 -----Ашаев Ю.М. ИО-73
+    6 -----15.02.2010
+    7 with Ada.Synchronous_Task_Control;
+    8 use  Ada.Synchronous_Task_Control;
+    9 with Ada.Text_IO; use Ada.Text_IO;
+   10 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
+   11 
+   12 Procedure lab1 is
+   13    N:integer:=5;
+   14    P:integer:=2;
+   15    H:integer:=N/P;
+   16    s1, s2, s3:Suspension_Object;
+   17    sku:Suspension_Object;
+   18    type Vector is array(1..N) of integer;
+   19    type Matrix is array(1..N) of Vector;
+   20    alfa: Integer;
+   21    MA, MB, MC, MZ:Matrix;
+   22    procedure inputVector(A:out Vector) is
+   23    begin
+   24       for i in 1..N loop
+   25          A(i):=1;
+   26       end loop;
+   27    end inputVector;
+   28 
+   29    procedure OutputVector(A:in Vector) is
+   30    begin
+   31       for i in 1..N loop
+   32          Put(a(i));
+   33       end loop;
+   34            New_line;
+   35    end outputVector;
+   36 
+   37    procedure inputMatrix(MA:out Matrix) is
+   38    begin
+   39       for i in 1..N loop
+   40          inputVector(MA(i));
+   41       end loop;
+   42    end inputMatrix;
+   43 
+   44    procedure OutputMatrix(MA:in Matrix) is
+   45    begin
+   46       for i in 1..N loop
+   47          OutputVector(MA(i));
+   48       end loop;
+   49    end OutputMatrix;
+   50 
+   51    procedure Vector_input(file: in File_Type;A: out Vector) is
+   52    begin
+   53       for i in 1..N loop
+   54          get(file, A(i));
+   55       end loop;
+   56    end Vector_input;
+   57 
+   58    procedure Matrix_input(file: in File_Type;MA: out Matrix) is
+   59    begin
+   60       for i in 1..N loop
+   61          Vector_input(file, MA(i));
+   62       end loop;
+   63    end Matrix_input; 
+   64 
+   65    task T1;
+   66    task body T1 is
+   67       Mcur:Matrix;
+   68       sum:integer:=0;
+   69       MC1, MB1: Matrix;
+   70       alfa1: Integer;
+   71 
+   72    begin
+   73       Put_Line("T1 started");
+   74       Put_Line("T1 input");
+   75       inputMatrix(MC);
+   76       Alfa:=1;
+   77       Put_Line("Signal s1");
+   78       Set_True(s1);
+   79       Suspend_Until_True(s2);
+   80       Suspend_Until_True(sku);
+   81       Put_Line("T1 copy Data");
+   82    
+   83       for i in 1..N loop
+   84          for j in 1..N loop
+   85             MC1(i)(j):=MC(i)(j);
+   86             MB1(i)(j):=MB(i)(j);
+   87          end loop;
+   88       end loop;
+   89       Alfa1:=alfa;
+   90 
+   91       Set_True(sku);
+   92       Put_Line("T1 calculating");
+   93 
+   94       for J in 1..H loop
+   95          for I in 1..N loop
+   96             for K in 1..N loop
+   97                Mcur(i)(J):=Mcur(i)(J)+MC1(i)(K)*MZ(j)(k);
+   98             end loop;
+   99             Mcur(i)(J):=Mcur(i)(J)*alfa1;
+  100          end loop;
+  101          for I in 1..N loop
+  102             for K in 1..N loop
+  103                MA(i)(J):=MA(i)(J)+MB1(i)(K)*Mcur(K)(J);
+  104             end loop;
+  105          end loop;    
+  106       end loop;
+  107 
+  108       Put_Line("T1 waiting for result");
+  109       Suspend_Until_True(s3);
+  110       Put_Line("T1 output");
+  111       if (N<9) then     
+  112          Put_line("Result MA is");
+  113          OutputMatrix(MA);
+  114       end if;
+  115       Put_Line("T1 finished");
+  116    
+  117    end T1;
+  118    
+  119    task T2;
+  120    task body T2 is
+  121       Mcur:Matrix;
+  122       sum:integer:=0;
+  123         MC2, MB2: Matrix;
+  124         alfa2: Integer;
+  125    begin
+  126       
+  127       Put_Line("T2 started");
+  128       Put_Line("T2 input");
+  129       inputMatrix(MB);
+  130       inputMatrix(MZ);
+  131       Suspend_Until_True(s1);
+  132       Put_Line("signal s2");
+  133       Set_True(s2);
+  134       Suspend_Until_True(sku);
+  135       Put_Line("T2 copy Data");
+  136    
+  137       for i in 1..N loop
+  138          for j in 1..N loop
+  139             MC2(i)(j):=MC(i)(j);
+  140             MB2(i)(j):=MB(i)(j);
+  141          end loop;
+  142       end loop;
+  143       Alfa2:=alfa;
+  144    
+  145       Set_True(sku);
+  146       Put_Line("T2 calculating");
+  147    
+  148       for J in H+1..N loop
+  149          for I in 1..N loop
+  150             for K in 1..N loop
+  151                Mcur(i)(J):=Mcur(i)(J)+
+  152                   MC2(i)(K)*MZ(j)(k);
+  153             end loop;
+  154             Mcur(i)(J):=Mcur(i)(J)*alfa2;
+  155          end loop;
+  156            for I in 1..N loop
+  157             for K in 1..N loop
+  158                MA(i)(J):=MA(i)(J)+MB2(i)(K)*
+  159                   Mcur(K)(J);
+  160             end loop;
+  161          end loop;    
+  162       end loop;
+  163 
+  164       Put_Line("signal s3");
+  165       Put_Line("T2 finished");
+  166       Set_True(s3);
+  167    
+  168    end T2;
+  169    
+  170 begin
+  171    Set_True(sku);
+  172 end lab1;

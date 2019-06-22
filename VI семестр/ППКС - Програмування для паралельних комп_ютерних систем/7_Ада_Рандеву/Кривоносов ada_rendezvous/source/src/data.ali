@@ -1,0 +1,120 @@
+V "GNAT Lib v2015"
+A -gnatl=data.lst
+A -mtune=generic
+A -march=pentiumpro
+P ZX
+
+RN
+RV NO_IO
+RV SPARK_05
+
+U data%b		data.adb		74eed9fb NE OO PK GE
+W ada%s			ada.ads			ada.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+
+U data%s		data.ads		2d8bcb3f BN EE NE OO PK GE
+W ada%s			ada.ads			ada.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+
+D ada.ads		20150518132148 3ffc8e18 ada%s
+D a-except.ads		20150518132148 5250cb69 ada.exceptions%s
+D a-inteio.ads		20150518132148 f64b89a4 ada.integer_text_io%s
+D a-ioexce.ads		20150518132148 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20150518132148 119b8fb3 ada.streams%s
+D a-tags.ads		20150518132148 dc4d0634 ada.tags%s
+D a-textio.ads		20150518132148 386df5d4 ada.text_io%s
+D a-tiinio.ads		20150518132148 aa04e5d6 ada.text_io.integer_io%s
+D a-unccon.ads		20150518132148 f9eb8f06 ada.unchecked_conversion%s
+D data.ads		20160509193320 15e63eeb data%s
+D data.adb		20160509193400 af2e9b60 data%b
+D interfac.ads		20150518132148 6033a23f interfaces%s
+D i-cstrea.ads		20150518132148 e53d8b8e interfaces.c_streams%s
+D system.ads		20150518132150 f4ce8c3a system%s
+D s-crtl.ads		20150518132148 0ebbdb71 system.crtl%s
+D s-exctab.ads		20150518132148 54135002 system.exception_table%s
+D s-ficobl.ads		20150518132148 078245e4 system.file_control_block%s
+D s-parame.ads		20150518132150 7e2a0d7f system.parameters%s
+D s-soflin.ads		20150518132150 aa763b52 system.soft_links%s
+D s-stache.ads		20150518132150 a37c21ec system.stack_checking%s
+D s-stalib.ads		20150518132150 fa0a3617 system.standard_library%s
+D s-stoele.ads		20150518132150 2dc34a04 system.storage_elements%s
+D s-traent.ads		20150518132150 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20150518132150 9d58a4c0 system.unsigned_types%s
+D s-wchcon.ads		20150518132150 1b7d22d2 system.wch_con%s
+X 1 ada.ads
+16K9*Ada 19e8 10|15r9 16r8 11|14r9 14r22 15r8 15r21
+X 3 a-inteio.ads
+18K13*Integer_Text_IO[8|46] 11|14w26 15r25
+X 7 a-textio.ads
+49K13*Text_IO 471e16 10|15w13 16r12 11|14w13 15r12
+73I12*Field{integer}
+166U14*New_Line 11|39s5 43s4 49s5 54s5 56s5
+X 8 a-tiinio.ads
+66U14*Put 11|41s5[3|18] 52s5[3|18]
+67i7 Item{integer} 11|41r9[3|18] 52r9[3|18]
+68i7 Width{7|73I12} 11|41r23[3|18] 52r27[3|18]
+X 10 data.ads
+20i5 N{natural} 25r34 34r34 11|21r17 29r17 30r17 51r17 102r17 104r17
+20i8 H{natural} 26r38 27r36 28r37 29r39 30r39 31r34 35r38 36r36 37r36 38r39
+. 39r39 40r34 11|63r17 95r19 99r17
+22k12*Data 20z5 20z8 66l8 66e12 11|17b17 118l8 118t12
+24A10*Vector(integer)<integer> 25r24 26r24 27r24 28r25 29r25 30r25 31r24
+. 43r31 49r30 11|19r30 37r29
+25A13*VectorN{24A10}<integer> 33r47 60r12 11|84r12
+26A12*Vector6h{24A10}<integer>
+27A12*Vector5H{24A10}<integer>
+28A13*Vector4H{24A10}<integer>
+29A13*Vector3h{24A10}<integer>
+30A13*Vector2H{24A10}<integer>
+31A13*VectorH{24A10}<integer> 53r32 59r12 63r13 11|59r32 83r12 87r13 90r18
+33A10*Matrix(25A13)<integer> 34r24 35r24 36r24 37r24 38r25 39r25 40r24 46r31
+. 51r31 11|27r31 47r30
+34A13*MatrixN{33A10}<integer> 62r13 11|86r13
+35A12*Matrix6H{33A10}<integer>
+36A12*Matrix5H{33A10}<integer>
+37A12*Matrix4H{33A10}<integer>
+38A13*Matrix3H{33A10}<integer>
+39A13*Matrix2H{33A10}<integer>
+40A13*MatrixH{33A10}<integer> 61r13 11|85r13
+43U15*Input 43<23 44>5 11|19b15 24l9 24t14
+43a23 V{24A10} 11|19b22 22m5
+44i5 Value{integer} 11|19b38 22r12
+46U14*Input 46<22 47>5 11|27b15 34l9 34t14
+46a22 MA{33A10} 11|27b22 31m5
+47i5 Value{integer} 11|27b39 31r16
+49U15*Output 49>23 11|37b14 44l9 44t15
+49a23 V{24A10} 11|37b22 40r17 41r17
+51U15*Output 51>23 11|47b14 57l9 57t15
+51a23 MA{33A10} 11|47b22 50r17 52r17
+53U15*FindMaxZ 53>25 53<41 11|59b15 69l9 69t17
+53a25 V{31A13} 11|59b25 64r17 65r15
+53i41 maxZi{integer} 11|59b41 68m5
+55V14*Max{integer} 55>19 55>22 11|71b14 78l9 78t12
+55i19 A{integer} 11|71b19 73r8 74r12
+55i22 B{integer} 11|71b22 73r13 76r11
+57U15*Calculation 57>28 58>5 59>5 60>5 61>5 62>5 63<5 11|80b15 116l9 116t20
+57i28 alfa{integer} 11|81b5 96r31
+58i5 maxZ{integer} 11|82b5 110r22
+59a5 B{31A13} 11|83b5 96r25
+60a5 T{25A13} 11|84b5 108r26
+61a5 MO{40A13} 11|85b5 105r29
+62a5 MK{34A13} 11|86b5 105r39
+63a5 A{31A13} 11|87b5 110m10
+X 11 data.adb
+21i9 I{integer} 22r7
+29i9 I{integer} 31r8
+30i9 J{integer} 31r11
+40i9 I{integer} 41r19
+50i9 I{integer} 52r20
+51i9 J{integer} 52r23
+60i5 maxBuf{integer} 62m5 64r8 65m5 68r12
+63i9 i{integer} 64r19 65r17
+88i5 Sum{integer} 103m4 105m16 105r23 108r20
+89i7 Sum1{integer} 100m10 108m5 108r13 110r17
+90a7 TempVect{10|31A13} 96m10 110r29
+95i11 I{integer} 96r19 96r27
+99i9 I{integer} 105r32 110r12 110r38
+102i9 j{integer} 105r45 108r28
+104i9 K{integer} 105r35 105r42
+

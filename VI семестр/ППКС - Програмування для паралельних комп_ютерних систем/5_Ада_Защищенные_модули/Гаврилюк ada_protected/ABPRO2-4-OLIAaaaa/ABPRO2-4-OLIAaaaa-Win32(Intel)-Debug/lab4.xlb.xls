@@ -1,0 +1,508 @@
+Source file: ..\lab4.adb   Wed Apr 20 23:09:49 2011
+
+    1 ----------------------------------------------------------------
+    2 --              Paralel and distributed computing             --
+    3 --             Laboratory work #1. Ada. Semaphores            --
+    4 --                  Func: MA = (MB*MZ*Alfa) + ME*MR           --
+    5 --                   IO-83 Vorobyev Vitaliy                   --
+    6 --                        28.03.2011                           --
+    7 ----------------------------------------------------------------
+    8 
+    9 with Package1; use Package1;
+   10 with Ada.Text_IO; use Ada.Text_IO;
+   11 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
+   12 
+   13 procedure Lab4 is
+   14    MX, MZ: Matr;
+   15    A: Vec;
+   16 
+   17 -----------------------------------------------------------
+   18 ---------------ОПИСАТЕЛЬНАЯ ЧАСТЬ ЗАЩИЩЕННЫХ МОДУЛЕЙ-------
+   19 -----------------------------------------------------------
+   20 
+   21 ----ЗАЩИЩЕННЫЙ МОДУЛЬ Synchro
+   22         protected SynchroAndOP is
+   23                 --Синхронизация
+   24                 procedure Input;
+   25                 procedure CSignal;
+   26                 procedure EndSignal;
+   27                 --Общие ресурсы
+   28                 procedure SetMO(M: in Matr);
+   29                 function GetMO return Matr;
+   30                 procedure SetC(M: in Vec);
+   31                 function GetC return Vec;
+   32                 procedure SetB(M: in Vec);
+   33                 function GetB return Vec;
+   34                 --Защищённые входы (синхронизация)
+   35                 entry InputSync;
+   36                 entry CSync;
+   37                 entry EndSync;
+   38         --приватная часть защищенного модуля
+   39         private
+   40                 --Синхронизация
+   41                 F1: integer := 0;
+   42                 F2: integer := 0;
+   43                 F3: Integer := 0;
+   44                 --Общие ресурсы
+   45                 B: Vec;
+   46                 MO: Matr;
+   47                 C: Vec;
+   48         end SynchroAndOP;
+   49 
+   50 -----------------------------------------------------------
+   51 ------------------ТЕЛА ЗАЩИЩЕННЫХ МОДУЛЕЙ------------------
+   52 -----------------------------------------------------------
+   53 
+   54 --ЗАЩИЩЕННЫЙ МОДУЛЬ Synchro
+   55         protected body SynchroAndOP is
+   56 -- REALIZE Синхронизация
+   57                 procedure Input is 
+   58                         begin
+   59                                 F1 := F1 + 1;
+   60         end Input;
+   61 
+   62                 procedure CSignal is
+   63                         begin
+   64                                 F2 := F2 + 1;
+   65         end CSignal;
+   66 
+   67                 procedure EndSignal is
+   68                         begin
+   69                                 F3 := F3 + 1;
+   70         end EndSignal;
+   71 -- REALIZE Общие ресурсы MO
+   72                 procedure SetMO(M: in Matr) is
+   73                 begin   
+   74                         for i in 1 .. N loop
+   75                     for j in 1 .. N loop
+   76                        MO(i)(j) := M(i)(j);
+   77                     end loop;
+   78                  end loop;      
+   79                 end SetMO;
+   80                 function GetMO return Matr is
+   81                 begin
+   82                         return MO;
+   83                 end;
+   84 -- REALIZE Общие ресурсы C              
+   85                 procedure SetC(M: in Vec) is
+   86                 begin   
+   87                         for i in 1 .. N loop
+   88                        C(i) := C(i) + M(i);
+   89                  end loop;      
+   90                 end SetC;
+   91                 function GetC return Vec is
+   92                 begin
+   93                         return C;
+   94                 end;
+   95 -- REALIZE Общие ресурсы B              
+   96                 procedure SetB(M: in Vec) is
+   97                 begin   
+   98                         for i in 1 .. N loop
+   99                     for j in 1 .. N loop
+  100                        B(i) := M(i);
+  101                     end loop;
+  102                  end loop;      
+  103                 end SetB;
+  104                 function GetB return Vec is
+  105                 begin
+  106                         return B;
+  107                 end;
+  108 --Защищённые входы (синхронизация)
+  109                 entry InputSync when F1 = 3 is --1
+  110                 begin
+  111                                 null;
+  112                 end InputSync;
+  113 
+  114                 entry CSync when F2 = P is --2
+  115                 begin
+  116                                 null;
+  117                 end CSync;
+  118 
+  119                 entry EndSync when F2 = P - 1 is --3
+  120                 begin
+  121                                 null;
+  122                 end EndSync;
+  123         end SynchroAndOP;
+  124 
+  125 -----------------------------------------------------------
+  126 ------------------------З А Д А Ч И------------------------
+  127 -----------------------------------------------------------
+  128         task T1;
+  129         task T2;
+  130         task T3;
+  131         task T4;
+  132 
+  133 -----------------------ЗАДАЧА Т1 --------------------------
+  134         task body T1 is
+  135                 Sum1: Integer;
+  136                 MC, MO1 : Matr;
+  137                 B1, C1: Vec;
+  138         begin
+  139                 Put_Line("T1 start");
+  140 
+  141 --1.    Ввод МХ
+  142                 Matr_Input(MX);
+  143 --2.    Сигнал задачам Т2, Т3, Т4 о завершении ввода МХ  S2.1, S3.1, S4.1
+  144                 SynchroAndOP.Input;
+  145 --3.    Ждать введения в Т3, Т4
+  146                 SynchroAndOP.InputSync;
+  147 --4.    Копирование B1 := B 
+  148                 B1 := SynchroAndOP.GetB;
+  149 --5.    Cчёт CH = B1 * MZH
+  150                 for i in 1 .. H loop
+  151                         sum1 := 0;
+  152             for j in 1 .. N loop
+  153                sum1 := sum1 + B1(J) * MZ(I)(J);
+  154                         end loop;
+  155                         C1(I) := Sum1;
+  156          end loop;
+  157                 SynchroAndOP.SetC(C1);
+  158 --6.    Сигнал задачам Т2, Т3, Т4 о завершении счёта С
+  159                 SynchroAndOP.CSignal;
+  160 --7.    Копирование МО1 := MO 
+  161                 MO1 := SynchroAndOP.GetMO;
+  162 --8.    Счёт MCH = MO1 * MXH
+  163                  for i in 1.. N loop
+  164             for j in 1 .. H loop
+  165                            sum1 := 0;
+  166                for z in 1 .. N loop
+  167                   sum1 := sum1 + MX(Z)(J) * MO1(I)(Z);
+  168                end loop;
+  169                            MC(I)(J) := Sum1;
+  170                         end loop;
+  171          end loop;
+  172 --9.    Ждать завершения счёта С в задачaх Т2, Т3, Т4
+  173                 SynchroAndOP.CSync;
+  174 --10.   Копирование С1 := C
+  175                 C1 := SynchroAndOP.GetC;
+  176 --11.   Счёт AH = C1 * MCH
+  177                 for i in 1 .. H loop
+  178                         sum1 := 0;
+  179             for j in 1 .. N loop
+  180                sum1 := sum1 + C1(J) * MC(J)(I);
+  181                         end loop;
+  182                         A(I) := Sum1;
+  183          end loop;
+  184 --12.   Сигнал задаче Т4 о завершении счёта.                                                       S4.3
+  185                 SynchroAndOP.EndSync;
+  186            
+  187                 Put_Line("T1 stop");
+  188     end T1;
+  189 
+  190 -----------------------ЗАДАЧА Т2 --------------------------
+  191         task body T2 is
+  192                 Sum1: Integer;
+  193                 MC, MO2 : Matr;
+  194                 B2, C2: Vec;
+  195         begin
+  196                 Put_Line("T2 start");
+  197 
+  198 --1.    Ждать введения в Т1, Т3, Т4
+  199                 SynchroAndOP.InputSync;
+  200 --2.    Копирование B2 := B 
+  201                 B2 := SynchroAndOP.GetB;
+  202 --3.    Cчёт CH = B1 * MZH
+  203                 for i in H+1 .. 2*H loop
+  204                         sum1 := 0;
+  205             for j in 1 .. N loop
+  206                sum1 := sum1 + B2(J) * MZ(I)(J);
+  207                         end loop;
+  208                         C2(I) := Sum1;
+  209          end loop;
+  210                 SynchroAndOP.SetC(C2);
+  211 --4.    Сигнал задачам Т1, Т3, Т4 о завершении счёта С                              S1.2, S3.2, S4.2
+  212                 SynchroAndOP.CSignal;
+  213 --5.    Копирование МО2 := MO 
+  214                 MO2 := SynchroAndOP.GetMO;
+  215 --6.    Счёт MCH = MO2 * MXH
+  216                  for i in 1.. N loop
+  217             for j in H+1 .. 2*H loop
+  218                            sum1 := 0;
+  219                for z in 1 .. N loop
+  220                   sum1 := sum1 + MX(Z)(J) * MO2(I)(Z);
+  221                end loop;
+  222                            MC(I)(J) := Sum1;
+  223                         end loop;
+  224          end loop;
+  225 --7.    Ждать завершения счёта С в задачaх Т1, Т3, Т4
+  226                 SynchroAndOP.CSync;
+  227 --8.    Копирование С2 := C
+  228                 C2 := SynchroAndOP.GetC;
+  229 --9.    Счёт AH = C1 * MCH
+  230                 for i in H+1 .. 2*H loop
+  231                         sum1 := 0;
+  232             for j in 1 .. N loop
+  233                sum1 := sum1 + C2(J) * MC(J)(I);
+  234                         end loop;
+  235                         A(I) := Sum1;
+  236          end loop;
+  237 --10.   Сигнал задаче Т4 о завершении счёта.                                                       S4.3
+  238                 SynchroAndOP.EndSignal;
+  239 
+  240                 Put_Line("T2 stop");
+  241     end T2;
+  242 
+  243 -----------------------ЗАДАЧА Т3 ----------------------------
+  244         task body T3 is
+  245                 Sum1: Integer;
+  246                 MC, MO3 : Matr;
+  247                 B3, C3: Vec;
+  248         begin
+  249                 Put_Line("T3 start");
+  250 
+  251 --1.    Ввод МZ
+  252                 Matr_Input(MZ);         
+  253 --2.    Сигнал задачам Т1, Т2, Т4 о завершении ввода МZ
+  254                 SynchroAndOP.Input;
+  255 --3.    Ждать введения в Т1, Т4
+  256                 SynchroAndOP.InputSync;
+  257 --4.    Копирование B3 := B 
+  258                 B3 := SynchroAndOP.GetB;
+  259 --5.    Cчёт CH = B3 * MZH
+  260                 for i in 2*H+1 .. 3*H loop
+  261                         sum1 := 0;
+  262             for j in 1 .. N loop
+  263                sum1 := sum1 + B3(J) * MZ(I)(J);
+  264                         end loop;
+  265                         C3(I) := Sum1;
+  266          end loop;
+  267                 SynchroAndOP.SetC(C3);
+  268 --6.    Сигнал задачам Т1, Т2, Т4 о завершении счёта С
+  269                 SynchroAndOP.CSignal;
+  270 --7.    Копирование МО3 := MO 
+  271                 MO3 := SynchroAndOP.GetMO;
+  272 --8.    Счёт MCH = MO3 * MXH
+  273                  for i in 1.. N loop
+  274             for j in 2*H+1 .. 3*H loop
+  275                            sum1 := 0;
+  276                for z in 1 .. N loop
+  277                   sum1 := sum1 + MX(Z)(J) * MO3(I)(Z);
+  278                end loop;
+  279                            MC(I)(J) := Sum1;
+  280                         end loop;
+  281          end loop;
+  282 --9.    Ждать завершения счёта С в задачaх Т1, Т3, Т4
+  283                 SynchroAndOP.CSync;
+  284 --10.   Копирование С3 := C
+  285                 C3 := SynchroAndOP.GetC;
+  286 --11.   Счёт AH = C3 * MCH
+  287                 for i in 2*H+1 .. 3*H loop
+  288                         sum1 := 0;
+  289             for j in 1 .. N loop
+  290                sum1 := sum1 + C3(J) * MC(J)(I);
+  291                         end loop;
+  292                         A(I) := Sum1;
+  293          end loop;
+  294 --12.   Сигнал задаче Т4 о завершении счёта.                                                       S4.3
+  295                 SynchroAndOP.EndSignal;
+  296                 Put_Line("T3 stop");
+  297     end T3;     
+  298 
+  299 -----------------------ЗАДАЧА Т4 --------------------------
+  300         task body T4 is
+  301                 Sum1: Integer;
+  302                 MC, MO4 : Matr;
+  303                 B4, C4: Vec;
+  304         begin
+  305                 Put_Line("T4 start");
+  306 
+  307 --1.    Ввод  B, MO
+  308                 Matr_Input(MO4);        
+  309                 Vec_Input(B4);
+  310                 SynchroAndOP.SetB(B4);
+  311                 SynchroAndOP.SetMO(MO4);
+  312 --2.    Сигнал задачам Т2, Т3, Т1 о завершении ввода
+  313                 SynchroAndOP.Input;
+  314 --3.    Ждать введения в Т1, Т3
+  315                 SynchroAndOP.InputSync;
+  316 --4.    Копирование B4 := B 
+  317                 B4 := SynchroAndOP.GetB;
+  318 --5.    Cчёт CH = B4 * MZH
+  319                 for i in 3*H+1 .. N loop
+  320                         sum1 := 0;
+  321             for j in 1 .. N loop
+  322                sum1 := sum1 + B4(J) * MZ(I)(J);
+  323                         end loop;
+  324                         C4(I) := Sum1;
+  325          end loop;
+  326                 SynchroAndOP.SetC(C4);
+  327 --6.    Сигнал задачам Т2, Т3, Т1 о завершении счёта С
+  328                 SynchroAndOP.CSignal;
+  329 --7.    Копирование МО4 := MO 
+  330                 MO4 := SynchroAndOP.GetMO;
+  331 --8.    Счёт MCH = MO4 * MXH
+  332                  for i in 1.. N loop
+  333             for j in 3*H+1 .. N loop
+  334                            sum1 := 0;
+  335                for z in 1 .. N loop
+  336                   sum1 := sum1 + MX(Z)(J) * MO4(I)(Z);
+  337                end loop;
+  338                            MC(I)(J) := Sum1;
+  339                         end loop;
+  340          end loop;
+  341 --9.    Ждать завершения счёта С в задачaх Т2, Т3, Т1
+  342                 SynchroAndOP.CSync;
+  343 --10.   Копирование С4 := C
+  344                 C4 := SynchroAndOP.GetC;
+  345 --11.   Счёт AH = C4 * MCH
+  346                 for i in 3*H+1 .. N loop
+  347                         sum1 := 0;
+  348             for j in 1 .. N loop
+  349                sum1 := sum1 + C4(J) * MC(J)(I);
+  350                         end loop;
+  351                         A(I) := Sum1;
+  352          end loop;
+  353 --12.   Сигнал задаче Т4 о завершении счёта.                                                       S4.3
+  354                 SynchroAndOP.EndSignal;
+  355 --13.   Вывод A
+  356                 Put_Line("             ");
+  357                 Vec_Print(A);     
+  358           
+  359                 Put_Line("T4 stop");
+  360     end T4;     
+  361 
+  362 begin
+  363    null;
+  364 end Lab4;
+
+NAME                 KIND/FILE            DEF    REFERENCES (* if assigned)
+---------------------------------------------------------------------------
+A                    object              15      182* 235* 292* 351* 357* 
+Ada                  #2:ada.ada                  10 11 
+B                    object              45      100* 106 
+B1                   object             137      148* 153 
+B2                   object             194      201* 206 
+B3                   object             247      258* 263 
+B4                   object             303      309* 310* 317* 322 
+C                    object              47      88* 93 
+C1                   object             137      155* 157* 175* 180 
+C2                   object             194      208* 210* 228* 233 
+C3                   object             247      265* 267* 285* 290 
+C4                   object             303      324* 326* 344* 349 
+CSignal              subprogram          25      159 212 269 328 
+CSignal              subprogram body     62      65 
+CSync                subprogram          36      173 226 283 342 
+CSync                subprogram body    114      
+EndSignal            subprogram          26      238 295 354 
+EndSignal            subprogram body     67      70 
+EndSync              subprogram          37      185 
+EndSync              subprogram body    119      
+F1                   object              41      59* 109 
+F2                   object              42      64* 114 119 
+F3                   object              43      69* 
+GetB                 subprogram          33      148 201 258 317 
+GetB                 subprogram body    104      107 
+GetC                 subprogram          31      175 228 285 344 
+GetC                 subprogram body     91      94 
+GetMO                subprogram          29      161 214 271 330 
+GetMO                subprogram body     80      83 
+H                    #1:package1.adb             150 164 177 203 217 230 
+                                                 260 274 287 319 333 346 
+Input                subprogram          24      144 254 313 
+Input                subprogram body     57      60 
+InputSync            subprogram          35      146 199 256 315 
+InputSync            subprogram body    109      
+Integer_Text_IO      #4:ada.integer_text_io.ada  11 
+Lab4                 library subp body   13      364 
+M                    parameter           28      
+M                    parameter           30      
+M                    parameter           32      
+M                    parameter           72      76 
+M                    parameter           85      88 
+M                    parameter           96      100 
+MC                   object             136      169* 180 
+MC                   object             193      222* 233 
+MC                   object             246      279* 290 
+MC                   object             302      338* 349 
+MO                   object              46      76* 82 
+MO1                  object             136      161* 167 
+MO2                  object             193      214* 220 
+MO3                  object             246      271* 277 
+MO4                  object             302      308* 311* 330* 336 
+MX                   object              14      142* 167 220 277 336 
+MZ                   object              14      153 206 252* 263 322 
+Matr                 #1:package1.adb             14 28 29 46 72 80 136 
+                                                 193 246 302 
+Matr_Input           #1:package1.adb             142 252 308 
+N                    #1:package1.adb             74 75 87 98 99 152 163 
+                                                 166 179 205 216 219 232 
+                                                 262 273 276 289 319 321 
+                                                 332 333 335 346 348 
+P                    #1:package1.adb             114 119 
+Package1             #1:package1.adb             9 
+Put_Line             #3:ada.text_io.spc          139 187 196 240 249 296 
+                                                 305 356 359 
+SetB                 subprogram          32      310 
+SetB                 subprogram body     96      103 
+SetC                 subprogram          30      157 210 267 326 
+SetC                 subprogram body     85      90 
+SetMO                subprogram          28      311 
+SetMO                subprogram body     72      79 
+Sum1                 object             135      151* 153* 155 165* 167* 
+                                                 169 178* 180* 182 
+Sum1                 object             192      204* 206* 208 218* 220* 
+                                                 222 231* 233* 235 
+Sum1                 object             245      261* 263* 265 275* 277* 
+                                                 279 288* 290* 292 
+Sum1                 object             301      320* 322* 324 334* 336* 
+                                                 338 347* 349* 351 
+SynchroAndOP         object              22      144 146 148 157 159 161 
+                                                 173 175 185 199 201 210 
+                                                 212 214 226 228 238 254 
+                                                 256 258 267 269 271 283 
+                                                 285 295 310 311 313 315 
+                                                 317 326 328 330 342 344 
+                                                 354 
+SynchroAndOP         protected body      55      123 
+T1                   object             128      128 
+T1                   task body          134      188 
+T2                   object             129      129 
+T2                   task body          191      241 
+T3                   object             130      130 
+T3                   task body          244      297 
+T4                   object             131      131 
+T4                   task body          300      360 
+Text_IO              #3:ada.text_io.spc          10 
+Vec                  #1:package1.adb             15 30 31 32 33 45 47 85 
+                                                 91 96 104 137 194 247 
+                                                 303 
+Vec_Input            #1:package1.adb             309 
+Vec_Print            #1:package1.adb             357 
+i                    object              74      76 
+i                    object              87      88 
+i                    object              98      100 
+i                    object             150      153 155 
+i                    object             163      167 169 
+i                    object             177      180 182 
+i                    object             203      206 208 
+i                    object             216      220 222 
+i                    object             230      233 235 
+i                    object             260      263 265 
+i                    object             273      277 279 
+i                    object             287      290 292 
+i                    object             319      322 324 
+i                    object             332      336 338 
+i                    object             346      349 351 
+j                    object              75      76 
+j                    object              99      
+j                    object             152      153 
+j                    object             164      167 169 
+j                    object             179      180 
+j                    object             205      206 
+j                    object             217      220 222 
+j                    object             232      233 
+j                    object             262      263 
+j                    object             274      277 279 
+j                    object             289      290 
+j                    object             321      322 
+j                    object             333      336 338 
+j                    object             348      349 
+z                    object             166      167 
+z                    object             219      220 
+z                    object             276      277 
+z                    object             335      336 
+
+    File #1 ..\package1.adb
+    File #2 ada.ada
+    File #3 ada.text_io.spc
+    File #4 ada.integer_text_io.ada

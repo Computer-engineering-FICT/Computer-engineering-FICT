@@ -1,0 +1,47 @@
+SOURCE: ..\data.ada
+  SRCTIME: 1108240614    Sat Feb 12 22:36:54 2005
+  COMPSW: adacomp SRC -eo -e 50 -m n -mr n -gc -ga
+COMPVER: 3.273
+SRCDEP: src\ada.ada
+  SRCDEPTIME: 918038590    Wed Feb 03 12:43:10 1999
+SRCDEP: src\text_io.spc
+  SRCDEPTIME: 886743450    Fri Feb 06 07:37:30 1998
+SRCDEP: src\io_exceptions.dat
+  SRCDEPTIME: 848396630    Tue Nov 19 11:43:50 1996
+SRCDEP: src\SYSTEM.SPC
+  SRCDEPTIME: 848396650    Tue Nov 19 11:44:10 1996
+SRCDEP: src\unchecked_conversion.ada
+  SRCDEPTIME: 857447180    Tue Mar 04 05:46:20 1997
+SRCDEP: src\rts.spc
+  SRCDEPTIME: 918038620    Wed Feb 03 12:43:40 1999
+SRCDEP: src\sys_config.ads
+  SRCDEPTIME: 902816480    Tue Aug 11 09:21:20 1998
+SRCDEP: src\integer_text_io.ada
+  SRCDEPTIME: 848396630    Tue Nov 19 11:43:50 1996
+UNIT: Data
+  UKIND: 7    PKG_DECL
+  NEED: Data
+    NEEDKIND: 8    PKG_BODY
+  ELABLINKNAME: data__elab_spec
+ENDUNIT
+UNIT: Data
+  UKIND: 8    PKG_BODY
+  DEP: Data
+    DEPKIND: 7    PKG_DECL
+    DEPSRC: ..\data.ada
+    DEPSRCTIME: 1108240614    Sat Feb 12 22:36:54 2005
+  DEP: Ada.Integer_Text_IO
+    DEPKIND: 10    PKG_INST
+    DEPSRC: src\integer_text_io.ada
+    DEPSRCTIME: 848396630    Tue Nov 19 11:43:50 1996
+  DEP: Ada.Text_IO
+    DEPKIND: 7    PKG_DECL
+    DEPSRC: src\text_io.spc
+    DEPSRCTIME: 886743450    Fri Feb 06 07:37:30 1998
+  DEP: Ada
+    DEPKIND: 7    PKG_DECL
+    DEPSRC: src\ada.ada
+    DEPSRCTIME: 918038590    Wed Feb 03 12:43:10 1999
+  FEATURES: 16#8000000100000#(-1,-1,-1,-1,-1,-1)
+  ELABLINKNAME: data__elab_body
+ENDUNIT

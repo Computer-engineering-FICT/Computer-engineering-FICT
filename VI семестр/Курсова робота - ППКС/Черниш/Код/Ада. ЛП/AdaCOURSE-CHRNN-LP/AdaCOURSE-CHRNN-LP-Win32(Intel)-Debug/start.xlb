@@ -1,0 +1,622 @@
+Source file: ..\start.adb   Mon May 16 19:23:55 2011
+
+    1 ----------------------------------------------------------------
+    2 --              Paralel and distributed computing             --
+    3 --             Laboratory work #1. Ada. Semaphores            --
+    4 --                  Func: a = MIN(MO*MX+alfa*MR)              --
+    5 --                   IO-83 Vorobyev Vitaliy                   --
+    6 --                        9.02.2011                           --
+    7 ----------------------------------------------------------------
+    8 
+    9 with Package1; use Package1;
+   10 with Ada.Text_IO; use Ada.Text_IO;
+   11 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
+   12 with Ada.Calendar; use Ada.Calendar;
+   13 with ada.float_text_io; use ada.float_text_io;
+   14 
+   15 procedure CoursePRO is
+   16             N: integer := 4000;   --size of structures
+   17             P: integer := 4;   --count of processors
+   18             H: integer := N/P; --size of piece
+   19                         time_all: duration;
+   20                         time1,time2:  time;
+   21                         A: Integer;
+   22     
+   23             --типы оптимальные для рассылки данных между задачами.
+   24             type vector is array(integer range <>) of integer;
+   25             Subtype Vector_N is Vector(1..N);
+   26             Subtype Vector_2h is Vector(1..2*H);
+   27             Subtype Vector_H is Vector(1..H);
+   28             
+   29             type Matrix is array(integer range <>) of Vector_N;
+   30             Subtype Matrix_N is Matrix(1..N);
+   31             Subtype Matrix_2H is Matrix(1..2*H);
+   32             Subtype Matrix_H is Matrix(1..H);
+   33             
+   34                         procedure START is
+   35                                         --Спецификация задач
+   36                     task T1 is
+   37                                                 entry DMT(MT: in Matrix_H; D: in Vector_N); --кусочки данных 
+   38                                                 entry MMO(MO: in Matrix_N);
+   39                                                 entry AHT2(V: in Vector_H);
+   40                                                 entry A2HT4(V: in Vector_2H);
+   41                     end T1;
+   42             
+   43                     task T2 is
+   44                                                 entry CAlfa(C: in Vector_2H; Alfa: in Integer);
+   45                                                 entry MMO(MO: in Matrix_N);
+   46                     end T2;
+   47             
+   48                     task T3 is
+   49                                                 entry CAlfa(C: in Vector_H; Alfa: in Integer);
+   50                                                 entry DMT(MT: in Matrix_2H; D: in Vector_N); --кусочки данных 
+   51                     end T3;
+   52             
+   53                     task T4 is
+   54                             entry CAlfa(C: in Vector_H; Alfa: in Integer);
+   55                                                 entry MMO(MO: in Matrix_N);
+   56                                                 entry DMT(MT: in Matrix_H; D: in Vector_N); --кусочки данных 
+   57                                                 entry AHT4(V: in Vector_H);
+   58                     end T4;
+   59             
+   60                     --Реализация задач
+   61                     task body T1 is
+   62                                                 Sum1: Integer := 0;
+   63                                                 Temp, Count1, Count2, uk1, uk2: Integer;
+   64                             
+   65                                                 Alfa1: Integer;
+   66                                                 MO1, MTF: Matrix_N;
+   67                                                 D1: vector_N;
+   68                                                 Cx: Vector_N;
+   69                                                 MTx: Matrix_H;
+   70                                                 A: Vector_N;
+   71                                                 Tv:Vector_N;
+   72                         begin
+   73                             put_Line("T1 started!");
+   74 
+   75                                 --1.    Ввод C, ?
+   76                                     for i in 1 .. N loop
+   77                                        cx(i) := 1;
+   78                                     end loop; 
+   79                                                 Alfa1 := 1;
+   80                                 --2.    Передать CH, ? задаче Т4
+   81                                                 T4.CAlfa(Cx(3*H+1..N), Alfa1);
+   82                                 --3.    Передать C2H, ? задаче Т2
+   83                                                 T2.CAlfa(Cx(H+1..3*H), Alfa1);
+   84                                 --4.    Принять D, MTH от задачи Т2
+   85                             accept DMT(MT: in Matrix_H; D: in Vector_N) do
+   86                                     D1 := D;
+   87                                                                 MTx := MT;
+   88                             end DMT;
+   89                                 --5.    Принять МО от задачи Т2
+   90                             accept MMO(MO: in Matrix_N) do
+   91                                                                 MO1 := MO;
+   92                             end MMO;
+   93                                 --6.    Счёт АН = sort(CH * ? + D * (MO * MTH))
+   94                                                 for i in 1.. N loop
+   95                                             for j in 1 .. H loop
+   96                                                            sum1 := 0;
+   97                                                for z in 1 .. N loop
+   98                                                   sum1 := sum1 + MTx(J)(Z) * MO1(Z)(I);
+   99                                                end loop;
+  100                                                            MTF(I)(J) := Sum1;
+  101                                                         end loop;
+  102                                          end loop;
+  103                                                  Sum1 := 0;
+  104                                                  for i in 1.. H loop
+  105                                             for j in 1 .. N loop
+  106                                                                 sum1 := sum1 + D1(J) * MTF(j)(I);
+  107                                                         end loop;
+  108                                                         A(I) := Cx(I) * Alfa1 + Sum1;
+  109                                                         Sum1 := 0;
+  110                                                  end loop;
+  111                                                  for Count1 in 1 .. H loop
+  112                                                 for Count2 in 1 .. H loop
+  113                                                 if (A(Count1) > A(Count2)) then
+  114                                                         begin           
+  115                                                            Temp      := A(Count1);
+  116                                                            A(Count1) := A(Count2);
+  117                                                            A(Count2) := Temp;
+  118                                                         end;
+  119                                                     end if;
+  120                                                 end loop;
+  121                                              end loop;
+  122                                                  put_Line("LOL!");
+  123                                 --7.    Принять АН от задачи Т2
+  124                             accept AHT2(V: in Vector_H) do
+  125                                                                 A(H+1..2*H) := V; 
+  126                             end AHT2;
+  127                                 --8.    Слияние A2H = sort(AH, AH)
+  128                                                 uk1 := 1;
+  129                                     uk2 := H+1;
+  130                                                  for Count1 in 1 .. 2 * H loop
+  131                                                         if ((uk2 >= 2 * H) or ((A(uk1) <= A(uk2)) and (uk1 < H))) then
+  132                                                                 begin
+  133                                                                         Tv(Count1) := A(Uk1);
+  134                                                                         Uk1 := Uk1 + 1;
+  135                                                                 end;
+  136                                                         else
+  137                                                                 begin
+  138                                                                         Tv(Count1) := A(Uk2);
+  139                                                                         Uk2 := Uk2 + 1;
+  140                                                                 end;    
+  141                                                         end if;
+  142                                                  end loop;
+  143                                    for Count1 in 1 .. 2 * H loop
+  144                                         A(Count1) := Tv(Count1);
+  145                                            end loop;
+  146                                 --9.    Принять А2H от задачи Т4
+  147                                                 accept A2HT4(V: in Vector_2H) do
+  148                                                                 A(2*H+1..N) := V; 
+  149                             end A2HT4;
+  150                                 --10.   Слияние A = sort(А2H, А2H)
+  151                                                 uk1 := 1;
+  152                                     uk2 := 2*H+1;
+  153                                                  for Count1 in 1 .. N loop
+  154                                                         if ((uk2 >= N) or ((A(uk1) <= A(uk2)) and (uk1 < 2 * H))) then
+  155                                                                 begin
+  156                                                                         Tv(Count1) := A(Uk1);
+  157                                                                         Uk1 := Uk1 + 1;
+  158                                                                 end;
+  159                                                         else
+  160                                                                 begin
+  161                                                                         Tv(Count1) := A(Uk2);
+  162                                                                         Uk2 := Uk2 + 1;
+  163                                                                 end;    
+  164                                                         end if;
+  165                                                  end loop;
+  166                                    for Count1 in 1 .. N loop
+  167                                         A(Count1) := Tv(Count1);
+  168                                            end loop;
+  169                                 --11.   Вывод А
+  170                                                 if N < 24 then
+  171                                                         for i in 1 .. N loop
+  172                                                 Put(A(i), 4);
+  173                                                         end loop;
+  174                                                 end if;
+  175 
+  176                                             time2:=clock;
+  177                                         time_all:=time2-time1;
+  178                                                 Put(Integer(time_all));
+  179                    end T1;
+  180            
+  181                    task body T2 is
+  182                                                 Sum1: Integer := 0;
+  183                                                 Temp, Count1, Count2, uk1, uk2: Integer;
+  184                             
+  185                                                 Alfa1: Integer;
+  186                                                 MO1, MTF: Matrix_N;
+  187                                                 D1: vector_N;
+  188                                                 Cx: Vector_2H;
+  189                                                 MTx: Matrix_N;
+  190                                                 A: Vector_H;
+  191                                                 Tv:Vector_N;
+  192                    begin
+  193                           put_Line("T2 started!");
+  194                   
+  195                                                 --1.    Ввод D, MT
+  196                                                 for i in 1 .. N loop
+  197                                                         for J in 1 .. N loop
+  198                                                 MTx(i)(J) := 1;
+  199                                         end loop; 
+  200                                                 end loop; 
+  201                                             for i in 1 .. N loop
+  202                                        D1(i) := 1;
+  203                                     end loop; 
+  204                                                 --2.    Принять C2H, ? от задачи Т1
+  205                                                 accept CAlfa(C: in Vector_2H; Alfa: in Integer) do
+  206                                                         Alfa1 := Alfa;
+  207                                                         Cx := C;
+  208                                                 end CAlfa;
+  209                                                 --3.    Передать CH, ? задаче Т3
+  210                                                 T3.CAlfa(Cx(H+1..2*H), Alfa1);
+  211                                                 --4.    Передать D, MTH задаче Т1
+  212                                                 T1.DMT(MTx(1..H), D1);
+  213                                                 --5.    Передать D, MT2H задаче Т3
+  214                                                 T3.DMT(MTx(2*H+1..N), D1);
+  215                                                 --6.    Принять МО от задачи Т3
+  216                             accept MMO(MO: in Matrix_N) do
+  217                                                                 MO1 := MO;
+  218                             end MMO;
+  219                                                 --7.    Передать МО задаче Т1
+  220                                                 T1.MMO(MO1);
+  221                                                 --8.    Счёт АН = sort(CH * ? + D * (MO * MTH))
+  222                                                 for i in 1.. N loop
+  223                                             for j in 1 .. H loop
+  224                                                            sum1 := 0;
+  225                                                for z in 1 .. N loop
+  226                                                   sum1 := sum1 + MTx(J+H)(Z) * MO1(Z)(I);
+  227                                                end loop;
+  228                                                            MTF(I)(J) := Sum1;
+  229                                                         end loop;
+  230                                          end loop;
+  231                                                  Sum1 := 0;
+  232                                                  for i in 1.. H loop
+  233                                             for j in 1 .. N loop
+  234                                                                 sum1 := sum1 + D1(J) * MTF(j)(I);
+  235                                                         end loop;
+  236                                                         A(I) := Cx(I) * Alfa1 + Sum1;
+  237                                                         Sum1 := 0;
+  238                                                  end loop;
+  239                                                  for Count1 in 1 .. H loop
+  240                                                 for Count2 in 1 .. H loop
+  241                                                 if (A(Count1) > A(Count2)) then
+  242                                                         begin           
+  243                                                            Temp      := A(Count1);
+  244                                                            A(Count1) := A(Count2);
+  245                                                            A(Count2) := Temp;
+  246                                                         end;
+  247                                                     end if;
+  248                                                 end loop;
+  249                                              end loop;
+  250                                                 --9.    Передать АН задаче Т1
+  251                                                 T1.AHT2(A);
+  252 
+  253                           Put_Line("T2 ended");
+  254                    end T2;
+  255            
+  256                    task body T3 is
+  257                                                 Sum1: Integer := 0;
+  258                                                 Temp, Count1, Count2, uk1, uk2: Integer;
+  259                             
+  260                                                 Alfa1: Integer;
+  261                                                 MO1, MTF: Matrix_N;
+  262                                                 D1: vector_N;
+  263                                                 Cx: Vector_H;
+  264                                                 MTx: Matrix_2H;
+  265                                                 A: Vector_H;
+  266                                                 Tv:Vector_N;
+  267                    begin
+  268                            put_Line("T3 started!");
+  269         
+  270                                 --1.    Ввод MО
+  271                                                 for i in 1 .. N loop
+  272                                                         for J in 1 .. N loop
+  273                                                 MO1(i)(J) := 1;
+  274                                         end loop; 
+  275                                                 end loop; 
+  276                                 --2.    Принять CH, ? от задачи Т2
+  277                                                 accept CAlfa(C: in Vector_H; Alfa: in Integer) do
+  278                                                         Alfa1 := Alfa;
+  279                                                         Cx := C;
+  280                                                 end CAlfa;
+  281                                 --3.    Принять D, MT2H от задачи Т2
+  282                             accept DMT(MT: in Matrix_2H; D: in Vector_N) do
+  283                                     D1 := D;
+  284                                                                 MTx := MT;
+  285                             end DMT;
+  286                                 --4.    Передать МО задаче Т2
+  287                                                 T2.MMO(MO1);
+  288                                 --5.    Передать МО задаче Т4
+  289                                                 T4.MMO(MO1);
+  290                                 --6.    Передать D, MTH задаче Т4
+  291                                                 T4.DMT(MTx(H+1..2*H), D1);
+  292                                 --7.    Счёт АН = sort(CH * ? + D * (MO * MTH))
+  293                                                 for i in 1.. N loop
+  294                                             for j in 1 .. H loop
+  295                                                            sum1 := 0;
+  296                                                for z in 1 .. N loop
+  297                                                   sum1 := sum1 + MTx(J)(Z) * MO1(Z)(I);
+  298                                                end loop;
+  299                                                            MTF(I)(J) := Sum1;
+  300                                                         end loop;
+  301                                          end loop;
+  302                                                  Sum1 := 0;
+  303                                                  for i in 1.. H loop
+  304                                             for j in 1 .. N loop
+  305                                                                 sum1 := sum1 + D1(J) * MTF(j)(I);
+  306                                                         end loop;
+  307                                                         A(I) := Cx(I) * Alfa1 + Sum1;
+  308                                                         Sum1 := 0;
+  309                                                  end loop;
+  310                                                  for Count1 in 1 .. H loop
+  311                                                 for Count2 in 1 .. H loop
+  312                                                 if (A(Count1) > A(Count2)) then
+  313                                                         begin           
+  314                                                            Temp      := A(Count1);
+  315                                                            A(Count1) := A(Count2);
+  316                                                            A(Count2) := Temp;
+  317                                                         end;
+  318                                                     end if;
+  319                                                 end loop;
+  320                                              end loop;
+  321                                 --8.    Передать АН задаче Т4
+  322                                                 T4.AHT4(A);
+  323 
+  324                            Put_Line("T3 ended");
+  325                    end T3;
+  326            
+  327                    task body T4 is
+  328                             Sum1: Integer := 0;
+  329                                                 Temp, Count1, Count2, uk1, uk2: Integer;
+  330                             
+  331                                                 Alfa1: Integer;
+  332                                                 MO1, MTF: Matrix_N;
+  333                                                 D1: vector_N;
+  334                                                 Cx: Vector_H;
+  335                                                 MTx: Matrix_H;
+  336                                                 A: Vector_2H;
+  337                                                 Tv:Vector_N;
+  338                    begin
+  339                            put_Line("T4 started!");
+  340            
+  341                                 --1.    Принять CH, ? от задачи Т1
+  342                                                 accept CAlfa(C: in Vector_H; Alfa: in Integer) do
+  343                                                         Alfa1 := Alfa;
+  344                                                         Cx := C;
+  345                                                 end CAlfa;
+  346                                 --2.    Принять МО от задачи Т3
+  347                                                 accept MMO(MO: in Matrix_N) do
+  348                                                                 MO1 := MO;
+  349                             end MMO;
+  350                                 --3.    Принять D, MTH от задачи Т3
+  351                             accept DMT(MT: in Matrix_H; D: in Vector_N) do
+  352                                     D1 := D;
+  353                                                                 MTx := MT;
+  354                             end DMT;
+  355                                 --4.    Счёт АН = sort(CH * ? + D * (MO * MTH))
+  356                                                 for i in 1.. N loop
+  357                                             for j in 1 .. H loop
+  358                                                            sum1 := 0;
+  359                                                for z in 1 .. N loop
+  360                                                   sum1 := sum1 + MTx(J)(Z) * MO1(Z)(I);
+  361                                                end loop;
+  362                                                            MTF(I)(J) := Sum1;
+  363                                                         end loop;
+  364                                          end loop;
+  365                                                  Sum1 := 0;
+  366                                                  for i in 1.. H loop
+  367                                             for j in 1 .. N loop
+  368                                                                 sum1 := sum1 + D1(J) * MTF(j)(I);
+  369                                                         end loop;
+  370                                                         A(I+H) := Cx(I) * Alfa1 + Sum1;
+  371                                                         Sum1 := 0;
+  372                                                  end loop;
+  373                                                  for Count1 in 1 .. H loop
+  374                                                 for Count2 in 1 .. H loop
+  375                                                 if (A(Count1) > A(Count2)) then
+  376                                                         begin           
+  377                                                            Temp      := A(Count1);
+  378                                                            A(Count1) := A(Count2);
+  379                                                            A(Count2) := Temp;
+  380                                                         end;
+  381                                                     end if;
+  382                                                 end loop;
+  383                                              end loop;
+  384                                 --5.    Принять АН от задачи Т3
+  385                             accept AHT4(V: in Vector_H) do
+  386                                                                 A(1..H) := V; 
+  387                             end AHT4;
+  388                                 --6.    Слияние A2H = sort(AH, AH)
+  389                                                 uk1 := 1;
+  390                                     uk2 := H+1;
+  391                                                  for Count1 in 1 .. 2 * H loop
+  392                                                         if ((uk2 >= 2 * H) or ((A(uk1) <= A(uk2)) and (uk1 < H))) then
+  393                                                                 begin
+  394                                                                         Tv(Count1) := A(Uk1);
+  395                                                                         Uk1 := Uk1 + 1;
+  396                                                                 end;
+  397                                                         else
+  398                                                                 begin
+  399                                                                         Tv(Count1) := A(Uk2);
+  400                                                                         Uk2 := Uk2 + 1;
+  401                                                                 end;    
+  402                                                         end if;
+  403                                                  end loop;
+  404                                 --7.    Передать A2H задаче Т1 
+  405                                                 T1.A2HT4(A);
+  406 
+  407                            Put_Line("T4 ended");
+  408                    end T4;
+  409 
+  410                    begin
+  411                         null;
+  412                 end START;
+  413 
+  414 begin
+  415         Put_Line("N == ");
+  416         Put(N);
+  417         Get(A);
+  418         time1:=clock;
+  419         START;
+  420 end CoursePRO;
+  421 
+
+NAME                 KIND/FILE            DEF    REFERENCES (* if assigned)
+---------------------------------------------------------------------------
+A                    object              21      417* 
+A                    object              70      108* 113 115 116* 117* 
+                                                 125* 131 133 138 144* 
+                                                 148* 154 156 161 167* 
+                                                 172* 
+A                    object             190      236* 241 243 244* 245* 
+                                                 251* 
+A                    object             265      307* 312 314 315* 316* 
+                                                 322* 
+A                    object             336      370* 375 377 378* 379* 
+                                                 386* 392 394 399 405* 
+A2HT4                subprogram          40      147 405 
+AHT2                 subprogram          39      124 251 
+AHT4                 subprogram          57      322 385 
+Alfa                 parameter           44      
+Alfa                 parameter           49      
+Alfa                 parameter           54      
+Alfa1                object              65      79* 81* 83* 108 
+Alfa1                object             185      206* 210* 236 
+Alfa1                object             260      278* 307 
+Alfa1                object             331      343* 370 
+C                    parameter           44      
+C                    parameter           49      
+C                    parameter           54      
+CAlfa                subprogram          44      83 205 
+CAlfa                subprogram          49      210 277 
+CAlfa                subprogram          54      81 342 
+Calendar             #5:ada.calendar.spc         12 
+Count1               object              63      
+Count1               object             111      113 115 116 
+Count1               object             130      133 138 
+Count1               object             143      144 
+Count1               object             153      156 161 
+Count1               object             166      167 
+Count1               object             183      
+Count1               object             239      241 243 244 
+Count1               object             258      
+Count1               object             310      312 314 315 
+Count1               object             329      
+Count1               object             373      375 377 378 
+Count1               object             391      394 399 
+Count2               object              63      
+Count2               object             112      113 116 117 
+Count2               object             183      
+Count2               object             240      241 244 245 
+Count2               object             258      
+Count2               object             311      312 315 316 
+Count2               object             329      
+Count2               object             374      375 378 379 
+CoursePRO            library subp body   15      420 
+Cx                   object              68      77* 81* 83* 108 
+Cx                   object             188      207* 210* 236 
+Cx                   object             263      279* 307 
+Cx                   object             334      344* 370 
+D                    parameter           37      
+D                    parameter           50      
+D                    parameter           56      
+D1                   object              67      86* 106 
+D1                   object             187      202* 212* 214* 234 
+D1                   object             262      283* 291* 305 
+D1                   object             333      352* 368 
+DMT                  subprogram          37      85 212 
+DMT                  subprogram          50      214 282 
+DMT                  subprogram          56      291 351 
+Get                  #3:ada.text_io.spc          417 
+H                    object              18      26 27 31 32 95 104 111 
+                                                 112 129 130 131 143 152 
+                                                 154 223 226 232 239 240 
+                                                 294 303 310 311 357 366 
+                                                 370 373 374 390 391 392 
+Integer_Text_IO      #4:ada.integer_text_io.ada  11 
+J                    object             197      198 
+J                    object             272      273 
+MMO                  subprogram          38      90 220 
+MMO                  subprogram          45      216 287 
+MMO                  subprogram          55      289 347 
+MO                   parameter           38      
+MO                   parameter           45      
+MO                   parameter           55      
+MO1                  object              66      91* 98 
+MO1                  object             186      217* 220* 226 
+MO1                  object             261      273* 287* 289* 297 
+MO1                  object             332      348* 360 
+MT                   parameter           37      
+MT                   parameter           50      
+MT                   parameter           56      
+MTF                  object              66      100* 106 
+MTF                  object             186      228* 234 
+MTF                  object             261      299* 305 
+MTF                  object             332      362* 368 
+MTx                  object              69      87* 98 
+MTx                  object             189      198* 212* 214* 226 
+MTx                  object             264      284* 291* 297 
+MTx                  object             335      353* 360 
+Matrix               type                29      30 31 32 
+Matrix_2H            subtype             31      50 264 282 
+Matrix_H             subtype             32      37 56 69 85 335 351 
+Matrix_N             subtype             30      38 45 55 66 90 186 189 
+                                                 216 261 332 347 
+N                    object              16      18 25 30 76 94 97 105 
+                                                 153 154 166 170 171 196 
+                                                 197 201 222 225 233 271 
+                                                 272 293 296 304 356 359 
+                                                 367 416* 
+P                    object              17      18 
+Package1             #1:package1.adb             9 
+Put                  #3:ada.text_io.spc          172 178 416 
+Put_Line             #3:ada.text_io.spc          73 122 193 253 268 324 
+                                                 339 407 415 
+START                subprogram body     34      412 419 
+Sum1                 object              62      96* 98* 100 103* 106* 
+                                                 108 109* 
+Sum1                 object             182      224* 226* 228 231* 234* 
+                                                 236 237* 
+Sum1                 object             257      295* 297* 299 302* 305* 
+                                                 307 308* 
+Sum1                 object             328      358* 360* 362 365* 368* 
+                                                 370 371* 
+T1                   object              36      41 212 220 251 405 
+T1                   task body           61      179 
+T2                   object              43      46 83 287 
+T2                   task body          181      254 
+T3                   object              48      51 210 214 
+T3                   task body          256      325 
+T4                   object              53      58 81 289 291 322 
+T4                   task body          327      408 
+Temp                 object              63      115* 117 
+Temp                 object             183      243* 245 
+Temp                 object             258      314* 316 
+Temp                 object             329      377* 379 
+Text_IO              #3:ada.text_io.spc          10 
+Tv                   object              71      133* 138* 144 156* 161* 
+                                                 167 
+Tv                   object             191      
+Tv                   object             266      
+Tv                   object             337      394* 399* 
+V                    parameter           39      
+V                    parameter           40      
+V                    parameter           57      
+Vector_2h            subtype             26      40 44 147 188 205 336 
+Vector_H             subtype             27      39 49 54 57 124 190 263 
+                                                 265 277 334 342 385 
+Vector_N             subtype             25      29 37 50 56 67 68 70 71 
+                                                 85 187 191 262 266 282 
+                                                 333 337 351 
+ada                  #2:ada.ada                  10 11 12 13 
+clock                #5:ada.calendar.spc         176 418 
+float_text_io        #6:ada.float_text_io.ada    13 
+i                    object              76      77 
+i                    object              94      98 100 
+i                    object             104      106 108 
+i                    object             171      172 
+i                    object             196      198 
+i                    object             201      202 
+i                    object             222      226 228 
+i                    object             232      234 236 
+i                    object             271      273 
+i                    object             293      297 299 
+i                    object             303      305 307 
+i                    object             356      360 362 
+i                    object             366      368 370 
+j                    object              95      98 100 
+j                    object             105      106 
+j                    object             223      226 228 
+j                    object             233      234 
+j                    object             294      297 299 
+j                    object             304      305 
+j                    object             357      360 362 
+j                    object             367      368 
+time                 #5:ada.calendar.spc         20 
+time1                object              20      177* 418* 
+time1                #5:ada.calendar.spc         177 
+time2                object              20      176* 177* 
+time_all             object              19      177* 178* 
+uk1                  object              63      128* 131 133 134* 151* 
+                                                 154 156 157* 
+uk1                  object             183      
+uk1                  object             258      
+uk1                  object             329      389* 392 394 395* 
+uk2                  object              63      129* 131 138 139* 152* 
+                                                 154 161 162* 
+uk2                  object             183      
+uk2                  object             258      
+uk2                  object             329      390* 392 399 400* 
+vector               type                24      25 26 27 
+z                    object              97      98 
+z                    object             225      226 
+z                    object             296      297 
+z                    object             359      360 
+
+    File #1 ..\package1.adb
+    File #2 ada.ada
+    File #3 ada.text_io.spc
+    File #4 ada.integer_text_io.ada
+    File #5 ada.calendar.spc
+    File #6 ada.float_text_io.ada

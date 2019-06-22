@@ -1,0 +1,56 @@
+Source file: ..\..\data.ads   Fri May 31 01:54:27 2013
+
+    1 -------------------------------------------------------------------------------
+    2 --                                                                           --
+    3 --                   Parallel and Distributed Computing                      --
+    4 --                        Lab7. Ada. Rendezvous                              --
+    5 --                                                                           --
+    6 --  File: data.ads                                                           --
+    7 --  Task: A = max(MO)*B + alpha*C*(MO*MK)                                    --
+    8 --                                                                           --
+    9 --  Author: Dremov Andrey, group IO-01                                       --
+   10 --  Date: 30.05.2013                                                         --
+   11 --                                                                           --
+   12 -------------------------------------------------------------------------------
+   13 
+   14 with Ada.Text_IO;
+   15 use Ada.Text_IO;
+   16 
+   17 generic
+   18    
+   19    N: in Natural;
+   20    
+   21 package Data is 
+   22 
+   23    type    Vector    is array(Integer range <>) of Integer;
+   24    Subtype Vector_N  is Vector(1..N);
+   25 
+   26    type    Matrix   is array(Integer range <>) of Vector_N;
+   27    Subtype Matrix_N  is Matrix(1..N);
+   28  
+   29 
+   30    procedure Input ( V    : out Vector;
+   31                      Value : in Integer); 
+   32 
+   33    procedure Input ( MA    : out Matrix;
+   34                      Value : in Integer);
+   35 
+   36     procedure Output (V : in Vector);
+   37    procedure Output (MA : in Matrix);
+   38 
+   39    function Maximum_Of_Matrix (MO : in Matrix) return Integer;
+   40 
+   41    procedure Calculation (
+   42       Alpha  : in Integer;
+   43       M  : in Integer;
+   44       B : in Vector;
+   45       C : in Vector_N;
+   46         MK : in Matrix_N;
+   47         MO : in Matrix;
+   48       First : in Integer;
+   49       Last  : in Integer;
+   50       A : out Vector);
+   51                            
+   52     procedure Transpose (MO : in out Matrix);
+   53     
+   54 end Data;

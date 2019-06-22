@@ -1,0 +1,79 @@
+V "GNAT Lib v2015"
+A -gnatl=data.lst
+A -mtune=generic
+A -march=pentiumpro
+P ZX
+
+RN
+RV NO_IO
+RV SPARK_05
+
+U data%b		data.adb		3d393a0c NE OO PK GE
+W ada%s			ada.ads			ada.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+
+U data%s		data.ads		393d98f1 BN EE NE OO PK GE
+W ada%s			ada.ads			ada.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+
+D ada.ads		20150518132148 3ffc8e18 ada%s
+D a-except.ads		20150518132148 5250cb69 ada.exceptions%s
+D a-inteio.ads		20150518132148 f64b89a4 ada.integer_text_io%s
+D a-ioexce.ads		20150518132148 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20150518132148 119b8fb3 ada.streams%s
+D a-tags.ads		20150518132148 dc4d0634 ada.tags%s
+D a-textio.ads		20150518132148 386df5d4 ada.text_io%s
+D a-tiinio.ads		20150518132148 aa04e5d6 ada.text_io.integer_io%s
+D a-unccon.ads		20150518132148 f9eb8f06 ada.unchecked_conversion%s
+D data.ads		20160418111744 01506d25 data%s
+D data.adb		20160418114858 f24f2b59 data%b
+D interfac.ads		20150518132148 6033a23f interfaces%s
+D i-cstrea.ads		20150518132148 e53d8b8e interfaces.c_streams%s
+D system.ads		20150518132150 f4ce8c3a system%s
+D s-crtl.ads		20150518132148 0ebbdb71 system.crtl%s
+D s-exctab.ads		20150518132148 54135002 system.exception_table%s
+D s-ficobl.ads		20150518132148 078245e4 system.file_control_block%s
+D s-parame.ads		20150518132150 7e2a0d7f system.parameters%s
+D s-soflin.ads		20150518132150 aa763b52 system.soft_links%s
+D s-stache.ads		20150518132150 a37c21ec system.stack_checking%s
+D s-stalib.ads		20150518132150 fa0a3617 system.standard_library%s
+D s-stoele.ads		20150518132150 2dc34a04 system.storage_elements%s
+D s-traent.ads		20150518132150 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20150518132150 9d58a4c0 system.unsigned_types%s
+D s-wchcon.ads		20150518132150 1b7d22d2 system.wch_con%s
+X 1 ada.ads
+16K9*Ada 19e8 10|1r6 2r10 11|14r6 14r19 15r5 15r18
+X 3 a-inteio.ads
+18K13*Integer_Text_IO[8|46] 11|14w23 15r22
+X 7 a-textio.ads
+49K13*Text_IO 471e16 10|1w10 2r14 11|14w10 15r9
+73I12*Field{integer}
+166U14*New_Line 11|37s16 41s16 46s16 51s19 53s16
+X 8 a-tiinio.ads
+66U14*Put 11|39s19[3|18] 49s22[3|18]
+67i7 Item{integer} 11|39r23[3|18]
+68i7 Width{7|73I12} 11|39r37[3|18]
+X 10 data.ads
+5i9 N{natural} 8r34 9r34 11|21r24 27r27 28r31 38r28 47r28 48r31
+7k14*Data 5z9 14l10 14e14 11|17b19 57l13 57t17
+8A14*Vector(integer)<integer> 9r40 10r54 12r34 11|19r50 35r38
+9A14*Matrix(8A14)<integer> 11r56 13r35 11|25r52 44r39
+10U19*Input 10>26 10<46 11|19b19 24l13 24t18
+10i26 Value{integer} 11|19b25 22r21
+10a46 V{8A14} 11|19b42 22m15
+11U19*Input 11>26 11<47 11|25b19 32l17 32t22
+11i26 Value{integer} 11|25b26 29r38
+11a47 MA{9A14} 11|25b43 29m26
+12U19*Output 12>27 11|35b23 42l17 42t23
+12a27 V{8A14} 11|35b31 39r31
+13U19*Output 13>27 11|44b23 54l17 54t23
+13a27 MA{9A14} 11|44b31 49r26
+X 11 data.adb
+21i16 i{integer} 22r17
+27i19 I{integer} 29r29
+28i23 J{integer} 29r32
+38i20 I{integer} 39r33
+47i20 I{integer} 49r29
+48i23 J{integer} 49r32
+

@@ -1,0 +1,50 @@
+1.  #include "matrix.h"
+2.  
+3.  
+4.  Matrix::Matrix(size_t N) :
+5.     rows(N),
+6.     cols(N),
+7.     data(new int[N * N])
+8.  {
+9.  }
+10.  
+11. Matrix::Matrix(size_t rows, size_t cols) :
+12.    rows(rows),
+13.    cols(cols),
+14.    data(new int[rows * cols])
+15. {
+16. }
+17. 
+18. Matrix::Matrix(const Matrix &other) :
+19.    rows(other.rows),
+20.    cols(other.cols),
+21.    data(new int[other.rows * other.cols])
+22. {
+23.    for(size_t i = 0; i < this->rows * this->cols; i++) {
+24.       this->data[i] = other.data[i];
+25.    }
+26. }
+27. 
+28. Matrix::~Matrix() {
+29.    delete[] data;
+30. }
+31. 
+32. 
+33. void Matrix::fill(int value) {
+34.    for(size_t i = 0; i < this->rows; i++) {
+35.       for(size_t j = 0; j < this->cols; j++) {
+36.          this->data[i * this->cols + j] = value;
+37.       }
+38.    }
+39. }
+40. 
+41. 
+42. std::ostream &operator<<(std::ostream &ostr, const Matrix &matrix) {
+43.    for(size_t i = 0; i < matrix.rows; i++) {
+44.       for(size_t j = 0; j < matrix.cols; j++) {
+45.          ostr << matrix.data[i * matrix.cols + j] << " ";
+46.       }
+47.       ostr << std::endl;
+48.    }
+49.    return ostr;
+50. }

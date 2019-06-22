@@ -1,0 +1,130 @@
+Source file: ..\lab1.adb   Tue Feb 22 16:07:31 2011
+
+    1 ----------------------------------------------------------------
+    2 --              Paralel and distributed computing             --
+    3 --             Laboratory work #1. Ada. Semaphores            --
+    4 --                  Func: a = MIN(MB-alfa*MO*MT)              --
+    5 --                   IO-83                     --
+    6 ----------------------------------------------------------------
+    7 
+    8 with Package1; use Package1;
+    9 with Ada.Text_IO; use Ada.Text_IO;
+   10 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
+   11 with Ada.Synchronous_Task_Control; use Ada.Synchronous_Task_Control;
+   12 
+   13 procedure Lab1 is
+   14 
+   15 
+   16    MB, MO, MT: Matr;
+   17    a:          integer := 500000; --min - shared variable
+   18    Alfa:           Integer;
+   19 
+   20    --semaphores
+   21    S1, S2, SKD1, SKD2: Suspension_Object; 
+   22 
+   23    procedure Task_start is
+   24       task T1;
+   25       task body T1 is
+   26          alfa1: integer;
+   27                  Sum: Integer := 0;
+   28                  A1: Integer := 530000;
+   29          MO1: Matr;
+   30         begin   
+   31          Put_Line("T1 start");
+   32 --ENTERING MB, MO, MT, alfa (1)
+   33          Matr_Input(MB);
+   34                  Matr_Input(MO);
+   35                  Matr_Input(MT);
+   36                  alfa := 1;
+   37 --Signal to T2 about end of input (2)
+   38          Set_True(S1);                   --S2-1
+   39 
+   40 -- KY -- Copying of OP (3)
+   41                  Suspend_Until_True(SKD1);
+   42          alfa1 := alfa;
+   43          MO1 := MO;
+   44          Set_True(SKD1);
+   45 -- Calculation a1 = min(MBH - Alfa1 * MO1  * MRH (4)
+   46                  for i in 1.. N loop
+   47             for j in 1 .. H loop
+   48                            sum := 0;
+   49                for z in 1 .. N loop
+   50                   sum := sum + MO1(i)(z) * MT(Z)(J);
+   51                end loop;
+   52                            Sum := MB(I)(J) - Alfa1 * Sum;
+   53                            if (A1 > Sum) then
+   54                                   A1 := Sum;
+   55                            end if;
+   56                            Sum := 0;
+   57                         end loop;
+   58          end loop;
+   59                  Sum := 0;
+   60 -- KY -- Calculation a = min(a, a1) (5)
+   61          Suspend_until_true(SKD2);
+   62          if (a > a1) then
+   63             a := a1;
+   64          end if;
+   65          Set_True(SKD2);
+   66 --Waiting to end of calculation (6)                                                        
+   67                  Suspend_Until_True(S2); --W2.1 
+   68 --Out a. (7)
+   69                  Constant_Out(a);
+   70          Put_Line("T1 stop");
+   71       end T1;
+   72 
+   73       task T2;
+   74       task body T2 is
+   75          alfa2: integer;
+   76                  A2: Integer := 540000;
+   77                  Sum: Integer := 0;
+   78          MO2: Matr;
+   79       begin
+   80          Put_Line("T2 start");
+   81 
+   82 -- Waiting to the end of the input Data in T1 (1)      
+   83                  Suspend_until_true(S1); --W1-1
+   84 
+   85 -- KY -- Copying of OP (2)
+   86                  Suspend_until_true(SKD1);
+   87          alfa2 := alfa;
+   88          MO2 := MO;
+   89          Set_True(SKD1);
+   90 
+   91 -- Calculation a2 = min(MBH - Alfa2 * MO2  * MRH (3)
+   92                  for i in 1.. N loop
+   93             for j in H+1 .. n loop
+   94                            sum := 0;
+   95                for z in 1 .. N loop
+   96                   sum := sum + MO2(i)(z) * MT(Z)(J);
+   97                end loop;
+   98                            Sum := MB(I)(J) - Alfa2 * Sum;
+   99                            if (A2 > Sum) then
+  100                                   A2 := Sum;
+  101                            end if;
+  102                            Sum := 0;
+  103                         end loop;
+  104          end loop;
+  105                  Sum := 0;
+  106 
+  107 -- KY -- Calculation a = min(a, a2) (4)
+  108          Suspend_until_true(SKD2);
+  109          if (a > a2) then
+  110             a := a2;
+  111          end if;
+  112          Set_True(SKD2);
+  113         
+  114 --Waiting to end of calculation (6)     
+  115                  Set_True(S2);
+  116 
+  117          Put_Line("T2 stop");
+  118       end T2;
+  119 
+  120    begin
+  121       null;
+  122    end Task_start;
+  123 
+  124 begin
+  125    Set_True(SKD1);
+  126    Set_True(SKD2);
+  127    Task_start;
+  128 end Lab1;

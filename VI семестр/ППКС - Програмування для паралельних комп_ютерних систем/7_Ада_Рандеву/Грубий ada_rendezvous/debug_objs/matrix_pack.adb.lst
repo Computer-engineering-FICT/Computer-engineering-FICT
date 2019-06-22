@@ -1,0 +1,101 @@
+GNAT GPL 2009 (20090519)
+Copyright 1992-2009, Free Software Foundation, Inc.
+
+Compiling: D:\Kache\AdaWorkspace\AdaRondevouz\source\matrix_pack.adb (source file time stamp: 2010-04-18 18:53:40)
+
+     1. with Ada.Text_IO, Ada.Integer_Text_Io;
+     2. use  Ada.Text_IO, Ada.Integer_Text_Io;
+     3.
+     4. package body Matrix_Pack is
+     5.    function getVector (d : in integer) return Vector is
+     6.       result : Vector;
+     7.    begin
+     8.       for i in 1 .. N loop
+     9.          result (i) := d;
+    10.       end loop;
+    11.       return result;
+    12.    end getVector;
+    13.
+    14.    function getMatrix (d : in integer) return Matrix is
+    15.       result : Matrix;
+    16.    begin
+    17.       for i in 1 .. N loop
+    18.          for j in 1 .. N loop
+    19.             result (i) (j) := d; end loop;
+    20.       end loop;
+    21.       return result;
+    22.    end GetMatrix;
+    23.    ----------------------------------------
+    24.    procedure putVector (A : in Vector) is
+    25.    begin
+    26.       --	new_Line;
+    27.       for i in 1 .. N loop
+    28.             put (A (i) , 5);
+    29.       end loop;
+    30.       new_line;
+    31.    end PutVector;
+    32.
+    33.    procedure putMatrix (MA : in matrix) is
+    34.    begin
+    35.       --	new_Line;
+    36.       for i in 1 .. N loop
+    37.          for j in 1 .. N loop
+    38.             put (MA (i) (j), 3);
+    39.          end loop;
+    40.          new_line;
+    41.       end loop;
+    42.       new_line;
+    43.    end PutMatrix;
+    44.    -----------------------------------------
+    45.    procedure mainCalc (Ah : out Vector_H; a : in integer; B : in Vector; MX : in Matrix; MZ : in Matrix_H; ME : in Matrix_H) is
+    46.    Mbuf : Matrix_H;
+    47.    begin
+    48.       Put_Line("MainCalc started");
+    49.       for j in 1 .. H loop
+    50.          for i in 1 .. N loop
+    51.             Mbuf (j) (i) := 0;
+    52.             for k in 1 .. N loop
+    53.                Mbuf (j) (i) :=  Mbuf (j) (i) + MX (k) (i) + MZ (j) (k);
+    54.             end loop;
+    55.             Mbuf (j) (i) :=  Mbuf (j) (i) - a * ME (j) (i);
+    56.          end loop;
+    57.       end loop;
+    58.
+    59.       for j in 1 .. H loop
+    60.          Ah (j) := 0;
+    61.          for i in 1 .. N loop
+    62.             Ah (j) := Ah (j) + B (i) * Mbuf (j) (i);
+    63.          end loop;
+    64.       end loop;
+    65.    end MainCalc;
+    66. end Matrix_Pack;
+
+Compiling: d:\kache\adaworkspace\adarondevouz\source\matrix_pack.ads (source file time stamp: 2010-04-18 19:09:18)
+
+     1. Package Matrix_Pack Is
+     2.    n : integer := 100*9;
+     3.    p : integer := 9;
+     4.    h : integer := n / p;
+     5.
+     6.    type All_Vector is array (positive range<>)of integer;
+     7.    subtype Vector is All_Vector (1 .. N);
+     8.    subtype Vector_H is All_Vector (1 .. H);
+     9.    subtype Vector_2H is All_Vector (1 .. 2 * H);
+    10.    subtype Vector_3H is All_Vector (1 .. 3 * H);
+    11.    subtype Vector_4H is All_Vector (1 .. 4 * H);
+    12.
+    13.    type All_Matrix is array (positive range<>)of Vector;
+    14.    subtype Matrix is All_Matrix (1 .. N);
+    15.    subtype Matrix_H is All_Matrix (1 .. H);
+    16.    subtype Matrix_2H is All_Matrix (1 .. 2 * H);
+    17.    subtype Matrix_4H is All_Matrix (1 .. 4 * H);
+    18.
+    19.    function getVector (d : in integer) return Vector;
+    20.    function getMatrix (d : in integer) return Matrix;
+    21.    procedure putMatrix (MA : in Matrix);
+    22.    procedure putVector (A : in Vector);
+    23.    procedure mainCalc (Ah : out Vector_H; a : in integer; B : in Vector; MX : in Matrix; MZ : in Matrix_H; ME : in Matrix_H);
+    24.
+    25. End Matrix_Pack;
+
+ 66 lines: No errors

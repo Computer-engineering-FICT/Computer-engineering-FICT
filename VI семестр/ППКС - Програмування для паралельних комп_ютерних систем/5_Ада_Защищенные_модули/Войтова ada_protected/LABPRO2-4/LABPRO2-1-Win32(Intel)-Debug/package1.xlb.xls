@@ -1,0 +1,109 @@
+Source file: ..\package1.adb   Mon Mar 28 19:33:19 2011
+
+    1     with Ada.Text_IO; use Ada.Text_IO;
+    2     with Ada.INteger_Text_IO; use Ada.INteger_Text_IO;
+    3     with Ada.IO_Exceptions; use Ada.IO_Exceptions;
+    4 
+    5     package Package1 is
+    6         N: integer := 50;   --size of structures
+    7                 P: integer := 2;   --count of processors
+    8                 H: integer := N/P; --size of piece
+    9 
+   10            type Vec is array (1..N) of Integer;
+   11        type Matr is array (1..N) of Vec;
+   12 
+   13        procedure Constant_Out(a: integer);
+   14        procedure Vec_print(v: Vec);
+   15        procedure Matr_print(m: Matr);
+   16            procedure Vec_Input(V: in out Vec);
+   17            procedure Matr_Input(M: in out Matr);
+   18 
+   19     end Package1;
+   20     
+   21             
+   22   package body Package1 is
+   23         
+   24     procedure Matr_Input(M: in out Matr) is 
+   25         begin
+   26                 for i in 1 .. N loop
+   27             for j in 1 .. N loop
+   28                M(i)(j) := 1;
+   29             end loop;
+   30          end loop;      
+   31 end Matr_Input;
+   32 
+   33             procedure Vec_Input(V: in out Vec) is 
+   34         begin
+   35                 for i in 1 .. N loop
+   36                V(i) := 1;
+   37          end loop;      
+   38         end Vec_Input;
+   39            
+   40         procedure Constant_Out(a: integer) is   
+   41    begin
+   42           Put(a, 4);
+   43           New_Line;
+   44    end Constant_Out;
+   45 
+   46    procedure Vec_print(v: Vec) is
+   47    begin
+   48       for i in 1 .. N loop
+   49          Put(v(i), 4);
+   50       end loop;
+   51    end;
+   52 
+   53    procedure Matr_print(m: Matr) is
+   54    begin
+   55       for i in 1..n loop
+   56          Vec_print(m(i));
+   57          New_Line;
+   58       end loop;
+   59    end Matr_print;
+   60    
+   61   end Package1;
+
+NAME                 KIND/FILE            DEF    REFERENCES (* if assigned)
+---------------------------------------------------------------------------
+Ada                  #1:ada.ada                  1 2 3 
+Constant_Out         subprogram          13      
+Constant_Out         subprogram body     40      44 
+H                    object               8      
+INteger_Text_IO      #4:ada.integer_text_io.ada  2 
+IO_Exceptions        #3:ada.io_exceptions.dat    3 
+M                    parameter           17      
+M                    parameter           24      28* 
+Matr                 type                11      15 17 24 53 
+Matr_Input           subprogram          17      
+Matr_Input           subprogram body     24      31 
+Matr_print           subprogram          15      
+Matr_print           subprogram body     53      59 
+N                    object               6      8 10 11 26 27 35 48 55 
+New_Line             #2:ada.text_io.spc          43 57 
+P                    object               7      8 
+Package1             library package      5      19 
+Package1             lib package body    22      61 
+Put                  #2:ada.text_io.spc          42 49 
+Text_IO              #2:ada.text_io.spc          1 
+V                    parameter           16      
+V                    parameter           33      36* 
+Vec                  type                10      11 14 16 33 46 
+Vec_Input            subprogram          16      
+Vec_Input            subprogram body     33      38 
+Vec_print            subprogram          14      56 
+Vec_print            subprogram body     46      51 
+a                    parameter           13      
+a                    parameter           40      42* 
+i                    object              26      28 
+i                    object              35      36 
+i                    object              48      49 
+i                    object              55      56 
+j                    object              27      28 
+m                    parameter           15      
+m                    parameter           53      56* 
+v                    parameter           14      
+v                    parameter           46      49* 
+
+    File #1 ada.ada
+    File #2 ada.text_io.spc
+    File #3 ada.io_exceptions.dat
+    File #4 ada.integer_text_io.ada

@@ -1,0 +1,2 @@
+MPIRUN -NP 8 CP_LM
+pause

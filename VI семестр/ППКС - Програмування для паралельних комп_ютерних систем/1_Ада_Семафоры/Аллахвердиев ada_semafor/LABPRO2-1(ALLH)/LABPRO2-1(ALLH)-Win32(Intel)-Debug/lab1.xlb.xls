@@ -1,0 +1,208 @@
+Source file: ..\lab1.adb   Tue Mar 15 19:38:42 2011
+
+    1 ----------------------------------------------------------------
+    2 --              Paralel and distributed computing             --
+    3 --             Laboratory work #1. Ada. Semaphores            --
+    4 --                  Func: a = B*Alfa - C(MX * MY)             --
+    5 --                   IO-83                   --
+    6 --                        9.02.2011                           --
+    7 ----------------------------------------------------------------
+    8 
+    9 with Package1; use Package1;
+   10 with Ada.Text_IO; use Ada.Text_IO;
+   11 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
+   12 with Ada.Synchronous_Task_Control; use Ada.Synchronous_Task_Control;
+   13 
+   14 procedure Lab1 is
+   15 
+   16 
+   17    MX, MY: Matr;
+   18    A, B, C: Vec;
+   19    Alfa: Integer;
+   20 
+   21    --semaphores
+   22    S1, S2, S3, var1: Suspension_Object; 
+   23 
+   24    procedure Task_start is
+   25       task T1;
+   26       task body T1 is
+   27                  Sum: Integer := 0;
+   28                  Alfa1: Integer := 0;
+   29          MX1, MBUF: Matr;
+   30                  C1: Vec;
+   31   begin
+   32         Put_Line("T1 start");
+   33          --1.   Ввод C, B, MX
+   34          Matr_Input(MX);
+   35                  Vec_Input(C);
+   36                  Vec_Input(B);
+   37                  --2.   Сигнал задаче Т2 о завершении ввода
+   38          Set_True(S1);                   --S2-1
+   39                  --3.   Ждать введения Alfa и MY в Т2
+   40                  Suspend_until_true(S2); --W2-1
+   41 
+   42                  --4.   Копирование Alfa1 := Alfa, МX1 := MX, C1 := C
+   43                  --КРИТИЧЕСКАЯ СЕКЦИЯ
+   44                  Suspend_Until_True(Var1);
+   45          alfa1 := alfa;
+   46          MX1 := MX;
+   47                  C1 := C;
+   48          Set_True(Var1);
+   49                         
+   50                  --5.   Счёт AH = BH * Alfa1 - C1 * (MX1 * MYH)
+   51                  for i in 1.. N loop
+   52             for j in 1 .. H loop
+   53                            sum := 0;
+   54                for z in 1 .. N loop
+   55                   sum := sum + MX1(i)(z) * MY(Z)(J);
+   56                end loop;
+   57                            MBUF(I)(J) := Sum; --(MX1 * MYH)
+   58                            Sum := 0;
+   59                         end loop;
+   60          end loop;
+   61                  --C1 * (MX1 * MYH)
+   62                  for J in 1.. H loop
+   63                         sum := 0;
+   64             for I in 1 .. N loop
+   65                sum := sum + C1(i) * MBUF(I)(J);
+   66                         end loop;
+   67                         A(J) := B(J) * Alfa1 - Sum;
+   68          end loop;
+   69                  --6.   Сигнал задаче Т2 о завершении счёта
+   70          Set_True(S3);  --S2-2
+   71 
+   72          Put_Line("T1 stop");
+   73       end T1;
+   74 
+   75       task T2;
+   76       task body T2 is
+   77                  Sum: Integer := 0;
+   78                  Alfa2: Integer := 0;
+   79          MX2, MBUF: Matr;
+   80                  C2: Vec;
+   81   begin
+   82          Put_Line("T2 start");
+   83          --1.   Ввод MY, Alfa
+   84          Matr_Input(MY);
+   85                  alfa := 1;
+   86                  --3.   Сигнал задаче Т1 о завершении ввода
+   87                  Set_True(S2);                   --S1-1
+   88                  --2.   Ждать введения C, B, MX в Т1
+   89                  Suspend_until_true(S1); --W1-1
+   90 
+   91                  --4.   Копирование Alfa1 := Alfa, МX1 := MX, C1 := C
+   92                  --КРИТИЧЕСКАЯ СЕКЦИЯ
+   93                  Suspend_Until_True(Var1);
+   94          alfa2 := alfa;
+   95          MX2 := MX;
+   96                  C2 := C;
+   97          Set_True(Var1);
+   98                         
+   99                  --5.   Счёт AH = BH * Alfa2 - C2 * (MX2 * MYH)
+  100                  for i in 1.. N loop
+  101             for j in H+1 .. N loop
+  102                            sum := 0;
+  103                for z in 1 .. N loop
+  104                   sum := sum + MX2(i)(z) * MY(Z)(J);
+  105                end loop;
+  106                            MBUF(I)(J) := Sum; --(MX2 * MYH)
+  107                            Sum := 0;
+  108                         end loop;
+  109          end loop;
+  110                  --C2 * (MX2 * MYH)
+  111                  for J in H+1 .. N loop
+  112                         sum := 0;
+  113             for I in 1 .. N loop
+  114                sum := sum + C2(i) * MBUF(I)(J);
+  115                         end loop;
+  116                         A(J) := B(J) * Alfa2 - Sum;
+  117          end loop;
+  118                 
+  119                  --6.   Ждать завершения счёта в Т1
+  120          Suspend_until_true(S3); --W1-2
+  121                 
+  122                  --7.   Вывод A
+  123                  New_Line;
+  124                  Vec_print(A);
+  125                  New_Line;
+  126          Put_Line("T2 stop");
+  127       end T2;
+  128 
+  129    begin
+  130       null;
+  131    end Task_start;
+  132 
+  133 begin
+  134    Set_True(Var1);
+  135    Task_start;
+  136 end Lab1;
+
+NAME                 KIND/FILE            DEF    REFERENCES (* if assigned)
+---------------------------------------------------------------------------
+A                    object              18      67* 116* 124* 
+Ada                  #2:ada.ada                  10 11 12 
+Alfa                 object              19      45 85* 94 
+Alfa1                object              28      45* 67 
+Alfa2                object              78      94* 116 
+B                    object              18      36* 67 116 
+C                    object              18      35* 47 96 
+C1                   object              30      47* 65 
+C2                   object              80      96* 114 
+H                    #1:package1.adb             52 62 101 111 
+I                    object              64      65 
+I                    object             113      114 
+Integer_Text_IO      #4:ada.integer_text_io.ada  11 
+J                    object              62      65 67 
+J                    object             111      114 116 
+Lab1                 library subp body   14      136 
+MBUF                 object              29      57* 65 
+MBUF                 object              79      106* 114 
+MX                   object              17      34* 46 95 
+MX1                  object              29      46* 55 
+MX2                  object              79      95* 104 
+MY                   object              17      55 84* 104 
+Matr                 #1:package1.adb             17 29 79 
+Matr_Input           #1:package1.adb             34 84 
+N                    #1:package1.adb             51 54 64 100 101 103 111 
+                                                 113 
+New_Line             #3:ada.text_io.spc          123 125 
+Package1             #1:package1.adb             9 
+Put_Line             #3:ada.text_io.spc          32 72 82 126 
+S1                   object              22      38* 89* 
+S2                   object              22      40* 87* 
+S3                   object              22      70* 120* 
+Set_True             external                        38 48 70 87 97 134 
+from file 5:ada.synchronous_task_control.spc
+Sum                  object              27      53* 55* 57 58* 63* 65* 
+                                                 67 
+Sum                  object              77      102* 104* 106 107* 112* 
+                                                 114* 116 
+Suspend_until_true   external                        40 44 89 93 120 
+from file 5:ada.synchronous_task_control.spc
+Suspension_Object    external                        22 
+from file 5:ada.synchronous_task_control.spc
+Synchronous_Task_Control
+                     external                        12 
+from file 5:ada.synchronous_task_control.spc
+T1                   object              25      25 
+T1                   task body           26      73 
+T2                   object              75      75 
+T2                   task body           76      127 
+Task_start           subprogram body     24      131 135 
+Text_IO              #3:ada.text_io.spc          10 
+Vec                  #1:package1.adb             18 30 80 
+Vec_Input            #1:package1.adb             35 36 
+Vec_print            #1:package1.adb             124 
+i                    object              51      55 57 
+i                    object             100      104 106 
+j                    object              52      55 57 
+j                    object             101      104 106 
+var1                 object              22      44* 48* 93* 97* 134* 
+z                    object              54      55 
+z                    object             103      104 
+
+    File #1 ..\package1.adb
+    File #2 ada.ada
+    File #3 ada.text_io.spc
+    File #4 ada.integer_text_io.ada
+    File #5 ada.synchronous_task_control.spc

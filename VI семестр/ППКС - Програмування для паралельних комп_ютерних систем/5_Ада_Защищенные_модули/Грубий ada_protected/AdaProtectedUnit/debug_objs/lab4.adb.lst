@@ -1,0 +1,344 @@
+GNAT GPL 2009 (20090519)
+Copyright 1992-2009, Free Software Foundation, Inc.
+
+Compiling: D:\Kache\AdaWorkspace\AdaProtectedUnit\lab4.adb (source file time stamp: 2010-03-30 20:08:12)
+
+     1. ----------------------------------------------------------------
+     2. --              Paralel and distributed computing             --
+     3. --             Laboratory work #4. Ada. Protected unit        --
+     4. --                 Func: MA = a*(MB*(MZ + MO*MF)              --
+     5. --                   IO-73 Grubyi Pavel                       --
+     6. --                         17.03.2010                         --
+     7. ----------------------------------------------------------------
+     8.
+     9. with Ada.Text_Io, Ada.Integer_Text_Io, Ada.Calendar;
+    10. use Ada.Text_Io, Ada.Integer_Text_Io, Ada.Calendar;
+    11.
+    12. procedure lab4 is
+    13.    N : integer := 1000;   --size of structures
+           |
+        >>> warning: "N" is not modified, could be declared constant
+
+    14.    P : integer := 4;   --count of processors
+           |
+        >>> warning: "P" is not modified, could be declared constant
+
+    15.    H : integer := N / P; --size of piece
+           |
+        >>> warning: "H" is not modified, could be declared constant
+
+    16.
+    17.    type TVector is array (1 .. N) of integer;
+    18.    type TMatrix is array (1 .. N) of TVector;
+    19.
+    20.    MA, MZ, MF : TMatrix;
+    21.
+    22.    procedure VectorInput (vec : out TVector; x : in  integer);
+    23.
+    24.    procedure VectorOutput (vec : in TVector);
+    25.
+    26.    procedure MatrixInput (m : out TMatrix; x : in  integer);
+    27.
+    28.    procedure MatrixOutput (m : in TMatrix);
+    29.
+    30.    -----------------------------------------
+    31.    protected CalcSync is
+    32.       entry WaitForCalc;
+    33.       procedure CalcSignal;
+    34.
+    35.    private
+    36.       F : integer := 0;
+    37.    end CalcSync;
+    38.
+    39.    protected body CalcSync is
+    40.
+    41.       entry WaitForCalc when F >= 3 is
+    42.       begin
+    43.          if N <= 8 then
+    44.             MatrixOutput (MA);
+    45.          end if;
+    46.       end WaitForCalc;
+    47.
+    48.       procedure CalcSignal is
+    49.       begin
+    50.          F := F + 1;
+    51.       end CalcSignal;
+    52.
+    53.    end CalcSync;
+    54.    ------------------------------------------
+    55.    ------------------------------------------
+    56.    protected InputSync is
+    57.       entry WaitForInput;
+    58.       procedure InputSignal;
+    59.
+    60.    private
+    61.       F : integer := 0;
+    62.    end InputSync;
+    63.
+    64.    protected body InputSync is
+    65.
+    66.       entry WaitForInput when F >= 1 is
+    67.       begin
+    68.          null;
+    69.       end WaitForInput;
+    70.
+    71.       procedure InputSignal is
+    72.       begin
+    73.          F := F + 1;
+    74.       end InputSignal;
+    75.
+    76.    end InputSync;
+    77.    ------------------------------------------
+    78.    ------------------------------------------
+    79.    protected Res_a is
+    80.       procedure seta (x : in  integer);
+    81.       function geta return integer;
+    82.
+    83.    private
+    84.       a : integer;
+    85.    end Res_a;
+    86.
+    87.    protected body Res_a is
+    88.
+    89.       procedure seta (x : in  integer) is
+    90.       begin
+    91.          a := x;
+    92.       end;
+    93.
+    94.       function geta return integer is
+    95.       begin
+    96.          return a;
+    97.       end;
+    98.
+    99.    end Res_a;
+   100.    ------------------------------------------
+   101.    ------------------------------------------
+   102.    protected Res_MB is
+   103.       procedure setMB (x : in  integer);
+   104.       function getMB return TMatrix;
+   105.
+   106.    private
+   107.       MB : TMatrix;
+   108.    end Res_MB;
+   109.
+   110.    protected body Res_MB is
+   111.
+   112.       procedure setMB (x : in  integer) is
+   113.       begin
+   114.          MatrixInput (MB, x);
+   115.       end;
+   116.
+   117.       function getMB return TMatrix is
+   118.       begin
+   119.          return MB;
+   120.       end;
+   121.
+   122.    end Res_MB;
+   123.    ------------------------------------------
+   124.    ------------------------------------------
+   125.    protected Res_MO is
+   126.       procedure setMO (x : in  integer);
+   127.       function getMO return TMatrix;
+   128.
+   129.    private
+   130.       MO : TMatrix;
+   131.    end Res_MO;
+   132.
+   133.    protected body Res_MO is
+   134.
+   135.       procedure setMO (x : in  integer) is
+   136.       begin
+   137.          MatrixInput (MO, x);
+   138.       end;
+   139.
+   140.       function getMO return TMatrix is
+   141.       begin
+   142.          return MO;
+   143.       end;
+   144.
+   145.    end Res_MO;
+   146.    ------------------------------------------
+   147.
+   148.    procedure Process (id, a : integer; MO, MB : in TMatrix) is
+   149.       MX : TMatrix;
+   150.    begin
+   151.       for j in ((H * id)+1) .. (H * (id + 1)) loop
+   152.          for i in 1 .. N loop
+   153.             MX (i) (j) := 0;
+   154.             --put(MX(i)(j));
+   155.             -- MO*MF
+   156.             for k in 1 .. N loop
+   157.                MX (i) (j) := MX (i) (j) + MO (i) (k) * MF (K) (J);
+   158.             end loop;
+   159.             -- MZ + MO*MF
+   160.             MX (i) (j) := MX (i) (j) + MZ (i) (j);
+   161.          end loop;
+   162.       end loop;
+   163.
+   164.       for j in ((H * id)+1) .. (H * (id + 1)) loop
+   165.          for i in 1 .. N loop
+   166.             MA (i) (j) := 0;
+   167.             -- MB*(MZ + MO*MF)
+   168.             for k in 1 .. N loop
+   169.                MA (i) (j) := MA (i) (j) + MB (i) (k) * MX (K) (J);
+   170.             end loop;
+   171.             -- a*(MB*(MZ + MO*MF))
+   172.             MA (i) (j) := MA (i) (j) * a;
+   173.          end loop;
+   174.       end loop;
+   175.    end Process;
+   176.
+   177.    -----------------------------------------------------
+   178.    task T1;
+   179.    task body T1 is
+   180.       MB1, MO1    : TMatrix;
+   181.       a1          : integer;
+   182.       id          : integer := 0;
+              |
+        >>> warning: "id" is not modified, could be declared constant
+
+   183.       start, stop : time;
+   184.    begin
+   185.       Put_Line ("T1: start");
+   186.       start := Clock;
+   187.       Res_a.seta (1);
+   188.       Res_MB.setMB (1);
+   189.       Res_MO.setMO (1);
+   190.       MatrixInput (MZ, 1);
+   191.       MatrixInput (MF, 1);
+   192.       InputSync.InputSignal;
+   193.       Put_Line ("T1: input finished");
+   194.
+   195.       a1 := Res_a.geta;
+   196.       MB1 := Res_MB.getMB;
+   197.       MO1 := Res_MO.getMO;
+   198.       Put_Line ("T1: copy finished");
+   199.
+   200.       Process (id, a1, MO1, MB1);
+   201.       Put_Line ("T1: calc ended");
+   202.       CalcSync.CalcSignal;
+   203.       stop := Clock;
+   204.       Put_Line ("T1: finished in " & Duration'Image (stop-start));
+   205.    end T1;
+   206.
+   207.    -----------------------------------------------------
+   208.    task T2;
+   209.    task body T2 is
+   210.       MB2, MO2    : TMatrix;
+   211.       a2          : integer;
+   212.       id          : integer := 1;
+              |
+        >>> warning: "id" is not modified, could be declared constant
+
+   213.       start, stop : time;
+   214.    begin
+   215.       Put_Line ("T2: start");
+   216.       start := Clock;
+   217.       InputSync.WaitForInput;
+   218.
+   219.       a2 := Res_a.geta;
+   220.       MO2 := Res_MO.getMO;
+   221.       MB2 := Res_MB.getMB;
+   222.       Put_Line ("T2: copy finished");
+   223.
+   224.       Process (id, a2, MO2, MB2);
+   225.       Put_Line ("T2: calc ended");
+   226.       CalcSync.CalcSignal;
+   227.
+   228.       stop := Clock;
+   229.       Put_Line ("T2: finished in " & Duration'Image (stop-start) );
+   230.    end T2;
+   231.
+   232.    -----------------------------------------------------
+   233.    task T3;
+   234.    task body T3 is
+   235.       MB3, MO3    : TMatrix;
+   236.       a3          : integer;
+   237.       id          : integer := 2;
+              |
+        >>> warning: "id" is not modified, could be declared constant
+
+   238.       start, stop : time;
+   239.    begin
+   240.       Put_Line ("T3: start");
+   241.       start := Clock;
+   242.
+   243.       InputSync.WaitForInput;
+   244.
+   245.       MB3 := Res_MB.getMB;
+   246.       a3 := Res_a.geta;
+   247.       MO3 := Res_MO.getMO;
+   248.       Put_Line ("T3: copy finished");
+   249.
+   250.       Process (id, a3, MO3, MB3);
+   251.       Put_Line ("T3: calc ended");
+   252.       CalcSync.WaitForCalc;
+   253.       stop := Clock;
+   254.       Put_Line ("T3: finished in " & Duration'Image (stop-start));
+   255.    end T3;
+   256.
+   257.    -----------------------------------------------------
+   258.    task T4;
+   259.    task body T4 is
+   260.       MB4, MO4    : TMatrix;
+   261.       a4          : integer;
+   262.       id          : integer := 3;
+              |
+        >>> warning: "id" is not modified, could be declared constant
+
+   263.       start, stop : time;
+   264.    begin
+   265.       Put_Line ("T4: start");
+   266.       start := Clock;
+   267.
+   268.       InputSync.WaitForInput;
+   269.
+   270.       MO4 := Res_MO.getMO;
+   271.       a4 := Res_a.geta;
+   272.       MB4 := Res_MB.getMB;
+   273.       Put_Line ("T4: copy finished");
+   274.
+   275.       Process (id, a4, MO4, MB4);
+   276.       Put_Line ("T4: calc ended");
+   277.       CalcSync.CalcSignal;
+   278.       stop := Clock;
+   279.       Put_Line ("T4: finished in " & Duration'Image (stop-start));
+   280.    end T4;
+   281.    -----------------------------------------------------
+   282.
+   283.    procedure VectorInput (vec : out TVector; x : in  integer) is
+   284.    begin
+   285.       for i in 1 .. N loop
+   286.          vec (i) := x;
+   287.       end loop;
+   288.    end VectorInput;
+   289.
+   290.    procedure VectorOutput (vec : in TVector) is
+   291.    begin
+   292.       for i in 1 .. N loop
+   293.          put (vec (i), 4);
+   294.       end loop;
+   295.       new_line;
+   296.    end VectorOutput;
+   297.
+   298.    procedure MatrixInput (m : out TMatrix; x : in  integer) is
+   299.    begin
+   300.       for i in 1 .. N loop
+   301.          VectorInput (m (i), x);
+   302.       end loop;
+   303.    end MatrixInput;
+   304.
+   305.    procedure MatrixOutput (m : in TMatrix) is
+   306.    begin
+   307.       for i in 1 .. N loop
+   308.          VectorOutput (m (i));
+   309.          new_line;
+   310.       end loop;
+   311.    end MatrixOutput;
+   312.
+   313. begin
+   314.    null;
+   315. end lab4;
+   316.
+
+ 316 lines: No errors, 7 warnings

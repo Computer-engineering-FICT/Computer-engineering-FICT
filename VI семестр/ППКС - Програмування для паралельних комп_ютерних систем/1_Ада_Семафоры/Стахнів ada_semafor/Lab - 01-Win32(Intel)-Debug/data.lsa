@@ -1,0 +1,38 @@
+Source file: ..\data.ada   Sat Feb 12 22:41:29 2005
+
+    1 package Data is
+    2   N: Integer := 4;
+    3   P: Integer := 2;
+    4   H: Integer := N/P;
+    5   type Vector is array (1 .. N) of Integer;
+    6   type Matrix is array (1 .. N) of vector;
+    7   procedure Vector_Input (A: out Vector; C:in string);
+    8   procedure Matrix_Input (MA: out Matrix; C:in string);
+    9 end Data;
+   10 
+   11 with Ada.Text_IO,  Ada.Integer_Text_IO;
+   12 use Ada.Text_IO,  Ada.Integer_Text_IO;
+   13 
+   14 package body Data is
+   15 
+   16   procedure Vector_Input (A: out Vector; C:in string)is
+   17     f:file_type;
+   18   begin
+   19     Open(f,in_file,C);
+   20     for i in 1..N loop
+   21       get(f,A(i));      
+   22     end loop;
+   23   end Vector_Input;
+   24 
+   25   procedure Matrix_Input (MA: out Matrix; C:in string) is
+   26     F:file_type;
+   27   begin
+   28     Open(f,in_file,C);
+   29     for i in 1..N loop
+   30       FOR J IN 1..N LOOP
+   31         get(F,MA(i)(J));
+   32       END LOOP;
+   33     end loop;
+   34   end Matrix_Input;
+   35   
+   36 end data; 

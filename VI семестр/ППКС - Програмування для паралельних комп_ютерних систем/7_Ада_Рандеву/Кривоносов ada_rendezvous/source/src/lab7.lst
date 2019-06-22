@@ -1,0 +1,487 @@
+GNAT GPL 2015 (20150428-49)
+Copyright 1992-2015, Free Software Foundation, Inc.
+
+Compiling: lab7.adb
+Source file time stamp: 2016-05-09 19:33:20
+Compiled at: 2016-05-09 22:55:17
+
+     1.    -------------------------------------------------------------------------------
+     2.    --                                                                           --
+     3.    --                   Parallel and Distributed Computing                      --
+     4.    --                   Laboratory work #7. Ada. Rendezvous                     --
+     5.    --                                                                           --
+     6.    --  File: lab7.adb                                                           --
+     7.    --  Task:A = α∙B+ max(Z)∙Т∙ (MO∙MK)                                          --
+     8.    --                                                                           --
+     9.   --  Author: Kryvonosov Oleksii, group IO-34                                   --
+    10.    --  Date: 30.04.2015                                                         --
+    11.    --                                                                           --
+    12.    -------------------------------------------------------------------------------
+    13.
+    14.    with Ada.Text_IO, Ada.Integer_text_iO, Ada.Synchronous_Task_Control, Data;
+    15.    use Ada.Text_IO, Ada.Integer_text_iO, Ada.Synchronous_Task_Control;
+    16.
+    17.    procedure lab7 is
+    18.
+    19.     Value : Integer := 1;
+    20.     N : Natural := 6;
+    21.     P : Natural := 6;
+    22.     H : Natural := N/P;
+    23.
+    24.     package DataN is new Data(N, H);
+    25.     use DataN;
+    26.
+    27.    procedure StartTasks is
+    28.    -------------------------------------------------------------------------------
+    29.  --                             СПЕЦИФІКАЦІЯ ЗАДАЧ                            --
+    30.    -------------------------------------------------------------------------------
+    31.
+    32.    --                                 Задача T1                                 --
+    33.     task T1 is
+    34.          entry T2T1_alphaZhTMK(alpha: in Integer; Z: in VectorH; T: in VectorN; MK : in MatrixN);
+    35.          entry MaxZ (maxZ : in Integer);
+    36.
+    37.     end T1;
+    38.
+    39.    --                                 Задача T2                                 --
+    40.     task T2 is
+    41.          entry T1T2_B5hMO5h(B : in Vector5H; MO : in Matrix5H);
+    42.          entry T3T2_alphaZ4hTMK( alpha: in Integer; Z: in Vector4H; T: in VectorN; MK : in MatrixN);
+    43.          entry MaxZ1 (maxZ1 : in Integer);
+    44.          entry MaxZ3 (maxZ3 : in Integer);
+    45.          entry MaxZ5 (maxZ5 : in Integer);
+    46.
+    47.          entry Result2H(A : out Vector5H);
+    48.     end T2;
+    49.
+    50.    --                                 Задача T3                                 --
+    51.     task T3 is
+    52.          entry T2T3_B2hMO2h(B : in Vector2H; MO : in Matrix2H);
+    53.          entry T4T3_alphaZ5hTMK( alpha: in Integer; Z: in Vector5H; T: in VectorN; MK : in MatrixN);
+    54.          entry MaxZ4 (maxZ4 : in Integer);
+    55.          entry MaxZ (maxZ : in Integer);
+    56.          entry Result3H(A : out Vector2H);
+    57.     end T3;
+    58.
+    59.
+    60.
+    61.    --                                 Задача T4                                 --
+    62.     task T4 is
+    63.          entry T3T4_BhMOh(B : in VectorH; MO : in MatrixH);
+    64.          entry MaxZ (maxZ : in Integer);
+    65.          entry Result4H(A : out VectorH);
+    66.
+    67.     end T4;
+    68.
+    69.    --                                 Задача T5                                 --
+    70.     task T5 is
+    71.
+    72.          entry T2T5_B2hMO2h(B : in Vector2H; MO : in Matrix2H);
+    73.          entry T2T5_alphaZ2hTMK( alpha: in Integer; Z: in Vector2H; T: in VectorN; MK : in MatrixN);
+    74.          entry MaxZ6(MaxZ6: in Integer);
+    75.          entry MaxZ (maxZ : in Integer);
+    76.          entry Result5H(A : out Vector2H);
+    77.     end T5;
+    78.
+    79.    --                                 Задача T6                                 --
+    80.     task T6 is
+    81.          entry T5T6_BhMOh(B : in VectorH; MO : in MatrixH);
+    82.          entry T5T6_alphaZhTMK( alpha: in Integer; Z: in VectorH; T: in VectorN; MK : in MatrixN);
+    83.          entry MaxZ (maxZ : in Integer);
+    84.          entry Result6H(A : out VectorH);
+    85.     end T6;
+    86.
+    87.
+    88.
+    89.    -------------------------------------------------------------------------------
+    90.    --                                 ТІЛА ЗАДАЧ                                --
+    91.    -------------------------------------------------------------------------------
+    92.
+    93.    --                                 Задача T1                                 --
+    94.
+    95.     task body T1 is
+    96.          A1 : Vector6H;
+    97.          Z1 : VectorH;
+    98.          T1: VectorN;
+    99.          B1 : Vector6H;
+   100.          MO1 : Matrix6H;
+   101.          MK1 : MatrixN;
+   102.          alfa1: Integer;
+   103.          maxZ1: Integer :=-99999;
+   104.       begin
+   105.          Put_Line("T1 started");
+   106.          --1.Введення B, MO
+   107.          Input(MO1,1);
+   108.          Input(B1,1);
+   109.
+   110.
+   111.          --2.Передати B5H, MO5H  задачі Т2
+   112.          T2.T1T2_B5hMO5h(B1(H+1..6*H), MO1(H+1..6*H));
+   113.
+   114.
+   115.          --3.Прийняти α ,ZH,Т, MК від задачі Т2
+   116.
+   117.          accept T2T1_alphaZhTMK (alpha : in Integer; Z : in VectorH; T : in VectorN; MK : in MatrixN) do
+   118.             alfa1 := alpha;
+   119.             Z1 := Z;
+   120.             T1 := T;
+   121.             MK1 := MK;
+   122.          end T2T1_alphaZhTMK;
+   123.
+   124.     --4.Обчислити maxZ1 = max(ZH)
+   125.      FindMaxZ(Z1, maxZ1);
+   126.     --5.Передати maxZ1 задачі Т2
+   127.     T2.MaxZ1(maxZ1);
+   128.    --6.Прийняти maxZ від задачі Т2
+   129.     accept MaxZ (maxZ : in Integer) do
+   130.             maxZ1:=maxZ;
+   131.          end MaxZ;
+   132.
+   133.          --7.Обчислити AH = α∙BH+ maxZ∙Т∙(MOH∙MK)
+   134.
+   135.          Calculation(alfa1, maxZ1, B1(1..H), T1, MO1(1..H), MK1, A1(1..H));
+   136.
+   137.          --8.Передати AH задачі Т2
+   138.
+   139.          T2.Result2H(A1(H+1..6*H));
+   140.
+   141.      --9.Вивести А
+   142.     Output(A1);
+   143.
+   144.
+   145.     Put_Line("T1 finished");
+   146.
+   147.     end T1;
+   148.
+   149.    --                                 Задача T2                                 --
+   150.
+   151.     task body T2 is
+   152.     A2 : Vector5H;
+   153.     Z2 : Vector4H;
+   154.
+   155.     T2: VectorN;
+   156.     B2 : Vector5H;
+   157.     MO2 : Matrix5H;
+   158.     MK2 : MatrixN;
+   159.     alfa2: Integer;
+   160.     maxZ2: Integer :=-999999;
+   161.     maxValueZ1: Integer;
+   162.     maxValueZ3: Integer;
+   163.     maxValueZ5: Integer;
+   164.     begin
+   165.     Put_Line("T2 started");
+   166.          --1.Прийняти B5H, MO5H  від задачі Т1
+   167.
+   168.          accept T1T2_B5hMO5h (B : in Vector5H; MO : in Matrix5H) do
+   169.
+   170.             B2 := B;
+   171.
+   172.             MO2 := MO;
+   173.          end T1T2_B5hMO5h;
+   174.
+   175.
+   176.    --2.Передати B2H, MO2H  задачі Т3
+   177.     T3.T2T3_B2hMO2h(B2(3*H+1..H*5), MO2(3*H+1..H*5));
+   178.          --3.	Передати B2H, MO2H задачі Т5
+   179.           T5.T2T5_B2hMO2h(B2(H+1..H*3), MO2(H+1..H*3));
+   180.
+   181.          -- 4.Прийняти α, Z4H,Т, MК від задачі Т3
+   182.          accept T3T2_alphaZ4hTMK (alpha : in Integer; Z : in Vector4H; T : in VectorN; MK : in MatrixN) do
+   183.             alfa2 := alpha;
+   184.             Z2 := Z;
+   185.             T2 := T;
+   186.             MK2 := MK;
+   187.          end T3T2_alphaZ4hTMK;
+   188.          -- 5.	Передати α, ZH,Т, MК задачі Т1
+   189.          T1.T2T1_alphaZhTMK(alfa2, Z2(1..H), T2,MK2);
+   190.          -- 6.	Передати α, Z2H,Т, MК  задачі Т5
+   191.          T5.T2T5_alphaZ2hTMK(alfa2, Z2(H*2+1..H*4), T2,MK2);
+   192.
+   193.          -- 7.	Обчислити maxZ2 = max(ZH)
+   194.          FindMaxZ(Z2(H+1..2*H), maxZ2);
+   195.          -- 8.	Прийняти maxZ1 від задачі Т1
+   196.          accept MaxZ1 (maxZ1 : in Integer) do
+   197.             maxValueZ1 := MaxZ1;
+   198.          end MaxZ1;
+   199.          -- 9.	Обчислити maxZ2 = max (maxZ2,maxZ1)
+   200.          MaxZ2 := Max(MaxZ2, maxValueZ1);
+   201.          -- 10.	Прийняти maxZ3 від задачі Т3
+   202.           accept MaxZ3 (maxZ3 : in Integer) do
+   203.             maxValueZ3 := MaxZ3;
+   204.          end MaxZ3;
+   205.          -- 11.	Обчислити maxZ2 = max (maxZ2,maxZ3)
+   206.          MaxZ2 := Max(MaxZ2, maxValueZ3);
+   207.          -- 12.	Прийняти maxZ5 від задачі Т5
+   208.          accept MaxZ5 (maxZ5 : in Integer) do
+   209.             maxValueZ5 := MaxZ5;
+   210.          end MaxZ5;
+   211.          -- 13.	Обчислити maxZ = max (maxZ2,maxZ5)
+   212.          MaxZ2 := Max(MaxZ2, maxValueZ5);
+   213.
+   214.          -- 14.	Педедати maxZ задачі Т1
+   215.          T1.MaxZ(MaxZ2);
+   216.            -- 15.	Педедати maxZ задачі Т3
+   217.            T3.MaxZ(MaxZ2);
+   218.          -- 16.	Педедати maxZ задачі Т5
+   219.          T5.MaxZ(MaxZ2);
+   220.
+   221.          -- 17.	Обчислити AH = α∙BH+ maxZ∙Т∙(MOH∙MK)
+   222.
+   223.            Calculation(alfa2, maxZ2, B2(1..H), T2, MO2(1..H), MK2, A2(1..H
+   224. ));
+   225.          -- 18.	Прийняти A2H від задачі Т3
+   226.          T3.Result3H(A2(H*3+1..H*5));
+   227.                      -- 19.	Прийняти A2H від задачі Т5
+   228.                      T5.Result5H(A2(H+1..H*3));
+   229.                      --20.	Передати A5H задачі Т1
+   230.                      accept Result2H (A : out Vector5H) do
+   231.                         A := A2;
+   232.                      end Result2H;
+   233.
+   234.     Put_Line("T2 finished");
+   235.     end T2;
+   236.
+   237.    --                                 Задача T3                                 --
+   238.
+   239.     task body T3 is
+   240.     A3 : Vector2H;
+   241.
+   242.     Z3 : Vector5H;
+   243.     T3: VectorN;
+   244.     B3 : Vector2H;
+   245.     MO3 : Matrix2H;
+   246.     MK3 : MatrixN;
+   247.     alfa3: Integer;
+   248.     maxZ3: Integer :=-999999;
+   249.                      maxValZ4: Integer;
+   250.
+   251.
+   252.     begin
+   253.     Put_Line("T3 started");
+   254.                      --1.Прийняти B2H, MO2H  від задачі Т2
+   255.                  accept T2T3_B2hMO2h (B : in Vector2H; MO : in Matrix2H) do
+   256.                      B3 := B;
+   257.                      MO3 := MO;
+   258.                  end T2T3_B2hMO2h;
+   259.                      --2.Передати BH, MOH  задачі Т4
+   260.                      T4.T3T4_BhMOh(B3(H+1..2*H), MO3(H+1..2*H));
+   261.                      -- 3.	Прийняти α, Z5H,Т, MК від задачі Т4
+   262.                  accept T4T3_alphaZ5hTMK (alpha : in Integer; Z : in Vector5H; T : in VectorN; MK : in MatrixN) do
+   263.                      alfa3 := alpha;
+   264.                      Z3 := Z;
+   265.                      T3 := T;
+   266.                      MK3 := MK;
+   267.                      end T4T3_alphaZ5hTMK;
+   268.                      -- 4.Передати α, Z4H,Т, MК задачі Т2
+   269.
+   270.                      T2.T3T2_alphaZ4hTMK(alfa3, Z3(H+1..5*H), T3, MK3);
+   271.                      -- 5.	Обчислити maxZ3 = max(ZH)
+   272.                      FindMaxZ(Z3(1..H), maxZ3);
+   273.                      -- 6.Прийняти maxZ4  від задачі Т4
+   274.                      accept MaxZ4 (maxZ4 : in Integer) do
+   275.                         maxValZ4 := maxZ4;
+   276.                      end MaxZ4;
+   277.
+   278.                      --7.Обчислити maxZ3 = max (maxZ3,maxZ4)
+   279.                      maxZ3 := max(maxZ3, maxValZ4);
+   280.                      --8.Передати maxZ3  задачі Т2
+   281.                      T2.MaxZ3(MaxZ3);
+   282.                      -- 9.	Прийняти maxZ від задачі Т2
+   283.                      accept MaxZ (maxZ : in Integer) do
+   284.                         maxZ3 := maxZ;
+   285.                      end MaxZ;
+   286.                      --10.	Передати maxZ задачі Т4
+   287.                      T4.MaxZ(MaxZ3);
+   288.                      -- 11.	Обчислити AH = α∙BH+ maxZ∙Т∙(MOH∙MK)
+   289.                      Calculation(alfa3, maxZ3, B3(1..H), T3, MO3(1..H), MK3, A3(1..H));
+   290.                      --12.	Прийняти AH від задачі Т4
+   291.                      T4.Result4H(A3(H+1..2*H));
+   292.                           -- 13.	Передати A2H задачі Т2
+   293.                                  accept Result3H (A : out Vector2H) do
+   294.                                     A := A3;
+   295.                                  end Result3H;
+   296.
+   297.
+   298.     Put_Line("T3 finished");
+   299.     end T3;
+   300.
+   301.    --                                 Задача T4                                 --
+   302.
+   303.
+   304.     task body T4 is
+   305.     A4 : VectorH;
+   306.     Z4 : Vector6H;
+   307.     T4: VectorN;
+   308.     B4 : VectorH;
+   309.     MO4 : MatrixH;
+   310.     MK4 : MatrixN;
+   311.     alfa4: Integer;
+   312.     maxZ4: Integer :=-999999;
+   313.
+   314.
+   315.
+   316.
+   317.     begin
+   318.     Put_Line("T4 started");
+   319.    --1.	Ввести Z, α Т, МК
+   320.                                  Input(Z4,1);
+   321.                                  Input(T4,1);
+   322.                                  Input(MK4,1);
+   323.                                  alfa4 := 1;
+   324.
+   325.                                  --2.	Прийняти BH, MOH від задачі Т3
+   326.                                  accept T3T4_BhMOh (B : in VectorH; MO : in MatrixH) do
+   327.                                    B4 := B;
+   328.                                    MO4:= MO;
+   329.
+   330.                                  end T3T4_BhMOh;
+   331.                                  --3.Передати α, Z5H,Т, MК задачі Т3
+   332.
+   333.                                  T3.T4T3_alphaZ5hTMK(alfa4, Z4(1..5*H), T4, MK4);
+   334.                                  --4.	Обчислити maxZ4 = max(ZH)
+   335.                                  FindMaxZ(Z4(5*H+1..6*H),maxZ4);
+   336.                                  --5.	Передати  maxZ4 задачі Т3
+   337.                                  T3.MaxZ4(maxZ4);
+   338.                                    --6.	Прийняти maxZ від задачі Т3
+   339.                                  accept MaxZ (maxZ : in Integer) do
+   340.                                     MaxZ4 := maxZ;
+   341.                                  end MaxZ;
+   342.                                  -- 7.Обчислити AH = α∙BH+ maxZ∙Т∙(MOH∙MK)
+   343.                                  Calculation(alfa4, maxZ4, B4,T4, MO4, MK4, A4);
+   344.                                  -- Передати AH задачі Т3
+   345.                                  accept Result4H (A : out VectorH) do
+   346.                                      A := A4;
+   347.                                  end Result4H;
+   348.
+   349.
+   350.   Put_Line("T4 finished");
+   351.    end T4;
+   352.
+   353.    --                                 Задача T5                                 --
+   354.
+   355.   task body T5 is
+   356.    A5 : Vector2H;
+   357.     Z5 : Vector2H;
+   358.    T5: VectorN;
+   359.   B5 : Vector2H;
+   360.     MO5 : Matrix2H;
+   361.     MK5 : MatrixN;
+   362.     alfa5: Integer;
+   363.     maxZ5: Integer :=-999999;
+   364.     maxValZ6 : Integer;
+   365.     begin
+   366.                                  Put_Line("T5 started");
+   367.
+   368.
+   369.
+   370.                    --1.Прийняти B2H, MO2H  від задачі Т2
+   371.                  accept T2T5_B2hMO2h (B : in Vector2H; MO : in Matrix2H) do
+   372.                      B5 := B;
+   373.                      MO5 := MO;
+   374.                  end T2T5_B2hMO2h;
+   375.                      --2.Передати BH, MOH  задачі Т6
+   376.                      T6.T5T6_BhMOh(B5(H+1..2*H), MO5(H+1..2*H));
+   377.          -- 3.	Прийняти α, Z2H,Т, MК від задачі Т2
+   378.
+   379.                  accept T2T5_alphaZ2hTMK (alpha : in Integer; Z : in Vector2H; T : in VectorN; MK : in MatrixN) do
+   380.                      alfa5 := alpha;
+   381.                      Z5 := Z;
+   382.                      T5 := T;
+   383.                      MK5 := MK;
+   384.                      end T2T5_alphaZ2hTMK;
+   385.                      -- 4.Передати α, ZH,Т, MК задачі Т6
+   386.                      T6.T5T6_alphaZhTMK(alfa5, Z5(H+1..2*H), T5, MK5);
+   387.
+   388.                      -- 5.	Обчислити maxZ5 = max(ZH)
+   389.                      FindMaxZ(Z5(1..H), maxZ5);
+   390.                      -- 6.Прийняти maxZ6  від задачі Т6
+   391.                      accept MaxZ6 (maxZ6 : in Integer) do
+   392.                         maxValZ6 := maxZ6;
+   393.                      end MaxZ6;
+   394.
+   395.                      --7.Обчислити maxZ5 = max (maxZ6,maxZ5)
+   396.                      maxZ5 := max(maxZ5, maxValZ6);
+   397.                      --8.Передати maxZ5  задачі Т2
+   398.                      T2.MaxZ5(MaxZ5);
+   399.                      -- 9.	Прийняти maxZ від задачі Т2
+   400.                      accept MaxZ (maxZ : in Integer) do
+   401.                         maxZ5 := maxZ;
+   402.                      end MaxZ;
+   403.                      --10.	Передати maxZ задачі Т6
+   404.                      T6.MaxZ(MaxZ5);
+   405.                      -- 11.	Обчислити AH = α∙BH+ maxZ∙Т∙(MOH∙MK)
+   406.                      Calculation(alfa5, maxZ5, B5(1..H), T5, MO5(1..H), MK5, A5(1..H));
+   407.                      --12.	Прийняти AH від задачі Т4
+   408.                      T6.Result6H(A5(H+1..2*H));
+   409.                           -- 13.	Передати A2H задачі Т2
+   410.                                  accept Result5H (A : out Vector2H) do
+   411.                                     A := A5;
+   412.                                  end Result5H;
+   413.
+   414.
+   415.
+   416.
+   417.     Put_Line("T5 finished");
+   418.     end T5;
+   419.
+   420.    --                                 Задача T6                                 --
+   421.
+   422.     task body T6 is
+   423.     A6 : VectorH;
+   424.     Z6 : VectorH;
+   425.     T6: VectorN;
+   426.     B6 : VectorH;
+   427.     MO6 : MatrixH;
+   428.     MK6 : MatrixN;
+   429.     alfa6: Integer;
+   430.                                  maxZ6: Integer :=-999999;
+   431.
+   432.
+   433.     begin
+   434.     Put_Line("T6 started");
+   435.      --1.	Прийняти BH, MOH від задачі Т5
+   436.                                  accept T5T6_BhMOh (B : in VectorH; MO : in MatrixH) do
+   437.                                    B6 := B;
+   438.                                    MO6:= MO;
+   439.
+   440.                                  end T5T6_BhMOh;
+   441.                                  --2.	Прийняти α, ZH,Т, MК  від задачі Т5
+   442.                                  accept T5T6_alphaZhTMK (alpha : in Integer; Z : in VectorH; T : in VectorN; MK : in MatrixN) do
+   443.                                  alfa6 := alpha;
+   444.                                  Z6 := Z;
+   445.                                  T6 := T;
+   446.                                  MK6 := MK;
+   447.                                  end T5T6_alphaZhTMK;
+   448.
+   449.                                  --3.	Обчислити maxZ6 = max(ZH)
+   450.                                  FindMaxZ(Z6,maxZ6);
+   451.                                  --5.	Передати  maxZ4 задачі Т5
+   452.                                  T5.MaxZ6(maxZ6);
+   453.                                    --6.	Прийняти maxZ від задачі Т5
+   454.                                  accept MaxZ (maxZ : in Integer) do
+   455.                                     maxZ6 := maxZ;
+   456.                                  end MaxZ;
+   457.                                  -- 7.Обчислити AH = α∙BH+ maxZ∙Т∙(MOH∙MK)
+   458.                                  Calculation(alfa6, maxZ6, B6,T6, MO6, MK6, A6);
+   459.                                  -- Передати AH задачі Т5
+   460.                                  accept Result6H (A : out VectorH) do
+   461.                                      A := A6;
+   462.                                  end Result6H;
+   463.
+   464.
+   465.     Put_Line("T6 finished");
+   466.     end T6;
+   467.
+   468.
+   469.
+   470.     begin
+   471.     null;
+   472.     end StartTasks;
+   473.    begin
+   474.     Put_Line ("Lab7 started");
+   475.     StartTasks;
+   476.     Put_Line ("Lab7 finished");
+   477.    end lab7;
+   478.
+
+ 478 lines: No errors

@@ -1,0 +1,131 @@
+Source file: ..\lab1   Wed Feb 16 22:47:05 2011
+
+    1 ----------------------------------------------------------------
+    2 --              Paralel and distributed computing             --
+    3 --             Laboratory work #1. Ada. Semaphores            --
+    4 --                  Func: a = MIN(MO*MX+alfa*MR)              --
+    5 --                   IO-83 Vorobyev Vitaliy                   --
+    6 --                        9.02.2011                           --
+    7 ----------------------------------------------------------------
+    8 
+    9 with Package1; use Package1;
+   10 with Ada.Text_IO; use Ada.Text_IO;
+   11 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
+   12 with Ada.Synchronous_Task_Control; use Ada.Synchronous_Task_Control;
+   13 
+   14 procedure Lab1 is
+   15 
+   16 
+   17    MO, MX, MR: Matr;
+   18    a:          integer := 500000; --min - shared variable
+   19    Alfa:           Integer;
+   20 
+   21    --СЕМАФОРЫ
+   22    S1, S2, S3, var1, var2: Suspension_Object; 
+   23 
+   24    procedure Task_start is
+   25       task T1;
+   26       task body T1 is
+   27          alfa1: integer;
+   28                  Sum: Integer := 0;
+   29                  A1: Integer := 530000;
+   30          MO1: Matr;
+   31       begin
+   32          Put_Line("T1 start");
+   33 --1. ВВОД ДАННЫх
+   34          Matr_Input(MR);
+   35                  Matr_Input(MX);
+   36 --2.3. Синхронизация задач     
+   37          Set_True(S1);                        --S2-1
+   38                  Suspend_until_true(S2);      --W2-1
+   39 
+   40 --4. Копирование Общих Ресурсов
+   41                  Suspend_Until_True(Var1);
+   42          alfa1 := alfa;
+   43          MO1 := MO;
+   44          Set_True(Var1);
+   45 --5. ВЫЧИСЛЕНИЕ ФУНКЦИИ
+   46         for i in 1.. N loop
+   47             for j in 1 .. H loop
+   48              sum := 0;
+   49                for z in 1 .. N loop
+   50                   sum := sum + MO1(i)(z) * MX(Z)(J);
+   51                end loop;
+   52              Sum := Sum + Alfa1 * MR(I)(J);
+   53              if (A1 > Sum) then
+   54                A1 := Sum;
+   55              end if;
+   56              Sum := 0;
+   57            end loop;
+   58          end loop;
+   59          Sum := 0;
+   60 --6. Доступ к общим ресурсам (КРИТИЧЕСКИЙ УЧАСТОК)
+   61          Suspend_until_true(Var2);
+   62          if (a > a1) then
+   63             a := a1;
+   64          end if;
+   65          Set_True(Var2);
+   66 --7. Задача синхронизации (счёт окончен)
+   67          Set_True(S3);                          --S2-2
+   68 
+   69          Put_Line("T1 stop");
+   70       end T1;
+   71 -----------------------------------------------------------
+   72       task T2;
+   73       task body T2 is
+   74          alfa2: integer;
+   75                  A2: Integer := 540000;
+   76                  Sum: Integer := 0;
+   77          MO2: Matr;
+   78       begin
+   79          Put_Line("T2 start");
+   80 --1. ВВОД ДАННЫХ
+   81          Matr_Input(MO);
+   82          alfa := 1;
+   83 --2.3. Синхронизация задач 
+   84                  Suspend_until_true(S1);         --W1-1
+   85                  Set_True(S2);                   --S1-1
+   86 
+   87 --4. Копирование Общих Ресурсов
+   88                  Suspend_until_true(Var1);
+   89          alfa2 := alfa;
+   90          MO2 := MO;
+   91          Set_True(Var1);
+   92 --5. ВЫЧИСЛЕНИЕ ФУНКЦИИ
+   93           for i in 1.. N loop
+   94             for j in H+1 .. N loop
+   95                sum := 0;
+   96                for z in 1 .. N loop
+   97                   sum := sum + MO2(i)(z) * MX(Z)(J);
+   98                end loop;
+   99                Sum := Sum + Alfa2 * MR(I)(J);
+  100                if (A2 > Sum) then
+  101                   A2 := Sum;
+  102                end if;
+  103                Sum := 0;
+  104             end loop;
+  105          end loop;
+  106          Sum := 0;
+  107 --6. Доступ к общим ресурсам (КРИТИЧЕСКИЙ УЧАСТОК) 
+  108          Suspend_until_true(Var2);
+  109          if (a > a2) then
+  110              A := A2;
+  111          end if;
+  112          Set_True(Var2);
+  113 --7. Задача синхронизации (счёт окончен)
+  114          Suspend_until_true(S3);                  --W1-2
+  115 --8. ВЫВОД РЕЗУЛЬТАТА
+  116          Constant_Out(A);
+  117 
+  118          Put_Line("T2 stop");
+  119       end T2;
+  120 
+  121    begin
+  122       null;
+  123    end Task_start;
+  124 
+  125 begin
+  126    Set_True(Var1);
+  127    Set_True(Var2);
+  128    Task_start;
+  129 end Lab1;

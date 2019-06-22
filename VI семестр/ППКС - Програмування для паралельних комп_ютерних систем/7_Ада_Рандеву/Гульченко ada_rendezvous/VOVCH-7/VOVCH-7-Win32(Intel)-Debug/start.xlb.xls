@@ -1,0 +1,854 @@
+Source file: ..\start.adb   Tue Jun 07 23:01:02 2011
+
+    1 ----------------------------------------------------------------
+    2 
+    3 with Package1; use Package1;
+    4 with Ada.Text_IO; use Ada.Text_IO;
+    5 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
+    6 with Ada.Calendar; use Ada.Calendar;
+    7 with ada.float_text_io; use ada.float_text_io;
+    8 
+    9 procedure PROLAB7 is
+   10             N: integer := 13;   --size of structures
+   11             P: integer := 13;   --count of processors
+   12                         H: Integer := N / P;
+   13     
+   14             --типы оптимальные для рассылки данных между задачами.
+   15             type vector is array(integer range <>) of integer;
+   16             Subtype Vector_N is Vector(1..N);
+   17                         Subtype Vector_3H is Vector(1..3*H);
+   18             Subtype Vector_H is Vector(1..H);
+   19             
+   20             type Matrix is array(integer range <>) of Vector_N;
+   21             Subtype Matrix_N is Matrix(1..N);
+   22                         Subtype Matrix_3H is Matrix(1..3*H);
+   23             Subtype Matrix_H is Matrix(1..H);
+   24 
+   25                                 --Спецификация задач (КОРЕНЬ)
+   26                     task K1 is
+   27                                                 
+   28                     end K1;
+   29                         --Спецификация задач (УЗЛЫ)
+   30                     task U1 is
+   31                                         entry getALL(MBx: in Matrix_3H; MXx: in Matrix_3H; MOx: in Matrix_N; Betax, Alfax: in Integer);
+   32                                         entry getREZ(MAx: out Matrix_3H);
+   33                     end U1;
+   34                                 task U2 is
+   35                                         entry getALL(MBx: in Matrix_3H; MXx: in Matrix_3H; MOx: in Matrix_N; Betax, Alfax: in Integer);
+   36                                         entry getREZ(MAx: out Matrix_3H);
+   37                     end U2;
+   38                                 task U3 is
+   39                                         entry getALL(MBx: in Matrix_3H; MXx: in Matrix_3H; MOx: in Matrix_N; Betax, Alfax: in Integer);
+   40                                         entry getREZ(MAx: out Matrix_3H);
+   41                     end U3;
+   42                                 task U4 is
+   43                                         entry getALL(MBx: in Matrix_3H; MXx: in Matrix_3H; MOx: in Matrix_N; Betax, Alfax: in Integer);
+   44                                         entry getREZ(MAx: out Matrix_3H);
+   45                     end U4;
+   46                                 --Спецификация задач (ЛИСТЬЯ)
+   47                                 task L11 is
+   48                                         entry getALL(MBx: in Matrix_H; MXx: in Matrix_H; MOx: in Matrix_N; Betax, Alfax: in Integer);
+   49                                         entry getREZ(MAx: out Matrix_H);
+   50                     end L11;
+   51                                 task L21 is
+   52                                         entry getALL(MBx: in Matrix_H; MXx: in Matrix_H; MOx: in Matrix_N; Betax, Alfax: in Integer);
+   53                                         entry getREZ(MAx: out Matrix_H);
+   54                     end L21;
+   55                                 task L31 is
+   56                                         entry getALL(MBx: in Matrix_H; MXx: in Matrix_H; MOx: in Matrix_N; Betax, Alfax: in Integer);
+   57                                         entry getREZ(MAx: out Matrix_H);
+   58                     end L31;
+   59                                 task L41 is
+   60                                         entry getALL(MBx: in Matrix_H; MXx: in Matrix_H; MOx: in Matrix_N; Betax, Alfax: in Integer);
+   61                                         entry getREZ(MAx: out Matrix_H);
+   62                     end L41;
+   63                                 task L12 is
+   64                                         entry getALL(MBx: in Matrix_H; MXx: in Matrix_H; MOx: in Matrix_N; Betax, Alfax: in Integer);
+   65                                         entry getREZ(MAx: out Matrix_H);
+   66                     end L12;
+   67                                 task L22 is
+   68                                         entry getALL(MBx: in Matrix_H; MXx: in Matrix_H; MOx: in Matrix_N; Betax, Alfax: in Integer);
+   69                                         entry getREZ(MAx: out Matrix_H);
+   70                     end L22;
+   71                                 task L32 is
+   72                                         entry getALL(MBx: in Matrix_H; MXx: in Matrix_H; MOx: in Matrix_N; Betax, Alfax: in Integer);
+   73                                         entry getREZ(MAx: out Matrix_H);
+   74                     end L32;
+   75                                 task L42 is
+   76                                         entry getALL(MBx: in Matrix_H; MXx: in Matrix_H; MOx: in Matrix_N; Betax, Alfax: in Integer);
+   77                                         entry getREZ(MAx: out Matrix_H);
+   78                     end L42;
+   79             
+   80 --------------------Реализация задач (КОРНЕВАЯ ЗАДАЧА)----------------
+   81                     task body K1 is
+   82                             Sum1, Alfa, Beta: Integer := 0;
+   83                                                 MO, MA, MB, MX: Matrix_N;
+   84                         begin
+   85                     put_Line("K1 started!");
+   86 
+   87 --1.    Ввод MB, MO, MX, Alfa, Beta
+   88                 for i in 1 .. N loop
+   89                         for j in 1 .. N loop
+   90                                  MB(i)(j) := 1;
+   91                                  MO(i)(j) := 1;
+   92                                  MX(i)(j) := 1;
+   93                         end loop;
+   94                 end loop;  
+   95                 Alfa := 1;
+   96                 Beta := 1;
+   97 --2.    Передать MB3H, MХ3H, MО, Alfa, Beta задаче У1
+   98                 U1.getALL(MB(H+1 .. 4*H), MX(H+1 .. 4*H), MO, Beta, Alfa);
+   99 --3.    Передать MB3H, MХ3H, MО, Alfa, Beta задаче У2
+  100                 U2.getALL(MB(4*H+1 .. 7*H), MX(4*H+1 .. 7*H), MO, Beta, Alfa);
+  101 --4.    Передать MB3H, MХ3H, MО, Alfa, Beta задаче У3
+  102                 U3.getALL(MB(7*H+1 .. 10*H), MX(7*H+1 .. 10*H), MO, Beta, Alfa);
+  103 --5.    Передать MB3H, MХ3H, MО, Alfa, Beta задаче У4
+  104                 U4.getALL(MB(10*H+1 .. N), MX(10*H+1 .. N), MO, Beta, Alfa);
+  105 --6.    Счёт MAH = MBH * Alfa + Beta * MO  * MXH
+  106                 for i in 1.. N loop
+  107                   for j in 1 .. H loop
+  108                         sum1 := 0;
+  109                     for z in 1 .. N loop
+  110                        Sum1 := sum1 + MX(J)(Z) * MO(Z)(I);
+  111                     end loop;
+  112                         MA(J)(I) := Sum1 * Beta + alfa * MB(J)(I);
+  113                   end loop;
+  114                 end loop;
+  115 --7.    Принять МА3H от задачи У1
+  116                 U1.GetREZ(MA(H+1 .. 4*H));
+  117 --8.    Принять МА3H от задачи У2
+  118                 U2.GetREZ(MA(4*H+1 .. 7*H));
+  119 --9.    Принять МА3H от задачи У3
+  120                 U3.GetREZ(MA(7*H+1 .. 10*H));
+  121 --10.   Принять МА3H от задачи У4
+  122                 U4.GetREZ(MA(10*H+1 .. N));
+  123 --11.   Вывод МА
+  124         if N < 39 then
+  125                 for i in 1 .. N loop
+  126                         for J in 1 .. N loop
+  127                         Put(MA(i)(J), 4);
+  128                         end loop;
+  129                         New_Line;
+  130                 end loop;
+  131         end if;
+  132 
+  133                 put_Line("K1 end!");
+  134          end K1;
+  135 --------------------Реализация задач (ЗАДАЧИ УЗЛЫ)----------------
+  136         task body U1 is
+  137                 Sum1, Alfa, Beta: Integer := 0;
+  138                 MO: Matrix_N; MA, MB, MX: Matrix_3H;
+  139     begin
+  140                 put_Line("U1 started!");
+  141                         
+  142                         --1.    Принять MB3H, MХ3H, MО, ?, ? от задачи К1
+  143                         accept getALL(MBx: in Matrix_3H; MXx: in Matrix_3H; MOx: in Matrix_N; Betax, Alfax: in Integer) do
+  144                                 MB := MBx;
+  145                                 MX := MXx;
+  146                                 MO := MOx;
+  147                                 Beta := Betax;
+  148                                 Alfa := Alfax;
+  149                         end GetALL;
+  150                         --2.    Передать MBH, MХH, MО, ?, ? задаче Лх.1
+  151                         L11.GetALL(MB(H+1 .. 2*H), MX(H+1 .. 2*H), MO, Beta, Alfa);
+  152                         --3.    Передать MBH, MХH, MО, ?, ? задаче Лх.2
+  153                         L12.GetALL(MB(2*H+1 .. 3*H), MX(2*H+1 .. 3*H), MO, Beta, Alfa);
+  154                         --4.    Счёт MAH = MBH * ? + ? * MO  * MXH
+  155                 for i in 1.. N loop
+  156                   for j in 1 .. H loop
+  157                         sum1 := 0;
+  158                     for z in 1 .. N loop
+  159                        Sum1 := sum1 + MX(J)(Z) * MO(Z)(I);
+  160                     end loop;
+  161                         MA(J)(I) := Sum1 * Beta + alfa * MB(J)(I);
+  162                   end loop;
+  163                 end loop;
+  164                         --5.    Принять МАH от задачи Лх.1
+  165                         L11.GetREZ(MA(H+1 .. 2*H));
+  166                         --6.    Принять МАH от задачи Лх.2
+  167                         L12.GetREZ(MA(2*H+1 .. 3*H));
+  168                         --7.    Передать МАH задаче К1
+  169                         accept getREZ(MAx: out Matrix_3H) do
+  170                                 MAx := MA;
+  171                         end GetREZ;
+  172                 put_Line("U1 end!");
+  173         end U1;
+  174 
+  175                 task body U2 is
+  176                 Sum1, Alfa, Beta: Integer := 0;
+  177                 MO: Matrix_N; MA, MB, MX: Matrix_3H;
+  178     begin
+  179                 put_Line("U2 started!");
+  180                         
+  181                         --1.    Принять MB3H, MХ3H, MО, ?, ? от задачи К1
+  182                         accept getALL(MBx: in Matrix_3H; MXx: in Matrix_3H; MOx: in Matrix_N; Betax, Alfax: in Integer) do
+  183                                 MB := MBx;
+  184                                 MX := MXx;
+  185                                 MO := MOx;
+  186                                 Beta := Betax;
+  187                                 Alfa := Alfax;
+  188                         end GetALL;
+  189                         --2.    Передать MBH, MХH, MО, ?, ? задаче Лх.1
+  190                         L21.GetALL(MB(H+1 .. 2*H), MX(H+1 .. 2*H), MO, Beta, Alfa);
+  191                         --3.    Передать MBH, MХH, MО, ?, ? задаче Лх.2
+  192                         L22.GetALL(MB(2*H+1 .. 3*H), MX(2*H+1 .. 3*H), MO, Beta, Alfa);
+  193                         --4.    Счёт MAH = MBH * ? + ? * MO  * MXH
+  194                 for i in 1.. N loop
+  195                   for j in 1 .. H loop
+  196                         sum1 := 0;
+  197                     for z in 1 .. N loop
+  198                        Sum1 := sum1 + MX(J)(Z) * MO(Z)(I);
+  199                     end loop;
+  200                         MA(J)(I) := Sum1 * Beta + alfa * MB(J)(I);
+  201                   end loop;
+  202                 end loop;
+  203                         --5.    Принять МАH от задачи Лх.1
+  204                         L21.GetREZ(MA(H+1 .. 2*H));
+  205                         --6.    Принять МАH от задачи Лх.2
+  206                         L22.GetREZ(MA(2*H+1 .. 3*H));
+  207                         --7.    Передать МАH задаче К1
+  208                         accept getREZ(MAx: out Matrix_3H) do
+  209                                 MAx := MA;
+  210                         end GetREZ;
+  211                 put_Line("U2 end!");
+  212         end U2;
+  213 
+  214                 task body U3 is
+  215                 Sum1, Alfa, Beta: Integer := 0;
+  216                 MO: Matrix_N; MA, MB, MX: Matrix_3H;
+  217     begin
+  218                 put_Line("U3 started!");
+  219                         
+  220                         --1.    Принять MB3H, MХ3H, MО, ?, ? от задачи К1
+  221                         accept getALL(MBx: in Matrix_3H; MXx: in Matrix_3H; MOx: in Matrix_N; Betax, Alfax: in Integer) do
+  222                                 MB := MBx;
+  223                                 MX := MXx;
+  224                                 MO := MOx;
+  225                                 Beta := Betax;
+  226                                 Alfa := Alfax;
+  227                         end GetALL;
+  228                         --2.    Передать MBH, MХH, MО, ?, ? задаче Лх.1
+  229                         L31.GetALL(MB(H+1 .. 2*H), MX(H+1 .. 2*H), MO, Beta, Alfa);
+  230                         --3.    Передать MBH, MХH, MО, ?, ? задаче Лх.2
+  231                         L32.GetALL(MB(2*H+1 .. 3*H), MX(2*H+1 .. 3*H), MO, Beta, Alfa);
+  232                         --4.    Счёт MAH = MBH * ? + ? * MO  * MXH
+  233                 for i in 1.. N loop
+  234                   for j in 1 .. H loop
+  235                         sum1 := 0;
+  236                     for z in 1 .. N loop
+  237                        Sum1 := sum1 + MX(J)(Z) * MO(Z)(I);
+  238                     end loop;
+  239                         MA(J)(I) := Sum1 * Beta + alfa * MB(J)(I);
+  240                   end loop;
+  241                 end loop;
+  242                         --5.    Принять МАH от задачи Лх.1
+  243                         L31.GetREZ(MA(H+1 .. 2*H));
+  244                         --6.    Принять МАH от задачи Лх.2
+  245                         L32.GetREZ(MA(2*H+1 .. 3*H));
+  246                         --7.    Передать МАH задаче К1
+  247                         accept getREZ(MAx: out Matrix_3H) do
+  248                                 MAx := MA;
+  249                         end GetREZ;
+  250                 put_Line("U3 end!");
+  251         end U3;
+  252 
+  253                 task body U4 is
+  254                 Sum1, Alfa, Beta: Integer := 0;
+  255                 MO: Matrix_N; MA, MB, MX: Matrix_3H;
+  256     begin
+  257                 put_Line("U4 started!");
+  258                         
+  259                         --1.    Принять MB3H, MХ3H, MО, ?, ? от задачи К1
+  260                         accept getALL(MBx: in Matrix_3H; MXx: in Matrix_3H; MOx: in Matrix_N; Betax, Alfax: in Integer) do
+  261                                 MB := MBx;
+  262                                 MX := MXx;
+  263                                 MO := MOx;
+  264                                 Beta := Betax;
+  265                                 Alfa := Alfax;
+  266                         end GetALL;
+  267                         --2.    Передать MBH, MХH, MО, ?, ? задаче Лх.1
+  268                         L41.GetALL(MB(H+1 .. 2*H), MX(H+1 .. 2*H), MO, Beta, Alfa);
+  269                         --3.    Передать MBH, MХH, MО, ?, ? задаче Лх.2
+  270                         L42.GetALL(MB(2*H+1 .. 3*H), MX(2*H+1 .. 3*H), MO, Beta, Alfa);
+  271                         --4.    Счёт MAH = MBH * ? + ? * MO  * MXH
+  272                 for i in 1.. N loop
+  273                   for j in 1 .. H loop
+  274                         sum1 := 0;
+  275                     for z in 1 .. N loop
+  276                        Sum1 := sum1 + MX(J)(Z) * MO(Z)(I);
+  277                     end loop;
+  278                         MA(J)(I) := Sum1 * Beta + alfa * MB(J)(I);
+  279                   end loop;
+  280                 end loop;
+  281                         --5.    Принять МАH от задачи Лх.1
+  282                         L41.GetREZ(MA(H+1 .. 2*H));
+  283                         --6.    Принять МАH от задачи Лх.2
+  284                         L42.GetREZ(MA(2*H+1 .. 3*H));
+  285                         --7.    Передать МАH задаче К1
+  286                         accept getREZ(MAx: out Matrix_3H) do
+  287                                 MAx := MA;
+  288                         end GetREZ;
+  289                 put_Line("U4 end!");
+  290         end U4;
+  291 --------------------Реализация задач (ЗАДАЧИ ЛИСТЬЯ)----------------
+  292 ------L11
+  293         task body L11 is
+  294                 Sum1, Alfa, Beta: Integer := 0;
+  295                 MO: Matrix_N; MA, MB, MX: Matrix_H;
+  296     begin
+  297                 put_Line("L11 started!");
+  298                         --1.    Принять MB3H, MХ3H, MО, ?, ? от задачи Ух
+  299                         accept getALL(MBx: in Matrix_H; MXx: in Matrix_H; MOx: in Matrix_N; Betax, Alfax: in Integer) do
+  300                                 MB := MBx;
+  301                                 MX := MXx;
+  302                                 MO := MOx;
+  303                                 Beta := Betax;
+  304                                 Alfa := Alfax;
+  305                         end GetALL;
+  306                         --2.    Счёт MAH = MBH * ? + ? * MO  * MXH
+  307                                         for i in 1.. N loop
+  308                   for j in 1 .. H loop
+  309                         sum1 := 0;
+  310                     for z in 1 .. N loop
+  311                        Sum1 := sum1 + MX(J)(Z) * MO(Z)(I);
+  312                     end loop;
+  313                         MA(J)(I) := Sum1 * Beta + alfa * MB(J)(I);
+  314                   end loop;
+  315                 end loop;
+  316                         --3.    Передать МАH задаче Ух
+  317                         accept getREZ(MAx: out Matrix_H) do
+  318                                 MAx := MA;
+  319                         end GetREZ;
+  320                 put_Line("L11 end!");
+  321         end L11;
+  322 ------L21
+  323                 task body L21 is
+  324                 Sum1, Alfa, Beta: Integer := 0;
+  325                 MO: Matrix_N; MA, MB, MX: Matrix_H;
+  326     begin
+  327                 put_Line("L21 started!");
+  328                         --1.    Принять MB3H, MХ3H, MО, ?, ? от задачи Ух
+  329                         accept getALL(MBx: in Matrix_H; MXx: in Matrix_H; MOx: in Matrix_N; Betax, Alfax: in Integer) do
+  330                                 MB := MBx;
+  331                                 MX := MXx;
+  332                                 MO := MOx;
+  333                                 Beta := Betax;
+  334                                 Alfa := Alfax;
+  335                         end GetALL;
+  336                         --2.    Счёт MAH = MBH * ? + ? * MO  * MXH
+  337                                         for i in 1.. N loop
+  338                   for j in 1 .. H loop
+  339                         sum1 := 0;
+  340                     for z in 1 .. N loop
+  341                        Sum1 := sum1 + MX(J)(Z) * MO(Z)(I);
+  342                     end loop;
+  343                         MA(J)(I) := Sum1 * Beta + alfa * MB(J)(I);
+  344                   end loop;
+  345                 end loop;
+  346                         --3.    Передать МАH задаче Ух
+  347                         accept getREZ(MAx: out Matrix_H) do
+  348                                 MAx := MA;
+  349                         end GetREZ;
+  350                 put_Line("L21 end!");
+  351         end L21;
+  352 ------L31
+  353                 task body L31 is
+  354                 Sum1, Alfa, Beta: Integer := 0;
+  355                 MO: Matrix_N; MA, MB, MX: Matrix_H;
+  356     begin
+  357                 put_Line("L31 started!");
+  358                         --1.    Принять MB3H, MХ3H, MО, ?, ? от задачи Ух
+  359                         accept getALL(MBx: in Matrix_H; MXx: in Matrix_H; MOx: in Matrix_N; Betax, Alfax: in Integer) do
+  360                                 MB := MBx;
+  361                                 MX := MXx;
+  362                                 MO := MOx;
+  363                                 Beta := Betax;
+  364                                 Alfa := Alfax;
+  365                         end GetALL;
+  366                         --2.    Счёт MAH = MBH * ? + ? * MO  * MXH
+  367                                         for i in 1.. N loop
+  368                   for j in 1 .. H loop
+  369                         sum1 := 0;
+  370                     for z in 1 .. N loop
+  371                        Sum1 := sum1 + MX(J)(Z) * MO(Z)(I);
+  372                     end loop;
+  373                         MA(J)(I) := Sum1 * Beta + alfa * MB(J)(I);
+  374                   end loop;
+  375                 end loop;
+  376                         --3.    Передать МАH задаче Ух
+  377                         accept getREZ(MAx: out Matrix_H) do
+  378                                 MAx := MA;
+  379                         end GetREZ;
+  380                 put_Line("L31 end!");
+  381         end L31;
+  382 ------L41
+  383                 task body L41 is
+  384                 Sum1, Alfa, Beta: Integer := 0;
+  385                 MO: Matrix_N; MA, MB, MX: Matrix_H;
+  386     begin
+  387                 put_Line("L41 started!");
+  388                         --1.    Принять MB3H, MХ3H, MО, ?, ? от задачи Ух
+  389                         accept getALL(MBx: in Matrix_H; MXx: in Matrix_H; MOx: in Matrix_N; Betax, Alfax: in Integer) do
+  390                                 MB := MBx;
+  391                                 MX := MXx;
+  392                                 MO := MOx;
+  393                                 Beta := Betax;
+  394                                 Alfa := Alfax;
+  395                         end GetALL;
+  396                         --2.    Счёт MAH = MBH * ? + ? * MO  * MXH
+  397                                         for i in 1.. N loop
+  398                   for j in 1 .. H loop
+  399                         sum1 := 0;
+  400                     for z in 1 .. N loop
+  401                        Sum1 := sum1 + MX(J)(Z) * MO(Z)(I);
+  402                     end loop;
+  403                         MA(J)(I) := Sum1 * Beta + alfa * MB(J)(I);
+  404                   end loop;
+  405                 end loop;
+  406                         --3.    Передать МАH задаче Ух
+  407                         accept getREZ(MAx: out Matrix_H) do
+  408                                 MAx := MA;
+  409                         end GetREZ;
+  410                 put_Line("L41 end!");
+  411         end L41;
+  412 ------L12
+  413         task body L12 is
+  414                 Sum1, Alfa, Beta: Integer := 0;
+  415                 MO: Matrix_N; MA, MB, MX: Matrix_H;
+  416     begin
+  417                 put_Line("L12 started!");
+  418                         --1.    Принять MB3H, MХ3H, MО, ?, ? от задачи Ух
+  419                         accept getALL(MBx: in Matrix_H; MXx: in Matrix_H; MOx: in Matrix_N; Betax, Alfax: in Integer) do
+  420                                 MB := MBx;
+  421                                 MX := MXx;
+  422                                 MO := MOx;
+  423                                 Beta := Betax;
+  424                                 Alfa := Alfax;
+  425                         end GetALL;
+  426                         --2.    Счёт MAH = MBH * ? + ? * MO  * MXH
+  427                                         for i in 1.. N loop
+  428                   for j in 1 .. H loop
+  429                         sum1 := 0;
+  430                     for z in 1 .. N loop
+  431                        Sum1 := sum1 + MX(J)(Z) * MO(Z)(I);
+  432                     end loop;
+  433                         MA(J)(I) := Sum1 * Beta + alfa * MB(J)(I);
+  434                   end loop;
+  435                 end loop;
+  436                         --3.    Передать МАH задаче Ух
+  437                         accept getREZ(MAx: out Matrix_H) do
+  438                                 MAx := MA;
+  439                         end GetREZ;
+  440                 put_Line("L12 end!");
+  441         end L12;
+  442 ------L22
+  443                 task body L22 is
+  444                 Sum1, Alfa, Beta: Integer := 0;
+  445                 MO: Matrix_N; MA, MB, MX: Matrix_H;
+  446     begin
+  447                 put_Line("L22 started!");
+  448                         --1.    Принять MB3H, MХ3H, MО, ?, ? от задачи Ух
+  449                         accept getALL(MBx: in Matrix_H; MXx: in Matrix_H; MOx: in Matrix_N; Betax, Alfax: in Integer) do
+  450                                 MB := MBx;
+  451                                 MX := MXx;
+  452                                 MO := MOx;
+  453                                 Beta := Betax;
+  454                                 Alfa := Alfax;
+  455                         end GetALL;
+  456                         --2.    Счёт MAH = MBH * ? + ? * MO  * MXH
+  457                                         for i in 1.. N loop
+  458                   for j in 1 .. H loop
+  459                         sum1 := 0;
+  460                     for z in 1 .. N loop
+  461                        Sum1 := sum1 + MX(J)(Z) * MO(Z)(I);
+  462                     end loop;
+  463                         MA(J)(I) := Sum1 * Beta + alfa * MB(J)(I);
+  464                   end loop;
+  465                 end loop;
+  466                         --3.    Передать МАH задаче Ух
+  467                         accept getREZ(MAx: out Matrix_H) do
+  468                                 MAx := MA;
+  469                         end GetREZ;
+  470                 put_Line("L22 end!");
+  471         end L22;
+  472 ------L32
+  473                 task body L32 is
+  474                 Sum1, Alfa, Beta: Integer := 0;
+  475                 MO: Matrix_N; MA, MB, MX: Matrix_H;
+  476     begin
+  477                 put_Line("L32 started!");
+  478                         --1.    Принять MB3H, MХ3H, MО, ?, ? от задачи Ух
+  479                         accept getALL(MBx: in Matrix_H; MXx: in Matrix_H; MOx: in Matrix_N; Betax, Alfax: in Integer) do
+  480                                 MB := MBx;
+  481                                 MX := MXx;
+  482                                 MO := MOx;
+  483                                 Beta := Betax;
+  484                                 Alfa := Alfax;
+  485                         end GetALL;
+  486                         --2.    Счёт MAH = MBH * ? + ? * MO  * MXH
+  487                                         for i in 1.. N loop
+  488                   for j in 1 .. H loop
+  489                         sum1 := 0;
+  490                     for z in 1 .. N loop
+  491                        Sum1 := sum1 + MX(J)(Z) * MO(Z)(I);
+  492                     end loop;
+  493                         MA(J)(I) := Sum1 * Beta + alfa * MB(J)(I);
+  494                   end loop;
+  495                 end loop;
+  496                         --3.    Передать МАH задаче Ух
+  497                         accept getREZ(MAx: out Matrix_H) do
+  498                                 MAx := MA;
+  499                         end GetREZ;
+  500                 put_Line("L32 end!");
+  501         end L32;
+  502 ------L42
+  503                 task body L42 is
+  504                 Sum1, Alfa, Beta: Integer := 0;
+  505                 MO: Matrix_N; MA, MB, MX: Matrix_H;
+  506     begin
+  507                 put_Line("L42 started!");
+  508                         --1.    Принять MB3H, MХ3H, MО, ?, ? от задачи Ух
+  509                         accept getALL(MBx: in Matrix_H; MXx: in Matrix_H; MOx: in Matrix_N; Betax, Alfax: in Integer) do
+  510                                 MB := MBx;
+  511                                 MX := MXx;
+  512                                 MO := MOx;
+  513                                 Beta := Betax;
+  514                                 Alfa := Alfax;
+  515                         end GetALL;
+  516                         --2.    Счёт MAH = MBH * ? + ? * MO  * MXH
+  517                                         for i in 1.. N loop
+  518                   for j in 1 .. H loop
+  519                         sum1 := 0;
+  520                     for z in 1 .. N loop
+  521                        Sum1 := sum1 + MX(J)(Z) * MO(Z)(I);
+  522                     end loop;
+  523                         MA(J)(I) := Sum1 * Beta + alfa * MB(J)(I);
+  524                   end loop;
+  525                 end loop;
+  526                         --3.    Передать МАH задаче Ух
+  527                         accept getREZ(MAx: out Matrix_H) do
+  528                                 MAx := MA;
+  529                         end GetREZ;
+  530                 put_Line("L42 end!");
+  531         end L42;
+  532 
+  533 begin
+  534         null;
+  535 end PROLAB7;
+  536 
+
+NAME                 KIND/FILE            DEF    REFERENCES (* if assigned)
+---------------------------------------------------------------------------
+Alfa                 object              82      95* 98* 100* 102* 104* 
+                                                 112 
+Alfa                 object             137      148* 151* 153* 161 
+Alfa                 object             176      187* 190* 192* 200 
+Alfa                 object             215      226* 229* 231* 239 
+Alfa                 object             254      265* 268* 270* 278 
+Alfa                 object             294      304* 313 
+Alfa                 object             324      334* 343 
+Alfa                 object             354      364* 373 
+Alfa                 object             384      394* 403 
+Alfa                 object             414      424* 433 
+Alfa                 object             444      454* 463 
+Alfa                 object             474      484* 493 
+Alfa                 object             504      514* 523 
+Alfax                parameter           31      
+Alfax                parameter           35      
+Alfax                parameter           39      
+Alfax                parameter           43      
+Alfax                parameter           48      
+Alfax                parameter           52      
+Alfax                parameter           56      
+Alfax                parameter           60      
+Alfax                parameter           64      
+Alfax                parameter           68      
+Alfax                parameter           72      
+Alfax                parameter           76      
+Beta                 object              82      96* 98* 100* 102* 104* 
+                                                 112 
+Beta                 object             137      147* 151* 153* 161 
+Beta                 object             176      186* 190* 192* 200 
+Beta                 object             215      225* 229* 231* 239 
+Beta                 object             254      264* 268* 270* 278 
+Beta                 object             294      303* 313 
+Beta                 object             324      333* 343 
+Beta                 object             354      363* 373 
+Beta                 object             384      393* 403 
+Beta                 object             414      423* 433 
+Beta                 object             444      453* 463 
+Beta                 object             474      483* 493 
+Beta                 object             504      513* 523 
+Betax                parameter           31      
+Betax                parameter           35      
+Betax                parameter           39      
+Betax                parameter           43      
+Betax                parameter           48      
+Betax                parameter           52      
+Betax                parameter           56      
+Betax                parameter           60      
+Betax                parameter           64      
+Betax                parameter           68      
+Betax                parameter           72      
+Betax                parameter           76      
+Calendar             #5:ada.calendar.spc         6 
+H                    object              12      17 18 22 23 107 156 195 
+                                                 234 273 308 338 368 398 
+                                                 428 458 488 518 
+Integer_Text_IO      #4:ada.integer_text_io.ada  5 
+J                    object             126      127 
+K1                   object              26      28 
+K1                   task body           81      134 
+L11                  object              47      50 151 165 
+L11                  task body          293      321 
+L12                  object              63      66 153 167 
+L12                  task body          413      441 
+L21                  object              51      54 190 204 
+L21                  task body          323      351 
+L22                  object              67      70 192 206 
+L22                  task body          443      471 
+L31                  object              55      58 229 243 
+L31                  task body          353      381 
+L32                  object              71      74 231 245 
+L32                  task body          473      501 
+L41                  object              59      62 268 282 
+L41                  task body          383      411 
+L42                  object              75      78 270 284 
+L42                  task body          503      531 
+MA                   object              83      112* 116* 118* 120* 122* 
+                                                 127* 
+MA                   object             138      161* 165* 167* 170 
+MA                   object             177      200* 204* 206* 209 
+MA                   object             216      239* 243* 245* 248 
+MA                   object             255      278* 282* 284* 287 
+MA                   object             295      313* 318 
+MA                   object             325      343* 348 
+MA                   object             355      373* 378 
+MA                   object             385      403* 408 
+MA                   object             415      433* 438 
+MA                   object             445      463* 468 
+MA                   object             475      493* 498 
+MA                   object             505      523* 528 
+MAx                  parameter           32      
+MAx                  parameter           36      
+MAx                  parameter           40      
+MAx                  parameter           44      
+MAx                  parameter           49      
+MAx                  parameter           53      
+MAx                  parameter           57      
+MAx                  parameter           61      
+MAx                  parameter           65      
+MAx                  parameter           69      
+MAx                  parameter           73      
+MAx                  parameter           77      
+MB                   object              83      90* 98* 100* 102* 104* 
+                                                 112 
+MB                   object             138      144* 151* 153* 161 
+MB                   object             177      183* 190* 192* 200 
+MB                   object             216      222* 229* 231* 239 
+MB                   object             255      261* 268* 270* 278 
+MB                   object             295      300* 313 
+MB                   object             325      330* 343 
+MB                   object             355      360* 373 
+MB                   object             385      390* 403 
+MB                   object             415      420* 433 
+MB                   object             445      450* 463 
+MB                   object             475      480* 493 
+MB                   object             505      510* 523 
+MBx                  parameter           31      
+MBx                  parameter           35      
+MBx                  parameter           39      
+MBx                  parameter           43      
+MBx                  parameter           48      
+MBx                  parameter           52      
+MBx                  parameter           56      
+MBx                  parameter           60      
+MBx                  parameter           64      
+MBx                  parameter           68      
+MBx                  parameter           72      
+MBx                  parameter           76      
+MO                   object              83      91* 98* 100* 102* 104* 
+                                                 110 
+MO                   object             138      146* 151* 153* 159 
+MO                   object             177      185* 190* 192* 198 
+MO                   object             216      224* 229* 231* 237 
+MO                   object             255      263* 268* 270* 276 
+MO                   object             295      302* 311 
+MO                   object             325      332* 341 
+MO                   object             355      362* 371 
+MO                   object             385      392* 401 
+MO                   object             415      422* 431 
+MO                   object             445      452* 461 
+MO                   object             475      482* 491 
+MO                   object             505      512* 521 
+MOx                  parameter           31      
+MOx                  parameter           35      
+MOx                  parameter           39      
+MOx                  parameter           43      
+MOx                  parameter           48      
+MOx                  parameter           52      
+MOx                  parameter           56      
+MOx                  parameter           60      
+MOx                  parameter           64      
+MOx                  parameter           68      
+MOx                  parameter           72      
+MOx                  parameter           76      
+MX                   object              83      92* 98* 100* 102* 104* 
+                                                 110 
+MX                   object             138      145* 151* 153* 159 
+MX                   object             177      184* 190* 192* 198 
+MX                   object             216      223* 229* 231* 237 
+MX                   object             255      262* 268* 270* 276 
+MX                   object             295      301* 311 
+MX                   object             325      331* 341 
+MX                   object             355      361* 371 
+MX                   object             385      391* 401 
+MX                   object             415      421* 431 
+MX                   object             445      451* 461 
+MX                   object             475      481* 491 
+MX                   object             505      511* 521 
+MXx                  parameter           31      
+MXx                  parameter           35      
+MXx                  parameter           39      
+MXx                  parameter           43      
+MXx                  parameter           48      
+MXx                  parameter           52      
+MXx                  parameter           56      
+MXx                  parameter           60      
+MXx                  parameter           64      
+MXx                  parameter           68      
+MXx                  parameter           72      
+MXx                  parameter           76      
+Matrix               type                20      21 22 23 
+Matrix_3H            subtype             22      31 32 35 36 39 40 43 44 
+                                                 138 143 169 177 182 208 
+                                                 216 221 247 255 260 286 
+Matrix_H             subtype             23      48 49 52 53 56 57 60 61 
+                                                 64 65 68 69 72 73 76 77 
+                                                 295 299 317 325 329 347 
+                                                 355 359 377 385 389 407 
+                                                 415 419 437 445 449 467 
+                                                 475 479 497 505 509 527 
+Matrix_N             subtype             21      31 35 39 43 48 52 56 60 
+                                                 64 68 72 76 83 138 143 
+                                                 177 182 216 221 255 260 
+                                                 295 299 325 329 355 359 
+                                                 385 389 415 419 445 449 
+                                                 475 479 505 509 
+N                    object              10      12 16 21 88 89 106 109 
+                                                 124 125 126 155 158 194 
+                                                 197 233 236 272 275 307 
+                                                 310 337 340 367 370 397 
+                                                 400 427 430 457 460 487 
+                                                 490 517 520 
+New_Line             #3:ada.text_io.spc          129 
+P                    object              11      12 
+PROLAB7              library subp body    9      535 
+Package1             #1:package1.adb             3 
+Put                  #3:ada.text_io.spc          127 
+Sum1                 object              82      108* 110* 112 
+Sum1                 object             137      157* 159* 161 
+Sum1                 object             176      196* 198* 200 
+Sum1                 object             215      235* 237* 239 
+Sum1                 object             254      274* 276* 278 
+Sum1                 object             294      309* 311* 313 
+Sum1                 object             324      339* 341* 343 
+Sum1                 object             354      369* 371* 373 
+Sum1                 object             384      399* 401* 403 
+Sum1                 object             414      429* 431* 433 
+Sum1                 object             444      459* 461* 463 
+Sum1                 object             474      489* 491* 493 
+Sum1                 object             504      519* 521* 523 
+Text_IO              #3:ada.text_io.spc          4 
+U1                   object              30      33 98 116 
+U1                   task body          136      173 
+U2                   object              34      37 100 118 
+U2                   task body          175      212 
+U3                   object              38      41 102 120 
+U3                   task body          214      251 
+U4                   object              42      45 104 122 
+U4                   task body          253      290 
+Vector_3H            subtype             17      
+Vector_H             subtype             18      
+Vector_N             subtype             16      20 
+ada                  #2:ada.ada                  4 5 6 7 
+float_text_io        #6:ada.float_text_io.ada    7 
+getALL               subprogram          31      98 143 
+getALL               subprogram          35      100 182 
+getALL               subprogram          39      102 221 
+getALL               subprogram          43      104 260 
+getALL               subprogram          48      151 299 
+getALL               subprogram          52      190 329 
+getALL               subprogram          56      229 359 
+getALL               subprogram          60      268 389 
+getALL               subprogram          64      153 419 
+getALL               subprogram          68      192 449 
+getALL               subprogram          72      231 479 
+getALL               subprogram          76      270 509 
+getREZ               subprogram          32      116 169 
+getREZ               subprogram          36      118 208 
+getREZ               subprogram          40      120 247 
+getREZ               subprogram          44      122 286 
+getREZ               subprogram          49      165 317 
+getREZ               subprogram          53      204 347 
+getREZ               subprogram          57      243 377 
+getREZ               subprogram          61      282 407 
+getREZ               subprogram          65      167 437 
+getREZ               subprogram          69      206 467 
+getREZ               subprogram          73      245 497 
+getREZ               subprogram          77      284 527 
+i                    object              88      90 91 92 
+i                    object             106      110 112 
+i                    object             125      127 
+i                    object             155      159 161 
+i                    object             194      198 200 
+i                    object             233      237 239 
+i                    object             272      276 278 
+i                    object             307      311 313 
+i                    object             337      341 343 
+i                    object             367      371 373 
+i                    object             397      401 403 
+i                    object             427      431 433 
+i                    object             457      461 463 
+i                    object             487      491 493 
+i                    object             517      521 523 
+j                    object              89      90 91 92 
+j                    object             107      110 112 
+j                    object             156      159 161 
+j                    object             195      198 200 
+j                    object             234      237 239 
+j                    object             273      276 278 
+j                    object             308      311 313 
+j                    object             338      341 343 
+j                    object             368      371 373 
+j                    object             398      401 403 
+j                    object             428      431 433 
+j                    object             458      461 463 
+j                    object             488      491 493 
+j                    object             518      521 523 
+put_Line             #3:ada.text_io.spc          85 133 140 172 179 211 
+                                                 218 250 257 289 297 320 
+                                                 327 350 357 380 387 410 
+                                                 417 440 447 470 477 500 
+                                                 507 530 
+vector               type                15      16 17 18 
+z                    object             109      110 
+z                    object             158      159 
+z                    object             197      198 
+z                    object             236      237 
+z                    object             275      276 
+z                    object             310      311 
+z                    object             340      341 
+z                    object             370      371 
+z                    object             400      401 
+z                    object             430      431 
+z                    object             460      461 
+z                    object             490      491 
+z                    object             520      521 
+
+    File #1 ..\package1.adb
+    File #2 ada.ada
+    File #3 ada.text_io.spc
+    File #4 ada.integer_text_io.ada
+    File #5 ada.calendar.spc
+    File #6 ada.float_text_io.ada

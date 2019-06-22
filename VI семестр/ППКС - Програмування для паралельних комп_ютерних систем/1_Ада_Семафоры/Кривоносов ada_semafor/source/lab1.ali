@@ -1,0 +1,173 @@
+V "GNAT Lib v2015"
+M P W=b
+A -gnatl=lab1.lst
+A -mtune=generic
+A -march=pentiumpro
+P ZX
+
+RN
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
+RV NO_IO
+RV NO_NESTED_FINALIZATION
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_TASK_HIERARCHY
+RV NO_TASKING
+RV NO_DEFAULT_INITIALIZATION
+RV SPARK_05
+RV MAX_TASKS=1+
+
+U lab1%b		lab1.adb		15339544 NE OO SU
+W ada%s			ada.ads			ada.ali
+W ada.exceptions%s	a-except.adb		a-except.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+W ada.real_time%s	a-reatim.adb		a-reatim.ali
+W ada.synchronous_task_control%s  a-sytaco.adb	a-sytaco.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W system%s		system.ads		system.ali
+W system.parameters%s	s-parame.adb		s-parame.ali
+W system.soft_links%s	s-soflin.adb		s-soflin.ali
+W system.standard_library%s  s-stalib.adb	s-stalib.ali
+W system.task_info%s	s-tasinf.adb		s-tasinf.ali
+W system.tasking%s	s-taskin.adb		s-taskin.ali
+W system.tasking.stages%s  s-tassta.adb		s-tassta.ali
+
+D ada.ads		20150518132148 3ffc8e18 ada%s
+D a-except.ads		20150518132148 5250cb69 ada.exceptions%s
+D a-finali.ads		20150518132148 69f99942 ada.finalization%s
+D a-inteio.ads		20150518132148 f64b89a4 ada.integer_text_io%s
+D a-ioexce.ads		20150518132148 e4a01f64 ada.io_exceptions%s
+D a-reatim.ads		20150518132148 a5838d5a ada.real_time%s
+D a-stream.ads		20150518132148 119b8fb3 ada.streams%s
+D a-sytaco.ads		20150518132148 1e0de5f0 ada.synchronous_task_control%s
+D a-tags.ads		20150518132148 dc4d0634 ada.tags%s
+D a-textio.ads		20150518132148 386df5d4 ada.text_io%s
+D a-tiinio.ads		20150518132148 aa04e5d6 ada.text_io.integer_io%s
+D a-unccon.ads		20150518132148 f9eb8f06 ada.unchecked_conversion%s
+D interfac.ads		20150518132148 6033a23f interfaces%s
+D i-c.ads		20150518132148 5421119b interfaces.c%s
+D i-cstrin.ads		20150518132148 341d0ddf interfaces.c.strings%s
+D i-cstrea.ads		20150518132148 e53d8b8e interfaces.c_streams%s
+D lab1.adb		20160223151806 c5180cc4 lab1%b
+D system.ads		20150518132150 f4ce8c3a system%s
+D s-atacco.ads		20150518132148 4c36d12f system.address_to_access_conversions%s
+D s-crtl.ads		20150518132148 0ebbdb71 system.crtl%s
+D s-exctab.ads		20150518132148 54135002 system.exception_table%s
+D s-ficobl.ads		20150518132148 078245e4 system.file_control_block%s
+D s-finroo.ads		20150518132148 4ff27390 system.finalization_root%s
+D s-memory.ads		20150518132150 597d6634 system.memory%s
+D s-multip.ads		20150518132150 38ac9f73 system.multiprocessors%s
+D s-osinte.ads		20150518132150 2e5b26a9 system.os_interface%s
+D s-parame.ads		20150518132150 7e2a0d7f system.parameters%s
+D s-soflin.ads		20150518132150 aa763b52 system.soft_links%s
+D s-stache.ads		20150518132150 a37c21ec system.stack_checking%s
+D s-stausa.ads		20150518132150 017a0a05 system.stack_usage%s
+D s-stalib.ads		20150518132150 fa0a3617 system.standard_library%s
+D s-stalib.adb		20150518132150 f2fe2716 system.standard_library%b
+D s-stoele.ads		20150518132150 2dc34a04 system.storage_elements%s
+D s-tasinf.ads		20150518132150 601f6b72 system.task_info%s
+D s-taspri.ads		20150518132150 6c1d93d4 system.task_primitives%s
+D s-taprop.ads		20150518132150 1dd2e1b6 system.task_primitives.operations%s
+D s-taskin.ads		20150518132150 339749f0 system.tasking%s
+D s-tassta.ads		20150518132150 70812003 system.tasking.stages%s
+D s-traent.ads		20150518132150 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20150518132150 9d58a4c0 system.unsigned_types%s
+D s-wchcon.ads		20150518132150 1b7d22d2 system.wch_con%s
+D s-win32.ads		20150518132150 b7f96285 system.win32%s
+X 1 ada.ads
+16K9*Ada 19e8 17|14r6 14r19 14r40 15r5 15r18 15r39
+X 4 a-inteio.ads
+18K13*Integer_Text_IO[11|46] 17|14w23 15r22
+X 8 a-sytaco.ads
+40K13*Synchronous_Task_Control 78e33 17|14w44 15r43
+44R9*Suspension_Object<3|50R9> 69e14 17|34r24
+46U14*Set_True 17|57s17 63s18 123s17 163s17 213s11
+52U14*Suspend_Until_True 17|59s18 101s18 117s17 119s17
+X 10 a-textio.ads
+49K13*Text_IO 471e16 17|14w10 15r9
+263U14*Put_Line 17|19s1 48s16 104s18 115s17 165s17 194s16 202s17 206s17 212s20
+X 11 a-tiinio.ads
+56U14*Get 17|20s1[4|18]
+57i7 Item{integer} 17|20r6[4|18]
+66U14*Put 17|192s19[4|18] 204s20[4|18]
+X 17 lab1.adb
+16U14*Lab1 16b14 217l9 217t13
+17i5 N{natural} 20m14 24r21 26r42 128r31 138r27 144r30 154r27 189r13 201r17
+23i7 P{integer} 24r23
+24i7 H{integer} 65r29 75r25 81r28 91r25 128r26 138r22 144r25 154r22
+26I15 Index{positive} 27r29 28r29 66r27 68r32 76r25 82r29 84r32 92r25 129r27
+. 131r32 139r25 145r29 147r32 155r25 174r23 181r23 182r26 190r22 191r25 203r26
+27A12 Vector(integer)<integer> 28r39 171r43 199r41
+28A12 Matrix(27A12)<integer> 32r38 36r39 37r39 44r40 109r42 179r44 187r38
+32a17 MA{28A12} 93m19 103r31 156m19
+32a21 MB{28A12} 50m28 85r37 148r37
+32a25 MC{28A12} 51m28 60r28 120r27
+32a29 MO{28A12} 52m28 69r37 132r37
+32a33 MR{28A12} 53m28 61r28 121r27
+33i9 alpha{integer} 54m15 62r31 122r30
+33i16 tempV{integer} 67m26 69m24 69r31 70r36 83m26 85m24 85r31 86r36
+34r9 S1{8|44R9} 57m26 57r26 117m36 117r36
+34r12 S2{8|44R9} 101m37 101r37 163m26 163r26
+34r16 Skd1{8|44R9} 59m37 59r37 63m27 63r27 119m36 119r36 123m26 123r26 213m20
+. 213r20
+36U17 Input_Matrix 36<30 50s15 51s15 52s15 53s15 179b21 186l15 186t27
+36a30 MA{28A12} 179b35 183m20
+37U17 Output_Matrix 37>31 103s17 187b17 198l11 198t24
+37a31 MA{28A12} 187b32 192r23
+41U20 Start_tasks 41b20 169t14 214s11
+42t18 T1 43b23 105l19 105t21
+44a15 MC1{28A12} 60m21 85r46
+44a19 MR1{28A12} 61m21 69r46
+44a24 Buf11{28A12} 70m23 77m16 77r31 93r31
+44a31 Buf12{28A12} 86m23 93r45
+46i16 alpha1{integer} 62m21 77r45
+65i21 i{integer} 69r40 70r29
+66i22 j{26I15} 69r53 70r32
+68i27 k{26I15} 69r43 69r50
+75i17 i{integer} 77r22 77r37
+76i20 j{26I15} 77r25 77r40
+81i20 i{integer} 85r40 86r29
+82i24 j{26I15} 85r53 86r32
+84i27 k{26I15} 85r43 85r50
+91i17 i{integer} 93r22 93r37 93r51
+92i20 j{26I15} 93r25 93r40 93r54
+107t20 T2 108b25 166l18 166t20
+109a17 MC2{28A12} 120m20 148r46
+109a21 MR2{28A12} 121m20 132r46
+109a26 Buf21{28A12} 133m23 140m16 140r31 156r31
+109a33 Buf22{28A12} 149m23 156r45
+111i16 tempV{integer} 130m26 132m24 132r31 133r36 146m26 148m24 148r31 149r36
+111i23 alpha2{integer} 122m20 140r45
+128i21 i{integer} 132r40 133r29
+129i22 j{26I15} 132r53 133r32
+131i27 k{26I15} 132r43 132r50
+138i17 i{integer} 140r22 140r37
+139i20 j{26I15} 140r25 140r40
+144i20 i{integer} 148r40 149r29
+145i24 j{26I15} 148r53 149r32
+147i27 k{26I15} 148r43 148r50
+154i17 i{integer} 156r22 156r37 156r51
+155i20 j{26I15} 156r25 156r40 156r54
+171U21 Input_Vector 171b21 171<35 177l15 177t27
+171a35 M{27A12} 175m17
+174i18 J{26I15} 175r19
+181i18 I{26I15} 183r23
+182i21 J{26I15} 183r26
+190i17 i{26I15} 192r26
+191i20 j{26I15} 192r29
+199U21 Vector_Output 199b21 199>36 208l15 208t28
+199a36 A{27A12} 204r24
+203i21 i{26I15} 204r26
+X 18 system.ads
+67M9*Address
+X 24 s-memory.ads
+53V13*Alloc{18|67M9} 103i<c,__gnat_malloc>22
+68U14*Free 104i<c,__gnat_free>22
+76V13*Realloc{18|67M9} 105i<c,__gnat_realloc>22
+X 30 s-stausa.ads
+203U14*Initialize 204i<c,__gnat_stack_usage_initialize>22
+268U14*Output_Results 272i<c,__gnat_stack_usage_output_results>22
+X 32 s-stalib.adb
+93U14 Break_Start 94i<c,__gnat_break_start>22
+

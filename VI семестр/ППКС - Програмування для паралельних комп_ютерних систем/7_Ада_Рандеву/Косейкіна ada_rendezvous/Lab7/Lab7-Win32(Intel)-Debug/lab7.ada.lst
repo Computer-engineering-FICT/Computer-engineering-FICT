@@ -1,0 +1,302 @@
+Source file: ..\lab7.ada   Wed Apr 25 01:21:42 2012
+
+    1 --Косейкина Анна Сергеевна, группа ИО-91
+    2 --'''лаб№ 8. Ada''' 
+    3 -- A=B*(MO*MX)-alpha*Z
+    4 with Ada.TEXT_IO; use Ada.TEXT_IO;
+    5 with Ada.INTEGER_TEXT_IO; use Ada.INTEGER_TEXT_IO;
+    6 PROCEDURE LAB8 IS
+    7         N: INTEGER := 6;
+    8         P: INTEGER := 6;
+    9         H: INTEGER := N/P;
+   10     TYPE VECTOR IS ARRAY (INTEGER RANGE <>) OF INTEGER;
+   11         TYPE MATRIX IS ARRAY (INTEGER RANGE <>) OF VECTOR(1..N); 
+   12 --========================================================================
+   13         TASK T1;
+   14 --========================================================================
+   15         TASK T2 IS 
+   16                 ENTRY EXCT1T2(ALFA1: IN INTEGER; B1: IN VECTOR; MX1: IN MATRIX; Z1: OUT VECTOR; MO1: OUT MATRIX);
+   17                 ENTRY REST2(A1: OUT VECTOR);
+   18         END T2;
+   19 --========================================================================
+   20         TASK T3 IS 
+   21                 ENTRY DATAT1(ALFA1: IN INTEGER; B1: IN VECTOR; MO1: IN MATRIX; MX1: IN MATRIX; Z1: IN VECTOR);
+   22                 ENTRY REST3(A1: OUT VECTOR);
+   23         END T3;
+   24 --========================================================================
+   25         TASK T4 IS 
+   26                 ENTRY DATAT2(ALFA1: IN INTEGER; B1: IN VECTOR; MO1: IN MATRIX; MX1: IN MATRIX; Z1: IN VECTOR);
+   27                 ENTRY REST4(A1: OUT VECTOR);  
+   28         END T4;
+   29 --========================================================================
+   30         TASK T5 IS 
+   31                 ENTRY DATAT3(ALFA1: IN INTEGER; B1: IN VECTOR; MO1: IN MATRIX; MX1: IN MATRIX; Z1: IN VECTOR);
+   32                 ENTRY REST5(A1: OUT VECTOR);
+   33         END T5;
+   34 --========================================================================
+   35         TASK T6 IS 
+   36                 ENTRY DATAT4(ALFA1: IN INTEGER; B1: IN VECTOR; MO1: IN MATRIX; MX1: IN MATRIX; Z1: IN VECTOR);
+   37                 ENTRY REST6 (A1: OUT VECTOR);
+   38         END T6;
+   39 --========================================================================
+   40         TASK BODY T1 IS
+   41                 alfa, t: INTEGER;
+   42                 A: VECTOR(1..N);
+   43                 B: VECTOR(1..N);
+   44                 Z: VECTOR(1..3*H);
+   45                 MX: MATRIX(1..N);
+   46                 MO: MATRIX(1..N);
+   47                 Buf : vector (1..H*3);
+   48                 buf2 : vector (1..H*2);
+   49         BEGIN
+   50                 PUT_LINE(" T1 STARTED ");
+   51    --input B, alpha, MX
+   52                 FOR I IN 1..N LOOP
+   53                         FOR J IN 1..N LOOP
+   54                                 MX(I)(J) := 1;
+   55                         END LOOP;
+   56                         B(I):= 1;
+   57                 END LOOP;
+   58                 ALFA:= 1;  
+   59    --exchange
+   60                 T2.EXCT1T2(ALFA, B(1..N), MX(H..(4*H)-1), Z, MO);
+   61    --send to T3             
+   62                 T3.DATAT1(ALFA, B(1..N), MO, MX, Z(2*H..(3*H)-1)&Z(4*H..(5*H)-1)); 
+   63  --count
+   64                 FOR I IN 1..H LOOP
+   65                         FOR J IN 1..N LOOP
+   66                                 t:= 0;
+   67                                 FOR K IN 1..N LOOP
+   68                                         t:= t +(MO(K)(J)*MX(I)(K));
+   69                                 END LOOP;
+   70                                 A(I) := A(I) +(t*B(J));
+   71                         END LOOP;
+   72                         A(I) := A(I) -(Z(I)*ALFA);
+   73                 END LOOP;  
+   74  --receive from T3
+   75                 T3.REST3(Buf); 
+   76                 for i in H*2..H*3 loop
+   77                         a(i) := buf(i-H*2+1);
+   78                 end loop;
+   79                 for i in H*4..N loop
+   80                         a(i) := buf(i-H*2);
+   81                 end loop;
+   82 --receive from T2
+   83                 T2.REST2(buf2);
+   84                 for i in H..2*H loop
+   85                         a(i) := buf(i-H+1);
+   86                 end loop;
+   87                 for i in H*3..H*4 loop
+   88                         a(i) := buf(i-H*2);
+   89                 end loop;
+   90 --output A      
+   91                 IF N = 6 THEN
+   92                         FOR i IN 1..N LOOP
+   93                                 PUT(A(i));
+   94                         END LOOP;
+   95                         NEW_LINE;
+   96                 ELSE
+   97                         PUT(A(1));
+   98                         NEW_LINE;
+   99                 END IF;     
+  100             PUT_LINE(" T1 FINISHED ");
+  101         END T1;
+  102  --========================================================================
+  103         TASK BODY T2 IS
+  104                 alfa, t: INTEGER;
+  105                 A: VECTOR(1..H*2);
+  106                 B: VECTOR(1..N);
+  107                 Z: VECTOR(1..N);
+  108                 MX: MATRIX(1..H*3);
+  109                 MO: MATRIX(1..N);               
+  110         BEGIN
+  111                 PUT_LINE(" T2 STARTED ");
+  112    --input MO, Z
+  113                 FOR I IN 1..N LOOP
+  114                         FOR J IN 1..N LOOP
+  115                                 MO(I)(J) := 1;
+  116                         END LOOP;
+  117                         Z(I):= 1;
+  118                 END LOOP;
+  119                 ACCEPT EXCT1T2(ALFA1: IN INTEGER; B1: IN VECTOR; MX1: IN MATRIX; Z1: OUT VECTOR; MO1: OUT MATRIX) DO
+  120                         ALFA := ALFA1;
+  121                         B:= B1;
+  122                         MX:= MX1;
+  123                         Z1:= Z(1..H)&Z(H*2..H*3)&Z(H*4..H*5);
+  124             MO1:= MO;       
+  125                 END EXCT1T2;
+  126   --send to T4 
+  127                 T4.DATAT2(ALFA, B(1..N), MO, MX, Z(3*H..(4*H)-1)&Z(5*H..N-1));
+  128   --count
+  129                 FOR I IN H..H*2 LOOP
+  130                         FOR J IN 1..N LOOP
+  131                                 t:= 0;
+  132                                 FOR K IN 1..N LOOP
+  133                                         t:= t +(MO(K)(J)*MX(I)(K));
+  134                                 END LOOP;
+  135                                 A(I) := A(I) +(t*B(J));
+  136                         END LOOP;
+  137                         A(I) := A(I) -(Z(I)*ALFA);
+  138                 END LOOP;
+  139   --receive T4
+  140                 T4.REST4(A(H..H*2));   
+  141 --send to T1      
+  142                 ACCEPT REST2(A1: OUT VECTOR) DO
+  143                         A1 := A;
+  144                 END REST2;
+  145             PUT_LINE(" T2 FINISHED ");
+  146         END T2;
+  147  --========================================================================
+  148         TASK BODY T3 IS
+  149                 alfa, t: INTEGER;
+  150                 A: VECTOR(1..H*3);
+  151                 B: VECTOR(1..N);
+  152                 Z: VECTOR(1..H*2);
+  153                 MX: MATRIX(1..H*2);
+  154                 MO: MATRIX(1..N);       
+  155         BEGIN
+  156                 PUT_LINE(" T3 STARTED ");
+  157   --receive from T1
+  158                 ACCEPT DATAT1(ALFA1: IN INTEGER; B1: IN VECTOR; MO1: IN MATRIX; MX1: IN MATRIX; Z1: IN VECTOR) DO
+  159                         ALFA:= ALFA1;
+  160                         B:= B1;
+  161                         MO:= MO1;
+  162                         MX := MX1;
+  163                         Z := Z1;
+  164                 END DATAT1;
+  165 --send to T5
+  166                 T5.DATAT3(ALFA, B(1..N), MO, MX, Z(H..(H*2)-1));    
+  167  --count               
+  168                 FOR I IN H*2..(H*3)-1 LOOP
+  169                         FOR J IN 1..N LOOP
+  170                                 t:= 0;
+  171                                 FOR K IN 1..N LOOP
+  172                                         t:= t +(MO(K)(J)*MX(I)(K));
+  173                                 END LOOP;
+  174                                 A(I) := A(I) +(t*B(J));
+  175                         END LOOP;                
+  176                         A(I) := A(I) -(Z(I)*ALFA);
+  177                 END LOOP;
+  178  --receive from T5        
+  179                 T5.REST5(A(H..H*3));
+  180 --send to T1     
+  181                 ACCEPT REST3(A1: OUT VECTOR) DO
+  182                         A1 := A;
+  183                 END REST3;      
+  184             PUT_LINE(" T3 FINISHED ");
+  185         END T3;
+  186 --========================================================================
+  187         TASK BODY T4 IS
+  188                 alfa, t: INTEGER;
+  189                 A: VECTOR(1..H);
+  190                 B: VECTOR(1..N);
+  191                 Z: VECTOR(1..H*2);
+  192                 MX: MATRIX(1..H*2);
+  193                 MO: MATRIX(1..N);
+  194         BEGIN
+  195                 PUT_LINE(" T4 STARTED ");
+  196                 --receive from T2
+  197             ACCEPT DATAT2(ALFA1: IN INTEGER; B1: IN VECTOR; MO1: IN MATRIX; MX1: IN MATRIX; Z1: IN VECTOR) DO
+  198                         AlFA := ALFA1;
+  199                         B := B1;
+  200                         MO := MO1;
+  201                         MX := MX1;
+  202                         Z := Z1;
+  203                 END DATAT2;                   
+  204   --send to T6
+  205                 T6.DATAT4(alfa, b, mo, mx(H..H*2), Z(H..H*2));
+  206  --count
+  207                 FOR I IN 1..H LOOP
+  208                         FOR J IN 1..N LOOP
+  209                                 t:= 0;
+  210                                 FOR K IN 1..N LOOP
+  211                                         t:= t +(MO(K)(J)*MX(I)(K));
+  212                                 END LOOP;
+  213                                 A(I) := A(I) +(t*B(J));
+  214                         END LOOP;
+  215                         A(I) := A(I) -(Z(I)*ALFA);
+  216                 END LOOP;
+  217   --send to T2
+  218                 ACCEPT REST4(A1: OUT VECTOR) DO
+  219                         A1 := A(1..H);
+  220                 END REST4;    
+  221             PUT_LINE(" T4 FINISHED ");
+  222         END T4;
+  223 --========================================================================
+  224         TASK BODY T5 IS
+  225                 alfa, t: INTEGER;
+  226                 A: VECTOR(1..H*2);
+  227                 B: VECTOR(1..N);
+  228                 Z: VECTOR(1..H);
+  229                 MX: MATRIX(1..H);
+  230                 MO: MATRIX(1..N);
+  231         BEGIN
+  232                 PUT_LINE(" T5 STARTED ");
+  233   --receive from t3       
+  234                 ACCEPT DATAT3(ALFA1: IN INTEGER; B1: IN VECTOR; MO1: IN MATRIX; MX1: IN MATRIX; Z1: IN VECTOR) DO
+  235                         ALFA:= ALFA1;
+  236                         B:= B1;
+  237                         MO:= MO1;
+  238                         mx := mx1;
+  239                         z := z1;
+  240                 END DATAT3;   
+  241                 --count
+  242                 FOR I IN 1..H LOOP
+  243                         FOR J IN 1..N LOOP
+  244                                 t:= 0;
+  245                                 FOR K IN 1..N LOOP
+  246                                         t:= t +(MO(K)(J)*MX(I+H-1)(K));
+  247                                 END LOOP;
+  248                                 A(I) := A(I) +(t*B(J));
+  249                         END LOOP;
+  250                         A(I) := A(I) -(Z(I)*ALFA);
+  251                 END LOOP;
+  252 --receive from T6
+  253                 T6.REST6(A);
+  254 --send to T3
+  255                 ACCEPT REST5(A1: OUT VECTOR) DO
+  256                         A1 := A;
+  257                 END REST5;               
+  258             PUT_LINE(" T5 FINISHED ");
+  259         END T5;
+  260   --========================================================================
+  261         TASK BODY T6 IS
+  262                 alfa, t: INTEGER;
+  263                 A: VECTOR(1..H);
+  264                 B: VECTOR(1..N);
+  265                 Z: VECTOR(1..H);
+  266                 MX: MATRIX(1..H);
+  267                 MO: MATRIX(1..N);
+  268         BEGIN
+  269                 PUT_LINE(" T6 STARTED ");
+  270                 --receive from t4
+  271                 ACCEPT DATAT4(ALFA1: IN INTEGER; B1: IN VECTOR; MO1: IN MATRIX; MX1: IN MATRIX; Z1: IN VECTOR) DO
+  272                         ALFA:= ALFA1;
+  273                         B:= B1;           
+  274                         MO:= MO1;
+  275                         mx := mx1;
+  276                         z := z1;
+  277                 END DATAT4;
+  278   --count
+  279                 FOR I IN 1..H LOOP
+  280                         FOR J IN 1..N LOOP
+  281                                 t:= 0;
+  282                                 FOR K IN 1..N LOOP
+  283                                         t:= t +(MO(K)(J)*MX(I)(K));
+  284                                 END LOOP;
+  285                                 A(I) := A(I) +(t*B(J));
+  286                         END LOOP;
+  287                         A(I) := A(I) -(Z(I)*ALFA);
+  288                 END LOOP;   
+  289  --send to T5
+  290                 ACCEPT REST6(A1: OUT VECTOR) DO
+  291                         A1 := A;
+  292                 END REST6;     
+  293             PUT_LINE(" T6 FINISHED ");
+  294         END T6;
+  295         
+  296   BEGIN
+  297         NULL;
+  298  END LAB8;
+  299         
+  300 

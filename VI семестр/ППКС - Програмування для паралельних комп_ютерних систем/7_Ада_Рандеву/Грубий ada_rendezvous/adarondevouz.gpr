@@ -1,0 +1,48 @@
+project Adarondevouz is
+
+   type Build_Modes is
+      ("Release", "Debug");
+   Mode : Build_Modes := external ("BUILD", "Debug");
+   for Main use ("main.adb");
+   for Exec_Dir use "./exec";
+
+   case Mode is
+
+      when "Release" =>
+         for Object_Dir use "release_objs";
+         for Source_Dirs use ("./source");
+
+      when "Debug" =>
+         for Object_Dir use "debug_objs";
+         for Source_Dirs use ("./source");
+   end case;
+
+   package Compiler is
+
+      case Mode is
+
+         when "Release" =>
+            for Default_Switches ("ada") use ("-O2", "-gnat05");
+
+         when "Debug" =>
+            for Default_Switches ("ada") use ("-g", "-gnato", "-gnatwa", "-fstack-check", "-gnat05");
+      end case;
+   end Compiler;
+
+   package Builder is
+
+      case Mode is
+
+         when "Release" =>
+            for Default_Switches ("ada") use ("");
+
+         when "Debug" =>
+            for Default_Switches ("ada") use ("-g");
+      end case;
+   end Builder;
+
+   package Ide is
+      for Compiler_Command ("ada") use "gnatmake";
+   end Ide;
+
+end Adarondevouz;

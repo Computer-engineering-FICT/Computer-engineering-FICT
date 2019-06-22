@@ -1,0 +1,126 @@
+V "GNAT Lib v2017"
+A -gnatA
+A -mtune=generic
+A -march=pentium4
+P ZX
+
+RN
+RV NO_IO
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U data%b		data.adb		227bf16d NE OO PK GE
+W ada%s			ada.ads			ada.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+
+U data%s		data.ads		097a994a BN EE NE OO PK GE
+W ada%s			ada.ads			ada.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+
+D ada.ads		20170516105950 76789da1 ada%s
+D a-except.ads		20170516105952 291912d5 ada.exceptions%s
+D a-inteio.ads		20170516105954 f64b89a4 ada.integer_text_io%s
+D a-ioexce.ads		20170516105948 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20170516105952 119b8fb3 ada.streams%s
+D a-tags.ads		20170516105954 d3a89129 ada.tags%s
+D a-textio.ads		20170516105954 386df5d4 ada.text_io%s
+D a-tiinio.ads		20170516105950 aa04e5d6 ada.text_io.integer_io%s
+D a-unccon.ads		20170516105954 31484697 ada.unchecked_conversion%s
+D data.ads		20170608214934 31176c9e data%s
+D data.adb		20170608214916 dd4ae183 data%b
+D interfac.ads		20170516105950 5ab55268 interfaces%s
+D i-cstrea.ads		20170516105950 e53d8b8e interfaces.c_streams%s
+D system.ads		20170516105954 32a08138 system%s
+D s-crtl.ads		20170516105948 0ebbdb71 system.crtl%s
+D s-exctab.ads		20170516105954 54135002 system.exception_table%s
+D s-ficobl.ads		20170516105956 078245e4 system.file_control_block%s
+D s-parame.ads		20170516105954 7e2a0d7f system.parameters%s
+D s-soflin.ads		20170516105950 14e1eb6c system.soft_links%s
+D s-stache.ads		20170516105954 a37c21ec system.stack_checking%s
+D s-stalib.ads		20170516105954 09bd3940 system.standard_library%s
+D s-stoele.ads		20170516105956 2dc34a04 system.storage_elements%s
+D s-traent.ads		20170516105950 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20170516105952 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20170516105954 1b7d22d2 system.wch_con%s
+X 1 ada.ads
+16K9*Ada 20e8 10|16r6 17r5 11|15r6 15r19 16r5 16r18
+X 3 a-inteio.ads
+18K13*Integer_Text_IO[8|46] 11|15w23 16r22
+X 7 a-textio.ads
+49K13*Text_IO 471e16 10|16w10 17r9 11|15w10 16r9
+73I12*Field{integer}
+166U14*New_Line 11|39s7 43s7 49s7 54s10 56s7
+X 8 a-tiinio.ads
+66U14*Put 11|41s10[3|18] 52s13[3|18]
+67i7 Item{integer} 11|41r14[3|18] 52r17[3|18]
+68i7 Width{7|73I12} 11|41r28[3|18] 52r35[3|18]
+X 10 data.ads
+21i4 N{natural} 26r33 36r33 11|22r19 30r19 31r22 51r22 93r19 94r22 95r25
+. 101r19 102r22
+21i7 H{natural} 27r38 28r38 29r38 30r38 31r38 32r38 33r38 37r38 38r38 39r38
+. 40r38 41r38 42r38 43r38
+23k9*Data 21z4 21z7 66l5 66e9 11|18b14 109l5 109t9
+25A9*Vector(integer)<integer> 26r23 27r24 28r24 29r24 30r24 31r24 32r24 33r24
+. 46r30 50r29 54r31 11|20r29 37r29 59r31
+26A12*VectorN{25A9}<integer> 35r46
+27A12*Vector7H{25A9}<integer>
+28A12*Vector6H{25A9}<integer>
+29A12*Vector5H{25A9}<integer>
+30A12*Vector4H{25A9}<integer>
+31A12*Vector3H{25A9}<integer>
+32A12*Vector2H{25A9}<integer>
+33A12*Vector1H{25A9}<integer>
+35A9*Matrix(26A12)<integer> 36r23 37r24 38r24 39r24 40r24 41r24 42r24 43r24
+. 48r31 52r30 11|28r30 47r30
+36A12*MatrixN{35A9}<integer> 60r34 61r34 62r34 63r35 11|83r34 84r34 85r34
+. 86r35 89r22
+37A12*Matrix7H{35A9}<integer>
+38A12*Matrix6H{35A9}<integer>
+39A12*Matrix5H{35A9}<integer>
+40A12*Matrix4H{35A9}<integer>
+41A12*Matrix3H{35A9}<integer>
+42A12*Matrix2H{35A9}<integer>
+43A12*Matrix1H{35A9}<integer>
+46U14*Input 46<22 46>38 11|20b14 25l8 25t13
+46a22 V{25A9} 11|20b21 23m10
+46i38 Value{integer} 11|20b37 23r17
+48U14*Input 48<22 48>39 11|28b14 35l8 35t13 91s8
+48a22 MA{35A9} 11|28b21 32m13
+48i39 Value{integer} 11|28b38 32r24
+50U14*Output 50>22 11|37b14 44l8 44t14
+50a22 V{25A9} 11|37b22 40r19 41r22
+52U14*Output 52>22 11|47b14 57l8 57t14
+52a22 MA{35A9} 11|47b22 50r19 52r25
+54U14*FindMaxZ 54>24 54<39 11|59b14 70l8 70t16
+54a24 V{25A9} 11|59b24 63r16 65r22 66r23
+54i39 maxZi{integer} 11|59b39 69m7
+56V13*Max{integer} 56>18 56>21 11|72b13 79l8 79t11
+56i18 A{integer} 11|72b18 74r10 75r17
+56i21 B{integer} 11|72b21 74r15 77r17
+58U14*Calculation 58>26 59>26 60>26 61>26 62>26 63<26 11|81b14 107l8 107t19
+58i26 d{integer} 11|81b26 103r43
+59i26 maxZ{integer} 11|82b26 103r25
+60a26 MO{36A12} 11|83b26 103r32
+61a26 MX{36A12} 11|84b26 96r59
+62a26 MS{36A12} 11|85b26 96r70
+63a26 MA{36A12} 11|86b26 103m13
+X 11 data.adb
+22i11 I{integer} 23r12
+30i11 I{integer} 32r16
+31i14 J{integer} 32r19
+40i11 I{integer} 41r24
+50i11 I{integer} 52r28
+51i14 J{integer} 52r31
+60i7 maxBuf{integer} 62m7 65r13 66m13 69r14
+63i11 i{integer} 65r24 66r25
+87i7 Sum{integer}
+88i7 Sum1{integer}
+89a7 BufferMatrix{10|36A12} 91m14 96m16 96r38 103r47
+93i11 i{integer} 96r29 96r51 96r62
+94i14 j{integer} 96r32 96r54 96r76
+95i17 k{integer} 96r65 96r73
+101i11 i{integer} 103r16 103r35 103r60
+102i14 j{integer} 103r19 103r38 103r63
+

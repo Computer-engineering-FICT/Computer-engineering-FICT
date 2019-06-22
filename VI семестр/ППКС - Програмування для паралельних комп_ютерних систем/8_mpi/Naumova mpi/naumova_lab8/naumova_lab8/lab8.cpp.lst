@@ -1,0 +1,172 @@
+1.   // PRO lab8 MPI
+2.   // Naumova Kristina IO-01
+3.   // A = B + C(MO*MX)alpha
+4.   // 04.05.2013
+5.   
+6.   
+7.   #include <mpi.h>
+8.   #include "data.h"
+9.   
+10.   //N=P: 1, 2, 3, 4, 5, 6
+11.  //p:   1, 2, 2, 2, 2, 2
+12.  //k:   0, 0, 1, 2, 3, 4
+13.  
+14.  //N = P = (p - 1) * k + p
+15.  const int N = 6;
+16.  const int p = 2;
+17.  const int k = 4;
+18.  int P, 
+19.     H; 
+20.  
+21.  int *getFirstRanks()
+22.  {
+23.     int *firstRanks = new int[p];
+24.     int value = 1;
+25.     for(int i = 0; i < p; i++)
+26.     {
+27.        firstRanks[i] = value;
+28.        value += (k+1);
+29.     }
+30.     return firstRanks;
+31.  }
+32.  
+33.  bool isFirstRank(int rank)
+34.  {
+35.     int* array = getFirstRanks();
+36.     for(int i = 0; i < p; i++)
+37.     {
+38.        if(rank == array[i])
+39.        {
+40.           return true;
+41.        }
+42.     }
+43.     return false;
+44.  }
+45.  
+46.  int getFirstRank(int secondRank)
+47.  {
+48.     int *array = getFirstRanks();
+49.     for(int i = 0; i < p; i++)
+50.     {
+51.        if(secondRank > array[i] && secondRank < array[i+1])
+52.        {
+53.           return array[i];
+54.        }
+55.     }
+56.  }
+57.  
+58.  
+59.  int main(int args, char* argv[])
+60.  {
+61.  
+62.     MPI_Init(&args, &argv);
+63.     int rank;
+64.     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+65.     MPI_Comm_size(MPI_COMM_WORLD, &P); 
+66.     H = N / P;
+67.  
+68.     cout << "Task " << rank << " started" << endl;
+69.     
+70.     int alpha = 0, cols_A_B = H, rows_MX = H;
+71.     if(rank == 0)
+72.     {
+73.        cols_A_B = N;
+74.        rows_MX = N;
+75.     } else if(isFirstRank(rank))
+76.     {
+77.        cols_A_B = (k+1) * H;
+78.        rows_MX = (k+1) * H;
+79.     }
+80.     
+81.     Vector A(cols_A_B);
+82.     Vector B(cols_A_B);
+83.     Vector C(N);
+84.     Matrix MO(N);
+85.     Matrix MX(rows_MX, N);
+86.  
+87.     
+88.     // Ввод данных
+89.     if(rank == 0)
+90.     {
+91.        alpha = 1;
+92.        B.fill(1);
+93.        C.fill(1);
+94.        MO.fill(1);
+95.        MX.fill(1);
+96.        MX.transpose();
+97.     }
+98.  
+99.     if(rank == 0)
+100.     {
+101.       int firstRank = 1;
+102.       int firstAdress = H;
+103. 
+104.       // Передать alpha, MO, C, B_(k+1)H, MX_(k+1)H задачам T(1)..T(P-1)
+105.       for(int i = 1; i < p; i++)
+106.       {
+107.          MPI_Send(&alpha, 1, MPI_INT, firstRank, 0, MPI_COMM_WORLD);
+108.          MPI_Send(MO.get_adress(0), N*N, MPI_INT, firstRank, 0, MPI_COMM_WORLD);
+109.          MPI_Send(C.get_adress(0), N, MPI_INT, firstRank, 0, MPI_COMM_WORLD);
+110.          MPI_Send(B.get_adress(firstAdress), (k+1)*H, MPI_INT, firstRank, 0, MPI_COMM_WORLD);
+111.          MPI_Send(MX.get_adress(firstAdress * N), (k+1)*H*N, MPI_INT, firstRank, 0, MPI_COMM_WORLD);
+112.          firstRank += (k+1);
+113.          firstAdress += (k+1)*H;
+114.       }
+115.    } else if(isFirstRank(rank)) {
+116.       // Принять alpha, MO, C, B_(k+1)H, MX_(k+1)H от задачи T0
+117.       MPI_Recv(&alpha, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+118.       MPI_Recv(MO.get_adress(0), N*N, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+119.       MPI_Recv(C.get_adress(0), N, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+120.       MPI_Recv(B.get_adress(0), (k+1)*H, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+121.       MPI_Recv(MX.get_adress(0), (k+1)*H*N, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+122. 
+123.       int secondRank = rank+1;
+124. 
+125.       // Передать alpha, MO, C, BH, MXH задачам T((P-1)1)..T((P-1)k)
+126.       for(int i = 0; i < k; i++)
+127.       {
+128.          MPI_Send(&alpha, 1, MPI_INT, secondRank, 0, MPI_COMM_WORLD);
+129.          MPI_Send(MO.get_adress(0), N*N, MPI_INT, secondRank, 0, MPI_COMM_WORLD);
+130.          MPI_Send(C.get_adress(0), N, MPI_INT, secondRank, 0, MPI_COMM_WORLD);
+131.          MPI_Send(B.get_adress(H*i+H), H, MPI_INT, secondRank, 0, MPI_COMM_WORLD);
+132.          MPI_Send(MX.get_adress((H*i+H)*N), H*N, MPI_INT, secondRank, 0, MPI_COMM_WORLD);
+133.          ++secondRank;
+134.       }
+135.    }
+136.    else
+137.    {
+138.       // Принять alpha, MO, C, BH, MXH от задач T(1)..T(P-1)
+139.       MPI_Recv(&alpha, 1, MPI_INT, getFirstRank(rank), 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+140.       MPI_Recv(MO.get_adress(0), N*N, MPI_INT, getFirstRank(rank), 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+141.       MPI_Recv(C.get_adress(0), N, MPI_INT, getFirstRank(rank), 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+142.       MPI_Recv(B.get_adress(0), H, MPI_INT, getFirstRank(rank), 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+143.       MPI_Recv(MX.get_adress(0), H*N, MPI_INT, getFirstRank(rank), 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+144.    }
+145.    
+146.    Vector A_H(H);
+147.    // Счет AH = BH + C*(MO*MXH)*alpha
+148.    calculation(0, H, alpha, B, C, MO, MX, A_H);
+149.    
+150.    if(rank == 0)
+151.    {
+152.       // Принять AH от всех задач
+153.       MPI_Gather(A_H.get_adress(0), H, MPI_INT, A.get_adress(0), H, MPI_INT, 0, MPI_COMM_WORLD);
+154.       // Вывод результата A
+155.       A.output();
+156.    }
+157.    else
+158.    {
+159.       // Передать AH задаче T(0)
+160.       MPI_Gather(A_H.get_adress(0), H, MPI_INT, NULL, 0, MPI_INT, 0, MPI_COMM_WORLD);
+161.    }
+162.    
+163.    cout << "Task " << rank << " finished" << endl;
+164. 
+165.    MPI_Finalize();
+166.    if(rank == 0)
+167.    {
+168.       system("pause");
+169.    }
+170.    
+171.    return 0;
+172. }

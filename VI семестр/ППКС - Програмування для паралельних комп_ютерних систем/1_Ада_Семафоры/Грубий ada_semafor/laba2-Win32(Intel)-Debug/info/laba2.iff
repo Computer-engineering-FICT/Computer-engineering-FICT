@@ -1,0 +1,71 @@
+SOURCE: ..\..\..\laba2
+  SRCTIME: 1320120925    Tue Nov 01 06:15:25 2011
+  COMPSW: -eo -e 50 -m n -mr n -gc -ga
+COMPVER: 8.4
+SRCDEP: ada.text_io.spc
+  SRCDEPTIME: 1184916516    Fri Jul 20 10:28:36 2007
+SRCDEP: ada.ada
+  SRCDEPTIME: 1184916558    Fri Jul 20 10:29:18 2007
+SRCDEP: ada.io_exceptions.dat
+  SRCDEPTIME: 1184916494    Fri Jul 20 10:28:14 2007
+SRCDEP: ada.integer_text_io.ada
+  SRCDEPTIME: 1184916492    Fri Jul 20 10:28:12 2007
+SRCDEP: system.spc
+  SRCDEPTIME: 1184916684    Fri Jul 20 10:31:24 2007
+UNIT: Lab2
+  UKIND: 7    PKG_DECL
+  DEP: Ada.Integer_Text_IO
+    DEPKIND: 10    PKG_INST
+    DEPSRC: ada.integer_text_io.ada
+    DEPSRCTIME: 1184916492    Fri Jul 20 10:28:12 2007
+  DEP: Ada
+    DEPKIND: 7    PKG_DECL
+    DEPSRC: ada.ada
+    DEPSRCTIME: 1184916558    Fri Jul 20 10:29:18 2007
+  DEP: Text_IO
+    DEPKIND: 11    PKG_RENAME
+    DEPSRC: ada.text_io.spc
+    DEPSRCTIME: 1184916516    Fri Jul 20 10:28:36 2007
+  NEED: Lab2
+    NEEDKIND: 8    PKG_BODY
+  FEATURES: 16#100000#(-1,-1,-1,-1,-1,-1)
+  ELABLINKNAME: lab2__elab_spec
+ENDUNIT
+UNIT: Lab2
+  UKIND: 8    PKG_BODY
+  DEP: Lab2
+    DEPKIND: 7    PKG_DECL
+    DEPSRC: ..\..\..\laba2
+    DEPSRCTIME: 1320120925    Tue Nov 01 06:15:25 2011
+  NEED: system.rts.Sec_Stack_Pkg
+    NEEDKIND: 7    PKG_DECL
+  FEATURES: 16#20000000000000#(-1,-1,-1,-1,-1,-1)
+  ELABLINKNAME: lab2__elab_body
+ENDUNIT
+UNIT: laba2
+  UKIND: 2    SUBP_BODY
+  DEP: Ada.Integer_Text_IO
+    DEPKIND: 10    PKG_INST
+    DEPSRC: ada.integer_text_io.ada
+    DEPSRCTIME: 1184916492    Fri Jul 20 10:28:12 2007
+  DEP: Ada
+    DEPKIND: 7    PKG_DECL
+    DEPSRC: ada.ada
+    DEPSRCTIME: 1184916558    Fri Jul 20 10:29:18 2007
+  DEP: Lab2
+    DEPKIND: 7    PKG_DECL
+    DEPSRC: ..\..\..\laba2
+    DEPSRCTIME: 1320120925    Tue Nov 01 06:15:25 2011
+  DEP: Text_IO
+    DEPKIND: 11    PKG_RENAME
+    DEPSRC: ada.text_io.spc
+    DEPSRCTIME: 1184916516    Fri Jul 20 10:28:36 2007
+  NEED: system.rts.Sec_Stack_Pkg
+    NEEDKIND: 7    PKG_DECL
+  NEED: system.rts.Tasking_Interface
+    NEEDKIND: 7    PKG_DECL
+  NEED: system.rts.Master_Pkg
+    NEEDKIND: 7    PKG_DECL
+  FEATURES: 16#200000a0100001#(-1,-1,-1,-1,-1,1)
+  MAINLINKNAME: laba2
+ENDUNIT

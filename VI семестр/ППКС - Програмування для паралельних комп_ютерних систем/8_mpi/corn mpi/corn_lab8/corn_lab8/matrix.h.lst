@@ -1,0 +1,42 @@
+1.  #ifndef _MATRIX_H_
+2.  #define _MATRIX_H_ 1
+3.  
+4.  #include <assert.h>
+5.  #include <ostream>
+6.  
+7.  
+8.  class Matrix {
+9.  public:
+10.     Matrix(size_t rows, size_t cols);
+11.    Matrix(size_t N);
+12.    Matrix(Matrix const &other);
+13.    ~Matrix();
+14. 
+15.    int get(size_t i, size_t j) const {
+16.       assert(i < this->rows);
+17.       assert(j < this->cols);
+18.       return this->data[i * cols + j];
+19.    }
+20. 
+21.    void set(size_t i, size_t j, int value) {
+22.       assert(i < this->rows);
+23.       assert(j < this->cols);
+24.       this->data[i * cols + j] = value;
+25.    }
+26. 
+27.    void* get_adress(size_t element) {
+28.       return this->data + element;
+29.    }
+30. 
+31.    void fill(int value);
+32. 
+33.    const size_t rows;
+34.    const size_t cols;
+35. 
+36. private:
+37.    int *data;
+38.    friend std::ostream &operator<<(std::ostream &ostr, const Matrix &m);
+39. 
+40. };
+41. 
+42. #endif

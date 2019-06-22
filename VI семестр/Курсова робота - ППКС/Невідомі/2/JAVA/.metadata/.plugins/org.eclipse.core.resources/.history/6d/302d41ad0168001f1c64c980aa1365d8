@@ -1,0 +1,73 @@
+
+public class Tasks extends Thread {
+	Monitor m;
+	int tid;
+	long start, finish;
+	public Tasks(Monitor m1, int id) {
+		m = m1;
+		tid = id;
+	}
+	
+	private int[][] mm1;
+	private int[] b1, c1;
+	public void run(){
+		start = System.currentTimeMillis();
+		System.out.println("Task "+ (tid+1) + " started");
+		mm1 = new int[m.N][m.N];
+		b1 = new int[m.N];
+		c1 = new int[m.N];
+		if(tid == 0){
+			for(int i = 0; i < m.N; i ++)
+				for(int j = 0; j < m.N; j ++){
+					mm1[i][j] = 1;
+					b1[j] = 1;
+				}
+			m.Write(b1, mm1);
+			m.SignalInput();
+		}
+		
+		if(tid == m.P-1){
+			for(int i = 0; i < m.N; i ++)
+				for(int j = 0; j < m.N; j ++){
+					m.MX[i][j] = 1;
+					m.MC[i][j] = 1;
+				}
+			m.SignalInput();
+		}
+		
+		m.WaitInput();
+		
+		mm1 = m.CopyMM();
+		b1 = m.CopyB();
+
+		for (int i = 0; i < m.N; i ++){
+        	for(int j=(tid)*m.H; j<((tid+1)*m.H); j++){
+        		for(int k = 0; k < m.N; k ++){
+        			m.buf1[i][j] = m.buf1[i][j] + mm1[i][k] * m.MC[k][j];
+        		}
+        	}
+        }
+		int[] VC = new int[m.N];
+		for(int i=(tid)*m.H; i<((tid+1)*m.H); i++){
+        	for (int j = 0; j < m.N; j ++){
+        		VC[i] = VC[i] + b1[j] * m.MX[j][i];
+        	}
+        }
+		
+		m.SignalCount();
+		if(tid == 0){
+			m.WaitCount();
+			if(m.N < 20){
+				for(int i = 0; i < m.N; i ++){
+					for(int j = 0; j < m.N; j ++)
+						System.out.print(m.MA[i][j]+" ");
+					System.out.println();
+				}
+			}
+			finish = System.currentTimeMillis();
+			System.out.println("Time = " + (finish - start)/1000.0);
+		}
+		
+		System.out.println("Task "+ (tid+1) + " finished");
+	}
+}

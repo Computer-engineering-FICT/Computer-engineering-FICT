@@ -1,0 +1,87 @@
+Source file: ..\lab - 01.ada   Sat Feb 12 22:41:29 2005
+
+    1 -----------------------------------
+    2 --    Лабораторная работа № 1
+    3 --по параллельному программированию
+    4 --Стахнива М.Н. группа ИВ-21
+    5 --F  a = (B*(Z*MX))
+    6 --11 февраля 2005 г.
+    7 -----------------------------
+    8 
+    9 with Ada.Text_IO, Ada.Integer_Text_IO, Ada.Synchronous_Task_Control, Data;
+   10 use Ada.Text_IO, Ada.Integer_Text_IO, Ada.Synchronous_Task_Control, Data;
+   11 
+   12 procedure MainProgram is
+   13   Sem1,Sem2,Sem3: Suspension_Object;   -- семафоры
+   14   Sku1,Sku2: Suspension_Object;
+   15   B,Z:Vector;
+   16   MX:Matrix;
+   17   a:integer;
+   18   Task T1;
+   19   Task T2;
+   20 
+   21   Task body T1 is
+   22     Z1:Vector; 
+   23     a1,c1:integer;      
+   24   begin
+   25     put_line("Process T1 started");
+   26     New_Line;
+   27     Vector_Input(Z,"C:\Ada\Z.dat");
+   28     Set_True(Sem2);                   --сигнал T2           S21
+   29     Suspend_Until_True(Sem1);         --ждать сигнал от T2  W21
+   30     Set_True(Sku1);
+   31     Suspend_Until_True(Sku1);         --копирование Z1:=Z   КУ
+   32       for i in 1..N loop
+   33         Z1(i):=Z(i);
+   34       end loop;
+   35     Set_True(Sku1);
+   36     a1:=0;
+   37     for i in 1..h loop                --счет а1
+   38       for j in 1..n loop
+   39         a1:=a1+b(i)*Z1(j)*MX(j)(i);             
+   40       end loop;
+   41     end loop;
+   42     Set_True(Sku2);
+   43     Suspend_Until_True(Sku2);         --счет a:=a+a1        КУ
+   44       a:=a+a1;
+   45     Set_True(Sku2);
+   46     Suspend_Until_True(Sem3);         --ждать сигнал от T2  W22
+   47     put(a);                           --вывод a
+   48     New_line;
+   49     put_line("Process T1 finished");    
+   50     New_Line;
+   51   end T1;
+   52 
+   53   Task body T2 is
+   54     Z2:Vector; 
+   55     a2,c2:integer;      
+   56   begin 
+   57     put_line("Process T2 started");
+   58     New_Line;
+   59     Vector_Input(B,"C:\Ada\B.dat");
+   60     Matrix_Input(MX,"C:\Ada\MX.dat");
+   61     Set_True(Sem1);                  --сигнал T1            S11
+   62     Suspend_Until_True(Sem2);        --ждать сигнал от T1   W11
+   63     Suspend_Until_True(Sku1);        --копирование Z2:=Z    КУ
+   64       for i in 1..N loop
+   65         Z2(i):=Z(i);
+   66       end loop;
+   67     Set_True(Sku1);
+   68     a2:=0;
+   69     for i in h+1..n loop             --счет а2
+   70       for j in 1..n loop
+   71         a2:=a2+b(i)*Z2(j)*MX(j)(i);             
+   72       end loop;
+   73     end loop;
+   74     Suspend_Until_True(Sku2);        --счет a:=a+a2         КУ
+   75       a:=a+a2;
+   76     Set_True(Sku2);
+   77     Set_True(Sem3);                  --сигнал T1            S12    
+   78     put_line("Process T2 finished");    
+   79     New_Line;
+   80   end T2;
+   81 begin
+   82   New_Line;
+   83   put_line("Main program started");
+   84   New_Line;
+   85 end MainProgram;

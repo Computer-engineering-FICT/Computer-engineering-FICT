@@ -1,0 +1,451 @@
+Source file: ..\lab4.adb   Wed May 18 12:34:21 2011
+
+    1 ----------------------------------------------------------------
+    2 --              Paralel and distributed computing             --
+    3 --             Laboratory work #4. Ada. Semaphores            --
+    4 --                  Func: MA = MB +  a * (MC * MO)          --
+    5 --                   IO-83 Maks Ryabko                     --
+    6 --                        27.04.2011                          --
+    7 ----------------------------------------------------------------
+    8 
+    9 with Package1; use Package1;
+   10 with Ada.Text_IO; use Ada.Text_IO;
+   11 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
+   12 with Ada.Calendar; use Ada.Calendar;
+   13 with ada.float_text_io; use ada.float_text_io;
+   14 
+   15 procedure Lab4 is
+   16    MA, MC, MK: Matr;
+   17    Time_all: duration;
+   18    time1,time2:  time;
+   19    A: Integer;
+   20 
+   21 -----------------------------------------------------------
+   22 ---------------ОПИСАТЕЛЬНАЯ ЧАСТЬ ЗАЩИЩЕННЫХ МОДУЛЕЙ-------
+   23 -----------------------------------------------------------
+   24 
+   25 ----ЗАЩИЩЕННЫЙ МОДУЛЬ MON
+   26         protected MON is
+   27                 --Синхронизация
+   28                 procedure DataSignal;
+   29                 procedure CalculationSignal;
+   30                 --Общие ресурсы
+   31                 procedure SetMB(M: in Matr);
+   32                 procedure SetAlfa(M: in Integer);
+   33                 procedure SetMZ(M: in Matr);
+   34                 function GetMB return Matr;
+   35                 function GetAlfa return Integer;
+   36                 function GetMZ return Matr;
+   37                 --Защищённые входы (синхронизация)
+   38                 entry Inputed;
+   39                 entry Finish;
+   40         --приватная часть защищенного модуля
+   41         private
+   42                 --Синхронизация
+   43                 F1: integer := 0;
+   44                 F2: integer := 0;
+   45                 --Общие ресурсы
+   46                 MB, MZ: Matr;
+   47                 alfa: Integer;
+   48         end MON;
+   49 
+   50 -----------------------------------------------------------
+   51 ------------------ТЕЛА ЗАЩИЩЕННЫХ МОДУЛЕЙ------------------
+   52 -----------------------------------------------------------
+   53 
+   54 --ЗАЩИЩЕННЫЙ МОДУЛЬ Synchro
+   55         protected body MON is
+   56 -- REALIZE Синхронизация
+   57                 procedure DataSignal is 
+   58                         begin
+   59                                 F1 := F1 + 1;
+   60         end DataSignal;
+   61 
+   62                 procedure CalculationSignal is
+   63                         begin
+   64                                 F2 := F2 + 1;
+   65         end CalculationSignal;
+   66 -- REALIZE Общие ресурсы
+   67                 procedure SetMB(M: in Matr) is
+   68                 begin   
+   69                         for i in 1 .. N loop
+   70                     for j in 1 .. N loop
+   71                        MB(i)(j) := M(i)(j);
+   72                     end loop;
+   73                  end loop;      
+   74                 end SetMB;
+   75                 procedure SetAlfa(M: in Integer) is
+   76                 begin   
+   77                         alfa := M;      
+   78                 end SetAlfa;
+   79                 procedure SetMZ(M: in Matr) is
+   80                 begin   
+   81                         for i in 1 .. N loop
+   82                     for j in 1 .. N loop
+   83                        MZ(i)(j) := M(i)(j);
+   84                     end loop;
+   85                  end loop;      
+   86                 end SetMZ;
+   87                 function GetMB return Matr is
+   88                 begin
+   89                         return MB;
+   90                 end;
+   91                 function GetAlfa return Integer is
+   92                 begin
+   93                         return alfa;
+   94                 end;
+   95                 function GetMZ return Matr is
+   96                 begin
+   97                         return MZ;
+   98                 end;
+   99 --Защищённые входы (синхронизация)
+  100                 entry Inputed when F1 = P is --1
+  101                 begin
+  102                                 null;
+  103                 end Inputed;
+  104 
+  105                 entry Finish when F2 = P - 1 is --2
+  106                 begin
+  107                                 null;
+  108                 end Finish;
+  109         end MON;
+  110 
+  111         procedure START is
+  112                 -----------------------------------------------------------
+  113                 ------------------------З А Д А Ч И------------------------
+  114                 -----------------------------------------------------------
+  115                         task T1;
+  116                         task T2;
+  117                         task T3;
+  118                         task T4;
+  119                 
+  120                 -----------------------ЗАДАЧА Т1 --------------------------
+  121                         task body T1 is
+  122                                 Sum1: Integer;
+  123                                 MB1, MZ1, MT1: Matr; alfa1: Integer;
+  124                 
+  125                         begin
+  126                                 Put_Line("T1 start");
+  127 --1.    Ввод MB, MA
+  128                 Matr_Input(MB1);
+  129                 MON.SetMB(MB1);
+  130                 Matr_Input(MA);
+  131 --2.    Сигнал задачам Т2, Т3, Т4 о завершении ввода MB, MA
+  132                 MON.DataSignal;
+  133 --3.    Ждать введения в T2, T3, T4
+  134                 MON.Inputed;
+  135 --4.    Копирование MB1 := MB, ?1 := ?, MZ1 := M
+  136                 MZ1 := MON.GetMZ;
+  137                 MB1 := MON.GetMB;
+  138                 Alfa1 := MON.GetAlfa;
+  139 --5.    Cчёт МAH = MB1 * (MСH + ?1 * MZ1 * MKH)
+  140                 for i in 1.. N loop
+  141                   for j in 1 .. H loop
+  142                         sum1 := 0;
+  143                     for z in 1 .. N loop
+  144                        Sum1 := sum1 + MK(Z)(J) * MZ1(I)(Z);
+  145                     end loop;
+  146                         MT1(I)(J) := MC(I)(J) + Alfa1 * Sum1;
+  147                   end loop;
+  148                 end loop;
+  149                 for i in 1.. N loop
+  150                   for j in 1 .. H loop
+  151                         sum1 := 0;
+  152                     for z in 1 .. N loop
+  153                        Sum1 := sum1 + MT1(Z)(J) * MB1(I)(Z);
+  154                     end loop;
+  155                         MA(I)(J) := Sum1;
+  156                   end loop;
+  157                 end loop;
+  158 --6.    Ждать завершение счёта MAH в задачах Т2, Т3, Т4                             W2.2, W2.2, W2.2
+  159                 MON.Finish;
+  160 --7.    Вывод МА.
+  161                 if N < 24 then
+  162                         Matr_print(MA);
+  163                 end if;
+  164         
+  165                 time2:=clock;
+  166             time_all:=time2-time1;
+  167                 Put(Integer(time_all));
+  168         
+  169                 Put_Line("T1 stop");
+  170         end T1;
+  171                 
+  172                 -----------------------ЗАДАЧА Т2 --------------------------
+  173                         task body T2 is
+  174                                 Sum1: Integer;
+  175                                 MB2, MZ2, MT2: Matr; alfa2: Integer;
+  176 
+  177                         begin
+  178                                 Put_Line("T2 start");
+  179 --1.    Ввод МС
+  180                 Matr_Input(MC);
+  181 --2.    Сигнал задачам Т1, Т3, Т4 о завершении ввода МС 
+  182                 MON.DataSignal;
+  183                 MON.Inputed;
+  184 --4.    Копирование MB1 := MB, ?1 := ?, MZ1 := M
+  185                 MZ2 := MON.GetMZ;
+  186                 MB2 := MON.GetMB;
+  187                 Alfa2 := MON.GetAlfa;
+  188 --5.    Cчёт МAH = MB2 * (MСH + ?2 * MZ2 * MKH) 
+  189                 for i in 1.. N loop
+  190                   for j in H+1 .. 2*H loop
+  191                         sum1 := 0;
+  192                     for z in 1 .. N loop
+  193                        Sum1 := sum1 + MK(Z)(J) * MZ2(I)(Z);
+  194                     end loop;
+  195                         MT2(I)(J) := MC(I)(J) + Alfa2 * Sum1;
+  196                   end loop;
+  197                 end loop;
+  198                 for i in 1.. N loop
+  199                   for j in H+1 .. 2*H loop
+  200                         sum1 := 0;
+  201                     for z in 1 .. N loop
+  202                        Sum1 := sum1 + MT2(Z)(J) * MB2(I)(Z);
+  203                     end loop;
+  204                         MA(I)(J) := Sum1;
+  205                   end loop;
+  206                 end loop;
+  207 --6.    Сигнал  задаче Т1 о завершении счёта МAH        
+  208                 MON.CalculationSignal;
+  209                 
+  210                 Put_Line("T2 stop");
+  211         end T2;
+  212                 
+  213                 -----------------------ЗАДАЧА Т3 ----------------------------
+  214                         task body T3 is
+  215                                 Sum1: Integer;
+  216                                 MB3, MZ3, MT3: Matr; alfa3: Integer;
+  217 
+  218                         begin
+  219                                 Put_Line("T3 start");
+  220 --1.    Ввод МС
+  221                 Matr_Input(MZ3);
+  222                 MON.SetMZ(MZ3);
+  223 --2.    Сигнал задачам Т1, Т3, Т4 о завершении ввода МС 
+  224                 MON.DataSignal;
+  225                 MON.Inputed;
+  226 --4.    Копирование MB1 := MB, ?1 := ?, MZ1 := M
+  227                 MZ3 := MON.GetMZ;
+  228                 MB3 := MON.GetMB;
+  229                 Alfa3 := MON.GetAlfa;
+  230 --5.    Cчёт МAH = MB2 * (MСH + ?2 * MZ2 * MKH) 
+  231                 for i in 1.. N loop
+  232                   for j in 2*H+1 .. 3*H loop
+  233                         sum1 := 0;
+  234                     for z in 1 .. N loop
+  235                        Sum1 := sum1 + MK(Z)(J) * MZ3(I)(Z);
+  236                     end loop;
+  237                         MT3(I)(J) := MC(I)(J) + Alfa3 * Sum1;
+  238                   end loop;
+  239                 end loop;
+  240                 for i in 1.. N loop
+  241                   for j in 2*H+1 .. 3*H loop
+  242                         sum1 := 0;
+  243                     for z in 1 .. N loop
+  244                        Sum1 := sum1 + MT3(Z)(J) * MB3(I)(Z);
+  245                     end loop;
+  246                         MA(I)(J) := Sum1;
+  247                   end loop;
+  248                 end loop;
+  249 --6.    Сигнал  задаче Т1 о завершении счёта МAH        
+  250                 MON.CalculationSignal;
+  251                 
+  252                                 Put_Line("T3 stop");
+  253                     end T3;     
+  254                 
+  255                 -----------------------ЗАДАЧА Т4 --------------------------
+  256                         task body T4 is
+  257                                 Sum1: Integer;
+  258                                 MB4, MZ4, MT4: Matr; alfa4: Integer;
+  259 
+  260                         begin
+  261                                 Put_Line("T4 start");
+  262 --1.    Ввод МС
+  263                 Matr_Input(MK);
+  264                 Alfa4 := 1;
+  265                 MON.SetAlfa(Alfa4);
+  266 --2.    Сигнал задачам Т1, Т3, Т4 о завершении ввода МС 
+  267                 MON.DataSignal;
+  268                 MON.Inputed;
+  269 --4.    Копирование MB1 := MB, ?1 := ?, MZ1 := M
+  270                 MZ4 := MON.GetMZ;
+  271                 MB4 := MON.GetMB;
+  272                 Alfa4 := MON.GetAlfa;
+  273 --5.    Cчёт МAH = MB2 * (MСH + ?2 * MZ2 * MKH) 
+  274                 for i in 1.. N loop
+  275                   for j in 3*H+1 .. N loop
+  276                         sum1 := 0;
+  277                     for z in 1 .. N loop
+  278                        Sum1 := sum1 + MK(Z)(J) * MZ4(I)(Z);
+  279                     end loop;
+  280                         MT4(I)(J) := MC(I)(J) + Alfa4 * Sum1;
+  281                   end loop;
+  282                 end loop;
+  283                 for i in 1.. N loop
+  284                   for j in 3*H+1 .. N loop
+  285                         sum1 := 0;
+  286                     for z in 1 .. N loop
+  287                        Sum1 := sum1 + MT4(Z)(J) * MB4(I)(Z);
+  288                     end loop;
+  289                         MA(I)(J) := Sum1;
+  290                   end loop;
+  291                 end loop;
+  292 --6.    Сигнал  задаче Т1 о завершении счёта МAH        
+  293                 MON.CalculationSignal;
+  294                 
+  295                                 Put_Line("T4 stop");
+  296                     end T4;     
+  297 
+  298         begin   
+  299                 null;
+  300         end START;
+  301 
+  302 
+  303 begin
+  304         Put_Line("N == ");
+  305         Put(N);
+  306         --Get(A);
+  307         time1:=clock;
+  308         START;
+  309 end Lab4;
+
+NAME                 KIND/FILE            DEF    REFERENCES (* if assigned)
+---------------------------------------------------------------------------
+A                    object              19      
+CalculationSignal    subprogram          29      208 250 293 
+CalculationSignal    subprogram body     62      65 
+Calendar             #5:ada.calendar.spc         12 
+DataSignal           subprogram          28      132 182 224 267 
+DataSignal           subprogram body     57      60 
+F1                   object              43      59* 100 
+F2                   object              44      64* 105 
+Finish               subprogram          39      159 
+Finish               subprogram body    105      
+GetAlfa              subprogram          35      138 187 229 272 
+GetAlfa              subprogram body     91      94 
+GetMB                subprogram          34      137 186 228 271 
+GetMB                subprogram body     87      90 
+GetMZ                subprogram          36      136 185 227 270 
+GetMZ                subprogram body     95      98 
+H                    #1:package1.adb             141 150 190 199 232 241 
+                                                 275 284 
+Inputed              subprogram          38      134 183 225 268 
+Inputed              subprogram body    100      
+Integer_Text_IO      #4:ada.integer_text_io.ada  11 
+Lab4                 library subp body   15      309 
+M                    parameter           31      
+M                    parameter           32      
+M                    parameter           33      
+M                    parameter           67      71 
+M                    parameter           75      77 
+M                    parameter           79      83 
+MA                   object              16      130* 155* 162* 204* 246* 
+                                                 289* 
+MB                   object              46      71* 89 
+MB1                  object             123      128* 129* 137* 153 
+MB2                  object             175      186* 202 
+MB3                  object             216      228* 244 
+MB4                  object             258      271* 287 
+MC                   object              16      146 180* 195 237 280 
+MK                   object              16      144 193 235 263* 278 
+MON                  object              26      129 132 134 136 137 138 
+                                                 159 182 183 185 186 187 
+                                                 208 222 224 225 227 228 
+                                                 229 250 265 267 268 270 
+                                                 271 272 293 
+MON                  protected body      55      109 
+MT1                  object             123      146* 153 
+MT2                  object             175      195* 202 
+MT3                  object             216      237* 244 
+MT4                  object             258      280* 287 
+MZ                   object              46      83* 97 
+MZ1                  object             123      136* 144 
+MZ2                  object             175      185* 193 
+MZ3                  object             216      221* 222* 227* 235 
+MZ4                  object             258      270* 278 
+Matr                 #1:package1.adb             16 31 33 34 36 46 67 79 
+                                                 87 95 123 175 216 258 
+Matr_Input           #1:package1.adb             128 130 180 221 263 
+Matr_print           #1:package1.adb             162 
+N                    #1:package1.adb             69 70 81 82 140 143 149 
+                                                 152 161 189 192 198 201 
+                                                 231 234 240 243 274 275 
+                                                 277 283 284 286 305* 
+P                    #1:package1.adb             100 105 
+Package1             #1:package1.adb             9 
+Put                  #3:ada.text_io.spc          167 305 
+Put_Line             #3:ada.text_io.spc          126 169 178 210 219 252 
+                                                 261 295 304 
+START                subprogram body    111      300 308 
+SetAlfa              subprogram          32      265 
+SetAlfa              subprogram body     75      78 
+SetMB                subprogram          31      129 
+SetMB                subprogram body     67      74 
+SetMZ                subprogram          33      222 
+SetMZ                subprogram body     79      86 
+Sum1                 object             122      142* 144* 146 151* 153* 
+                                                 155 
+Sum1                 object             174      191* 193* 195 200* 202* 
+                                                 204 
+Sum1                 object             215      233* 235* 237 242* 244* 
+                                                 246 
+Sum1                 object             257      276* 278* 280 285* 287* 
+                                                 289 
+T1                   object             115      115 
+T1                   task body          121      170 
+T2                   object             116      116 
+T2                   task body          173      211 
+T3                   object             117      117 
+T3                   task body          214      253 
+T4                   object             118      118 
+T4                   task body          256      296 
+Text_IO              #3:ada.text_io.spc          10 
+Time_all             object              17      166* 167* 
+ada                  #2:ada.ada                  10 11 12 13 
+alfa                 object              47      77* 93 
+alfa1                object             123      138* 146 
+alfa2                object             175      187* 195 
+alfa3                object             216      229* 237 
+alfa4                object             258      264* 265* 272* 280 
+clock                #5:ada.calendar.spc         165 307 
+float_text_io        #6:ada.float_text_io.ada    13 
+i                    object              69      71 
+i                    object              81      83 
+i                    object             140      144 146 
+i                    object             149      153 155 
+i                    object             189      193 195 
+i                    object             198      202 204 
+i                    object             231      235 237 
+i                    object             240      244 246 
+i                    object             274      278 280 
+i                    object             283      287 289 
+j                    object              70      71 
+j                    object              82      83 
+j                    object             141      144 146 
+j                    object             150      153 155 
+j                    object             190      193 195 
+j                    object             199      202 204 
+j                    object             232      235 237 
+j                    object             241      244 246 
+j                    object             275      278 280 
+j                    object             284      287 289 
+time                 #5:ada.calendar.spc         18 
+time1                object              18      166* 307* 
+time1                #5:ada.calendar.spc         166 
+time2                object              18      165* 166* 
+z                    object             143      144 
+z                    object             152      153 
+z                    object             192      193 
+z                    object             201      202 
+z                    object             234      235 
+z                    object             243      244 
+z                    object             277      278 
+z                    object             286      287 
+
+    File #1 ..\package1.adb
+    File #2 ada.ada
+    File #3 ada.text_io.spc
+    File #4 ada.integer_text_io.ada
+    File #5 ada.calendar.spc
+    File #6 ada.float_text_io.ada

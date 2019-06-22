@@ -1,0 +1,70 @@
+1.  #include "matrix.h"
+2.  
+3.  
+4.  Matrix::Matrix(int rows, int cols) :
+5.     Vector(rows * cols),
+6.     rows(rows),
+7.     cols(cols)
+8.  {
+9.  }
+10.  
+11. 
+12. Matrix::Matrix(int N) :
+13.    Vector(N * N),
+14.    rows(N),
+15.    cols(N)
+16. {
+17. }
+18. 
+19. Matrix::Matrix(const Matrix &other) :
+20.    Vector(other.rows * other.cols),
+21.    rows(other.rows),
+22.    cols(other.cols)
+23. {
+24.    for(int i = 0; i < this->rows; i++)
+25.    {
+26.       for(int j = 0; j < this->cols; j++)
+27.       {
+28.          Matrix::set(i, j, other.get(i, j));
+29.       }
+30.    }
+31. }
+32. 
+33. 
+34. Matrix::~Matrix()
+35. {
+36. }
+37. 
+38. 
+39. void Matrix::output()
+40. {
+41.    for(int i = 0; i < this->rows; i++)
+42.    {
+43.       for(int j = 0; j < this->cols; j++)
+44.       {
+45.          cout << Vector::get(i * this->cols + j) << "\t";
+46.       }
+47.       cout << endl;
+48.    }
+49. }
+50. 
+51. void Matrix::get_column(int col, Vector &vector)
+52. {
+53.    assert(col < this->cols);
+54.    for(int i = 0; i < this->rows; i++)
+55.    {
+56.       Vector::set(i, Vector::get(i * this->cols + col));
+57.    }
+58. }
+59. 
+60. void Matrix::transpose()
+61. {
+62.    Matrix copy(*this);
+63.    for(int i = 0; i < this->rows; i++)
+64.    {
+65.       for(int j = 0; j < this->cols; j++)
+66.       {
+67.          Matrix::set(j, i, copy.get(i, j));
+68.       }
+69.    }
+70. }

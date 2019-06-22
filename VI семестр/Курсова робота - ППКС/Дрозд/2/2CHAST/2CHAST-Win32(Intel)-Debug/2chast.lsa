@@ -1,0 +1,378 @@
+Source file: ..\..\2chast.ada   Tue Jun 06 00:35:05 2006
+
+    1 With Ada.Synchronous_Task_Control, Ada.Text_IO, Ada.Integer_Text_IO, Ada.Calendar;
+    2 Use Ada.Synchronous_Task_Control, Ada.Text_IO, Ada.Integer_Text_IO, Ada.Calendar;
+    3 Procedure hast2 is
+    4     N: Integer:=840;
+    5     P: Integer:=8;
+    6     H: Integer:=N/P;
+    7     Tm1,Tm2:Time;
+    8     TT:Duration;
+    9         Type Vector is array (1..N) of Integer;
+   10         Type Matrix is array (Integer range<>) of Vector;
+   11         SubType Matrix_8h is Matrix(1..N);
+   12         SubType Matrix_7h is Matrix(1..7*h);
+   13         SubType Matrix_6h is Matrix(1..6*h);
+   14         SubType Matrix_5h is Matrix(1..5*h);
+   15         SubType Matrix_4h is Matrix(1..4*h);
+   16         SubType Matrix_3h is Matrix(1..3*h);
+   17         SubType Matrix_2h is Matrix(1..2*h);
+   18         SubType Matrix_h is Matrix(1..h);
+   19         Procedure Start is
+   20         task t1 is
+   21                 entry PutData(MC: in Matrix_h);
+   22         end;
+   23         task t2 is
+   24                 entry PutData(MC: in Matrix_2h);
+   25                 entry PutData2(MB: in Matrix_8h);
+   26                 entry GetRes(MA: out Matrix_7h);
+   27         end t2;
+   28         task t3 is
+   29                 entry PutData(MC: in Matrix_3h);
+   30                 entry PutData2(MB: in Matrix_8h);
+   31                 entry GetRes(MA: out Matrix_6h);
+   32         end t3;
+   33         TASK T4 IS
+   34                 entry PutData(MC: in Matrix_4h);
+   35                 entry PutData2(MB: in Matrix_8h);
+   36                 entry GetRes(MA: out Matrix_5h);
+   37         END T4;
+   38         TASK T5 IS
+   39                 entry PutData(MC: in Matrix_5h);
+   40                 entry PutData2(MB: in Matrix_8h);
+   41                 entry GetRes(MA: out Matrix_4h);
+   42         END T5;
+   43         TASK T6 IS
+   44                 entry PutData(MC: in Matrix_6h);
+   45                 entry PutData2(MB: in Matrix_8h);
+   46                 entry GetRes(MA: out Matrix_3h);
+   47         END T6;
+   48         TASK T7 IS
+   49                 entry PutData(MC: in Matrix_7h);
+   50                 entry PutData2(MB: in Matrix_8h);
+   51                 entry GetRes(MA: out Matrix_2h);
+   52         END T7;
+   53         TASK T8 IS
+   54                 entry PutData2(MB: in Matrix_8h);
+   55                 entry GetRes(MA: out Matrix_h);
+   56         end t8;
+   57 
+   58         task body t1 is
+   59                 MA1,MB1:Matrix_8h;
+   60                 MC1:matrix_h;
+   61         begin
+   62                 Put_Line("Process T1 started");
+   63                 for i in 1..n loop
+   64                         for j in 1..n loop
+   65                                 MB1(i)(j):=1;
+   66                         END LOOP;
+   67                 END LOOP;
+   68                 T2.PutData2(MB1);
+   69                 accept PutData(MC: in Matrix_h) do
+   70                                         MC1:=mC;
+   71                 end;
+   72                         For i in 1..H loop
+   73                         For j in 1..N loop
+   74                                 MA1(i)(j):=0;
+   75                                 For k in 1..N loop
+   76                                         MA1(i)(j):=MA1(i)(j)+MC1(i)(k)*MB1(k)(j);
+   77                                 end loop;
+   78                         end loop;
+   79                 end loop;
+   80                 T2.GetRes(MA1(H+1..N));
+   81                 --for i in 1..n loop
+   82                         --for j in 1..n loop
+   83                                 Put(MA1(N)(N));
+   84                         --end loop;
+   85                 --end loop;
+   86                 Put_Line("T1 finished!");
+   87         end t1;
+   88 
+   89         task body t2 is
+   90                 MB2: Matrix_8h;
+   91                 MA2: Matrix_7h;
+   92                 MC2: Matrix_2h;
+   93         begin
+   94                 Put_Line("Process T2 started");
+   95                                 accept PutData2(MB: in Matrix_8h) do
+   96                                         MB2:=MB;
+   97                                 end;
+   98                                 T3.PutData2(MB2);
+   99                                 accept PutData(MC: in Matrix_2h) do
+  100                                         MC2:=mC;
+  101                                 end;
+  102                 t1.putData(MC2(h+1..2*h));
+  103                 For i in 1..H loop
+  104                         For j in 1..N loop
+  105                                 MA2(i)(j):=0;
+  106                                 For k in 1..N loop
+  107                                         MA2(i)(j):=MA2(i)(j)+MC2(i)(k)*MB2(k)(j);
+  108                                 end loop;
+  109                         end loop;
+  110                 end loop;
+  111                 T3.GetRes(MA2(H+1..7*H));
+  112                 accept GetRes(MA: out Matrix_7h) do
+  113                         MA:=MA2;
+  114                 end;
+  115                 Put_Line("T2 finished!");
+  116         end t2;
+  117 
+  118         task body t3 is
+  119                 MB3: Matrix_8h;
+  120                 MA3: Matrix_6h;
+  121                 MC3: Matrix_3h;
+  122         begin
+  123                 Put_Line("Process T3 started");
+  124                 accept PutData2(MB: in Matrix_8h) do
+  125                                         MB3:=MB;
+  126                                 end;
+  127                                 T4.PutData2(MB3);
+  128                                 accept PutData(MC: in Matrix_3h) do
+  129                                         MC3:=MC;
+  130                                 end;
+  131                 T2.PutData(MC3(H+1..3*H));
+  132                 For i in 1..H loop
+  133                         For j in 1..N loop
+  134                                 MA3(i)(j):=0;
+  135                                 For k in 1..N loop
+  136                                         MA3(i)(j):=MA3(i)(j)+MC3(i)(k)*MB3(k)(j);
+  137                                 end loop;
+  138                         end loop;
+  139                 end loop;
+  140                 T4.GetRes(MA3(H+1..6*H));
+  141                 accept GetRes(MA: out Matrix_6h) do
+  142                         MA:=MA3;
+  143                 end;
+  144                 Put_Line("T3 finished!");
+  145         end t3;
+  146 
+  147         task body t4 is
+  148                 MB4: Matrix_8h;
+  149                 MA4: Matrix_5h;
+  150                 MC4: Matrix_4h;
+  151         begin
+  152                 Put_Line("Process T4 started");
+  153                                 accept PutData2(MB: in Matrix_8h) do
+  154                                         MB4:=MB;
+  155                                 end;
+  156                                 T5.PutData2(MB4);
+  157                                 accept PutData(MC: in Matrix_4h) do
+  158                                         MC4:=MC;
+  159                                 end;
+  160                 T3.PutData(MC4(H+1..4*H));
+  161                 For i in 1..H loop
+  162                         For j in 1..N loop
+  163                                 MA4(i)(j):=0;
+  164                                 For k in 1..N loop
+  165                                         MA4(i)(j):=MA4(i)(j)+MC4(i)(k)*MB4(k)(j);
+  166                                 end loop;
+  167                         end loop;
+  168                 end loop;
+  169                 T5.GetRes(MA4(H+1..5*H));
+  170                 accept GetRes(MA: out Matrix_5h) do
+  171                         MA:=MA4;
+  172                 end;
+  173                 Put_Line("T4 finished!");
+  174         end t4;
+  175 
+  176         task body t5 is
+  177                 MB5: Matrix_8h;
+  178                 MA5: Matrix_4h;
+  179                 MC5: Matrix_5h;
+  180         begin
+  181                 Put_Line("Process T5 started");
+  182                                 accept PutData2(MB: in Matrix_8h) do
+  183                                         MB5:=MB;
+  184                                 end;
+  185                                 T6.PutData2(MB5);
+  186                                 accept PutData(MC: in Matrix_5h) do
+  187                                         MC5:=MC;
+  188                                 end;
+  189                 T4.PutData(MC5(H+1..5*H));
+  190                 For i in 1..H loop
+  191                         For j in 1..N loop
+  192                                 MA5(i)(j):=0;
+  193                                 For k in 1..N loop
+  194                                         MA5(i)(j):=MA5(i)(j)+MC5(i)(k)*MB5(k)(j);
+  195                                 end loop;
+  196                         end loop;
+  197                 end loop;
+  198                 T6.GetRes(MA5(H+1..4*H));
+  199                 accept GetRes(MA: out Matrix_4h) do
+  200                         MA:=MA5;
+  201                 end;
+  202                 Put_Line("T5 finished!");
+  203         end t5;
+  204 
+  205         task body t6 is
+  206                 MB6: Matrix_8h;
+  207                 MA6: Matrix_3h;
+  208                 MC6: Matrix_6h;
+  209         begin
+  210                 Put_Line("Process T6 started");
+  211                                 accept PutData2(MB: in Matrix_8h) do
+  212                                         MB6:=MB;
+  213                                 end;
+  214                                 T7.PutData2(MB6);
+  215                                 accept PutData(MC: in Matrix_6h) do
+  216                                         MC6:=MC;
+  217                                 end;
+  218                 T5.PutData(MC6(H+1..6*H));
+  219                 For i in 1..H loop
+  220                         For j in 1..N loop
+  221                                 MA6(i)(j):=0;
+  222                                 For k in 1..N loop
+  223                                         MA6(i)(j):=MA6(i)(j)+MC6(i)(k)*MB6(k)(j);
+  224                                 end loop;
+  225                         end loop;
+  226                 end loop;
+  227                 T7.GetRes(MA6(H+1..3*H));
+  228                 accept GetRes(MA: out Matrix_3h) do
+  229                         MA:=MA6;
+  230                 end;
+  231                 Put_Line("T6 finished!");
+  232         end t6;
+  233 
+  234         task body t7 is
+  235                 MB7: Matrix_8h;
+  236                 MA7: Matrix_2h;
+  237                 MC7: Matrix_7h;
+  238         begin
+  239                 Put_Line("Process T7 started");
+  240                                 accept PutData2(MB: in Matrix_8h) do
+  241                                         MB7:=MB;
+  242                                 end;
+  243                                 T8.PutData2(MB7);
+  244                                 accept PutData(MC: in Matrix_7h) do
+  245                                         MC7:=MC;
+  246                                 end;
+  247                 T6.PutData(MC7(H+1..7*H));
+  248                 For i in 1..H loop
+  249                         For j in 1..N loop
+  250                                 MA7(i)(j):=0;
+  251                                 For k in 1..N loop
+  252                                         MA7(i)(j):=MA7(i)(j)+MC7(i)(k)*MB7(k)(j);
+  253                                 end loop;
+  254                         end loop;
+  255                 end loop;
+  256                 T8.GetRes(MA7(H+1..2*H));
+  257                 accept GetRes(MA: out Matrix_2h) do
+  258                         MA:=MA7;
+  259                 end;
+  260                 Put_Line("T7 finished!");
+  261         end t7;
+  262 
+  263         task body t8 is
+  264                 MB8: Matrix_8h;
+  265                 MA8: Matrix_h;
+  266                 MC8: Matrix_8h;
+  267         begin
+  268                 Put_Line("Process T8 started");
+  269                 for i in 1..n loop
+  270                         for j in 1..n loop
+  271                                 MC8(i)(j):=1;
+  272                         end loop;
+  273                 end loop;
+  274                 accept PutData2(MB: in Matrix_8h) do
+  275                                         MB8:=mB;
+  276                 end;
+  277                 T7.PutData(MC8(H+1..8*H));
+  278                 For i in 1..H loop
+  279                         For j in 1..N loop
+  280                                 MA8(i)(j):=0;
+  281                                 For k in 1..N loop
+  282                                         MA8(i)(j):=MA8(i)(j)+MC8(i)(k)*MB8(k)(j);
+  283                                 end loop;
+  284                         end loop;
+  285                 end loop;
+  286                 accept GetRes(MA: out Matrix_h) do
+  287                         MA:=MA8;
+  288                 end;
+  289                 Put_Line("T8 finished!");
+  290         end t8;
+  291 
+  292 begin
+  293         null;
+  294 end Start;
+  295 begin
+  296         Tm1:=Clock;
+  297         Start;
+  298         Tm2:=Clock;
+  299         TT:=Tm2-Tm1;
+  300         New_Line;
+  301         Put(Integer(TT));
+  302         New_line;
+  303 end hast2;
+  304 
+  305 
+  306 
+  307 
+  308                 
+  309                 
+  310 
+  311 
+  312 
+  313                                 
+  314 
+  315                 
+  316 
+  317 
+  318 
+  319                 
+  320                 
+  321 
+  322 
+  323 
+  324 
+  325 
+  326                 
+  327                 
+  328 
+  329 
+  330 
+  331 
+  332 
+  333 
+  334                 
+  335                 
+  336 
+  337 
+  338 
+  339 
+  340 
+  341 
+  342                         
+  343 
+  344                                 
+  345                                 
+  346 
+  347                 
+  348 
+  349 
+  350 
+  351                 
+  352 
+  353 
+  354 
+  355 
+  356 
+  357 
+  358                 
+  359 
+  360 
+  361 
+  362 
+  363                 
+  364 
+  365                 
+  366                 
+  367 
+  368                 
+  369 
+  370                 
+  371 
+  372                 
+  373 
+  374                 
+  375 
+  376 
