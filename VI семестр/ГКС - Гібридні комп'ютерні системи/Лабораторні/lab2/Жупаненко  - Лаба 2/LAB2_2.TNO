@@ -1,0 +1,166 @@
+                           Micro-Cap Evaluation 6.2.1
+
+
+                          Transient Analysis of LAB2_2
+
+Time Range           3
+Maximum Time Step    0
+Number of Points     0
+Temperature          Linear 27
+Run Options          Normal
+State Variables      Zero
+Operating Point      On
+Operating Point Only Off
+
+                            Temperature = 27 Case= 1
+
+
+                           DC Operating Point Values
+
+                          DC Operating Point Voltages
+
+Node         Voltage  Node         Voltage  Node         Voltage 
+1           -162.13m  2            -15.00   3              6.59  
+4             15.00   5            -10.00   6            528.49m 
+7              7.73   8             10.00   9            -10.00  
+
+
+                                     Diodes
+                                                                            
+Model            N\A           N\A           N\A           N\A           N\A
+ID           -30.01p        76.30u       -12.60p        -8.40p       -31.62p 
+VD           -30.00        588.55m       -12.59         -8.39        -31.61  
+REQ          999.67G       338.97        999.21G       998.81G       999.68G 
+CAP            0.00          0.00          0.00          0.00          0.00  
+
+Power Terms:
+PD           900.30p        44.91u       158.60p        70.40p       999.79p 
+PS             0.00          0.00          0.00          0.00          0.00  
+
+Pin Currents:
+Id           -30.01p        76.30u       -12.60p        -8.40p       -31.62p 
+
+Condition:
+State            OFF            ON           OFF           OFF           OFF 
+
+                  D1            D2
+Model        1N3019A       1N3019A
+ID            -7.90n         1.59m 
+VD            -7.89        690.62m 
+REQ          999.00M        16.25  
+CAP          459.63p       310.85n 
+
+Power Terms:
+PD            62.33n         1.10m 
+PS             0.00          0.00  
+
+Pin Currents:
+Id            -7.90n         1.59m 
+
+Condition:
+State            OFF            ON 
+
+
+                                  JFET Devices
+                                  
+ID          -143.98u       -67.74u 
+VGS            1.48          1.64  
+VDS          -13.05        -13.22  
+GM           551.82u       378.51u 
+GDS            0.00          0.00  
+CGS            0.00          0.00  
+CGD            0.00          0.00  
+
+Power Terms:
+PD             1.88m       895.30u 
+PS             0.00          0.00  
+
+Pin Currents:
+Ig            47.51p        45.00p 
+Id          -143.98u       -67.74u 
+Is           143.98u        67.74u 
+
+Condition:
+State            SAT           SAT 
+
+
+                                Resistor Devices
+                                                                            
+Power Terms:
+PD            44.01u         9.73u        20.74n         4.58n         2.82u 
+
+Pin Currents:
+Ir          -144.02u       -67.71u      -144.02u       -67.71u        -1.72u 
+
+                                                                          R1
+Power Terms:
+PD             7.33m       582.42u         2.06          6.74m        32.26m 
+
+Pin Currents:
+Ir           244.21u       -76.32u       286.76m        11.61m        -3.28m 
+
+                  R3            R4            R5            R6            R7
+Power Terms:
+PD            73.45m         2.59m         5.17m       110.85m        11.39m 
+
+Pin Currents:
+Ir            12.12m        -2.27m         2.27m        10.53m         1.69m 
+
+
+                               Capacitor Devices
+                                                
+Power Terms:
+PS             0.00          0.00          0.00  
+
+Pin Currents:
+Ic             0.00          0.00          0.00  
+
+
+                                 Opamp Devices
+                  X1
+Model          LF155
+Condition:
+State            SAT 
+
+
+                              Pulse Source Devices
+                  V5
+Model       TRIANGLE
+Power Terms:
+PG            32.79m 
+
+Pin Currents:
+ISource        3.28m 
+
+
+                               SPICE Poly Devices
+                                                                            
+Power Terms:
+PG             2.14          0.00        269.57p        58.98n       582.36u 
+
+Pin Currents:
+ISource     -298.37m      -298.37m      -298.37m      -298.37m      -298.37m 
+
+
+                              SPICE Source Devices
+                                                                            
+Power Terms:
+PG           -44.10n         0.00        686.69u      -113.39p       168.00p 
+
+Pin Currents:
+ISource     -210.00u      -210.00u      -210.00u      -210.00u      -210.00u 
+
+                                              V1            V2            V3
+Power Terms:
+PG           632.40p         0.00          5.67m         6.84m       105.28m 
+
+Pin Currents:
+ISource      -31.62p       -31.62p       -31.62p       -31.62p       -31.62p 
+
+                  V4
+Power Terms:
+PG            22.74m 
+
+Pin Currents:
+ISource       -2.27m 
+

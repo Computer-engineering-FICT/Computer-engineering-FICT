@@ -1,0 +1,87 @@
+                                Micro-Cap 6.2.5
+                                     Bayer
+                                     _____
+                           Transient Analysis of TEMP
+
+Time Range           3e-2
+Maximum Time Step    0
+Number of Points     51
+Temperature          Linear 27
+Run Options          Normal
+State Variables      Zero
+Operating Point      On
+Operating Point Only Off
+
+                            Temperature = 27 Case= 1
+
+
+                           DC Operating Point Values
+
+                          DC Operating Point Voltages
+
+Node         Voltage  Node         Voltage  Node         Voltage 
+1            -61.77   2            -15.00   OUT            1.70M 
+4             15.00   5            852.29K  6            851.90K 
+IN           -61.77  
+
+
+                                     Diodes
+                  D1
+Model         1N3491
+ID            85.20K 
+VD           387.92  
+REQ          346.22n 
+CAP           17.43  
+
+Power Terms:
+PD            33.05M 
+PS             0.00  
+
+Pin Currents:
+Id            85.20K 
+
+Condition:
+State             ON 
+
+
+                                Resistor Devices
+                                R7            R8            R9           R10
+Power Terms:
+PD            23.24G         7.26K        72.58G        72.58G     2.02E-030 
+
+Pin Currents:
+Ir            13.63K        -8.52m       -85.20K        85.20K         0.14f 
+
+                    
+Power Terms:
+PD             7.26M 
+
+Pin Currents:
+Ir            85.20K 
+
+
+                                 Opamp Devices
+                  X1
+Model          LF155
+Condition:
+State            LIN 
+
+
+                              Sine Source Devices
+                  V4
+Model        3PHASEC
+Power Terms:
+PG            12.52M 
+
+Pin Currents:
+ISource       85.20K 
+
+
+                              SPICE Source Devices
+                  V2            V3
+Power Terms:
+PG          -127.78m         0.00  
+
+Pin Currents:
+ISource        8.52m         8.52m 
+

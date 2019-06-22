@@ -1,0 +1,69 @@
+********************************************************************************
+***                            Micro-Cap 9.0.5.0                             ***
+***                                                                          ***
+***                                                                          ***
+***                         Transient Analysis of 2                          ***
+********************************************************************************
+Limits
+======
+Time Range           1u
+Maximum Time Step    0
+Number of Points     51
+Temperature          Linear 27
+Run Options          Normal
+State Variables      Zero
+Operating Point      On
+Operating Point Only Off
+
+
+*****************************************************
+***                Temperature=27                 ***
+*****************************************************
+
+Temperature=27 
+
+DC Operating Point Voltages
+===========================
+Node         Voltage  Node         Voltage  Node         Voltage 
+1            48.000m  2             2.000   3             3.000  
+4             4.000   5             5.000   6             6.000  
+7             7.000   8             8.000   9             4.493  
+
+
+Operating point for devices of type Resistor
+============================================
+Instance:                R1            R2            R3            R4            R5
+DC Power Terms:
+PD                 395.122m       31.070m       11.142m        2.428m       51.453m
+
+DC Pin Currents:
+Ir                 -88.896m      -12.464m       -7.464m       -4.928m      101.443m
+
+
+Instance:                R6            R7            R8            R9           R10
+DC Power Terms:
+PD                 113.585m      314.306m        1.230         2.019       403.702m
+
+DC Pin Currents:
+Ir                  75.361m      125.361m      350.721m      449.279m       89.856m
+
+
+
+Operating point for devices of type SPICE Source
+================================================
+Instance:               V1            V2            V3            V4            V5
+DC Power Terms:
+PG                 -4.267m      -24.928m      -22.392m      -19.711m      507.214m
+
+DC Pin Currents:
+ISource            88.896m       12.464m        7.464m        4.928m     -101.443m
+
+
+Instance:               V6            V7            V8
+DC Power Terms:
+PG                452.164m      877.525m        2.806 
+
+DC Pin Currents:
+ISource           -75.361m     -125.361m     -350.721m
+
+

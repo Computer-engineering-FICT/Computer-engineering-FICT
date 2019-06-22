@@ -1,0 +1,1209 @@
+[Main]
+FileType=CIR
+Version=6.00
+Program=Micro-Cap
+Screen=1024,768
+MCAPVersion=6.2.5.0
+Key ID=9 105 200
+NLCnt=76
+TXCnt=3
+
+[Circuit]
+WinBackGround Color=15
+Grid Text Color=Height=-12,FStyle=0,Color=1,Name=Arial
+Object Default=Height=-15,FStyle=0,Color=4,Name=Arial
+Component Color=12
+Attribute Text=Height=-12,FStyle=0,Color=2,Name=Arial
+Wire Color=2
+Select Color=9
+Pin Color=9
+Select Box Color=4
+Node Number=Height=-11,FStyle=0,Color=13,Name=Arial
+Node Voltage Color=0
+Current=Height=-11,FStyle=0,Color=12,Name=Arial
+Power/Condition=Height=-11,FStyle=0,Color=9,Name=Arial
+Digital Path Color=9
+Title Block=Height=-15,FStyle=0,Color=0,Name=Arial
+Digital 0 Color=0
+Digital R Color=11
+Digital F Color=11
+Digital 1 Color=9
+Digital X Color=7
+Digital Z Color=8
+Window Placement=2,3, -1,-1, -6,-25, 0,0,822,423
+Window Placement in Analysis=2,3, -1,-1, -6,-25, 0,0,822,423
+Window Placement in Probe=0,0, 0,0, 0,0, 0,0,0,0
+TitleBlock Field_1=$name
+TitleBlock Field_2=$user $company
+TitleBlock Field_3
+TitleBlock Field_4=$date
+TitleBlock Field_5=Page $page of $maxpage
+TitleBlock One Title=True
+
+[Object]
+Object=Line
+Weight=2
+Grids=62,74,51,74
+
+[Object]
+Object=Line
+Weight=2
+Grids=54,31,66,31
+
+[Object]
+Object=Line
+Grids=66,31,65,32
+
+[Object]
+Object=Line
+Grids=66,31,65,30
+
+[Object]
+Object=Line
+Grids=58,24,59,25
+
+[Object]
+Object=Line
+Grids=58,24,57,25
+
+[Object]
+Object=Line
+Grids=58,33,58,24
+
+[Object]
+Object=Line
+Grids=50,31,66,31
+
+[Object]
+Object=Line
+Weight=2
+Grids=50,28,54,31
+
+[Object]
+Object=Rectangle
+Rounded=True
+Pattern=Dash
+Grids=47,23,69,48
+
+[Object]
+Object=Rectangle
+Rounded=True
+Pattern=Dash
+Grids=29,38,44,61
+
+[Comp]
+Name=Resistor
+Grid=54,43
+Rot=6
+
+[Attr]
+ONV=-34,6,PART,R2
+
+[Attr]
+ONV=-38,-19,VALUE,100k
+Style=8192
+
+[Comp]
+Name=Resistor
+Grid=54,37
+Rot=7
+
+[Attr]
+ONV=-24,11,PART,R3
+
+[Attr]
+ONV=6,13,VALUE,300k
+Style=8192
+
+[Attr]
+ONV=-15,56,SLIDER_MAX,300000
+
+[Comp]
+Name=Resistor
+Grid=95,50
+
+[Attr]
+ONV=18,6,PART,ROUT
+
+[Attr]
+ONV=20,-22,VALUE,1
+Style=8192
+
+[Comp]
+Name=Diode
+Grid=60,43
+Rot=2
+
+[Attr]
+ONV=-33,-25,PART,D1
+
+[Attr]
+ONV=-68,-40,MODEL,1N3051A
+
+[Comp]
+Name=Ground
+Grid=101,50
+Rot=1
+
+[Comp]
+Name=Battery
+Grid=10,20
+Rot=3
+
+[Attr]
+ONV=-24,-28,PART,V2
+
+[Attr]
+ONV=-24,-43,VALUE,15
+
+[Attr]
+ONV=-24,-73,SLIDER_MAX,15
+
+[Comp]
+Name=Battery
+Grid=14,14
+Rot=7
+
+[Attr]
+ONV=-24,13,PART,V3
+
+[Attr]
+ONV=-24,28,VALUE,15
+
+[Attr]
+ONV=-24,58,SLIDER_MAX,15
+
+[Comp]
+Name=Ground
+Grid=10,14
+Rot=3
+
+[Comp]
+Name=Ground
+Grid=14,14
+Rot=3
+
+[Comp]
+Name=Tie
+Grid=10,20
+Rot=7
+
+[Attr]
+ONV=-7,8,PART,-15
+Style=8192
+
+[Comp]
+Name=Tie
+Grid=14,20
+Rot=7
+
+[Attr]
+ONV=-7,8,PART,+15
+Style=8192
+
+[Comp]
+Name=Tie
+Grid=54,37
+Rot=3
+
+[Attr]
+ONV=-15,-23,PART,-15
+Style=8192
+
+[Comp]
+Name=Resistor
+Grid=54,57
+Rot=6
+
+[Attr]
+ONV=-29,-23,PART,R6
+
+[Attr]
+ONV=-39,5,VALUE,100k
+Style=8192
+
+[Attr]
+ONV=-25,51,SLIDER_MAX,100000
+
+[Comp]
+Name=Resistor
+Grid=54,63
+Rot=3
+
+[Attr]
+ONV=13,-11,PART,R7
+
+[Attr]
+ONV=6,-31,VALUE,375k
+Style=8192
+
+[Attr]
+ONV=-15,-71,SLIDER_MAX,375000
+
+[Comp]
+Name=Tie
+Grid=54,63
+Rot=7
+
+[Attr]
+ONV=-12,8,PART,+15
+Style=8192
+
+[Comp]
+Name=Opamp
+Grid=80,53
+Rot=4
+
+[Attr]
+ONV=44,-44,PART,X2
+
+[Attr]
+ONV=44,-59,MODEL,LF155
+
+[Comp]
+Name=Tie
+Grid=84,54
+Rot=7
+
+[Attr]
+ONV=-12,8,PART,+15
+Style=8192
+
+[Comp]
+Name=Tie
+Grid=84,46
+Rot=3
+
+[Attr]
+ONV=-15,-22,PART,-15
+Style=8192
+
+[Comp]
+Name=Ground
+Grid=80,53
+Rot=7
+
+[Comp]
+Name=Resistor
+Grid=81,38
+Rot=4
+
+[Attr]
+ONV=18,-21,PART,R8
+
+[Attr]
+ONV=10,-20,VALUE,1MEG
+Style=8192
+
+[Attr]
+ONV=18,-66,SLIDER_MAX,10000
+
+[Wire]
+Grids=89,38,89,50
+
+[Wire]
+Grids=87,38,89,38
+
+[Wire]
+Grids=80,38,81,38
+
+[Wire]
+Grids=80,38,80,47
+
+[Wire]
+Grids=68,43,68,47
+
+[Comp]
+Name=Opamp
+Grid=34,54
+Rot=4
+
+[Attr]
+ONV=44,-44,PART,X3
+
+[Attr]
+ONV=44,-59,MODEL,LF155
+
+[Comp]
+Name=Tie
+Grid=38,55
+Rot=7
+
+[Attr]
+ONV=-12,8,PART,+15
+Style=8192
+
+[Comp]
+Name=Tie
+Grid=38,47
+Rot=3
+
+[Attr]
+ONV=-15,-22,PART,-15
+Style=8192
+
+[Comp]
+Name=Ground
+Grid=34,54
+Rot=7
+
+[Wire]
+Grids=34,43,34,48
+
+[Comp]
+Name=Resistor
+Grid=28,43
+
+[Attr]
+ONV=18,6,PART,R11
+
+[Attr]
+ONV=9,7,VALUE,100k
+Style=8192
+
+[Attr]
+ONV=18,51,SLIDER_MAX,100000
+
+[Comp]
+Name=Resistor
+Grid=40,43
+Rot=2
+
+[Attr]
+ONV=-41,-21,PART,R12
+
+[Attr]
+ONV=-37,-19,VALUE,100k
+Style=8192
+
+[Attr]
+ONV=-60,-66,SLIDER_MAX,100000
+
+[Wire]
+Grids=40,43,43,43
+
+[Wire]
+Grids=43,43,43,51
+
+[Wire]
+Grids=53,57,54,57
+
+[Comp]
+Name=Diode
+Grid=54,57
+
+[Attr]
+ONV=17,10,PART,D2
+
+[Attr]
+ONV=17,25,MODEL,1N3051A
+
+[Comp]
+Name=Battery
+Grid=18,20
+Rot=3
+
+[Attr]
+ONV=-24,-28,PART,V5
+Style=8192
+
+[Attr]
+ONV=-17,-43,VALUE,2
+
+[Attr]
+ONV=-21,-58,SLIDER_MIN,-2
+
+[Attr]
+ONV=-17,-73,SLIDER_MAX,2
+
+[Comp]
+Name=Ground
+Grid=18,14
+Rot=3
+
+[Comp]
+Name=Tie
+Grid=18,20
+Rot=7
+
+[Attr]
+ONV=-5,8,PART,-2
+Style=8192
+
+[Wire]
+Grids=80,47,80,48
+
+[Wire]
+Grids=89,50,93,50
+
+[Comp]
+Name=Ground
+Grid=24,14
+Rot=5
+
+[Comp]
+Name=Tie
+Grid=24,20
+Rot=7
+
+[Attr]
+ONV=-4,8,PART,in
+Style=8192
+
+[Comp]
+Name=Tie
+Grid=28,43
+Rot=2
+
+[Attr]
+ONV=-21,-9,PART,in
+Style=8192
+
+[Wire]
+Grids=48,43,48,57
+
+[Wire]
+Grids=43,43,48,43
+
+[Comp]
+Name=Resistor
+Grid=60,43
+
+[Attr]
+ONV=18,6,PART,R14
+Style=8192
+
+[Attr]
+ONV=18,21,VALUE,300k
+Style=8192
+
+[Attr]
+ONV=18,51,SLIDER_MAX,30000
+
+[Wire]
+Grids=66,43,68,43
+
+[Comp]
+Name=Resistor
+Grid=60,57
+
+[Attr]
+ONV=18,6,PART,R15
+Style=8192
+
+[Attr]
+ONV=13,-19,VALUE,315.8k
+Style=8192
+
+[Attr]
+ONV=18,51,SLIDER_MAX,30000
+
+[Wire]
+Grids=66,57,68,57
+
+[Object]
+Object=Rectangle
+Rounded=True
+Pattern=Dash
+Grids=47,52,69,79
+
+[Object]
+Object=Line
+Grids=67,74,66,75
+
+[Object]
+Object=Line
+Grids=67,74,66,73
+
+[Object]
+Object=Line
+Grids=59,67,60,68
+
+[Object]
+Object=Line
+Grids=59,67,58,68
+
+[Object]
+Object=Line
+Grids=59,76,59,67
+
+[Object]
+Object=Line
+Grids=51,74,67,74
+
+[Object]
+Object=Line
+Weight=2
+Grids=62,74,66,77
+
+[Comp]
+Name=Tie
+Grid=75,53
+Rot=7
+
+[Attr]
+ONV=-7,10,PART,-2
+Style=8192
+
+[Wire]
+Grids=68,47,75,47
+
+[Wire]
+Grids=68,47,68,57
+
+[Wire]
+Grids=93,50,95,50
+
+[Comp]
+Name=Pulse Source
+Grid=24,14
+Rot=7
+
+[Attr]
+ONV=18,14,PART,in
+Style=8192
+
+[Attr]
+ONV=-44,24,MODEL,MINE
+
+[Comp]
+Name=Resistor
+Grid=75,47
+Rot=1
+
+[Attr]
+ONV=8,11,PART,R16
+
+[Attr]
+ONV=-38,17,VALUE,1MEG
+Style=8192
+
+[Attr]
+ONV=8,56,SLIDER_MAX,1e+006
+
+[Wire]
+Grids=75,47,80,47
+
+[Node Offsets]
+
+[Condition Offsets]
+
+[Grid Text]
+Text=Out1
+Grid=93,50
+
+[Flag]
+Text=Invertor
+Grid=34,37
+
+[Grid Text]
+Text=In1
+Grid=28,43
+
+[Schematic]
+Page 0=0
+TabSize 0=320
+Page 1=0
+TabSize 1=320
+Page 2=0
+TabSize 2=320
+Page 3=0
+TabSize 3=320
+Splitter.xs=0
+Splitter.ys=0
+TextQuad=4099
+Scale=1
+PrinterScale=1
+View=112
+
+[Tools]
+Pos=Top
+SELECT=Yes
+COMP=Yes
+TEXT=Yes
+WIRE=Yes
+WIRED=Yes
+GRAPHIC=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+FLAG=Yes
+META=No
+INFO=Yes
+HELP=Yes
+DIGTRC=No
+DIGTRC2=No
+DIGALL=No
+GRIDTEXT=Yes
+COMPTEXT=Yes
+NODE=Yes
+NODEV=Yes
+CURRENT=Yes
+POWER=Yes
+CONDITIN=Yes
+PIN=Yes
+COMMAND=Yes
+CROSS=Yes
+GRID=Yes
+BORDER=Yes
+TITLE=Yes
+RUBBER=Yes
+PROPERTY=Yes
+STEP=Yes
+MIRROR=Yes
+ROTATE=Yes
+FLIPY=Yes
+FILPX=Yes
+FINDCOMP=Yes
+FIND=Yes
+REPEAT=No
+MODEL=Yes
+CIR2CKT=No
+ATTDISP=No
+TOFRONT=Yes
+TOBACK=Yes
+PAGEADD=Yes
+PAGEDEL=Yes
+ZOOMIN=Yes
+ZOOMOUT=Yes
+COLOR=Yes
+FONT=Yes
+
+[Page]
+Index=0
+Name=Page 1
+SB 3=0,96
+Grid=97,36
+
+[Text Area]
+Font=Height=-15,FStyle=0,Color=4,Name=Courier New
+Comment Color=8
+Background Color=15
+Len=1724
+*** D:\WORK\MC6\DATA\UTILITY.LBR
+*** 240 Phase Leg
+.MODEL 3PHASEC SIN (F=60 A=169.7 PH=4.1888 )
+
+.MODEL MINE PUL (VZERO=6 VONE=-6 P1=0 P2=1 P3=1 P4=2 P5=2)
+*** D:\WORK\MC6\DATA\MZENER.LBR
+*** 6.8V 1W Zener Diode
+.MODEL 1N3016A D (IS=5.72393F BV=6.67 IBV=37M RS=3.5 CJO=2.02683N VJ=750.143M
++ M=504.468M RL=1G )
+*** D:\WORK\MC6\DATA\DIODE.LBR
+*** Medium current silicon rectifier
+.MODEL 1N3491 D (IS=1.17942P N=1.14046 BV=50 RS=4.53985M TT=6.03529U
++ CJO=1.66392N VJ=700M M=1.02274 RL=50K )
+*** D:\WORK\MC6\DATA\EDIODE.LBR
+*** General Purpose Diode
+.MODEL BA220 D (IS=21.9613P N=1.30493 BV=10 RS=2.84144 TT=25.9486N CJO=2.5P
++ VJ=7.66398 M=5.14265 RL=6.66676MEG )
+*** D:\WORK\MC6\DATA\IRF.LIB
+.MODEL 10BQ015_IR D (IS=1.66692E-05 RS=0.0549971 N=1.0339 EG=0.6
++XTI=0.5 BV=15 IBV=0.001 CJO=4.70891E-10
++VJ=1.5 M=0.699718 FC=0.5 TT=0
++KF=0 AF=1)
+*** D:\WORK\MC6\DATA\MICROSEM.LBR
+*** 4Amp Super Fast Recovery Rectifier
+.MODEL UTX4120 D (IS=121.703F N=998.718M BV=600 RS=81.8632M TT=144.27N
++ CJO=77.0247P VJ=952.957M M=602.211M RL=230MEG)
+*** D:\WORK\MC6\DATA\MICROSEM.LBR
+*** 4Amp Super Fast Recovery Rectifier
+.MODEL UTX4115 D (IS=121.703F N=998.718M BV=150 RS=81.8632M TT=144.27N
++ CJO=77.0247P VJ=952.957M M=602.211M RL=172.5MEG )
+*** D:\WORK\MC6\DATA\LTOPAMP.LBR
+*** JFET-input operational amplifier
+.MODEL LF155 OPA (ROUTAC=50 ROUTDC=75 VOFF=2M IOFF=3P SRP=7MEG SRN=7MEG
++ IBIAS=30P VPS=12.4 VNS=-12.4 GBW=2.5MEG)
+*** D:\WORK\MC6\DATA\UTILITY.LBR
+*** 5V Triangle Wave
+.MODEL TRIANGLE PUL (P1=0 P2=500N P3=500N P4=1U P5=1U )
+*** D:\WORK\MC6\DATA\MZENER.LBR
+*** 200V 1W Zener Diode
+.MODEL 1N3051A D (IS=5.72393F BV=198.23 IBV=1.2M RS=1.5K CJO=135.047P
++ VJ=750.165M M=504.13M RL=1G )
+
+
+[Printer]
+T.AutoTile=No
+T.BlackBorder=No
+A.AutoTile=No
+A.BlackBorder=No
+D.AutoTile=No
+D.BlackBorder=No
+
+[Analysis]
+Window Placement=2,3, -1,-1, -6,-25, 0,0,822,423
+Window Placement in Probe=0,0, 0,0, 0,0, 0,0,0,0
+Num Out Header Left
+Num Out Header Center=$MC\n$user\n$company\n$Analysis of $name\n
+Num Out Header Right
+Num Out Delimiter=32
+AutoTitle=Yes
+Analysis Text=Height=-15,FStyle=0,Color=12,Name=Arial
+Analysis Grid Color=8
+Analysis Graph Background=15
+Object Default=Height=-15,FStyle=0,Color=4,Name=Arial
+Analysis Window Background=15
+NumOut=Height=-15,FStyle=0,Color=4,Name=Courier New
+ScaleColor=On
+Select Color=9
+Select Box Color=4
+Cursor Select Color Primary=7
+Cursor Select Color Secondary=9
+Tracker Intercept=False
+Tracker Mouse=True
+Tracker Cursor=True
+AnimateWait=0
+AnimateWaitTime=500
+Same Y Scales=Yes
+T.Save_For_Future=No
+A.Save_For_Future=No
+D.Save_For_Future=No
+T.Reduce_Display=1
+T.Reduce_Save=1
+A.Reduce_Display=1
+A.Reduce_Save=1
+D.Reduce_Display=1
+D.Reduce_Save=1
+
+[Tools]
+Pos=Top
+SELECT=Yes
+GRAPHIC=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+POLYCLOS=No
+SCALE=Yes
+CURSOR=Yes
+MEASUREH=Yes
+MEASUREV=Yes
+TAG=Yes
+TEXT=Yes
+PROPERTY=Yes
+START=Yes
+STOP=Yes
+PAUSE=Yes
+DATAPTS=Yes
+RULER=Yes
+TOKENS=Yes
+XAXIS=Yes
+YAXIS=Yes
+MINORLOG=Yes
+BASELINE=Yes
+HORIZCUR=Yes
+GOTOX=Yes
+GOTOY=Yes
+GOTOPERF=Yes
+NEXT=Yes
+PEAK=Yes
+VALLEY=Yes
+HIGH=Yes
+LOW=Yes
+INFLECTN=Yes
+GHIGH=Yes
+GLOW=Yes
+AOUTPUT=Yes
+ZOOMIN=Yes
+ZOOMOUT=Yes
+COLOR=Yes
+FONT=Yes
+
+[Monte Carlo Options]
+Analysis=Transient
+Status=Off
+Distribution=Normal
+Number of Runs=10
+
+[Monte Carlo Options]
+Analysis=AC
+Status=Off
+Distribution=Normal
+Number of Runs=10
+
+[Monte Carlo Options]
+Analysis=DC
+Status=Off
+Distribution=Normal
+Number of Runs=10
+
+[Limits]
+Analysis=Transient
+TRange=7
+TStep=0
+NPts=51
+Temp=27
+OPT=32888
+Horizontal Cursor=False
+Temperature Type=Linear
+
+[WaveForm]
+Analysis=Transient
+Options=LINEARX,LINEARY
+Plt=1
+XExp=T
+YExp=v(in1)
+XRng=7
+YRng=6,-9
+VFmtX=3
+VFmtY=3
+SFmtX=3
+SFmtY=3
+Rainbow=False
+Line Color=2
+Text Color=2
+
+[WaveForm]
+Analysis=Transient
+Options=LINEARX,LINEARY
+Plt=1
+XExp=T
+YExp=v(out1)
+XRng=7
+YRng=6,-9
+VFmtX=3
+VFmtY=3
+SFmtX=3
+SFmtY=3
+Rainbow=False
+Line Color=9
+Text Color=9
+
+[WaveForm]
+Analysis=Transient
+Options=LINEARX,LINEARY
+Plt=2
+XExp=T
+YExp=i(rout)
+XRng=7
+YRng=0,-5
+VFmtX=3
+VFmtY=3
+SFmtX=3
+SFmtY=3
+Rainbow=False
+Line Color=2
+Text Color=2
+
+[Limits]
+Analysis=AC
+OPT=0
+Horizontal Cursor=False
+Temperature Type=Linear
+
+[WaveForm]
+Analysis=AC
+Options=LINEARY
+Plt=1
+Rainbow=False
+Line Color=12
+Text Color=12
+
+[WaveForm]
+Analysis=AC
+Options=LINEARY
+Plt=2
+Rainbow=False
+Line Color=9
+Text Color=9
+
+[WaveForm]
+Analysis=AC
+Options=LINEARY
+Rainbow=False
+Line Color=2
+Text Color=2
+
+[Limits]
+Analysis=DC
+I1Range=20,-20,0.5
+I1=IN
+NPts=51
+Temp=27
+MaxChng=5
+OPT=32792
+Horizontal Cursor=False
+Temperature Type=Linear
+Sweep1 type=Auto
+Sweep2 type=None
+
+[WaveForm]
+Analysis=DC
+Options=LINEARX,LINEARY
+XExp=v(Ur)
+YExp=i(r1)
+XRng=Auto
+YRng=Auto
+VFmtX=3
+VFmtY=3
+SFmtX=2
+SFmtY=2
+Rainbow=False
+Line Color=12
+Text Color=12
+
+[WaveForm]
+Analysis=DC
+Options=LINEARX,LINEARY
+Plt=1
+XExp=v(in)
+YExp=i(rout)
+XRng=20,-30
+YRng=40,-60
+VFmtX=3
+VFmtY=3
+SFmtX=2
+SFmtY=2
+LWdth=2
+Rainbow=False
+Line Color=9
+Text Color=9
+
+[WaveForm]
+Analysis=DC
+Options=LINEARX,LINEARY
+Rainbow=False
+Line Color=2
+Text Color=2
+
+[Stepping]
+Analysis=Transient
+Index=1
+Status=Off
+Method=Linear
+Parameter Type=Component
+Name=R9
+Param=Value
+From=100k
+To=1MEG
+Value=100k
+
+[Stepping]
+Analysis=Transient
+Index=2
+Status=Off
+Method=Linear
+Parameter Type=Component
+Name=D1
+Param=LEVEL
+
+[Stepping]
+Analysis=Transient
+Index=3
+Status=Off
+Method=Linear
+Parameter Type=Component
+
+[Stepping]
+Analysis=Transient
+Index=4
+Status=Off
+Method=Linear
+Parameter Type=Component
+
+[Stepping]
+Analysis=Transient
+Index=5
+Status=Off
+Method=Linear
+Parameter Type=Component
+
+[Stepping]
+Analysis=Transient
+Index=6
+Status=Off
+Method=Linear
+Parameter Type=Component
+
+[Stepping]
+Analysis=Transient
+Index=7
+Status=Off
+Method=Linear
+Parameter Type=Component
+
+[Stepping]
+Analysis=Transient
+Index=8
+Status=Off
+Method=Linear
+Parameter Type=Component
+
+[Stepping]
+Analysis=Transient
+Index=9
+Status=Off
+Method=Linear
+Parameter Type=Component
+
+[Stepping]
+Analysis=Transient
+Index=10
+Status=Off
+Method=Linear
+Parameter Type=Component
+
+[Stepping]
+Analysis=AC
+Index=1
+Status=Off
+Method=Linear
+Parameter Type=Component
+
+[Stepping]
+Analysis=AC
+Index=2
+Status=Off
+Method=Linear
+Parameter Type=Component
+
+[Stepping]
+Analysis=AC
+Index=3
+Status=Off
+Method=Linear
+Parameter Type=Component
+
+[Stepping]
+Analysis=AC
+Index=4
+Status=Off
+Method=Linear
+Parameter Type=Component
+
+[Stepping]
+Analysis=AC
+Index=5
+Status=Off
+Method=Linear
+Parameter Type=Component
+
+[Stepping]
+Analysis=AC
+Index=6
+Status=Off
+Method=Linear
+Parameter Type=Component
+
+[Stepping]
+Analysis=AC
+Index=7
+Status=Off
+Method=Linear
+Parameter Type=Component
+
+[Stepping]
+Analysis=AC
+Index=8
+Status=Off
+Method=Linear
+Parameter Type=Component
+
+[Stepping]
+Analysis=AC
+Index=9
+Status=Off
+Method=Linear
+Parameter Type=Component
+
+[Stepping]
+Analysis=AC
+Index=10
+Status=Off
+Method=Linear
+Parameter Type=Component
+
+[Stepping]
+Analysis=DC
+Index=1
+Status=Off
+Method=Linear
+Parameter Type=Component
+Name=R9
+Param=Value
+From=10k
+To=500k
+Value=90k
+
+[Stepping]
+Analysis=DC
+Index=2
+Status=Off
+Method=Linear
+Parameter Type=Component
+Name=D1
+Param=LEVEL
+
+[Stepping]
+Analysis=DC
+Index=3
+Status=Off
+Method=Linear
+Parameter Type=Component
+
+[Stepping]
+Analysis=DC
+Index=4
+Status=Off
+Method=Linear
+Parameter Type=Component
+
+[Stepping]
+Analysis=DC
+Index=5
+Status=Off
+Method=Linear
+Parameter Type=Component
+
+[Stepping]
+Analysis=DC
+Index=6
+Status=Off
+Method=Linear
+Parameter Type=Component
+
+[Stepping]
+Analysis=DC
+Index=7
+Status=Off
+Method=Linear
+Parameter Type=Component
+
+[Stepping]
+Analysis=DC
+Index=8
+Status=Off
+Method=Linear
+Parameter Type=Component
+
+[Stepping]
+Analysis=DC
+Index=9
+Status=Off
+Method=Linear
+Parameter Type=Component
+
+[Stepping]
+Analysis=DC
+Index=10
+Status=Off
+Method=Linear
+Parameter Type=Component
+
+[DSP]
+T.Status=Off
+A.Status=Off
+
+[TF]
+Input Source
+Place Text=False
+
+[SENS]
+Multiple=False
+Parameter Type=Component

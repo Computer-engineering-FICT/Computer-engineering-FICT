@@ -1,0 +1,197 @@
+********************************************************************************
+***                            Micro-Cap 9.0.5.0                             ***
+***                                                                          ***
+***                                                                          ***
+***                        Transient Analysis of nOB3                        ***
+********************************************************************************
+Limits
+======
+Time Range           2
+Maximum Time Step    0
+Number of Points     51
+Temperature          Linear 27
+Run Options          Normal
+State Variables      Zero
+Operating Point      On
+Operating Point Only Off
+
+
+*****************************************************
+***                Temperature=27                 ***
+*****************************************************
+
+Temperature=27 
+
+Model parameters for devices of type Diode
+==========================================
+Instance:             VD1             VD3             VD4             VD2   
+Using model:     $GENERIC        $GENERIC        $GENERIC        $GENERIC   
+LEVEL                   1(*)            1(*)            1(*)            1(*)
+AF                 1.000 (*)       1.000 (*)       1.000 (*)       1.000 (*)
+BV               500.000         500.000         500.000         500.000    
+CJO                2.500p          2.500p          2.500p          2.500p   
+EG                 1.110 (*)       1.110 (*)       1.110 (*)       1.110 (*)
+FC               500.000m(*)     500.000m(*)     500.000m(*)     500.000m(*)
+IBV              100.000p(*)     100.000p(*)     100.000p(*)     100.000p(*)
+IBVL               0.000 (*)       0.000 (*)       0.000 (*)       0.000 (*)
+IKF                0.000 (*)       0.000 (*)       0.000 (*)       0.000 (*)
+IS                 8.000n          8.000n          8.000n          8.000n   
+ISR                0.000 (*)       0.000 (*)       0.000 (*)       0.000 (*)
+KF                 0.000 (*)       0.000 (*)       0.000 (*)       0.000 (*)
+M                100.000m        100.000m        100.000m        100.000m   
+N                  2.000           2.000           2.000           2.000    
+NBV                1.000 (*)       1.000 (*)       1.000 (*)       1.000 (*)
+NBVL               1.000 (*)       1.000 (*)       1.000 (*)       1.000 (*)
+NR                 2.000 (*)       2.000 (*)       2.000 (*)       2.000 (*)
+RL                 5.000G          5.000G          5.000G          5.000G   
+RS               400.000m        400.000m        400.000m        400.000m   
+T_ABS           UNDEFINED(*)    UNDEFINED(*)    UNDEFINED(*)    UNDEFINED(*)
+T_MEASURED      UNDEFINED(*)    UNDEFINED(*)    UNDEFINED(*)    UNDEFINED(*)
+T_REL_GLOBAL    UNDEFINED(*)    UNDEFINED(*)    UNDEFINED(*)    UNDEFINED(*)
+T_REL_LOCAL     UNDEFINED(*)    UNDEFINED(*)    UNDEFINED(*)    UNDEFINED(*)
+TBV1               0.000 (*)       0.000 (*)       0.000 (*)       0.000 (*)
+TBV2               0.000 (*)       0.000 (*)       0.000 (*)       0.000 (*)
+TIKF               0.000 (*)       0.000 (*)       0.000 (*)       0.000 (*)
+TRS1               0.000 (*)       0.000 (*)       0.000 (*)       0.000 (*)
+TRS2               0.000 (*)       0.000 (*)       0.000 (*)       0.000 (*)
+TT                 1.000n          1.000n          1.000n          1.000n   
+VJ               700.000m        700.000m        700.000m        700.000m   
+XTI                3.000 (*)       3.000 (*)       3.000 (*)       3.000 (*)
+(*) Default Parameter
+
+
+
+Model parameters for devices of type Opamp
+==========================================
+Instance:              X1              X2   
+Using model:     $GENERIC        $GENERIC   
+LEVEL                   1(*)            1(*)
+A                200.000K(*)     200.000K(*)
+C                 30.000p(*)      30.000p(*)
+CMRR             100.000K(*)     100.000K(*)
+GBW              2.500MEG        2.500MEG   
+IBIAS             30.000p         30.000p   
+IOFF               3.000p          3.000p   
+IOSC              20.000m(*)      20.000m(*)
+PD                25.000m(*)      25.000m(*)
+PM                60.000 (*)      60.000 (*)
+ROUTAC            50.000          50.000    
+ROUTDC            75.000          75.000    
+SRN              5.000MEG        5.000MEG   
+SRP              5.000MEG        5.000MEG   
+T_ABS           UNDEFINED(*)    UNDEFINED(*)
+T_MEASURED      UNDEFINED(*)    UNDEFINED(*)
+T_REL_GLOBAL    UNDEFINED(*)    UNDEFINED(*)
+T_REL_LOCAL     UNDEFINED(*)    UNDEFINED(*)
+TYPE               1.000 (*)       1.000 (*)
+VCC               15.000 (*)      15.000 (*)
+VEE              -15.000 (*)     -15.000 (*)
+VNS              -13.000 (*)     -13.000 (*)
+VOFF               2.000m          2.000m   
+VPS               13.000 (*)      13.000 (*)
+(*) Default Parameter
+
+
+
+Model parameters for devices of type Pulse
+==========================================
+Instance:              V4   
+Using model:     TRIANGLE   
+P1                 0.000    
+P2                 2.000    
+P3                 2.000    
+P4                 4.000    
+P5                 4.000    
+VONE              10.000    
+VZERO            -10.000    
+
+
+
+DC Operating Point Voltages
+===========================
+Node         Voltage  Node         Voltage  Node         Voltage 
+IN1        -100.214u  VE          -12.700   3            20.000  
+VC           12.700   IN          -10.000   6            25.594u 
+OUT          -5.085   8             2.422   9             2.800  
+10           19.465   11            5.000   12           -5.000  
+
+
+Operating point for devices of type Diode
+=========================================
+Instance:                VD1             VD3             VD4             VD2
+Using model:        $GENERIC        $GENERIC        $GENERIC        $GENERIC
+ID                  -11.457n        244.667u        -11.429n         12.100u
+VD                  -17.199         534.361m        -17.044         378.756m
+REQ                   4.975G        211.417           4.975G          4.272K
+CAP                   1.808p          7.550p          1.809p          2.936p
+
+DC Power Terms:
+PD                  197.044n        130.741u        194.966n          4.583u
+PS                    0.000           0.000           0.000           0.000 
+
+DC Pin Currents:
+Id                  -11.457n        244.667u        -11.429n         12.100u
+
+Condition:
+State                    OFF              ON             OFF             OFF
+
+
+
+Operating point for devices of type Resistor
+============================================
+Instance:                R_X1              R1               R            R_X2
+DC Power Terms:
+PD                     3.200         999.980u          2.000m        206.896m
+
+DC Pin Currents:
+Ir                   159.998m        -99.999u        -99.999u        -40.684m
+
+
+Instance:                  R0              R3             R21             R22
+DC Power Terms:
+PD                    61.577u         29.322u         26.583u          5.986m
+
+DC Pin Currents:
+Ir                    12.108u        -12.108u         12.085u        244.653u
+
+
+Instance:                 R40
+DC Power Terms:
+PD                     1.293m
+
+DC Pin Currents:
+Ir                  -254.274u
+
+
+
+Operating point for devices of type Opamp
+=========================================
+Instance:                 X1              X2
+Using model:        $GENERIC        $GENERIC
+Condition:
+State                    LIN             LIN
+
+
+
+Operating point for devices of type Pulse
+=========================================
+Instance:                  V4
+Using model:         TRIANGLE
+DC Power Terms:
+PG                   999.990u
+
+DC Pin Currents:
+ISource               99.999u
+
+
+
+Operating point for devices of type SPICE Source
+================================================
+Instance:                E01             E02              V2              V3
+DC Power Terms:
+PG                   60.427u          1.223m          0.000           0.000 
+
+DC Pin Currents:
+ISource             -12.085u       -244.653u          0.000           0.000 
+
+

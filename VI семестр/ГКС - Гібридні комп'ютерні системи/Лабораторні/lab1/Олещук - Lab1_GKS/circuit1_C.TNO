@@ -1,0 +1,105 @@
+********************************************************************************
+***                            Micro-Cap 9.0.5.0                             ***
+***                                                                          ***
+***                                                                          ***
+***                     Transient Analysis of circuit1_C                     ***
+***                                                                          ***
+********************************************************************************
+Limits
+======
+Time Range           5
+Maximum Time Step    0
+Number of Points     51
+Temperature          Linear 27
+Run Options          Normal
+State Variables      Zero
+Operating Point      On
+Operating Point Only Off
+
+
+*****************************************************
+***                Temperature=27                 ***
+*****************************************************
+
+Temperature=27 
+
+Model parameters for devices of type Opamp
+==========================================
+Instance:              X1   
+Using model:        OP_27   
+LEVEL                   1(*)
+A                1.800MEG   
+C                 30.000p(*)
+CMRR             1.995MEG   
+GBW              8.000MEG   
+IBIAS             10.000n   
+IOFF               9.000n   
+IOSC              20.000m(*)
+PD                25.000m(*)
+PM                60.000 (*)
+ROUTAC            50.000    
+ROUTDC            75.000    
+SRN              2.800MEG   
+SRP              2.800MEG   
+T_ABS           UNDEFINED(*)
+T_MEASURED      UNDEFINED(*)
+T_REL_GLOBAL    UNDEFINED(*)
+T_REL_LOCAL     UNDEFINED(*)
+TYPE               1.000 (*)
+VCC               15.000 (*)
+VEE              -15.000 (*)
+VNS              -13.200    
+VOFF              10.000u   
+VPS               13.200    
+(*) Default Parameter
+
+
+
+DC Operating Point Voltages
+===========================
+Node         Voltage  Node         Voltage  Node         Voltage 
+1            18.246   2           -15.000   3           -13.508  
+4            15.000   5             2.600  
+
+
+Operating point for devices of type Resistor
+============================================
+Instance:                R_X1              R2
+DC Power Terms:
+PD                     1.460           2.448m
+
+DC Pin Currents:
+Ir                  -108.068m       -156.458u
+
+
+
+Operating point for devices of type Capacitor
+=============================================
+Instance:                  C1
+DC Power Terms:
+PS                     0.000 
+
+DC Pin Currents:
+Ic                     0.000 
+
+
+
+Operating point for devices of type Opamp
+=========================================
+Instance:                 X1
+Using model:           OP_27
+Condition:
+State                    LIN
+
+
+
+Operating point for devices of type SPICE Source
+================================================
+Instance:                 V3              V4              V1
+DC Power Terms:
+PG                    0.000           0.000        -6.240MEG
+
+DC Pin Currents:
+ISource               0.000           0.000         2.400MEG
+
+

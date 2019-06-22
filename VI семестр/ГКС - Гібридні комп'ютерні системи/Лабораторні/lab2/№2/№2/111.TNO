@@ -1,0 +1,95 @@
+                                Micro-Cap 6.2.5
+                                     Bayer
+                                     _____
+                           Transient Analysis of 111
+
+Time Range           7
+Maximum Time Step    0
+Number of Points     51
+Temperature          Linear 27
+Run Options          Normal
+State Variables      Zero
+Operating Point      On
+Operating Point Only Off
+
+                            Temperature = 27 Case= 1
+
+
+                           DC Operating Point Values
+
+                          DC Operating Point Voltages
+
+Node         Voltage  Node         Voltage  Node         Voltage 
+1             -6.00   2             -8.25   3            -15.00  
+OUT1           4.68   5             -5.42m  6             15.00  
+7             -1.37   8             -2.95m  9             30.05u 
+IN1            6.00   11          -847.46m  12            -2.00  
+
+
+                                     Diodes
+                  D1            D2
+Model        1N3051A       1N3051A
+ID            -8.25n         2.67u 
+VD            -8.24        520.31m 
+REQ          999.00M         9.67K 
+CAP           38.60p       227.89p 
+
+Power Terms:
+PD            68.03n         1.39u 
+PS             0.00          0.00  
+
+Pin Currents:
+Id            -8.25n         2.67u 
+
+Condition:
+State            OFF            ON 
+
+
+                                Resistor Devices
+                  R2            R3          ROUT            R6            R7
+Power Terms:
+PD            50.60u       151.90u        21.87        214.57u       714.41u 
+
+Pin Currents:
+Ir            22.49u        22.50u        -4.68        -46.32u       -43.65u 
+
+                                R8                         R11           R12
+Power Terms:
+PD           174.96m        21.90u       287.99m       360.00u       360.00u 
+
+Pin Currents:
+Ir            37.41m         4.68u       -48.00m       -60.00u        60.00u 
+
+                 R14           R15           R16
+Power Terms:
+PD            20.43p         2.26u         3.99u 
+
+Pin Currents:
+Ir             8.25n         2.67u        -2.00u 
+
+
+                                 Opamp Devices
+                  X2            X3
+Model          LF155         LF155
+Condition:
+State            LIN           LIN 
+
+
+                              Pulse Source Devices
+                  IN
+Model           MINE
+Power Terms:
+PG           360.00u 
+
+Pin Currents:
+ISource      -60.00u 
+
+
+                              SPICE Source Devices
+                  V2            V3            V5
+Power Terms:
+PG           337.53u       654.71u         3.99u 
+
+Pin Currents:
+ISource      -22.50u       -22.50u       -22.50u 
+

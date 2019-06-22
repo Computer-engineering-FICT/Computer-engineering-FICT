@@ -1,0 +1,95 @@
+                                Micro-Cap 6.2.5
+                                     Bayer
+                                     _____
+                         Transient Analysis of CIRCUIT2
+
+Time Range           1u
+Maximum Time Step    0
+Number of Points     51
+Temperature          Linear 27
+Run Options          Normal
+State Variables      Zero
+Operating Point      On
+Operating Point Only Off
+
+                            Temperature = 27 Case= 1
+
+
+                           DC Operating Point Values
+
+                          DC Operating Point Voltages
+
+Node         Voltage  Node         Voltage  Node         Voltage 
+1           -146.36   2           -146.97   3            -12.73m 
+4             15.00   5              0.00   6            -15.00  
+7              0.00   8            -14.06u  9            146.96  
+10           146.36   11            12.71m  12          -736.75u 
+
+
+                                     Diodes
+                  D1            D2            D3            D4
+Model        UTX4120       UTX4120       UTX4120       UTX4120
+ID             1.62m      -636.35n         1.62m      -636.35n 
+VD           602.21m      -146.35        602.21m      -146.35  
+REQ           15.99        229.95M        15.99        229.95M 
+CAP            9.16n         3.70p         9.16n         3.70p 
+
+Power Terms:
+PD           972.98u        93.12u       972.97u        93.11u 
+PS             0.00          0.00          0.00          0.00  
+
+Pin Currents:
+Id             1.62m      -636.35n         1.62m      -636.35n 
+
+Condition:
+State             ON           OFF            ON           OFF 
+
+
+                                Resistor Devices
+                  R1            R2                                        R3
+Power Terms:
+PD           260.38m         8.10n         9.60n     8.00E-103     1.00E-105 
+
+Pin Currents:
+Ir            -1.61m       636.45n         3.10m         0.00          0.00  
+
+                  R4            R7            R8                          R9
+Power Terms:
+PD           197.69p       260.38m         8.10n       172.79        215.99m 
+
+Pin Currents:
+Ir            14.06u         1.61m      -636.45n         1.18          1.47m 
+
+                 R10           R11
+Power Terms:
+PD           215.99m         2.16m 
+
+Pin Currents:
+Ir             1.47m        14.70u 
+
+
+                                 Opamp Devices
+                  X1            X2
+Model          LF155         LF155
+Condition:
+State            LIN           LIN 
+
+
+                              Sine Source Devices
+                  V2
+Model        3PHASEC
+Power Terms:
+PG           455.39m 
+
+Pin Currents:
+ISource        3.10m 
+
+
+                              SPICE Source Devices
+                  V1            V3
+Power Terms:
+PG            24.20m        24.20m 
+
+Pin Currents:
+ISource       -1.61m        -1.61m 
+

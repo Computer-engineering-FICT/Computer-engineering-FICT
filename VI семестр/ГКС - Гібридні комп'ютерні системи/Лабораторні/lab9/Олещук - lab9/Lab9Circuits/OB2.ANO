@@ -1,0 +1,173 @@
+********************************************************************************
+***                            Micro-Cap 9.0.5.0                             ***
+***                                                                          ***
+***                                                                          ***
+***                            AC Analysis of OB2                            ***
+********************************************************************************
+Limits
+======
+Frequency Range  1E8,1Meg
+Number of Points 51
+Temperature      Linear 27
+Maximum Change % 5
+Noise Input      NONE
+Noise Output     2
+Run Options      Normal
+State Variables  Zero
+Frequency Step   Auto
+Operating Point  On
+
+
+*****************************************************
+***                Temperature=27                 ***
+*****************************************************
+
+Temperature=27 
+
+Model parameters for devices of type Diode
+==========================================
+Instance:             VD1             VD3             VD4             VD2   
+Using model:     $GENERIC        $GENERIC        $GENERIC        $GENERIC   
+LEVEL                   1(*)            1(*)            1(*)            1(*)
+AF                 1.000 (*)       1.000 (*)       1.000 (*)       1.000 (*)
+BV               500.000         500.000         500.000         500.000    
+CJO                2.500p          2.500p          2.500p          2.500p   
+EG                 1.110 (*)       1.110 (*)       1.110 (*)       1.110 (*)
+FC               500.000m(*)     500.000m(*)     500.000m(*)     500.000m(*)
+IBV              100.000p(*)     100.000p(*)     100.000p(*)     100.000p(*)
+IBVL               0.000 (*)       0.000 (*)       0.000 (*)       0.000 (*)
+IKF                0.000 (*)       0.000 (*)       0.000 (*)       0.000 (*)
+IS                 8.000n          8.000n          8.000n          8.000n   
+ISR                0.000 (*)       0.000 (*)       0.000 (*)       0.000 (*)
+KF                 0.000 (*)       0.000 (*)       0.000 (*)       0.000 (*)
+M                100.000m        100.000m        100.000m        100.000m   
+N                  2.000           2.000           2.000           2.000    
+NBV                1.000 (*)       1.000 (*)       1.000 (*)       1.000 (*)
+NBVL               1.000 (*)       1.000 (*)       1.000 (*)       1.000 (*)
+NR                 2.000 (*)       2.000 (*)       2.000 (*)       2.000 (*)
+RL                 5.000G          5.000G          5.000G          5.000G   
+RS               400.000m        400.000m        400.000m        400.000m   
+T_ABS           UNDEFINED(*)    UNDEFINED(*)    UNDEFINED(*)    UNDEFINED(*)
+T_MEASURED      UNDEFINED(*)    UNDEFINED(*)    UNDEFINED(*)    UNDEFINED(*)
+T_REL_GLOBAL    UNDEFINED(*)    UNDEFINED(*)    UNDEFINED(*)    UNDEFINED(*)
+T_REL_LOCAL     UNDEFINED(*)    UNDEFINED(*)    UNDEFINED(*)    UNDEFINED(*)
+TBV1               0.000 (*)       0.000 (*)       0.000 (*)       0.000 (*)
+TBV2               0.000 (*)       0.000 (*)       0.000 (*)       0.000 (*)
+TIKF               0.000 (*)       0.000 (*)       0.000 (*)       0.000 (*)
+TRS1               0.000 (*)       0.000 (*)       0.000 (*)       0.000 (*)
+TRS2               0.000 (*)       0.000 (*)       0.000 (*)       0.000 (*)
+TT                 1.000n          1.000n          1.000n          1.000n   
+VJ               700.000m        700.000m        700.000m        700.000m   
+XTI                3.000 (*)       3.000 (*)       3.000 (*)       3.000 (*)
+(*) Default Parameter
+
+
+
+Model parameters for devices of type Opamp
+==========================================
+Instance:              X2   
+Using model:     $GENERIC   
+LEVEL                   1(*)
+A                200.000K(*)
+C                 30.000p(*)
+CMRR             100.000K(*)
+GBW              2.500MEG   
+IBIAS             30.000p   
+IOFF               3.000p   
+IOSC              20.000m(*)
+PD                25.000m(*)
+PM                60.000 (*)
+ROUTAC            50.000    
+ROUTDC            75.000    
+SRN              5.000MEG   
+SRP              5.000MEG   
+T_ABS           UNDEFINED(*)
+T_MEASURED      UNDEFINED(*)
+T_REL_GLOBAL    UNDEFINED(*)
+T_REL_LOCAL     UNDEFINED(*)
+TYPE               1.000 (*)
+VCC               15.000 (*)
+VEE              -15.000 (*)
+VNS              -13.000 (*)
+VOFF               2.000m   
+VPS               13.000 (*)
+(*) Default Parameter
+
+
+
+DC Operating Point Voltages
+===========================
+Node         Voltage  Node         Voltage  Node         Voltage 
+1          -313.250n  VE          -12.700   OUT          62.624m 
+VC           12.700   5           -29.821m  6           364.384m 
+IN            0.000   8          -424.497m  9             5.000  
+10           -5.000  
+
+
+Operating point for devices of type Diode
+=========================================
+Instance:                VD1             VD3             VD4             VD2
+Using model:        $GENERIC        $GENERIC        $GENERIC        $GENERIC
+ID                    9.161u         29.270u         16.459u         16.310u
+VD                  364.384m        424.497m        394.676m        394.205m
+REQ                   5.642K          1.767K          3.141K          3.170K
+CAP                   2.868p          3.302p          3.032p          3.029p
+
+DC Power Terms:
+PD                    3.338u         12.424u          6.496u          6.429u
+PS                    0.000           0.000           0.000           0.000 
+
+DC Pin Currents:
+Id                    9.161u         29.270u         16.459u         16.310u
+
+Condition:
+State                    OFF             OFF             OFF             OFF
+
+
+
+Operating point for devices of type Resistor
+============================================
+Instance:                R_X2              R0              R3             R21
+DC Power Terms:
+PD                    31.374u          9.337n          4.446n        118.071u
+
+DC Pin Currents:
+Ir                   500.988u       -149.104n        149.104n         25.470u
+
+
+Instance:                 R22             R23
+DC Power Terms:
+PD                   209.352u          3.922n
+
+DC Pin Currents:
+Ir                    45.755u         62.624n
+
+
+
+Operating point for devices of type Opamp
+=========================================
+Instance:                 X2
+Using model:        $GENERIC
+Condition:
+State                    LIN
+
+
+
+Operating point for devices of type SPICE Source
+================================================
+Instance:                E01             E02              V1              V2
+DC Power Terms:
+PG                  127.352u        228.775u          0.000           0.000 
+
+DC Pin Currents:
+ISource             -25.470u        -45.755u         20.136u          0.000 
+
+
+Instance:                 V3
+DC Power Terms:
+PG                    0.000 
+
+DC Pin Currents:
+ISource               0.000 
+
+

@@ -1,0 +1,950 @@
+[Main]
+FileType=CIR
+Version=7.00
+Program=Micro-Cap
+Screen=1440,900
+MCAPVersion=7.0.0.0
+Key ID=12 345 678
+NLCnt=40
+TXCnt=2
+
+[shapedef]
+Name=Battery
+Line=0,0,22,0
+Line=22,-3,22,3
+Line=26,-7,26,7
+Line=26,0,48,0
+Current=32,8,16,8
+
+[shapedef]
+Name=Resistor
+PolyOpen=12 
+PolyLine=0,0
+PolyLine=0,0
+PolyLine=12,0
+PolyLine=14,-4
+PolyLine=18,4
+PolyLine=22,-4
+PolyLine=26,4
+PolyLine=30,-4
+PolyLine=34,4
+PolyLine=36,0
+PolyLine=48,0
+PolyLine=48,0
+Current=32,8,16,8
+
+[shapedef]
+Name=Opamp5
+Root="Opamp.root",0,-4,0
+Root="Plus.root",23,-6,0
+Root="Minus.root",23,52,0
+Line=32,56,32,34
+Line=32,-8,32,13
+
+[shapedef]
+Name=Ground
+Line=0,0,12,0
+Line=12,-8,12,8
+Line=18,-4,18,4
+Line=24,0,24,0
+
+[shapedef]
+Name=Opamp.root
+Line=0,48,6,48
+Line=0,0,5,0
+Line=6,-4,6,52
+Line=6,-4,48,24
+Line=6,52,48,24
+Line=48,24,72,24
+Line=10,12,14,12
+Line=12,10,12,14
+Line=10,36,14,36
+Line=4,0,6,0
+
+[shapedef]
+Name=Minus.root
+Line=-2,0,2,0
+
+[shapedef]
+Name=Plus.root
+Line=-2,0,2,0
+Line=0,-2,0,2
+
+[compdef]
+Name=LF400C
+Definition=Opamp
+Shape=Opamp5
+Mask=4224
+memo=Fast settling JFET i/p opamp
+Label Offset=51,32,-15,46
+PinCnt=5
+Pin="Plus input",0,0,-30,-3
+Pin="Minus input",0,6,-36,17
+Pin="VEE",4,7,6,5
+Pin="Output",9,3,-13,-4
+Pin="VCC",4,-1,6,4
+
+[compdef]
+Name=Battery
+Definition=Battery
+Shape=Battery
+Mask=5889
+Label Offset=19,7,10,13
+PinCnt=2
+Pin="Plus",6,0,-4,-5
+Pin="Minus",0,0,-10,-5
+
+[compdef]
+Name=Ground
+Definition=Ground
+Shape=Ground
+Mask=769
+Label Offset=0,0,0,0
+PinCnt=1
+Pin="PinA",0,0,-3,-7
+
+[compdef]
+Name=Resistor
+Definition=Resistor
+Shape=Resistor
+Mask=7681
+Label Offset=18,6,8,11
+PinCnt=2
+Pin="Plus",6,0,-10,-4
+Pin="Minus",0,0,-14,-4
+
+[Circuit]
+WinBackGround Color=15
+Grid Text Color=Height=-12,FStyle=0,Color=1,Name=Arial
+Object Default=Height=-15,FStyle=0,Color=4,Name=Arial
+Component Color=12
+Attribute Text=Height=-12,FStyle=0,Color=2,Name=Arial
+Wire Color=2
+Select Color=9
+Pin Connection=Height=-10,FStyle=0,Color=9,Name=Arial
+Select Box Color=4
+Node Number=Height=-11,FStyle=0,Color=13,Name=Arial
+Node Voltage Color=0
+Current=Height=-11,FStyle=0,Color=12,Name=Arial
+Power/Condition=Height=-11,FStyle=0,Color=9,Name=Arial
+Digital Path Color=9
+Title Block=Height=-15,FStyle=0,Color=0,Name=Arial
+Digital 0 Color=0
+Digital R Color=11
+Digital F Color=11
+Digital 1 Color=9
+Digital X Color=7
+Digital Z Color=8
+Window Placement=2,3, -1,-1, -10,-30, 46,46,1229,544
+Window Placement in Analysis=2,3, -1,-1, -10,-30, 46,46,1229,544
+Window Placement in Probe=0,0, 0,0, 0,0, 0,0,0,0
+Block Select Color=41
+TitleBlock Field_1=$name
+TitleBlock Field_2=$user $company
+TitleBlock Field_3
+TitleBlock Field_4=$date
+TitleBlock Field_5=Page $page of $maxpage
+TitleBlock One Title=True
+Title_Block_Border=False
+Title_Block=False
+
+[Comp]
+Name=LF400C
+Grid=63,26
+
+[Attr]
+ONV=51,32,PART,X1
+Style=8192
+
+[Attr]
+ONV=51,47,MODEL,op_27
+
+[Comp]
+Name=Battery
+Grid=6,10
+Rot=3
+Page=1
+
+[Attr]
+ONV=-24,-43,PART,V1
+Style=8192
+
+[Attr]
+ONV=-24,-28,VALUE,15
+Style=8192
+
+[Comp]
+Name=Ground
+Grid=6,10
+Rot=7
+Page=1
+
+[Comp]
+Name=Battery
+Grid=14,10
+Rot=3
+Page=1
+
+[Attr]
+ONV=-24,-43,PART,V2
+Style=8192
+
+[Attr]
+ONV=-28,-28,VALUE,-15
+Style=8192
+
+[Comp]
+Name=Ground
+Grid=14,10
+Rot=7
+Page=1
+
+[Comp]
+Name=Battery
+Grid=67,19
+Rot=7
+
+[Attr]
+ONV=-24,13,PART,V3
+Style=8192
+
+[Attr]
+ONV=-24,28,VALUE,15
+
+[Attr]
+ONV=-28,43,SLIDER_MIN,-15
+
+[Attr]
+ONV=-24,58,SLIDER_MAX,15
+
+[Comp]
+Name=Battery
+Grid=67,33
+Rot=7
+
+[Attr]
+ONV=-24,13,PART,V4
+Style=8192
+
+[Attr]
+ONV=-24,28,VALUE,15
+
+[Attr]
+ONV=-24,58,SLIDER_MAX,15
+
+[Comp]
+Name=Ground
+Grid=63,26
+Rot=3
+
+[Comp]
+Name=Ground
+Grid=67,19
+Rot=3
+
+[Comp]
+Name=Ground
+Grid=67,39
+Rot=7
+
+[Comp]
+Name=Resistor
+Grid=70,46
+Rot=6
+
+[Attr]
+ONV=-34,6,PART,R1
+Style=8192
+
+[Attr]
+ONV=-38,20,VALUE,100
+Style=8192
+
+[Attr]
+ONV=-46,51,SLIDER_MAX,10
+
+[Comp]
+Name=Resistor
+Grid=58,32
+Rot=6
+
+[Attr]
+ONV=-34,6,PART,R2
+Style=8192
+
+[Attr]
+ONV=-42,21,VALUE,5000
+Style=8192
+
+[Attr]
+ONV=-46,51,SLIDER_MAX,500
+
+[Wire]
+Grids=58,32,62,32
+
+[Wire]
+Grids=62,46,64,46
+
+[Wire]
+Grids=62,32,62,46
+
+[Wire]
+Grids=62,32,63,32
+
+[Wire]
+Grids=70,46,72,46
+
+[Wire]
+Grids=72,29,72,46
+
+[Comp]
+Name=Battery
+Grid=48,32
+Rot=7
+
+[Attr]
+ONV=-24,13,PART,V5
+Style=8192
+
+[Attr]
+ONV=-24,28,VALUE,-4.5
+
+[Attr]
+ONV=-17,43,SLIDER_MIN,-4.5
+
+[Attr]
+ONV=-24,58,SLIDER_MAX,4.5
+
+[Wire]
+Grids=48,32,52,32
+
+[Comp]
+Name=Ground
+Grid=48,38
+Rot=7
+
+[Wire]
+Grids=72,29,77,29
+
+[Comp]
+Name=LF400C
+Grid=104,25
+
+[Attr]
+ONV=51,32,PART,X2
+Style=8192
+
+[Attr]
+ONV=51,47,MODEL,op_27
+
+[Comp]
+Name=Battery
+Grid=108,18
+Rot=7
+
+[Attr]
+ONV=-24,13,PART,V6
+Style=8192
+
+[Attr]
+ONV=-24,28,VALUE,15
+
+[Attr]
+ONV=-28,43,SLIDER_MIN,-15
+
+[Attr]
+ONV=-24,58,SLIDER_MAX,15
+
+[Comp]
+Name=Battery
+Grid=108,32
+Rot=7
+
+[Attr]
+ONV=-24,13,PART,V7
+Style=8192
+
+[Attr]
+ONV=-24,28,VALUE,15
+
+[Attr]
+ONV=-24,58,SLIDER_MAX,15
+
+[Comp]
+Name=Ground
+Grid=104,25
+Rot=3
+
+[Comp]
+Name=Ground
+Grid=108,18
+Rot=3
+
+[Comp]
+Name=Ground
+Grid=108,38
+Rot=7
+
+[Comp]
+Name=Resistor
+Grid=111,45
+Rot=6
+
+[Attr]
+ONV=-34,6,PART,R3
+Style=8192
+
+[Attr]
+ONV=-42,23,VALUE,100
+Style=8192
+
+[Attr]
+ONV=-46,51,SLIDER_MAX,5000
+
+[Comp]
+Name=Resistor
+Grid=99,31
+Rot=6
+
+[Attr]
+ONV=-34,6,PART,R4
+Style=8192
+
+[Attr]
+ONV=-38,21,VALUE,50
+Style=8192
+
+[Attr]
+ONV=-46,51,SLIDER_MAX,500
+
+[Wire]
+Grids=99,31,103,31
+
+[Wire]
+Grids=103,45,105,45
+
+[Wire]
+Grids=103,31,103,45
+
+[Wire]
+Grids=103,31,104,31
+
+[Wire]
+Grids=111,45,113,45
+
+[Wire]
+Grids=113,28,113,45
+
+[Comp]
+Name=Battery
+Grid=89,31
+Rot=7
+
+[Attr]
+ONV=-24,13,PART,V8
+Style=8192
+
+[Attr]
+ONV=-24,28,VALUE,-4.5
+
+[Attr]
+ONV=-17,43,SLIDER_MIN,-4.5
+
+[Attr]
+ONV=-24,58,SLIDER_MAX,0.8
+
+[Wire]
+Grids=89,31,93,31
+
+[Comp]
+Name=Ground
+Grid=89,37
+Rot=7
+
+[Wire]
+Grids=113,28,118,28
+
+[Node Offsets]
+
+[Condition Offsets]
+
+[Grid Text]
+Text=VC
+Grid=6,4
+Page=1
+
+[Grid Text]
+Text=VE
+Grid=14,4
+Page=1
+
+[Schematic]
+Page 0=0
+TabSize 0=320
+Page 1=0
+TabSize 1=320
+Page 2=0
+TabSize 2=320
+Page 3=0
+TabSize 3=416
+Splitter.xs=0
+Splitter.ys=0
+TextQuad=4097
+Scale=1
+PrinterScale=1
+View=305
+
+[Tools]
+Pos=Top
+SELECT=Yes
+COMP=Yes
+TEXT=Yes
+WIRE=Yes
+WIRED=Yes
+GRAPHIC=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+FLAG=No
+META=No
+INFO=Yes
+HELP=Yes
+DIGTRC=No
+DIGTRC2=No
+DIGALL=No
+GRIDTEXT=Yes
+COMPTEXT=Yes
+NODE=Yes
+NODEV=Yes
+CURRENT=Yes
+POWER=Yes
+CONDITIN=Yes
+PIN=Yes
+CROSS=No
+GRID=Yes
+BORDER=No
+TITLE=Yes
+RUBBER=Yes
+PROPERTY=Yes
+STEP=Yes
+MIRROR=Yes
+ROTATE=Yes
+FLIPY=Yes
+FILPX=Yes
+FINDCOMP=No
+FIND=Yes
+REPEAT=No
+MODEL=Yes
+CIR2CKT=No
+ATTDISP=No
+TOFRONT=No
+TOBACK=No
+PAGEADD=No
+PAGEDEL=No
+ZOOMIN=Yes
+ZOOMOUT=Yes
+GOTOFLAG=No
+COLOR=Yes
+FONT=Yes
+
+[Page]
+Index=0
+Name=Page 1
+Scale 0=1
+Scale 1=1
+Scale 2=1
+Scale 3=1
+Grid=81,50
+
+[Page]
+Index=1
+Name=Power Supplies
+Scale 0=1
+Scale 1=1
+Scale 2=1
+Scale 3=1
+Grid=0,0
+
+[Text Area]
+Font=Height=-15,FStyle=0,Color=4,Name=Courier New
+Comment Color=8
+Background Color=15
+Len=459
+*** From file C:\PROGRAM FILES\MC7\LIBRARY\NSOPAMP.LBR
+*** Fast settling JFET i/p opamp
+.MODEL LF400C OPA (TYPE=3 C=6P ROUTAC=50 ROUTDC=75 VOFF=4M IOFF=20P SRP=57MEG
++ SRN=57MEG IBIAS=200P VPS=11.9 VNS=-11.9 GBW=18MEG)
+
+*** From file C:\PROGRAM FILES\MC7\LIBRARY\PMOPAMP.LBR
+*** Low noise precision opamp
+.MODEL OP_27 OPA (A=1.8MEG ROUTAC=50 ROUTDC=75 VOFF=10U IOFF=9N SRP=2.8MEG
++ SRN=2.8MEG IBIAS=10N VPS=13.2 VNS=-13.2 CMRR=1.99526MEG GBW=8MEG)
+
+
+
+[Printer]
+T.AutoTile=No
+T.BlackBorder=No
+A.AutoTile=No
+A.BlackBorder=No
+D.AutoTile=No
+D.BlackBorder=No
+
+[TRANSIENT]
+AutoTitle=Yes
+Grid Weight=1
+Grid Pattern=Dot
+
+[AC]
+AutoTitle=Yes
+Grid Weight=1
+Grid Pattern=Dot
+
+[DC]
+AutoTitle=Yes
+Grid Weight=1
+Grid Pattern=Dot
+
+[Analysis]
+Window Placement=2,3, -1,-1, -10,-30, 46,46,1229,544
+Window Placement in Probe=0,0, 0,0, 0,0, 0,0,0,0
+Num Out Header Left
+Num Out Header Center=$MC\n$user\n$company\n$Analysis of $name\n
+Num Out Header Right
+Num Out Delimiter=32
+Analysis Text=Height=-15,FStyle=0,Color=12,Name=Arial
+Analysis Grid Color=8
+Analysis Graph Background=15
+Object Default=Height=-15,FStyle=0,Color=4,Name=Arial
+Analysis Window Background=15
+NumOut=Height=-15,FStyle=0,Color=4,Name=Courier New
+ScaleColor=On
+Select Color=9
+Select Box Color=4
+Cursor Select Color Primary=7
+Cursor Select Color Secondary=9
+Tracker Intercept=False
+Tracker Mouse=True
+Tracker Cursor=True
+Tracker Foreground=Height=-15,FStyle=0,Color=0,Name=Arial
+Tracker Background=11
+Data Point Labels Color Fore=Height=-15,FStyle=0,Color=0,Name=Arial
+Data Point Labels Color Back=11
+AnimateWait=0
+AnimateWaitTime=500
+Same Y Scales=Yes
+T.Save_For_Future=No
+A.Save_For_Future=No
+D.Save_For_Future=No
+T.Reduce_Display=1
+T.Reduce_Save=1
+A.Reduce_Display=1
+A.Reduce_Save=1
+D.Reduce_Display=1
+D.Reduce_Save=1
+
+[Tools]
+Pos=Top
+SELECT=Yes
+GRAPHIC=No
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+POLYCLOS=No
+SCALE=Yes
+CURSOR=Yes
+MEASUREH=Yes
+MEASUREV=Yes
+TAG=Yes
+TEXT=Yes
+PROPERTY=Yes
+START=Yes
+STOP=Yes
+PAUSE=No
+DATAPTS=Yes
+TOKENS=Yes
+RULER=No
+PLUS=No
+XAXIS=Yes
+YAXIS=Yes
+MINORLOG=No
+BASELINE=No
+HORIZCUR=No
+GOTOX=Yes
+GOTOY=Yes
+GOTOPERF=Yes
+GOTOBRNC=Yes
+NEXT=Yes
+NEXTIN=Yes
+PEAK=Yes
+VALLEY=Yes
+HIGH=Yes
+LOW=Yes
+INFLECTN=Yes
+GHIGH=Yes
+GLOW=Yes
+BOTTOM=Yes
+TOP=Yes
+AOUTPUT=Yes
+ZOOMIN=No
+ZOOMOUT=No
+COLOR=Yes
+FONT=Yes
+
+[Monte Carlo Options]
+Analysis=Transient
+Status=Off
+Distribution=Normal
+Number of Runs=10
+
+[Monte Carlo Options]
+Analysis=AC
+Status=Off
+Distribution=Normal
+Number of Runs=10
+
+[Monte Carlo Options]
+Analysis=DC
+Status=Off
+Distribution=Normal
+Number of Runs=10
+
+[Limits]
+Analysis=Transient
+TRange=1u
+TStep=0
+NPts=51
+Temp=27
+OPT=34936
+Horizontal Cursor=False
+Temperature Type=Linear
+
+[WaveForm]
+Analysis=Transient
+Options=LINEARX,LINEARY
+AliasID=1
+Plt=1
+XExp=T
+YExp=v(7)
+XRng=1e-6
+YRng=12,-3
+Range Grid X=2e-7
+Range Grid Y=3
+VFmtX=3
+VFmtY=3
+SFmtX=3
+SFmtY=3
+Line Color=12
+Text Color=12
+
+[WaveForm]
+Analysis=Transient
+Options=LINEARX,LINEARY
+AliasID=3
+Plt=1
+XExp=T
+YExp=v(3)
+XRng=1e-6
+YRng=12,-3
+Range Grid X=2e-7
+Range Grid Y=3
+VFmtX=3
+VFmtY=3
+SFmtX=3
+SFmtY=3
+Line Color=9
+Text Color=9
+
+[WaveForm]
+Analysis=Transient
+Options=LINEARX,LINEARY
+AliasID=4
+Plt=2
+XExp=T
+YExp=v(12)
+XRng=1e-6
+YRng=30,-20
+Range Grid X=2e-7
+Range Grid Y=10
+VFmtX=3
+VFmtY=3
+SFmtX=3
+SFmtY=3
+Line Color=12
+Text Color=12
+
+[WaveForm]
+Analysis=Transient
+Options=LINEARX,LINEARY
+AliasID=2
+Plt=2
+XExp=T
+YExp=v(10)
+XRng=1e-6
+YRng=30,-20
+Range Grid X=2e-7
+Range Grid Y=10
+VFmtX=3
+VFmtY=3
+SFmtX=3
+SFmtY=3
+Line Color=9
+Text Color=9
+
+[WaveForm]
+Analysis=Transient
+Options=LINEARX,LINEARY
+AliasID=-1
+XRng=Auto
+YRng=Auto
+VFmtX=3
+VFmtY=3
+SFmtX=3
+SFmtY=3
+Line Color=2
+Text Color=2
+
+[Limits]
+Analysis=AC
+FRange=1E8,1Meg
+NPts=51
+Temp=27
+MaxChng=5
+NInput=NONE
+NOutput=2
+OPT=120
+Horizontal Cursor=False
+Temperature Type=Linear
+
+[WaveForm]
+Analysis=AC
+Options=LINEARY
+AliasID=1
+Plt=1
+XExp=F
+YExp=db(v(VC))
+XRng=1e8,1e6
+YRng=-2000
+Range Grid X=1.98e7
+Range Grid Y=400
+VFmtX=3
+VFmtY=3
+SFmtX=3
+SFmtY=3
+Line Color=12
+Text Color=12
+
+[WaveForm]
+Analysis=AC
+Options=LINEARY
+AliasID=2
+Plt=2
+XExp=F
+YExp=ph(v(VC))
+XRng=1e8,1e6
+YRng=1.5,-1
+Range Grid X=1.98e7
+Range Grid Y=0.5
+VFmtX=3
+VFmtY=3
+SFmtX=3
+SFmtY=3
+Line Color=9
+Text Color=9
+
+[WaveForm]
+Analysis=AC
+Options=LINEARY
+AliasID=-1
+Line Color=2
+Text Color=2
+
+[Limits]
+Analysis=DC
+I1Range=10,0,.5
+NPts=51
+Temp=27
+MaxChng=5
+OPT=24
+Horizontal Cursor=False
+Temperature Type=Linear
+Sweep1 type=Auto
+Sweep2 type=None
+
+[WaveForm]
+Analysis=DC
+Options=LINEARX,LINEARY
+AliasID=1
+Plt=1
+XExp=DCINPUT1
+YExp=v(VC)
+XRng=Auto
+YRng=Auto
+VFmtX=3
+VFmtY=3
+SFmtX=3
+SFmtY=3
+Line Color=12
+Text Color=12
+
+[WaveForm]
+Analysis=DC
+Options=LINEARX,LINEARY
+AliasID=-1
+Line Color=9
+Text Color=9
+
+[WaveForm]
+Analysis=DC
+Options=LINEARX,LINEARY
+AliasID=-1
+Line Color=2
+Text Color=2
+
+[Optimize]
+Format=3
+
+[Optimize]
+Analysis=Transient
+Method=Standard_Powell
+
+[Optimize]
+Analysis=AC
+Method=Standard_Powell
+
+[Optimize]
+Analysis=DC
+Method=Standard_Powell
+
+[Watch]
+Format=3
+
+[Watch]
+Analysis=Transient
+ExprPercentWidth=80
+
+[Watch]
+Analysis=AC
+ExprPercentWidth=80
+
+[Watch]
+Analysis=DC
+ExprPercentWidth=80
+
+[DSP]
+T.Status=Off
+A.Status=Off
+
+[TF]
+Input Source
+Place Text=False
+
+[SENS]
+Multiple=False
+Parameter Type=Component

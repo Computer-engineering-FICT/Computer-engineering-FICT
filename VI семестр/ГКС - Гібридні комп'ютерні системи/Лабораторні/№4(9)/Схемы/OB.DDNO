@@ -1,0 +1,81 @@
+********************************************************************************
+***                            Micro-Cap 9.0.6.1                             ***
+***                                   Zak                                    ***
+***                                NTUU "KPI"                                ***
+***                             Dynamic DC of OB                             ***
+********************************************************************************
+
+*****************************************************
+***                Temperature=27                 ***
+*****************************************************
+
+Temperature=27 
+
+DC Operating Point Voltages
+===========================
+Node         Voltage  Node         Voltage  Node         Voltage 
+1           -75.554n  VE          -12.700   OUT          15.104m 
+VC           12.700   5            -7.193m  6           352.800m 
+IN            0.000   8          -367.406m  9             3.500  
+10           -4.000  
+
+
+Operating point for devices of type Diode
+=========================================
+Instance:              VD1           VD3           VD4           VD2
+Using model:      $GENERIC      $GENERIC      $GENERIC      $GENERIC
+ID                  7.321u        9.712u        8.451u        8.415u
+VD                352.800m      367.406m      360.213m      359.993m
+REQ                 7.058K        5.322K        6.116K        6.142K
+CAP                 2.823p        2.881p        2.851p        2.850p
+
+DC Power Terms:
+PD                  2.583u        3.568u        3.044u        3.029u
+PS                  0.000         0.000         0.000         0.000 
+
+DC Pin Currents:
+Id                  7.321u        9.712u        8.451u        8.415u
+
+Condition:
+State                  OFF           OFF           OFF           OFF
+
+
+
+Operating point for devices of type Resistor
+============================================
+Instance:              R_X2            R0            R3           R21           R22
+DC Power Terms:
+PD                   1.825u      543.206p      258.670p       49.524u       65.979u
+
+DC Pin Currents:
+Ir                 120.836u      -35.963n       35.963n       15.736u       18.163u
+
+
+Instance:               R23
+DC Power Terms:
+PD                 228.144p
+
+DC Pin Currents:
+Ir                  15.104n
+
+
+
+Operating point for devices of type Opamp
+=========================================
+Instance:               X2
+Using model:      $GENERIC
+Condition:
+State                  LIN
+
+
+
+Operating point for devices of type SPICE Source
+================================================
+Instance:              E01           E02            V1            V2            V3
+DC Power Terms:
+PG                 55.076u       72.652u        0.000         0.000         0.000 
+
+DC Pin Currents:
+ISource           -15.736u      -18.163u       -2.391u        0.000         0.000 
+
+

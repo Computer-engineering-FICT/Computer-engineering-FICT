@@ -1,0 +1,114 @@
+                                Micro-Cap 6.2.5
+                                     Bayer
+                                     _____
+                          Transient Analysis of CHEMA1
+
+Time Range           0.2s
+Maximum Time Step    0.0001
+Number of Points     15
+Temperature          Linear 27
+Run Options          Normal
+State Variables      Zero
+Operating Point      On
+Operating Point Only Off
+
+                            Temperature = 27 Case= 1
+
+
+                           DC Operating Point Values
+
+                          DC Operating Point Voltages
+
+Node         Voltage  Node         Voltage  Node         Voltage 
+1            -12.00   2             -8.00   3             -2.00u 
+4           -448.66n  5           -400.60n  6             -1.33u 
+7           -666.66n  8            -10.00   9             10.00  
+10            -5.33   11          -429.99n  12            -8.00  
+13            -4.02p  14           -10.00   15           801.20n 
+16            10.00  
+
+
+                                     Diodes
+                   D1             D2
+Model         LABDIOD        LABDIOD
+ID             -8.01p         -5.34p 
+VD             -8.00          -5.33  
+REQ           998.75G        998.13G 
+CAP             0.00           0.00  
+
+Power Terms:
+PD             64.08p         28.50p 
+PS              0.00           0.00  
+
+Pin Currents:
+Id             -8.01p         -5.34p 
+
+Condition:
+State             OFF            OFF 
+
+
+                                Resistor Devices
+                   R1             R2             R3             R4
+Model     LABRESISTOR    LABRESISTOR    LABRESISTOR    LABRESISTOR
+Power Terms:
+PD              8.00m         16.00m      3.85E-019          0.09f 
+
+Pin Currents:
+Ir             -2.00m          2.00m         -8.01p       -133.33p 
+
+                                  R5             R6             R7
+Model             N\A    LABRESISTOR    LABRESISTOR    LABRESISTOR
+Power Terms:
+PD              2.22f          0.09f          7.11m      1.57E-019 
+
+Pin Currents:
+Ir             -3.33n       -133.33p          1.33m         -5.34p 
+
+                   R8             R9                           R10
+Model     LABRESISTOR    LABRESISTOR            N\A    LABRESISTOR
+Power Terms:
+PD              3.56m          0.01f          3.21f          0.01f 
+
+Pin Currents:
+Ir              1.33m         13.35p          4.01n         13.35p 
+
+                     
+Power Terms:
+PD              4.00n 
+
+Pin Currents:
+Ir             -2.00m 
+
+
+                                 Opamp Devices
+                   X1             X2
+Model       LABOPAMPI      LABOPAMPI
+Condition:
+State             LIN            LIN 
+
+
+                              Sine Source Devices
+                   V7
+Model        LABSINSE
+Power Terms:
+PG              0.00  
+
+Pin Currents:
+ISource        -2.00m 
+
+
+                              SPICE Source Devices
+                   V1             V2             V3             V4
+Power Terms:
+PG             24.00m         10.67m          0.00           0.00  
+
+Pin Currents:
+ISource        -2.00m         -2.00m         -2.00m         -2.00m 
+
+                   V5             V6
+Power Terms:
+PG              0.00           0.00  
+
+Pin Currents:
+ISource         0.00           0.00  
+

@@ -1,0 +1,90 @@
+                                Micro-Cap 6.2.5
+                                     Bayer
+                                     _____
+                          Transient Analysis of CHEMA5
+
+Time Range           0.2
+Maximum Time Step    0.001
+Number of Points     51
+Temperature          Linear 27
+Run Options          Normal
+State Variables      Zero
+Operating Point      On
+Operating Point Only Off
+
+                            Temperature = 27 Case= 1
+
+
+                           DC Operating Point Values
+
+                          DC Operating Point Voltages
+
+Node         Voltage  Node         Voltage  Node         Voltage 
+1            676.99m  2             10.00   IN             0.00  
+4              0.00   5           -676.99m  6            -10.00  
+7              0.00   8            -10.00   9              0.00  
+10            10.00  
+
+
+                                     Diodes
+                  D1            D2            D3            D4
+Model             D1            D1            D1            D1
+ID             2.33m         2.33m         2.33m         2.33m 
+VD           676.99m       676.99m       676.99m       676.99m 
+REQ           11.10         11.10         11.10         11.10  
+CAP            0.00          0.00          0.00          0.00  
+
+Power Terms:
+PD             1.58m         1.58m         1.58m         1.58m 
+PS             0.00          0.00          0.00          0.00  
+
+Pin Currents:
+Id             2.33m         2.33m         2.33m         2.33m 
+
+Condition:
+State             ON            ON            ON            ON 
+
+
+                                Resistor Devices
+                  R1            R2            R3                          R4
+Model          RESIT         RESIT         RESIT           N\A         RESIT
+Power Terms:
+PD            43.46m        43.46m     3.33E-105     5.00E-103     2.00E-105 
+
+Pin Currents:
+Ir            -4.66m        -4.66m         0.00          0.00          0.00  
+
+                                R5
+Model            N\A         RESIT
+Power Terms:
+PD         1.00E-097     1.00E-100 
+
+Pin Currents:
+Ir             0.00          0.00  
+
+
+                                 Opamp Devices
+                  X1
+Model             X1
+Condition:
+State            LIN 
+
+
+                              Sine Source Devices
+                  V5
+Model          SINSE
+Power Terms:
+PG             0.00  
+
+Pin Currents:
+ISource        0.00  
+
+
+                              SPICE Source Devices
+                  V1            V2            V3            V4
+Power Terms:
+PG            46.62m        46.62m         0.00          0.00  
+
+Pin Currents:
+ISource       -4.66m        -4.66m        -4.66m        -4.66m 
+
