@@ -1,0 +1,2364 @@
+                          ÉÍÍÍÍÍÍÍÍÍÍÍÍÍ»
+                          º~0001C O M P L E X~º
+                          ÈÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+   Programm for emulations of the computing system's functioning 
+   ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+        built on base  microprogramming  sectioned kit of
+        ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                           series KM1804
+                           ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+
+                ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»   
+                º~0012 Structure of microinstruction.     ~º
+                ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+ Memory of the microinstructions of the designed system contains   
+ separate microinstructions, each divided on fields:
+
+   1. ~0036Field of constants~:
+                    address MCU (microprogramming control unit);
+                    constant ALU (arithmetical and logical unit);
+   2. ~0085Field of the ALU ~:
+                    chip KM1804 BC1;
+                    chip KM1804 BP2;
+                    registers of the address operands RAA,RAB;
+   3. ~0623Field of the MCU (microprogramming control unit)~:
+                    chip KM1804 BY4;
+                    conditions multiplexer;
+   4. ~0769Field of the PIU (priority interruption unit)~;
+                    chip KM1084 BH1;
+   5. ~0858Field of the control signals~:
+                    MM  - main memory;
+                    IOD - input / output device;
+                    RA  - register of address.
+
+                       ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+                       ³~0036 1.CONSTANT FIELD. ~º
+                       ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+ Includes:
+           ~0044D   - constant~;
+           ~0066OED - allow issue of the constant~.
+
+
+ ÚÄÄÄÄÄÄÄÄÄ·
+ ³~0044 Field D ~º  CONSTANT.
+ ÔÍÍÍÍÍÍÍÍÍ¼   ÄÄÄÄÄÄÄÄÙ
+ Purpose.
+        1) Lowest  12  digits  are  used  to  shape  the addresses 
+           transition  worked  out  from  MCU.  The  given  digits 
+           constantly enter on bus  of the branching address if in  
+           result of performing  the command in MCU (chip  BY4) is 
+           formed a signal PE=0;
+        2) All 16 digits can  be  used  to  assign the constants, 
+           which  under  signal  OED=0  control  can be issued on
+           system data bus.  This particularity allows:
+
+           - first, reduce digits of ROM MI(the microinstructions)
+           to account of the joining by flap;
+           - secondly, enables to load the necessary  constants, 
+           masks etc. in any device, connected to system data bus.
+
+ The note. Values are entered in hex code.
+           After entering the new command zero constant became assign.
+
+ ÚÄÄÄÄÄÄÄÄ·
+ ³~0066  OED   ~º  ALLOW THE ISSUE OF THE CONSTANT ON ADDRESS BUS.
+ ÔÍÍÍÍÍÍÍÍ¼   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ Purpose.
+           The Permit of the issue all sixteen digits of the 
+           field D on system data bus. Setting of given signal in 
+           zero condition forms on system data bus condition of 
+           constants of the field D.    .
+ Level  :   0 - Active (the issue resolved); 
+            1 - Passive (the issue prohibited).
+ The note. 
+           Values are entered in binary code(value 0 or 1).
+           After entering the new command issue constants from 
+           MIM on data bus is prohibited. 
+
+
+
+
+
+           ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+           ³~0085 2.Field ALU (data processing unit).         ~º
+           ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+    The data processing unit (hereinafter ALU) of proposed systems 
+    is built with use of the following functioning junctions:
+    
+    1) 4  microprocessor  sections  KM1804BC1, which form the 
+       16-bit based ALU.
+    2) Condition control  and shift Scheme KM1804BP2, which is                               ‘å¥¬  ã¯à ¢«¥­¨ï á®áâ®ï­¨¥¬ ¨ á¤¢¨£ ¬¨ ŠŒ1804‚2, ª®â®à ï
+       intended to joint  work with processor element BC1 and 
+       provides closing of data around microprocessor section. 
+       Given  microcircuit  provides  the  functions  of   the 
+       register of the conditions and forming of the signal of 
+       the  carrying,  mix  of  the sources of the input carry 
+       signal ALU,  organizes 32 types of shift (arithmetical, 
+       logical, round-robin),  which  can  be usual or double-
+       length, contains two 4-bit  register  of the condition, 
+       executes 16 operations  on  forming  the  signal of the 
+       condition. 
+    3) Microcircuit of the framing:
+        4-bit registers of operands (RAA,RAB);
+        The Multiplexers of select of the source operand, which 
+        allows to address the registers participating in operations 
+        ALU or from MIM, or on the address, keeping in RAA and RAB.
+
+  To  manage afore-mentioned  device, each command in MIM contains 
+  the following fields.
+
+ Includes:
+     Microcircuit KM1804BC1:
+                ~0136BC1_MIı~  - operation in BC1;
+                ~0231A,B~      - number of ALU registers;
+                ~0246OEY~      - acception for issues of result from ALU;
+
+                Microcircuit KM1804BP2:
+                ~0260BP2_MIı~  - operation in BP2;
+                ~0528E.ZNCV~   - permit of per-bit marks writing in RM;
+                ~0543OECT~     - permit an issue of the code term;
+                ~0560CEM~      - permit writing the marks in RM;
+                ~0560CEN~      - permit writing the marks in RN;
+                ~0572SE~       - permit of the shift performing;
+
+                Microcircuits of the framing:
+                ~0584MSA~      - source of operand in ALU (MIM or RA);
+                ~0584MSB~      - source of operand in ALU (MIM or RB);
+                ~0601EWA~      - writing in operand registers RA;
+                ~0601EWB~      - writing in operand registers RB.
+
+
+
+ ÚÄÄÄÄÄÄÄÄ·
+ ³~0136 BC1_MIı~º  THE MICROINSTRUCTION FIELD OF THE MICROCIRCUIT BC1.
+ ÔÍÍÍÍÍÍÍÍ¼   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ Purpose.
+           Assign  the operation executed in ALU.  Given  field contains     
+           several sections (the flap), each defines the nature      
+           of executed operations.           
+                1)      ~0151Field of the result receiver  in ALU~;
+                2)      ~0181Field of operation in ALU~;
+                3)      ~0206Field of operation in ALU~.
+ The note.
+           Values are entered in binary code, that indicated by the  
+           symbol 'ı'on the top of field identifier  (IMı).
+
+
+ ÚÄÄÄÄÄÄÄÄÄÄÄ·
+ ³~0151BC1_MIı.876~º  THE RECEIVER OF THE OPERATION RESULT IN ALU.
+ ÔÍÍÍÍÍÍÍÍÍÍÍ¼   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ Purpose.
+           Field of the result receiver in ALU (bits 8,7,6).
+           Defines where fits result of the operations.
+           ÚÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+           ³MI ³                                                   ³
+           ³876³ where will get the result of operation processing ³
+           ÃÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+           ³000³   F -> Q                                          ³
+           ³001³    result of operations in ALU does not place in  ³
+           ³   ³    any internal registers and is used only for    ³
+           ³   ³    indirect effect, for instance restore all      ³
+           ³   ³    operation flags, or output the result of       ³
+           ³   ³    operation on the data bus.                     ³                        ³
+           ³010³      F -> B and result does not output on bus,    ³
+           ³   ³    but value of the register - an operand A       ³
+           ³011³      F -> B                                       ³
+           ³100³      F/2 -> B, Q/2 -> Q                           ³
+           ³101³      F/2 -> B                                     ³
+           ³110³      2F -> B,  2Q -> Q                            ³
+           ³111³      2F -> B                                      ³
+           ÀÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ The note.
+           Values are entered in binary code, that indicated by the  
+           symbol 'ı'on the top of field identifier  (IMı).
+           When entered a new command the code 001 became assigned.
+
+
+ ÚÄÄÄÄÄÄÄÄÄÄÄ·
+ ³~0181BC1_MIı.543~º  OPERATIONS IN ALU.
+ ÔÍÍÍÍÍÍÍÍÍÍÍ¼   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ Purpose.
+           The field of operations in ALU (bits 5,4,3). Defines 
+           nature of the transformation on chosen operand.
+           ÚÄÄÄÂÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+           ³MI ³mnemo-³   operation   ³
+           ³543³ nics ³    in ALU     ³
+           ÃÄÄÄÅÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+           ³000³ ~1108ADD~  ³   R+S+CI      ³
+           ³001³ ~1109SUB~  ³   S-R-1+CI    ³
+           ³010³ ~1109SUB~  ³   R-S-1+CI    ³
+           ³011³ ~1110OR~   ³   R or S      ³
+           ³100³ ~1111AND~  ³   R and S     ³
+           ³101³ ~1113NAND~ ³   not(R) and S³
+           ³110³ ~1112XOR~  ³   R xor S     ³
+           ³111³ ~1115NXOR~ ³   not(R xor S)³
+           ÀÄÄÄÁÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ The note.
+           Values are entered in binary code, that indicated by the  
+           symbol 'ı'on the top of field identifier  (IMı).
+           When entered a new command the code 000 became assigned.
+
+
+ ÚÄÄÄÄÄÄÄÄÄÄÄ·
+ ³~0206BC1_MIı.210~º  FIELD OF THE OPERATION OPERANDS IN ALU.
+ ÔÍÍÍÍÍÍÍÍÍÍÍ¼   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ Purpose.
+           The field of operations in ALU (bits 2,1,0). Defines
+           operands, which participate in operations performing.
+           ÚÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄ¿
+           ³MI ³           ³      ³
+           ³210³ mnemonics ³R    S³
+           ÃÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄ´
+           ³000³ ~1168Rx~ , ~1166RQ~ ; ³A    Q³
+           ³001³ ~1168Rx~ , ~1168Rx~ ; ³A    B³
+           ³010³ ~1162Z~  , ~1166RQ~ ; ³Z    Q³
+           ³011³ ~1162Z~  , ~1168Rx~ ; ³Z    B³
+           ³100³ ~1162Z~  , ~1168Rx~ ; ³Z    A³
+           ³101³ ~1172Val~, ~1168Rx~ ; ³D    A³
+           ³110³ ~1172Val~, ~1166RQ~ ; ³D    Q³
+           ³111³ ~1172Val~, ~1162Z~  ; ³D    Z³
+           ÀÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÙ
+ The note.
+           Values are entered in binary code, that indicated by the  
+           symbol 'ı'on the top of field identifier  (IMı).
+           When entered a new command the code 000 became assigned.
+
+
+ ÚÄÄÄÄÄÄÄÄ·
+ ³~0231  A, B  ~º  NUMBERS OF REGISTERS IN ALU, WHICH ARE USED IN OPERATION.
+ ÔÍÍÍÍÍÍÍÍ¼   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ Purpose.
+           Fields define numbers of registers in  ALU,  which are 
+           used  in performing  an operation. Values  from this field 
+           are  accordingly output on  entrances A and B  of the chip 
+           BC1. The switching condition of these flap to microcircuit 
+           BC1 are signals on the operands source select multiplexors
+           MSA=0 and MSB=0.
+ The note.
+           Values are entered in hexadecimal code.
+           When entered a new command then assigned zero GPRs 
+           (general-purpose registers).
+
+ ÚÄÄÄÄÄÄÄÄ·
+ ³~0246  OEY   ~º  PERMIT FOR THE RESULT OUTPUT.
+ ÔÍÍÍÍÍÍÍÍ¼   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ Purpose.
+           Permit for output of the result from ALU (BC1) on  
+           system data bus.
+ Level  :  0 - Active  (output permit)
+           1 - Passive (output prohibited).
+ The note.
+           Values are entered in binary code.
+           While entering a new command the outputing of the 
+           operations result in ALU is prohibited.
+
+
+ ÚÄÄÄÄÄÄÄÄÄ·
+ ³~0260 BP2_MIı ~º  FIELD OF THE MICROINSTRUCTION IN THE BP2 CHIP.
+ ÔÍÍÍÍÍÍÍÍÍ¼   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ Purpose.
+           It will assign microinstruction which is executed in 
+           device of condition and shift management  KM1804BP2,
+           which  provides a data closing around microprocessor 
+           section   (KM1804BC1). This  field  contains several 
+           sections:
+              1) ~0278The management field of the signal carrying CI~;
+              2) ~0304The control field of the shift performing~;
+              3) ~0361Field which controls the output of the code~ 
+                  condition and loading of the register marks.
+ The note.
+           Values are entered in binary code, that indicated by the  
+           symbol 'ı'on the top of field identifier  (IMı).
+
+
+ ÚÄÄÄÄÄÄÄÄÄÄ·
+ ³~0278BP2_MIı.CB~º  THE MANAGEMENT OF CI SIGNAL.
+ ÔÍÍÍÍÍÍÍÍÍÍ¼   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ Purpose.
+           Field that controls signal of carrying CI (bits 12,11). 
+           Values  of this field allows to commute the different 
+           signals on entry Si of ALU sections.
+     ÚÄÄÂÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+     ³MI³mnemo-³                                                       ³
+     ³CB³ nics ³         shift, that entered in ALU entry              ³
+     ÃÄÄÅÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+     ³00³  ~1279Z~   ³                    0                                  ³
+     ³01³~1285not~ Z ³                    1                                  ³
+     ³10³      ³               is not used                             ³
+     ³11³ ~1281RM_C~ ³signal of carrying is assigned as output of ‘ registers³
+     ³  ³ ~1283RN_C~ ³on the marks RM and RN in the following order:         ³
+     ³  ³~1285not~   ³under MI.5 = 1 with RM.C, otherwise with RN.C;         ³
+     ³  ³  RM_C³under MI.321 = 100 signals transforms by inversion     ³
+     ³  ³  RN_C³under any other combinations - without it              ³
+     ÀÄÄÁÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ The note.
+           Values are entered in binary code, that indicated by the  
+           symbol 'ı'on the top of field identifier  (IMı).
+           When entered a new command the code 00 became assigned.
+
+
+ ÚÄÄÄÄÄÄÄÄÄÄÄ·
+ ³~0304BP2_MIı.A-6~º  FIELD OF SHIFT CONTROL.
+ ÔÍÍÍÍÍÍÍÍÍÍÍ¼   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ Purpose.
+           Field that controlling the shift performing (bits 10-6).
+ ÚÄÄÄÄÄÂÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+ ³     ³    ³               ³   forming the shift signals for the ALU   ³
+ ³  MI ³    ³               ³      registers (with signal SE = 0 )      ³
+ ³A9876³dec.³  mnemonics    ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+ ³     ³    ³               ³  on register ³  on reg. ³ load of C flag  ³
+ ³     ³    ³               ³ receiv. resu.³    RQ    ³ in reg. mark RM ³
+ ÃÄÄÄÄÄÁÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+ ³~0316                      R I G H T   S H I F T S                         ~³
+ ÃÄÄÄÄÄÂÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+ ³00000³ 00 ³        ~1250SR.0~   ³SRB:=0        ³SRQ:=0    ³      no         ³
+ ³00001³ 01 ³        ~1250SR.1~   ³SRB:=1        ³SRQ:=1    ³      no         ³
+ ³00010³ 02 ³ ~1226SRL~  (~1250SR.2~)   ³SRB:=0        ³SRQ:=RM.N ³   RM.C:=SRB     ³
+ ³00011³ 03 ³        ~1250SR.3~   ³SRB:=1        ³SRQ:=SRB  ³      no         ³
+ ³00100³ 04 ³        ~1250SR.4~   ³SRB:=RM.C     ³SRQ:=SRB  ³      no         ³
+ ³00101³ 05 ³        ~1250SR.5~   ³SRB:=RM.N     ³SRQ:=SRB  ³      no         ³
+ ³00110³ 06 ³        ~1250SR.6~   ³SRB:=0        ³SRQ:=SRB  ³      no         ³
+ ³00111³ 07 ³ ~1226SRWL~ (~1250SR.7~)   ³SRB:=0        ³SRQ:=SRB  ³   RM.C:=SRQ     ³
+ ³01000³ 08 ³        ~1250SR.8~   ³SRB:=SRB      ³SRQ:=SRQ  ³   RM.C:=SRB     ³
+ ³01001³ 09 ³        ~1250SR.9~   ³SRB:=RM.C     ³SRQ:=SRQ  ³   RM.C:=SRB     ³
+ ³01010³ 10 ³        ~1250SR.10~  ³SRB:=SRB      ³SRQ:=SRQ  ³      no         ³
+ ³01011³ 11 ³        ~1250SR.11~  ³SRB:=CO       ³SRQ:=SRB  ³      no         ³
+ ³01100³ 12 ³        ~1250SR.12~  ³SRB:=RM.C     ³SRQ:=SRB  ³   RM.C:=SRQ     ³
+ ³01101³ 13 ³        ~1250SR.13~  ³SRB:=SRQ      ³SRQ:=SRB  ³   RM.C:=SRQ     ³
+ ³01110³ 14 ³~1226SRA SRWA~(~1250SR.14~)³SRB:=NO xor VO³SRQ:=SRB  ³      no         ³
+ ³01111³ 15 ³        ~1250SR.15~  ³SRB:=SRQ      ³SRQ:=SRB  ³      no         ³
+ ÃÄÄÄÄÄÁÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+ ³~0335                       L E F T  S H I F T S                           ~³
+ ÃÄÄÄÄÄÂÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+ ³10000³ 16 ³ ~1226SLL~  (~1250SL.16~)  ³SLB:=0        ³SLQ:=0    ³   RM.C:=SLB     ³
+ ³10001³ 17 ³        ~1250SL.17~  ³SLB:=1        ³SLQ:=1    ³   RM.C:=SLB     ³
+ ³10010³ 18 ³ ~1226SLA~  (~1250SL.18~)  ³SLB:=0        ³SLQ:=0    ³      no         ³
+ ³10011³ 19 ³        ~1250SL.19~  ³SLB:=1        ³SLQ:=1    ³      no         ³
+ ³10100³ 20 ³ ~1226SLWL~ (~1250SL.20~)  ³SLB:=SLQ      ³SLQ:=0    ³   RM.C:=SLB     ³
+ ³10101³ 21 ³        ~1250SL.21~  ³SLB:=SLQ      ³SLQ:=1    ³   RM.C:=SLB     ³
+ ³10110³ 22 ³ ~1226SLWA~ (~1250SL.22~)  ³SLB:=SLQ      ³SLQ:=0    ³      no         ³
+ ³10111³ 23 ³        ~1250SL.23~  ³SLB:=SLQ      ³SLQ:=1    ³      no         ³
+ ³11000³ 24 ³        ~1250SL.24~  ³SLB:=SLB      ³SLQ:=SLQ  ³   RM.C:=SLB     ³
+ ³     ³    ³               ³              ³          ³                 ³
+ ³11001³ 25 ³        ~1250SL.25~  ³SLB:=RM.C     ³SLQ:=SLB  ³   RM.C:=SLB     ³
+ ³11010³ 26 ³        ~1250SL.26~  ³SLB:=SLB      ³SLQ:=SLB  ³      no         ³
+ ³11011³ 27 ³        ~1250SL.27~  ³SLB:=RM.C     ³SLQ:=0    ³      no         ³
+ ³11100³ 28 ³        ~1250SL.28~  ³SLB:=SLQ      ³SLQ:=RM.C ³   RM.C:=SLB     ³
+ ³11101³ 29 ³        ~1250SL.29~  ³SLB:=SLQ      ³SLQ:=SLB  ³   RM.C:=SLB     ³
+ ³11110³ 30 ³        ~1250SL.30~  ³SLB:=SLQ      ³SLQ:=RM.C ³      no         ³
+ ³11111³ 31 ³        ~1250SL.31~  ³SLB:=SLQ      ³SLQ:=SLB  ³      no         ³
+ ÀÄÄÄÄÄÁÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ The note.
+          Values are  entered in  binary code, that indicated by the  
+          symbol 'ı'on the top of field identifier  (IMı).
+          When entered a new command the code 00000 became assigned.
+
+
+ ÚÄÄÄÄÄÄÄÄÄÄÄ·
+ ³~0361BP2_MIı.5-0~º  CONDITION CT OR LOADING REGISTER OF MARKS.
+ ÔÍÍÍÍÍÍÍÍÍÍÍ¼   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ Purpose.
+           The field that controls the leaving of  condition  code  and  
+           boot of register marks (bits 5-0).The contents of the given 
+           field can be interpretated in a different type:
+             1)   ~0372forming the signal of the logical condition~
+                  (at signal OECT=0);
+             2)   ~0446operations of the loading register marks~.
+                  (at signal OECT=1);
+           ÚÄÄÄÄÄÄÂÄÄÄÂÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+           ³  MI  ³   ³mnemo-³  forming signal of a logical condition ³
+           ³543210³dec³ nics ³        (at signal OECT = 0 )           ³
+           ³ÄÄÄÄÄÄÅÄÄÄÅÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+           ³000000³ 00³      ³CT:=RN.Z  or (RN.N  xor RN.V);          ³
+           ³000001³ 01³      ³CT:=not(RN.N  xor RN.V) and not(RN.Z);  ³
+           ³000010³ 02³      ³CT:=RN.N xor RN.V;                      ³
+           ³000011³ 03³      ³CT:=not(RN.N xor RN.V);                 ³
+           ³000100³ 04³ ~1505RN_Z~ ³CT:=RN.Z;                               ³
+           ³000101³ 05³      ³CT:=not(RN.Z);                          ³
+           ³000110³ 06³ ~1505RN_V~ ³CT:=RN.V;                               ³
+           ³000111³ 07³      ³CT:=not(RN.V);                          ³
+           ³001000³ 08³      ³CT:=RN.C or RN.Z;                       ³
+           ³001001³ 09³      ³CT:=not(RN.C) and not(RN.Z);            ³
+           ³001010³ 10³ ~1505RN_C~ ³CT:=RN.C;                               ³
+           ³001011³ 11³      ³CT:=not(RN.C);                          ³
+           ³001100³ 12³      ³CT:=not(RN.C) or RN.Z;                  ³
+           ³001101³ 13³      ³CT:=RN.C and not(RN.Z);                 ³
+           ³001110³ 14³      ³CT:=NO xor RM.N;                        ³
+           ³001111³ 15³      ³CT:=not(NO xor RM.N);                   ³
+           ³010000³ 16³      ³CT:=RgN.Z or (RN.N xor RN.V);           ³
+           ³010001³ 17³      ³CT:=not(RN.N xor RN.V) and not(RN.Z);   ³
+           ³010010³ 18³      ³CT:=RN.N xor RN.V;                      ³
+           ³010011³ 19³      ³CT:=not(RN.N xor RN.V);                 ³
+           ³010100³ 20³      ³CT:=RN.Z;                               ³
+           ³010101³ 21³      ³CT:=not(RN.Z);                          ³
+           ³010110³ 22³      ³CT:=RN.V;                               ³
+           ³010111³ 23³      ³CT:=not(RN.V);                          ³
+           ³011000³ 24³      ³CT:=RN.C or RN.Z;                       ³
+           ³011001³ 25³      ³CT:=not(RN.C) and not(RN.Z);            ³
+           ³011010³ 26³      ³CT:=RN.C;                               ³
+           ³011011³ 27³      ³CT:=not(RN.C);                          ³
+           ³011100³ 28³      ³CT:=not(RN.C) or RN.Z;                  ³
+           ³011101³ 29³      ³CT:=RN.C and not(RN.Z);                 ³
+           ³011110³ 30³ ~1505RN_N~ ³CT:=RN.N;                               ³
+           ³011111³ 31³      ³CT:=not(NO xor RM.N);                   ³
+           ³100000³ 32³      ³CT:=RM.Z or (RM.N xor RM.V);            ³
+           ³100001³ 33³      ³CT:=not(RM.N xor RM.V) and not(RM.Z);   ³
+           ³100010³ 34³      ³CT:=RM.N xor RM.V;                      ³
+           ³100011³ 35³      ³CT:=not(RM.N xor RM.V);                 ³
+           ³100100³ 36³ ~1502RM_Z~ ³CT:=RM.Z;                               ³
+           ³100101³ 37³      ³CT:=not(RM.Z);                          ³
+           ³100110³ 38³ ~1502RM_V~ ³CT:=RM.V;                               ³
+           ³100111³ 39³      ³CT:=not(RM.V);                          ³
+           ³101000³ 40³      ³CT:=RM.C or RM.Z;                       ³
+           ³101001³ 41³      ³CT:=not(RM.C) and not(RM.Z);            ³
+           ³101010³ 42³ ~1502RM_C~ ³CT:=RM.C;                               ³
+           ³101011³ 43³      ³CT:=not(RM.C);                          ³
+           ³101100³ 44³      ³CT:=not(RM.C) or RM.Z;                  ³
+           ³101101³ 45³      ³CT:=RM.C and not(RM.Z);                 ³
+           ³101110³ 46³ ~1502RM_N~ ³CT:=RM.N;                               ³
+           ³101111³ 47³      ³CT:=not(RM.N);                          ³
+           ³110000³ 48³      ³CT:=ZO or (NO xor VO);                  ³
+           ³110001³ 49³      ³CT:=not(NO xor VO) and not(ZO);         ³
+           ³110010³ 40³ ~1507NXORV~³CT:=NO xor VO;                          ³
+           ³110011³ 51³      ³CT:=not(NO xor VO);                     ³
+           ³110100³ 52³ ~1499ZO~   ³CT:=ZO;                                 ³
+           ³110101³ 53³      ³CT:=not(ZO);                            ³
+           ³110110³ 54³ ~1499VO~   ³CT:=VO;                                 ³
+           ³110111³ 55³      ³CT:=not(VO);                            ³
+           ³111000³ 56³      ³CT:=CO or ZO;                           ³
+           ³111001³ 57³ ~1510ZORC~ ³CT:=not(CO) and not(ZO);                ³
+           ³111010³ 58³ ~1499CO~   ³CT:=CO;                                 ³
+           ³111011³ 59³      ³CT:=not(CO);                            ³
+           ³111100³ 60³      ³CT:=not(CO) or ZO;                      ³
+           ³111101³ 61³      ³CT:=CO and not(ZO);                     ³
+           ³111110³ 62³ ~1499NO~   ³CT:=NO;                                 ³
+           ³111111³ 63³      ³CT:=not(NO);                            ³
+           ÀÄÄÄÄÄÄÁÄÄÄÁÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ The note: if mnemonics is not given, than it is necessary to use command FIELD.
+ The note.
+          Values are  entered in  binary code, that indicated by the  
+          symbol 'ı'on the top of field identifier  (IMı).
+          When entered a new command the code 000000 became assigned.           
+           ÚÄÄÄÄÄÄÂÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+           ³  MI  ³   ³                 ³operations for loading of register marks³
+           ³      ³   ³                 ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+           ³543210³dec³   mnemonics     ³ operation in RN   ³operation in RM when³
+           ³      ³   ³                 ³   (when CEN=0)    ³ CEM, E.C,Z,N,V=0   ³
+           ÃÄÄÄÄÄÄÅÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+           ³000000³ 00³ ~1632LOAD RN,RM;~     ³    RN:=RM;        ³    no loading      ³
+           ³000001³ 01³ ~1632LOAD RM,NZ;~     ³    RN:=1111       ³    RM:=1111        ³
+           ³      ³   ³ ~1632LOAD RN,NZ;~     ³                   ³                    ³
+           ³000010³ 02³ ~1632LOAD RM,RN;~     ³    RN <--> RM     ³    RM:=RN          ³
+           ³000011³ 03³ ~1632LOAD RM,Z;~      ³    RN:=0000       ³    RM:=0000        ³
+           ³      ³   ³ ~1632LOAD RN,Z;~      ³                   ³                    ³
+           ³000100³ 04³ ~1632LOAD RN,FLAGS;~  ³    RN:=FLAGS      ³ Z:=ZO N:=NO C<-->V ³
+           ³000101³ 05³                 ³    RN:=FLAGS      ³    RM:=not RM      ³
+           ³000110³ 06³ ~1632LOAD  RM,FLAGS;~  RN:=FLAGS except   ³    RM:=FLAGS       ³
+           ³000111³ 07³ ~1632LOAD @RN,FLAGS;~  RN.V:=RN.V xor VO  ³    RM:=FLAGS       ³
+           ³001000³ 08³ ~1632LOAD @RM,FLAGS;~ ³    RN.Z:=0         RM:=FLAGS except    ³
+           ³001001³ 09³                 ³    RN.Z:=1         RM.C:=not CO        ³
+           ³001010³ 10³                 ³    RN.C:=0        ³    RM:=FLAGS       ³
+           ³001011³ 11³                 ³    RN.C:=1        ³    RM:=FLAGS       ³
+           ³001100³ 12³                 ³    RN.N:=0        ³    RM:=FLAGS       ³
+           ³001101³ 13³                 ³    RN.N:=1        ³    RM:=FLAGS       ³
+           ³001110³ 14³                 ³    RN.V:=0        ³    RM:=FLAGS       ³
+           ³001111³ 15³                 ³    RN.V:=1        ³    RM:=FLAGS       ³
+           ³010000³ 16³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³010001³ 17³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³010010³ 18³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³010011³ 19³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³010100³ 20³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³010101³ 21³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³010110³ 22³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³010111³ 23³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³011000³ 24³                  RN:=FLAGS except    RM:=FLAGS except    ³
+           ³011001³ 25³                  RN.C:=not CO        RM.C:=not CO        ³
+           ³011010³ 26³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³011011³ 27³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³011100³ 28³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³011101³ 29³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³011110³ 30³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³011111³ 31³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³100000³ 32³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³100001³ 33³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³100010³ 34³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³100011³ 35³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³100100³ 36³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³100101³ 37³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³100110³ 38³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³100111³ 39³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³101000³ 40³                  RN:=FLAGS except    RM:=FLAGS except    ³
+           ³101001³ 41³                  RN.C:=not CO        RM.C:=not CO        ³
+           ³101010³ 42³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³101011³ 43³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³101100³ 44³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³101101³ 45³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³101110³ 46³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³101111³ 47³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³110000³ 48³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³110001³ 49³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³110010³ 40³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³110011³ 51³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³110100³ 52³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³110101³ 53³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³110110³ 54³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³110111³ 55³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³111000³ 56³                  RN:=FLAGS except    RM:=FLAGS except    ³
+           ³111001³ 57³                  RN.C:=not CO        RM.C:=not CO        ³
+           ³111010³ 58³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³111011³ 59³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³111100³ 60³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³111101³ 61³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³111110³ 62³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ³111111³ 63³                 ³    RN:=FLAGS      ³    RM:=FLAGS       ³
+           ÀÄÄÄÄÄÄÁÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ The note: if mnemonics is not given, than it is necessary to use command FIELD;
+           the torn lines in table mean that is given one command 
+           for two codes.   
+ The note.
+          Values are  entered in  binary code, that indicated by the  
+          symbol 'ı'on the top of field identifier  (IMı).
+          When entered a new command the code 000000 became assigned.           
+
+
+ ÚÄÄÄÄÄÄÄÄÄ·
+ ³~0528E.C,Z,N,V~º  BITWISE PERMIT THE RECORDING IN REGISTER RM.
+ ÔÍÍÍÍÍÍÍÍÍ¼   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ Purpose.
+           The permit of  writing of the marks in one bit of the 
+           marks register (RM) of BP2 chip. Record is provided 
+           when signal SEM=0
+ Level  :  0 - Active  (writing is permited)
+           1 - Passive (writing is prohibited).
+ The note.
+        Values are entered in binary code.
+        When entering the new command then bitwise writing for all marks is resolved.
+
+
+
+ ÚÄÄÄÄÄÄÄÄÄ·
+ ³~0543  OECT   ~º  PERMIT THE ISSUE OF THE TERM CODE ON CT OUTPUT.
+ ÔÍÍÍÍÍÍÍÍÍ¼   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ Purpose.
+           Permit  the  issue of the  term code  on CT output of the  
+           KM1804BP2 chip. Herewith  the formed  signal on CT output  
+           is  defined by  code in  field  BP2_MIı.5-0  (bits 5-0 of 
+           the  microinstruction codes for the BP2 chip). The signal 
+           of the logical condition is formed when OECT=0. 
+ Level  :
+           0 - Active  (forming permit)
+           1 - Passive (forming prohibited).
+ The note.
+           Values are entered in binary code.
+           When  entering  the  new  command  the forming of logical 
+           conditions is prohibited.
+
+ ÚÄÄÄÄÄÄÄÄÄ·
+ ³~0560 CEN,CEM ~º  PERMIT OF MARKS WRITING IN REGISTERS RN/RM.
+ ÔÍÍÍÍÍÍÍÍÍ¼   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ Purpose.
+           Permit of marks writing in registers RN/RM 
+           of KM1804BP2 chip.
+ Level  :  0 - Active  (writing permit)
+           1 - Passive (writing prohibited).
+ The note.
+           Values are entered in binary code.
+           When entering the new command record in registers prohibited..
+
+ ÚÄÄÄÄÄÄÄÄÄ·
+ ³~0572   SE    ~º  PERMIT OF THE SHIFT PERFORMING.
+ ÔÍÍÍÍÍÍÍÍÍ¼   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ Purpose.
+           The permit of the shift performing in KM1804BP2 chip.
+ Level  :  0 - Active  (shift permit)
+           1 - Passive (shift prohibited).
+ The note.
+           Values are entered in binary code.
+           When entering the new command the shifts are prohibited.
+
+ ÚÄÄÄÄÄÄÄÄÄ·
+ ³~0584 MSA,MSB ~º  CHOICE A SOURCES OF THE OPERAND ADDRESS.
+ ÔÍÍÍÍÍÍÍÍÍ¼   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ Purpose.
+           Choice of the source operand in ALU (MIM  or  RA). Field contains
+           the  signals  of the  multiplexer  that  controls a choice of the
+           address source of operand for operation in ALU.
+ Value  :   0 - The number of the KM1804BC1 chip register is 
+                extracted from MIM;
+            1 - The number of the KM1804BC1 chip register is 
+                extracted from external register.
+ The note.
+           Values are entered in binary code.
+           When entering a new command  the multiplexer chooses a number 
+           of the register from microinstructions memory.
+
+
+ ÚÄÄÄÄÄÄÄÄÄ·
+ ³~0601  EWA,EWB~º  WRITING INFORMATION IN OPERAND SELECT REGISTERS IN ALU.
+ ÔÍÍÍÍÍÍÍÍÍ¼   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ Purpose.
+           The low-level signal provides record of information from 
+           system  bus  that  is  given  in 4-bit registers (RA,RB) 
+           of the  operand  choice  in  ALU.  The number buses bits 
+           that  is  used  for  loading  registers are defined when 
+           adjusting the system.
+ Level  :  0 - Active  (write)
+           1 - Passive (storage).
+ The note.
+       Values are entered in binary code.
+       When entering the new command the record in registers are prohibited.
+
+
+
+
+
+
+
+
+
+     ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+     ³~0623 3. FIELD OF MCU (microprogramming control unit).    ~º
+     ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+ The microprogramming control unit (MCU) is built with use of 
+ chip KM1804BY4, which is intended to control the sequence samples 
+ of the microinstructions  from the microinstructions  (MIM).
+ The microcircuit  provides  shaping  12-bit address of the 
+ microinstruction  i.e.  volume  MIM can  form 4096  words.  Each 
+ microinstruction, keeping in  MIM  contains  the field,  that are 
+ controlling KM1804BY4 chip and framing equipment. 
+
+ Includes:
+           Chip BY4:
+           ~0646BY4_MIı~ - Microinstruction;
+           ~0689CCE~     - Permit of the condition analysis;
+           ~0701COM~     - Inversion of condition entry;
+           ~0713CI~      - Forming the address of the next microinstruction;
+           ~0730RLD~     - Unconditional loading of the address / counter register;
+
+           ~0743MS~      - Multiplexer that selects the signal condition.
+
+
+ ÚÄÄÄÄÄÄÄÄÄÄÄ·
+ ³~0646BY4_MIı.4-0~º  MICROINSTRUCTION OF THE KM1804BY4 CHIP.
+ ÔÍÍÍÍÍÍÍÍÍÍÍ¼   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ Purpose.
+           The microinstructions field of BY4 chip (unit of micropro-
+           gramming control ). Correspondence  to  between opcode and 
+           executed function was provided in table. 
+ ÚÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+ ³ MI ³                 ³                                               ³
+ ³3210³   Mnemonics     ³      microinstruction executed in BY4         ³
+ ÃÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+ ³0000³ ~1354JZ;~             ³transition to zero address                     ³
+ ³0001³ ~1358CJS Cond,Addr;~  ³conditional transition in subprogram by adress ³
+ ³    ³                 ³from the microcommand register                 ³
+ ³0010³ ~1365JMAP Addr;~      ³transition to address by decoder of commands   ³
+ ³0011³ ~1371CJP Cond,Addr;~  ³conditional transition to address from register³
+ ³    ³                 ³of the microinstructions                       ³
+ ³0100³ ~1377PUSH Cond,Val;~  ³record in stack and conditional record in      ³
+ ³    ³                 ³register of adress                             ³
+ ³0101³ ~1390JSRP Cond,Addr;~ ³transition to one of two subroutines: by adress³
+ ³    ³                 ³or from RA, or from register of the microinstr.³
+ ³0110³ ~1399CJV Cond;~       ³condit. trans. to address from external source ³
+ ³0111³ ~1406JRP Cond,Addr;~  ³transit. to addr., conditionally chosen or from³
+ ³    ³                 ³ R€,  or from register of microinstruction     ³
+ ³1000³ ~1410RFCT;~           ³repetition of the cycle if counter RA <> 0     ³
+ ³1001³ ~1424RPCT Addr;~      ³repetition of the address from register of the ³
+ ³    ³                 ³microinstructions if counter RA <> 0           ³
+ ³1010³ ~1433CRTN Cond;~      ³conditional return from subprogram       ³
+ ³1011³ ~1440CJPP Cond,Addr;~ ³conditional transition to address from register³
+ ³    ³                 ³of microinstruction and reading from stack     ³
+ ³1100³ ~1454LDCT Val;~       ³record in RA                                   ³
+ ³1101³ ~1459LOOP Cond;~      ³conditional cessation of the cycle             ³
+ ³1110³ ~1470CONT;~           ³continuation of the work                       ³
+ ³1111³ ~1473TWB Cond,Addr;~  ³branching on three directions                  ³
+ ÀÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ Where Cond    - checked condition;
+     Addr, Val - numerical values of the transition address and loading RA.
+ The note.
+          Values are  entered in  binary code, that indicated by the  
+          symbol 'ı'on the top of field identifier  (IMı).
+          When entered a new command the code 1110 became assigned.           
+
+
+ ÚÄÄÄÄÄÄÄÄ·
+ ³~0689  CCE   ~º  PERMIT AN ANALYSIS OF THE CONDITION SIGNAL.
+ ÔÍÍÍÍÍÍÍÍ¼   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ Purpose.
+           Permit an analysis of the condition signal.
+ Level  :  0 - Active  (analisys permit)
+           1 - Passive (analisys prohibited).
+ The note.
+           Values are entered in binary code.
+           When entering the new command the analisys of command are prohibited.
+
+
+ ÚÄÄÄÄÄÄÄÄÄ·
+ ³~0701  COM    ~º  INVERSION OF INPUT CONDITION.
+ ÔÍÍÍÍÍÍÍÍÍ¼   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ Purpose.
+           Inversion of input condition. Provides inversion 
+           of analysed in UMC signal.
+ Level  :  1 - Active  (inversion permit)
+           0 - Passive (inversion prohibited).
+ The note.
+           Values are entered in binary code.
+           When entering a new command the input condition are not inverted.
+
+ ÚÄÄÄÄÄÄÄÄÄ·
+ ³~0713   CI    ~º  SIGNAL FOR CALCULATION OF THE NEXT MC ADDRESS.
+ ÔÍÍÍÍÍÍÍÍÍ¼   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ Purpose.
+           Forming  the  address  of  the  next  microinstruction. In each 
+           tact  to  output  address  is   added  values  of  the   signal 
+           at the input of CI, and that provides the automatic calculation 
+           of the address of the next microinstruction.            
+ Level  :  1 - Active  (address of the following microinstruction 
+               is formed);
+           0 - Passive (address of the next microinstruction 
+               is not formed).
+ The note.
+            Values are entered in binary code.
+            When entering the new command incriment of the register is given.
+
+
+ ÚÄÄÄÄÄÄÄÄÄ·
+ ³~0730   RLD   ~º  UNCONDITIONAL LOADING OF A/CR.
+ ÔÍÍÍÍÍÍÍÍÍ¼   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ Purpose.
+           Unconditional loading of the address/counter register 
+           with values from bus of branching address. 
+ Level  :  0 - Active  (loading  permit)
+           1 - Passive (loading  prohibited).
+ The note.
+           Values are entered in binary code.
+           When entering the new command save of the adress register is prohibited.
+
+
+ ÚÄÄÄÄÄÄÄÄÄ·
+ ³~0743   MS    ~º  MULTIPLEXER OF THE CONDITIONS.
+ ÔÍÍÍÍÍÍÍÍÍ¼   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ Purpose.
+           The signal conditionselect multiplexer. This signal 
+           (from 0 to 7) provide presenting on entering of the logical 
+           condition one  of  8  signals, which adjustment is executed 
+           at switching of the connection. 
+                ÚÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄ¿
+                ³controll³ output ³
+                ³        ³   MS   ³
+                ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄ´
+                ³   000  ³  Z     ³
+                ³001..110³ L1..L6 ³
+                ³   111  ³  NZ    ³
+                ÀÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÙ
+ The note.
+           To entry, from 1 to 6, is possible to connect any signal, 
+           provided in adjustment.
+           When entering a  new  command  the  code from entry MS is 
+           given as 000.
+
+
+
+
+
+       ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+       ³~0769 4. FIELD PIU (priority interruptions unit).         ~º
+       ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+ The  KM1804BH1  chip   is  8-bit  microprogramming   scheme  of   the
+ vector  priority interruption  that can  be increased, which produces 
+ priority processing of inquiry for interruptions from eight buses for 
+ different  devices.  Fields  that  providing  management  work of PIU 
+ is brought below:
+
+ Includes:
+           KM1804BH1 chip:
+           ~0787BH1_MIı~ - Microinstruction;
+           ~0823EINS~    - Permit of the acceptance to instruction;
+           ~0836EV~      - Permit of the constant issue from ROM vectors
+                     to DB (data bus).
+
+
+ ÚÄÄÄÄÄÄÄÄÄ·
+ ³~0787 BH1_MIı ~º  MICROINSTRUCTIONS OF THE KM1804BH1 CHIP.
+ ÔÍÍÍÍÍÍÍÍÍ¼   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ Purpose.
+           The field of the KM1804BH1 chip  (priority interruption unit).
+           The correspondence between opcode and executed function is
+           provided in table. 
+           ÚÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+           ³ MI ³             ³  microinstr. executed in BH1        ³
+           ³3210³  Mnemonics  ³     (with signal EINS = 0 )         ³
+           ÃÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+           ³0000³ ~1533RESET;~      ³general clear                        ³
+           ³0001³ ~1546RESET IR;~   ³clear IR                             ³
+           ³0010³ ~1548CLR IR,Val;~ ³clear IR signal from buses of mask   ³
+           ³0011³ ~1548CLR IR,MR;~  ³clear IR with MR control             ³
+           ³0100³ ~1548CLR IR,VR;~  ³clear IR with VR control             ³
+           ³0101³ ~1572READ VR;~    ³read VR                              ³
+           ³0110³ ~1572READ SR;~    ³read SR                              ³
+           ³0111³ ~1572READ MR;~    ³read MR                              ³
+           ³1000³             ³installation of MR                   ³     
+           ³1001³ ~1658LOAD SR,Val;~³load SR                              ³
+           ³1010³ ~1548CLR MR,Val;~ ³bitwise clear MR                     ³
+           ³1011³ ~1565SET MR,Val;~ ³bitwise installation of MR           ³
+           ³1100³ ~1542RESET MR;~   ³clear MR                             ³
+           ³1101³ ~1585DI;~         ³prohib. of the request for interrup. ³
+           ³1110³ ~1658LOAD MR,Val;~³load MR                              ³
+           ³1111³ ~1588EI;~         ³permit of the request for interrup.  ³
+           ÀÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ The note.
+          Values  are  entered  in  binary  code, that indicated  by the  
+          symbol 'ı'on the top of field identifier  (IMı). When entering
+          the new command in this field is written code  of the  general 
+          clear command, but signal  EINS=1  that's why  the instruction 
+          is not executed. 
+
+
+ ÚÄÄÄÄÄÄÄÄÄ·
+ ³~0823  EINS   ~º  PERMIT THE INSTRUCTIONS ACCEPTANCE.
+ ÔÍÍÍÍÍÍÍÍÍ¼   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ Purpose.
+           The permit the instruction acceptance. Provides acceptance              §à¥è¥­¨¥ ¯à¨¥¬  ¨­áâàãªæ¨¨. ¡¥á¯¥ç¨¢ ¥â  ¯à¨¥¬  ª
+           to perform the instructions given in field BH1_IMı.
+ Level  :  0 - Active  (microinstruction on BH1 is executed)
+           1 - Passive (microinstruction on BH1 is not executed).
+ The note.
+           Values  are  entered  in  binary  code.
+           When entering the new command presenting the code of 
+           the command on  KM1804BH1 chip is prohibited.
+
+ ÚÄÄÄÄÄÄÄÄÄ·
+ ³~0836   EV    ~º  PERMIT OF CONSTANT ISSUE FROM ROM VECTOR.
+ ÔÍÍÍÍÍÍÍÍÍ¼   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ Purpose.
+           The active level of the signal provides the issue 16-bit 
+           constant  from  8-address  vectors  ROM   on  system bus 
+           data. The address for ROM is 3-bit vector, thet is issue 
+           by PIC (priority  interruptions controller). 
+           Values  of the constants,  prestored in ROM, are loading 
+           when the system is adjusting.
+
+Level  :   0 - Active  (constant output)
+           1 - Passive (constant is not output because outputs of ROM 
+                        are found in one third condition).
+ The note.
+           Values  are  entered  in  binary  code.
+           When entering the new command issue of constants is prohibited.
+
+
+
+
+
+               ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+               ³~0858  5. Field  of control signals.     ~º
+               ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+ Includes:
+           I   - signal of reading from external device;
+           O   - signal of record on external device;
+           LCK - LOCK - signal for fixing of the daisy-chains conditions
+                 (it is used before vector read);
+           IA  - INTA - signal for acknowledgement of the interruption for 
+                 device in daisy-chain and for reading from DB
+                 vector of the interruption;
+           R   - signal of the reading from memory;
+           W   - signal for record in memory;
+           EWH - signal for record in higher bits of the address register;
+           EWL - signal for record in lower bits of the address register.
+
+
+
+
+
+
+
+
+
+
+
+                           ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»
+                           º~0879C O M A N D O R~º
+                           ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+   Mnemonic two-pass assembler for the educational system "COMPLEX"
+   ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+
+                             DESCRIPTION
+                             ÍÍÍÍÍÍÍÍÍÍÍ
+
+                               Contents
+                               ÍÍÍÍÍÍÍÍ
+
+  - ~0915Foreword~.
+1.  ~0928Source file~.
+2.  ~0982Numeric constants~.
+3.  ~1014Marks~.
+4.  ~1045Commentary~.
+5.  ~1068Structure of the microinstructions~.
+6.  ~1098Arithmetic-logical commands~.
+7.  ~1294Commands for control issue~.
+8.  ~1523Commands for the interruptions processing ~.
+9.  ~1613Command for the loading register LOAD~.
+10. ~1674Command for assign of the microinstruction FIELD~.
+11. ~1754Official commands~.
+12. ~1803Directives of the assembler~.
+ Exhibit 1:
+  - ~2062Table of reserved mnemonics~.
+ Exhibit 2:
+  - ~2128Reports on mistake~.
+ Exhibit 3:
+  - ~2168Task of the microinstruction by default~.
+ Exhibit 4:
+  - ~2225Example of program writing~.
+
+
+                           ~0915Foreword.~
+                           ÍÍÍÍÍÍÍÍÍÍ
+
+    Mnemonic  two-pass assembler   "COMANDOR"   is  intended  to
+ relief of the laborious labour of the programmer on writing the micro-
+ instructions  of  the  microprocessor  system  "COMPLEX",  debug   and  
+ performing the programs on  software emulator, and  quick contributing 
+ the changes to source text.
+    The result of the  functioning the assembler on translations of the 
+ source text file is a file with extension '.pmk', and its queue source 
+ for programm emulator of the microprocessor complex. 
+
+
+                           ~09281. Source file.~
+                           ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+
+   As  source   file  for  translation  is  a usual text file, for  which 
+ equitable following rates of the writing:
+
+    1) all  unadulterated mnemonics must be written together,assembler 
+       does not make differences between  title and small letter of the
+       alphabet, so mnemonics 
+
+               'ADD' 'AdD' 'ADd' 'Add' 'aDD'
+
+       are identical and assembler do not differ them;
+
+    2) between   separate  mnemonics,  digital constant, mark,  correspo-
+       ndence and   comments  can be  pleaced  many insignificant  symbol 
+       and  controlling  sign,  such  as  gap, tabulation,   return   the  
+       carriage, linefeed  etc.,there are no restrictions on accomodation  
+       of the commands in text is not  imposed;  this  allows  programmer  
+       an enough liberally to pertain to text of programm with standpoint 
+       of its exterior; 
+
+    3) follows  to  point  to  the  fact,  that  assembler  supports  the
+       higher  part  of   the   table   symbol   ASCII,   in   which   is 
+       enclosed    national    alphabet,  but  all  standard   mnemonics, 
+       provided    in   a   ü1   table-addon   of   reserved   mnemonics, 
+       was  translated   for  latin  alphabet,  and  so  necessary neatly 
+       to    pertain  a   wadding  of  mnemonics,   that   have   in  its 
+       composition   symbols,  which  are   equally  writed,  but  having 
+       differ   coding.   However,   given   rule   does   not  mean that 
+       programmer    must    avoid    the   national   alphabet,   except 
+       for   writing   explaining   commentaries  that  is complitly seen 
+       in   such  programming   languages,   which   were   are  oriented 
+       only   on   english   user.  By  help   of   the labels structures 
+       and   correspondence   the   user  can  in  any   place   of   its 
+       source   file  assign  comprehensible   for   him  indication  and 
+       use it with standard mnemonics of the language.  
+       So such, for instance, command, as 
+
+                       Sum up operand1,  operand2;
+
+       will  not  contain  mistake and it is will be translated correctly 
+       under  that  condition  that  all provided in example of mnemonics 
+       will beforehand described.   
+
+    4) the main file must be ended of the microprocessor command, that is 
+       concluded in quotation marks.
+
+   Strictly   keeping   rules  of  commands  writing, the neatness in set 
+ of the text of the program  will  guarantee  the  quick  translation and 
+ debug - the  practice  is  witnesses that majority error appears firstly 
+ of all because  stile of writing  is careless  and the inexact knowledge 
+ of the development object.
+
+                         ~09822. Numeric constants.~
+                         ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+
+    The  numeric  constants are used at assigning the numeric operand,
+ the addresses transition and load constants. The sign of the constant 
+ is  a  value  at  the  beginning  of  initially mnemonics. "COMANDOR" 
+ distinguishes four main forms of the value assign: 
+
+    1) decimal form:
+       10
+       0
+       65535
+
+    2) hexadecimal form:
+       0Ah
+       15H
+       0FFFFh
+
+    3) octonary form:
+       7o
+       177777o
+
+    4) binary form:
+       011%
+       1111111111111111%
+
+   All constants cannot exceed size of the machine word.
+
+   Except direct assign of the constant in command You may refer to the
+current Pointer of the Command CP. The Assembler transforms it in the 
+current numerical value of the Command Pointer . 
+
+                               ~10143. Marks.~
+                               ÍÍÍÍÍÍÍÍÍ
+
+   The marks is serves for change often used constants on symbolic 
+ equivalent for  increasing read ability of the source text. 
+
+ Main rules for writing the marks:
+
+    1) symbols, which can not be included in marks:
+                   # $ ( ) * + , - . / [ \ ] { | }
+
+    2) mark can not begin from numerals values;
+
+    3) the  sign  of  mark ending  is any sign of punctuation, 
+       gap, sign of  tabulations,  the end of line, as well as 
+       any one of symbol, enumerated in rule 1;
+
+    4) the mark  is  not  comply  with reserved mnemonics (see 
+       exhibit 1 - a table of reserved mnemonics);
+
+    5) the length of the mark can  be  assign arbitrarily, but 
+       assembler  will  recognize  only  first ten symbols; so 
+       when  use  the  marks  more  than  ten  symbols then in 
+       translations can appear some mistakes;
+
+  Examples of the marks writing: - Loop
+                                 - First_go
+                                 - Mark_1
+                                 - To_long_mark_is_incorrect
+
+
+                           ~10454. Commentary.~
+                           ÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+
+   The commentary are used for explanation of one or another 
+ command  functioning, or the whole program as a general, as 
+ well as for "commenting" some checking command.
+   Begin sign of commentary is a special symbol 
+
+                             '\'.
+
+  The assembler ignores all meeting symbols before the next 
+symbol '\' or to the next line. For instance:  
+
+     \ short example of the program \
+     { add RB,X,Z;  }      \ load X in R10
+     { add R11,Y,Z; }      \ load Y in R11
+     { add RQ,R10,Z;       \ rewrite X in RQ
+       cjp l1,compute; }   \ if number is positive that moves to
+                           \ calculation
+     { sub RQ,Z,RQ;  }     \ otherwise bring X to positive
+     { sub R11,Z,R11; }    \ convert Y for correct sign
+
+
+                ~10685. Structure of the microinstruction task.~
+                ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+
+   The   memory   of   microinstructions in microprocessor complex contains 
+ the separate  microinstructions,  each  of which is divided on many field. 
+ The command of the  assembler  is  modifies some parts of microinstruction 
+ field. Whole microinstruction is assigned by operator for microinstruction 
+ assign, which is described by assistans of two figured bracket 
+                              {}
+   Thereby  collection  of  the  assembler  commands  is  limited  inwardly 
+ '{}' and presents one  microinstruction  of  the  microprocessor  complex. 
+ Inwardly  bracket  can  be  kept   any   amount   of   the   commands   of 
+ assembler,  or  no  one.  So  even  at assigning of empty microinstruction 
+ you  determine  actions,  that produced in emulator of the microprocessor. 
+ Usually  -  it's  "empty"  actions  that  corresponding  to command NOP if 
+ it existed.
+   Main  rules  of the commands writing on assembler language "COMANDOR" is 
+ described below:   
+
+    1) all commands of the assembler must be fited inwardly in operator of
+       the microinstruction assign '{}';
+
+    2) command   always begins with name of the command, which is reserved
+       mnemonics;    
+
+    3) operands divide between itself by operator of the division operands 
+       ',';
+
+    4) command must be ended by operator of the command end ';';
+
+                     ~10986. Arithmetic-logical commands.~
+                     ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+
+   The arithmetic-logical commands serves for performing some microinstruction 
+ as adding, subtractions, bitwise logical operation, operation of the shifts, 
+ loading, inversion of separate register in Arithmetic-Logical Unit (ALU), 
+ that is built on four microcircuits BC1 and one m/c BP2.
+   In a whole there is 7 commands, formats of which will are considered in 
+ given section:   
+
+    1)ADD  - arithmetical adding;
+    2)SUB  - arithmetical subtraction;
+    3)OR   - logical adding;
+    4)AND  - logical multiplying;
+    5)XOR  - logical subtraction (excluding "OR");
+    6)NAND - logical multiplying in which first operand is taking 
+             with inversion;
+    7)NXOR - logical subtraction in which result is inverted;
+
+   Next will be considered:
+
+    6.1. ~1124Assign of register shifts~.
+    6.2. ~1143Assign of the result receiver~.
+    6.3. ~1178Assign of operand, on which is executed some operation~.
+    6.4. ~1261Assign of the input carrying~.
+
+                     ~11246.1. Receiver of the result.~
+                     ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+  As receiver of the result can emerge the following operands:
+
+    1) RQ - work registers of ALB;
+
+    2) R0..R15 - one of the register of the general-purpose (RGP);
+
+    3) RB - RGP, number of which is determined in RB;
+
+    4) NIL - the empty receiver (the result is not saved, but can protrude on 
+             BD,  as  well as can be used flags, which are installed when the 
+             operations is perform).
+
+   The assigning of  the RB implies use  of RGP, the number of which is kept 
+ in stood register RB.
+
+
+         ~11436.2. Operands, on which operation is assigned.~
+         ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+   Any  one  of  described  above  commands  allows  to  execute   the 
+ actions on two  operands  and  place  the  result  in  to  operations 
+ register,  in  general  event  not  coinsiding with operand, on which 
+ operation was executed. For example,  
+
+                       ADD RQ,R1,R2;
+
+   But  often  receiver of the result is simultaneously and one of the 
+ worker  operand.  Then  possible lower writing of this operand twice, 
+ and assembler by  itself  will  be  undertake  the  task  hipping  an 
+ operand commands. For example:   
+
+                       SUB  RQ,1;
+
+ Here is possible operands, which possible indicate when command assign: 
+
+    1) Z - "internal"  zero,  specially  realization  in 
+           BC1 chip is to protect data bus from frequent 
+           trivial information; 
+
+    2) RQ - work register of ALB;
+
+    3) R0..R15 - one of the general-purpose register;
+
+    4) RA,RB - GPR, number of which is determined in RA or RB;
+
+    5) numeric constant;
+
+    6) BUS_D - writing of such operand speaks of that, that 
+               operand will be scanned from data bus.
+
+
+                      ~11786.3. Assign of shift register.~
+                      ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+   6.3.1. ~1206Structured scheme of the shift performing on ALB~.
+   6.3.2. ~1226Standard types of shifts~.
+   6.3.3. ~1250General types of shifts~.
+
+   The  arithmetic-logical  block,  on  which  is  built  ALU  of microprocessor 
+ complex has  as  one  of  their  own  function  possibility  of  simultaneously 
+ with execution  one  of  the  arithmetic-logical operation to produce the shift 
+ of the register-receiver. Control of shift type is realized by microinstruction, 
+ entering on entry MI(10-6)  m/c  BR2.  Shift is  assigned  by  microinstruction 
+ MI(8) m/c BH1.  Herewith  is possible  to realize  simultaneous  shift of worke 
+ register RQ. For  this  purpose is  necessary to  place before  operand of  the 
+ shift the operator of the modification   
+
+                                 "@"
+
+ which is indicates to assembler that is produced simultaneous shift of the 
+ register-receiver and work register RQ. For example:
+
+                           ADD @SRA,R4,123H;
+
+   The  assembler  allows to  define  any one of possible types of the
+ shift, or using one of the standard shift. Below brought all possible 
+ types of shift and operands, by means  of  which  their  are possible 
+ to assign.  
+
+             ~12066.3.1. Structured scheme of the performing shifts on ALB.~
+             ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+               ÄÄÄÄÄÄÄÄÄÄÄ¿            ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+               BP2        ³            ³                 4 x BC1
+               ÍÍÍ    SLQ ³<---------->³ RQ.0ÇÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ÍÍÍ
+                          ³            ³                   ³
+                          ³            ³                   ³
+                          ³            ³       ÚÂÄÄÄÄÄÄÄÂ¿ ³
+                      SRQ ³<---------->³RQ.15ÇÄ´³   RQ  ³ÃÄÙ
+                          ³            ³       ÀÁÄÄÄÄÄÄÄÁÙ
+                          ³            ³
+                          ³            ³       ÚÂÄÄÄÄÄÄÄÂ¿
+                      SRB ³<---------->³RB.15ÇÄ´³ GPR[B]³ÃÄ¿
+                          ³            ³       ÀÁÄÄÄÄÄÄÄÁÙ ³
+                          ³            ³                   ³
+                          ³            ³                   ³
+                      SLB ³<---------->³ RB.0ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+                          ³            ³
+
+
+                 ~12266.3.2. Standard types of shifts.~
+                 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+        ³        logical          ³        arithmetical
+        ³                         ³
+        ³          SRL            ³              SRA
+        ³                         ³  NO xor VO
+        ³     ÚÂÄÄÄÄÄÄÄÂ¿  ÚÄÄ¿   ³      ³  ÚÄÂÄÄÄÄÄÄÄÂ¿
+ right  ³  0Ä>³³ GPR[B]³³->³MC³   ³      ÀÄ>³ ³ GPR[B]³³
+        ³     ÀÁÄÄÄÄÄÄÄÁÙ  ÀÄÄÙ   ³         ÀÄÁÄÄÄÄÄÄÄÁÙ
+        ³                         ³
+        ³          SLL            ³              SLA
+        ³                         ³
+        ³  ÚÄÄ¿  ÚÂÄÄÄÄÄÄÄÂ¿      ³          ÚÄÂÄÄÄÄÄÄÄÂ¿
+ left   ³  ³MC³<-³³ GPR[B]³³<Ä 0  ³          ³ ³ GPR[B]³³<ÄÄ 0
+        ³  ÀÄÄÙ  ÀÁÄÄÄÄÄÄÄÁÙ      ³          ÀÄÁÄÄÄÄÄÄÄÁÙ
+
+    When assign the double standard shift it is necessary to write 
+ accordingly SRWL SLWL SRWA SLWA. 
+
+For example:    ADD SRA,R4,0;
+                XOR SLWL,RQ,1010101010101010%;
+
+
+                   ~12506.3.3. General types of shifts.~
+                   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+  They Are Assigned by type of shift (SR - a right shift, SL - a left 
+shift) and type of the shift. The Type of the shift is assigned by its 
+number (refer to table for BP2_MI.A-6), specified through point   
+directly for  type of the shift , for example: 
+                ADD SR.3, R0, R5, R3;
+                XOR SL.18, R0, 10;
+  Point to the fact, the type of right shifts (SR) is assigned by number 
+from 0 to 15 and the type of left shifts (SL) by number from 16 to 31. 
+
+                  ~12616.4. Entering carry.~
+                   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+  Entering carry is assigned in command of the first subgroup (ADD and 
+SUB).This operand is unnecessary and is by default considered equal zero.  
+In the event of evident inputting of the carrying its necessary to set it 
+in quality of the last operand of the command.  The Inputting of the 
+operand of the carrying influences on the field MI(5-0) of controller shift 
+m/c BP2 of microinstructions.  Here follows to take into account that this 
+field is responsible also for loading of register of marks RM and RN m/c 
+BP2;  so be cearful in simultaneous use the commands of the arithmetical 
+adding(subtractions) and commands of the loading  of register of marks, 
+because it can occur the accompaniment of the undesirable input carrying 
+that will distort the result.  The Translator of the assembler do not checks 
+the compatibility of the commands and a mistake under said event will not give.
+
+       
+
+    The following possible signals of the entering carry are exist:
+
+    1) Z - a signal of the logical zero;
+
+    2) RM_C - a bit C of register of the mark RM;
+
+    3) RN_C - a bit C of register of the mark RN.
+
+  It possible to assign the inversion of these signals by means of last 
+operator to inversions "NOT". The Examples:
+                          ADD R1,RQ,R5,RM_C;
+                          SUB  RQ,R4,not  Z;
+                          ADD @SRA,R5,10,not RN_C;
+
+  The using of the operand of the carrying requires the full task of the 
+command.                      
+
+          ~12947. Commands of the handing over of  the management.~
+          ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+
+  The Commands of given groups process the field of microcommand m/c BY4, 
+which is a scheme of management 12-digits address of the microcommands 
+and executes 16 microcommands. 
+
+    7.1. ~1305Selection of address of the transition~.
+    7.2. ~1344Command Descriptions of the handing over of management~.
+    7.3. ~1485Operands of the inputting of the condition~.
+
+                    ~13057.1. Selection of the address of switch.~
+                    ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+  Many commands BY4 execute the modification of the counter of the micro-
+instructions, executing hereunder the transition on new microinstruction, 
+not residing directly behind executed in memories of the microinstructions.  
+The Other commands can execute the modification of the register of the 
+address. All address and data for loading enter on BY4 with Buses of the 
+Address of the Transition (BAT).  On BAT data can enter with three buffers:
+  - the buffer V;
+  - the buffer M;
+  - the buffer P.
+  As can be seen from schemes situated below, each of these buffers is 
+commuted with different source of data: 
+- the buffer V sends on BAT the data from ROM vectors of transition m/c BH1;
+- the buffer M commute BAT and Data Bus  (look on directive LINK M);
+- the buffer P sends on BAT data from ROM of microinstructions (field D);
+
+  ~13237.1.1. Structured scheme of the choice of the address of the switch.~
+  ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+     ÚÄÄÄÄÄÄÄÄÄ¿
+     ³ ROM EM  ³
+     ÀÄÄÄÄÂÄÄÄÄÙ
+         ÚÙ
+ ÍÍÍÍÍÍÍÍØÍÍÍÍÍÍÍÍÍÍÍÍÍÑÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÑÍÍ BUS_D (16)
+         À¿            ³                                ³
+     ÚÄÄÄÄÁÄÄÄÄ¿  ÚÄÄÄÄÁÄÄÄÄ¿                      ÚÄÄÄÄÁÄÄÄÄ¿
+   ÚÄo Buffer V³ÚÄo Buffer M³                    ÚÄo Buffer K³
+   ³ ÀÄÄÄÄÂÄÄÄÄÙ³ ÀÄÄÄÄÂÄÄÄÄÙ                   OEDÀÄÄÄÄÂÄÄÄÄÙ
+   VE     ³     ME     ³                                ³
+   ÍÍÍÍÍÍÍÏÍÍÍÍÍÍÍÍÍÍÑÍÏÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÑÍÍÍ BAT(12)  ³
+                     ³                    ³             /16
+   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄ¿    ÚÄÄÄÄÁÄÄÄÄ¿        ³
+   ³                        ED4 ³  ÚÄo Buffer P³        ³
+   ³                            ³  ³ ÀÄÄÄÄÂÄÄÄÄÙ  12    ³
+                                   PE     ÀÄÄÄÄÄÄÄ/ÄÄÄÄÄ´
+                                                        ³
+                                             field D ROM³
+
+       ~13447.2. Command Description of the handing over of  the management.~
+        ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+  If while inputting commands it is required to indicate the condition of its 
+execution,then it is put after mnemonics of the command as first operand;if is 
+it additionally required to indicate the direct address of the transition, or 
+(for command LDCT) to assign new value of the register of the address RA, then 
+numerical value (the mark) handles in command as a second operand:
+
+
+    1) JZ - a transition to zero address;
+
+              JZ;  \ unconditional transition on zero address
+
+    2) CJS - a conditional transition to subprogram on specified address;
+             the address of the transition goes on BAT through buffer R;
+
+             CJS CT, START; \ if condition CT is executed, 
+                            \ then move to subprogram by adress 
+                            \ START, otherwise continue calculations
+                           
+    3) JMAP - an unconditional transition on specified address,residing on data
+              bus; the address of the transition goes on BAT through buffer M;
+
+              JMAP 100;  \ move to address 100
+
+    4) CJP  - a conditional transition on specified address;
+              the address of the transition goes on BAT through buffer R;
+
+              CJP not RDM, CP; \ wait while memory will not give 
+                               \  signal to readiness                             
+
+    5) PUSH - a boot in stack of the counter of the microinstructions, and 
+              plus hereto on performing the specified condition of execution 
+              LDCT; value of the downloaded counter of the microinstructions 
+              enters on BAT through buffer M;
+
+                   PUSH not CT, 10; \ save in stack address of the following 
+                                    \command and load in RA 10, 
+                                    \ if condition CT is not executed;
+
+              Form without operands writing the command PUSH is can be; then, 
+              the condition became false and, consequently, the boot in RA does
+              not occur.
+
+    6) JSRP - a transition to one of two subprograms by adress, taken from 
+              register of the address (if condition is not executed), or on 
+              specified address;
+              the address of the transition enters on BAT through buffer P;
+
+                   JSRP IRQ0,53O;\ if condition is executed, then 
+                                 \ move to executing of the command by adress 
+                                 \ 43 (53o = 43), else                          
+
+    7) CJV - conditional transition by adress from external sourse;
+             the adress of transition gets on BAT from buffer V;
+
+                   CJV CT;\ if condition is executed, then
+                          \ the adress of next command is read
+                          \ from buffer V
+
+    8) JRP  - similar as command JSRP, but without boot in stack the address 
+              of the returning; the address of the transition enters on BAT 
+              through buffer P;
+
+    9) RFCT - a recurrence of the cycle until the register of address is zero 
+              (the comparison RA with zero, and if no, then make a transition 
+              by adress, keeping on the top of the stack with simultaneous 
+              decremention of RA);
+              
+                   PUSH NZ,10; \memorize on the top of the stack the address 
+                               \of begining of hte cycle with simultaneous boot
+                               \in RA number of passage (RA executes the role  
+                               \of counter of the cycle)
+                   ....
+
+                   RFCT;       \ decrements RA, and until zero 
+                               \ move to the begining of the cycle
+
+   10) RPCT - a recurrence of the cycle until the register of the address is a 
+              zero (the comparison RA with zero, and if no, then transition by
+              adress, keeping in memories of the microinstructions with 
+              simultaneous decrementing of RA);
+              the address of the transition enters on BAT through buffer P;
+
+                  RPCT loop; \ compare RA with zero and if RA <> 0, 
+                             \ then move to the "loop"
+
+   11) CRTN - a conditional returning of the subprogram;
+
+                  CRTN not NXORV; \ checking the sign of the overflow in 
+                                  \ system with extended net of the sign 
+                                  \ and if there is no overflows  - 
+                                  \ - return from subprogram
+
+   12) CJPP - a conditional transition on specified address and simultaneous 
+              decrementing of pointer of the stack;
+              the address of the transition enters on BAT through buffer P;
+
+                PUSH NZ,10;
+
+                  .....
+
+                  CJPP RM_C,NEXT; \ check C mark of register of the marks 
+                                  \ RM and if 1 then come out from cycle        
+
+                  RFCT;
+
+   13) LDCT - recording in register of the address RA;
+              new value RA enters on BAT through buffer P;
+              LDCT val;  \ \ load in  RA  the value of val
+
+   14) LOOP - a conditional breaking of the cycle (if condition in command 
+              is not executed, then address of the following microinstruction 
+              is chosen from top of the stack, else the following command 
+              executes`s);
+
+                  PUSH; \ \ save the address of the begining of the cycle
+
+                  ......
+
+                  LOOP not CT; \if in the enterence CT - 0, then return to
+                               \ the begining  of the cycle
+
+   15) CONT - transition to performing of the following command (is 
+              executed by default); 
+
+   16) TWB  - conditional branching by three directions (RA is compared with 
+              zero: if not, then RA decrement`s and then the LOOP executs, 
+              else the same LOOP, but with sample of the address not from 
+              stack, but from memory of the microinstructions through buffer P).
+              
+
+                  PUSH NZ,10;
+
+                  .......
+
+
+                  TWB NZ,NEXT; \while RA<>0 return on the begining of the 
+                               \ cycle; if RA=0 move on NEXT
+
+                   ~14857.3. Operands of inputting the conditions.~
+                   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+   The operands of the inputting of the condition are used in such commands 
+as CJS, CJP, PUSH, JSRP, CJV, JRP, CRTN, CJPP, LOOP and TWB. The Signal of 
+the condition is given on entry of LU block of microprogramming management 
+through eight-entered multiplexor MS, two entries of which are beforehand 
+predestined as Z and NZ (0 and 1), but the rest of six entries can be commuted 
+by different signals (refer to inputting of switchings of the conditions with 
+help of directives LINK). While inputting of the operand of the condition it 
+is possible to use following predestined mnemonics:
+
+    1)Z, NZ - condition is defined as undoubtedly false (true);;
+
+    2)ZO, CO, NO, VO  - signs of the zero, carrying, sign and overflows defined
+                        by result of the execution of operation in ALU;         
+
+    3)RM_Z,RM_C,RM_N,RM_V - the flags Z, C, N and V keeping in register of the 
+                            marks RM;
+
+    4)RN_Z,RN_C,RN_N,RN_V - similarly for RN;
+
+    5)NXORV - sign of the overflow for system with two digits of signs;
+
+    6)ZORC - condition is became true when there is a flag of zero or 
+             overflows in ALB after operation              
+             (ZORC = Z or C).
+
+    7)L1,L2,L3,L4,L5,L6 - a direct inputting of the number of the entering 
+of the multiplexor of the conditions, from which the condition signal will 
+be scanned, and the installation of the signal will not be realized.
+
+    Writing the operator "not" is applicable preliminary to all sign that 
+influences upon field COM of microprogramming block of management BY4.
+    All signals it is necessary to lock beforehand with one of the enterences 
+(L1..L6) of the multiplexor by directive LINK .
+
+
+               ~15238. Commands of the processing of the interruptions.~
+               ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+
+   The Commands of the processing of the interruptions fill the field of 
+microinstruction m/c BH1. The chip KM1804BH1 - is 8-digits microprogramming 
+scheme (with ability to be increased) of the vector priority interruption, 
+which produces processing by priority of inquiry for interruptions, which 
+enter by eight buses from different devices.
+   Commands of management m/c and types of their writing are brought Below:
+
+    1)RESET - a command for cleaning;  
+              can be without or with one operand;
+              
+           a)command RESET without operands conducts general clearing.
+              While this command is executed the zeroizing of the register of 
+              the condition occures and trigger of the permit of the request 
+              of the interruption moves into condition, which allows leaving of
+              the request of the interruption, a.w. system of the interruption 
+              will react on the request of any priority
+
+           b)RESET MR - a clearing the register of the mask(zeroizing all 
+              digits of the register of the mask);  as a result 
+              all interruptions will be unmasked.
+              
+           c)RESET IR   - clearing of the register of the interruption.
+
+    2)CLR - a command of bitwise cleaning of  internal registers of the chip;  
+            it is used to registers of the interruptions and masks:
+
+           a)IR - can be realized by signals from data buse, register of the 
+                   mask and register of the vector. For exemple:
+
+              CLR IR ,00011000% ; \clean 4 and 5 digits 
+              CLR IR , MR;   \clean that digits of the register of the 
+                             \interruptions, for which the numeral in 
+                             \ register of the mask corresponds
+              CLR IR , VR ;  \occurs zeroizing those of IR , 
+                             \which corresponds with the vector of the 
+                             \interruptions,located in register of the vector
+
+           b)MR   - realized by signals from data buses.
+
+    3)SET - is a command of the bitwise installing of the register of the mask.
+            For instance: 
+              SET MR , 11100000%;\masking hte interruptions, 
+                                 \which enter from 8,7 and 6 external devices;
+                                 \the rest of digits of the register of the mask 
+                                 \are not touched
+                                 
+    4)READ - a command of the reading of the  register m/c;  
+             it is used to registers of the mask, of the condition and of the 
+             vector:
+
+           a)READ MR;
+
+           b)READ SR;
+
+           c)READ VR;
+
+             While these commands are executing the signals, reflecting by 
+             condition of register of the mask, conditions and vector, are 
+             given on data bus.
+
+    5)DI - a prohibition of the request of the interruptions(occurs zeroizing 
+           of the trigger of the permiting of the request of the interruption).
+           (command is without operands)
+    6)EI - the permittion of the request of the interruption; the command acts 
+           opposite command DI. (command is without operands)
+
+   For all commands, where as second operand appears numerical value, shortcut
+form is also equitable - without direct inputting of the data;  then the data 
+will enter on data bus not from the memory of the microinstructions, but 
+forming in process of the performing of the microinstruction on the kit of 
+the microprocessor. For instance:
+
+                  {OE_ALU;     \allow the issue of the result of the execution 
+                               \of operation on data bus in ALU
+                   XOR R1,R4;  \execute the operation in ALU 
+                   CLR MR;  }  \clean those digits of the register of the mask 
+                               \that correspond to digits R1 and 
+                               \R4 of ALU and do not coincide
+
+   All commands, which read or give on data bus some values, work from younger 
+digits of the bus; for instance, the command
+
+                   READ VR;
+
+   will issue the value of 3-digital register of the vector on three younger 
+digits of the data bus.
+
+                 ~16139. Command of the loading  of the LOAD register.~
+                  ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+
+   The  given command differs from all other commands of accembler, because it
+assigns the loading of the official registers, that refer to many nodes of the
+complex of the microprocessor. Depending on the operand that follows after the 
+command, it can be with one or two operands:
+
+    1)The loading of the register of the inputting of the operand of the block 
+of the ALU:
+
+                             LOAD RA;
+                             LOAD RB;
+
+   the given command does not require as second operand to indicate the 
+source of the loading or direct operand, because as hardware registers 
+are connected to data bus and after presenting the signal record the 
+value will be loaded in them, which is at present found on bus.
+
+    2)loading of registers of the marks of the controller of shifts:
+
+                             LOAD  RM;
+                             LOAD  RN;
+here as the second operand it is possible to indicate necessary values:
+
+    1)Z - loading in all four marks the register of the zeroes;
+
+    2)NZ- loading in all four marks the register of the numeral;
+
+    3)FLAGS - loading in registers signs of execution of last 
+             operation in block ALU; with using the operator of the modification 
+             @ flags will be loaded in modified type (refer to table of the 
+             loading registers of marks);
+
+besides it is possible to load one register by another. The Examples:
+
+                    LOAD RM,Z;
+                    LOAD  RN,RM;
+                    XOR  R1,R5;
+                    LOAD RM,FLAGS;
+
+   The rest of the types of the loading of registers of marks are available 
+when the command FIELD is in a use.
+
+    3)The loading of the registers of the mask and conditions of the block of 
+      the processing of the interruptions.
+   The Command can be with one or two operands. The Difference is that in 
+one operanded command registers are loaded by current information from 
+data bus  while under direct inputting of the operand of the loading, it 
+is brought in the data field of microinstruction and is read on data bus 
+from there. For instance:
+
+                    LOAD SR,7;      \register of the condition is with 3 digits,
+                                    \remember that attempt to load there number
+                                    \greater then 7 will cause a mistake\
+                    INC R1;
+                    LOAD MR;        \load in register of the mask 
+                                    \the incremented value of the register 
+                                    \R1(more exactly the younger 8 digits)
+
+
+     ~167410. Command of the inputting of the field of microinstruction FIELD.~
+     ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+
+   This command is universal that is to say with its help it is possible to 
+assign absolutely all microinstructions. After command You have to indicate 
+the field, which You want to modify and, then, through comma  write all that 
+fields, which are situated in the given field.  The standard mnemonics of the 
+fields and the list of falling into them fields are typed below:
+   1) BUS_D - a field of the issue of the constant on data bus of the 
+              microprocessor; contains the field D and the field OED. 
+The Example of the writing:
+
+              FIELD bus_d, 0fecdh, 0;
+
+   2) BC1 - the field of the inputting of the functioning of m/c BC1; contains
+the field BC1_MI.876, field BC1_MI.543, field BC1_MI.210, field A and B, field
+OEY. The Example of the writing:
+
+              FIELD bc1, 010%, 000%, 001%, 4h, 0bh, 1;
+
+that corresponds to the command of the assembler ADD R10,R4;
+
+   3) BP2 - a field of the inputting of the functioning of m/c BP2; contains the
+field BP2_MI.CB, field BP2_MI.A-6, field BP2_MI.5-0, field E.C,Z,N,V, field 
+OECT, CEN, CEM, SE. The Example of the writing:
+
+              FIELD bp2, 0, 0, 6, 0,0,0,0, 1, 1,0, 1;
+
+that corresponds to the command of the assembler LOAD RM, FLAGS;
+
+   4) REGS - a field of the inputting of the functioning of th registers of 
+choice of the operand  of ALU;  contains the field MSA, MSB, EWA and EWB. 
+The Example of the writing:
+
+             FIELD regs, 1,0, 1,1;
+that corresponds to boot the operand A of ALU from register RA;
+
+   5) ALU - generalised field of the inputting of the command  of ALU, 
+containing in itself consequent enumeration of fields BC1, BP2, REGS that is 
+to say 21 operands.
+ 
+   6) BY4 - a field of the inputting of the command m/c BY4; contains the field 
+MI, fields CCE, COM, CI, RLD, as well as field MS. The Example of the writing:
+
+             FIELD bu4, 0011%, 1, 1, 1, 1, 3;
+
+that corresponds to the command of the assembler CJP not cond;
+where cond -  is a signal, taken out from the third enter of the 
+multiplexor of the conditions MS.
+
+  7) BH1 - a field of the inputting of the command m/c BH1; contains the field 
+MI, field EINS, field EV. The Example of the writing:
+
+             FIELD bh1, 1101%, 0, 1;
+
+that corresponds the command of the assembler DI;
+
+   8) CU - generalised field of the inputting of the block of microprogramming 
+control and block of the priority of interruptions, containing the consequent 
+description of the fields BY4 and BH1.
+
+   9) MEM - - a field of controlling signals; contains the fields I, O, R, W, 
+EWH and EWL. The Example of the writing:
+
+             FIELD mem, 1,1, 0,1, 1,1;
+
+that corresponds to the command of the assembler R;
+
+   10) ABSOLUTE - full field of the inputting of the microinstruction, which 
+contains 38 operands and comprising of consequent description of fields BUS_D, 
+ALU, CU and MEM.
+
+   If You don`t want to modify some field of microcommand, then You may 
+miss it, having puted in corresponed place am empty comma, for instance:
+
+             FIELD bus_d, , 0;
+
+   that corresponds the command of the assembler OED, but for the constant 
+the value is unchangeable.
+
+                        ~175411. Official commands.~
+                        ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+
+   The Official commands are intended for issue on elements of the 
+microprocessor complex different official signals, as the signals of the permit
+(forbid) of the issue of the data on the exits of the chip or record in 
+internal registers etc. All these commands are especially specialized and have 
+no operands.  The Influence turns on those fields of microcommand, which are not
+touched by other groups of the commands.
+
+    1) The command of management of arithmetic-logical device on m/c BC1:
+
+  1. OEY   -  allow the issue of the result of operations in ALU on data bus;  
+              by default the issue of the data is suppressed.
+
+    2) The command of device management of shift management on m/c BP2:
+
+  1,2. CEM,CEN - a commands of the permition of recording to registers RM and RN;
+  3..6. CEM_C,CEM_Z,CEM_N,CEM_V  - writing the mark C(Z,N,V) in register of
+                                   the marks RM.
+
+    3) The Commands of management of device management on m/c BY4:
+
+  1. RLD   - a permition of the recording in register of the address/counter
+  2. CCE   - a permition of the presenting the condition
+  3. CI    - a prohibition of the forming the address of the following command;
+
+    4) The commands of the management of the device of the processing of the 
+       interruptions on m/c BH1:
+
+  1. EV - a permition of the issue of the address of the device of the 
+          interruptions on data bus
+
+    5) The commands of the management of the external devices and memory:
+
+  1. R  - a command of the reading from memory
+  2. W  - a command of the recording in memory
+  3. IN - a command of the reception from the external device
+  4. OUT - a command of the recording in external device
+  5..6. EWH,EWL - a commands of the recording in senior and younger digits 
+of the register of the address accordingly. Two commands are incorporated for 
+event, when number of digits BD < BA and write the new address in register of 
+the address for one tact is impossible.  Then the younger part of the address 
+on data bus is formed, and, after making the signal EWL it writes in the 
+register of the address, and then with senior part of formed address do the 
+same.
+  7..8. EWA,EWB - a commands of recording in the registers of management of
+                  the operands ALB RA and RB.
+
+                       ~180312. Directives of the assembler.~
+                       ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+
+   The Directives does not translate in executive codes.  They serve as pointers 
+of assembler on that or other action which it must do with operands, attached to 
+the directive. We shall consider the directives, supported by assembler 
+"COMANDOR" and rules of the work with them:
+   Following directives will are considered In this part:
+
+  12.1. ~1820Directive of including in translated text INCLUDE~.
+  12.2. ~1830Directive of accomodations of the executive code ORG~.
+  12.3. ~1843Directive of input of mark and(or) of the correspondence to EQU~.
+  12.4. ~1859Directive of input of macros~.
+  12.5. ~1885Directive of input of values of determined cells of memory DW~.
+  12.6. ~1896Directive of installation of internal registers of complex ACCEPT~.
+  12.7. ~1969Directive of input of switchings of the conditions for BMM LINK~.
+
+        ~182012.1. The Directive of the including of translated text INCLUDE.~
+         ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+  INCLUDE (+) - a directive of the insertion in translating program of the text
+from indicated file. The File assigned in directive must be in the same 
+directory, as translating file. The Example:
+
+                           include macro.lib
+                           + routine
+
+          ~183012.2. Directive of the accomodation of the executive code ORG.~
+          ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+  ORG ($) - a directive of the accomodation of the executive code indicates to 
+the assembler on that nearest following after directive microinstruction will 
+be situated in memories of the microinstructions by adress, specified after 
+directive ORG. The Address must not exceed the last addressed field of the 
+microinstructions. For instance:
+
+                           org 010h
+                           org start
+                           $ 100
+
+ ~184312.3.Directive of input of the mark and(or) of the correspondence to EQU.~
+ ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+  EQU (=) - a directive of the inputting of the marks and correspondence need 
+for You if You want to change any numeric constant or standard mnemonics of the
+assembler on clearer equivalent for You. The inputting of the mark is realized
+by writing the keyword EQU(=), name of the mark and by operator of division ":"
+of equivalent of the mark. 
+For instance:
+
+                           equ start : 10
+                           = add :add equ op1 : r1
+                           equ op2 : 10
+                           $ start
+                           {add op1,op2;}
+
+                 ~185912.4. Directive of the inputting of the macros MACRO.~
+                 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+  MACRO (#) - a directive of the inputting of macros allows You to construct 
+your own commands and use them in the same way easy,  as standard commands of 
+the assembler. The Directive of macros is assigned by keyword MACRO, name of 
+macro with enumeration of all its formal parameters and, by operator of division
+":" - the macro, executed in the manner of standard command of the assembler 
+that is to say, inside of operators "{ }". 
+For instance:
+
+     MACRO inc reg  :{ add reg, reg, z, not z; }
+     # JC cond, addr:{ Field Const addr, 0; CJP cond; }
+     # dec_RgQ      :{ sub Rq, Rq, z, not z; }
+
+  The Name of macro becomes usual standard mnemonics for translator  with all 
+spreading rights on it.  The Names of formal operands of macro can`t be reserved
+mnemonics. In program a macro is assigned by its name and, real operands 
+enumerated through comma in the same order, as it was inputed. 
+For instance:
+
+      { inc r4; jc not co, start;}
+      .......
+
+       start {dec_RgQ;}
+
+ ~188512.5. Directive of the input of values of determined cells of memory DW.~
+  ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+  DW - directive of the inputting of anyy cells of memory from lower 256 
+addresses (0..255), as well as random 32 cells of memories from the general 
+address space by amount of 2Mbytes by necessary values. For instance:
+
+                   dw 03Fh:15
+                   dw 124:1,2,3,4,5    \put into cells with address 
+                                       \beginning from 124 numbers 1,2,3,4,5
+
+ ~189612.6. Directive of installation of internal registers of complex ACCEPT.~
+  ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+  ACCEPT - a directive of the installation ACCEPT will help You immediately to 
+install the initial condition of that internal register of the kit , which You 
+will need while you work. Following topics are covered:
+   12.6.1. ~1908 Installation of internal register BC1 and BP2~.
+   12.6.2. ~1921 Installation of  internal register BY4~.
+   12.6.3. ~1933 Installation of conditions external device~.
+   12.6.4. ~1953 Installation of  internal register BH1~.
+   12.6.5. ~1962 Installation of  speed of  memory~.
+
+       ~190812.6.1. Installation of the internal register BC1 and BC2.~
+       ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+It is Possible to produce initial installation  of following registers:
+  - a working registers R0..R15 or all together as RGU
+  - a registers RQ;
+  - a registers RM, RN;
+  - a registers RA, RB.
+For instance:
+               ACCEPT RGU: 1,2,3,4,5,6,7,8,9,0Ah,0Bh,0Ch,0Dh,0Eh,0Fh
+               ACCEPT RQ : 12
+               ACCEPT RM: 0101%
+
+
+          ~192112.6.2.The Installation of internal registers ED4.~
+          ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+It is possible to produce initial installation of following register:
+  - a pointer of the stack SP;
+  - cells of the stack STACK[1]..STACK[5] or the whole stack - STACK;
+  - a register of the address-counter RAC;
+  - a register of the counter of the microinstructions MICR (PCMK).
+For instance:
+               ACCPET SP : 3
+               ACCEPT STACK[3] : 0FFCh
+               ACCEPT PCMK : 10
+
+      ~193312.6.3. Installing of the conditions of the external devices.~
+      ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+It is possible to install the features of external devices (DEV):
+  - the type of the device: IN - input; OUT - output;
+  - an address of the register of the condition within 64Kb (max 0ffffh);
+  - an address of the register data within 64Kb (max 0ffffh);
+  - the time of the forming the signal "Termination of the cycle" (max 0ffffh);
+  - time of the forming the signal "Ready" (max 0ffffh).
+For instance:
+                ACCEPT DEV[3]: IN, \device of the entering 
+                            0342h, \adress of register of condition in memory 
+                            0344h, \adress of the register of data 
+                               12, \how much is the termination of the cycle of 
+                                   \the functioning 
+                                2, \time interval, after which the data can be 
+                                   \updated. 
+  Besides it is possible to assign an internal buffer of data DEV_BUF before 16
+words for the inputting device, for instance:
+              ACCEPT DEV_BUF[3]: 1EF3h, 234Ah, 0E79h, 1285h
+
+            ~195312.6.4. Installation of internal registers BH1.~
+            ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+   It is possible to produce initial installation of following registers:
+  - a register of the masks RM;(max value is 0ffh)
+  - a register of the permittion of the interruptions IR.
+    (max value is 0ffh) For instance:
+
+               ACCEPT RM : 10111001%
+
+            ~196212.6.5. Installing the speed of working of memory~.
+            ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+   It is possible to produce an initial installing of the speed of the working
+of the memory by means of mnemonics RDM_DELAY, for instance:
+                 ACCEPT RDM_DELAY : 3
+will install speed to memories in 3 machine tacts
+
+ ~196912.7. Directive of inputting of switchings of conditions for BMM LINK.~
+ ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+   LINK (&) - a directive of the inputting of the adjusting the connections of
+the kit allows the programmer to produce all necessary adjusting of the 
+system right in program:
+   12.7.1. ~1982 Adjustments of the recording in register of the address~.
+   12.7.2. ~2002 Inputting the address of transition by vector of interruptions~.
+   12.7.3. ~2019 Adjustments of converter of address of the microinstruction~.
+   12.7.4. ~2029 Adjustments of the buffer V~.
+   12.7.5. ~2040 Adjustments of enters of the multiplexor of the conditions~.
+   12.7.6. ~2050 Adjustments of registers of the inputting of operands in ALU~.
+             
+             ~198212.7.1. Adjustment of the recording in register of adress.~
+             ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+   In given system the register of the address has 20 bits that with 16 bits 
+data bus requires two cycles of recording of information in this register; so 
+the register is devided into two parts, each of which controls by own signal 
+of recording:
+  - EWH for writing in senior part,
+  - EWL - in younger.
+  While adjusting the system it is necessary to assign the youngest bit of 
+recording by signal EWH that is to say, to assign the amount of bitt, written 
+by this signal. So that it can be written only for 16 bits, that, accordingly, 
+the starting bit can be from 4-th to 16-th inclusive.  
+  For instance:
+           
+            LINK EWH : 11 \adjust the recording in register of the address 
+                          \so as it will be recorded 10 bits of
+                          \senior and younger 
+                          \parts of address accordingly by 
+                          \sinlals EWH or(and) EWL
+                          
+ ~200212.7.2. Inputting of address of transition by vector of interruptions.~
+ ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+   There is the possibility in system at appearance of inquiry for interruption 
+from one of 8 external devices to give on data bus the address of transition on
+corresponding subprogramms of the processing of the interruption.  8 addresses 
+are kept in converter of the exit of the block of the priority interruptions, 
+presenting from itself the ROM 16*16. The enterence for given ROM is a vector 
+of external device VEC[0]..VEC[7]. The inputting of the address of the 
+transition is possible to realize for each vector apart,and also for all 
+vectors together:
+
+            LINK VEC[3] : 0CDEFh
+            LINK VEC    : 1111h,2222h,3333h,4444h,
+                          5555h,6666h,7777h,8888h
+
+   The Maximum address of the inputting - 0FFFFh.
+
+     ~201912.7.3. Adjusting the converter of the address of microinstruction.~
+      ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+  There is a possibility to give on internal bus of the address of the 
+microinstruction the address with buses of the data moreover in free order of 
+the following of bits through 12-digits buffer M .  The inputting is realized 
+by consequent enumeration  of 12 connected on exits of the buffer from 11 to 0 
+wires from data bus from 0 to 15, for instance:
+
+            LINK M   : 4,5,6,7,8,9,10,11,12,13,14,15
+
+                   ~202912.7.4.Adjusting the buffer V.~
+                   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+   There is possibility to give on internal bus of the address of the 
+microinstruction directly signals of inquiry for interruption IRQ0..IRQ7, the 
+code of the condition CT, the general interruption INT, readiness of memories 
+and external devices RDM and RDD, as well as signals Z and NZ through 12 digits
+buffer V .
+   When adjusting You necessary to enumerate all 12 connected signal, for 
+instance:     LINK V   : Z,NZ,IRQ0,IRQ1,IRQ2,IRQ3,
+              IRQ4,IRQ5,IRQ6,IRQ7,CT,INT
+
+   ~204012.7.5. The adjustment of enterings of the multiplexor of conditions.~
+    ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+  On the entering of the multiplexor of the conditions L[1]..L[6] it is 
+possible to give the signals of inquiry for interruption IRQ0..IRQ7, of the 
+code of the condition CT, the general interruption INT, readiness of the memory
+and external devices RDM and RDD, as well as signals Z and NZ. The inputting is
+realized apart how for each entering the conditions,and so the general, 
+for instance:        LINK L   : CT,INT,IRQ0,IRQ1,IRQ2,IRQ7
+                     LINK L[3]: CT
+
+        ~205012.7.6. Adjustment of  registers of inputing of operands of ALU.~
+        ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+  4 digits registers of ALU RA and RB allow to give on entering of the choice 
+of  operands in ALU the data directly from data bus moreover the switching of 
+the wires of data bus on the entry of registers can be free and is assigned. 
+Adjustment of switchings of wires is realized similarly as adjusting of the 
+buffer M, for instance:
+
+            LINK RA   : 11,12,13,14
+            LINK RB   : 10,9,8,7
+
+
+              ~2062 Application 1: The table of reserved  mnemonics.~
+              ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+
+   1)the directives
+     ÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+     ~1830ORG~ ~1843EQU~ ~1969LINK~ ~1885DW~ ~1896ACCEPT~ ~1820INCLUDE~ ~1859MACRO~
+
+   2)the commands
+     ÄÄÄÄÄÄÄÄÄÄÄÄ
+
+     BC1  and  BP2
+     ~1108ADD~ ~1109SUB~ ~1110OR~ ~1111AND~ ~1112XOR~ ~1113NAND~ ~1115NXOR~
+
+     ED4
+     ~1354JZ~  ~1358CJS~ ~1365JMAP~ ~1371CJP~ ~1377PUSH~ ~1390JSRP~ ~1399CJV~ ~1406JRP~
+     ~1410RFCT~ ~1424RPCT~ ~1433CRTN~ ~1440CJPP~ ~1454LDCT~ ~1459LOOP~ ~1470CONT~ ~1473TWB~
+
+     BH1
+     ~1572READ~  ~1548CLR~ ~1565SET~ ~1533RESET~ ~1585DI~ ~1588EI~
+
+     external devices
+     ~1788R~  ~1789W~  ~1790IN~ ~1791OUT~ ~1792EWH EWL~ ~1800EWA  EWB~
+
+     prohibition-permittion
+     ~1766OEY~ ~1771CEM  CEN~  ~1772CEM_C CEM_Z CEM_N CEM_V~ ~1777RLD~ ~1778CCE~ ~1779CI~ ~1783EV~
+
+     the else
+     ~1613LOAD~ ~1674FIELD~
+
+   3)operands
+     ÄÄÄÄÄÄÄÄ
+
+     operation in the ALU
+     ~1166RQ~ ~1162Z~ ~1168R0 R1 R2 R3 R4 R5 R6 R7 R8 R9 R10 R11 R12 R13 R14 R15~ ~1170RA RB~
+     ~1174BUS_D~ ~1135NIL~
+
+     inputting the type of the shift
+     ~1250SR SL~ ~1226SRA SLA SRL SLL SRWA SLWA SRWL SLWL~
+
+     inputting of the carry sign
+     ~1279Z~ ~1281RM_C~ ~1283RN_C~
+
+     inputting of the exit of the code of the conditions
+     ~1497Z NZ~ ~1499ZO CO NO VO~
+     ~1505RN_Z RN_C  RN_N  RN_V~
+     ~1502RM_Z RM_C RM_N RM_V~ ~1507NXORV~ ~1544ZORC~
+
+     command FIELD
+     ~1740ABSOLUTE~ ~1683BUS_D~ ~1688BC1~ ~1695BP2~ ~1703REGS~ ~1709ALU~ ~1713BY4~ ~1722BH1~ ~1729CU~ ~1733MEM~
+
+     operations in the device of the processing of the interruptions
+     ~1523MR SR IR VR~
+
+     operations of the boot of registers of marks
+     ~1632RM RN~ ~1643FLAGS~ ~1639Z~ ~1641NZ~
+
+     inputting of switchings of the conditions
+     ~2040CT INT RDM RDD IRQ0 IRQ1 IRQ2 IRQ3 IRQ4 IRQ5 IRQ6 IRQ7 Z NZ~
+
+   4)the else
+     ÄÄÄÄÄÄÄÄ
+
+     ~1010CP~ NOT ~1185@~ . , ; :
+
+
+                ~2128Application 2: The Reports about errors.~
+                ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+
+    1) "," Is Expected;
+    2) ";" Is Expected;
+    3) "." Is Expected;
+    4) ":" Is Expected;
+    5) "," or ";"  are Expected;
+    6) The Mnemonics is not recognized;
+    7) The Directive is not recognized;
+    8) The Command is not recognized;
+    9) The Mark is not determined;
+    10) Double determination of marks;
+    11) Inadmissible using of reserved mnemonics;
+    12) Tne Number too big;
+    13) Incidental end of file;
+    14) Incorrect receiver of the result in ALU;
+    15) Incorrect inputting of operand in ALU;
+    16) Incorrect of operand of shift;
+    17) Incorrect operand of carrying;
+    18) For the operand of the condition the switching is not given;
+    19) Incorrect operand of condition;
+    20) Incorrect operand of the block of the interruptions;
+    21) Incorrect operand of the booting of the register of marks;
+    22) Incorrect operand of field;
+    23) Invalid using of the operand of the modification;
+    24) Repeated using of the data field;
+    25) Overflow of the upper addresses of operative memory;
+    26)  "{" Is Expected;
+    27) Incorrect operand of the directive LINK;
+    28) Number of fakt. and formal operands of macro does not coincide;
+    29) Incorrect operand of directive ACCEPT;
+    30) The Cross determination  of macros;
+    31) Wrong parameter of the command line;
+    32) is reserved for errors of file operations;
+    33) Operand of the condition is Expected;
+    34) Repeated accomodation of microinstructions;
+    35) Address of accomodation of the microinstructions is more then limiting.
+
+
+   ~2168Application 3: Inputting of fields of the microinstruction by default.~
+   ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+
+  1 )field of constants:
+         -  D = 0;       (data bus-transmittion of the data  in ALU: 0)
+         -  OED=1;       (permittion of the presenting of the data from field D
+                          on data bus:is not allowed)
+
+  2)field of DPU (daya processing unit):
+    BC1: -  MI = 64;     ( the microinstruction: NOP; R+S+CI; A,Q)
+         -  A = 0;       ( address of RGU for writing in Rg A: R0)
+         -  B = 0;       ( address of RGU for writing/reading Rg B: R0)
+         -  OE = 1;      ( the permittion of the issue of the result on data 
+                           niche:is not allowed)
+    BP2: -  MI = 0;      ( microinstruction)
+         -  E.Z = 0;     ( permittion of writing the marks in RM: resolved)
+         -  E.N = 0;
+         -  E.C = 0;
+         -  E.V = 0;
+         -  OECT= 1;     (permittion of issue of code of condition:not resolved)
+         -  CEM = 1;     (permittion of writing the marks in Rg M and N: 
+                          not resolved)
+         -  CEN = 1;
+         -  SE  = 1;     (the permittion of performing the shift:not resolved) 
+    External registers of inputting of the operand of ALU:
+         -  MSA = 0;      (selection of the sourse of operands in ALU (MIR or RA,
+                          RB): MIR)
+         -  MSB = 0;
+         -  EWA = 1;     (recordimg in registers of selection of operands 
+                         of ALU: no)
+         -  EWB = 1;
+  3)field BMM and BPI:
+    ED4: -  MI = 14;     (Microinstruction: CONT)
+         -  CCE = 1;     (permittion of analysis of the condittion: prohibited)
+         -  COM = 1;     (iverting of the entering of the condition: invert)
+         -  CI = 1;      (forming the following address of the microinstruction)
+         -  RLD = 1;     (the permittion of the recording in register of the 
+                         address/counter:prohibited)
+    Multiplexor of the selection of the signal of the condition:
+         -  MS = 0;
+    BH1: -  MI = 0;      (Microinstruction: RESET)
+         -  EINS = 1;    (The Permittion of acceptance of instruction:
+                         not resolved)
+         -  EV = 1;      (The Permittion of issue of address of interruption of
+                         vector on DB from ROM: not resolved).
+  4)field OM, ED, RA:
+    ED:  -  I =  1;      (the signal of the reading from external device:
+                          not resolved)
+         -  O = 1;       (the signal of recording on external device:
+                          not resolved) 
+    MM:  -  R = 1;       (the signal of the reading from memory: not resolved)
+         -  W = 1;       (the signal of the recording in memory: not resolved)
+    RgA -  EWH = 1;     (the signals of recording on register of the address of
+                         senior and younger digits: not resolved)
+         -  EWL = 1;
+
+
+               ~2225Applications 4: Example of the program.~
+               ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+
+\ EXAMPLE.ESM
+\ Program executes the following actions:
+\ ---------------------------------------
+\ 1) Selection the command of the microprocessor from memory 
+\ 2) Unpacking the command and making decision about execution 
+\ 3) Executing the command when command corresponds to pattern 
+\ 4) Forming the address of the following microinstruction
+
+\ ~2236View of the command of the microprocessor~
+\ -----------------------------------------------
+\ ÚÄÄÄÄÂÄÄÄÄÂÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+\ ³xxxx³xxxx³xxxxxxxx³xxxxxxxxxxxxxxxx³ - Length is 4 bytes
+\ ÀÄÄÄÄÁÄÄÄÄÁÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+\                         
+\   ³    ³      ³            ³
+\   ³    ³      ³            ÀÄÄÄ 1..15 - a direct operand 
+\   ³    ³      ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ 16..23- is not in use
+\   ³    ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ 24..27- RGU,that keeps address of receiver
+\   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ 28..31- code of operation
+
+\ ~2248Exemples of the patterns of the command~
+\ --------------------------------------
+\ ÚÄÄÄÄÂÄÄÄÄÂÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+\ ³0101³1xxx³........³xxxxxxxxxxxxxxxx³ - Length is 4 bytes
+\ ÀÄÄÄÄÁÄÄÄÄÁÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+\                         
+\   ³    ³      ³            ³
+\   ³    ³      ³            ÀÄÄÄ any value 
+\   ³    ³      ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ is not in use
+\   ³    ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ any one of registers R8..R15 of the block ALU 
+\   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ operation of the adding
+
+\ ~2260Initial adjustments~
+\ --------------------
+~1843EQU~ counter : ~2095R0~ \ let R0 serves as command counter 
+~1896ACCEPT~ counter : 0FEh  \ let the current command is located in memory by
+                             \ address 0FEh 
+~1885DW~ 0FEh : 5800h,0100h  \ command of the processor 
+~1896ACCEPT~ R8 : 0123h      \ by example of RGU, that keeps address of the 
+                             \ receiver let this address will be 123h 
+~1885DW~ 0123h : 1111h       \ let the cell-receiver contains number 1111h 
+~1843EQU~ com_reg1 : ~2095R1~   \ let R1 serves as register of commands 1 
+~1843EQU~ com_reg2 : ~2095R2~   \ let R2 serves as register of commands 2
+~1843EQU~ result   : ~2095R3~   \ let R3 serves as buffer of result of operation
+~1969LINK~ ~2040L[1] : RDM~     \ switching the signal of readiness of memory on
+                       \ the first entering of the Multiplexor of the Conditions   
+~1969LINK~ ~2040L[2] : CT~  \ switching the signal of the sign of the execution 
+                       \ of operations in ALU
+~1843EQU~ selection    : 10  \ the address of the subprogram of the selection of
+                       \ the command of microprocessor from memory 
+~1843EQU~ unpacking  : 20    \ similarly for s/p of unpackings 
+~1843EQU~ execution  : 30    \ similarly for s/p of execution 
+~1843EQU~ fafc       : 40    \ similarly for s/p of forming of the address of 
+	     	             \ the following command 
+~1843EQU~ error      : 50    \ s/p of processing the opcode that differs from 
+                             \ exemple 
+~1969LINK~ ~2050RB~ : 8,9,10,11    \ adjust RB on lines 8..11 of DB, where 
+                \ the number of RGU, keeping the address of the receiver goes
+
+\ ~2287Macros, used for usually repeated commands~
+\ ---------------------------------------------
+~1859MACRO~ MOV MOV receiver, the source:
+          {~1108ADD~ receiver, ~1162Z~, source;}
+~1859MACRO~ READ_MEM receiver :
+          {~1788R~; ~2289MOV~ receiver, ~1174BUS_D~; ~1371CJP~ RDM, ~1010CP~;}
+~1859MACRO~ WRITE_MEM source :
+          {~1789W~; ~2289MOV~ ~1124NIL~, source; ~1764OEY~; ~1371CJP~ RDM, ~1010CP~;}
+
+\ ~2296subprogram of the selection of the command of microprocessor from memory~
+\ -------------------------------------------------------------------
+~1830ORG~ ~2276selection~
+
+{~2289MOV~ ~1124NIL~, ~2262counter~; ~1764OEY~; ~1792EWL~;} \reading the first byte of the command
+{~1111AND~ ~1124NIL~, ~2262counter~, ~1162Z~; ~1764OEY~; ~1792EWH~;}
+{~2291READ_MEM~ ~2269com_reg1~;}
+
+{~1108ADD~ ~2262counter~, 1;}
+{~2289MOV~ ~1124NIL~, ~2262counter~; ~1764OEY~; ~1792EWL~;} \read the second and the third byte of the command
+{~1111AND~ ~1124NIL~, ~2262counter~, ~1162Z~; ~1764OEY~; ~1792EWH~;}
+{~2291READ_MEM~ ~2270com_reg2~;}
+{~1109SUB~ ~2262counter~, ~1162Z~;}
+
+{~1371CJP~ ~1497NZ~, ~2278unpackings~;} \move to s/p of unpacking of the command
+
+\ ~2312subprogram of the unpacking of the command of the microprocessor~
+\ --------------------------------------------------------------
+~1830ORG~ ~2278unpacking~
+
+{~1111AND~ ~2271result~, ~2269com_reg1~, 1111000000000000%;}
+{~1112XOR~ ~2271result~, 0101000000000000%; ~1613LOAD~ ~1632RM~, ~1643FLAGS~;}
+{~1371CJP~ ~1502not RM_Z~, ~2282error~;}
+
+{~2289MOV~ ~1124NIL~, ~2269com_reg1~; ~1764OEY~; ~1800WB~;} \ write the number of RGU, keeping address of
+                              \the receiver of the result in register RB 
+{~2289MOV~ ~1124NIL~, ~1170RB~; ~1764OEY~; ~1792EWL~;}  \read the receiver of a result in RGU into a buffer
+{~1111AND~ ~1124NIL~, ~2262counter~, ~1162Z~; ~1764OEY~; ~1792EWH~;}
+{~2291READ_MEM~ ~2271result~;}
+
+{~1371CJP~ ~1497NZ~, ~2279executions~;} \move on s/p of the executing of the command
+
+\ ~2328subprogram of the executing the command of the microprocessor~
+\ ----------------------------------------------------------
+~1830ORG~ ~2279execution~
+
+{~1108ADD~ ~2271result~, ~2270com_reg2~;}\execute operation of the adding
+
+{~2289MOV~ ~1124NIL~, ~1170RB~; ~1764OEY~; ~1792EWL~;}  \write the formed result into the
+{~1111AND~ ~1124NIL~, ~2262counter~, ~1162Z~; ~1764OEY~; ~1792EWH~;}   \cell of memory, by adress of RB
+{~2293WRITE_MEM~ ~2271result~;}
+
+{~1371CJP~ ~1497NZ~, ~2280ncaf~;}       \move to s/p of next command 
+	                	\address former
+
+\ ~2341subprogram of next command address former of microprocessor~
+\ ---------------------------------------------------------------------
+~1830ORG~ ~2280ncaf~
+
+{~1108ADD~ ~2262counter~, 4;} \ the next command of the microprocessor is situated by 
+                  \ address, on 4 bytes senior then previous 
+{~1371CJP~ ~1497NZ~, ~2276select~;}\ return to the stage of the selection of the command
+
+\ ~2349The subprogram of processing the opcode different from exemple~
+\ ------------------------------------------------------------
+~1830ORG~ ~2282error~
+
+{~1371CJP~ ~1497NZ~, ~2280ncaf~;}\ as processing of the error does not fall into the functions of given
+                  \ program, so then simply moves to s/p of 
+                  \ next command address former 
+                  \ end of the program EXAMPLE.ESM
+
+
+
