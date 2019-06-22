@@ -1,0 +1,1955 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=windows-1251">
+<meta name="Author"
+content="Шулаев Юрий Александрович">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title></title>
+</head>
+
+<body background="fill_mk48.jpg" tppabs="http://ofap.ulstu.ru/res/REFER_BOOK_MK48&MK51/images/fill_mk48.jpg" bgcolor="#FFFFC0"
+text="#000000" link="#0000FF" vlink="#800080" alink="#FF00FF">
+
+<p align="left"><a name="Содержание"></a><font
+color="#000000" size="5"><b>3. Система команд МК48
+</b></font></p>
+
+<ul>
+    <li><a
+        href="commandsystem_mk48.htm#общие сведения о системе команд" tppabs="http://ofap.ulstu.ru/res/REFER_BOOK_MK48&MK51/mk48/commandsystem_mk48.htm#общие сведения о системе команд"><font
+        color="#0000FF" size="4">3.1. Общие сведения
+        о системе команд</font></a></li>
+    <li><a
+        href="commandsystem_mk48.htm#группа команд пересылки данных" tppabs="http://ofap.ulstu.ru/res/REFER_BOOK_MK48&MK51/mk48/commandsystem_mk48.htm#группа команд пересылки данных"><font
+        color="#0000FF" size="4">3.2. Группа команд
+        пересылки данных</font></a></li>
+    <li><a
+        href="commandsystem_mk48.htm#группа команд арифметических операции" tppabs="http://ofap.ulstu.ru/res/REFER_BOOK_MK48&MK51/mk48/commandsystem_mk48.htm#группа команд арифметических операции"><font
+        color="#0000FF" size="4">3.3. Группа команд
+        арифметических операций</font></a></li>
+    <li><a
+        href="commandsystem_mk48.htm#группа команд логических операций" tppabs="http://ofap.ulstu.ru/res/REFER_BOOK_MK48&MK51/mk48/commandsystem_mk48.htm#группа команд логических операций"><font
+        color="#0000FF" size="4">3.4. Группа команд
+        логических операций</font></a></li>
+    <li><a
+        href="commandsystem_mk48.htm#группа команд передачи управления" tppabs="http://ofap.ulstu.ru/res/REFER_BOOK_MK48&MK51/mk48/commandsystem_mk48.htm#группа команд передачи управления"><font
+        color="#0000FF" size="4">3.5. Группа команд
+        передачи управления</font></a></li>
+    <li><a
+        href="commandsystem_mk48.htm#руппа команд управления режимом работы МК" tppabs="http://ofap.ulstu.ru/res/REFER_BOOK_MK48&MK51/mk48/commandsystem_mk48.htm#руппа команд управления режимом работы МК"><font
+        color="#0000FF" size="4">3.6. Группа команд
+        управления режимом работы МК</font></a></li>
+</ul>
+
+<hr size="4" color="#000000">
+
+<p align="left"><a
+name="Общие сведения о системе команд"></a><font
+color="#000000" size="5"><strong>3.1. Общие сведения
+о системе команд </strong></font></p>
+
+<hr color="#008000">
+
+<p><font size="4">Система команд МК48
+включает в себя 96 основных команд и
+ориентирована на реализацию
+процедур управления. Все команды
+имеют формат один или два байта (70%
+команд однобайтные). Время
+выполнения команд составляет 2.5 или
+5.0 мкс (один или дна машинных цикла
+(МЦ) соответственно) при тактовой
+частоте 6.0 МГц. Большинство команд
+выполняется за один машинный цикл.
+За два машинных цикла выполняются
+команды с непосредственным
+операндом, ввода/вывода и передачи
+управления. Микроконтроллер
+оперирует с командами четырех
+типов (</font><a href="#рис.2.8."><font color="#FF0000"
+size="4">рис.2.8</font></a><font size="4">). </font></p>
+
+<p align="center"><a name="рис.2.8."></a></p>
+
+<p align="center"><img src="typecommand_mk48.gif" tppabs="http://ofap.ulstu.ru/res/REFER_BOOK_MK48&MK51/images/typecommand_mk48.gif"
+border="2" width="601" height="147"></p>
+
+<p align="center"><font size="4"><b>Рис. 2.8. Типы
+команд МК48 </b></font></p>
+
+<p><font size="4">В МК48 используются четыре
+способа адресации: прямая,
+непосредственная, косвенная и
+неявная. </font></p>
+
+<p><font size="4">Все множество команд
+можно разбить на пять, групп по
+функциональному признаку: команды
+пересылки данных, арифметических
+операции, логических операций,
+передачи управления и управления
+режимами работы МК. </font></p>
+
+<p><font size="4">К достоинствам системы
+команд МК48 можно отнести:
+эффективный ввод/вывод, включая
+маскирование и возможность
+управления отдельными битами
+портов; возможность ветвления по
+значению отдельных бит;
+возможность обработки как
+двоичных, так и десятичных
+двоично-кодированных чисел. </font></p>
+
+<p><font size="4">При выполнении команд
+могут использоваться значения
+отдельных флагов, входящих в ССП, и
+флагов пользователя. Все команды, в
+результате выполнения которых
+модифицируются флаги, перечислены
+в </font><a href="#таблица 2"><font color="#FF0000"
+size="4">табл.2.</font></a><font color="#FF0000" size="4"> </font></p>
+
+<p><font size="4">Ниже приводится краткое
+описание команд МК48,
+сгруппированных по
+функциональному признаку. При
+описании команд используются
+мнемокоды языка ассемблера МК48, а
+операции, выполняемые по командам,
+описываются на языке
+микрооператоров с использованием
+символических имен и сокращений,
+которые перечисляются в списке
+сокращений. </font></p>
+
+<p align="center"><a name="Таблица 2"></a><font size="4"><b>Таблица
+2. Команды, модифицирующие флаги</b> </font></p>
+<div align="center"><center>
+
+<table border="1" cellpadding="0" cellspacing="0"
+bgcolor="#FFFFFF">
+    <tr>
+        <td align="center"><dl>
+            <dt><b>Команды</b></dt>
+        </dl>
+        </td>
+        <td align="center"><dl>
+            <dt><b>Флаги </b></dt>
+        </dl>
+        </td>
+        <td align="center"><dl>
+            <dt><b>Команды</b></dt>
+        </dl>
+        </td>
+        <td align="center"><dl>
+            <dt><b>Флаги </b></dt>
+        </dl>
+        </td>
+    </tr>
+    <tr>
+        <td align="center"><dl>
+            <dt>ADD,ADDC </dt>
+        </dl>
+        </td>
+        <td align="center"><dl>
+            <dt>C, AC</dt>
+        </dl>
+        </td>
+        <td align="center"><dl>
+            <dt>JTF</dt>
+        </dl>
+        </td>
+        <td align="center"><dl>
+            <dt>TF = 0</dt>
+        </dl>
+        </td>
+    </tr>
+    <tr>
+        <td align="center"><dl>
+            <dt>CLR C</dt>
+        </dl>
+        </td>
+        <td align="center"><dl>
+            <dt>C = 0</dt>
+        </dl>
+        </td>
+        <td align="center"><dl>
+            <dt>MOV PSW, A</dt>
+        </dl>
+        </td>
+        <td align="center"><dl>
+            <dt>C,AC,F0,BS</dt>
+        </dl>
+        </td>
+    </tr>
+    <tr>
+        <td align="center"><dl>
+            <dt>CPL C</dt>
+        </dl>
+        </td>
+        <td align="center"><dl>
+            <dt>C</dt>
+        </dl>
+        </td>
+        <td align="center"><dl>
+            <dt>RETR</dt>
+        </dl>
+        </td>
+        <td align="center"><dl>
+            <dt>C,AC,F0,BS</dt>
+        </dl>
+        </td>
+    </tr>
+    <tr>
+        <td align="center"><dl>
+            <dt>CLR F0</dt>
+        </dl>
+        </td>
+        <td align="center"><dl>
+            <dt>F0 = 0</dt>
+        </dl>
+        </td>
+        <td align="center"><dl>
+            <dt>RLC A</dt>
+        </dl>
+        </td>
+        <td align="center"><dl>
+            <dt>C</dt>
+        </dl>
+        </td>
+    </tr>
+    <tr>
+        <td align="center"><dl>
+            <dt>CLR F1</dt>
+        </dl>
+        </td>
+        <td align="center"><dl>
+            <dt>F1 = 0</dt>
+        </dl>
+        </td>
+        <td align="center"><dl>
+            <dt>RRC A</dt>
+        </dl>
+        </td>
+        <td align="center"><dl>
+            <dt>C</dt>
+        </dl>
+        </td>
+    </tr>
+    <tr>
+        <td align="center"><dl>
+            <dt>CPL F0</dt>
+        </dl>
+        </td>
+        <td align="center"><dl>
+            <dt>F0</dt>
+        </dl>
+        </td>
+        <td align="center"><dl>
+            <dt>SEL MB0,SEL MB1</dt>
+        </dl>
+        </td>
+        <td align="center"><dl>
+            <dt>DBF</dt>
+        </dl>
+        </td>
+    </tr>
+    <tr>
+        <td align="center"><dl>
+            <dt>CPL F1</dt>
+        </dl>
+        </td>
+        <td align="center"><dl>
+            <dt>F1</dt>
+        </dl>
+        </td>
+        <td align="center"><dl>
+            <dt>SEL RB0, SEL RB1</dt>
+        </dl>
+        </td>
+        <td align="center"><dl>
+            <dt>BS</dt>
+        </dl>
+        </td>
+    </tr>
+    <tr>
+        <td align="center"><dl>
+            <dt>DA А</dt>
+        </dl>
+        </td>
+        <td align="center"><dl>
+            <dt>C, AC</dt>
+        </dl>
+        </td>
+        <td align="center">&nbsp;</td>
+        <td align="center">&nbsp;</td>
+    </tr>
+</table>
+</center></div>
+
+<p align="center">&nbsp;</p>
+
+<p align="left"><a href="#содержание"><font
+color="#0000FF" size="4">Система команд МК48 </font></a></p>
+
+<hr color="#008000">
+
+<p align="left"><a
+name="Группа команд пересылки данных"></a><font
+color="#000000" size="5"><b>3.2. Группа команд
+пересылки данных</b> </font></p>
+
+<hr color="#008000">
+
+<p><font size="4">Данная группа состоит из
+24 команд (</font><a href="#tabl 2.3."><font
+color="#FF0000" size="4">табл. 2.3.</font></a><font size="4">).
+Все команды (кроме MOV PSW, А) не
+оказывают воздействия на флаги.
+Команды пересылки данных внутри МК
+выполняются за один машинный цикл,
+обмен с внешней памятью и портами
+требует двух машинных циклов. </font></p>
+
+<p><font size="4"><b>Структура
+информационных связей.</b> На </font><a
+href="#рис 2.9."><font color="#FF0000" size="4">рис. 2.9</font></a><font
+size="4"> представлен граф возможных
+пересылок, который иллюстрирует
+структуру информационных связей
+МК48. Можно выделить девять типов
+операндов, между которыми
+выполняется информационный обмен.
+Операнды, участвующие в операциях
+пересылки, различаются по месту
+расположения и способу адресации. К
+операндам относятся: аккумулятор,
+регистры общего назначения, ССП,
+таймер, порты, непосредственный
+операнд, внешняя и резидентная
+память данных и память программ
+(ПП). Аккумулятор является как бы
+&quot;почтовым ящиком&quot;, через
+который остальные устройства
+(операнды) могут обмениваться
+данными. К памяти программ
+существует только одностороний
+доступ для чтения. </font></p>
+
+<p align="center"><a name="рис 2.9."></a></p>
+
+<p align="center">&nbsp;</p>
+
+<p align="center"><img src="datagraph_mk48.gif" tppabs="http://ofap.ulstu.ru/res/REFER_BOOK_MK48&MK51/images/datagraph_mk48.gif"
+width="369" height="149"></p>
+
+<p align="center"><font size="4"><b>Рис. 2.9. Граф
+пересылок данных</b></font></p>
+
+<p><font size="4"><b>Форматы данных.</b>
+Большинство команд выполняет
+пересылку 8-битных (1-байтных)
+операндов. Существуют также
+несколько команд, оперирующих с
+4-битными операндами (тетрадами).
+Команды пересылки тетрад
+используются при обращении к
+4-битным портам внешней схемы
+расширителя ввода/вывода (Р4-Р7).</font></p>
+
+<p><font size="4"><b>Режимы передачи данных.</b>
+В МК48 возможна передача данных в
+двух режимах: пересылки (загрузки) и
+обмена. Пересылка предполагает
+передачу данных в направлении от
+источника к приемнику. При этом
+источник не изменяет своего
+содержимого. Обмен предполагает
+одновременную передачу данных в
+двух направлениях: в результате
+операции обмена изменяются
+значения обоих операндов,
+участвующих в операции. </font></p>
+
+<p>&nbsp;</p>
+
+<p><a name="tabl 2.3."></a><font size="4">Таблица 2.3.
+Группа команд пересылки данных .<br>
+(Т-тип команды, Б-формат в байтах,
+Ц-число машинных циклов) </font></p>
+<div align="center"><center>
+
+<table border="1" cellpadding="0" cellspacing="0"
+bgcolor="#FFFFFF">
+    <tr>
+        <td align="center"><p align="center"><font size="4"><b>Название
+        команды</b></font></p>
+        </td>
+        <td align="center"><p align="center"><font size="4"><b>Мнемокод</b></font></p>
+        </td>
+        <td align="center"><p align="center"><font size="4"><b>КОП</b></font></p>
+        </td>
+        <td align="center"><p align="center"><font size="4"><b>ТБЦ</b></font></p>
+        </td>
+        <td align="center"><p align="center"><font size="4"><b>Операция</b></font></p>
+        </td>
+    </tr>
+    <tr>
+        <td align="center"><b>Пересылка регистра
+        в аккумулятор </b></td>
+        <td align="center"><b>MOV А,Rn</b></td>
+        <td align="center"><b>11111rrr </b></td>
+        <td align="center"><b>1 1 1</b></td>
+        <td align="center"><b>(A) = (Rn)</b></td>
+    </tr>
+    <tr>
+        <td align="center"><b>Пересылка байта из
+        РПД в аккумулятор</b></td>
+        <td align="center"><b>MOV A,@Ri</b></td>
+        <td align="center"><b>111000i</b></td>
+        <td align="center"><b>1 1 1</b></td>
+        <td align="center"><b>(A) = ((Ri))</b></td>
+    </tr>
+    <tr>
+        <td align="center"><b>Пересылка
+        непосредственного операнда в
+        аккумулятор</b></td>
+        <td align="center"><b>MOV A,#d </b></td>
+        <td align="center"><b>00100011</b></td>
+        <td align="center"><b>2 2 2</b></td>
+        <td align="center"><b>(А) = #d</b></td>
+    </tr>
+    <tr>
+        <td align="center"><b>Пересылка
+        аккумулятора в регистр</b></td>
+        <td align="center"><b>MOV Rn,A</b></td>
+        <td align="center"><b>10101rrr</b></td>
+        <td align="center"><b>1 1 1</b></td>
+        <td align="center"><b>(Rn) = (A)</b></td>
+    </tr>
+    <tr>
+        <td align="center"><b>Пересылка
+        непосредственного операнда
+        врегистр</b></td>
+        <td align="center"><b>MOV Rn,#d</b></td>
+        <td align="center"><b>10111rrr</b></td>
+        <td align="center"><b>2 2 2</b></td>
+        <td align="center"><b>(Rn) = #d </b></td>
+    </tr>
+    <tr>
+        <td align="center"><b>Пересылка
+        аккумулятора в РПД </b></td>
+        <td align="center"><b> MOV @Ri,A</b></td>
+        <td align="center"><b>  1010000i  </b></td>
+        <td align="center"><b>1 1 1</b></td>
+        <td align="center"><b>((Ri)) = (A)</b></td>
+    </tr>
+    <tr>
+        <td align="center"><b>Пересылка
+        непосредственногооперанда в
+        РПД</b></td>
+        <td align="center"><b>MOV @Ri,#d</b></td>
+        <td align="center"><b>1011000i </b></td>
+        <td align="center"><b>2 2 2</b></td>
+        <td align="center"><b>((Ri)) = #d</b></td>
+    </tr>
+    <tr>
+        <td align="center"><b>Пересылка ССП
+        ваккумулятор </b></td>
+        <td align="center"><b>MOV A,PSW</b></td>
+        <td align="center"><b>11000111 </b></td>
+        <td align="center"><b>1 1 1</b></td>
+        <td align="center"><b> (A) = (PSW)</b></td>
+    </tr>
+    <tr>
+        <td align="center"><b>Пересылка
+        аккумулятора в ССП</b></td>
+        <td align="center"><b>MOV PSW,A</b></td>
+        <td align="center"><b>11010111</b></td>
+        <td align="center"><b>1 1 1</b></td>
+        <td align="center"><b>(PSW) = (А)</b></td>
+    </tr>
+    <tr>
+        <td align="center"><b>Пересылка
+        содержимого таймера/счетчика
+         в аккумулятор </b></td>
+        <td align="center"><b>MOV А,Т</b></td>
+        <td align="center"><b>01000010</b></td>
+        <td align="center"><b>1 1 1</b></td>
+        <td align="center"><b>(A) = (T)</b></td>
+    </tr>
+    <tr>
+        <td align="center"><b>Пересылка
+        аккумулятора в таймер/счетчик </b></td>
+        <td align="center"><b>MOV Т,А </b></td>
+        <td align="center"><b> 01100010 </b></td>
+        <td align="center"><b>1 1 1</b></td>
+        <td align="center"><b>(Т) = (А) </b></td>
+    </tr>
+    <tr>
+        <td align="center"><b>Пересылка байта из
+        ВПД в аккумулятор </b></td>
+        <td align="center"><b>MOVX A,@Ri</b></td>
+        <td align="center"><b>1000000i</b></td>
+        <td align="center"><b>1 1 2</b></td>
+        <td align="center"><b>(A) = ((Ri))</b></td>
+    </tr>
+    <tr>
+        <td align="center"><b>Пересылка
+        аккумулятора в ВПД </b></td>
+        <td align="center"><b>MOVX @Ri,A</b></td>
+        <td align="center"><b>1001000i</b></td>
+        <td align="center"><b>1 1 2</b></td>
+        <td align="center"><b>((Ri)) = (A)</b></td>
+    </tr>
+    <tr>
+        <td align="center"><b>Пересылка байта из
+        текущей страницы программной
+         памяти в аккумулятор </b></td>
+        <td align="center"><b>MOVP A,@A</b></td>
+        <td align="center"><b>10100011</b></td>
+        <td align="center"><b>1 1 2</b></td>
+        <td align="center"><b>(РС</b><font size="1"><b>0-7</b></font><b>)
+        = (A) <br>
+        (А) = ((PC)) </b></td>
+    </tr>
+    <tr>
+        <td align="center"><b>Пересылка байта из
+        третьей страницы программной
+        памяти  в аккумулятор         
+          </b></td>
+        <td align="center"><b> MOVP3 A,@A</b></td>
+        <td align="center"><b>11100011</b></td>
+        <td align="center"><b>1 1 2</b></td>
+        <td align="center"><b>(РС</b><font size="1"><b>0-7</b></font><b>)
+        = (А)<br>
+        (PC</b><font size="1"><b>8-11</b></font><b>) = 0011<br>
+        (А) = ((PC))</b></td>
+    </tr>
+    <tr>
+        <td align="center"><b>Обмен регистра с
+        аккумулятором</b></td>
+        <td align="center"><b>ХСН A,Rn</b></td>
+        <td align="center"><b>00101rrr</b></td>
+        <td align="center"><b>1 1 1</b></td>
+        <td align="center"><b> (A)&lt;-&gt;(Rn)</b></td>
+    </tr>
+    <tr>
+        <td align="center"><b>Обмен аккумулятора
+        с РПД </b></td>
+        <td align="center"><b> ХСН A,@Ri </b></td>
+        <td align="center"><b> 0010000i</b></td>
+        <td align="center"><b>1 1 1</b></td>
+        <td align="center"><b>(A)&lt;-&gt;((Ri))</b></td>
+    </tr>
+    <tr>
+        <td align="center"><b>Обмен младших
+        тетрад аккумулятора и байта
+        РПД  </b></td>
+        <td align="center"><b>XCHD A,@Ri</b></td>
+        <td align="center"><b>0011000i</b></td>
+        <td align="center"><b>1 1 1</b></td>
+        <td align="center"><b>(А</b><font size="1"><b>0-3</b></font><b>)&lt;-&gt;((Ri)</b><font
+        size="1"><b>0-3</b></font><font size="4"><b>)</b></font></td>
+    </tr>
+    <tr>
+        <td align="center"><b>Пересылка данных
+        из порта Рр (р =1,2) в аккумулятор </b></td>
+        <td align="center"><b>IN А,Рр</b></td>
+        <td align="center"><b>000010pp</b></td>
+        <td align="center"><b>1 1 2</b></td>
+        <td align="center"><b>(А) = (Рр)</b></td>
+    </tr>
+    <tr>
+        <td align="center"><b>Стробируемый ввод
+        данных из порта ВЦК
+                                        
+                    </b></td>
+        <td align="center"><b> INS A,BUS </b></td>
+        <td align="center"><b>00001000</b></td>
+        <td align="center"><b>1 1 2</b></td>
+        <td align="center"><b>(А) = (BUS)</b></td>
+    </tr>
+    <tr>
+        <td align="center"><b>Пересылка
+        аккумулятора в порт Рр   
+        (р=1,2) </b></td>
+        <td align="center"><b>OUTL Рр,А </b></td>
+        <td align="center"><b>001110pp</b></td>
+        <td align="center"><b>1 1 2</b></td>
+        <td align="center"><b>(Рр) = (А) </b></td>
+    </tr>
+    <tr>
+        <td align="center"><b>Стробируемый вывод
+        данных из аккумулятора <br>
+            в порт BUS </b></td>
+        <td align="center"><b>OUTL BUS, А</b></td>
+        <td align="center"><b> 00000010</b></td>
+        <td align="center"><b>1 1 2</b></td>
+        <td align="center"><b>(BUS) = (A)</b></td>
+    </tr>
+    <tr>
+        <td align="center"><b>Ввод тетрады из
+        порта Рр (р=4-7) схемы<br>
+        расширителя  </b></td>
+        <td align="center"><b> MOVD A,Pp</b></td>
+        <td align="center"><b>000011pp</b></td>
+        <td align="center"><b>1 1 2</b></td>
+        <td align="center"><b>(А</b><font size="1"><b>0-3</b></font><b>)
+        = (Pp)</b></td>
+    </tr>
+    <tr>
+        <td align="center"><b>Вывод тетрады в
+        порт Рр (р = 4 -7) схемы
+        расширителя          
+                 </b></td>
+        <td align="center"><b>MOVD Pp,A</b></td>
+        <td align="center"><b>001111pp</b></td>
+        <td align="center"><b>1 1 2</b></td>
+        <td align="center"><b>(Рр) = (А</b><font size="2"><sub><b>0-3</b></sub></font><b>)</b></td>
+    </tr>
+</table>
+</center></div>
+
+<p>&nbsp;</p>
+
+<p><font size="4"><b></b></font>&nbsp;</p>
+
+<p><font size="4"><b>Способы адресации.</b>
+Для обращения к данным
+используются четыре способа
+адресации:</font></p>
+
+<blockquote>
+    <p><font size="4">1)<strong>прямая</strong>, когда
+    адрес операнда содержится в теле
+    самой команды, например </font></p>
+</blockquote>
+
+<p align="center"><font color="#0080C0" size="4"><b>MOV A, RN</b></font><font
+color="#0000FF" size="4"> </font><font color="#FF00FF" size="4"><em>;
+(A)&lt;(RN)</em></font><font color="#000080" size="4"> </font></p>
+
+<p><font size="4">Номер регистра,
+пересылаемого в аккумулятор,
+указывается в трех младших битах
+кода операции (КОП); </font></p>
+
+<blockquote>
+    <p><font size="4">2) <strong>непосредственная</strong>,
+    когда сам 8-битный операнд
+    (константа) располагается
+    непосредственно в теле команды
+    (второй байт команды), например </font></p>
+</blockquote>
+
+<p align="center"><font color="#0080C0" size="4"><b>MOV A, #05</b></font><font
+color="#FF00FF" size="4"><em><b> </b></em><em>;(A)&lt;05 </em></font></p>
+
+<p><font size="4">Содержимое второго байта
+команды (05) пересылается в
+аккумулятор; </font></p>
+
+<blockquote>
+    <p><font size="4">3) <strong>косвенная</strong>,
+    при которой адрес операнда
+    располагается в регистре (RО или
+    R1) , например: </font></p>
+</blockquote>
+
+<p align="center"><font color="#0080C0" size="4"><b>MOV A, @R0</b></font><font
+color="#0000FF" size="4"><b> </b></font><font color="#FF00FF"
+size="4"><em>;(A)&lt;((R0)) </em></font></p>
+
+<p><font size="4">Содержимое ячейки РПД по
+адресу, хранимому в регистре R0,
+пересылается в аккумулятор; </font></p>
+
+<blockquote>
+    <p><font size="4">4) <strong>неявная</strong>, при
+    которой в коде операции
+    содержится неявное (по умолчанию)
+    указание на один из операндов.
+    Чаще всего таким операндом
+    является аккумулятор, как,
+    например, в команде </font></p>
+</blockquote>
+
+<p align="center"><font color="#0080C0" size="4"><b>MOV A, RN</b></font><font
+color="#0000FF" size="4"><b> </b></font><font color="#FF00FF"
+size="4"><em>;(A)&lt;(RN) </em></font></p>
+
+<p><font size="4"><b></b></font>&nbsp;</p>
+
+<p><font size="4"><b>Особенность передач
+через порты.</b> Поры Р1 и Р2
+представляют собой управляемые
+буферные регистры. При выдаче
+информации выводимый байт данных
+фиксируется в буферном регистре
+порта, а при вводе он не фиксируется
+и должен быть прочитан
+контроллером в течение перио-да
+присутствия байта на входах порта.
+Ориентация МК на применение в
+устройствах управления объектами
+привела к появлению в его системе
+команд таких команд, которые
+позволяют выполнять операции
+ввода/ вывода информации с
+использован маскирования, что
+предоставляет разработчику
+удобные средства обмена не только
+байтами, но отдельны-ми битами и их
+произвольными комбинациями.
+Схемотехника портов Р1 и Р2 такова,
+что ввод данных в некоторую линию
+возможен только в том случае, если
+предварительно в каждый бит порта
+программой МК была записана 1.</font></p>
+
+<p><font size="4">Порт BUS может выполнять
+все функции, перечисленные для
+портов Р1 и Р2, но в отличие от них он
+не может специфицировать отдельные
+линии на ввод или вывод. Все восемь
+линий порта BUS должны одновременно
+быть либо входными, либо выходными.
+По комарам МОVХ порт BUS используется
+в качестве двунаправленного
+синхронного канала для доступа к
+ВПД. </font></p>
+
+<p>&nbsp;</p>
+
+<p><a href="#содержание"><font color="#0000FF" size="4">Система
+команд МК48 </font></a></p>
+
+<hr color="#008000">
+
+<p align="left"><a
+name="Группа команд арифметических операции"></a><font
+color="#000000" size="5"><b>3.3. Группа команд
+арифметических операции</b></font><font
+color="#000000" size="4"><b> </b></font></p>
+
+<hr color="#008000">
+
+<p><font size="4">Данная группа состоит из
+12 команд (</font><a
+href="#табл арифм операций"><font
+color="#FF0000" size="4">табл. 2.4</font></a><font size="4">)
+и позволяет выпол-нять следующие
+операции над 8-битными целыми
+двоичными числами без знака:
+двоичное сложение (АDD), двоичное
+сложение с учетом пе-реноса (АDDС) ,
+десятичная коррекция (DA) , инкремент
+(INС) и декре-мент (DЕС). </font></p>
+
+<p><font size="4">При сложении
+используется неявная адресации
+источника первого операнда и места
+назначения результата, в качестве
+которых выступает аккумулятор.
+Содержимое аккумулятора А можно
+сложить с регистром, константой и
+ячейкой РПД. В результате
+суммирования возможно появление
+переноса, который фиксируется в
+специальном триггере переноса
+(флаг С). Команда сложения с учетом
+переноса позволяет вы-полнять
+суммирование многобайтных чисел. </font></p>
+
+<p><font size="4">При необходимости
+выполнять двоичное вычитание
+требуется внести вычитаемое в
+дополнительный код и произвести
+сложение с умень-шаемым. </font></p>
+
+<p><font size="4">Все более сложные
+операции (умножение, деление)
+выполняются по подпрограммам. </font></p>
+
+<p><a
+href="javascript:if(confirm('http://ofap.ulstu.ru/res/REFER_BOOK_MK48&MK51/mk48/обраб_данных_мк48.htm  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://ofap.ulstu.ru/res/REFER_BOOK_MK48&MK51/mk48/обраб_данных_мк48.htm#передачи данных'" tppabs="http://ofap.ulstu.ru/res/REFER_BOOK_MK48&MK51/mk48/обраб_данных_мк48.htm#передачи данных"><font
+size="4"><b><tt><br>
+</tt></b></font></a><a
+name="табл арифм операций"></a><font size="4">Т
+а б л и ц а 2. 4. Группа команд
+арифметических операций .<br>
+(Т-тип команды, Б-формат в байтах,
+Ц-число машинных циклов) </font></p>
+<div align="center"><center>
+
+<table border="1" cellpadding="0" cellspacing="0"
+bgcolor="#FFFFFF">
+    <tr>
+        <td align="center"><p align="center"><font size="4"><strong>Название
+        команды</strong></font></p>
+        </td>
+        <td align="center"><p align="center"><font size="4"><strong>Мнемокод</strong></font></p>
+        </td>
+        <td align="center"><p align="center"><font size="4"><strong>КОП</strong></font></p>
+        </td>
+        <td align="center"><p align="center"><font size="4"><strong>Т Б Ц</strong></font></p>
+        </td>
+        <td align="center"><p align="center"><font size="4"><strong>Операция</strong></font></p>
+        </td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Сложение
+        регистра с аккумулятором</font></td>
+        <td align="center"><font size="4">ADD А,Rn</font></td>
+        <td align="center"><font size="4">01101rrr</font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4">(A) = (A)+(Rn) </font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Сложение
+        байта из РПД с <br>
+        аккумулятором</font></td>
+        <td align="center"><font size="4">ADD A,@Ri</font></td>
+        <td align="center"><font size="4">0110000i</font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4">(A) = (A)+((Ri))</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Сложение
+        константы с аккумулятором </font></td>
+        <td align="center"><font size="4">ADD A,#d </font></td>
+        <td align="center"><font size="4">00000011</font></td>
+        <td align="center"><font size="4">2 2 2</font></td>
+        <td align="center"><font size="4">(А) = (A)+#d </font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Сложение
+        регистра с
+        аккумулятором и переносом                          
+        </font></td>
+        <td align="center"><font size="4">ADDC A,Rn </font></td>
+        <td align="center"><font size="4">01111rrr</font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4">(A) = (A)+(Rn)+(С)</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Сложение
+        байта из РПД с аккумулято-<br>
+        ром и переносом</font></td>
+        <td align="center"><font size="4">ADDC A,@Ri</font></td>
+        <td align="center"><font size="4">0111000i</font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4">(A) = (A)+((Ri))+(С)</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Сложение
+        константы с аккумулятором и
+        переносом </font></td>
+        <td align="center"><font size="4">ADDC A,@d</font></td>
+        <td align="center"><font size="4">00010011</font></td>
+        <td align="center"><font size="4">2 2 2</font></td>
+        <td align="center"><font size="4">(A) = (A)+#d+(C)</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Десятичная
+        коррекция аккумулятора</font></td>
+        <td align="center"><font size="4">DA А</font></td>
+        <td align="center"><font size="4">01010111</font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4">если ((A</font><sub>0-3</sub><font
+        size="4">)&gt;9) \/<br>
+        ((AC)=1),то (A</font><sub>0-3</sub><font size="4">)<br>
+        = (A</font><sub>0-3</sub><font size="4">)+6 затем,<br>
+        если ((A</font><sub>4-7</sub><font size="4">)&gt;9)
+        \/<br>
+                ((C) = 1)),   то <br>
+        (A</font><sub>4-7</sub><font size="4">) = (A</font><sub>4-7</sub><font
+        size="4">)+6</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Инкремент
+        аккумулятора </font></td>
+        <td align="center"><font size="4">INC А </font></td>
+        <td align="center"><font size="4">00010111</font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4">(А) = (А)+1 </font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Инкремент
+        регистра </font></td>
+        <td align="center"><font size="4">INC Rn </font></td>
+        <td align="center"><font size="4">00011rrr</font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4">(Rn) = (Rn)+l </font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Инкремент
+        байта в РПД </font></td>
+        <td align="center"><font size="4">INC @Ri</font></td>
+        <td align="center"><font size="4">0001000i</font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4">((Ri)) = ((Ri))+l </font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Декремент
+        аккумулятора </font></td>
+        <td align="center"><font size="4">DEC A</font></td>
+        <td align="center"><font size="4">00000111</font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4">(A) = (A)-l </font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Декремент
+        регистра </font></td>
+        <td align="center"><font size="4">DEC Rn</font></td>
+        <td align="center"><font size="4">11001rrr</font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4">(Rn) = (Rn)-1</font></td>
+    </tr>
+</table>
+</center></div>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><a href="#содержание"><font color="#0000FF" size="4">Система
+команд МК48 </font></a></p>
+
+<hr color="#008000">
+
+<p align="left"><a
+name="Группа команд логических операций"></a><font
+color="#000000" size="5"><b>3.4. Группа команд
+логических операций</b></font><font
+color="#000000" size="4"><b> </b></font></p>
+
+<hr color="#008000">
+
+<p><font size="4">Данная группа состоит из
+28 команд (</font><a href="#логич опер"><font
+color="#FF0000" size="4">табл. 2.5</font></a><font size="4">)
+и позволяет вы-полнять следующие
+операции над байтами: дизъюнкцию,
+конъюнкцию, исключающее ИЛИ,
+инверсию, сброс и сдвиг. Две команды
+(сброс и инверсия) позволяют
+выполнять операции над битами. </font></p>
+
+<p><font size="4">Широко используется
+неявная адресация аккумулятора в
+качестве источника операции места
+фиксации результата. Вторым
+операндом в командах может быть
+регистр, константа или ячейка РПД.
+Существуют команды (АNL, ОRL),
+оперирующие с портами, что
+позволяет эффективно управлять
+значениями отдельных бит при
+вводе/выводе информации. </font></p>
+
+<p><a name="логич опер"></a><font size="4">Таблица
+2.5. Группа команд логических
+операций .<br>
+(Т-тип команды, Б-формат в байтах,
+Ц-число машинных циклов) </font></p>
+<div align="center"><center>
+
+<table border="1" cellpadding="0" cellspacing="0"
+bgcolor="#FFFFFF">
+    <tr>
+        <td align="center"><p align="center"><font size="4"><strong>Название
+        команды</strong></font></p>
+        </td>
+        <td align="center"><p align="center"><font size="4"><strong>Мнемокод</strong></font></p>
+        </td>
+        <td align="center"><p align="center"><font size="4"><strong>КОП</strong></font></p>
+        </td>
+        <td align="center"><p align="center"><font size="4"><strong>Т Б Ц</strong></font></p>
+        </td>
+        <td align="center"><p align="center"><font size="4"><strong>Операция</strong></font></p>
+        </td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Логическое И
+        регистра и аккумулятора </font></td>
+        <td align="center"><font size="4">ANL A,Rn</font></td>
+        <td align="center"><font size="4">01011rrr </font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4">   (А) = (А)/\(Rn)
+        </font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Логическое И
+        байта из РПД и аккумулятора
+                    </font></td>
+        <td align="center"><font size="4">ANL A,@Ri</font></td>
+        <td align="center"><font size="4"> 0101000i </font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4">  (A) = (A)/\((Ri))</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Логическое И
+        константы и аккумулятора     </font></td>
+        <td align="center"><font size="4">ANL А,#d</font></td>
+        <td align="center"><font size="4">  01010011 </font></td>
+        <td align="center"><font size="4">2 2 2</font></td>
+        <td align="center"><font size="4">(А) = (А)/\#d </font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Логическое
+        ИЛИ регистра и <br>
+        аккумулятора </font></td>
+        <td align="center"><font size="4">ORL A,Rn</font></td>
+        <td align="center"><font size="4">01001rrr </font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4">  (A) = (A)\/(Rn) </font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Логическое
+        ИЛИ байта из РПД и<br>
+        аккумулятора</font></td>
+        <td align="center"><font size="4">ORL A,@Ri</font></td>
+        <td align="center"><font size="4">0100000i </font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4">(A) = (A)\/((Ri)) </font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Логическое
+        ИЛИ константы и <br>
+        аккумулятора</font></td>
+        <td align="center"><font size="4">ORL A,#d</font></td>
+        <td align="center"><font size="4">01000011  </font></td>
+        <td align="center"><font size="4">2 2 2</font></td>
+        <td align="center"><font size="4"> (A) = (A)\/#d </font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Исключающее
+        ИЛИ регистра и аккумулятора</font></td>
+        <td align="center"><font size="4">XRL A,Rn </font></td>
+        <td align="center"><font size="4">  11011rrr  </font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4"> (A) = (A)<strike>\/</strike>(Rn)</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Исключающее
+        ИЛИ байта из РПД и аккумулятора
+        </font></td>
+        <td align="center"><font size="4">XRL A,@Ri</font></td>
+        <td align="center"><font size="4">1101100i</font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4">(A) = (A)<strike>\/</strike>((Ri))
+        </font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Исключающее
+        ИЛИ константы и аккумулятора</font></td>
+        <td align="center"><font size="4">XRL A,#d </font></td>
+        <td align="center"><font size="4">11010011</font></td>
+        <td align="center"><font size="4">2 2 2</font></td>
+        <td align="center"><font size="4">(A) = (A)<strike>\/</strike>#d</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Сброс
+        аккумулятора</font></td>
+        <td align="center"><font size="4">CLR A </font></td>
+        <td align="center"><font size="4">00100111</font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4">(A) = 0 </font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Инверсия
+        аккумулятора</font></td>
+        <td align="center"><font size="4">CPL A </font></td>
+        <td align="center"><font size="4">00110111</font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4">(A) = (не A) </font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Обмен тетрад
+        в аккумуляторе</font></td>
+        <td align="center"><font size="4">SWAP А </font></td>
+        <td align="center"><font size="4">01000111</font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4">(А</font><font
+        size="2">0-3</font><font size="4">) &lt;-&gt; (A</font><font
+        size="2">4-7</font><font size="4">) </font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Циклический
+        сдвиг влево<br>
+        аккумулятора </font></td>
+        <td align="center"><font size="4">RL А</font></td>
+        <td align="center"><font size="4">11100111</font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4">(A</font><font size="2">n+1</font><font
+        size="4">) = (A</font><font size="3">n</font><font
+        size="4">)   ,      n=0?6 <br>
+          (А</font><font size="2">0</font><font size="4">) =
+        (А</font><font size="2">7</font><font size="4">)</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Сдвиг влево
+        аккумулятора через перенос </font></td>
+        <td align="center"><font size="4">RLC А</font></td>
+        <td align="center"><font size="4">11110111</font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4"> (А</font><font
+        size="3">n+1</font><font size="4">) = (A</font><font
+        size="3">n</font><font size="4">)   ,    n=0?6 (А</font><font
+        size="1">0</font><font size="4">) = (С)   ;   (С)
+        = (А</font><font size="2">7</font><font size="4">)</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Циклический
+        сдвиг вправо аккумумулятора </font></td>
+        <td align="center"><font size="4">RR А</font></td>
+        <td align="center"><font size="4">01110111 </font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4">(A</font><font size="3">n</font><font
+        size="4">) = (A</font><font size="3">n</font><font
+        size="2">+</font><font size="3">l</font><font size="4">)     ,
+        n=0?6 <br>
+         (A</font><font size="2">7</font><font size="4">) = (A</font><font
+        size="2">0</font><font size="4">)</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Сдвиг вправо
+        аккумулятора через перенос </font></td>
+        <td align="center"><font size="4"> RRC A</font></td>
+        <td align="center"><font size="4">01100111</font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4"> (A</font><font
+        size="3">n</font><font size="4">) = (A</font><font
+        size="3">n+l</font><font size="4">)     , n=0?6<br>
+         (A</font><font size="2">7</font><font size="4">) =
+        (С)  ;  (С) =(A</font><font size="2">0</font><font
+        size="4">)</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Логическое И
+        константы и порта Рр   (p = 1,2) </font></td>
+        <td align="center"><font size="4">ANL Pp,#d </font></td>
+        <td align="center"><font size="4">100110pp</font></td>
+        <td align="center"><font size="4">2 2 2</font></td>
+        <td align="center"><font size="4"> (Pp) = (Pp)/\#d</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Логическое И
+        константы и порта ВUS </font></td>
+        <td align="center"><font size="4">ANL BUS,#d</font></td>
+        <td align="center"><font size="4">10011000</font></td>
+        <td align="center"><font size="4">2 2 2</font></td>
+        <td align="center"><font size="4">(BUS) = (BUS)/\#d </font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Логическое И
+        аккумулятора и порта Рр (p=4-7) </font></td>
+        <td align="center"><font size="4">ANLD Pp,A</font></td>
+        <td align="center"><font size="4">100111pp </font></td>
+        <td align="center"><font size="4">1 1 2</font></td>
+        <td align="center"><font size="4">(Pp) = (Pp)/\(A</font><font
+        size="2">0-3</font><font size="4">)</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Логическое
+        ИЛИ константы и порта ВUS </font></td>
+        <td align="center"><font size="4">ORL BUS,#d</font></td>
+        <td align="center"><font size="4"> 10001000 </font></td>
+        <td align="center"><font size="4">2 2 2</font></td>
+        <td align="center"><font size="4"> (BUS) = (BUS)\/#d</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Логическое
+        ИЛИ аккумулятора и порта Pp (p=4-7) </font></td>
+        <td align="center"><font size="4">ORLD Pp,A</font></td>
+        <td align="center"><font size="4">100011pp</font></td>
+        <td align="center"><font size="4">1 1 2</font></td>
+        <td align="center"><font size="4">(Рр) = (Рр)\/(А</font><font
+        size="2">0-3</font><font size="4">)</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Сброс
+        переноса</font></td>
+        <td align="center"><font size="4">CLR С</font></td>
+        <td align="center"><font size="4">10010111</font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4"> (С) = 0 </font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Сброс флага
+        F0 </font></td>
+        <td align="center"><font size="4">CLR F0</font></td>
+        <td align="center"><font size="4">10000101</font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4">(F0) = 0</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Сброс флага
+        F1 </font></td>
+        <td align="center"><font size="4">CLR F1</font></td>
+        <td align="center"><font size="4">10100101 </font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4">(F1) = 0 </font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Инверсия
+        переноса </font></td>
+        <td align="center"><font size="4">CPL С</font></td>
+        <td align="center"><font size="4">10100111</font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4">(C) = (неC)</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Инверсия
+        флага F0 </font></td>
+        <td align="center"><font size="4">CPL F0</font></td>
+        <td align="center"><font size="4">10010101</font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4">(F0) = (не F0)</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Инверсия
+        флага F1 </font></td>
+        <td align="center"><font size="4">CPL F1</font></td>
+        <td align="center"><font size="4">10110101 </font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4">(F1) = (не F1) </font></td>
+    </tr>
+</table>
+</center></div>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><a href="#содержание"><font color="#0000FF" size="4">Система
+команд МК48 </font></a></p>
+
+<hr color="#008000">
+
+<p align="left"><a
+name="Группа команд передачи управления"></a><font
+color="#000000" size="5"><strong>3.5. Группа команд
+передачи управления</strong></font><font
+color="#000000" size="4"><strong> </strong></font></p>
+
+<hr color="#008000">
+
+<p><font size="4">Данную группу образуют 19
+команд передачи управления, из них
+две команды безусловного перехода,
+14 команд условного перехода,
+команда вызова подпрограмм и две
+команды возврата из подпрограмм. В </font><a
+href="#ком передачи управл"><font
+color="#FF0000" size="4">табл. 2.6 </font></a><font size="4">приводится
+описание команд передачи
+управления. </font></p>
+
+<p><a name="ком передачи управл"></a><font
+size="4">Таблица 2.6. Группа команд
+передачи управления .<br>
+(Т-тип команды, Б-формат в байтах,
+Ц-число машинных циклов) </font></p>
+<div align="center"><center>
+
+<table border="1" cellpadding="0" cellspacing="0"
+bgcolor="#FFFFFF">
+    <tr>
+        <td align="center"><p align="center"><font size="4"><strong>Название
+        команды</strong></font></p>
+        </td>
+        <td align="center"><p align="center"><font size="4"><strong>Мнемокод</strong></font></p>
+        </td>
+        <td align="center"><p align="center"><font size="4"><strong>КОП</strong></font></p>
+        </td>
+        <td align="center"><p align="center"><font size="4"><strong>Т Б Ц</strong></font></p>
+        </td>
+        <td align="center"><p align="center"><font size="4"><strong>Операция</strong></font></p>
+        </td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Безусповный
+        переход </font></td>
+        <td align="center"><font size="4">JMP ad11</font></td>
+        <td align="center"><font size="5">а</font><font size="2">10</font><font
+        size="5">а</font><font size="2">9</font><font size="5">а</font><font
+        size="2">8</font><font size="4">00100</font></td>
+        <td align="center"><font size="4">3 2 2</font></td>
+        <td align="center"><font size="4">(PC</font><font
+        size="2">0-10</font><font size="4">) = ad11,<br>
+        (PC</font><font size="2">11</font><font size="4">) = DBF</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Косвенный
+        переход в текущей странице ПП </font></td>
+        <td align="center"><font size="4">JMPP @A </font></td>
+        <td align="center"><font size="4">10110011 </font></td>
+        <td align="center"><font size="4">1 1 2</font></td>
+        <td align="center"><font size="4">(PC</font><font
+        size="2">0-7</font><font size="4">) = ((A))</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Декремент
+        регистра и переход,если нe нуль </font></td>
+        <td align="center"><font size="4">DJNZ Rn,ad</font></td>
+        <td align="center"><font size="4">11101rrr </font></td>
+        <td align="center"><font size="4">4 2 2</font></td>
+        <td align="center"><font size="4">(Rn) = (Rn)-1; если
+        <br>
+        (Rn) не = 0, тo (PC</font><font size="2">0-7</font><font
+        size="4">) = ad, иначе (PC) = (PC)+2</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Переход,
+        если перенос </font></td>
+        <td align="center"><font size="4">JC ad</font></td>
+        <td align="center"><font size="4">11110110 </font></td>
+        <td align="center"><font size="4">4 2 2</font></td>
+        <td align="center"><font size="4">Если (С) = 1, то
+        (РС</font><font size="2">0-7</font><font size="4">) =
+        ad, иначе (PC) = (PC) +2</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Переход
+        ,если нет переноса </font></td>
+        <td align="center"><font size="4">JNC ad </font></td>
+        <td align="center"><font size="4">11100110</font></td>
+        <td align="center"><font size="4">4 2 2</font></td>
+        <td align="center"><font size="4">Если (С)=0, то
+        (РС</font><font size="2">0-7</font><font size="4">) =
+        ad, иначе (PC) = (PC) +2</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Переход,
+        если аккумулятор содержит нуль</font></td>
+        <td align="center"><font size="4">JZ ad</font></td>
+        <td align="center"><font size="4">11000110</font></td>
+        <td align="center"><font size="4">4 2 2</font></td>
+        <td align="center"><font size="4">Если (А)=0, то
+        (РС</font><font size="2">0-7</font><font size="4">) =
+        аd, иначе (PC) = (PC) +2</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Переход,
+        если аккумулятор содержит нe
+        нуль </font></td>
+        <td align="center"><font size="4">JNZ ad </font></td>
+        <td align="center"><font size="4">10010110</font></td>
+        <td align="center"><font size="4">4 2 2</font></td>
+        <td align="center"><font size="4">Если (А) не= 0,
+        то(РС</font><font size="2">0-7</font><font size="4">)
+        = аd,<br>
+        иначе (PC) = (PC) +2</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Переход,
+        если на входе Т0 высокий
+        уровень </font></td>
+        <td align="center"><font size="4">JT0 ad </font></td>
+        <td align="center"><font size="4">00110110</font></td>
+        <td align="center"><font size="4">4 2 2</font></td>
+        <td align="center"><font size="4">Если Т0=1, то
+        (РС</font><font size="2">0-7</font><font size="4">) =
+        ad,<br>
+        иначе (PC) = (PC) + 2</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Переход,
+        если на входе Т0 низкий уровень </font></td>
+        <td align="center"><font size="4">JNT0 ad</font></td>
+        <td align="center"><font size="4">00100110</font></td>
+        <td align="center"><font size="4">4 2 2</font></td>
+        <td align="center"><font size="4">Если Т0=0, то
+        (РС</font><font size="2">0-7</font><font size="4">) =
+        ad,<br>
+        иначе (PC) = (PC) +2</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Переход,
+        если на входе Т1 высокий
+        уровень </font></td>
+        <td align="center"><font size="4">JT1 ad</font></td>
+        <td align="center"><font size="4">01010110</font></td>
+        <td align="center"><font size="4">4 2 2</font></td>
+        <td align="center"><font size="4">Если Т1=1, то
+        (РС</font><font size="2">0-7</font><font size="4">) =
+        ad,<br>
+        иначе (PC) = (PC) +2</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Переход,
+        если на входеТ1 низкий уровень </font></td>
+        <td align="center"><font size="4">JNT1 ad</font></td>
+        <td align="center"><font size="4">01000110 </font></td>
+        <td align="center"><font size="4">4 2 2</font></td>
+        <td align="center"><font size="4">Если Т1=0, то
+        (РС</font><font size="2">0-7</font><font size="4">) =
+        ad,<br>
+        иначе (PC) = (PC) + 2</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Переход,
+        если флаг F0 установлен </font></td>
+        <td align="center"><font size="4">JF0 ad </font></td>
+        <td align="center"><font size="4">10110110</font></td>
+        <td align="center"><font size="4">4 2 2</font></td>
+        <td align="center"><font size="4">Если (F0)=1, то
+        (РС</font><font size="2">0-7</font><font size="4">) =
+        ad, иначе (PC) = (PC) + 2</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Переход,
+        если флаг F1 установлен </font></td>
+        <td align="center"><font size="4">JF1 ad</font></td>
+        <td align="center"><font size="4">01110110</font></td>
+        <td align="center"><font size="4">4 2 2</font></td>
+        <td align="center"><font size="4">Если(F1)=1, (РС</font><font
+        size="2">0-7</font><font size="4">) = ad, <br>
+        иначе (PC) = (PC) + 2</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Переход,
+        если флаг переполнения таймера
+        установлен </font></td>
+        <td align="center"><font size="4">JTF ad</font></td>
+        <td align="center"><font size="4">00010110</font></td>
+        <td align="center"><font size="4">4 2 2</font></td>
+        <td align="center"><font size="4">Если TF=1,то <br>
+        ТF = 0  ,   (PC</font><font size="2">0-7</font><font
+        size="4">) = ad,<br>
+        иначе (PC) = (PC) + 2</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Переход,
+        если на входе <sup>¬</sup>ЗПР низкий
+        уровень </font></td>
+        <td align="center"><font size="4">JNI ad </font></td>
+        <td align="center"><font size="4">10000110</font></td>
+        <td align="center"><font size="4">4 2 2</font></td>
+        <td align="center"><font size="4">Если <sup>¬</sup>ЗПР=0,
+        то (РС</font><font size="2">0-7</font><font size="4">)
+        = ad, <br>
+        иначе (PC) = (PC) + 2</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Переход,
+        если бит аккумулятора равен
+        единице </font></td>
+        <td align="center"><font size="4">JBb ad </font></td>
+        <td align="center"><font size="4">bbb10010 </font></td>
+        <td align="center"><font size="4">4 2 2 </font></td>
+        <td align="center"><font size="4">Если (Вb) = 1,
+        то (PC</font><font size="2">0-7</font><font size="4">)
+        = ad,<br>
+        (b=0 -7) иначе (PC) = (PC) + 2 </font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Вызов
+        подпрограммы </font></td>
+        <td align="center"><font size="4">CALL ad11</font></td>
+        <td align="center"><font size="5">а</font><font size="2">10</font><font
+        size="5">а</font><font size="2">9</font><font size="5">а</font><font
+        size="2">8</font><font size="4">10100</font></td>
+        <td align="center"><font size="4">3 2 2</font></td>
+        <td align="center"><font size="4">((SP)) = (PC),(PSW</font><font
+        size="2">4-7</font><font size="4">), <br>
+        (SP) = (SP) + 1, (PC</font><font size="2">11</font><font
+        size="4">) = DBF, (РС</font><font size="1">0-10</font><font
+        size="4">) = ad11 </font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Возврат из
+        подпрограммы </font></td>
+        <td align="center"><font size="4">RET</font></td>
+        <td align="center"><font size="4">10000011</font></td>
+        <td align="center"><font size="4">1 1 2</font></td>
+        <td align="center"><font size="4">(SP) = (SP)-1, (PC) =
+        ((SP)) </font><br>
+        </td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Возврат из
+        подпрограммы и восстановление
+        ССП </font></td>
+        <td align="center"><font size="4">RETR</font></td>
+        <td align="center"><font size="4">10010011</font></td>
+        <td align="center"><font size="4">1 1 2</font></td>
+        <td align="center"><font size="4">(SP) = (SP) - 1,(PC) =
+        ((SP)), (PSW</font><font size="2">4-7</font><font
+        size="4">) = ((SP))</font></td>
+    </tr>
+</table>
+</center></div>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><font size="4"><b>Команды ветвления с
+прямой адресацией.</b> В большинстве
+команд прямо указывается адрес
+перехода. В теле команды при этом
+содержится 8 (ad) или 11 (ad11) бит адреса
+перехода. Команда JMP позволяет
+передать управление в любое место
+2048-байтного банка памяти про-грамм
+(ПП) . Номер банка ПП определяется
+флагом DBF, значение кото-рого
+копируется в старший бит счетчика
+команд (РС11) при выполне-нии команды
+JMP или САLL. Для перехода из нулевого
+банка ПП в пер-вый недостаточно
+только установить флаг DBF,
+необходимо также выполнить команду
+перехода JMP, которая изменит
+значение старшего бита счетчика
+команд. </font></p>
+
+<p><font size="4">Все остальные команды
+(кроме команд возврата) содержат
+только восемь младших бит адреса
+перехода. При этом оказывается
+возможным осуществить переход
+только в пределах одной страницы ПП
+(256 байт).</font></p>
+
+<p><font size="4">Если команда короткого
+перехода расположена на границе
+двух стра-ниц (т.е. первый байт
+команды на одной странице, а второй
+- на сле-дующей), то переход будет
+выполнен в пределах той страницы,
+где располагается второй байт
+команды. Для условного перехода с
+одной страницы на другую можно
+воспользоваться тандемом из
+команды условно-го перехода и
+длинного безусловного перехода
+(JМР). </font></p>
+
+<p><font size="4"><b>Переход по косвенному
+адресу.</b> Команда JMPP осуществляет
+переход по адресу, содержащемуся в
+ячейке ПП, на которую указывает
+содержимое аккумулятора. Таким
+образом, аккумулятор содержит
+адрес адреса перехода. Ячейка с
+адресом перехода должна находиться
+на той же странице ПП, чти и команда
+перехода JМРР. Команда косвенного
+пе-рехода обеспечивает простой
+доступ к таблице, содержащей
+векторы переходов по программе в
+зависимости от содержимого
+аккумулятора, что позволяет легко
+реализовать механизм
+множественных ветвлений.</font></p>
+
+<p><font size="4"><b>Условные переходы.</b> По
+командам условных переходов могут
+прове-ряться не только внутренние
+флаги, но и некоторые сигналы на
+внешних входах МК. Это позволяет
+эффективно выполнять ветвления в
+програм-ме без использования
+процедуры предварительного ввода и
+последующе-го сравнения. Все
+команды условных переходов
+используют прямую короткую
+адресацию, что накладывает
+определенные ограничения на
+размещение программ в памяти.
+Анализируемые признаки за
+исключением С и F0 не фиксируются в
+специальных триггерах флагов, а
+пред-ставляются мгновенными
+значениями сигналов в АЛУ или на
+соответ-ствующих входах МК. </font></p>
+
+<p><font size="4"><b>Программные циклы.</b>
+Для организации цикла удобно
+использовать команду DJNZ. Счетчик
+циклов организуется в одном из
+регистров те-кущего банка, для чего
+в этот регистр загружайся число
+повторений цикла. При выполнении
+команды DJNZ производится декремент
+и по-следующая проверка на нуль
+содержимого регистра-счетчика
+циклов. Если его содержимое
+оказывается не нулевым, то
+происходит переход к началу цикла,
+иначе - выход из цикла. Структура
+программы при этом будет следующей:
+</font></p>
+
+<blockquote>
+    <p><font color="#0080C0" size="4"><b>MOV RN, #N  </b></font><font
+    color="#0000FF" size="4"><b>         </b></font><font
+    color="#000080" size="4"><b> </b></font><font color="#FF00FF"
+    size="4"><em>; Инициализация счетчиков
+    цикла </em></font></p>
+    <p><font color="#0080C0" size="4"><b>LOOP:      . . . .
+    .     </b></font><font color="#0000FF" size="4"><b>   
+           </b></font><font color="#FF00FF" size="4"><em> 
+      ;Тело цикла </em></font></p>
+    <p><font color="#0000FF" size="4"><b>       </b></font><font
+    color="#0080C0" size="4"><b>          . . . . .</b></font></p>
+    <p><font color="#0080C0" size="4"><b>CYCLE:  DJNZ RN, LOOP</b></font><font
+    color="#0000FF" size="4"> </font><font color="#FF00FF"
+    size="4"><em>;Декремент RN, и переход,
+    если не нуль </em></font></p>
+</blockquote>
+
+<p><font size="4">Следует отметить, что
+команды от метки LООР до метки СYСLЕ
+включительно должны находиться в
+пределах одной страницы памяти
+программ. </font></p>
+
+<p><font size="4"><b>Работа с
+подпрограммами.</b> Для вызова
+подпрограмм существует команда CALL,
+позволяющая обратиться в любое
+место текущего банка ПП. При вызове
+подпрограммы в стеке запоминается
+адрес воз-врата и часть ССП. Глубина
+вложений подпрограмм ограничена
+емкостью стека (16 байт) и не должна
+превышать восьми. </font></p>
+
+<p><font size="4">Для возврата из
+подпрограммы необходимо выполнить
+команду RЕТ, которая восстановит в
+счетчике команд адрес возврата. Для
+выхо-да из подпрограммы обработки
+прерывания служит команда RЕТR,
+которая кроме адреса возврата
+восстанавливает ССП и разрешает
+прерывания от данного источника. </font></p>
+
+<p><font size="4">При программировании МК
+необходимо внимательно
+отслеживать ситуацию вызова
+подпрограммы, находящейся в
+альтернативном (па отношению к
+текущему) банке ПП. В этом случае
+перед вызовом под-программы
+необходимо выбрать
+соответствующий банк памяти, а
+перед возвратом - восстановить
+старое значение DBF. Если в
+подпрограмме нет команды
+восстановления DBF, то возврат все же
+будет выполнен правильно (так как в
+стеке сохранен полный
+действительный адрес возврата),
+однако первая же команда длинного
+переходи передаст управление в
+альтернативный банк ПП. Если к
+подпрограмме произво-дятся
+обращения из разных банков памяти,
+то оказывается затрудни-тельно
+восстановить значение DBF перед
+возвратом. В этом случае можно
+рекомендовать использовать
+команду восстановления DBF в
+основной программе вслед за
+командой вызова. Обращаем внимание
+читателя на указанные особенности
+как на возможный источник ошибок
+программирования. Пусть, например,
+требуется вызвать подпрограмму с
+именем SUBROUT, находящуюся в первом
+банке ПП, из программы,
+расположенной в нулевом банке ПП.
+Корректный вызов подпрограммы
+реализуется последовательностью
+команд </font></p>
+
+<blockquote>
+    <p><font color="#0080C0" size="4"><b>SEL MB1       </b></font><font
+    color="#0000FF" size="4"><b>               </b></font><font
+    color="#000080" size="4"><b> </b></font><font color="#FF00FF"
+    size="4"><em>;Установка флага </em></font></p>
+    <p><font color="#0080C0" size="4"><b>DBF CALL SUBROUT</b></font><font
+    color="#0000FF" size="4"><b> </b></font><font color="#FF00FF"
+    size="4"><em>;Вызов подпрограммы (после
+    возврата </em></font></p>
+    <blockquote>
+        <blockquote>
+            <blockquote>
+                <blockquote>
+                    <p><font color="#FF00FF" size="4"><em> ;
+                    из подпрограммы флаг DBF
+                    ;остается равным 1) </em></font></p>
+                </blockquote>
+            </blockquote>
+        </blockquote>
+    </blockquote>
+    <p><font color="#0080C0" size="4"><b>SEL MB0  </b></font><font
+    color="#0000FF" size="4"><b>                   </b></font><font
+    color="#FF00FF" size="4"><em> ;Восстановление
+    DBF во избежание</em></font></p>
+    <blockquote>
+        <blockquote>
+            <blockquote>
+                <blockquote>
+                    <p><font color="#FF00FF" size="4"><em>;ошибочного
+                    перехода в банк 1</em></font></p>
+                </blockquote>
+            </blockquote>
+        </blockquote>
+    </blockquote>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><a href="#содержание"><font color="#0000FF" size="4">Система
+команд МК48 </font></a></p>
+
+<hr color="#008000">
+
+<p align="left"><a
+name="руппа команд управления режимом работы МК"></a><font
+color="#000000" size="5"><b>3.6. Группа команд
+управления режимом работы МК </b></font></p>
+
+<hr color="#008000">
+
+<p><font size="4">В эту группу входят
+команды управления
+таймером/счетчиком, прерываниями и
+флагами переключения банков
+регистров и банков ПП. В </font><a
+href="#tabl 2.7."><font color="#FF0000" size="4">табл. 2.7</font></a><font
+size="4"> перечислены команды этой
+группы. </font></p>
+
+<p><a name="tabl 2.7."></a><font size="4">Таблица 2.7.
+Группа команд управления режимами
+работы МК48.<br>
+(Т-тип команды, Б-формат в байтах,
+Ц-число машинных циклов) </font></p>
+<div align="center"><center>
+
+<table border="1" cellpadding="0" cellspacing="0"
+bgcolor="#FFFFFF">
+    <tr>
+        <td align="center"><p align="center"><font size="4"><strong>Название
+        команды</strong></font></p>
+        </td>
+        <td align="center"><p align="center"><font size="4"><strong>Мнемокод</strong></font></p>
+        </td>
+        <td align="center"><p align="center"><font size="4"><strong>КОП</strong></font></p>
+        </td>
+        <td align="center"><p align="center"><font size="4"><strong>ТБЦ</strong></font></p>
+        </td>
+        <td align="center"><p align="center"><font size="4"><strong>ОПЕРАЦИЯ</strong></font></p>
+        </td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Запуск
+        таймера</font></td>
+        <td align="center"><font size="4">STRT T</font></td>
+        <td align="center"><font size="4">01010101</font></td>
+        <td align="center"><font size="4">1 1 1 </font></td>
+        <td align="center"><font size="3">Описание
+        приведено в тексте</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Запуск
+        счетчика </font></td>
+        <td align="center"><font size="4">STRT CNT</font></td>
+        <td align="center"><font size="4">01000101</font></td>
+        <td align="center"><font size="4">1 1 1 </font></td>
+        <td align="center">Описание приведено в
+        тексте</td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Останов
+        таймера/счетаика </font></td>
+        <td align="center"><font size="4">STOP TCNT</font></td>
+        <td align="center"><font size="4">01100101</font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center">Описание приведено в
+        тексте</td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Разрешение
+        прерывания от таймера/счетчика</font></td>
+        <td align="center"><font size="4">EN TCNTI </font></td>
+        <td align="center"><font size="4">00100101</font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center">Описание приведено в
+        тексте</td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Запрещение
+        прерывании от <br>
+        таймера/ счетчика </font></td>
+        <td align="center"><font size="4">DIS TCNTI</font></td>
+        <td align="center"><font size="4">00110101</font></td>
+        <td align="center"><font size="4">1 1 1 </font></td>
+        <td align="center">Описание приведено в
+        тексте</td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Разрешение
+        внешнего прерывания</font></td>
+        <td align="center"><font size="4">EN I </font></td>
+        <td align="center"><font size="4">00000101</font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center">Описание приведено в
+        тексте</td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Запрещение
+        внешнего прерывания </font></td>
+        <td align="center"><font size="4">DIS I</font></td>
+        <td align="center"><font size="4">00010101</font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center">Описание приведено в
+        тексте</td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Выбор
+        нулевого банка регистров </font></td>
+        <td align="center"><font size="4">SEL RB0</font></td>
+        <td align="center"><font size="4">11000101 </font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4">(BS) = 0 </font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Выбор
+        первого банка регистров </font></td>
+        <td align="center"><font size="4">SEL RB1</font></td>
+        <td align="center"><font size="4">11010101</font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4">(BS) = 1</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Выбор
+        нулевого банка ПП </font></td>
+        <td align="center"><font size="4">SEL МВ0</font></td>
+        <td align="center"><font size="4">11100101</font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4">(DBF) = 0</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Выбор
+        первого банка ПП </font></td>
+        <td align="center"><font size="4">SEL MB1</font></td>
+        <td align="center"><font size="4">11110101</font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4">(DBF) = 1</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Разрешение
+        выдачи синхросигнала на выход
+        Т0 </font></td>
+        <td align="center"><font size="4">ENT0 CLC</font></td>
+        <td align="center"><font size="4">01110101</font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4">Т0-синхросигнал
+        (2МГц)</font></td>
+    </tr>
+    <tr>
+        <td align="center"><font size="4">Холостая
+        команда </font></td>
+        <td align="center"><font size="4">NOP</font></td>
+        <td align="center"><font size="4">00000000</font></td>
+        <td align="center"><font size="4">1 1 1</font></td>
+        <td align="center"><font size="4">(PC) = (PC) +1</font></td>
+    </tr>
+</table>
+</center></div>
+
+<p>&nbsp;</p>
+
+<p><font size="4"><b>Операции с таймером.</b>
+Кроме рассмотренных ранее команд
+обмена между таймером и
+аккумулятором (МОV А,Т и МОV Т,А), по
+кото-рым содержимое таймера может
+быть прочитано во время остановки
+счета и во время счета (&quot;на
+лету&quot;) или изменено
+(перезагружено), в МК выполняются
+специальные команды управления
+режимом роботы таймера. Таймер
+может быть (в зависимости от
+команды) использован как счетчик
+тактов или как счетчик событий от
+внутреннего или внеш-него
+источника сигналов соответственно.
+Система команд МК располагает
+средствами разрешения или запрета
+прерывания от таймера. Специальной
+командой ENT0 на вывод T0 разрешается
+передача импульсов с частотой
+опорного синхросигнала, поделенной
+на три. Вы-дача этого сигнала может
+быть отключена только сигналом
+общего сбро-са. Синхросигнал на
+выходе Т0 используется для общей
+синхронизации внешних устройств,
+согласованных с МК но частоте
+работы. </font></p>
+
+<p><font size="4"><b>Переключение банков
+регистров и ПП.</b> Переключение
+банка памяти программ (т.е.
+изменение старшего бита счетчика
+команд) происходит в момент
+выполнения команды длинного
+перехода или вызова подпрограммы.
+Наличие команд переключения банков
+регистров позволяет при вызове
+подпрограмм и обработке прерываний
+эффективно использовать второй
+банк регистров в качестве рабочего,
+сохраняя параметры
+вычислительного процесса не в
+стеке, а в исходном банке регистров.
+При программировании процедур
+обработки прерываний можно
+переключать или не переключать
+банки регистров. В том случае, когда
+банки регистров переключаются,
+возврат к исходному банку
+регистров будет выполнен
+автоматически, если подпрограмма
+обработки прерыва-ния оканчивается
+командой возврата с
+восстановлением ССП (RETR).</font></p>
+
+<p>&nbsp;</p>
+
+<p><a href="#содержание"><font color="#0000FF" size="4">Система
+команд МК48 </font></a></p>
+
+<hr size="4" color="#008000">
+<div align="center"><center>
+
+<table border="0" cellpadding="20" cellspacing="0">
+    <tr>
+        <td><a href="start_mk48.htm" tppabs="http://ofap.ulstu.ru/res/REFER_BOOK_MK48&MK51/mk48/start_mk48.htm"><font color="#0000FF"
+        size="5" face="Times New Roman"><strong><tt>КМ1816ВЕ48</tt></strong></font></a></td>
+        <td><a href="start_mk51.htm" tppabs="http://ofap.ulstu.ru/res/REFER_BOOK_MK48&MK51/mk51/start_mk51.htm"><font
+        color="#0000FF" size="5" face="Times New Roman"><strong><tt>КМ1816ВЕ51</tt></strong></font></a></td>
+        <td><a href="start.htm" tppabs="http://ofap.ulstu.ru/res/REFER_BOOK_MK48&MK51/start.htm"><font color="#0000FF" size="4">Первая
+        страница</font></a></td>
+    </tr>
+</table>
+</center></div>
+</body>
+</html>

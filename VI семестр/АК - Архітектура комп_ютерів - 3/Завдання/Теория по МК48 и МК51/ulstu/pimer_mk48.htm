@@ -1,0 +1,1110 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=windows-1251">
+<meta name="Author" content="Mc'Cornic">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title></title>
+</head>
+
+<body background="fill_mk48.jpg" tppabs="http://ofap.ulstu.ru/res/REFER_BOOK_MK48&MK51/images/fill_mk48.jpg" bgcolor="#FFFFFF"
+text="#000000" link="#0000EE" vlink="#551A8B" alink="#FF0000">
+
+<p align="left"><a name="Содержание"></a><font
+color="#000000" size="5"><strong>6. Примеры
+программ обработки данных в МК48</strong></font></p>
+
+<ul>
+    <li><a
+        href="pimer_mk48.htm#примеры использования команд предачи данных" tppabs="http://ofap.ulstu.ru/res/REFER_BOOK_MK48&MK51/mk48/pimer_mk48.htm#примеры использования команд предачи данных"><font
+        color="#0000FF" size="4">6.1. Примеры
+        использования команд передачи
+        данных</font></a></li>
+    <li><a
+        href="pimer_mk48.htm#пример использования команд арифметических" tppabs="http://ofap.ulstu.ru/res/REFER_BOOK_MK48&MK51/mk48/pimer_mk48.htm#пример использования команд арифметических"><font
+        color="#0000FF" size="4">6.2. Примеры
+        использования команд
+        арифметических операций</font></a></li>
+    <li><a
+        href="pimer_mk48.htm#примеры использования команд логических" tppabs="http://ofap.ulstu.ru/res/REFER_BOOK_MK48&MK51/mk48/pimer_mk48.htm#примеры использования команд логических"><font
+        color="#0000FF" size="4">6.3. Примеры
+        использования команд
+        логических операций</font></a></li>
+    <li><a
+        href="pimer_mk48.htm#примеры использования команд передачи управления и" tppabs="http://ofap.ulstu.ru/res/REFER_BOOK_MK48&MK51/mk48/pimer_mk48.htm#примеры использования команд передачи управления и"><font
+        color="#0000FF" size="4">6.4. Примеры
+        использования команд передачи
+        управления и команд управления
+        режимом МК48</font></a></li>
+</ul>
+
+<hr size="4" color="#000000">
+
+<p align="left"><a
+name="Примеры использования команд предачи данных"></a><font
+color="#000000" size="5"><b>6.1. Примеры
+использования команд предачи
+данных </b></font></p>
+
+<hr color="#008000">
+
+<p><font size="4"><b>Пример 1.</b> Записать в
+РПД в в ячейки с адресампи 41 и 42
+число 1C3FH:</font></p>
+
+<dl>
+    <dt><font color="#0000FF" size="4">LOAD : MOV  R0,#41</font><font
+        size="4">         </font><font color="#0000A0"
+        size="4">; Загрузка в R0 указателя
+        РПД </font></dt>
+    <dt><font size="4">         </font><font
+        color="#0000FF" size="4">    MOV  @R0,#1CH</font><font
+        size="4">  </font><font color="#0000A0" size="4">;
+        Запись в РПД числа 1CH </font></dt>
+    <dt><font size="4">       </font><font color="#0000FF"
+        size="4">      INC    R0      </font><font
+        size="4">        </font><font color="#0000A0"
+        size="4"> ; Продвижение указателя
+        адреса РПД</font><font size="4"> </font></dt>
+    <dt><font size="4">        </font><font
+        color="#0000FF" size="4">     MOV  @R0,#3FH</font><font
+        size="4">  </font><font color="#0000A0" size="4"> ;
+        Запись в РПД числа 3FH</font></dt>
+    <dd><font size="4"><b>Пример 2.</b> Переслать
+        текущее содержимое таймера в R5
+        без потери содержимого
+        аккумулятора:</font></dd>
+    <dt><font color="#0000FF" size="4">XCHNG: XCH   A,R5</font><font
+        size="4"> </font><font color="#0000A0" size="4">;
+        Обмен R5 и аккумулятора</font><font
+        size="4"> </font></dt>
+    <dt><font size="4">      </font><font color="#0000FF"
+        size="4">         MOV  A,T </font><font size="4">  </font><font
+        color="#0000A0" size="4">; Пересылка
+        содержимого таймера в</font><font
+        size="4"> </font></dt>
+    <dt><font size="4">                                 </font><font
+        color="#0000A0" size="4"> ;                 аккумулятор
+        </font></dt>
+    <dt><font size="4">     </font><font color="#0000FF"
+        size="4">          XCH   A,R5</font><font
+        size="4"> </font><font color="#0000A0" size="4">;
+        Обмен R5 и аккумулятора</font></dt>
+    <dd><font size="4"><b>Пример 3.</b> Передать
+        содержимое регистров банка 0 в
+        ВПД, начиная с адреса 50H:</font></dd>
+    <dt><font color="#0000FF" size="4">             
+        MOV     A,#10000B</font><font size="4"> </font><font
+        color="#0000A0" size="4">; Выбор банка
+        регистров 1</font><font size="4"> </font></dt>
+    <dt><font size="4">     </font><font color="#0000FF"
+        size="4">         MOV     PSW,A </font></dt>
+    <dt><font color="#0000FF" size="4">              MOV
+            R0,#50H</font><font size="4">    </font><font
+        color="#0000A0" size="4">; Определение
+        начального адреса ВПД</font><font
+        size="4"> </font></dt>
+    <dt><font size="4">           </font><font
+        color="#0000FF" size="4">   MOV     R1,#0   </font><font
+        size="4">    </font><font color="#0000A0" size="4"> ;
+        Определение начального адреса
+        банка</font><font size="4"> </font></dt>
+    <dt><font size="4">                                          
+         </font><font color="#0000A0" size="4">;
+                            регистров
+        </font></dt>
+    <dt><font size="4">   </font><font color="#0000FF"
+        size="4">           MOV     R2,#8 </font><font
+        size="4">       </font><font color="#0000A0"
+        size="4">; Счетсик регистров
+        (циклов) &lt;= 8 </font></dt>
+    <dt><font color="#0000FF" size="4">LOOP:   MOV
+             A,@R1 </font><font size="4">    </font><font
+        color="#0000A0" size="4"> ; Пересылка
+        байта из регистра в ВПД</font><font
+        size="4"> </font></dt>
+    <dt><font size="4">  </font><font color="#0000FF" size="4">            MOVX  @R0,A</font><font
+        size="4">       </font><font color="#0000A0"
+        size="4">; через аккумулятор </font></dt>
+    <dt><font size="4">    </font><font color="#0000FF"
+        size="4">          INC       R0   </font><font
+        size="4">        </font><font color="#0000A0"
+        size="4">  ; Продвижение
+        указателей </font></dt>
+    <dt><font size="4">    </font><font color="#0000FF"
+        size="4">          INC       R1 </font></dt>
+    <dt><font color="#0000FF" size="4">              DJNZ
+            R2,LOOP</font><font size="4">  </font><font
+        color="#0000A0" size="4">; Продолжить, если
+        переданы не все</font></dt>
+    <dt><font color="#0000A0" size="4">                                             ;
+                           регистры</font></dt>
+    <dd><font size="4"><b>Пример 4.</b> Ввести
+        байт из порта 1 и передать его в
+        порт 2: </font></dd>
+    <dt><font color="#0000FF" size="4">TRAN:  MOV
+           A,#0FFH   </font><font size="4">    </font><font
+        color="#0000A0" size="4"> ; Настройка
+        порта 1 на ввод </font></dt>
+    <dt><font size="4">     </font><font color="#0000FF"
+        size="4">        OUTL  P1,A IN A,P1</font><font
+        size="4"> </font><font color="#0000A0" size="4">;
+        Ввод байта из порта 1 </font></dt>
+    <dt><font size="4">    </font><font color="#0000FF"
+        size="4">         OUTL  P2,A      </font><font
+        size="4">       </font><font color="#0000A0"
+        size="4"> ; Вывод байта в порта 2</font></dt>
+    <dd><font size="4"><b>Пример 5.</b> Ввести
+        данные из порта Р7:</font></dd>
+    <dt><font color="#0000FF" size="4">INPUT:  MOVD   A,P7 </font><font
+        color="#0000A0" size="4">; Пересылка
+        четырех битов из порта 7 в </font></dt>
+    <dt><font color="#0000A0" size="4">                                    ;
+        младшую тетраду аккумулятора</font></dt>
+    <dd><font size="4"><b>Пример 6.</b> Вычислить
+        произведение двух четырех
+        битных чисел, расположеных в
+        младших тетрадах регистров R0 и
+        R1. Для вычисления используется
+        таблица произведений для всех
+        комбинаций сомножителей (всего
+        256). Произведение двух тетрад
+        имеет формат 1 байта.Таким
+        образом, необходимая таблица
+        произведений занимает одну
+        страницу памяти. Данную
+        страницу удобно разместить на
+        третьей странице РПП:</font></dd>
+    <dt><font color="#0000A0" size="4">; Вычисление
+        Z=X*Y </font></dt>
+    <dt><font color="#0000A0" size="4">; R0=0000.XXXX </font></dt>
+    <dt><font color="#0000A0" size="4">; R1=0000.YYYY </font></dt>
+    <dt><font color="#0000A0" size="4">; X и Y
+        принимают значения 0 и 1 </font></dt>
+    <dt><font color="#0000FF" size="4">ORG 0           </font><font
+        size="4">    </font><font color="#0000A0" size="4">;
+        Директива ассемблера, задающий
+        </font></dt>
+    <dt><font color="#0000A0" size="4">                         ;
+        начальный адрес программы </font></dt>
+    <dt><font color="#0000FF" size="4">MOV A,R0  </font><font
+        size="4">       </font><font color="#0000A0"
+        size="4">; Пересылка множимого в
+        аккумулятор</font></dt>
+    <dt><font color="#0000FF" size="4">SWAP A </font><font
+        size="4">           </font><font
+        color="#0000A0" size="4">; Обмен тетрад в
+        аккумуляторе </font></dt>
+    <dt><font color="#0000FF" size="4">ORL       A,R1</font><font
+        size="4">   </font><font color="#0000A0" size="4"> ;
+        Формирование в аккумуляторе
+        адреса </font></dt>
+    <dt><font color="#0000A0" size="4">                          ;
+        произведения программ </font></dt>
+    <dt><font color="#0000FF" size="4">MOVP3   A,@A </font><font
+        color="#0000A0" size="4"> ; Загрузка в
+        аккумулятор произведения </font></dt>
+    <dt><font color="#0000FF" size="4">ORG        0300H</font><font
+        size="4"> </font><font color="#0000A0" size="4">;
+        Директива ассемблера, задающая
+        </font></dt>
+    <dt><font color="#0000A0" size="4">                          ;
+        начальный адрес таблицы на
+        третьей </font></dt>
+    <dt><font color="#0000A0" size="4">                          ;
+        странице РПП </font></dt>
+    <dt><font color="#0000A0" size="4">;Директивы
+        ассемблера, формирующие
+        таблицу произведений </font></dt>
+    <dt><font color="#0000FF" size="4">DB 0,0,0,0,0,0,0,0   </font><font
+        size="4">                            </font><font
+        color="#0000A0" size="4">     ; Z=0*Y </font></dt>
+    <dt><font color="#0000FF" size="4">DB 0,0,0,0,0,0,0,0 </font></dt>
+    <dt><font color="#0000FF" size="4">DB 1*0,1*1,1*2,...,1*0FH
+         </font><font size="4">          </font><font
+        color="#0000A0" size="4">            ; Z=1*Y </font></dt>
+    <dt><font color="#0000FF" size="4">. . . . . . </font></dt>
+    <dt><font color="#0000FF" size="4">DB
+        0FH*0,0FH*1,0FH*2,...,0FH*0FH</font><font size="4">
+             </font><font color="#0000A0" size="4">; Z=0F*Y</font></dt>
+    <dd><font size="4">Время выполнения
+        программы 12.5 мкс.</font></dd>
+</dl>
+
+<p>&nbsp;</p>
+
+<p><a href="#содержание"><font color="#0000FF" size="4">Примеры
+программ обработки данных в МК48</font></a></p>
+
+<hr color="#008000">
+
+<p align="left"><a
+name="Пример использования команд арифметических"></a><font
+color="#000000" size="5"><b>6.2. Пример
+использования команд
+арифметических операций</b></font><font
+color="#000000"> </font></p>
+
+<hr color="#008000">
+
+<dl>
+    <dd><font size="4"><b>Пример 7.</b> Сложить
+        содержимое регистра R7 и ячейки
+        РПД с адресом 60H: </font></dd>
+    <dt><font color="#0000FF" size="4">MOV    R0,#60H</font><font
+        size="4">  </font><font color="#0000A0" size="4"> ;
+        Загрузка в R0 адреса РПД </font></dt>
+    <dt><font color="#0000FF" size="4">MOV    A,R7    </font><font
+        size="4">   </font><font color="#0000A0" size="4">  ;
+        Загрузка операнда в
+        аккумулятор </font></dt>
+    <dt><font color="#0000FF" size="4">ADD    A,@R0</font><font
+        size="4">      </font><font color="#0000A0" size="4">;
+        Сложение</font></dt>
+    <dd><font size="4">Результат операции
+        сложения фиксируется в
+        аккумуляторе, установка флага
+        переноса будет
+        свидетельствовать о
+        переполнении.</font><p><font size="4"><b>Пример
+        8. </b>Сложить десятичные
+        двоично-кодированные числа
+        (BCD-числа), расположеные в А и R7:</font></p>
+    </dd>
+    <dt><font color="#0000FF" size="4">ADD   A,R7 </font><font
+        size="4">  </font><font color="#0000A0" size="4">;
+        Двоичное сложение </font></dt>
+    <dt><font color="#0000FF" size="4">DA     A    </font><font
+        size="4">     </font><font color="#0000A0" size="4">;
+        Коррекция результата</font></dt>
+    <dd><font size="4"><b>Пример 9.</b>
+        Инкрементировать содержимое
+        ячеек РПД по адресам 10-18:</font></dd>
+    <dt><font color="#0000FF" size="4">INCR:      MOV
+          R0,#10 </font><font size="4">             </font><font
+        color="#0000A0" size="4">; Загрузка в R0
+        начального адреса </font></dt>
+    <dt><font size="4">          </font><font
+        color="#0000FF" size="4">     MOV   R3,#(18-10+1)</font><font
+        size="4">  </font><font color="#0000A0" size="4"> ;
+        Загрузка в R3 числа ячеек </font></dt>
+    <dt><font color="#0000FF" size="4">LOOP:     INC
+           @R0</font><font size="4">
+                        </font><font
+        color="#0000A0" size="4"> ; Инкремент
+        ячейки РПД </font></dt>
+    <dt><font size="4">  </font><font color="#0000FF" size="4">             INC
+            R0  </font><font size="4">               </font><font
+        color="#0000A0" size="4">   ; Продвижение
+        указателя адресса </font></dt>
+    <dt><font color="#0000FF" size="4">               DJNZ
+         R3,LOOP  </font><font size="4">      </font><font
+        color="#0000A0" size="4">  ; Декремет R3 и
+        повтор, пока R3 не </font></dt>
+    <dt><font color="#0000A0" size="4">                                                   ;равно
+        нулю</font></dt>
+    <dd><font size="4"><b>Пример 10.</b> Сложить
+        много байтные BCD-числа,
+        расположеные в РПД. Регистры R0
+        и R1 указывают начальные адреса
+        слагаемых. Слагаемые
+        расположены в РПД, начиная с
+        младших байтов. Формат
+        слагаемых одинаков и задается
+        в R2 числом байтов. Результат
+        сложения поместить на место
+        первого слагаемого:</font></dd>
+    <dt><font color="#0000A0" size="4">; Суммирование
+        Z=W+Y </font></dt>
+    <dt><font color="#0000A0" size="4">; (R0) -
+        начальный адрес W </font></dt>
+    <dt><font color="#0000A0" size="4">; (R1) -
+        начальный адрес Y </font></dt>
+    <dt><font color="#0000A0" size="4">; (R2) - длинна
+        слагаемых W и Y </font></dt>
+    <dt><font size="4">     </font><font color="#0000FF"
+        size="4">          CLR     C   </font><font
+        size="4">          </font><font color="#0000A0"
+        size="4">; Сброс флага переноса</font><font
+        size="4"> </font></dt>
+    <dt><font color="#0000FF" size="4">LOOP:    
+        MOV   A,@R0</font><font size="4">     </font><font
+        color="#0000A0" size="4">; Загрузка
+        текущего байта </font></dt>
+    <dt><font size="4">  </font><font color="#0000FF" size="4">             ADDC
+         A,@R1</font><font size="4">     </font><font
+        color="#0000A0" size="4">; Сложение </font></dt>
+    <dt><font size="4">               </font><font
+        color="#0000FF" size="4">DA       A </font><font
+        size="4">            </font><font
+        color="#0000A0" size="4"> ; Корекция </font></dt>
+    <dt><font size="4">    </font><font color="#0000FF"
+        size="4">           MOV   @R0, A </font><font
+        size="4">    </font><font color="#0000A0" size="4">;
+        Размещение текущего байта
+        результата </font></dt>
+    <dt><font size="4">   </font><font color="#0000FF"
+        size="4">            INC      R0  </font><font
+        size="4">         </font><font color="#0000A0"
+        size="4"> ; Продвижение указателей
+        байтов </font></dt>
+    <dt><font size="4">   </font><font color="#0000FF"
+        size="4">            INC      R1 </font><font
+        size="4">           </font><font
+        color="#0000A0" size="4">; слогаемых </font></dt>
+    <dt><font size="4">    </font><font color="#0000FF"
+        size="4">           DJNZ   R2,LOOP</font><font
+        size="4">  </font><font color="#0000A0" size="4">;
+        Декремент R2, повтор пока R2 не </font></dt>
+    <dt><font color="#0000A0" size="4">                                           ;
+        равно 0</font></dt>
+    <dd><font size="4">Время суммирования
+        составляет (1 + 8N)*2.5 мкс, где N -
+        длина слогаемых в байтах.</font><p><font
+        size="4"><b>Премер 11.</b> Вычитание
+        байтов. Операция вычитания
+        может быть выполнена двумя
+        способами: переводом
+        вычитаемого как
+        отрицательного числа в
+        дополнительный код с
+        последующим сложением;
+        переводом уменьшаемого в
+        обратный код с последующей
+        инверсией суммы. Пусть
+        требуется вычесть из А
+        содержимое регистра R6.
+        Вычитание выполнить в
+        соответствии с выражением</font></p>
+        <p><font size="4">(А) &lt;= не ((не (А)) +(R6))</font></p>
+    </dd>
+    <dt><font color="#0000FF" size="4">CPL    A </font><font
+        size="4">      </font><font color="#0000A0"
+        size="4">; Инверсия аккумулятора </font></dt>
+    <dt><font color="#0000FF" size="4">ADD   A,R6</font><font
+        size="4"> </font><font color="#0000A0" size="4"> ;
+        Сложение </font></dt>
+    <dt><font color="#0000FF" size="4">CPL    A</font><font
+        size="4">      </font><font color="#0000A0" size="4"> ;
+        Получение разности</font></dt>
+    <dd><font size="4">Установка флага С
+        после выполнения сложения
+        будет свидетельствовать об
+        отрицательном переполнении.</font><p><font
+        size="4"><b>Пример 12.</b> Получить
+        разность 2-байтных числ без
+        знака. Операнды располагаються
+        в РПД. Адрес уменьшаемого
+        храниться в R1, а вычитаемого - в
+        R0. Результат поместить на место
+        уменьшаемого:</font></p>
+    </dd>
+    <dt><font color="#0000A0" size="4">; Вычислить Z=X-Y
+        </font></dt>
+    <dt><font color="#0000A0" size="4">; X,Y - РПД </font></dt>
+    <dt><font color="#0000A0" size="4">; R0 - Адрес Y </font></dt>
+    <dt><font color="#0000A0" size="4">; R1 - Адрес X </font></dt>
+    <dt><font color="#0000A0" size="4">; Результат на
+        место X </font></dt>
+    <dt><font color="#0000FF" size="4">SUBSTR: MOV  A,@R0   </font><font
+        color="#0000A0" size="4">; Загрузка
+        младшего байта Y </font></dt>
+    <dt><font size="4">   </font><font color="#0000FF"
+        size="4">             CPL     A </font><font
+        size="4">        </font><font color="#0000A0"
+        size="4"> ; Получение
+        дополнительного кода Y </font></dt>
+    <dt><font color="#0000FF" size="4">                INC
+             A </font></dt>
+    <dt><font color="#0000FF" size="4">               
+        ADD    A,@R1 </font><font color="#0000A0" size="4"> ;
+        Вычитание младших байт </font></dt>
+    <dt><font size="4">     </font><font color="#0000FF"
+        size="4">           MOV   @R0,A </font><font
+        color="#0000A0" size="4"> ; Запоминание
+        младшего байта разности </font></dt>
+    <dt><font color="#0000FF" size="4">                INC
+            R0 </font><font size="4">      </font><font
+        color="#0000A0" size="4">  ; Переход к
+        старшим байтам X и Y </font></dt>
+    <dt><font color="#0000FF" size="4">                INC    
+        R1 </font></dt>
+    <dt><font color="#0000FF" size="4">                MOV  
+        A,@R0</font><font size="4">  </font><font
+        color="#0000A0" size="4">; Загрузка
+        старшего байта Y </font></dt>
+    <dt><font size="4"> </font><font color="#0000FF" size="4">               CPL    A
+        </font><font size="4">        </font><font
+        color="#0000A0" size="4">  ; Обратный код Y </font></dt>
+    <dt><font color="#0000FF" size="4">                ADDC
+        A,@R1</font><font size="4">  </font><font
+        color="#0000A0" size="4">; Вычитание
+        старших байт</font><font size="4"> </font></dt>
+    <dt><font size="4">   </font><font color="#0000FF"
+        size="4">             MOV   @R0,A</font><font
+        size="4">  </font><font color="#0000A0" size="4">;
+        Запоминаие результата</font></dt>
+    <dd><font size="4"><b>Пример 13.</b> Умножить
+        однобайтные целые числа без
+        знака. В регистре R1 размещен
+        множитель, в регистре R2 -
+        множимое. Двухбайтный
+        результат умножения будет
+        размещаться в аккумуляторе
+        (старший байт) и в R1 (младший
+        байт) вместо множителя. В
+        регистре R3, выполняющий
+        функции счетчика программных
+        циклов, загружается число 8
+        (число бит множителя).
+        Умножение выполняется
+        младшими битами вперед со
+        сдвигом вправо частичного
+        произведения.
+        Последовательность действий
+        при этом методе умножения
+        следующая:</font><ol>
+            <li><font size="4">Содержимое
+                аккумулятора и
+                регистра-расширителя R1
+                сдвигаются вправо на один
+                бит так, что младший бит
+                множителя, выдвигаемый из
+                регистра R1, помещается в
+                триггер флага С. </font></li>
+            <li><font size="4">Если С=1, то
+                множимое добавляется к
+                содержимому аккумулятора,
+                в противном случае никаких
+                операций не производиться.
+                </font></li>
+            <li><font size="4">Декрементируется
+                счетчик циклов R3, и если
+                его содержимое не равно
+                нулю , то все действия
+                повторяются. </font></li>
+            <li><font size="4">Перед выходом из
+                подпрограммы формируется
+                окончательный результат
+                сдвигом частичного
+                результата на один бит
+                вправо:</font></li>
+        </ol>
+    </dd>
+    <dt><font color="#0000FF" size="4">MPLY1B:   MOV   R3,#8</font><font
+        size="4">        </font><font color="#0000A0"
+        size="4">; Загрузка счетчика циклов
+        </font></dt>
+    <dt><font color="#0000FF" size="4">                  CLR
+           A  </font><font size="4">            </font><font
+        color="#0000A0" size="4">  ; Очистка
+        аккумуляторов</font><font size="4"> </font></dt>
+    <dt><font size="4"> </font><font color="#0000FF" size="4">                 CLR
+           C </font><font size="4">              
+        </font><font color="#0000A0" size="4">; Очистка
+        признака переноса </font></dt>
+    <dt><font color="#0000FF" size="4">SHIFT:       RRC
+           A </font><font size="4">              </font><font
+        color="#0000A0" size="4"> ; Сдвиг
+        аккумулятора вправо </font></dt>
+    <dt><font color="#0000FF" size="4">                  XCH    A,R1 </font><font
+        size="4">         </font><font color="#0000A0"
+        size="4"> ; Обмен аккумулятора и R1 </font></dt>
+    <dt><font color="#0000FF" size="4">                  RRC
+           A</font><font size="4">
+                       </font><font
+        color="#0000A0" size="4">; Сдвиг множителя
+        с занисением </font></dt>
+    <dt><font color="#0000A0" size="4">                                                ;
+        выдвигаемого бита в С </font></dt>
+    <dt><font size="4">  </font><font color="#0000FF" size="4">                XCH
+           A,R1</font><font size="4">           </font><font
+        color="#0000A0" size="4">; Обмен
+        аккумулятора и R1 </font></dt>
+    <dt><font size="4"> </font><font color="#0000FF" size="4">              
+          JNC     RESULT</font><font size="4">     </font><font
+        color="#0000A0" size="4">; Если С=1, то
+        суммирование</font><font size="4"> </font></dt>
+    <dt><font color="#0000FF" size="4">                  ADD
+           A,R2 </font><font size="4">         </font><font
+        color="#0000A0" size="4"> ; Прибавление
+        множимого </font></dt>
+    <dt><font color="#0000FF" size="4">RESULT:   DJNZ
+          R3,SHIFT</font><font size="4">   </font><font
+        color="#0000A0" size="4">; Декремент
+        счетчика и проверка </font></dt>
+    <dt><font color="#0000A0" size="4">                                                ;
+        окончания операции (R3=0) </font></dt>
+    <dt><font size="4">    </font><font color="#0000FF"
+        size="4">              RRC    A </font><font
+        size="4">                </font><font
+        color="#0000A0" size="4">; Сдвиг
+        аккумулятора </font></dt>
+    <dt><font size="4">   </font><font color="#0000FF"
+        size="4">               XCH    A,R1</font><font
+        size="4">          </font><font color="#0000A0"
+        size="4"> ; Обмен </font></dt>
+    <dt><font size="4">     </font><font color="#0000FF"
+        size="4">             RRC    A</font><font
+        size="4">                 </font><font
+        color="#0000A0" size="4">; Сдвиг
+        содержимого R1 </font></dt>
+    <dt><font size="4">    </font><font color="#0000FF"
+        size="4">              XCH    A,R1</font><font
+        size="4">          </font><font color="#0000A0"
+        size="4"> ; Обмен</font></dt>
+    <dd><font size="4">Максимальное время
+        выполнения программы
+        составляет 200 мкс.</font></dd>
+</dl>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><a href="#содержание"><font color="#0000FF" size="4">Примеры
+программ обработки данных в МК48</font></a></p>
+
+<hr color="#008000">
+
+<p align="left"><a
+name="Примеры использования команд логических"></a><font
+color="#000000" size="5"><b>6.3. Примеры
+использования команд логических
+операций</b></font><font color="#000000"> </font></p>
+
+<hr color="#008000">
+
+<dl>
+    <dd><font size="4"><b>Пример 14. </b>Маскирование
+        при вводе. Ввести в регистр R7
+        информацию из линии 0,1,3,4 и 7
+        порта 1:</font></dd>
+    <dt><font color="#0000FF" size="4">IN      A,P1  </font><font
+        size="4">               </font><font
+        color="#0000A0" size="4">; Ввод байта из
+        порта 1 </font></dt>
+    <dt><font color="#0000FF" size="4">ANL   A,#10011011B </font><font
+        size="4"> </font><font color="#0000A0" size="4">;
+        Маскирование </font></dt>
+    <dt><font color="#0000FF" size="4">MOV  R7,A</font><font
+        size="4">                </font><font
+        color="#0000A0" size="4"> ; Передача</font></dt>
+    <dd><font size="4"><b>Пример 15.</b> Ввести в
+        аккумулятор данные из порта 2 и
+        выделить требуемые биты по
+        маске, находящейся в R0:</font></dd>
+    <dt><font color="#0000FF" size="4">IN      A,P2 </font><font
+        size="4">  </font><font color="#0000A0" size="4">;
+        Ввод из порта 2 </font></dt>
+    <dt><font color="#0000FF" size="4">ANL   A,R0</font><font
+        size="4">  </font><font color="#0000A0" size="4">;
+        Маскирование</font></dt>
+    <dd><font size="4"><b>Пример 16. </b>Выполнить
+        логический сдвиг влево
+        двухбайтного слова,
+        расположенного в (R2) (A):</font></dd>
+    <dt><font color="#0000FF" size="4">Shifll:    RLC    A</font><font
+        size="4">      </font><font color="#0000A0" size="4">; Сдвиг
+        младшего байта </font></dt>
+    <dt><font size="4"> </font><font color="#0000FF" size="4">           XCH
+          A,R2</font><font size="4">  </font><font
+        color="#0000A0" size="4">; Обмен
+        аккумулятора и расширителя </font></dt>
+    <dt><font size="4">            </font><font
+        color="#0000FF" size="4">RLC    A</font><font size="4">       </font><font
+        color="#0000A0" size="4">; Сдвиг старшего
+        бита </font></dt>
+    <dt><font size="4">            </font><font
+        color="#0000FF" size="4">XCH   A,R2</font><font
+        size="4"> </font><font color="#0000A0" size="4"> ;
+        Обмен </font></dt>
+    <dd><font size="4"><b>Пример 17. </b>Выполнить
+        арифметический сдвиг двух
+        байтного слова (R2) (A) вправо:</font></dd>
+    <dt><font color="#0000FF" size="4">SHIFAR:   CLR   C  </font><font
+        size="4">     </font><font color="#0000A0" size="4">;
+        Сброс флага переноса </font></dt>
+    <dt><font size="4">            </font><font
+        color="#0000FF" size="4">    CPL    C</font><font
+        size="4">      </font><font color="#0000A0" size="4"> ;
+        Установка флага переноса </font></dt>
+    <dt><font size="4">              </font><font
+        color="#0000FF" size="4">  XCH   A,R2</font><font
+        size="4">  </font><font color="#0000A0" size="4">;
+        Обмен байтами </font></dt>
+    <dt><font size="4">             </font><font
+        color="#0000FF" size="4">   JB7     ¤+3 </font><font
+        size="4">  </font><font color="#0000A0" size="4"> ;
+        Если R2.7 не равно 1, то сброс
+        флага </font></dt>
+    <dt><font size="4">          </font><font
+        color="#0000FF" size="4">      CLR    C</font><font
+        size="4">       </font><font color="#0000A0"
+        size="4">; переноса </font></dt>
+    <dt><font size="4">           </font><font
+        color="#0000FF" size="4">     RRC    A </font><font
+        size="4">      </font><font color="#0000A0"
+        size="4">; Сдвиг флага переноса в
+        расширитель </font></dt>
+    <dt><font size="4">            </font><font
+        color="#0000FF" size="4">    XCH   A,R2</font><font
+        size="4">  </font><font color="#0000A0" size="4">;
+        Обмен </font></dt>
+    <dt><font size="4">                </font><font
+        color="#0000FF" size="4">RRC    A</font><font size="4">      
+        </font><font color="#0000A0" size="4">; Сдаиг
+        младшего байта </font></dt>
+    <dd><font size="4"><b>Пример 18.</b> Умножить
+        аккумулятор на число 2 в
+        степени Х, где Х - число (не
+        более 8), хранящееся в R2.
+        Умножение на 2 заменяется
+        арифметическим сдвигом влево
+        аккумулятора и расширителя R1:</font></dd>
+    <dt><font size="4"> </font><font color="#0000FF" size="4">            MOV
+         R1,#0</font><font size="4">   </font><font
+        color="#0000A0" size="4">; Сброс R1 </font></dt>
+    <dt><font size="4">  </font><font color="#0000FF" size="4">           CLR  
+        C</font><font size="4">          </font><font
+        color="#0000A0" size="4">; Сброс флага
+        переноса </font></dt>
+    <dt><font color="#0000FF" size="4">LOOP:   RLC   A</font><font
+        size="4">          </font><font color="#0000A0"
+        size="4">; Арифметический сдвиг
+        влево </font></dt>
+    <dt><font size="4">       </font><font color="#0000FF"
+        size="4">      XCH   A,R1</font><font size="4">
+            </font><font color="#0000A0" size="4">;
+        объединеного 16-битного
+        результата в </font></dt>
+    <dt><font size="4">             </font><font
+        color="#0000FF" size="4">RLC    A  </font><font
+        size="4">        </font><font color="#0000A0"
+        size="4">; регистровой паре (R1) (А) </font></dt>
+    <dt><font size="4">             </font><font
+        color="#0000FF" size="4">XCH   A,R1 </font><font
+        size="4">     </font></dt>
+    <dt><font size="4">             </font><font
+        color="#0000FF" size="4">DJNZ  R2,LOOP</font><font
+        size="4"> </font><font color="#0000A0" size="4">;
+        Цикл</font></dt>
+    <dd><font size="4"><b>Пример 19.</b> Выдать
+        содержимое аккумулятора в
+        последовательном коде через
+        нулевую линию порта 1, оставляя
+        без изменения остальные биты
+        порта. Передачу вести, начиная
+        с младшего бита:</font></dd>
+    <dt><font size="4">  </font><font color="#0000FF" size="4">           MOV
+         R1,#8</font><font size="4">           </font><font
+        color="#0000A0" size="4">; Счетчик бит </font></dt>
+    <dt><font color="#0000FF" size="4">LOOP:   JB0    ONE</font><font
+        size="4">             </font><font
+        color="#0000A0" size="4">; Переход, если
+        бит А.0 равен 1 </font></dt>
+    <dt><font size="4"> </font><font color="#0000FF" size="4">            ANL
+          P1,#(NOT 1)</font><font size="4"> </font><font
+        color="#0000A0" size="4">; Сброс Р1.0 </font></dt>
+    <dt><font size="4">    </font><font color="#0000FF"
+        size="4">          JMP   NEXT </font></dt>
+    <dt><font color="#0000FF" size="4">ONE:     ORL   P1,#1</font><font
+        size="4">            </font><font
+        color="#0000A0" size="4">; Установка Р1.0 </font></dt>
+    <dt><font size="4">  </font><font color="#0000FF" size="4">            JMP
+          NEXT</font><font size="4">          </font><font
+        color="#0000A0" size="4">; Избыточная
+        команда для выравнивания </font></dt>
+    <dt><font size="4">         </font><font
+        color="#0000A0" size="4">                          
+                ;времени передачи 0 и 1 </font></dt>
+    <dt><font color="#0000FF" size="4">NEXT:   RR      A</font><font
+        size="4">                </font><font
+        color="#0000A0" size="4"> ; Сдвиг
+        аккумулятора вправо
+        (подготовка </font></dt>
+    <dt><font size="4"> </font><font color="#0000FF" size="4">            DJNZ
+         R1,LOOOP</font><font size="4">   </font><font
+        color="#0000A0" size="4">; к передаче
+        очередного бита)</font><font size="4"> </font></dt>
+    <dd><font size="4"><b>Пример 20.</b> Настроить
+        биты 0-3 порта 1 не ввод:</font><p><font
+        color="#0000FF" size="4">ORL P1, #0FH</font><font
+        size="4">  </font><font color="#0000A0" size="4">;
+        Установка битов P1.0 ... P1.3</font></p>
+        <p><font size="4"><b>Пример 21.</b>
+        Очистить биты 4-7 порта 2:</font></p>
+        <p><font color="#0000FF" size="4">ANL P2,#0FH</font><font
+        size="4">  </font><font color="#0000A0" size="4">;
+        Сброс битов Р2.4...Р2.7</font></p>
+        <p><font size="4"><b>Пример 22.</b> Выдать в
+        линию 0 порта 4 значение
+        четвертого бита аккумулятора:</font></p>
+    </dd>
+    <dt><font color="#0000FF" size="4">SWAP  A</font><font
+        size="4">           </font><font
+        color="#0000A0" size="4"> ; Обмен битов 0 и 4
+        аккумулятора </font></dt>
+    <dt><font color="#0000FF" size="4">ANL     A,#1</font><font
+        size="4">       </font><font color="#0000A0"
+        size="4"> ; Выделение бита А.0 </font></dt>
+    <dt><font color="#0000FF" size="4">ORLD  P4,A </font><font
+        size="4">       </font><font color="#0000A0"
+        size="4">; Установка Р4., если А.0=1 </font></dt>
+    <dt><font color="#0000FF" size="4">ORL     A,#0EH</font><font
+        size="4">   </font><font color="#0000A0" size="4">;
+        Установка битов 1...3
+        аккумулятора </font></dt>
+    <dt><font color="#0000FF" size="4">ANLD   P4,A</font><font
+        size="4">       </font><font color="#0000A0"
+        size="4">; Сброс Р4.0, если А.0=0</font></dt>
+    <dd><font size="4"><b>Пример 23.</b>
+        Определить четность числа
+        единиц в аккумуляторе:</font></dd>
+    <dt><font size="4">   </font><font color="#0000FF"
+        size="4">          CLR   F0   </font><font
+        size="4">            </font><font
+        color="#0000A0" size="4">; Сброс F0 </font></dt>
+    <dt><font size="4">    </font><font color="#0000FF"
+        size="4">         MOV  R7,#8</font><font
+        size="4">          </font><font color="#0000A0"
+        size="4">; Число повторов </font></dt>
+    <dt><font color="#0000FF" size="4">LOOP:   RRC   A</font><font
+        size="4">                </font><font
+        color="#0000A0" size="4">; Пересылка бита
+        А.0 в перенос </font></dt>
+    <dt><font size="4">  </font><font color="#0000FF" size="4">           JNC
+           NEXT</font><font size="4">         </font><font
+        color="#0000A0" size="4">; Пропустить, если
+        бит равен 0 </font></dt>
+    <dt><font size="4">    </font><font color="#0000FF"
+        size="4">         CPL    F0</font><font
+        size="4">               </font><font
+        color="#0000A0" size="4">; Подсчет
+        паритета </font></dt>
+    <dt><font color="#0000FF" size="4">NEXT:  DJNZ   R7,LOOP</font><font
+        size="4">  </font><font color="#0000A0" size="4"> ;
+        Повторить 8 раз</font></dt>
+    <dd><font size="4">После выполнения
+        программы аккумулятор
+        сохранит свое значение, флаг F0
+        будет установлен, если число
+        единиц в аккумуляторе было
+        нечетно.Флаг F0 входит в состав
+        PSW и в данном примере
+        специфицирован пользователем
+        для выполнения функциЙ флага
+        паритета.</font></dd>
+</dl>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><a href="#содержание"><font color="#0000FF" size="4">Примеры
+программ обработки данных в МК48</font></a></p>
+
+<hr color="#008000">
+
+<p align="left"><a
+name="Примеры использования команд передачи управления и"></a><font
+color="#000000" size="5"><b>6.4. Примеры
+использования команд передачи
+управления и команд управления
+режимом МК48</b></font><font color="#000000"> </font></p>
+
+<hr color="#008000">
+
+<dl>
+    <dd><font size="4"><b>Пример 24.</b> Передать
+        управление по метке LL, если
+        переключатель банкеа
+        регистров (бит PSW.4) установлен:</font></dd>
+    <dt><font color="#0000FF" size="4">JBSET:    MOV  A,PSW </font><font
+        size="4"> </font><font color="#0000A0" size="4">;Передача
+        PSW в аккумулятор </font></dt>
+    <dt><font color="#0000FF" size="4">               JB4
+            LL   </font><font size="4">      </font><font
+        color="#0000A0" size="4">;Переход, если А.4=1</font></dt>
+    <dd><font size="4"><b>Пример 25.</b> Передать
+        управление метке LABEL, если
+        счетчик событий достиг
+        состояния 64:</font></dd>
+    <dt><font color="#0000FF" size="4">TESTC:  MOV A,1    </font><font
+        color="#0000A0" size="4">; Пересылка
+        содержимого счетчика в
+        аккумулятор</font></dt>
+    <dt><font color="#0000FF" size="4">              JB6
+        LABEL </font><font color="#0000A0" size="4">;
+        Переход пометке, если А.6=1</font></dt>
+    <dd><font size="4"><b>Пример 26. </b>Осуществить
+        переход из нулевого банка ПП к
+        программе с именем ROUT,
+        расположенной в первом банке
+        ПП:</font></dd>
+    <dt><font color="#0000FF" size="4">    SEL   MB1    </font><font
+        color="#0000A0" size="4">; Установка флага
+        DBF</font></dt>
+    <dt><font color="#0000FF" size="4">    JMP   ROUT</font><font
+        color="#0000A0" size="4"> ; Переходж к
+        программе ROUNT</font></dt>
+    <dt><font size="4"><b>Пример 27. </b>Множественное
+        ветвление программы. </font></dt>
+    <dt><font size="4">Допустим, что
+        результатом работы некоторой
+        программы является число X (в
+        пределах от 0 до 15). Необходимо
+        организовать передачу
+        управления 16 различным
+        программам с именами ROUT0 - ROUTF в
+        зависимости от вычисленного
+        значения Х:</font></dt>
+    <dt><font color="#0000FF" size="4">    ORG
+           0          </font><font color="#0000A0"
+        size="4">; Задание начального
+        адреса программы</font></dt>
+    <dt><font color="#0000FF" size="4">    ANL    A,#0FH </font><font
+        color="#0000A0" size="4">; Сброс старшей
+        тетрады А во избежание ощибки
+        перехода</font></dt>
+    <dt><font color="#0000FF" size="4">    JMPP
+         @A      </font><font color="#0000A0" size="4"> ;
+        Обращение к таблице векторов
+        переходов</font></dt>
+    <dt><font color="#0000A0" size="4">              ;Таблица
+        векторов переходов</font></dt>
+    <dt><font color="#0000FF" size="4">    DB
+             ROUT0 </font><font color="#0000A0" size="4">;
+        Начальный адрес программы ROUNT0</font></dt>
+    <dt><font color="#0000FF" size="4">    DB
+             ROUT1 </font><font color="#0000A0" size="4">;
+        Начальный адрес программы ROUNT1</font></dt>
+    <dt><font color="#0000FF" size="4">    DB
+             ROUT2 </font><font color="#0000A0" size="4">;
+        Начальный адрес программы ROUNT2</font></dt>
+    <dt><font color="#0000FF" size="4">           . 
+        .  .</font></dt>
+    <dt><font color="#0000FF" size="4">           .
+         .  .</font></dt>
+    <dt><font color="#0000FF" size="4">           .
+         .  .</font></dt>
+    <dt><font color="#0000FF" size="4">    DB     ROUTF</font><font
+        color="#0000A0" size="4"> ; Начальный
+        адрес программы ROUNTF</font></dt>
+    <dd><font size="4">Заметим, что команда
+        JMPP, таблица векторов и
+        программы ROUT0 - ROUTF должны
+        находиться на одной странице
+        ПП.</font><p><font size="4"><b>Пример 28. </b>Организовать
+        ожидание появления нулевого
+        уровня на входе Т0:</font></p>
+        <p><font color="#0000FF" size="4">WAIT:    JT1 WAIT </font><font
+        color="#0000A0" size="4">; Переход на WAIT,
+        если на входе ЗПР нуль</font></p>
+        <p><font size="4"><b>Пример 29. </b>Организовать
+        появления единичного уровня на
+        входе ЗПР в предположении, что
+        внешние прерывание запрещены:</font></p>
+        <p><font color="#0000FF" size="4">WAIT:    JT0 WAIT </font><font
+        color="#0000A0" size="4">; Переход на WAIT,
+        если на входе T0 единица</font></p>
+        <p><font size="4"><b>Пример 30. </b>Передача
+        управления одной из восьми
+        программ ROUT0 - ROUT7 при появление
+        нулевого уровня на
+        соответствующем входе порта 1.
+        Наивысшим приорететом
+        обладает вход Р1.0:</font></p>
+    </dd>
+    <dt><font color="#0000FF" size="4">              ORL
+          P1,#0FFH </font><font color="#0000A0" size="4">;
+        Настройка порта 1 на ввод</font></dt>
+    <dt><font color="#0000FF" size="4">LOOP:    IN     
+        A,P1      </font><font color="#0000A0" size="4">   ;
+        Ввод данных из порта 1</font></dt>
+    <dt><font color="#0000FF" size="4">              CPL
+          A             </font><font
+        color="#0000A0" size="4"> ; Инверсия
+        аккумулятора</font></dt>
+    <dt><font color="#0000FF" size="4">              JZ
+             LOOP      </font><font color="#0000A0"
+        size="4"> ; Ожидание появления
+        первого нуля</font></dt>
+    <dt><font color="#0000FF" size="4">              JB0
+           ROUT0   </font><font color="#0000A0" size="4">  ;
+        Переход к программе ROUNT0, если
+        Р1.0=0</font></dt>
+    <dt><font color="#0000FF" size="4">              JB0
+           ROUT1     </font><font color="#0000A0"
+        size="4">; Переход к программе ROUNT1,
+        если Р1.1=0</font></dt>
+    <dt><font color="#0000FF" size="4">              JB0
+           ROUT2     </font><font color="#0000A0"
+        size="4">; Переход к программе ROUNT2,
+        если Р1.2=0</font></dt>
+    <dt><font color="#0000FF" size="4">              JB0
+           ROUT3    </font><font color="#0000A0" size="4"> ;
+        Переход к программе ROUNT3, если
+        Р1.3=0</font></dt>
+    <dt><font color="#0000FF" size="4">              JB0
+           ROUT4     </font><font color="#0000A0"
+        size="4">; Переход к программе ROUNT4,
+        если Р1.4=0</font></dt>
+    <dt><font color="#0000FF" size="4">              JB0
+           ROUT5     </font><font color="#0000A0" size="4">;
+        Переход к программе ROUNT5, если
+        Р1.5=0</font></dt>
+    <dt><font color="#0000FF" size="4">              JB0
+           ROUT6     </font><font color="#0000A0"
+        size="4">; Переход к программе ROUNT6,
+        если Р1.6=0</font></dt>
+    <dt><font color="#0000FF" size="4">              JB0
+           ROUT7    </font><font color="#0000A0" size="4"> ;
+        Переход к программе ROUNT7, если
+        Р1.7=0</font></dt>
+    <dd><font size="4">Ветвление
+        осуществляется группой из
+        восьми команд JBb. Приоритеты
+        входов порта 1 определяются
+        очередностью проверки.</font><p><font
+        size="4"><b>Пример 31. </b>При
+        поступление на вход Т0
+        последовательности из восьми
+        нулевых импульсов установить
+        выход Р2.7:</font></p>
+    </dd>
+    <dt><font color="#0000FF" size="4">             MOV
+          R7,#8       </font><font color="#0000A0"
+        size="4">; Загрузка в R7 числа
+        импульсов</font></dt>
+    <dt><font color="#0000FF" size="4">ONE:     JT0   
+         ONE         </font><font color="#0000A0"
+        size="4">; Ожидание сигнала 0 на
+        входе Т0</font></dt>
+    <dt><font color="#0000FF" size="4">ZERO:   JT0
+            SKIP       </font><font color="#0000A0"
+        size="4"> ; Ожидание сигнала 1 на
+        входе Т0</font></dt>
+    <dt><font color="#0000FF" size="4">             JMP
+           ZERO        </font></dt>
+    <dt><font color="#0000FF" size="4">SKIP:    DJNZ
+         R7,ONE    </font><font color="#0000A0" size="4">;
+        Повторять, пока не поступит
+        восьмой импульс</font></dt>
+    <dt><font color="#0000FF" size="4">            
+        ORL    P2,#80H  </font><font color="#0000A0"
+        size="4"> ; Установка единицы на
+        входе 7 порта 2</font></dt>
+    <dd><font size="4">Длительность нуля и
+        единицы на входе устройства
+        должна быть не менее четырех
+        машинных циклов, т.е 10 мкс.</font><p><font
+        size="4"><b>Пример 32. </b>Дождаться
+        поступления на вход Т0 100
+        импульсов и перейти по метке
+        PULSE:</font></p>
+    </dd>
+    <dt><font color="#0000FF" size="4">              
+        MOV   A,#156    </font><font color="#0000A0"
+        size="4">; (А)  &lt;== (256 - 100)</font></dt>
+    <dt><font color="#0000FF" size="4">               MOV
+          T,A         </font><font color="#0000A0"
+        size="4">; Предустановка счетчика</font></dt>
+    <dt><font color="#0000FF" size="4">               STRT 
+        CNT       </font><font color="#0000A0" size="4">;
+        Запуск счетчика</font></dt>
+    <dt><font color="#0000FF" size="4">WAIT:     JTF
+            PULSE   </font><font color="#0000A0" size="4">;
+        Переход, если прошло 100
+        импульсов</font></dt>
+    <dt><font color="#0000FF" size="4">               JMP   
+        WAIT      </font></dt>
+    <dt><font color="#0000FF" size="4">PULSE:
+               .  .  .             </font></dt>
+    <dd><font size="4"><b>Пример 33. </b>Запретить
+        прерывания от таймера, но
+        разрешить прерывание после
+        восьми сигналов переполнения
+        таймера. При переходе к
+        процедуре обработки
+        прерывания остановить таймер.
+        Сигналы переполнения
+        подсчитывать в регистре 5:</font></dd>
+    <dt><font color="#0000FF" size="4">STARS:    DIS
+            TCNT1    </font><font color="#0000A0" size="4">;
+        Заперт прерываний от таймера</font></dt>
+    <dt><font color="#0000FF" size="4">               
+        CLR    A             </font><font
+        color="#0000A0" size="4">; Сброс
+        аккумулятора </font></dt>
+    <dt><font color="#0000FF" size="4">               
+        MOV   T,A        </font><font color="#0000A0"
+        size="4"> ; Сброс таймера</font></dt>
+    <dt><font color="#0000FF" size="4">               
+        MOV   R5,A       </font><font color="#0000A0"
+        size="4">; Сброс регистра 5</font></dt>
+    <dt><font color="#0000FF" size="4">               
+        STRT  T            </font><font
+        color="#0000A0" size="4">; Запуск таймера</font></dt>
+    <dt><font color="#0000FF" size="4">M:
+                   JTF      COUNT </font><font
+        color="#0000A0" size="4">; Если TF=1, то
+        переход к COUNT и сброс TF</font></dt>
+    <dt><font color="#0000FF" size="4">                JMP
+            M1        </font><font color="#0000A0"
+        size="4"> ; Цикл</font></dt>
+    <dt><font color="#0000FF" size="4">COUNT:   INC    
+        R5          </font><font color="#0000A0"
+        size="4">; Инкремент регистра 5</font></dt>
+    <dt><font color="#0000FF" size="4">                MOV
+          A,R5     </font><font color="#0000A0" size="4">  ;
+        Пересылка содержимого R5
+        ваккумулятор</font></dt>
+    <dt><font color="#0000FF" size="4">                JB3
+             INT       </font><font color="#0000A0"
+        size="4"> ; Переход к подпрограмме
+        обслуживания прерывания IN, </font></dt>
+    <dt><font color="#0000A0" size="4">                                        
+         ;                       если
+        бит А.3 равен 1</font></dt>
+    <dt><font color="#0000FF" size="4">                JMP    
+        M1         </font><font color="#0000A0" size="4">;Переход,
+        если бит А.3 не равен 1</font></dt>
+    <dt><font color="#0000FF" size="4">                   . 
+        .  .</font></dt>
+    <dt><font color="#0000FF" size="4">                   .
+         .  .</font></dt>
+    <dt><font color="#0000FF" size="4">INT:         STOP
+         TCNT    </font><font color="#0000A0" size="4">;
+        Останов таймера</font></dt>
+    <dt><font color="#0000FF" size="4">                JMP
+            07H      </font><font color="#0000A0"
+        size="4"> ; Переход к ячейке 7
+         (вектор прерывания от
+        счетчика событий)</font></dt>
+</dl>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><a href="#содержание"><font color="#0000FF" size="4">Примеры
+программ обработки данных в МК48</font></a></p>
+
+<hr size="4" color="#008000">
+<div align="center"><center>
+
+<table border="0" cellpadding="20" cellspacing="0">
+    <tr>
+        <td><a href="start_mk48.htm" tppabs="http://ofap.ulstu.ru/res/REFER_BOOK_MK48&MK51/mk48/start_mk48.htm"><font color="#0000FF"
+        size="5" face="Times New Roman"><strong><tt>КМ1816ВЕ48</tt></strong></font></a></td>
+        <td><a href="start_mk51.htm" tppabs="http://ofap.ulstu.ru/res/REFER_BOOK_MK48&MK51/mk51/start_mk51.htm"><font
+        color="#0000FF" size="5" face="Times New Roman"><strong><tt>КМ1816ВЕ51</tt></strong></font></a></td>
+        <td><a href="start.htm" tppabs="http://ofap.ulstu.ru/res/REFER_BOOK_MK48&MK51/start.htm"><font color="#0000FF" size="4">Первая
+        страница</font></a></td>
+    </tr>
+</table>
+</center></div>
+</body>
+</html>

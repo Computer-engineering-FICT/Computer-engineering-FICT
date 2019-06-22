@@ -1,0 +1,47 @@
+PROG2                                                                                                         PAGE 1
+
+0000 7401              1            MOV     A,#00000001b           ;адрес столбца
+0002 7FFE              2            MOV     R7,#11111110b          ;адрес строки (инверсия)
+                       3    
+0004                   4    GO:
+0004 1117              5            ACALL    OUT
+0006 23                6            RL      A
+0007 B420FA            7            CJNE    A,#00100000b,GO
+000A EF                8            MOV     A,R7
+000B 23                9            RL      A
+000C B47F02           10            CJNE    A,#01111111b,NOT_OWF
+000F 74FE             11            MOV     A,#11111110b          ;адрес строки (инверсия)
+0011                  12    NOT_OWF:
+0011 FF               13            MOV     R7,A
+0012 7401             14            MOV     A,#00000001b           ;адрес столбца
+0014 020004           15            LJMP     GO
+0017                  16    OUT:
+                      17    
+0017 908000           18            MOV     DPTR,#8000h
+001A F0               19            MOVX    @DPTR,A
+                      20    
+001B 908002           21            MOV     DPTR,#8002h
+001E F8               22            MOV     R0,A                     ;промеж. сохранение
+001F EF               23            MOV     A,R7
+0020 F0               24            MOVX    @DPTR,A
+0021 E8               25            MOV     A,R0
+                      26    
+0022 7801             27            MOV     R0,#01h
+0024 79FF             28    MM:     MOV     R1,#0FFh
+0026 7A5F             29    M:      MOV     R2,#5Fh
+0028 DAFE             30    ll3:    DJNZ    R2,ll3
+002A D9FA             31            DJNZ    R1,M
+002C D8F6             32            DJNZ    R0,MM
+002E 22               33            RET
+                      34    
+                      35            END
+
+VERSION 1.2h ASSEMBLY COMPLETE, 0 ERRORS FOUND
+PROG2                                                                                                         PAGE 2
+
+GO . . . . . . . . . . . . . . .  C ADDR  0004H  
+LL3. . . . . . . . . . . . . . .  C ADDR  0028H  
+M. . . . . . . . . . . . . . . .  C ADDR  0026H  
+MM . . . . . . . . . . . . . . .  C ADDR  0024H  
+NOT_OWF. . . . . . . . . . . . .  C ADDR  0011H  
+OUT. . . . . . . . . . . . . . .  C ADDR  0017H  

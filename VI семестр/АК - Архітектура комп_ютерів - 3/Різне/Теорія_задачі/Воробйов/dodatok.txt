@@ -1,0 +1,88 @@
+dw 02h:0010100000100100%	\in 24h
+dw 04h:0000100000000001%	\add r1
+dw 06h:0011000010100100%	\out 0a4h
+
+link l2:rdd
+link m:z,z,z,z,z,z,z,z,14,13,12,11 \маска кода операции
+
+accept dev[1]:i,62h ,64h, 3, 12
+accept dev[2]:o,0e2h, 0e4h, 3, 12
+accept dev_buf[1]:0f45Bh
+
+
+accept r1:3AADh
+accept r7:2 \счетчик комманд
+accept r8:0 \регистр комманд
+accept r15:0F8Ah
+
+{cjp nz,begin;} 
+org 000000000001% {cjp nz, plus;}
+org 000000000101% {cjp nz, in;}
+org 000000000110% {cjp nz,out;}
+
+
+begin
+
+\1) выбираем комманду
+{ewh;oey;xor nil,r7,r7;}
+{ewl;oey;or nil, r7,z;}
+{r; or r8, bus_d, z;}
+
+
+\2) распаковка комманд
+\формат адрессы
+{add r0,r0 ,r8 z;}
+{and r0,r0,8000h;load rm,flags; cem_c; cem_v;cem_n;}
+{cjp not rm_z, exitt;} \ если двоадрессная -  выйти
+{xor r0,r0;}
+
+
+odnoadress
+\тип адрессации
+{add r0,r0,r8,z;}
+{and r0,r0,400h; load rm, flags;cem_c; cem_v;cem_n;}
+{cjp not rm_z, exitt;} \если не прямая адресация - выйти
+{xor r0,r0;}
+
+\3) загрузка операнда
+
+{add r0,r0,r8,z;}
+{and r0,r0, 0000001111111111%;}
+{ewh;oey;xor nil,r0,r0;} \ загружаем аддрес в r0
+{ewl;oey;or nil,r0,z;}
+{add r4,r4,r0,z;}
+
+\
+{add r0,r0,r8,z;}
+{and rq,r0,0111100000000000%;}
+{jmap; or rq, z;oey;}
+
+plus
+{ewa;oey;or nil,r4,r4;load ra;}
+{or r14,ra,z;}
+{add r15,r15,r14,z:}
+{cjp nz,next;}
+
+in
+{or nil,r4,z;ewl;oey}
+pc
+{i;cjp rdd, pc; or r15, bus_d,z;}
+{cjp nz, next;}
+
+out
+{or nil,r4,z;ewl;oey;}
+ppc
+{or nil,r15,z;oey;o;cjp rdd,ppc;}
+{cjp nz,next;}
+
+next
+{add r7,r7,2h,z;}
+{xor r4,r4;}
+{cjp nz,begin;}
+exitt
+{}
+
+
+
+
+
